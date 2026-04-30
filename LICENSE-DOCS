@@ -1,0 +1,22 @@
+# Document License
+
+The documents in this repository — including CHARTER.md, README.md, CONVENTIONS.md, files under /docs/, /constraints/, and /logbook/ — are licensed under the **Creative Commons Attribution 4.0 International License (CC-BY-4.0)**.
+
+You are free to:
+
+- **Share** — copy and redistribute the material in any medium or format
+- **Adapt** — remix, transform, and build upon the material for any purpose, even commercially
+
+Under the following terms:
+
+- **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+
+No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+
+Full license text: <https://creativecommons.org/licenses/by/4.0/legalcode>
+
+Suggested citation: see [CITATION.cff](CITATION.cff).
+
+---
+
+Note: Code in this repository (under /src/, /tests/, /notebooks/, and utility scripts) is licensed separately under MIT — see [LICENSE](LICENSE).

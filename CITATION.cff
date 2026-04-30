@@ -1,0 +1,63 @@
+cff-version: 1.2.0
+message: "If you use this repository or its outputs, please cite as below."
+title: "mg-plus-uv-chain: UV source redesign for ²⁵Mg⁺ detection, cooling, and coherent control"
+abstract: >
+  A reproducible, version-controlled, FAIR design effort to redesign the
+  all-solid-state CW laser source producing radiation near 280 nm for
+  trapped ²⁵Mg⁺ ions. Successor design to Friedenauer et al., Appl. Phys. B
+  84, 371 (2006), incorporating two decades of progress in fibre and VECSEL
+  sources, nonlinear crystal options, cavity-locking schemes, UV-induced
+  degradation diagnostics, and Raman / spin-motion coherent control.
+  Governed by a Council-3 ADM-EC charter (CHARTER.md, frozen at v1.0).
+type: software
+authors:
+  - family-names: "Warring"
+    given-names: "Ulrich"
+    affiliation: "Albert-Ludwigs-Universität Freiburg, Physikalisches Institut, AG Schätz"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"  # TODO: insert before first public commit
+repository-code: "https://github.com/<owner>/mg-plus-uv-chain"  # TODO: confirm hosting before tag
+license: MIT
+license-url: "https://github.com/<owner>/mg-plus-uv-chain/blob/main/LICENSE"
+keywords:
+  - trapped ions
+  - magnesium
+  - "²⁵Mg⁺"
+  - laser
+  - ultraviolet
+  - 280 nm
+  - second-harmonic generation
+  - sum-frequency generation
+  - Raman gates
+  - quantum control
+  - FAIR
+  - open science
+version: "1.0.0"
+date-released: "2026-04-30"
+references:
+  - type: article
+    title: "High power all solid state laser system near 280 nm"
+    authors:
+      - family-names: "Friedenauer"
+        given-names: "A."
+      - family-names: "Markert"
+        given-names: "F."
+      - family-names: "Schmitz"
+        given-names: "H."
+      - family-names: "Petersen"
+        given-names: "L."
+      - family-names: "Kahra"
+        given-names: "S."
+      - family-names: "Herrmann"
+        given-names: "M."
+      - family-names: "Udem"
+        given-names: "Th."
+      - family-names: "Hänsch"
+        given-names: "T. W."
+      - family-names: "Schätz"
+        given-names: "T."
+    journal: "Applied Physics B"
+    volume: 84
+    start: 371
+    end: 373
+    year: 2006
+    doi: "10.1007/s00340-006-2274-2"
