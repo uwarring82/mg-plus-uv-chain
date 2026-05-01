@@ -1,0 +1,116 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mg-plus-uv-chain"
+version = "1.0.0"
+description = "UV source redesign for 25Mg+ detection, cooling, and coherent control"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Ulrich Warring", email = "ulrich.warring@uni-freiburg.de" },
+]
+keywords = [
+    "trapped-ions",
+    "magnesium",
+    "ultraviolet",
+    "second-harmonic-generation",
+    "raman-gates",
+    "FAIR",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "matplotlib>=3.8",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "hypothesis>=6.92",
+]
+dev = [
+    "black>=24.1",
+    "isort>=5.13",
+    "ruff>=0.2",
+    "mypy>=1.8",
+]
+
+[project.urls]
+Homepage = "https://github.com/uwarring/mg-plus-uv-chain"
+Charter = "https://github.com/uwarring/mg-plus-uv-chain/blob/main/CHARTER.md"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = [
+    "-ra",
+    "--strict-markers",
+    "--strict-config",
+]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.coverage.run]
+source = ["src"]
+branch = true
+omit = ["src/diagnostic_surrogates_archive/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplementedError",
+    "if TYPE_CHECKING:",
+    "\\.\\.\\.",
+]
+fail_under = 90
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # bugbear
+    "UP",  # pyupgrade
+    "N",   # pep8-naming
+    "NPY", # numpy
+]
+ignore = [
+    "N803",  # argument name should be lowercase — physics symbols may be uppercase (Δ, Ω)
+    "N806",  # variable in function should be lowercase — same reason
+]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unused_configs = true
+warn_redundant_casts = true

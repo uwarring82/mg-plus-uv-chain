@@ -63,3 +63,6 @@ Thumbs.db
 .env
 .env.local
 *.log
+
+# Per-developer agent / editor configs (Claude Code, etc.)
+.claude/
