@@ -1,0 +1,380 @@
+citation_key: "Friedenauer2006"
+source_tier: "P"
+doi: "10.1007/s00340-006-2274-2"
+citation: "A. Friedenauer, F. Markert, H. Schmitz, L. Petersen, S. Kahra, M. Herrmann, Th. Udem, T. W. Haensch, and T. Schaetz, Applied Physics B 84, 371-373 (2006)"
+title: "High power all solid state laser system near 280 nm"
+extracted_by: "Codex"
+extracted_on: "2026-05-01"
+extraction_status: "DRAFT"
+source_document: "Local user-library PDF; not committed to repository."
+charter_section_refs:
+  - "§1"
+  - "§2"
+  - "§4"
+  - "§8.1"
+  - "§8.5"
+dossier_entries:
+  - "KD-UV280-001"
+  - "KD-UV280-005"
+  - "KD-UV280-010"
+  - "KD-UV280-013"
+  - "KD-UV280-015"
+
+parameters:
+  - symbol: "architecture_route"
+    value_text: "1118 nm Yb fiber laser -> 559 nm SHG in LBO -> near-280 nm SHG in BBO"
+    units: null
+    location_in_paper: "Abstract; Sections 2-3; Figure 1"
+    notes: "All-solid-state CW quadrupling route used as the Charter v1.0 baseline."
+
+  - symbol: "lambda_fundamental"
+    value: 1.118e-6
+    units: "m"
+    location_in_paper: "Abstract; Section 2"
+    notes: "Commercial Yb fiber laser fundamental wavelength."
+
+  - symbol: "P_fiber_laser_1118"
+    value: 2.0
+    units: "W"
+    location_in_paper: "Abstract; Section 2"
+    notes: "Power at 1118 nm before losses and ASE handling."
+
+  - symbol: "linewidth_fiber_laser"
+    comparator: "<"
+    value: 2.0e5
+    units: "Hz"
+    location_in_paper: "Abstract; Section 2"
+    notes: "Linewidth stated for the 1118 nm commercial fiber laser."
+
+  - symbol: "piezo_scan_range_1118"
+    value: 8.0e10
+    units: "Hz"
+    location_in_paper: "Section 2"
+    notes: "Total scan range using the piezo-controlled optical path length."
+
+  - symbol: "piezo_scan_bandwidth"
+    value: 2.0e4
+    units: "Hz"
+    location_in_paper: "Section 2"
+    notes: "Bandwidth of the piezo scan actuator at 1118 nm."
+
+  - symbol: "P_ASE"
+    value: 1.2
+    units: "W"
+    location_in_paper: "Section 2"
+    notes: "Broadband ASE peaked between 1060 nm and 1100 nm; not resonant with the SHG cavity mode."
+
+  - symbol: "optical_isolator_transmission_1118"
+    value: 0.90
+    units: "1"
+    location_in_paper: "Section 2"
+    notes: "Isolator designed for 1064 nm; paper reports about 90% transmission at 1118 nm."
+
+  - symbol: "optical_isolator_isolation"
+    value: 30
+    units: "dB"
+    location_in_paper: "Section 2"
+    notes: "Approximate isolation reported for the 1118 nm beam."
+
+  - symbol: "P_LBO_in"
+    value: 1.80
+    units: "W"
+    location_in_paper: "Section 2; Table 1"
+    notes: "Incoupling power to the first SHG cavity after isolator and ASE treatment."
+
+  - symbol: "crystal_LBO_type"
+    value_text: "type-I alpha-cut LBO, noncritically phase matched"
+    units: null
+    location_in_paper: "Section 3"
+    notes: "Cutting angles theta = 90 deg, phi = 0 deg."
+
+  - symbol: "L_LBO_crystal"
+    value: 1.8e-2
+    units: "m"
+    location_in_paper: "Section 3"
+    notes: "First SHG crystal length."
+
+  - symbol: "T_LBO_phase_match_calculated"
+    value: 89
+    units: "degC"
+    location_in_paper: "Section 3"
+    notes: "Calculated NCPM temperature."
+
+  - symbol: "T_LBO_phase_match_observed"
+    value: 94
+    units: "degC"
+    location_in_paper: "Section 3"
+    notes: "Observed optimum; authors attribute the shift plausibly to imperfect oven-crystal heat contact."
+
+  - symbol: "T_LBO_oven_stability"
+    value: 0.020
+    units: "K"
+    location_in_paper: "Section 3"
+    notes: "Temperature-control stability of the LBO oven."
+
+  - symbol: "w0_LBO_BK_optimum"
+    value: 27.3e-6
+    units: "m"
+    location_in_paper: "Section 3"
+    notes: "Boyd-Kleinman-derived beam waist, 1/e^2 intensity radius."
+
+  - symbol: "LBO_cavity_length"
+    value: 0.400
+    units: "m"
+    location_in_paper: "Section 3; Table 1"
+    notes: "Reported total LBO ring-cavity length; FSR stated as 750 MHz."
+
+  - symbol: "LBO_cavity_FSR"
+    value: 7.5e8
+    units: "Hz"
+    location_in_paper: "Section 3"
+    notes: "Free spectral range corresponding to the 400 mm ring cavity."
+
+  - symbol: "LBO_focusing_mirror_distance"
+    value: 0.062
+    units: "m"
+    location_in_paper: "Section 3; Table 1"
+    notes: "Geometric distance between focusing mirrors."
+
+  - symbol: "LBO_full_folding_angle"
+    value: 10
+    units: "deg"
+    location_in_paper: "Section 3; Table 1"
+    notes: "Full angle at both focusing mirrors."
+
+  - symbol: "R_LBO_input_coupler_fundamental"
+    value: 0.975
+    units: "1"
+    location_in_paper: "Section 3; Table 1"
+    notes: "Plane input coupler reflectivity at the fundamental."
+
+  - symbol: "R_LBO_HR_fundamental"
+    comparator: ">"
+    value: 0.9998
+    units: "1"
+    location_in_paper: "Section 3; Table 1"
+    notes: "Highly reflective mirrors at the fundamental."
+
+  - symbol: "R_LBO_output_coupler_fundamental"
+    comparator: ">"
+    value: 0.999
+    units: "1"
+    location_in_paper: "Section 3; Table 1"
+    notes: "Output coupler high reflectivity at the fundamental."
+
+  - symbol: "T_LBO_output_coupler_harmonic"
+    comparator: ">"
+    value: 0.95
+    units: "1"
+    location_in_paper: "Section 3"
+    notes: "Output coupler transmission at 559 nm."
+
+  - symbol: "P_559_output_stable"
+    value: 0.950
+    units: "W"
+    location_in_paper: "Section 3; Table 1"
+    notes: "Stable 559 nm output power. Abstract also states 1 W continuous-wave radiation at 559 nm."
+
+  - symbol: "eta_LBO_doubling"
+    comparator: ">"
+    value: 0.527
+    units: "1"
+    location_in_paper: "Section 3; Table 1"
+    notes: "Reported relative to available laser power in front of the cavity, not corrected for coupling, Fresnel, or output-coupler losses."
+
+  - symbol: "P_559_for_iodine_lock"
+    value: 0.010
+    units: "W"
+    location_in_paper: "Section 2; Figure 1"
+    notes: "Power split from the 559 nm beam for iodine polarization spectroscopy."
+
+  - symbol: "iodine_reference_transition"
+    value_text: "R(53)28-3 at 559.271 nm"
+    units: null
+    location_in_paper: "Section 2"
+    notes: "Used to stabilize the laser frequency via polarization spectroscopy."
+
+  - symbol: "crystal_BBO_type"
+    value_text: "Brewster-cut BBO"
+    units: null
+    location_in_paper: "Section 3"
+    notes: "Second SHG crystal for 559 nm to near 280 nm."
+
+  - symbol: "BBO_crystal_size"
+    value: [0.004, 0.004, 0.010]
+    units: "m"
+    location_in_paper: "Section 3"
+    notes: "Crystal dimensions listed as 4 mm x 4 mm x 10 mm."
+
+  - symbol: "T_BBO_operating"
+    value: 50
+    units: "degC"
+    location_in_paper: "Section 3"
+    notes: "Approximate heating temperature to prevent water condensation on polished hygroscopic surfaces."
+
+  - symbol: "w0_BBO_BK_optimum"
+    value: 19.4e-6
+    units: "m"
+    location_in_paper: "Section 3"
+    notes: "Boyd-Kleinman-derived ideal beam waist."
+
+  - symbol: "BBO_cavity_length"
+    value: 0.470
+    units: "m"
+    location_in_paper: "Table 1"
+    notes: "Reported total BBO ring-cavity length."
+
+  - symbol: "BBO_focusing_mirror_distance"
+    value: 0.0594
+    units: "m"
+    location_in_paper: "Table 1"
+    notes: "Distance between focusing mirrors."
+
+  - symbol: "BBO_full_folding_angle"
+    value: 27.4
+    units: "deg"
+    location_in_paper: "Section 3; Table 1"
+    notes: "Chosen to compensate astigmatism caused by the Brewster-cut BBO crystal."
+
+  - symbol: "R_BBO_input_coupler_fundamental"
+    value: 0.984
+    units: "1"
+    location_in_paper: "Table 1"
+    notes: "Input coupler reflectivity at 559 nm."
+
+  - symbol: "R_BBO_HR_fundamental"
+    comparator: ">"
+    value: 0.9993
+    units: "1"
+    location_in_paper: "Section 3; Table 1"
+    notes: "Highly reflective mirrors at 559 nm."
+
+  - symbol: "R_BBO_output_coupler_fundamental"
+    comparator: ">"
+    value: 0.998
+    units: "1"
+    location_in_paper: "Section 3; Table 1"
+    notes: "Output coupler high reflectivity at 559 nm."
+
+  - symbol: "T_BBO_output_coupler_harmonic"
+    comparator: ">"
+    value: 0.94
+    units: "1"
+    location_in_paper: "Section 3"
+    notes: "Output coupler transmission at 280 nm."
+
+  - symbol: "P_BBO_in"
+    value: 0.950
+    units: "W"
+    location_in_paper: "Table 1"
+    notes: "Incoupling power to the BBO cavity."
+
+  - symbol: "P_UV_out"
+    value: 0.275
+    units: "W"
+    location_in_paper: "Abstract; Section 3; Table 1; Section 6"
+    notes: "UV output near 280 nm after projection/collimation."
+
+  - symbol: "eta_BBO_doubling"
+    value: 0.289
+    units: "1"
+    location_in_paper: "Table 1"
+    notes: "Second-stage doubling efficiency."
+
+  - symbol: "TEM00_projection_fraction"
+    value: 0.95
+    units: "1"
+    location_in_paper: "Section 3"
+    notes: "Fraction of astigmatic output beam projected into a Gaussian TEM00 mode."
+
+  - symbol: "eta_overall_1118_to_280"
+    value: 0.152
+    units: "1"
+    location_in_paper: "Section 6"
+    notes: "Overall conversion efficiency for the full 1118 nm to near-280 nm chain."
+
+  - symbol: "unlockable_domain_width"
+    value: 1.4e10
+    units: "Hz"
+    location_in_paper: "Section 4"
+    notes: "Paper-reported width of frequency region where the BBO cavity could not be locked."
+
+  - symbol: "unlockable_domain_lambda_low"
+    value: 1118.339e-9
+    units: "m"
+    location_in_paper: "Section 4"
+    notes: "Lower wavelength boundary as reported for the 1118 nm fundamental."
+
+  - symbol: "unlockable_domain_lambda_high"
+    value: 1118.409e-9
+    units: "m"
+    location_in_paper: "Section 4"
+    notes: "Upper wavelength boundary as reported for the 1118 nm fundamental."
+
+  - symbol: "unlockable_domain_reproduced_across"
+    value_text: "several lasers, cavities, and crystals"
+    units: null
+    location_in_paper: "Section 4"
+    notes: "No mechanism identified. All crystals tested for this observation were from Crystals of Siberia."
+
+  - symbol: "crystal_manufacturer_for_unlockable_domain"
+    value_text: "Crystals of Siberia"
+    units: null
+    location_in_paper: "Section 4"
+    notes: "Vendor/batch sensitivity flag for CHARTER §5 Phase 1 crystal/coating evidence table."
+
+  - symbol: "UV_power_fluctuation_mean_deviation"
+    value: 0.02
+    units: "1"
+    location_in_paper: "Section 5"
+    notes: "UV output fluctuations within 2% deviation from mean value."
+
+  - symbol: "UV_microsecond_drop"
+    comparator: "<"
+    value: 0.04
+    units: "1"
+    location_in_paper: "Section 5"
+    notes: "Regular microsecond-scale UV output drops smaller than 4%."
+
+  - symbol: "UV_large_drop"
+    comparator: ">"
+    value: 0.07
+    units: "1"
+    location_in_paper: "Section 5"
+    notes: "Drops larger than 7% appear less than once per minute."
+
+  - symbol: "UV_environmental_temp_sensitivity_unisolated"
+    value: 0.10
+    units: "1"
+    location_in_paper: "Section 5"
+    notes: "Output-power oscillations as large as 10% for 2 K environmental temperature change."
+
+  - symbol: "environmental_temp_change"
+    value: 2
+    units: "K"
+    location_in_paper: "Section 5"
+    notes: "Temperature excursion associated with the unisolated output drift."
+
+  - symbol: "UV_environmental_temp_sensitivity_thermally_isolated"
+    value: 0.05
+    units: "1"
+    location_in_paper: "Section 5"
+    notes: "Residual drift after thermal isolation of the crystal oven."
+
+  - symbol: "polarization_drift_settling_time"
+    value: 7200
+    units: "s"
+    location_in_paper: "Section 2"
+    notes: "After about two hours the output polarization reaches steady state if the non-PM fiber is fixed."
+
+  - symbol: "polarization_drift_mitigation_candidate"
+    value_text: "active heat-sink temperature stabilization using a Peltier element"
+    units: null
+    location_in_paper: "Section 5"
+    notes: "Proposed mitigation for fiber-amplifier heat-sink driven polarization drift."
+
+open_extraction_items:
+  - "Exact BBO cut angle and coating vendor are not reported in the paper."
+  - "No direct CW LIDT value at 280 nm is reported."
+  - "No source-side RIN spectrum or phase-noise spectrum is reported."
+  - "No ion-side loss budget is reported."

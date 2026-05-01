@@ -1,10 +1,10 @@
 # Kompass-Dossier: CW UV Source Architectures and Crystal/Coating Evidence at 280 nm
 
 **Document:** `docs/KD-2026-XXX-uv-280nm.md`
-**Version:** v0.1-scaffold
+**Version:** v0.2-populating
 **Date opened:** 2026-05-01
 **Steward:** Ulrich Warring (Albert-Ludwigs-Universität Freiburg, AG Schätz)
-**Status:** SCAFFOLD — section structure and entry index defined; citation slots empty pending Phase 1 literature work.
+**Status:** POPULATING — scaffold defined; KD-UV280-013 populated from Friedenauer2006; other citation slots pending Phase 1 literature work.
 **Schema:** Kompass-Dossier, Section A/B/C with §8 outcome classification (Resolved / Operationally bounded / Underdetermined).
 **Charter reference:** [CHARTER §5 Phase 1 row](../CHARTER.md), [§4 architecture families](../CHARTER.md), [§8 open boundaries](../CHARTER.md).
 
@@ -74,7 +74,7 @@ External coastlines cited as constraints, not replicated:
 | KD-UV280-010 | 14-GHz unlockable resonance domain — published evidence | §8.1 | TBD | SCAFFOLD |
 | KD-UV280-011 | UV-induced BBO degradation and gas-environment dependence | §8.2, §8.4 | TBD | SCAFFOLD |
 | KD-UV280-012 | UV mirror coating degradation under CW exposure | §8.6 | TBD | SCAFFOLD |
-| KD-UV280-013 | Friedenauer 2006 baseline parameter extraction | §1 baseline | TBD | SCAFFOLD |
+| KD-UV280-013 | Friedenauer 2006 baseline parameter extraction | §1 baseline | Resolved | DRAFT |
 | KD-UV280-014 | Phase-locked dual-source phase-noise literature | §4 (counter-obs.) | TBD | SCAFFOLD |
 | KD-UV280-015 | Pump source options — Yb-fibre vs. VECSEL near 1118 nm | §3 open | TBD | SCAFFOLD |
 
@@ -86,7 +86,7 @@ Per CHARTER §5 Phase 1 row (v0.8 Architect-stress-test recommendation): a dedic
 
 | Crystal / coating | SHG/SFG stage | d_eff (pm/V) | Phase-match type | Walk-off ρ (mrad) | CW LIDT @ 280 nm (W/cm²) | Hygroscopic? | Vendor/batch sensitivity | Notes / citations |
 |---|---|---|---|---|---|---|---|---|
-| BBO | 559 → 280 (SHG) | TODO | TODO (Type-I) | TODO | TODO | mild surface | TODO — Friedenauer 2006 reports same-vendor batch variability | TODO: cite |
+| BBO | 559 → 280 (SHG) | TODO | TODO (Type-I) | TODO | TODO | mild surface | Same-vendor batch/cut sensitivity reported for the 14-GHz unlockable domain; all tested crystals came from Crystals of Siberia. | [P:Friedenauer2006] §4; full material values still TODO |
 | BBO | 1118+376 → 280 (SFG) | TODO | TODO | TODO | TODO | mild surface | TODO | TODO: cite |
 | CLBO | 559 → 280 (SHG) | TODO | TODO | TODO | TODO | strongly hygroscopic | TODO — known temperature/humidity sensitivity | TODO: cite |
 | CLBO | 1064+376 → 280 (SFG) | TODO | TODO | TODO | TODO | strongly hygroscopic | TODO | TODO: cite |
@@ -349,9 +349,17 @@ The Friedenauer 2006 architecture (1118 → 559 → 280, source-side 275 mW, 15.
 - Crystals, coating specs, and pump details are documented and extractable into `data/literature/Friedenauer2006/extracted.yaml` per the `data/README.md` schema.
 
 #### Section C — Constraints
-TODO: extract all parameters per `data/README.md` literature schema; cite Friedenauer et al., Appl. Phys. B 84, 371 (2006), DOI: 10.1007/s00340-006-2274-2.
+- [P:Friedenauer2006] Architecture route: commercial Yb fibre laser at 1118 nm followed by two external SHG ring cavities, first LBO for 1118 → 559 nm and then Brewster-cut BBO for 559 → near 280 nm. Structured extraction: [`data/literature/Friedenauer2006/extracted.yaml`](../data/literature/Friedenauer2006/extracted.yaml).
+- [P:Friedenauer2006] Fundamental source: 2 W at 1118 nm, linewidth < 200 kHz; the same source also emits 1.2 W broadband ASE peaked between 1060 nm and 1100 nm. After polarization control and an optical isolator, the reported incoupling power to the first SHG cavity is 1.8 W.
+- [P:Friedenauer2006] First SHG stage: 18-mm type-I alpha-cut LBO crystal, noncritical phase matching; calculated phase-match temperature 89 °C, observed optimum 94 °C, oven control within 20 mK. Reported stable 559-nm output is 950 mW, with >52.7% cavity conversion efficiency.
+- [P:Friedenauer2006] Second SHG stage: Brewster-cut BBO crystal of size 4 mm × 4 mm × 10 mm, heated to about 50 °C to protect polished hygroscopic surfaces. The paper reports 275 mW UV output near 280 nm and 28.9% conversion efficiency for this stage.
+- [P:Friedenauer2006] Overall output and efficiency: 275 mW near 280 nm, corresponding to 15.2% overall conversion efficiency from 1118 nm to near 280 nm.
+- [P:Friedenauer2006] Cavity technical parameters are tabulated in the paper: LBO/BBO cavity lengths 400 mm / 470 mm, focusing-mirror separations 62 mm / 59.4 mm, full folding angles 10° / 27.4°, input-coupler reflectivities 97.5% / 98.4%, HR mirror reflectivities >99.98% / >99.93%, and output-coupler fundamental reflectivities >99.9% / >99.8%.
+- [P:Friedenauer2006] 14-GHz unlockable domain: the paper reports a frequency region between 1118.409 nm and 1118.339 nm where the BBO cavity could not be locked. The effect was reproduced using several lasers, cavities, and crystals, with all crystals from the same manufacturer (Crystals of Siberia). The authors state that this domain restricts two-photon Raman transitions via detuned levels.
+- [P:Friedenauer2006] Stability observations: UV output fluctuated within 2% of the mean; microsecond-scale drops smaller than 4% were observed; drops larger than 7% occurred less than once per minute. Environmental temperature changes of 2 K produced output changes as large as 10%, reduced to 5% with improved thermal isolation of the crystal oven.
+- [P:Friedenauer2006] Pump-source operational constraint: after amplifier turn-on, output polarization drifts fall off over about two hours if the non-polarization-maintaining fibre is fixed; remaining polarization changes are attributed to heat-sink temperature changes and can reduce isolator transmission. The authors propose active heat-sink temperature stabilization as a mitigation.
 
-**Outcome classification:** TBD — closes as Resolved when extraction is complete.
+**Outcome classification:** Resolved — Friedenauer2006 baseline parameters have been extracted into the Phase 1 structured literature-data schema. Review status remains DRAFT pending steward check against the PDF.
 
 ---
 
@@ -432,4 +440,4 @@ Per CHARTER §9 trigger question: dossier population that *changes* a §1.5 Leve
 
 ---
 
-*Dossier version: v0.1-scaffold — 2026-05-01. Steward to assign final KD number and increment to v0.x as entries populate.*
+*Dossier version: v0.2-populating — 2026-05-01. Steward to assign final KD number and increment to v0.x as entries populate.*
