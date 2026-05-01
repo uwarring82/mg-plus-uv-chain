@@ -66,12 +66,12 @@ External coastlines cited as constraints, not replicated:
 | KD-UV280-002 | Sum-frequency mixing architectures | §4.2 | TBD | SCAFFOLD |
 | KD-UV280-003 | Hybrid architectures (dual-source / OPA-based) | §4.3 | TBD | SCAFFOLD |
 | KD-UV280-004 | Direct deep-UV sources (AlGaN diodes, deep-UV VECSEL) | §4.4 | TBD | SCAFFOLD |
-| KD-UV280-005 | BBO at 280 nm — phase-matching, walk-off, damage threshold | §5 P1, §8.4 | TBD | SCAFFOLD |
+| KD-UV280-005 | BBO at 280 nm — phase-matching, walk-off, damage threshold | §5 P1, §8.4 | Operationally bounded | POPULATING |
 | KD-UV280-006 | CLBO at 280 nm — competing crystal characterisation | §5 P1 | TBD | SCAFFOLD |
 | KD-UV280-007 | LBO at relevant SHG/SFG stages | §5 P1 | TBD | SCAFFOLD |
 | KD-UV280-008 | UV mirror coatings — HR, OC, AR specifications and degradation | §5 P1, §8.6 | TBD | SCAFFOLD |
 | KD-UV280-009 | Hygroscopic and environmental constraints (BBO, CLBO) | §5 P1 | TBD | SCAFFOLD |
-| KD-UV280-010 | 14-GHz unlockable resonance domain — published evidence | §8.1 | TBD | SCAFFOLD |
+| KD-UV280-010 | 14-GHz unlockable resonance domain — published evidence | §8.1 | Underdetermined | POPULATING |
 | KD-UV280-011 | UV-induced BBO degradation and gas-environment dependence | §8.2, §8.4 | TBD | SCAFFOLD |
 | KD-UV280-012 | UV mirror coating degradation under CW exposure | §8.6 | TBD | SCAFFOLD |
 | KD-UV280-013 | Friedenauer 2006 baseline parameter extraction | §1 baseline | Resolved | DRAFT |
@@ -204,9 +204,14 @@ BBO is the established UV-stage crystal at 280 nm for CW SHG and SFG, with well-
 - Vendor/batch variability is documented in the literature and institutional record.
 
 #### Section C — Constraints
-TODO: cite Boyd–Kleinman parameters for BBO; cite SNLO data; cite published CW LIDT measurements; cite Friedenauer 2006 §4 batch-variability observation.
+- [P:Friedenauer2006] BBO is used at the 559 → ~280 nm SHG stage with a Brewster-cut crystal of dimensions 4 mm × 4 mm × 10 mm operated at ~ 50 °C (selected to keep polished hygroscopic surfaces above the dew point). The Boyd–Kleinman optimum waist (1/e² intensity radius) is reported as 19.4 μm. The paper does **not** report the cut angle, the coating vendor, or a CW LIDT figure at 280 nm. Structured extraction: [`data/literature/Friedenauer2006/extracted.yaml`](../data/literature/Friedenauer2006/extracted.yaml) (parameters `crystal_BBO_type`, `BBO_crystal_size`, `T_BBO_operating`, `w0_BBO_BK_optimum`).
+- [P:Friedenauer2006] BBO ring-cavity reflectivities at the 559 nm fundamental: input coupler 98.4 %, HR mirrors > 99.93 %, output coupler > 99.8 % at fundamental and > 94 % transmission at 280 nm. Cavity geometry: 470 mm round-trip, 59.4 mm focusing-mirror separation, 27.4° full folding angle (chosen to compensate astigmatism from the Brewster cut). Stage doubling efficiency 28.9 % (cf. > 52.7 % for the LBO first stage).
+- [P:Friedenauer2006] Vendor / batch sensitivity flag (couples to KD-UV280-010): all BBO crystals tested for the Friedenauer apparatus came from **Crystals of Siberia**. The 14-GHz unlockable domain was reproduced across crystals from this single vendor. This is a same-vendor observation, not yet a vendor-discriminating result.
+- TODO: cite SNLO / Boyd–Kleinman data for BBO d_eff, phase-match angle (Type-I), and walk-off angle at 280 nm.
+- TODO: cite peer-reviewed CW LIDT measurements at 280 nm (no value reported in Friedenauer 2006).
+- TODO: cite vendor-comparison studies (Crystals of Siberia vs. CASTECH vs. EKSMA / FEEFO) at 280 nm.
 
-**Outcome classification:** TBD.
+**Outcome classification:** **Operationally bounded** — Brewster-cut BBO at the 559 → 280 nm stage is operationally established (Friedenauer 2006), with cavity geometry, operating temperature, and BK-optimum waist documented. Material constants (d_eff, phase-match angle, walk-off) and CW LIDT at 280 nm remain uncited; the §5 Phase 1 evidence-table BBO row therefore stays partially populated. Status: **POPULATING**.
 
 ---
 
@@ -297,9 +302,14 @@ The 14-GHz unlockable resonance domain reported in Friedenauer 2006 §4 is not, 
 - Candidate mechanisms (per CHARTER §8.1 discriminant set): refractive-index temperature drift, birefringence coupling, photochemical / colour-centre formation, impurity / growth defect.
 
 #### Section C — Constraints
-TODO: cite Friedenauer 2006 §4 in detail; cite other CW UV cavity reports of similar locking instabilities; cite candidate-mechanism papers (BBO colour-centre, photorefractive effects, polarisation-coupling).
+- [P:Friedenauer2006] §4 reports a frequency region around the BBO ring-cavity locking range where the cavity could not be locked. Reported quantities: width ~ 14 GHz; wavelength bounds at the 1118 nm fundamental: 1118.339 nm (lower) and 1118.409 nm (upper). *Cross-check note:* the 70 pm wavelength span at 1118 nm corresponds to ~ 16.8 GHz under the standard Δν = c·Δλ/λ² conversion, not 14 GHz; the discrepancy is logged in [`data/literature/Friedenauer2006/extracted.yaml`](../data/literature/Friedenauer2006/extracted.yaml) `cross_check_notes.unlockable_domain_width_consistency` for Steward direct-PDF resolution. This entry treats the width and the bounds as separately reported quantities until that resolution.
+- [P:Friedenauer2006] §4 reproduction conditions: the unlockable domain was observed across **several lasers, several cavities, and several crystals**. All crystals tested for this observation came from **Crystals of Siberia**. The vendor commonality is a recorded constraint, not yet a vendor-attributed mechanism.
+- [P:Friedenauer2006] §4 explicit consequence statement: the domain "imposes restrictions for two-photon stimulated Raman transitions via detuned levels." This is the original Charter §1.5 Level 0 motivation for treating the 14-GHz region as operationally forbidden until G1 closes.
+- [P:Friedenauer2006] §4 does **not** identify a mechanism. The paper records the observation but does not assign a candidate explanation among (refractive-index temperature drift / birefringence coupling / photochemical or colour-centre formation / impurity or growth defect). Per CHARTER §8 preamble, this is the canonical *Underdetermined* state at v1.0.
+- TODO: hunt for **at least one** subsequent CW UV cavity-locking paper reporting a similar phenomenon; if found, the citation chain may suggest a candidate mechanism.
+- TODO: cite candidate-mechanism background papers (BBO colour-centre formation, photorefractive effects, polarisation-coupling instabilities) **without** asserting attribution — Phase 2 discriminant scans (CHARTER §8.1) are the binding attribution mechanism, not literature search.
 
-**Outcome classification:** TBD — Phase 2 G1 attribution is the binding closure; this entry collects the literature *prior* to attribution.
+**Outcome classification:** **Underdetermined** at the literature level — Friedenauer 2006 establishes the observation but no mechanism is assigned, and no corroborating literature has yet been collected. This is a *literature-level* Underdetermined; the Charter §8.1 G1 outcome classification is determined by Phase 2 discriminant scans, not by this dossier entry. Status: **POPULATING** (corroborating-literature TODOs remain open).
 
 ---
 
