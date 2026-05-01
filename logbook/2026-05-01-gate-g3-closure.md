@@ -82,7 +82,7 @@ The following items are explicitly acknowledged as open and subject to tightenin
 
 - **Status at closure:** **CLOSED**.
 - **Effective date of closure:** 2026-05-01 (the closure-commit date).
-- **Dependent work now unblocked:** Phase 4 architecture comparison may commence at this commit's HEAD per CHARTER §5.1 G3 + §5.3. Phase 1 literature dossier and Phase 2 baseline measurement continue / interleave as before (they were never G3-blocked).
+- **Dependent work now unblocked by G3:** G3 no longer blocks Phase 4. Remaining Phase 4 entry conditions — including G2 (degradation-rate inputs to axes 3/4 scoring) and the §5.1 G1 anti-seeding clause for any architecture-family-specific simulation work — remain governed by the Charter. Phase 1 literature dossier and Phase 2 baseline measurement continue / interleave as before (they were never G3-blocked).
 
 ## Notes
 

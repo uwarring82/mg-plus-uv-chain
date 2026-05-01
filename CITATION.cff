@@ -14,10 +14,10 @@ authors:
   - family-names: "Warring"
     given-names: "Ulrich"
     affiliation: "Albert-Ludwigs-Universität Freiburg, Physikalisches Institut, AG Schätz"
-    # orcid: "https://orcid.org/0000-0000-0000-0000"  # TODO: insert before first public commit
-repository-code: "https://github.com/<owner>/mg-plus-uv-chain"  # TODO: confirm hosting before tag
+    # orcid: "https://orcid.org/0000-0000-0000-0000"  # BLOCKING: Steward to insert before first public push
+repository-code: "https://github.com/uwarring82/mg-plus-uv-chain"
 license: MIT
-license-url: "https://github.com/<owner>/mg-plus-uv-chain/blob/main/LICENSE"
+license-url: "https://github.com/uwarring82/mg-plus-uv-chain/blob/main/LICENSE"
 keywords:
   - trapped ions
   - magnesium

@@ -50,8 +50,8 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/uwarring/mg-plus-uv-chain"
-Charter = "https://github.com/uwarring/mg-plus-uv-chain/blob/main/CHARTER.md"
+Homepage = "https://github.com/uwarring82/mg-plus-uv-chain"
+Charter = "https://github.com/uwarring82/mg-plus-uv-chain/blob/main/CHARTER.md"
 
 [tool.setuptools.packages.find]
 where = ["."]

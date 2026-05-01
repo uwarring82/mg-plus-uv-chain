@@ -4,7 +4,7 @@ UV source redesign for ²⁵Mg⁺ detection, cooling, and coherent control.
 
 A reproducible, version-controlled, FAIR design effort to redesign the all-solid-state CW laser source producing radiation near 280 nm for trapped ²⁵Mg⁺. Successor to Friedenauer *et al.*, *Appl. Phys. B* **84**, 371 (2006).
 
-**Status.** Charter v1.0 frozen 2026-04-30. Phase 0.5 G3 closed 2026-05-01 (reference triple locked). Phase 1 literature dossier in progress (5/15 entries past SCAFFOLD). Phase 2 baseline measurement and Phase 4 architecture comparison are unblocked from G3 forward; G1 and G2 remain OPEN.
+**Status.** Charter v1.0 frozen 2026-04-30. Phase 0.5 G3 closed 2026-05-01 (reference triple locked). Phase 1 literature dossier in progress (5/15 entries past SCAFFOLD). Phase 2 baseline measurement continues unblocked. **G3 no longer blocks Phase 4**, but the remaining Phase 4 entry conditions — including G2 (degradation-rate inputs) and the §5.1 G1 anti-seeding clause for architecture-family-specific simulation — remain governed by the Charter. G1 and G2 remain OPEN.
 
 **Steward.** Ulrich Warring (Albert-Ludwigs-Universität Freiburg, AG Schätz).
 
