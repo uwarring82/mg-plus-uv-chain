@@ -378,3 +378,24 @@ open_extraction_items:
   - "No direct CW LIDT value at 280 nm is reported."
   - "No source-side RIN spectrum or phase-noise spectrum is reported."
   - "No ion-side loss budget is reported."
+
+cross_check_notes:
+  - id: "unlockable_domain_width_consistency"
+    summary: >
+      The reported domain width (1.4e10 Hz, i.e. 14 GHz at the 1118 nm
+      fundamental) and the reported wavelength bounds (1118.339 nm to
+      1118.409 nm, Δλ = 70 pm) are not numerically consistent under the
+      standard Δν = c·Δλ/λ² conversion at 1118 nm: 70 pm at 1118 nm gives
+      Δν ≈ 16.8 GHz, not 14 GHz.
+    candidate_explanations:
+      - "Paper rounds the 16.8 GHz width to ~14 GHz (the Charter §8.1 vocabulary inherits the rounded form)."
+      - "The 14 GHz figure is reported at a different optical stage (e.g. the 559 nm or 280 nm cavity locking) than the 1118 nm wavelength bounds."
+      - "One of the wavelength bounds may be misread from the paper; the precise bounds may be tighter than 70 pm."
+    resolution: >
+      Steward review against the original PDF can resolve this with one
+      direct read. Until resolved, downstream entries (KD-UV280-010) cite
+      the *width* and the *bounds* separately and do not assume cross-
+      consistency.
+    informs_dossier_entries:
+      - "KD-UV280-010"
+      - "KD-UV280-013"

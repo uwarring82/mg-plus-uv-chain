@@ -62,7 +62,7 @@ External coastlines cited as constraints, not replicated:
 
 | Entry ID | Title | Charter §ref | Outcome class | Status |
 |---|---|---|---|---|
-| KD-UV280-001 | Quadrupling architecture (Friedenauer baseline family) | §4.1 | TBD | SCAFFOLD |
+| KD-UV280-001 | Quadrupling architecture (Friedenauer baseline family) | §4.1 | Operationally bounded | POPULATING |
 | KD-UV280-002 | Sum-frequency mixing architectures | §4.2 | TBD | SCAFFOLD |
 | KD-UV280-003 | Hybrid architectures (dual-source / OPA-based) | §4.3 | TBD | SCAFFOLD |
 | KD-UV280-004 | Direct deep-UV sources (AlGaN diodes, deep-UV VECSEL) | §4.4 | TBD | SCAFFOLD |
@@ -76,7 +76,7 @@ External coastlines cited as constraints, not replicated:
 | KD-UV280-012 | UV mirror coating degradation under CW exposure | §8.6 | TBD | SCAFFOLD |
 | KD-UV280-013 | Friedenauer 2006 baseline parameter extraction | §1 baseline | Resolved | DRAFT |
 | KD-UV280-014 | Phase-locked dual-source phase-noise literature | §4 (counter-obs.) | TBD | SCAFFOLD |
-| KD-UV280-015 | Pump source options — Yb-fibre vs. VECSEL near 1118 nm | §3 open | TBD | SCAFFOLD |
+| KD-UV280-015 | Pump source options — Yb-fibre vs. VECSEL near 1118 nm | §3 open | Operationally bounded | POPULATING |
 
 ---
 
@@ -124,9 +124,13 @@ Single-source quadrupling is a viable CW route to ≥ 500 mW at 280 nm using fib
 - Pump-source candidates with sufficient brightness and spectral purity at 1118 nm.
 
 #### Section C — Constraints
-TODO: cite Friedenauer 2006; cite alternative quadrupling demonstrations; cite VECSEL-pumped quadrupling literature.
+- [P:Friedenauer2006] Existence proof for the Yb-fibre-pumped quadrupling variant: 2 W single-frequency at 1118 nm → LBO ring cavity (950 mW at 559 nm, > 52.7 % conversion) → Brewster-cut BBO ring cavity (275 mW near 280 nm, 28.9 % conversion). Overall efficiency 15.2 %. Structured extraction: [`data/literature/Friedenauer2006/extracted.yaml`](../data/literature/Friedenauer2006/extracted.yaml).
+- [P:Friedenauer2006] At 275 mW source-side, the Friedenauer demonstration is **below** the §2 indicative ≥ 500 mW target. Reaching ≥ 500 mW within this family requires either higher pump power (constrained by §1.5 thermal-load envelope) or improved per-stage efficiency (constrained by crystal/coating evidence in KD-UV280-005, -008).
+- [P:Friedenauer2006] Second SHG (559 → 280, BBO) is the lower-efficiency stage (28.9 % vs > 52.7 % for the first), consistent with prediction B-2 that the UV stage is the binding one for thermal load and degradation. (Direct degradation-rate evidence is logged in KD-UV280-011, not this entry.)
+- TODO: cite alternative quadrupling demonstrations (post-Friedenauer 2006) at higher output power or with alternative crystals (CLBO at the UV stage).
+- TODO: cite VECSEL-pumped quadrupling literature near 1118 nm (couples to KD-UV280-015).
 
-**Outcome classification:** TBD pending Phase 1 literature collection.
+**Outcome classification:** **Operationally bounded** — single-source quadrupling is demonstrated to be a viable family by Friedenauer 2006, but the ≥ 500 mW target is not yet covered by published demonstration; Yb-fibre pump bound is established, VECSEL-pump and alternative-UV-crystal bounds remain to be cited. Status: **POPULATING** (Section C incomplete).
 
 ---
 
@@ -395,9 +399,13 @@ Both Yb-doped fibre lasers and VECSEL systems are viable single-frequency CW pum
 - Polarisation-drift behaviour differs between architectures (active Peltier control for fibre vs. intrinsic VECSEL stability).
 
 #### Section C — Constraints
-TODO: cite Yb-fibre amplifier vendor specs (NKT, IPG, Toptica); cite VECSEL papers near 1118 nm; cite Friedenauer 2006 §5 polarisation-drift discussion.
+- [P:Friedenauer2006] Yb-fibre 1118 nm pump (2006-era commercial source): 2 W single-frequency at 1118 nm with linewidth < 200 kHz, accompanied by 1.2 W broadband ASE peaked between 1060 and 1100 nm (not resonant with the SHG cavity mode). Tunable via piezo-controlled optical path length over an 80 GHz scan range with 20 kHz actuator bandwidth. Optical isolator (designed for 1064 nm) provides ~ 90 % transmission at 1118 nm with ~ 30 dB isolation. Structured extraction: [`data/literature/Friedenauer2006/extracted.yaml`](../data/literature/Friedenauer2006/extracted.yaml).
+- [P:Friedenauer2006] Polarisation drift behaviour for the fibre-amplifier source: settling time ~ 2 hours after amplifier turn-on if the non-PM fibre is mechanically fixed; residual drift attributed to heat-sink temperature changes can degrade isolator transmission. Mitigation candidate proposed by the authors: active heat-sink temperature stabilisation using a Peltier element. This characterises **one** failure mode of family 1 not present in (or attenuated in) VECSEL alternatives, per CHARTER §3 *open-for-redesign* pump-laser source row.
+- TODO: cite contemporary Yb-fibre amplifier vendor specs (NKT, IPG, Toptica) at 1118 nm with > 5 W single-frequency, post-2010.
+- TODO: cite VECSEL CW single-frequency demonstrations near 1118 nm; quantify linewidth, RIN, and polarisation-drift behaviour for direct comparison with the fibre-pumped baseline.
+- TODO: cite literature on VECSEL polarisation behaviour vs. Yb-fibre polarisation drift in the context of intracavity SHG.
 
-**Outcome classification:** TBD.
+**Outcome classification:** **Operationally bounded** — Yb-fibre 1118 nm pump characterised by Friedenauer 2006 (existence, output power, linewidth, ASE behaviour, polarisation-drift mode, mitigation candidate). VECSEL-near-1118 nm bound is uncited; without VECSEL data a comparative trade-off cannot be scored, only the fibre-side bound. Status: **POPULATING** (Section C incomplete).
 
 ---
 
