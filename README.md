@@ -4,7 +4,7 @@ UV source redesign for ²⁵Mg⁺ detection, cooling, and coherent control.
 
 A reproducible, version-controlled, FAIR design effort to redesign the all-solid-state CW laser source producing radiation near 280 nm for trapped ²⁵Mg⁺. Successor to Friedenauer *et al.*, *Appl. Phys. B* **84**, 371 (2006).
 
-**Status.** Phase 0 complete (Charter v1.0 frozen 2026-04-30). Phase 0.5 (constraint extraction) begins next.
+**Status.** Charter v1.0 frozen 2026-04-30. Phase 0.5 G3 closed 2026-05-01 (reference triple locked). Phase 1 literature dossier in progress (5/15 entries past SCAFFOLD). Phase 2 baseline measurement and Phase 4 architecture comparison are unblocked from G3 forward; G1 and G2 remain OPEN.
 
 **Steward.** Ulrich Warring (Albert-Ludwigs-Universität Freiburg, AG Schätz).
 
@@ -74,7 +74,7 @@ mg-plus-uv-chain/
 |---|---|---|
 | G1 | Phase 3 architecture-family-specific simulation | OPEN — awaiting Phase 2 attribution of 14-GHz domain |
 | G2 | Phase 4 / Phase 5 acceptance of degradation rate | OPEN — awaiting Phase 2 §8.2 protocol reproducibility |
-| G3 | Phase 4 architecture comparison | OPEN — awaiting Phase 0.5 reference triple |
+| G3 | Phase 4 architecture comparison | **CLOSED** 2026-05-01 — see [`logbook/2026-05-01-gate-g3-closure.md`](logbook/2026-05-01-gate-g3-closure.md) |
 
 Each gate closes via an Integrator-acknowledged logbook entry following [`logbook/_templates/gate-closure.md`](logbook/_templates/gate-closure.md).
 
