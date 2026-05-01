@@ -67,50 +67,66 @@ UV_LINEWIDTH_BOUND_INDICATIVE_Hz: float = 1.0e6  # ≤ 1 MHz at 280 nm; tightene
 # Phase 0.5 reference triple (§1.5, §5.1 G3, §5.2 reference-triple anchoring)
 # =====================================================================
 # {Δ_ref, Ω_R,ref, Γ_sc,ref}
-# Locked by Phase 0.5; until then these remain None to fail-loud rather than silently
-# accept placeholder values.
+# Candidate values filed 2026-05-01 in the G3 gate-closure logbook entry.
+# They are not effective for Phase 4 until Integrator acknowledgement is recorded.
+# Source: constraints/raman-requirements.md (Nominal reference triple).
+# After acknowledgement these values become subject to CHARTER §9 erosion protection:
+#   - Tightening permitted with documented rationale and logbook entry.
+#   - Relaxation requires Council-3 deliberation + Integrator sign-off.
 
-DELTA_REF_Hz: float | None = None
-OMEGA_R_REF_Hz: float | None = None
-GAMMA_SC_REF_per_s: float | None = None
+G3_INTEGRATOR_ACKNOWLEDGED: bool = False
+
+DELTA_REF_Hz: float | None = 40.0e9          # 40 GHz red-detuned
+OMEGA_R_REF_Hz: float | None = 400.0e3       # 400 kHz two-photon Rabi frequency
+GAMMA_SC_REF_per_s: float | None = 2.0e4     # 2.0 × 10⁴ s⁻¹ spontaneous scattering
 
 # Bounded-scenario-set fallback (CHARTER §1.5, v0.9 Integrator)
-# If precise envelopes cannot be locked at Phase 0.5 closure, populate these instead.
-# Phase 4 scoring must run at minimum on the Conservative scenario.
+# Populated alongside the reference triple for Phase 4 sensitivity testing once
+# G3 is Integrator-acknowledged. Phase 4 scoring must run at minimum on the
+# Conservative scenario.
 
-DELTA_CONSERVATIVE_Hz: float | None = None
-OMEGA_R_CONSERVATIVE_Hz: float | None = None
-GAMMA_SC_CONSERVATIVE_per_s: float | None = None
+DELTA_CONSERVATIVE_Hz: float | None = 80.0e9
+OMEGA_R_CONSERVATIVE_Hz: float | None = 100.0e3
+GAMMA_SC_CONSERVATIVE_per_s: float | None = 2.5e3
 
-DELTA_NOMINAL_Hz: float | None = None
-OMEGA_R_NOMINAL_Hz: float | None = None
-GAMMA_SC_NOMINAL_per_s: float | None = None
+DELTA_NOMINAL_Hz: float | None = 40.0e9
+OMEGA_R_NOMINAL_Hz: float | None = 400.0e3
+GAMMA_SC_NOMINAL_per_s: float | None = 2.0e4
 
-DELTA_AGGRESSIVE_Hz: float | None = None
-OMEGA_R_AGGRESSIVE_Hz: float | None = None
-GAMMA_SC_AGGRESSIVE_per_s: float | None = None
+DELTA_AGGRESSIVE_Hz: float | None = 15.0e9
+OMEGA_R_AGGRESSIVE_Hz: float | None = 1000.0e3
+GAMMA_SC_AGGRESSIVE_per_s: float | None = 1.1e5
+
+
+def reference_triple_values_complete() -> bool:
+    """
+    Return True iff the G3 candidate values are numerically complete.
+
+    Completeness alone does not close G3. CHARTER §5.3 requires Integrator
+    acknowledgement before Phase 4 architecture-comparison code may execute.
+    """
+    single_complete = (
+        DELTA_REF_Hz is not None
+        and OMEGA_R_REF_Hz is not None
+        and GAMMA_SC_REF_per_s is not None
+    )
+    conservative_complete = (
+        DELTA_CONSERVATIVE_Hz is not None
+        and OMEGA_R_CONSERVATIVE_Hz is not None
+        and GAMMA_SC_CONSERVATIVE_per_s is not None
+    )
+    return single_complete or conservative_complete
 
 
 def reference_triple_locked() -> bool:
     """
     Return True iff the Phase 0.5 reference triple is locked.
 
-    Used by Phase 4 scoring code to gate execution per CHARTER §5.2
-    (reference-triple anchoring). Either the single reference triple
-    (Δ_ref, Ω_R,ref, Γ_sc,ref) must be set, or the Conservative scenario
-    must be set (per the bounded-scenario-set fallback in CHARTER §1.5).
+    Used by Phase 4 scoring code to gate execution per CHARTER §5.2 and §5.3.
+    Either the single reference triple or the Conservative scenario must be
+    numerically complete, and Integrator acknowledgement must be recorded.
     """
-    single_locked = (
-        DELTA_REF_Hz is not None
-        and OMEGA_R_REF_Hz is not None
-        and GAMMA_SC_REF_per_s is not None
-    )
-    conservative_locked = (
-        DELTA_CONSERVATIVE_Hz is not None
-        and OMEGA_R_CONSERVATIVE_Hz is not None
-        and GAMMA_SC_CONSERVATIVE_per_s is not None
-    )
-    return single_locked or conservative_locked
+    return G3_INTEGRATOR_ACKNOWLEDGED and reference_triple_values_complete()
 
 
 # =====================================================================
@@ -122,13 +138,13 @@ def assert_g3_closed() -> None:
     Raise RuntimeError if Phase 0.5 reference triple is not locked.
 
     Phase 4 architecture-comparison code calls this at module import or
-    function entry to enforce CHARTER §5.1 G3.
+    function entry to enforce CHARTER §5.1 G3 and §5.3 acknowledgement.
     """
     if not reference_triple_locked():
         raise RuntimeError(
-            "CHARTER §5.1 G3 not closed: Phase 0.5 reference triple "
-            "(or Conservative-scenario fallback) is not locked in "
-            "src/parameters.py. Phase 4 architecture-comparison code "
-            "may not execute. See /constraints/raman-requirements.md "
-            "and /logbook/ for the locking entry."
+            "CHARTER §5.1/§5.3 G3 not closed: Phase 0.5 reference triple "
+            "(or Conservative-scenario fallback) must be numerically complete "
+            "and Integrator-acknowledged before Phase 4 architecture-comparison "
+            "code may execute. See /constraints/raman-requirements.md and "
+            "/logbook/ for the gate-closure entry."
         )
