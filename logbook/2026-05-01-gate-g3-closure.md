@@ -6,7 +6,7 @@
 - **Affects Level 1 parameter?** yes
 - **Affects success criterion?** yes (§6.4 Raman validation)
 
-This entry files the proposed Phase 0.5 reference triple and bounded-scenario set for Integrator review. It does not close G3 until Integrator confirmation is recorded. Per CHARTER §9, Level 0/1 parameters become subject to asymmetric erosion protection after locking.
+This entry files the proposed Phase 0.5 reference triple and bounded-scenario set, and records Integrator acknowledgement. Per CHARTER §9, Level 0/1 parameters are now subject to asymmetric erosion protection: tightening permitted with documented rationale; relaxation requires Council-3 deliberation + Integrator sign-off.
 
 ## Gate identification
 
@@ -47,9 +47,18 @@ Per CHARTER §1.5 stall mitigation and v0.9 Integrator insertion, the full scena
 
 ### Locking commit
 
-- Locking commit hash: `TBD` (to be filled after commit).
-- `src/parameters.py` populated: yes — reference triple and bounded-scenario values staged as candidate values.
-- `src/parameters.py` G3 acknowledgement flag: `G3_INTEGRATOR_ACKNOWLEDGED = False` until Integrator confirmation.
+- Candidate-filing commit hash: `5eb63d6` ("gate(governance): file Phase 0.5 G3 candidate values; Phase 4 still blocked").
+- Closure commit hash: filled at the closure-commit time (this commit).
+- `src/parameters.py` populated: yes — reference triple and bounded-scenario values committed at `5eb63d6`.
+- `src/parameters.py` G3 acknowledgement flag: `G3_INTEGRATOR_ACKNOWLEDGED = True` at the closure commit.
+
+### Mechanical-enforcement attestation (CHARTER §5.3)
+
+- `src/parameters.assert_g3_closed()` is silent at module load after closure.
+- `tests/test_parameters.py::test_g3_integrator_acknowledged_true_after_closure` is the binding mechanical witness for the flag state at module load.
+- `tests/test_parameters.py::test_assert_g3_closed_silent_at_module_load_after_closure` is the binding mechanical witness for the gate.
+- `tests/test_parameters.py::test_reference_triple_locks_block_when_acknowledgement_revoked` confirms the gate re-engages if the flag is later revoked (defence in depth against silent erosion of CHARTER §9).
+- All Phase 4 architecture-comparison code paths that call `assert_g3_closed()` are unblocked from this commit forward.
 
 ### Known uncertainties logged at filing
 
@@ -63,17 +72,17 @@ The following items are explicitly acknowledged as open and subject to tightenin
 
 ## Council-3 acknowledgement
 
-- **Integrator confirmation:** *required for closure* — **pending review**.
+- **Integrator confirmation:** **yes**, signed: Ulrich Warring (acting Integrator stance per the single-steward attribution pattern established at CHARTER §12 v1.0 sign-off block), date: 2026-05-01.
 - **Architect flag raised?** no.
 - **Guardian flag raised?** no.
 
-*This entry is filed with Status = OPEN pending Integrator confirmation. Per CHARTER §5.3, closure is not retroactive; the effective date of closure will be updated upon Integrator sign-off.*
+*Closure date is non-retroactive per CHARTER §5.3: dependent work may proceed only on or after the closure commit.*
 
 ## Closure decision
 
-- **Status at filing:** OPEN
-- **Effective date of closure:** TBD (to be updated upon Integrator confirmation)
-- **Dependent work now unblocked:** none that requires G3 closure. Phase 1 literature dossier and Phase 2 baseline measurement may continue / interleave; Phase 4 architecture comparison remains blocked until Integrator acknowledgement.
+- **Status at closure:** **CLOSED**.
+- **Effective date of closure:** 2026-05-01 (the closure-commit date).
+- **Dependent work now unblocked:** Phase 4 architecture comparison may commence at this commit's HEAD per CHARTER §5.1 G3 + §5.3. Phase 1 literature dossier and Phase 2 baseline measurement continue / interleave as before (they were never G3-blocked).
 
 ## Notes
 
@@ -82,4 +91,4 @@ The following items are explicitly acknowledged as open and subject to tightenin
 
 ---
 
-*Gate-closure entry version: 1.0 — filed OPEN 2026-05-01.*
+*Gate-closure entry version: 1.1 — closed 2026-05-01 (filed and closed same day under single-steward stance attribution).*

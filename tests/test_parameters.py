@@ -135,16 +135,28 @@ def test_reference_triple_values_complete_after_g3_filing() -> None:
     assert parameters.reference_triple_values_complete() is True
 
 
-def test_reference_triple_locked_false_until_integrator_acknowledgement() -> None:
-    assert parameters.G3_INTEGRATOR_ACKNOWLEDGED is False
+def test_g3_integrator_acknowledged_true_after_closure() -> None:
+    """G3 closed 2026-05-01 — flag is True at module load."""
+    assert parameters.G3_INTEGRATOR_ACKNOWLEDGED is True
+
+
+def test_reference_triple_locked_true_after_integrator_acknowledgement() -> None:
+    assert parameters.reference_triple_locked() is True
+
+
+def test_assert_g3_closed_silent_at_module_load_after_closure() -> None:
+    """Mechanical witness for the §5.3 G3-closure attestation."""
+    parameters.assert_g3_closed()
+
+
+def test_reference_triple_locks_block_when_acknowledgement_revoked() -> None:
+    """If G3_INTEGRATOR_ACKNOWLEDGED is revoked, the gate re-engages even
+    when candidate values remain numerically complete."""
+    parameters.G3_INTEGRATOR_ACKNOWLEDGED = False
+    assert parameters.reference_triple_values_complete() is True
     assert parameters.reference_triple_locked() is False
     with pytest.raises(RuntimeError, match="Integrator-acknowledged"):
         parameters.assert_g3_closed()
-
-
-def test_assert_g3_closed_silent_after_integrator_acknowledgement() -> None:
-    parameters.G3_INTEGRATOR_ACKNOWLEDGED = True
-    parameters.assert_g3_closed()
 
 
 # =====================================================================

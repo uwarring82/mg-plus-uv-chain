@@ -67,14 +67,14 @@ UV_LINEWIDTH_BOUND_INDICATIVE_Hz: float = 1.0e6  # ≤ 1 MHz at 280 nm; tightene
 # Phase 0.5 reference triple (§1.5, §5.1 G3, §5.2 reference-triple anchoring)
 # =====================================================================
 # {Δ_ref, Ω_R,ref, Γ_sc,ref}
-# Candidate values filed 2026-05-01 in the G3 gate-closure logbook entry.
-# They are not effective for Phase 4 until Integrator acknowledgement is recorded.
+# Locked values per the G3 gate-closure logbook entry filed 2026-05-01 and
+# Integrator-acknowledged 2026-05-01 (see logbook/2026-05-01-gate-g3-closure.md).
 # Source: constraints/raman-requirements.md (Nominal reference triple).
-# After acknowledgement these values become subject to CHARTER §9 erosion protection:
+# Values are subject to CHARTER §9 asymmetric erosion protection:
 #   - Tightening permitted with documented rationale and logbook entry.
 #   - Relaxation requires Council-3 deliberation + Integrator sign-off.
 
-G3_INTEGRATOR_ACKNOWLEDGED: bool = False
+G3_INTEGRATOR_ACKNOWLEDGED: bool = True
 
 DELTA_REF_Hz: float | None = 40.0e9          # 40 GHz red-detuned
 OMEGA_R_REF_Hz: float | None = 400.0e3       # 400 kHz two-photon Rabi frequency
