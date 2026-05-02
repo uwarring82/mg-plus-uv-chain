@@ -8,6 +8,8 @@ A reproducible, version-controlled, FAIR design effort to redesign the all-solid
 
 **Steward.** Ulrich Warring (Albert-Ludwigs-Universität Freiburg, AG Schätz).
 
+**Project site (GitHub Pages).** [https://uwarring82.github.io/mg-plus-uv-chain/](https://uwarring82.github.io/mg-plus-uv-chain/) — summary of principles, calculation highlights, and current status. Source under [`docs/`](docs/). To enable: in GitHub repo *Settings → Pages*, set *Source: Deploy from a branch*, branch `main`, folder `/docs`. The site uses the built-in Cayman Jekyll theme; no build step required.
+
 ---
 
 ## Quick navigation
