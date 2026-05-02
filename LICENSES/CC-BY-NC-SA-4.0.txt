@@ -1,0 +1,37 @@
+SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License
+
+Copyright (c) 2026 Ulrich Warring and contributors to mg-plus-uv-chain
+
+You are free to:
+  - Share — copy and redistribute the material in any medium or format
+  - Adapt — remix, transform, and build upon the material.
+
+Under the following terms:
+  - Attribution — You must give appropriate credit, provide a link to the
+    license, and indicate if changes were made. You may do so in any
+    reasonable manner, but not in any way that suggests the licensor
+    endorses you or your use.
+  - NonCommercial — You may not use the material for commercial purposes.
+  - ShareAlike — If you remix, transform, or build upon the material, you
+    must distribute your contributions under the same license as the
+    original.
+
+No additional restrictions — You may not apply legal terms or technological
+measures that legally restrict others from doing anything the license permits.
+
+Full canonical legal text (Creative Commons, authoritative):
+  https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+
+Human-readable deed:
+  https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+This SPDX-identified text governs the files in this repository labelled
+"Sail" in /LICENSES.md (the Kompass dossier, logbook entries, calculation
+narratives, interpretive notes — authored interpretive work whose meaning
+depends on the epistemic commitments that produced it). NonCommercial is
+chosen following threehouse-plus-ec/cd-rules §0.3: interpretive work is
+protected from commercial repackaging without those commitments.
+
+Suggested citation: see /CITATION.cff.
