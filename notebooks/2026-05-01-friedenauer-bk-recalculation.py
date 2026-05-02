@@ -40,11 +40,13 @@
 #
 # **Out of scope at this commit.**
 #
-# - Cavity ABCD round-trip eigenmode analysis: mirror radii of curvature are not
-#   in the Friedenauer extraction (the YAML reports the *focusing-mirror
-#   separation* but not the radii). A follow-up extraction round, or independent
-#   reconstruction from the cavity stability / waist-design constraint, would be
-#   needed before exercising `src.abcd.cavity_eigenmode_q` against this geometry.
+# - Cavity ABCD round-trip eigenmode analysis: mirror radii of curvature are
+#   missing from the **YAML extraction**, but are recoverable from the paper —
+#   Friedenauer 2006 reports e.g. f = 25 mm for the LBO cavity's curved
+#   focusing mirrors. The current YAML captured the focusing-mirror
+#   *separation* but not the focal length / radius. A targeted re-read of
+#   Friedenauer 2006 §3 / Table 1 would close this gap and unblock
+#   `src.abcd.cavity_eigenmode_q` against this geometry.
 # - Conversion efficiency from first principles: requires `d_eff` for LBO at
 #   1118 nm and BBO at 559 nm, which are not in the extraction. Those would also
 #   need cited-literature additions to the dossier.
@@ -243,7 +245,8 @@ beta_BBO = beta_walkoff(
 print(f"BBO walk-off parameter β = {beta_BBO:.2f}  (using ρ ≈ {RHO_BBO_TYPEI_AT_280_RAD * 1e3:.0f} mrad)")
 
 # %% [markdown]
-# At β ≈ 15, the BK optimum sits at much smaller ξ than the no-walk-off case.
+# With ρ ≈ 85 mrad the notebook's `beta_walkoff` convention gives β ≈ 18.4.
+# At that β, the BK optimum sits at much smaller ξ than the no-walk-off case.
 # Computing the σ-optimised optimum here is **slow** because each evaluation
 # of `h_m_factor` runs a Brent search inside scipy `dblquad`. We therefore
 # evaluate at a coarse grid of β values and find the optimum once for each.
@@ -266,7 +269,7 @@ print(f"BBO Friedenauer w0={w0_BBO_paper_m*1e6:.1f} μm  →  ξ = {xi_BBO_paper
 # 5.3 Recompute the σ-optimised optimum *with* walk-off. SLOW (~ 1–2 minutes).
 print("Computing β-dependent BK optimum (slow)...")
 xi_opt_BBO_walkoff, h_max_BBO_walkoff = bk.h_m_optimum(
-    beta=beta_BBO, kappa=0.0, mu=0.0, xi_bracket=(0.1, 4.0)
+    beta=beta_BBO, kappa=0.0, mu=0.0, xi_bounds=(0.05, 4.0)
 )
 w0_BBO_walkoff = waist_from_xi(
     xi_opt_BBO_walkoff, L_BBO_m, LAMBDA_FUND_BBO, N_BBO_O_AT_559
@@ -278,11 +281,16 @@ print(f"  w0    = {w0_BBO_walkoff * 1e6:.2f} μm")
 print(f"BBO paper-reported w0   = {w0_BBO_paper_m * 1e6:.2f} μm")
 
 # %% [markdown]
-# **Discrepancy between recomputation and paper.** The literature-cited walk-off
-# (≈ 85 mrad → β ≈ 15) drives the optimum to a much looser focus than the
-# paper's reported $w_0 = 19.4\,\mu\mathrm{m}$. Conversely, the paper's $w_0$
-# corresponds to $\xi \approx 1.42$, which from BK Figure 6 implies $\beta$
-# closer to 1.5–2 — i.e. ρ ≈ 7–9 mrad rather than 85 mrad.
+# **Discrepancy between recomputation and paper.** Under the notebook's own
+# β-convention `β = (ρ/2) √(L k₁)` with `k₁ = 2π n / λ`, the literature-cited
+# walk-off (≈ 85 mrad → β ≈ 18.4) drives the optimum to a much looser focus
+# than the paper's reported $w_0 = 19.4\,\mu\mathrm{m}$. Conversely, the
+# paper's $w_0$ corresponds to $\xi \approx 1.42$; under this notebook's
+# implementation that ξ matches a much smaller walk-off, β ≈ 0.55, i.e.
+# ρ ≈ 2.5 mrad. (Earlier hand-estimates citing β ≈ 1.5–2 / ρ ≈ 7–9 mrad were
+# read off Boyd–Kleinman 1968 Figure 6, which uses a slightly different
+# convention; the values quoted here are what *this* notebook's implementation
+# reproduces.)
 #
 # This is a real open question the dossier should resolve:
 #
@@ -368,7 +376,7 @@ for rho in rho_grid:
         xi_o = xi_opt_LBO
     else:
         xi_o, _ = bk.h_m_optimum(beta=b, kappa=0.0, mu=0.0,
-                                 xi_bracket=(0.05, 5.0))
+                                 xi_bounds=(0.05, 5.0))
     w0_vs_rho.append(
         waist_from_xi(xi_o, L_BBO_m, LAMBDA_FUND_BBO, N_BBO_O_AT_559)
     )
@@ -387,14 +395,15 @@ fig.tight_layout()
 
 # %% [markdown]
 # The right panel makes it explicit: with the literature-typical
-# ρ ≈ 85 mrad the BK σ-optimised $w_0$ would be appreciably larger than the
-# paper's 19.4 μm. Reading off the plot, the paper's value is consistent with
-# ρ in the few-mrad range — far smaller than published BBO Type-I walk-off
-# angles at 280 nm. Most likely explanation: the paper's "BK-derived" optimum
-# is for *the build-up cavity*, where the figure of merit is parametric
-# conversion at the intracavity intensity for the given round-trip loss budget,
-# and this naturally yields a tighter focus than single-pass BK. Resolving this
-# is appropriate Phase 3 simulation work post-G1.
+# ρ ≈ 85 mrad the BK σ-optimised $w_0$ in this notebook's convention is
+# ≈ 42 μm — a factor ≈ 2.17× larger than the paper's 19.4 μm. The paper's
+# value matches the notebook's convention only at much smaller walk-off
+# (ρ ≈ 2.5 mrad), far below published BBO Type-I walk-off angles at 280 nm.
+# Most likely explanation: the paper's "BK-derived" optimum is for *the
+# build-up cavity*, where the figure of merit is parametric conversion at the
+# intracavity intensity for the given round-trip loss budget, and this
+# naturally yields a tighter focus than single-pass BK. Resolving this is
+# appropriate Phase 3 simulation work post-G1.
 
 # %% [markdown]
 # ## 7. Summary table
@@ -403,7 +412,7 @@ fig.tight_layout()
 # |---|---|---|---|---|
 # | LBO 1118 → 559 | $w_0$ at BK σ-optimum | 27.3 μm | (computed below) | (computed below) |
 # | BBO 559 → 280 (β = 0) | $w_0$ at BK σ-optimum | 19.4 μm | (computed below) | (computed below) |
-# | BBO 559 → 280 (β ≈ 15) | $w_0$ at BK $\beta$-optimum | 19.4 μm | (computed below) | (computed below) |
+# | BBO 559 → 280 (β ≈ 18.4) | $w_0$ at BK $\beta$-optimum | 19.4 μm | (computed below) | (computed below) |
 
 # %%
 print(f"{'Stage':<35} {'Paper (μm)':>12} {'Recomp. (μm)':>14} {'Δ (%)':>8}")
@@ -419,7 +428,7 @@ print(f"{'BBO 559→280, β=0 (no walk-off)':<35} "
       f"{w0_BBO_no_walkoff * 1e6:>14.2f} "
       f"{(w0_BBO_no_walkoff - w0_BBO_paper_m) / w0_BBO_paper_m * 100:>+8.1f}")
 
-print(f"{'BBO 559→280, β≈15 (lit. walk-off)':<35} "
+print(f"{'BBO 559→280, β≈18.4 (lit. walk-off)':<35} "
       f"{w0_BBO_paper_m * 1e6:>12.2f} "
       f"{w0_BBO_walkoff * 1e6:>14.2f} "
       f"{(w0_BBO_walkoff - w0_BBO_paper_m) / w0_BBO_paper_m * 100:>+8.1f}")
@@ -433,16 +442,17 @@ print(f"{'BBO 559→280, β≈15 (lit. walk-off)':<35} "
 # 2. **Sellmeier coefficients and walk-off for BBO at 559 → 280 nm Type-I** — the
 #    walk-off-vs-PM-angle relation is the binding uncertainty for the BBO BK
 #    analysis. Belongs in `KD-UV280-005 Section C`.
-# 3. **Cavity mirror radii of curvature (LBO and BBO ring cavities)** — not
-#    reported in the Friedenauer YAML extraction. Without these, the cavity
-#    eigenmode cannot be computed via `src.abcd.cavity_eigenmode_q`. A targeted
-#    re-read of Friedenauer 2006 §3 / Table 1 may resolve this; otherwise the
-#    radii must be reconstructed from the cavity-stability + waist-design
-#    constraint.
+# 3. **Cavity mirror radii of curvature (LBO and BBO ring cavities)** — missing
+#    from the YAML extraction at this commit, but partly recoverable from the
+#    paper itself: Friedenauer 2006 reports e.g. f = 25 mm for the LBO cavity's
+#    curved focusing mirrors. Re-reading §3 / Table 1 to add these to
+#    `extracted.yaml` is straightforward and unblocks
+#    `src.abcd.cavity_eigenmode_q` against this geometry.
 # 4. **Friedenauer's BK criterion for BBO** — single-pass BK with literature ρ
-#    over-predicts the optimum waist by a factor ≈ 1.7. Likely the paper used a
-#    cavity-specific figure of merit. Resolving this is post-G1 Phase 3
-#    simulation work; not blocking pre-G1 progress.
+#    over-predicts the optimum waist by a factor ≈ 2.17 (recomputed 42 μm vs
+#    paper's 19.4 μm). Likely the paper used a cavity-specific figure of merit.
+#    Resolving this is post-G1 Phase 3 simulation work; not blocking pre-G1
+#    progress.
 # 5. **`d_eff` for both crystals** — needed for any conversion-efficiency
 #    recomputation. Belongs in `KD-UV280-005` and `KD-UV280-007 Section C`.
 #

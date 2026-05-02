@@ -192,7 +192,7 @@ def h_m_optimum(
     kappa: float = 0.0,
     mu: float = 0.0,
     *,
-    xi_bracket: tuple[float, float] = (0.5, 8.0),
+    xi_bounds: tuple[float, float] = (0.05, 10.0),
 ) -> tuple[float, float]:
     """
     Find ξ_opt and h_m_max for given (β, κ, μ).
@@ -204,23 +204,30 @@ def h_m_optimum(
     ----------
     beta, kappa, mu
         As in :func:`h_factor`.
-    xi_bracket
-        Interval over which to search for ξ_opt.
+    xi_bounds
+        Strict bounds on ξ for the search. Must be positive on both ends —
+        scipy's `bounded` method respects them, so the underlying
+        :func:`h_factor` is never asked to evaluate at ξ ≤ 0.
 
     Returns
     -------
     (xi_opt, h_m_max) : tuple[float, float]
         Optimum focusing parameter and the corresponding σ-optimised h.
     """
+    lo, hi = xi_bounds
+    if lo <= 0.0 or hi <= lo:
+        raise ValueError(
+            f"xi_bounds must be (positive, larger-positive); got {xi_bounds}"
+        )
 
     def neg_hm(xi: float) -> float:
         return -h_m_factor(xi=xi, beta=beta, kappa=kappa, mu=mu)
 
     result = optimize.minimize_scalar(
         neg_hm,
-        bracket=xi_bracket,
-        method="brent",
-        options={"xtol": 1e-5},
+        bounds=xi_bounds,
+        method="bounded",
+        options={"xatol": 1e-5},
     )
     return float(result.x), float(-result.fun)
 

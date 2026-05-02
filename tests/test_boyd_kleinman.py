@@ -109,6 +109,33 @@ def test_hm_at_xi_one_matches_full_optimisation() -> None:
     assert hm >= h_zero - 1e-9
 
 
+def test_hm_optimum_strict_bounds_never_evaluates_negative_xi() -> None:
+    """Regression test: scipy minimize_scalar with method='brent' was
+    extrapolating outside the initial bracket and asking h_factor to
+    evaluate at negative ξ (raising ValueError on h_factor's xi > 0 guard).
+    The current implementation uses method='bounded' which respects
+    xi_bounds strictly.
+
+    Uses β = 4 (a moderate walk-off case where ξ_opt sits well inside any
+    reasonable bracket) rather than the much-slower β ≈ 18 from the
+    Friedenauer BBO notebook. The mechanical property under test is
+    "bounded minimization respects bounds" — that property is wavelength-
+    and walk-off-independent, so β = 4 covers the regression while
+    keeping the test under a few seconds.
+    """
+    xi_opt, hm_max = bk.h_m_optimum(beta=4.0, kappa=0.0, mu=0.0,
+                                    xi_bounds=(0.05, 5.0))
+    assert 0.05 < xi_opt < 5.0
+    assert hm_max > 0.0
+
+
+def test_hm_optimum_rejects_invalid_bounds() -> None:
+    with pytest.raises(ValueError, match="xi_bounds"):
+        bk.h_m_optimum(beta=0.0, xi_bounds=(0.0, 5.0))
+    with pytest.raises(ValueError, match="xi_bounds"):
+        bk.h_m_optimum(beta=0.0, xi_bounds=(2.0, 1.0))
+
+
 # =====================================================================
 # Walk-off and absorption monotonically reduce h
 # =====================================================================
