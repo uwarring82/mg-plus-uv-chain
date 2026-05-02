@@ -3,24 +3,28 @@ description: >
   UV source redesign for ²⁵Mg⁺ detection, cooling, and coherent control.
   Single-steward FAIR effort under Council-3 governance (Charter v1.0).
 
-# Built-in GitHub Pages theme; no plugins required, no build step.
-theme: jekyll-theme-cayman
+# No Jekyll theme: the site uses a hand-crafted layout in _layouts/default.html
+# that adopts the threehouse-plus-ec/cd-rules visual language under the
+# Model B distributed-copy pattern. See assets/SOURCE.md for provenance.
 
-# The "View on GitHub" header button picks this up automatically.
+# Default front-matter so each .md file picks up the custom layout
+# without repeating boilerplate.
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
+
+# The "View on GitHub" association (drives metadata only; no theme button).
 repository: uwarring82/mg-plus-uv-chain
 
-show_downloads: false
-
-# Don't render Python source files, YAML extractions, or LaTeX bits as Jekyll
-# content. They are referenced from markdown but not themselves part of the site.
+# Don't render Python source files, raw YAML extractions, or backups.
 exclude:
   - "*.py"
   - "*.yml.bak"
   - literature/
-  - _config.yml.bak
-  - README-pages.md
 
-# Markdown engine and syntax highlighting (default kramdown / rouge are fine).
 markdown: kramdown
 kramdown:
   syntax_highlighter: rouge

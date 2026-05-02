@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+  {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ '/assets/tokens.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}">
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/emblem-32.svg' | relative_url }}">
+</head>
+<body>
+  <a href="#content" class="skip-link">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand-lockup" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} home">
+        <img src="{{ '/assets/emblem-32.svg' | relative_url }}" alt="" width="32" height="32">
+        <span class="brand-name">mg-plus-uv-chain</span>
+      </a>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label="Toggle navigation"
+      >
+        Menu
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary" data-open="true">
+        <ul class="site-nav__list">
+          <li><a href="{{ '/principles.html' | relative_url }}">Principles</a></li>
+          <li><a href="{{ '/calculations.html' | relative_url }}">Calculations</a></li>
+          <li><a href="{{ '/status.html' | relative_url }}">Status</a></li>
+          <li><a href="{{ '/KD-2026-XXX-uv-280nm.html' | relative_url }}">Dossier</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <div class="site-shell prose">
+      {{ content }}
+    </div>
+
+    <footer class="colophon site-shell">
+      <img src="{{ '/assets/wordmark-full.svg' | relative_url }}" alt="T[h]ree +EC wordmark" width="200" height="44">
+      <div>
+        <p class="status">Stewardship: Ulrich Warring · AG Schätz, Albert-Ludwigs-Universität Freiburg</p>
+        <p class="maxim">A survey marker that knows it is fallible and has encoded how to find truth again.</p>
+        <p class="meta">
+          Charter v1.0 frozen 2026-04-30. Site visual identity borrowed from
+          <a href="https://github.com/threehouse-plus-ec/cd-rules">threehouse-plus-ec/cd-rules</a>
+          under the Model B distribution pattern (see
+          <a href="{{ '/assets/SOURCE.md' | relative_url }}">assets/SOURCE.md</a>).
+          Code MIT · documents CC-BY-4.0 · borrowed assets MIT.
+        </p>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    const header = document.querySelector(".site-header");
+    const toggle = document.querySelector(".nav-toggle");
+    const nav = document.querySelector("#site-nav");
+    const mobileQuery = window.matchMedia("(max-width: 640px)");
+    let lastScrollY = window.scrollY;
+
+    const syncNavState = () => {
+      const mobile = mobileQuery.matches;
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+      if (!mobile) {
+        nav.dataset.open = "true";
+        header.classList.remove("is-hidden");
+        return;
+      }
+      nav.dataset.open = expanded ? "true" : "false";
+      if (expanded) header.classList.remove("is-hidden");
+    };
+
+    toggle.addEventListener("click", () => {
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!expanded));
+      syncNavState();
+    });
+
+    const revealHeader = () => header.classList.remove("is-hidden");
+    nav.addEventListener("focusin", revealHeader);
+    toggle.addEventListener("focus", revealHeader);
+
+    window.addEventListener("scroll", () => {
+      if (!mobileQuery.matches) { lastScrollY = window.scrollY; return; }
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+      const currentScrollY = window.scrollY;
+      if (expanded || currentScrollY <= 8 || currentScrollY < lastScrollY) {
+        header.classList.remove("is-hidden");
+      } else if (currentScrollY > lastScrollY + 8) {
+        header.classList.add("is-hidden");
+      }
+      lastScrollY = currentScrollY;
+    }, { passive: true });
+
+    window.addEventListener("resize", syncNavState);
+    syncNavState();
+  </script>
+</body>
+</html>

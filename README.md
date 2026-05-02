@@ -8,7 +8,7 @@ A reproducible, version-controlled, FAIR design effort to redesign the all-solid
 
 **Steward.** Ulrich Warring (Albert-Ludwigs-Universität Freiburg, AG Schätz).
 
-**Project site (GitHub Pages).** [https://uwarring82.github.io/mg-plus-uv-chain/](https://uwarring82.github.io/mg-plus-uv-chain/) — summary of principles, calculation highlights, and current status. Source under [`docs/`](docs/). To enable: in GitHub repo *Settings → Pages*, set *Source: Deploy from a branch*, branch `main`, folder `/docs`. The site uses the built-in Cayman Jekyll theme; no build step required.
+**Project site (GitHub Pages).** [https://uwarring82.github.io/mg-plus-uv-chain/](https://uwarring82.github.io/mg-plus-uv-chain/) — summary of principles, calculation highlights, and current status. Source under [`docs/`](docs/). To enable: in GitHub repo *Settings → Pages*, set *Source: Deploy from a branch*, branch `main`, folder `/docs`. The site uses a hand-crafted layout adopting the visual identity and *Coastline / Sail* classification grammar from [`threehouse-plus-ec/cd-rules`](https://github.com/threehouse-plus-ec/cd-rules), borrowed under cd-rules §0.10 *Model B (distributed copy + checksum)*. Asset provenance and SHA-256 hashes are recorded in [`docs/assets/SOURCE.md`](docs/assets/SOURCE.md). No Jekyll build step required.
 
 ---
 

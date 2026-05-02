@@ -1,21 +1,26 @@
 ---
+layout: default
 title: Status
-description: Kill-gate state, dossier population, phase progress
+description: Kill-gate state, dossier population, phase progress. Snapshot at HEAD.
 ---
 
-# Status
+<p class="endorsement"><strong>Endorsement Marker.</strong> Local candidate framework — AG Schätz stewardship. This page is a snapshot of repository state, not a claim about the underlying physics or the architecture choice.</p>
 
-Snapshot at HEAD (commit `3fbe1bf`, 2026-05-02). The canonical state lives in the [git history](https://github.com/uwarring82/mg-plus-uv-chain/commits/main) and the [`logbook/`](https://github.com/uwarring82/mg-plus-uv-chain/tree/main/logbook).
+<p class="eyebrow">Snapshot · 2026-05-02</p>
 
-[← Home](index.html)
+# What is closed, what is open, what is gated.
+
+Snapshot at HEAD (commit `ee1f270`). The canonical state lives in the [git history](https://github.com/uwarring82/mg-plus-uv-chain/commits/main) and the [`logbook/`](https://github.com/uwarring82/mg-plus-uv-chain/tree/main/logbook).
 
 ---
 
-## Kill-gates
+## Kill-gates *Coastline*
+
+<p class="classification classification--coastline">Coastline · §5.1 · gate state mechanically witnessed by tests/parameters.G3_INTEGRATOR_ACKNOWLEDGED</p>
 
 | Gate | Blocks | Status | Closure evidence / dependency |
 |---|---|---|---|
-| **G1** | Architecture-family-specific simulation in `/src/architecture/` | OPEN | Awaits Phase 2 discriminant scans on the existing chain (cavity scan vs. crystal temperature, polarisation, intra-cavity intensity, vendor/batch). |
+| **G1** | Architecture-family-specific simulation in `/src/architecture/` | OPEN | Awaits Phase 2 discriminant scans on the existing chain (cavity scan vs. crystal temperature, polarisation, intra-cavity intensity, vendor / batch). |
 | **G2** | Phase 4 / 5 acceptance of degradation-rate inputs to scoring | OPEN | Awaits Phase 2 §8.2 protocol producing reproducible exposure-history dependence. |
 | **G3** | Phase 4 architecture comparison | **CLOSED** 2026-05-01 | [`logbook/2026-05-01-gate-g3-closure.md`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-01-gate-g3-closure.md) — Integrator-acknowledged. `src.parameters.assert_g3_closed()` is silent at module load. |
 
@@ -23,26 +28,29 @@ The diagnostic-surrogate import-path test (the §5.1 mechanical enforcement that
 
 ---
 
-## Phases
+## Phases *Coastline*
+
+<p class="classification classification--coastline">Coastline · §5 · phase ordering and entry conditions fixed</p>
 
 | Phase | Deliverable | State |
 |---|---|---|
-| 0 | Charter v1.0 + repo scaffold | **Complete** (frozen 2026-04-30) |
-| 0.5 | Reference triple `{Δ_ref, Ω_R,ref, Γ_sc,ref}` and Conservative / Nominal / Aggressive bounded-scenario set | **Complete** — locked at G3 closure (2026-05-01) |
-| 1 | Literature dossier `KD-2026-XXX-uv-280nm.md` with crystal/coating evidence table | **In progress** — 5 of 15 entries past SCAFFOLD; structured Friedenauer 2006 extraction landed |
+| 0 | Charter v1.0 + repo scaffold | Complete (frozen 2026-04-30) |
+| 0.5 | Reference triple `{Δ_ref, Ω_R,ref, Γ_sc,ref}` and Conservative / Nominal / Aggressive bounded-scenario set | Complete — locked at G3 closure (2026-05-01) |
+| 1 | Literature dossier `KD-2026-XXX-uv-280nm.md` with crystal/coating evidence table | In progress — 5 of 15 entries past SCAFFOLD |
 | 2 | Baseline measurement protocol + first-pass data on the existing chain | Not started |
-| 3 | Boyd–Kleinman cavity model, damage/degradation model, parameter sweeps; ≥ 90 % test coverage | Architecture-neutral layer in place; family-specific code G1-blocked |
+| 3 | Boyd–Kleinman cavity model, damage / degradation model, parameter sweeps; ≥ 90 % test coverage | Architecture-neutral layer in place; family-specific code G1-blocked |
 | 4 | Falsifiable architecture comparison against the six fixed scoring axes | Not started; G3-unblocked, G2-dependent inputs gated |
 | 5 | Procurement, assembly, validation against §2 targets | Not started |
 | 6 | Manuscript + Zenodo deposit + tagged release | Not started |
 
 ---
 
-## Phase 1 literature dossier
+## Phase 1 literature dossier *Coastline + Sail*
 
-[`docs/KD-2026-XXX-uv-280nm.md`](KD-2026-XXX-uv-280nm.html)
+<p class="classification classification--coastline">Coastline · the population protocol (SCAFFOLD → POPULATING → DRAFT → REVIEWED) is fixed and inspectable.</p>
+<p class="classification classification--sail">Sail · the choice of which entry to populate next, and the depth of literature search, is contextual.</p>
 
-Population protocol: SCAFFOLD → POPULATING → DRAFT → REVIEWED. Cells in the crystal/coating evidence table without citations are not admitted as Phase 4 inputs.
+[`docs/KD-2026-XXX-uv-280nm.md`](KD-2026-XXX-uv-280nm.html). Cells in the crystal/coating evidence table without citations are not admitted as Phase 4 inputs.
 
 | Entry | Title | Outcome | Status |
 |---|---|---|---|
@@ -66,7 +74,9 @@ Population protocol: SCAFFOLD → POPULATING → DRAFT → REVIEWED. Cells in th
 
 ---
 
-## Test posture
+## Test posture *Coastline*
+
+<p class="classification classification--coastline">Coastline · ≥ 90 % coverage required by §5 Phase 3 row; mechanically enforced via pytest + pytest-cov</p>
 
 | Test file | Tests | Notes |
 |---|---|---|
@@ -80,26 +90,29 @@ Coverage at last full run: 91.23 % (target ≥ 90 % per Charter §5 Phase 3 row)
 
 ---
 
-## What is unblocked, what is gated
+## What is unblocked, what is gated *Sail*
+
+<p class="classification classification--sail">Sail · contextual reading of which work is next; the gate states above are the testable Coastline</p>
 
 ### Unblocked at HEAD
 
 - **Phase 1 literature dossier population.** Literature collection was never gated.
 - **Phase 2 baseline measurement.** Bench work on the existing chain can begin; the §8.2 protocol must produce reproducible exposure-history dependence to close G2.
 - **Architecture-neutral simulation utilities.** New generic ABCD or BK functions can land in `/src/` provided they are genuinely architecture-agnostic.
-- **Phase 4 architecture comparison entry conditions other than G2.** G3 closure unblocks the entry; comparison scoring can begin once G2 is resolved.
+- **Phase 4 architecture-comparison entry conditions other than G2.** G3 closure unblocks the entry; comparison scoring can begin once G2 is resolved.
 
 ### Still gated
 
 - **Architecture-family-specific simulation in `/src/architecture/`.** G1-blocked. Pre-G1 exploratory notebooks are permitted in `/notebooks/` with the `pre-G1, exploratory, not promoted` header.
 - **Phase 4 scoring of axis-3 / axis-4 inputs that depend on a measured degradation rate.** G2-blocked.
-- **Public push.** Pending Steward action: insert real ORCID into [`CITATION.cff`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/CITATION.cff) line 17 (`BLOCKING` marker in place).
 
 ---
 
 ## Recent commits
 
 ```
+ee1f270  chore(governance): add Steward ORCID; resolves last pre-push BLOCKING marker
+0237e30  docs(governance): add GitHub Pages site under docs/ with Cayman theme
 3fbe1bf  fix(simulation): bound h_m_optimum search; correct BK-recalc notebook narrative
 92f6f43  docs(simulation): add Friedenauer 2006 BK-recalculation notebook (pre-G1)
 145814e  chore(governance): tighten G3-vs-G2 wording; fix publication metadata

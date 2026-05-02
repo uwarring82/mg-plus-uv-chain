@@ -1,3 +1,9 @@
+---
+layout: default
+title: KD-2026-XXX — CW UV source architectures and crystal/coating evidence at 280 nm
+description: Phase 1 literature dossier in Kompass-Dossier format. 15 ledger entries with Section A/B/C and §8 outcome classification.
+---
+
 # Kompass-Dossier: CW UV Source Architectures and Crystal/Coating Evidence at 280 nm
 
 **Document:** `docs/KD-2026-XXX-uv-280nm.md`
