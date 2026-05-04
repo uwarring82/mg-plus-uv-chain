@@ -1,0 +1,149 @@
+citation_key: "Eckardt1990"
+source_tier: "P"
+doi: "10.1109/3.55534"
+citation: "R. C. Eckardt, H. Masuda, Y. X. Fan, and R. L. Byer, IEEE Journal of Quantum Electronics 26, 922-933 (1990)"
+title: "Absolute and Relative Nonlinear Optical Coefficients of KDP, KD*P, BaB2O4, LiIO3, MgO:LiNbO3, and KTP Measured by Phase-Matched Second-Harmonic Generation"
+extracted_by: "assistant under steward direction"
+extracted_on: "2026-05-04"
+extraction_status: "DRAFT"
+source_document: "Local user-library PDF (provided in-conversation 2026-05-04 by the steward); not committed to repository (IEEE / J. Quantum Electron. copyright 1990)."
+charter_section_refs:
+  - "§5 Phase 1"
+  - "§8.4"
+dossier_entries:
+  - "KD-UV280-005"
+
+parameters:
+
+  # ---------------------------------------------------------------------------
+  # The headline number for KD-UV280-005: BBO d_eff (and d_22) -- 37% above Eimerl 1987.
+  # ---------------------------------------------------------------------------
+  - symbol: "BBO_d_eff_eckardt1990_at_1064_to_532_typeI"
+    value: 1.94e-12
+    units: "m/V"
+    location_in_paper: "Section IV (paragraph 1) and Table III"
+    notes: "Effective nonlinear coefficient for Type I 1064 -> 532 nm SHG in beta-BaB2O4. Reported as d_eff(BaB2O4) = 1.94 +/- 0.07 pm/V (4% reproducibility from 12 measurements on three samples; absolute accuracy estimated as +/- 10% by the authors due to systematic uncertainties in pump-pulse and energy-meter calibration). Measured by absolute SHG against a single-mode injection-seeded Q-switched Nd:YAG laser (1064 nm, 7 ns FWHM, near-Gaussian transverse profile, single longitudinal mode). Two of the three samples (4.1 mm and 11.9 mm long) were grown at the Stanford Center for Materials Research; the third (9.4 mm) was the Fujian crystal also used by Eimerl 1987."
+
+  - symbol: "BBO_d22_eckardt1990"
+    value: 2.2e-12
+    units: "m/V"
+    location_in_paper: "Abstract; Section IV (paragraph 2); Table III"
+    notes: "|d_22| = 2.2 pm/V derived from the measured d_eff(1064 -> 532, Type I) using the phase-matching formula in Table I (d_eff = d_31 sin(theta+rho) - d_22 cos(theta+rho) sin(3 phi)) and Table II phase-matching parameters (theta_pm = 22.8 deg, rho = 3.19 deg). The reduction assumes |d_31| << |d_22|, which the authors justify by citing |d_31/d_22| = 0.07 [Ref. 23] and |d_31/d_22| < 0.05 [Ref. 24 = Eimerl 1987]. Reported with 2-digit precision (|d_22| = 2.16 +/- 0.08 pm/V at the precision of the measurement, written as 2.2 pm/V to better convey the absolute accuracy). NB: 'd_22' in Eckardt's axis convention refers to the same physical R3c tensor element as 'd_11' in Eimerl 1987's convention; the naming difference is purely a choice of which crystallographic axis is called 'x'."
+
+  - symbol: "BBO_d31_over_d22_bound"
+    comparator: "<"
+    value: 0.05
+    units: "1"
+    location_in_paper: "Section IV (paragraph 2); cites Eimerl 1987 Ref. 24"
+    notes: "The d_31 / d_22 bound used by Eckardt 1990 to extract |d_22| from the measured d_eff is taken from Eimerl 1987. (See also BBO_d31_over_d11_bound in data/literature/Eimerl1987/extracted.yaml -- same bound, same physical content, different axis convention.)"
+
+  - symbol: "d36_KDP_eckardt1990"
+    value: 0.38e-12
+    units: "m/V"
+    location_in_paper: "Abstract; Section IV (paragraph 6)"
+    notes: "d_36(KDP) = 0.38 +/- 0.005 pm/V measured in this paper as the absolute reference for all the BaB2O4, LiIO3, MgO:LiNbO3, KTP and KD*P coefficients. Single 10.4-mm-long Type-I crystal, oriented for type I phase matching, surfaces uncoated. The +/- 0.005 figure is the measurement spread within this work; the +/- 10% absolute accuracy applies overall. Eimerl 1987 used d_36(KDP) = 0.39 pm/V as the calibration reference; the 2.6% difference in the KDP reference is small compared with the 37% upward revision of |d_22(BBO)|, so the discrepancy is *not* explained by the KDP calibration choice. (Eckardt explicitly addresses this on Section IV paragraph 2: '12 measurements on three different samples of BaB2O4 had a +/- 3.6% standard deviation for the value of d_eff. ... Even though |d_22(BaB2O4)| = 5.7 d_36(KDP) was observed here, these measurements nearly duplicated the 0.39 pm/V result for KDP.')"
+
+  - symbol: "d36_KDP_eckardt1990_relative"
+    value: 5.7
+    units: "1"
+    location_in_paper: "Section IV (paragraph 2)"
+    notes: "Ratio |d_22(BaB2O4)| / d_36(KDP) = 5.7, observed in this work via simultaneous measurement on the same calibrated apparatus. Eimerl 1987 had reported the equivalent ratio as 4.1 (i.e. 1.6 / 0.39 in their convention), corresponding to the 37% upward revision."
+
+  - symbol: "BBO_d_eff_formula_eckardt"
+    value_text: "d_eff = d_31 sin(theta + rho) - d_22 cos(theta + rho) sin(3 phi)"
+    units: null
+    location_in_paper: "Table I"
+    notes: "Effective-nonlinearity formula for Type I (o + o -> e) SHG/SFG in beta-BaB2O4 (R3c, point group 3m), Eckardt convention. Differs from the Eimerl 1987 Eq. (17) formula (d_eff = d_31 sin theta - d_11 cos theta cos(3 phi)) in two places: (a) the polar angle is replaced by (theta + rho) where rho is the birefringent walk-off angle, capturing the non-orthogonality of the extraordinary D and E fields in the birefringent crystal (this refinement is mentioned in Eimerl 1987 only implicitly and is the standard modern convention -- see Midwinter & Warner 1965, Boyd-Kleinman 1968 anisotropic Green's-function correction); (b) cos(3 phi) is replaced by sin(3 phi) because of a 30-deg azimuth offset in the choice of which crystallographic axis is called 'x'. Both formulas refer to the same physical tensor element. Optimum azimuth: |sin(3 phi)| = 1, equivalent to phi = 30, 90, 150 deg in the Eckardt convention."
+
+  # ---------------------------------------------------------------------------
+  # Operating-point context that Eckardt 1990 uses for the BBO measurement
+  # ---------------------------------------------------------------------------
+  - symbol: "BBO_theta_PM_at_1064_to_532_typeI_eckardt"
+    value: 22.8
+    units: "deg"
+    location_in_paper: "Table II"
+    notes: "Phase-matching angle for Type I 1064 -> 532 nm SHG in BBO used to extract d_22 from the measured d_eff. Cited from Ref. 19 (Chen, Fan, Eckardt, Byer SPIE Proc. 681, 1986). Direct cross-check: Eimerl 1987 Table VI reports the same process with theta_PM(I) = 22.7 deg (experiment) and 22.9 deg (calc from Eimerl Sellmeier); Eckardt 1990 Table II 22.8 deg is the same experimentally consistent value."
+
+  - symbol: "BBO_walkoff_at_1064_to_532_typeI_eckardt"
+    value: 3.19
+    units: "deg"
+    location_in_paper: "Table II"
+    notes: "Birefringent walk-off angle used by Eckardt at the 22.8 deg PM angle. = 0.0557 rad = 55.7 mrad. Cross-check from data/literature/Eimerl1987 Sellmeier: at theta = 22.88 deg, walk-off rho = 3.21 deg = 56 mrad -- consistent."
+
+  - symbol: "BBO_indices_at_1064_eckardt_table_II"
+    value:
+      n_o_w:  1.6545
+      n_e_w:  1.5392
+      n_o_2w: 1.6742
+      n_e_2w: 1.5547
+    units: null
+    location_in_paper: "Table II (Sellmeier source: Eckardt cites Ref. 19 = Chen 1986)"
+    notes: "BBO refractive indices at 1064 nm (omega) and 532 nm (2 omega) tabulated by Eckardt for the d_eff extraction. These are slightly different from the Eimerl 1987 Sellmeier-derived values (n_o(1064) = 1.65510 vs 1.6545, deviation < 4e-4) and the Tamosauskas 2018 Sellmeier-derived values (n_o(1064) = 1.6533, deviation < 1.2e-3). The Type-I SHG measurement is insensitive to this level of index uncertainty because the d_eff extraction depends only on the phase-matching geometry (theta_PM, rho), not on the absolute indices."
+
+  # ---------------------------------------------------------------------------
+  # Other Eckardt 1990 results, tabulated for cross-reference. Not promoted to
+  # KD-UV280-005 anchors but useful for downstream LBO / KTP / LiNbO3 entries.
+  # ---------------------------------------------------------------------------
+  - symbol: "Eckardt_d36_KDstarP"
+    value: 0.367e-12
+    units: "m/V"
+    location_in_paper: "Abstract; Section IV"
+    notes: "d_36(KD*P) = 0.367 +/- 0.012 pm/V. For cross-reference; not used by KD-UV280-005."
+
+  - symbol: "Eckardt_d31_LiIO3"
+    value: -4.1e-12
+    units: "m/V"
+    location_in_paper: "Abstract; Section IV; Table III"
+    notes: "d_31(LiIO3) = -4.1 +/- 0.2 pm/V. The known sign was used to combine measurements. For cross-reference; LiIO3 is not part of the Phase 1 BBO/CLBO/LBO scope."
+
+  - symbol: "Eckardt_d31_5pct_MgO_LiNbO3"
+    value: -4.7e-12
+    units: "m/V"
+    location_in_paper: "Abstract; Section IV; Table III"
+    notes: "d_31(5% MgO:LiNbO3) = -4.69 +/- 0.13 pm/V (rounded to -4.7). For cross-reference; relevant if a LiNbO3 architecture is later considered, but currently out of Phase 1 scope."
+
+  - symbol: "Eckardt_d_eff_KTP"
+    value: 3.18e-12
+    units: "m/V"
+    location_in_paper: "Abstract; Section IV; Table III"
+    notes: "d_eff(KTP) = 3.18 +/- 0.17 pm/V at 1064 -> 532 nm Type II. For cross-reference; KTP currently out of Phase 1 BBO/CLBO/LBO scope at the UV stage."
+
+  # ---------------------------------------------------------------------------
+  # Measurement-method provenance (so future readers can judge transferability)
+  # ---------------------------------------------------------------------------
+  - symbol: "BBO_d_eff_typeI_559_to_280nm_eckardt"
+    value: 1.44e-12
+    units: "m/V"
+    location_in_paper: "DERIVED from BBO_d22_eckardt1990 + BBO_d_eff_formula_eckardt at theta_PM = 0.7716 rad and walk-off rho = 0.0831 rad (Eimerl 1987 Sellmeier-derived geometry)"
+    notes: "DERIVED Eckardt-anchored d_eff for Type-I 559 -> 280 nm SHG: |d_eff| = |d_22| cos(theta + rho) sin(3 phi) at the optimum azimuth (|sin(3 phi)| = 1) gives |d_eff| = 2.2 pm/V * cos(44.21 deg + 4.76 deg) = 2.2 * 0.6564 = 1.44 pm/V central. Range: 1.30 - 1.60 pm/V across azimuth (|d_31| < 0.05 |d_22|) and the Eckardt +/- 10% absolute accuracy. *This is the value that KD-UV280-005 Section C and the §5 Phase 1 evidence-table BBO row use as the central anchor.* The Eimerl-anchored counterpart BBO_d_eff_typeI_559_to_280nm = 1.15 pm/V in data/literature/Eimerl1987/extracted.yaml is retained as the historical lower-bound result. The conversion-efficiency-at-fixed-intensity ratio between the two anchors is (1.44/1.15)^2 = 1.57, consistent with Eckardt's 37% upward revision of |d_22| modulated by the (theta+rho) walk-off correction."
+
+  - symbol: "Eckardt_method_summary"
+    value_text: "Phase-matched SHG of a single-mode injection-seeded Q-switched Nd:YAG (1064 nm, 7.0 +/- 0.2 ns FWHM, near-Gaussian transverse profile, no two-photon absorption detected at <= 50% conversion). Pump-depletion correction applied via eta_calc = eta_obs/(1 - eta_obs); near-field (no diffraction) approximation; Boyd-Kleinman h(B, xi) factor used in the analysis with anisotropic Green's-function correction (Appendix). Spatial filter and pulse-shape characterization yielded the +/- 10% absolute accuracy."
+    units: null
+    location_in_paper: "Sections II-V; Appendix"
+    notes: "Provenance summary. Important caveat: Eckardt's measurement is at *1064 nm SHG*, not at 559 nm SHG. Transfer to the 559 -> 280 nm Type-I configuration assumes the d_22 dispersion to 559 nm is small, which Eimerl 1987 asserts but does not measure. This is the same dispersion assumption that bounds the Eimerl-anchored value in data/literature/Eimerl1987/extracted.yaml; the upgrade Eckardt -> Eimerl is an absolute-calibration upgrade, not a per-wavelength dispersion upgrade."
+
+open_extraction_items:
+  - "d_eff dispersion to 559 nm operating wavelength (this paper measures at 1064 nm SHG only; transfer to 559 -> 280 nm assumes weak dispersion of d_22 to 559 nm, which is the same assumption Eimerl 1987 makes)."
+  - "d_eff at 559 -> 280 nm Type I directly. Would close the residual dispersion-assumption uncertainty. Not in any single Eimerl/Eckardt/Tamosauskas paper; would require a different reference (or a discriminant measurement on the apparatus)."
+  - "Sign of d_31 in BBO. Eckardt notes 'unknown for BaB2O4' (Section IV paragraph 2). Bounded magnitude only via Eimerl |d_31/d_22| < 0.05; the d_eff formula at the optimum azimuth is dominated by the d_22 term, so the d_31 sign uncertainty contributes < 5% to |d_eff|."
+
+extraction_passes:
+  - date: "2026-05-04"
+    by: "assistant under steward direction"
+    scope: >
+      Full extraction from the steward-provided PDF. Captured the headline
+      BBO results (d_eff(1064->532, Type I) = 1.94 +/- 0.07 pm/V; |d_22| =
+      2.2 pm/V; ratio to d_36(KDP) = 5.7 vs Eimerl's 4.1), the d_36(KDP) =
+      0.38 pm/V calibration reference, the Eckardt-convention d_eff
+      formula (with the (theta + rho) walk-off correction and sin(3 phi)
+      azimuth dependence vs Eimerl's cos(3 phi)), and the Type I 1064 ->
+      532 nm phase-matching parameters. Cross-reference d_eff for KD*P,
+      LiIO3, MgO:LiNbO3, KTP recorded for downstream entries. The headline
+      finding is that |d_22(BBO)| from this work is 37% higher than Eimerl
+      1987's |d_11(BBO)|, with overlap only at the very edge of Eimerl's
+      +/- 25% uncertainty envelope -- this is now the central value for
+      KD-UV280-005 Section C, with Eimerl recorded as the historical
+      lower-bound result. The Eckardt-vs-Eimerl discrepancy is logged in
+      data/literature/Eimerl1987/cross_check_notes for future readers.
+    status: "DRAFT"

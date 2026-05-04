@@ -1,0 +1,137 @@
+citation_key: "Tamosauskas2018"
+source_tier: "P"
+doi: "10.1364/OME.8.001410"
+citation: "G. Tamosauskas, G. Beresnevicius, D. Gadonas, and A. Dubietis, Optical Materials Express 8, 1410-1418 (2018)"
+title: "Transmittance and phase matching of BBO crystal in the 3-5 um range and its application for the characterization of mid-infrared laser pulses"
+extracted_by: "assistant under steward direction"
+extracted_on: "2026-05-04"
+extraction_status: "DRAFT"
+source_document: "Open-access PDF (OSA Open Access Publishing Agreement) provided in-conversation 2026-05-04. Even though the licence permits redistribution with attribution, the convention in this dossier is to extract structured facts and not commit publisher PDFs to the repository."
+charter_section_refs:
+  - "§5 Phase 1"
+dossier_entries:
+  - "KD-UV280-005"
+
+parameters:
+
+  # ---------------------------------------------------------------------------
+  # The headline result: refined Sellmeier valid 0.188 - 5.2 um
+  # ---------------------------------------------------------------------------
+  - symbol: "BBO_sellmeier_no_tamosauskas2018"
+    value:
+      A1: 0.90291
+      C1: 0.003926
+      A2: 0.83155
+      C2: 0.018786
+      A3: 0.76536
+      C3: 60.01
+    units: null
+    location_in_paper: "Eq. (1)"
+    notes: "Three-oscillator Sellmeier for the ordinary refractive index of beta-BaB2O4. Form: n_o^2(lambda) = 1 + A1 * lambda^2 / (lambda^2 - C1) + A2 * lambda^2 / (lambda^2 - C2) + A3 * lambda^2 / (lambda^2 - C3), with lambda in micrometres. Units: A_i dimensionless; C_i in um^2. Two oscillators in the UV (C1, C2 < 0.02 um^2) and one in the mid-IR (C3 = 60.01 um^2 ~ 7.75 um). Validity: 0.188 - 5.2 um, the entire BBO transparency range."
+
+  - symbol: "BBO_sellmeier_ne_tamosauskas2018"
+    value:
+      A1: 1.151075
+      C1: 0.007142
+      A2: 0.21803
+      C2: 0.02259
+      A3: 0.656
+      C3: 263
+    units: null
+    location_in_paper: "Eq. (1)"
+    notes: "Three-oscillator Sellmeier for the extraordinary refractive index, same form and units as the ordinary set. Mid-IR oscillator at C3 = 263 um^2 (~ 16.2 um) sits considerably further into the IR than the ordinary set's, which produces the predicted no = ne crossover at 4.62 um (BBO becomes positive uniaxial above this wavelength)."
+
+  - symbol: "BBO_sellmeier_validity_range_tamosauskas2018"
+    value: [188e-9, 5.2e-6]
+    units: "m"
+    location_in_paper: "Abstract; Eq. (1) preamble"
+    notes: "Refined Sellmeier validity from 188 nm (UV edge as deduced from Light Conversion's UV phase-matching curves) to 5.2 um (mid-IR limit set by their own SFG measurements). This is a substantial extension of the Eimerl 1987 anchor range (212.8 - 1064 nm) at both ends. For the 559 -> 280 nm Type-I problem, both wavelengths sit comfortably inside both validity ranges, so the Sellmeier extension is a cross-check rather than an extrapolation reduction."
+
+  - symbol: "BBO_no_ne_crossover_tamosauskas2018"
+    value: 4.62e-6
+    units: "m"
+    location_in_paper: "Section 3 (after Eq. 1); Fig. 3(b); Fig. 4"
+    notes: "Wavelength at which n_o = n_e according to the refined Sellmeier set, beyond which BBO becomes positive uniaxial. Eimerl 1987 Sellmeier predicts the same crossover at 5.75 um (extrapolation), Chen 2012 book at 5.66 um. The authors verify the 4.62 um crossover experimentally by measuring zero transmittance through crossed polarizers at 4.62 um (Fig. 4), independently of crystal orientation. Not relevant to the 559 -> 280 nm operating point but a useful checkpoint for any mid-IR architecture work."
+
+  # ---------------------------------------------------------------------------
+  # Cross-validation: Tamosauskas claims fit accuracy < 4e-5 against Chen 2012
+  # book Table direct measurements in the 0.25 - 2.33 um range. Independent
+  # spot-check against Eimerl 1987 Table I direct measurements yields a uniform
+  # ~8e-4 systematic offset (Tamosauskas indices low). This is recorded as the
+  # cross-set discrepancy at the index level.
+  # ---------------------------------------------------------------------------
+  - symbol: "Tamosauskas_vs_Eimerl_index_offset_visible"
+    value: -8.0e-4
+    units: "1"
+    location_in_paper: "DERIVED from this paper Eq. (1) vs Eimerl 1987 Table I direct measurements"
+    notes: "Spot-check at 1014, 589, 546, 405 nm: Tamosauskas Eq. (1) gives n_o and n_e values systematically 7-9 e-4 lower than Eimerl 1987 Table I direct prism-spectrometer measurements. This offset is much larger than Tamosauskas's quoted 4e-5 fit accuracy against Chen 2012 book Table -- which means the discrepancy is between the Eimerl 1987 anchor measurements and the Chen 2012 book anchor measurements, not in the fit. For the operationally relevant derived quantities (theta_PM, walk-off rho), this 8e-4 absolute-index offset largely cancels because the Type-I PM condition n_e(2 omega, theta) = n_o(omega) is sensitive to index *differences*, which are similar in both sets."
+
+  # ---------------------------------------------------------------------------
+  # Derived 559/280 values for cross-check with Eimerl-anchored numbers
+  # ---------------------------------------------------------------------------
+  - symbol: "BBO_indices_at_559_tamosauskas2018"
+    value:
+      n_o: 1.67186
+      n_e: 1.55314
+    units: null
+    location_in_paper: "DERIVED from BBO_sellmeier_*_tamosauskas2018 at lambda = 559 nm"
+    notes: "Compare with Eimerl-derived n_o(559) = 1.67276, n_e(559) = 1.55394 (delta 9e-4 and 8e-4 respectively, consistent with the Visible-band offset noted above)."
+
+  - symbol: "BBO_indices_at_280_tamosauskas2018"
+    value:
+      n_o: 1.74445
+      n_e: 1.60391
+    units: null
+    location_in_paper: "DERIVED from BBO_sellmeier_*_tamosauskas2018 at lambda = 280 nm"
+    notes: "Compare with Eimerl-derived n_o(280) = 1.74454, n_e(280) = 1.60514 (delta 1e-4 and 1.2e-3 respectively). The n_o agreement at 280 nm is much tighter than the bulk visible offset, consistent with the two Sellmeier sets converging in the deep UV (where Tamosauskas anchors with Kato 1986 down to 204.8 nm)."
+
+  - symbol: "theta_PM_559_to_280nm_typeI_tamosauskas2018"
+    value: 0.7728
+    units: "rad"
+    location_in_paper: "DERIVED from BBO_sellmeier_*_tamosauskas2018 by solving n_e(2 omega, theta) = n_o(omega)"
+    notes: "DERIVED Type-I phase-matching angle: 0.7728 rad = 44.278 deg. Compare with the Eimerl-anchored value theta_PM_559_to_280nm_typeI = 0.7716 rad = 44.207 deg; agreement is within 0.07 deg even though the absolute indices differ by ~ 1e-3. The Type-I PM condition cancels most of the index-level discrepancy. **Operationally:** the BBO-cut-angle uncertainty from the choice of Sellmeier set is < 0.1 deg, which is well below the 1 deg crystal-cut tolerance typical for ring-cavity SHG."
+
+  - symbol: "rho_walkoff_280nm_typeI_tamosauskas2018"
+    value: 0.0838
+    units: "rad"
+    location_in_paper: "DERIVED from BBO_sellmeier_*_tamosauskas2018 at theta_PM_559_to_280nm_typeI_tamosauskas2018"
+    notes: "DERIVED walk-off angle: 0.0838 rad = 4.80 deg = 83.8 mrad. Compare with the Eimerl-anchored value rho = 0.0831 rad = 83.1 mrad; agreement is within 0.7 mrad. Both Sellmeier sets confirm the 80-90 mrad walk-off range and /notebooks/2026-05-01-friedenauer-bk-recalculation.py now uses the Eimerl-derived value directly. The Sellmeier-set uncertainty does not change the BBO BK-discrepancy diagnosis (factor 2.17 between recomputed waist and Friedenauer's reported value)."
+
+  # ---------------------------------------------------------------------------
+  # Sample-thickness and mid-IR transparency results -- captured for completeness
+  # but not used by KD-UV280-005
+  # ---------------------------------------------------------------------------
+  - symbol: "BBO_transparency_thin_sample_2018"
+    value_text: "Thin (200 um) BBO sample shows reasonable transmittance up to 6.2 um with structured transparency bands at 3.75, 4.6, and 5.0-6.2 um. Calculated transmittance for 20-um-thick crystal: > 60% well above the alleged 3.3 um cutoff."
+    units: null
+    location_in_paper: "Section 2; Fig. 1"
+    notes: "Refines the BBO transparency picture vs Eimerl 1987 (which was based on 4 mm thick samples and gave 200-3000 nm). For 280 nm operation this is irrelevant (well inside both transparency windows); recorded for completeness because the new transparency-vs-thickness picture matters for any future thin-crystal architecture (e.g. Brewster-cut BBO at small thicknesses, broadband SHG of mid-IR)."
+
+  - symbol: "BBO_typeI_max_SHG_input_wavelength"
+    value: 4.4e-6
+    units: "m"
+    location_in_paper: "Section 4; final paragraph"
+    notes: "Type-I SHG phase matching is supported in BBO with input wavelengths up to 4.4 um per the refined Sellmeier. Not relevant to the 559 -> 280 nm operating point but recorded for downstream IR-architecture consideration."
+
+open_extraction_items:
+  - "Direct refractive-index measurements at 559 nm and 280 nm (the actual operating wavelengths). The Tamosauskas 2018 Sellmeier is a fit; closer-to-direct measurements at the operating wavelengths would discriminate the ~1e-3 offset against Eimerl 1987."
+  - "Reconciliation of the ~8e-4 systematic offset between Tamosauskas Eq. (1) at visible wavelengths and Eimerl 1987 Table I direct measurements (the underlying anchor sets - Chen 2012 book vs Eimerl 1987 prism - are the actual disagreement locus)."
+
+extraction_passes:
+  - date: "2026-05-04"
+    by: "assistant under steward direction"
+    scope: >
+      Full extraction from the steward-provided PDF. Captured the refined
+      three-oscillator Sellmeier (Eq. 1) for both n_o and n_e, the 0.188 -
+      5.2 um validity range, the predicted no = ne crossover at 4.62 um
+      (experimentally verified in the paper via crossed-polarizer
+      transmittance, Fig. 4), and derived 559 / 280 nm indices, theta_PM,
+      and walk-off rho for direct cross-check against the Eimerl-anchored
+      values. Findings: at the operationally relevant derived quantities
+      (theta_PM, rho) the two Sellmeier sets agree within 0.1 deg / 1
+      mrad; at the absolute-index level there is a ~ 8e-4 systematic
+      offset in the visible (Tamosauskas low) that narrows at 280 nm
+      for n_o (~1e-4) but remains ~1e-3 for n_e. The cross-set
+      discrepancy is logged in
+      data/literature/Eimerl1987/cross_check_notes for future readers.
+    status: "DRAFT"

@@ -86,7 +86,37 @@ parameters:
     value_text: "type-I alpha-cut LBO, noncritically phase matched"
     units: null
     location_in_paper: "Section 3"
-    notes: "Cutting angles theta = 90 deg, phi = 0 deg."
+    notes: "Cutting angles theta = 90 deg, phi = 0 deg. AR coated for both fundamental and harmonic."
+
+  - symbol: "deff_LBO_at_1118"
+    value: 0.84e-12
+    units: "m/V"
+    location_in_paper: "Section 3"
+    notes: "Effective nonlinearity quoted by the paper for LBO at 1118 nm. The paper attributes all crystal data to the SNLO program (reference [7] = Sandia National Laboratories). Required for first-principles SHG conversion-efficiency recomputation; addresses the d_eff data gap flagged in notebooks/2026-05-01-friedenauer-bk-recalculation.py §8 item 5."
+
+  - symbol: "deff_alternatives_KNB_at_1118"
+    value: -12.1e-12
+    units: "m/V"
+    location_in_paper: "Section 3"
+    notes: "Effective nonlinearity for potassium niobate (KNB) at 1118 nm cited as context for the LBO-vs-niobate trade. SNLO source. Higher |d_eff| than LBO but disqualified at this stage by NCPM temperature (see T_NCPM_KNB_alternative)."
+
+  - symbol: "deff_alternatives_LNB_at_1118"
+    value: -4.4e-12
+    units: "m/V"
+    location_in_paper: "Section 3"
+    notes: "Effective nonlinearity for lithium niobate (LNB) at 1118 nm cited as context for the LBO-vs-niobate trade. SNLO source."
+
+  - symbol: "T_NCPM_KNB_alternative"
+    value: 351
+    units: "degC"
+    location_in_paper: "Section 3"
+    notes: "NCPM temperature for KNB at 1118 nm, reported as comparison to the LBO 89 degC value. Cited as the dominant reason to prefer LBO despite KNB's larger d_eff."
+
+  - symbol: "T_NCPM_MgOLNB_alternative"
+    value: 219
+    units: "degC"
+    location_in_paper: "Section 3"
+    notes: "NCPM temperature for MgO:LNB at 1118 nm, reported as comparison to the LBO 89 degC value."
 
   - symbol: "L_LBO_crystal"
     value: 1.8e-2
@@ -134,7 +164,55 @@ parameters:
     value: 0.062
     units: "m"
     location_in_paper: "Section 3; Table 1"
-    notes: "Geometric distance between focusing mirrors."
+    notes: "Geometric distance between focusing mirrors M3 and M4. Adjusted to place the cavity at the plateau of the stability region while matching the BK-derived intracavity waist (see LBO_BK_waist_realisation)."
+
+  - symbol: "LBO_focusing_mirror_focal_length"
+    value: 0.025
+    units: "m"
+    location_in_paper: "Section 3"
+    notes: "Two curved mirrors M3 (HR at fundamental) and M4 (output coupler) of focal length f = 25 mm. Concave-mirror radius of curvature R = 2f = 50 mm follows under the standard normal-incidence convention. Required for cavity ABCD eigenmode reconstruction (src.abcd.cavity_eigenmode_q)."
+
+  - symbol: "LBO_BK_waist_realisation"
+    value_text: "BK-derived w0 = 27.3 um (w0_LBO_BK_optimum) was realised by adjusting the focusing-mirror separation d = 62 mm to sit at the plateau of the cavity stability region."
+    units: null
+    location_in_paper: "Section 3"
+    notes: "Connects w0_LBO_BK_optimum, LBO_focusing_mirror_distance and LBO_focusing_mirror_focal_length via the cavity stability condition rather than treating them as independent inputs. Important for any ABCD cross-check."
+
+  - symbol: "LBO_optimum_crystal_length_origin"
+    value_text: "Optimum L = 18 mm derived from a cavity model that included crystal linear+conversion losses and mirror reflection losses."
+    units: null
+    location_in_paper: "Section 3"
+    notes: "Establishes that the 18 mm length captured in L_LBO_crystal is the *optimised* length, not a vendor stock length. Relevant when re-running the optimisation under alternative loss budgets."
+
+  - symbol: "LBO_input_coupler_M1_geometry"
+    value_text: "plane mirror, AR coated on the outside of the cavity"
+    units: null
+    location_in_paper: "Section 3"
+    notes: "Reflectivity already captured under R_LBO_input_coupler_fundamental (97.5%); chosen to impedance-match the intracavity losses."
+
+  - symbol: "LBO_output_coupler_M4_shape"
+    value_text: "'zero lens' shape, AR coated for the harmonic on the convex side"
+    units: null
+    location_in_paper: "Section 3"
+    notes: "Mitigates lensing of the harmonic on its way out of the cavity. Relevant for downstream beam-quality / TEM00 projection budgeting."
+
+  - symbol: "LBO_M2_piezo_model"
+    value_text: "Thorlabs AE020304D04 stacked piezo, glued to a lead disk"
+    units: null
+    location_in_paper: "Section 3"
+    notes: "The lead disk lowers the loaded resonance of the mirror mount and absorbs vibrations."
+
+  - symbol: "LBO_M2_piezo_resonance_loaded"
+    value: 1.8e4
+    units: "Hz"
+    location_in_paper: "Section 3"
+    notes: "Approximate loaded mirror-mount resonance frequency reported as ~18 kHz; bounds the achievable Hänsch-Couillaud servo bandwidth."
+
+  - symbol: "cavity_locking_scheme"
+    value_text: "Hänsch-Couillaud polarization locking (Opt. Commun. 35, 441 (1980))"
+    units: null
+    location_in_paper: "Section 3; reference [6]"
+    notes: "Same locking scheme used for both the LBO and BBO ring cavities. The 559 nm iodine reference (R(53)28-3 at 559.271 nm) provides the absolute frequency anchor that the cavity lengths are then slaved to via Hänsch-Couillaud."
 
   - symbol: "LBO_full_folding_angle"
     value: 10
@@ -228,7 +306,13 @@ parameters:
     value: 0.0594
     units: "m"
     location_in_paper: "Table 1"
-    notes: "Distance between focusing mirrors."
+    notes: "Distance between focusing mirrors M3' and M4'."
+
+  - symbol: "BBO_focusing_mirror_focal_length"
+    value: 0.025
+    units: "m"
+    location_in_paper: "Section 3 (transitive: 'layout of the second cavity is similar to the first, differing only in the reflectivities of the mirrors and the folding angle')"
+    notes: "The paper explicitly states the BBO ring cavity differs from the LBO ring cavity *only* in mirror reflectivities and folding angle. The focusing-mirror focal length therefore inherits the LBO value f = 25 mm. Recorded as a paper-stated equivalence (transitive) rather than an independent direct quotation. Required for the BBO cavity ABCD eigenmode reconstruction."
 
   - symbol: "BBO_full_folding_angle"
     value: 27.4
@@ -378,24 +462,49 @@ open_extraction_items:
   - "No direct CW LIDT value at 280 nm is reported."
   - "No source-side RIN spectrum or phase-noise spectrum is reported."
   - "No ion-side loss budget is reported."
+  - "BBO d_eff at 559 nm Type-I (for first-principles SHG efficiency recomputation) is not given by Friedenauer 2006 — must come from KD-UV280-005 Section C / SNLO."
+  - "BBO walk-off angle rho at the 559->280 nm Type-I phase-matching angle is not given by Friedenauer 2006 — must come from KD-UV280-005 Section C / Sellmeier."
+  - "Refractive indices n_LBO(1118) and n_BBO_o(559) are not given by Friedenauer 2006 — must come from KD-UV280-005 / -007 Section C / Sellmeier."
+
+extraction_passes:
+  - date: "2026-05-01"
+    by: "Codex"
+    scope: "Initial extraction of Sections 2-6 + Table 1, supporting KD-UV280-013 baseline."
+    status: "DRAFT"
+  - date: "2026-05-04"
+    by: "assistant under steward direction"
+    scope: >
+      Targeted re-read of Section 3 to extract cavity focusing-mirror focal
+      lengths (LBO f = 25 mm; BBO f = 25 mm by paper-stated equivalence),
+      d_eff(LBO@1118) and the alternative-crystal context (KNB, MgO:LNB
+      d_eff and NCPM temperatures), the Hänsch-Couillaud locking-scheme
+      reference, and the M2 piezo / mount details. Closes the cavity-
+      mirror-radius gap flagged in notebooks/2026-05-01-friedenauer-bk-
+      recalculation.py §8 item 3 and partially closes §8 item 5 (LBO d_eff
+      now extracted; BBO d_eff still pending Sellmeier-cited follow-up).
+    status: "DRAFT"
 
 cross_check_notes:
   - id: "unlockable_domain_width_consistency"
     summary: >
-      The reported domain width (1.4e10 Hz, i.e. 14 GHz at the 1118 nm
-      fundamental) and the reported wavelength bounds (1118.339 nm to
-      1118.409 nm, Δλ = 70 pm) are not numerically consistent under the
-      standard Δν = c·Δλ/λ² conversion at 1118 nm: 70 pm at 1118 nm gives
-      Δν ≈ 16.8 GHz, not 14 GHz.
+      The reported domain width (1.4e10 Hz, i.e. 14 GHz) and the reported
+      wavelength bounds (1118.339 nm to 1118.409 nm, Δλ = 70 pm) are not
+      numerically consistent under the standard Δν = c·Δλ/λ² conversion at
+      1118 nm: 70 pm at 1118 nm gives Δν ≈ 16.8 GHz, not 14 GHz. Confirmed
+      by direct PDF read on 2026-05-04: the paper states verbatim "We
+      discovered a 14-GHz-broad frequency region between 1118.409 nm and
+      1118.339 nm" (§4). The discrepancy is intrinsic to Friedenauer 2006,
+      not an extraction error.
     candidate_explanations:
-      - "Paper rounds the 16.8 GHz width to ~14 GHz (the Charter §8.1 vocabulary inherits the rounded form)."
-      - "The 14 GHz figure is reported at a different optical stage (e.g. the 559 nm or 280 nm cavity locking) than the 1118 nm wavelength bounds."
-      - "One of the wavelength bounds may be misread from the paper; the precise bounds may be tighter than 70 pm."
+      - "Paper quotes the 14 GHz width from a measurement at one optical stage and the wavelength bounds from a measurement at another (or different observers)."
+      - "Paper reports a sub-domain of the 16.8 GHz wavelength range that was actually un-lockable (i.e. the lockable failure was localised within the 70 pm wavelength window, not coextensive with it)."
+      - "Loose rounding on the part of the authors."
     resolution: >
-      Steward review against the original PDF can resolve this with one
-      direct read. Until resolved, downstream entries (KD-UV280-010) cite
-      the *width* and the *bounds* separately and do not assume cross-
-      consistency.
+      Discrepancy is in the source paper itself; KD-UV280-010 should cite
+      both numbers separately and not derive one from the other. The
+      candidate-explanations list above is for downstream interpretive
+      use; the Charter §8.1 vocabulary inherits the paper's '14 GHz'
+      figure as-stated.
     informs_dossier_entries:
       - "KD-UV280-010"
       - "KD-UV280-013"

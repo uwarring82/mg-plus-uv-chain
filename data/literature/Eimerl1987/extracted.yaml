@@ -1,0 +1,359 @@
+citation_key: "Eimerl1987"
+source_tier: "P"
+doi: "10.1063/1.339536"
+citation: "D. Eimerl, L. Davis, S. Velsko, E. K. Graham, and A. Zalkin, Journal of Applied Physics 62, 1968-1983 (1987)"
+title: "Optical, mechanical, and thermal properties of barium borate"
+extracted_by: "assistant under steward direction"
+extracted_on: "2026-05-04"
+extraction_status: "DRAFT"
+source_document: "Local user-library PDF (provided in-conversation 2026-05-04 for verification); not committed to repository (AIP / J. Appl. Phys. copyright 1987)."
+charter_section_refs:
+  - "§5 Phase 1"
+  - "§1.5 (thermal-load envelope)"
+  - "§8.4"
+dossier_entries:
+  - "KD-UV280-005"
+
+parameters:
+
+  # ---------------------------------------------------------------------------
+  # Crystallography
+  # ---------------------------------------------------------------------------
+  - symbol: "BBO_phase"
+    value_text: "low-temperature phase, beta-BaB2O4, space group R3c, hexagonal cell with 6 formula units"
+    units: null
+    location_in_paper: "Section 'CRYSTAL STRUCTURE'"
+    notes: "Confirmed by single-crystal x-ray diffraction on a 0.22 x 0.17 x 0.08 mm^3 sample, R = 0.035 for 2969 data with I > sigma(I). The R3c space group restricts the allowed nonlinear coefficients to d_11, d_31, d_33, d_15 (with Kleinman symmetry equating d_15 = d_31, leaving two relevant constants). The high-temperature phase is also R3c with the same nonlinearity. Stable up to about 900 degC."
+
+  - symbol: "BBO_lattice_a"
+    value: 12.547e-10
+    units: "m"
+    location_in_paper: "Section 'CRYSTAL STRUCTURE'; footnote 18"
+    notes: "Hexagonal cell parameter a = 12.547(6) Angstroem. Footnote 18 notes minor (~0.03 Angstroem) discrepancies between this work, Frohlich and Lu et al., possibly sample-dependent."
+
+  - symbol: "BBO_lattice_c"
+    value: 12.736e-10
+    units: "m"
+    location_in_paper: "Section 'CRYSTAL STRUCTURE'; footnote 18"
+    notes: "Hexagonal cell parameter c = 12.736(9) Angstroem."
+
+  - symbol: "BBO_density"
+    value: 3840
+    units: "kg/m^3"
+    location_in_paper: "Section 'ELASTIC CONSTANTS'"
+    notes: "Density 3.840 g/cm^3 measured by mass/volume ratio."
+
+  # ---------------------------------------------------------------------------
+  # Linear optical constants -- direct refractive-index measurements
+  # ---------------------------------------------------------------------------
+  - symbol: "BBO_refractive_indices_table_I"
+    value:
+      method: "minimum deviation, prism spectrometer"
+      wavelengths_nm: [1014.0, 894.35, 852.12, 818.90, 643.85, 589.30, 579.07, 546.07, 508.58, 479.99, 467.82, 435.83, 404.66]
+      n_e:               [1.54333, 1.54469, 1.54542, 1.54589, 1.55012, 1.55247, 1.55298, 1.55465, 1.55691, 1.55914, 1.56024, 1.56376, 1.56796]
+      n_o:               [1.65608, 1.65862, 1.65969, 1.66066, 1.66736, 1.67049, 1.67131, 1.67376, 1.67722, 1.68044, 1.68198, 1.68679, 1.69267]
+    units: null
+    location_in_paper: "Table I"
+    notes: "Direct prism-spectrometer measurements at 13 wavelengths between 405 and 1014 nm. Wavelengths converted from the table's units (Angstroem) to nm. These anchor the visible-NIR portion of the Sellmeier fit (Table II row a, this work)."
+
+  # ---------------------------------------------------------------------------
+  # Sellmeier coefficients (this work, Eimerl 1987 Table II row a)
+  # ---------------------------------------------------------------------------
+  - symbol: "BBO_sellmeier_no_eimerl1987"
+    value:
+      A: 2.7405
+      B: 0.0184
+      C: -0.0179
+      D: -0.0155
+    units: null
+    location_in_paper: "Eq. (1) and Table II row a (this work)"
+    notes: "Sellmeier coefficients for the ordinary refractive index of beta-BaB2O4. Form: n_o^2(lambda) = A + B/(lambda^2 + C) + D*lambda^2, lambda in micrometres. Units convention: A dimensionless; B in um^2; C in um^2; D in um^-2. (NB: Table II's printed column header for C reads 'um^-2' but that is dimensionally inconsistent with Eq. (1); the canonical interpretation -- C in um^2, with the sign as printed -- exactly reproduces the Table I direct measurements and the Table VI calculated phase-matching angles. Verified to <0.0004 RMS on Table I and to <0.05 deg on Table VI 1064->532 (Type I) and 532->266 (Type I) entries.) Valid in the range 212.8 - 1064 nm per the paragraph after Eq. (1). For wavelengths outside this range the fit is an extrapolation, not anchored to data."
+
+  - symbol: "BBO_sellmeier_ne_eimerl1987"
+    value:
+      A: 2.3730
+      B: 0.0128
+      C: -0.0156
+      D: -0.0044
+    units: null
+    location_in_paper: "Eq. (1) and Table II row a (this work)"
+    notes: "Sellmeier coefficients for the extraordinary refractive index of beta-BaB2O4. Same form, units convention, validity range, and verification as BBO_sellmeier_no_eimerl1987."
+
+  - symbol: "BBO_sellmeier_alternative_chen1985"
+    value:
+      n_e: {A: 2.3785, B: 0.01217, C: -0.01793, D: null}
+      n_o: {A: 2.7462, B: 0.01715, C: -0.02177, D: null}
+    units: null
+    location_in_paper: "Table II row b (Chen, Wu, Jiang & You, Sci. Sin. Ser. B 28, 235 (1985))"
+    notes: "Alternative Sellmeier set from Chen et al. 1985 (D coefficient absent in their parameterisation). Reproduced in Table II of Eimerl 1987 for comparison. Eimerl 1987 Table VI shows Chen's Sellmeier predicts theta_PM (1064->532, I) = 19.8 deg vs experimentally observed 22.7 deg -- a 3 deg systematic error in the visible UV range. This set is therefore considered DEPRECATED for downstream BK / ABCD analysis at 559->280 nm; use BBO_sellmeier_*_eimerl1987 instead."
+
+  - symbol: "BBO_sellmeier_alternative_kato1986"
+    value:
+      n_e: {A: 2.3753, B: 0.01224, C: -0.01667, D: -0.01516}
+      n_o: {A: 2.7359, B: 0.01878, C: -0.01822, D: -0.01354}
+    units: null
+    location_in_paper: "Table II row c (Kato, IEEE J. Quantum Electron. QE-22, 1013 (1986))"
+    notes: "Alternative Sellmeier set from Kato 1986. Reproduced in Table II of Eimerl 1987 for comparison. Kato's set agrees closely with Eimerl 1987 (Table VI: Kato's PM angles match Eimerl's calculated angles to within ~0.3 deg). Available as a sanity-check / consistency comparator for downstream propagation; primary use should remain BBO_sellmeier_*_eimerl1987."
+
+  # ---------------------------------------------------------------------------
+  # Refractive indices at Nd:YAG harmonics (Sellmeier-derived)
+  # ---------------------------------------------------------------------------
+  - symbol: "BBO_refractive_indices_nd_yag_harmonics"
+    value:
+      wavelengths_nm: [1064.2, 532.1, 354.1, 266.0, 212.8]
+      n_o:            [1.65510, 1.67493, 1.70556, 1.75707, 1.84707]
+      n_e:            [1.54254, 1.55552, 1.57757, 1.61461, 1.67467]
+    units: null
+    location_in_paper: "Table III"
+    notes: "Refractive indices at the harmonics of Nd:YAG (1064 nm fundamental), computed by the authors from the BBO_sellmeier_*_eimerl1987 fit. (NB: In the printed Table III the column headers appear above the values but the larger value at each wavelength is n_o, the smaller is n_e -- consistent with negative-uniaxial beta-BBO.)"
+
+  # ---------------------------------------------------------------------------
+  # Thermo-optic coefficients
+  # ---------------------------------------------------------------------------
+  - symbol: "BBO_dnodT_averaged"
+    value: -16.6e-6
+    units: "1/K"
+    location_in_paper: "Eq. (2); Table IV"
+    notes: "Wavelength-averaged thermo-optic coefficient of the ordinary index. Direct measurements at 1014, 579, 405 nm (Table IV: -16.64, -16.35, -16.83 e-6/degC) showed dispersion comparable to measurement precision; the authors use the averaged value -16.6e-6/degC in their subsequent calculations. Units 1/K and 1/degC equivalent for differential coefficients."
+
+  - symbol: "BBO_dnedT_averaged"
+    value: -9.3e-6
+    units: "1/K"
+    location_in_paper: "Eq. (3); Table IV"
+    notes: "Wavelength-averaged thermo-optic coefficient of the extraordinary index. Direct measurements at 1014, 579, 405 nm (Table IV: -9.76, -9.42, -8.84 e-6/degC); averaged value used in subsequent calculations."
+
+  # ---------------------------------------------------------------------------
+  # Transparency window
+  # ---------------------------------------------------------------------------
+  - symbol: "BBO_transparency_range"
+    value: [200e-9, 3000e-9]
+    units: "m"
+    location_in_paper: "Section 'LINEAR OPTICAL CONSTANTS'; Fig. 2"
+    notes: "Clear transmission range of a 4 mm thick sample is 200-3000 nm with infrared structure between 2000 and 3000 nm. UV edge starts at 215 nm and reaches 100%/cm extinction at about 200 nm. The sample contained inclusions; higher-quality crystals may show a sharper UV edge lying deeper into the ultraviolet."
+
+  - symbol: "BBO_uv_edge_onset"
+    value: 215e-9
+    units: "m"
+    location_in_paper: "Section 'LINEAR OPTICAL CONSTANTS'; Fig. 2(b)"
+    notes: "Wavelength at which extinction (combined absorption + scattering) begins to rise from the transparency baseline. 280 nm is well within the transparency window (about 65 nm above the onset)."
+
+  - symbol: "BBO_uv_extinction_100percent_per_cm_at"
+    value: 200e-9
+    units: "m"
+    location_in_paper: "Section 'LINEAR OPTICAL CONSTANTS'"
+    notes: "Wavelength at which the extinction reaches 100%/cm in the 4 mm sample tested. Sets the practical short-wavelength cutoff for SHG using this material."
+
+  # ---------------------------------------------------------------------------
+  # Damage threshold (1064 nm, 1 ns) -- not a CW-UV LIDT but the only direct
+  # damage measurement Eimerl 1987 reports.
+  # ---------------------------------------------------------------------------
+  - symbol: "BBO_damage_threshold_1064nm_1ns"
+    value: 13.5e4
+    units: "J/m^2"
+    location_in_paper: "Section 'DAMAGE THRESHOLD'"
+    notes: "One-on-one bulk damage threshold of inclusion-free regions of a 4 mm thick, 10 x 15 mm^2 plate cut at the Type I phase-matching angle for 1064 nm doubling. 13.5 J/cm^2 = 13.5e4 J/m^2. Pulsed (1 ns), 1064 nm, single-shot. Inclusions in the same sample showed a much lower threshold of about 4 J/cm^2 (4e4 J/m^2), indicating that the bulk threshold is largely controlled by sample quality / inclusion density rather than the intrinsic crystal limit. *NB: this is NOT a CW-UV LIDT.* The CW UV (280 nm, hours-to-days exposure) damage regime is governed by photo-induced surface degradation and is not measured in this paper; KD-UV280-005 carries that as a separate open extraction item."
+
+  # ---------------------------------------------------------------------------
+  # Nonlinear coefficients (the headline numbers for KD-UV280-005)
+  # ---------------------------------------------------------------------------
+  - symbol: "BBO_d11_eimerl1987"
+    value: 1.6e-12
+    units: "m/V"
+    location_in_paper: "Eq. (14)"
+    notes: "Nonlinear tensor component d_11 = 1.6 +/- 0.4 pm/V, measured relative to d_36(KDP) for SHG of 1064 nm. The conversion to absolute units used d_36(KDP) = 0.39 pm/V (Eimerl 1987 Eq. (14) and footnote 22). The 25% measurement uncertainty propagates directly to any d_eff derived from this constant. Dispersion of d_11 is expected by the authors to be weak in the visible and near UV; no per-wavelength d_11 value is reported. The d_eff value used at the 559->280 Type-I phase-matching angle is given by Eq. (17) and computed in BBO_d_eff_typeI_559_to_280nm below."
+
+  - symbol: "BBO_d22_over_d11_bound"
+    comparator: "<"
+    value: 0.05
+    units: "1"
+    location_in_paper: "Eq. (15)"
+    notes: "|d_22 / d_11| < 0.05 at 1064 nm SHG. d_22 is allowed only in space group R3 (which Eimerl rules out by single-crystal X-ray; see BBO_phase). Even if a small admixture of R3 character were present, d_22's contribution to the Type-I d_eff at 559->280 is bounded below 5% of d_11."
+
+  - symbol: "BBO_d31_over_d11_bound"
+    comparator: "<"
+    value: 0.05
+    units: "1"
+    location_in_paper: "Eq. (16)"
+    notes: "|d_31 / d_11| < 0.05 at 1064 nm SHG. Bounds the d_31 contribution to the Type-I d_eff (see Eq. (17)) to <= 0.05 d_11 sin(theta_PM). At theta_PM = 44 deg (559->280, Type I) this is <= 0.056 pm/V, i.e. roughly +/- 5% of the d_11 cos(theta) term that dominates."
+
+  - symbol: "BBO_d_eff_formula_typeI"
+    value_text: "d_eff = d_31 sin(theta) - d_11 cos(theta) cos(3 phi), with theta the polar angle from the optic axis and phi the azimuth from the x-axis (mirror-plane normal)."
+    units: null
+    location_in_paper: "Eq. (17); Fig. 25"
+    notes: "Formula for the effective nonlinear coefficient in Type-I (o + o -> e) collinear SHG/SFG in beta-BBO. The optimum azimuth phi is the one that maximises |cos(3 phi)|, i.e. phi = 0, 60, 120, 180 deg (mod 60 deg). The d_31 sin(theta) term is small (BBO_d31_over_d11_bound) and contributes at most +/- 5% to |d_eff| depending on the relative sign of d_31 and the chosen phi."
+
+  - symbol: "BBO_d_eff_typeI_559_to_280nm"
+    value: 1.15e-12
+    units: "m/V"
+    location_in_paper: "Derived from BBO_d11_eimerl1987 + BBO_d_eff_formula_typeI at theta_PM_559_to_280nm_typeI"
+    notes: "DERIVED from the Eimerl 1987 d_11 and Sellmeier values, evaluated at the computed Type-I 559->280 nm phase-matching angle theta_PM = 44.21 deg, optimum azimuth (|cos(3 phi)| = 1). |d_eff| = d_11 cos(theta_PM) = 1.6 * 0.7168 = 1.147 pm/V (central value; rounded parameter value 1.15 pm/V). Range across azimuth, including the +/- 5% d_31 admixture allowed by Eq. (16): 1.09 to 1.20 pm/V. Quoted central uncertainty driven by the 25% uncertainty on d_11 (Eq. 14): plus-or-minus ~0.3 pm/V. *Provenance:* derived value rather than directly measured, but the underlying d_11 measurement and the geometric formula are both Eimerl 1987 primary content; downstream code should reference this derived parameter rather than re-deriving it inconsistently."
+
+  # ---------------------------------------------------------------------------
+  # Phase-matching angle and walk-off (derived from Sellmeier for 559->280 nm)
+  # ---------------------------------------------------------------------------
+  - symbol: "theta_PM_559_to_280nm_typeI"
+    value: 0.7716
+    units: "rad"
+    location_in_paper: "Derived from BBO_sellmeier_*_eimerl1987 by solving n_e(2 omega, theta) = n_o(omega) at lambda_fund = 559 nm"
+    notes: "DERIVED Type-I phase-matching angle for 559 -> 280 nm SHG: theta_PM = 0.7716 rad = 44.21 deg. Cross-check: the same Sellmeier set (BBO_sellmeier_*_eimerl1987) reproduces the paper's Table VI values for nearby SHG processes -- 1064->532 (I): 22.88 deg vs paper 22.9 deg calc / 22.7 deg exp; 532->266 (I): 47.42 deg vs paper 47.5 deg calc / 47.3 deg exp. Friedenauer 2006 does not state the BBO PM angle directly, but operates the second cavity with a Brewster-cut BBO crystal whose cut angle is consistent with this derived value."
+
+  - symbol: "rho_walkoff_280nm_typeI"
+    value: 0.0831
+    units: "rad"
+    location_in_paper: "Derived from BBO_sellmeier_*_eimerl1987 at theta_PM_559_to_280nm_typeI"
+    notes: "DERIVED walk-off angle of the extraordinary 280 nm wave at the Type-I 559->280 nm phase-matching angle: rho = 0.0831 rad = 4.76 deg = 83.1 mrad. Computed via tan(rho) = (1/2) n_e^2(2w, theta) sin(2 theta) [1/n_e^2(2w) - 1/n_o^2(2w)]. The original notebook estimate of 85 mrad was in good agreement (within ~2 mrad) with this Eimerl-derived value; /notebooks/2026-05-01-friedenauer-bk-recalculation.py now uses the Eimerl-anchored value directly."
+
+  # ---------------------------------------------------------------------------
+  # Thermomechanical (relevant to Charter §1.5 thermal-load envelope)
+  # ---------------------------------------------------------------------------
+  - symbol: "BBO_thermal_expansion_alpha11"
+    value: 4.0e-6
+    units: "1/K"
+    location_in_paper: "Table X"
+    notes: "Thermal expansion coefficient perpendicular to the polar c-axis. Determined by high-temperature x-ray diffraction (room temperature to 900 degC, calibrated against the known Pt thermal expansion 9.1e-6/K). Strongly anisotropic relative to alpha_33."
+
+  - symbol: "BBO_thermal_expansion_alpha33"
+    value: 36.0e-6
+    units: "1/K"
+    location_in_paper: "Table X"
+    notes: "Thermal expansion coefficient along the polar c-axis. The 9x anisotropy alpha_33/alpha_11 is associated by the authors with the Ba-atom motion that drives the 900 degC phase transition."
+
+  - symbol: "BBO_thermal_conductivity_kappa11"
+    value: 0.08
+    units: "W/(m K)"
+    location_in_paper: "Table X"
+    notes: "Thermal conductivity perpendicular to the polar axis. Measured with a thermal comparator. Strongly anisotropic relative to kappa_33."
+
+  - symbol: "BBO_thermal_conductivity_kappa33"
+    value: 0.8
+    units: "W/(m K)"
+    location_in_paper: "Table X"
+    notes: "Thermal conductivity along the polar axis. The 10x anisotropy directly affects the §1.5 thermal-load envelope: heat extraction from the Brewster-cut BBO crystal at the UV stage is geometry-dependent and cannot be approximated by an isotropic value."
+
+  - symbol: "BBO_fracture_toughness"
+    value: 150e3
+    units: "Pa m^(1/2)"
+    location_in_paper: "Table X"
+    notes: "K_c = 150 kPa*m^(1/2), measured by indentation on a sample cut at the Type I 1064 nm phase-matching direction. Some anisotropy (<100%) was observed but not fully characterised. Eimerl 1987 derives a thin-plate fracture temperature about 10x higher than KDP / LiNbO3 / LiIO3 (Fig. 34 vs Fig. 35) -- BBO is unusually robust against thermally-induced fracture."
+
+  - symbol: "BBO_dielectric_K11"
+    value: 6.7
+    units: "1"
+    location_in_paper: "Eq. (23)"
+    notes: "Static dielectric constant perpendicular to the polar axis. Frequency-independent in 1-100 kHz, temperature-independent in 10-50 degC. tan(delta) < 0.001."
+
+  - symbol: "BBO_dielectric_K33"
+    value: 8.1
+    units: "1"
+    location_in_paper: "Eq. (23)"
+    notes: "Static dielectric constant along the polar axis."
+
+  # ---------------------------------------------------------------------------
+  # Optical absorption (caveat-laden; quality-controlled)
+  # ---------------------------------------------------------------------------
+  - symbol: "BBO_intrinsic_absorption_in_transparency"
+    comparator: "<"
+    value: 0.001
+    units: "1/cm"
+    location_in_paper: "Section 'SUMMARY' (paragraph 1)"
+    notes: "Eimerl 1987 states that 'in the region of transparency, the absorption of small samples can be made small, below 0.1%/cm', explicitly noting that this is not an intrinsic bulk property but a function of crystal quality and growth history (controlled primarily by trace impurities and inclusion density). Treat as an order-of-magnitude bound on best-case loss, not a guaranteed value for any specific crystal."
+
+open_extraction_items:
+  - "Damage threshold at CW UV (280 nm), the operationally relevant regime for the Mg+ chain. Eimerl 1987 reports only 1064 nm / 1 ns / one-on-one bulk damage; CW-UV photo-induced surface degradation is not measured here. Carries forward as the corresponding `KD-UV280-005` Section C TODO ('cite peer-reviewed CW LIDT measurements at 280 nm')."
+  - "Wavelength dispersion of d_11 (and d_31). Eimerl 1987 only states the value at 1064 nm SHG and asserts 'dispersion is expected to be weak in the visible and near UV'. A more recent measurement of d_11 at the 559 nm or 280 nm operating wavelengths would tighten the +/- 25% uncertainty quoted here."
+  - "Independent walk-off-angle measurement at 280 nm extraordinary at theta_PM = 44 deg. The 83.1 mrad value is derived from the Eimerl 1987 Sellmeier set; an independent literature value (e.g. via direct walk-off measurement) would discriminate the cross-Sellmeier-set sensitivity (Eimerl vs Kato vs more modern sets like Tamosauskas et al. 2018)."
+
+extraction_passes:
+  - date: "2026-05-04"
+    by: "assistant under steward direction"
+    scope: >
+      Bibliographic scaffold only. Created to host the upstream Sellmeier
+      and d_eff reference that Friedenauer 2006 footnote [7] points to via
+      SNLO. No PDF yet; no numerical values extracted. Created in support
+      of KD-UV280-005 Section C and notebooks/2026-05-01-friedenauer-bk-
+      recalculation.py §8 item 2.
+    status: "SCAFFOLD"
+  - date: "2026-05-04"
+    by: "assistant under steward direction"
+    scope: >
+      Full extraction from the PDF (provided in-conversation 2026-05-04 by
+      the steward; not committed to repository per AIP/J. Appl. Phys. 1987
+      copyright). Promotes status SCAFFOLD -> DRAFT. Captured: crystal
+      structure (R3c) and lattice constants; full Table I direct refractive
+      indices (13 wavelengths, 405-1014 nm); the Eimerl 1987 'this work'
+      Sellmeier coefficients for n_o and n_e plus the Chen 1985 (deprecated
+      per Table VI) and Kato 1986 alternative sets; the Nd:YAG harmonics
+      indices (Table III); thermo-optic coefficients (Eq. 2-3, Table IV);
+      transparency window 200-3000 nm with the 215 nm UV onset; the 1064-nm
+      / 1-ns one-on-one bulk damage threshold (13.5 J/cm^2); the d_11 =
+      1.6 +/- 0.4 pm/V nonlinear coefficient with the |d_22/d_11| and
+      |d_31/d_11| < 0.05 bounds and the Type-I d_eff formula (Eq. 17);
+      thermal expansion, conductivity, fracture toughness, dielectric
+      constants. Derived (and computed in src.boyd_kleinman cross-check):
+      n_o(559), n_e(559), n_o(280), n_e(280), Type-I theta_PM(559->280)
+      = 44.21 deg, walk-off rho(280 nm at theta_PM) = 83.1 mrad, and
+      d_eff(559->280, Type I) = 1.15 pm/V central (1.09-1.20 pm/V across
+      azimuth, +/- 25% from the d_11 measurement uncertainty). Sellmeier
+      cross-check against Table I (RMS < 4e-4) and Table VI calculated
+      angles for 1064->532 (I) and 532->266 (I) (deviations < 0.05 deg)
+      validates the C-in-um^2 interpretation against the apparent typo
+      in the Table II column header.
+    status: "DRAFT"
+
+cross_check_notes:
+  - id: "d_eff_eckardt1990_vs_eimerl1987"
+    summary: >
+      Eckardt et al. 1990 [P:Eckardt1990] re-measure |d_22(BaB2O4)| =
+      2.2 +/- 0.22 pm/V (10% absolute accuracy; 4% reproducibility across
+      12 measurements on three samples), 37% higher than Eimerl 1987's
+      |d_11| = 1.6 +/- 0.4 pm/V. The two papers' d_22 (Eckardt) and d_11
+      (Eimerl) refer to the *same physical R3c tensor element*; the
+      naming difference is a choice of which crystallographic axis is
+      called 'x' (Eckardt's d_eff formula uses sin(3 phi) where Eimerl's
+      uses cos(3 phi); both quote optimum azimuth |sin(3 phi)| = 1 or
+      |cos(3 phi)| = 1 respectively).
+    candidate_explanations:
+      - "Different d_36(KDP) calibration: Eimerl uses 0.39 pm/V, Eckardt measures 0.38 pm/V. Both authors note this difference is small (2.6%) compared with the 37% revision; cannot be the dominant cause."
+      - "Different sample mix: Eimerl used the Fujian crystal exclusively; Eckardt used two Stanford-grown samples plus the same Fujian crystal. The Eckardt 4% reproducibility across the three-sample set rules out vendor sensitivity as the dominant cause."
+      - "Different spatial-mode characterisation: Eimerl reports the largest single source of error as 'fluctuation in spatial distribution caused by drifting of spatial filter alignment'. Eckardt invested in injection-seeding and 100-shot averaging that probably tightens this term substantially."
+      - "Modern walk-off correction: Eckardt's d_eff formula uses (theta + rho) where Eimerl's uses theta. This propagates into the d_eff *extraction from the measured SHG signal*, not into the reported tensor component, but small differences in implementation could account for a few percent."
+    resolution: >
+      Eckardt 1990 is the modern absolute-d_eff anchor for BBO and is
+      the value that downstream tooling (SNLO, Nikogosyan 2005 compendium,
+      modern Friedenauer-class designs) inherits. KD-UV280-005 Section C
+      and the §5 Phase 1 evidence-table BBO row both cite Eckardt as the
+      central value with Eimerl recorded as the historical lower-bound
+      result. The conversion-efficiency-at-fixed-intensity ratio is
+      (2.2/1.6)^2 cos^2(theta+rho)/cos^2(theta) ~ 1.59, consistent with
+      the ~ 50% conversion efficiencies achieved in modern Friedenauer-
+      class systems at the LBO stage.
+    informs_dossier_entries:
+      - "KD-UV280-005"
+
+  - id: "sellmeier_tamosauskas2018_vs_eimerl1987"
+    summary: >
+      Tamosauskas et al. 2018 [P:Tamosauskas2018] refined three-oscillator
+      Sellmeier (Eq. 1, valid 0.188 - 5.2 um) gives n_o, n_e values
+      ~ 8e-4 lower than Eimerl 1987 Table I direct prism measurements at
+      visible wavelengths (1014, 589, 546, 405 nm spot-checked; uniform
+      offset). At 280 nm the offset narrows to 1e-4 (n_o) and 1.2e-3 (n_e).
+      Tamosauskas reports their fit matches the Chen 2012 book Table direct
+      measurements to 4e-5, which means the discrepancy is between the
+      Eimerl 1987 anchor measurements and the Chen 2012 anchor measurements
+      themselves, not in the Tamosauskas fit.
+    candidate_explanations:
+      - "Different prism samples / different polishing eras (1987 vs 2012). Optical-quality differences at the 1e-3 level are plausible."
+      - "Different wavelength-calibration standards used in the two prism-spectrometer measurements."
+      - "Crystal-vendor differences: Eimerl used Fujian crystals (1980s growth); the Chen 2012 book Table data may reflect more recent growth methods."
+    resolution: >
+      For the operationally relevant derived quantities (theta_PM, walk-off
+      rho), the two Sellmeier sets agree within 0.1 deg / 1 mrad despite
+      the 1e-3 absolute-index disagreement. The Type-I PM condition
+      n_e(2 omega, theta) = n_o(omega) cancels most of the offset because
+      both polarisations move in the same direction. KD-UV280-005 Section C
+      cites both [P:Eimerl1987] and [P:Tamosauskas2018] as parallel
+      Sellmeier anchors without privileging one over the other; downstream
+      ABCD or Fresnel calculations that need absolute indices should use
+      both as sensitivity bounds.
+    informs_dossier_entries:
+      - "KD-UV280-005"

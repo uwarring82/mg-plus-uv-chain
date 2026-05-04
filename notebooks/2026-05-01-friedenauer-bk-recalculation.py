@@ -118,29 +118,26 @@ print(f"BBO BK-optimum waist: w0 = {w0_BBO_paper_m * 1e6:.1f} μm  (paper)")
 # ## 2. Auxiliary refractive indices and walk-off angles
 #
 # These values are **not** in the Friedenauer extraction; they are cited
-# literature constants (or order-of-magnitude estimates flagged for Phase 1
-# follow-up).
+# literature constants from the upstream material-property references.
 #
 # - **LBO at 1118 nm, Type-I NCPM (along y-axis).** Sellmeier-derived index for
 #   the ordinary fundamental polarisation, n ≈ 1.605. Source: Kato 1994 / SNLO
 #   (TODO: cite in dossier). NCPM means walk-off ρ ≡ 0 by construction.
-# - **BBO at 559 nm, Type-I (o + o → e).** Refractive index of the ordinary
-#   fundamental n_o(559) ≈ 1.665 (TODO: cite Sellmeier). Walk-off angle of the
-#   extraordinary harmonic at the phase-matching angle θ_PM ≈ 50.4° is roughly
-#   ρ ≈ 80–90 mrad (TODO: cite). The phase-matching angle and walk-off are
-#   sensitive to ±0.1° in PM angle, so this is an order-of-magnitude figure
-#   pending a Sellmeier-based recalculation.
+# - **BBO at 559 nm, Type-I (o + o → e).** Eimerl 1987 Sellmeier-derived
+#   ordinary fundamental index n_o(559) = 1.67276. The extraordinary harmonic
+#   walk-off at the derived phase-matching angle θ_PM = 44.21° is
+#   ρ = 83.1 mrad.
 #
-# These three constants would all earn their own Section C citations in
-# KD-UV280-005 (BBO) and KD-UV280-007 (LBO) — they are flagged here as currently
-# uncited constants used only in this exploratory notebook.
+# The BBO constants are now anchored in KD-UV280-005 Section C by
+# [P:Eimerl1987]. The LBO refractive-index value still belongs in
+# KD-UV280-007 Section C.
 
 # %%
-# Cited-literature constants used below. Replace with peer-reviewed Sellmeier
-# values once KD-UV280-005 / -007 Section C is populated.
+# Cited-literature constants used below. LBO still needs a peer-reviewed
+# Sellmeier citation in KD-UV280-007 Section C.
 N_LBO_AT_1118 = 1.605          # TODO[KD-UV280-007]: cite Kato 1994 / SNLO
-N_BBO_O_AT_559 = 1.665         # TODO[KD-UV280-005]: cite Sellmeier
-RHO_BBO_TYPEI_AT_280_RAD = 0.085  # ~85 mrad; TODO[KD-UV280-005]: cite
+N_BBO_O_AT_559 = 1.67276       # [P:Eimerl1987] Sellmeier, n_o(559 nm)
+RHO_BBO_TYPEI_AT_280_RAD = 0.0831  # [P:Eimerl1987] derived at theta_PM = 44.21 deg
 
 # %% [markdown]
 # ## 3. Geometric BK relations
@@ -231,7 +228,7 @@ fig.tight_layout()
 #
 # For Type-I 559 → 280 nm phase-matching in BBO, the e-wave at 280 nm walks off
 # the o-fundamental at the PM angle. The walk-off parameter $\beta$ depends on
-# the crystal length and the literature-typical walk-off angle ≈ 85 mrad.
+# the crystal length and the Eimerl-derived walk-off angle ρ = 83.1 mrad.
 
 # %%
 LAMBDA_FUND_BBO = 559e-9
@@ -245,7 +242,7 @@ beta_BBO = beta_walkoff(
 print(f"BBO walk-off parameter β = {beta_BBO:.2f}  (using ρ ≈ {RHO_BBO_TYPEI_AT_280_RAD * 1e3:.0f} mrad)")
 
 # %% [markdown]
-# With ρ ≈ 85 mrad the notebook's `beta_walkoff` convention gives β ≈ 18.4.
+# With ρ = 83.1 mrad the notebook's `beta_walkoff` convention gives β ≈ 18.0.
 # At that β, the BK optimum sits at much smaller ξ than the no-walk-off case.
 # Computing the σ-optimised optimum here is **slow** because each evaluation
 # of `h_m_factor` runs a Brent search inside scipy `dblquad`. We therefore
@@ -283,7 +280,7 @@ print(f"BBO paper-reported w0   = {w0_BBO_paper_m * 1e6:.2f} μm")
 # %% [markdown]
 # **Discrepancy between recomputation and paper.** Under the notebook's own
 # β-convention `β = (ρ/2) √(L k₁)` with `k₁ = 2π n / λ`, the literature-cited
-# walk-off (≈ 85 mrad → β ≈ 18.4) drives the optimum to a much looser focus
+# walk-off (83.1 mrad → β ≈ 18.0) drives the optimum to a much looser focus
 # than the paper's reported $w_0 = 19.4\,\mu\mathrm{m}$. Conversely, the
 # paper's $w_0$ corresponds to $\xi \approx 1.42$; under this notebook's
 # implementation that ξ matches a much smaller walk-off, β ≈ 0.55, i.e.
@@ -294,9 +291,9 @@ print(f"BBO paper-reported w0   = {w0_BBO_paper_m * 1e6:.2f} μm")
 #
 # This is a real open question the dossier should resolve:
 #
-# 1. *Is our walk-off estimate (ρ ≈ 85 mrad) correct?* It is order-of-magnitude
-#    only at this commit, pending Sellmeier-based recalculation cited in
-#    `KD-UV280-005 Section C`.
+# 1. *Is our walk-off estimate (ρ ≈ 85 mrad) correct?* Yes. The
+#    Eimerl-derived value is 83.1 mrad, so the original estimate was within
+#    about 2 mrad.
 # 2. *Did Friedenauer use a different optimization criterion?* For an enhancement
 #    cavity rather than single-pass SHG, the figure of merit is conversion
 #    efficiency *given the cavity buildup factor and round-trip losses*, not the
@@ -368,7 +365,7 @@ axs[0].grid(alpha=0.3)
 # 6.2 For BBO, plot w0 vs ρ (walk-off angle) at fixed L = 10 mm. SLOW; we use
 # a small grid.
 print("Computing BBO sensitivity to ρ (slow)...")
-rho_grid = np.array([0.0, 0.005, 0.010, 0.020, 0.040, 0.060, 0.085])  # rad
+rho_grid = np.array([0.0, 0.005, 0.010, 0.020, 0.040, 0.060, RHO_BBO_TYPEI_AT_280_RAD])  # rad
 w0_vs_rho = []
 for rho in rho_grid:
     b = beta_walkoff(rho, L_BBO_m, LAMBDA_FUND_BBO, N_BBO_O_AT_559)
@@ -394,8 +391,8 @@ axs[1].grid(alpha=0.3)
 fig.tight_layout()
 
 # %% [markdown]
-# The right panel makes it explicit: with the literature-typical
-# ρ ≈ 85 mrad the BK σ-optimised $w_0$ in this notebook's convention is
+# The right panel makes it explicit: with the Eimerl-derived
+# ρ = 83.1 mrad the BK σ-optimised $w_0$ in this notebook's convention is
 # ≈ 42 μm — a factor ≈ 2.17× larger than the paper's 19.4 μm. The paper's
 # value matches the notebook's convention only at much smaller walk-off
 # (ρ ≈ 2.5 mrad), far below published BBO Type-I walk-off angles at 280 nm.
@@ -412,7 +409,7 @@ fig.tight_layout()
 # |---|---|---|---|---|
 # | LBO 1118 → 559 | $w_0$ at BK σ-optimum | 27.3 μm | (computed below) | (computed below) |
 # | BBO 559 → 280 (β = 0) | $w_0$ at BK σ-optimum | 19.4 μm | (computed below) | (computed below) |
-# | BBO 559 → 280 (β ≈ 18.4) | $w_0$ at BK $\beta$-optimum | 19.4 μm | (computed below) | (computed below) |
+# | BBO 559 → 280 (β ≈ 18.0) | $w_0$ at BK $\beta$-optimum | 19.4 μm | (computed below) | (computed below) |
 
 # %%
 print(f"{'Stage':<35} {'Paper (μm)':>12} {'Recomp. (μm)':>14} {'Δ (%)':>8}")
@@ -428,7 +425,7 @@ print(f"{'BBO 559→280, β=0 (no walk-off)':<35} "
       f"{w0_BBO_no_walkoff * 1e6:>14.2f} "
       f"{(w0_BBO_no_walkoff - w0_BBO_paper_m) / w0_BBO_paper_m * 100:>+8.1f}")
 
-print(f"{'BBO 559→280, β≈18.4 (lit. walk-off)':<35} "
+print(f"{'BBO 559→280, β≈18.0 (Eimerl)':<35} "
       f"{w0_BBO_paper_m * 1e6:>12.2f} "
       f"{w0_BBO_walkoff * 1e6:>14.2f} "
       f"{(w0_BBO_walkoff - w0_BBO_paper_m) / w0_BBO_paper_m * 100:>+8.1f}")
@@ -439,22 +436,42 @@ print(f"{'BBO 559→280, β≈18.4 (lit. walk-off)':<35} "
 # 1. **Sellmeier coefficients for LBO at 1118 nm** — needed to lock $n_\mathrm{LBO}$
 #    beyond the order-of-magnitude figure used here. Belongs in
 #    `KD-UV280-007 Section C` with citation.
-# 2. **Sellmeier coefficients and walk-off for BBO at 559 → 280 nm Type-I** — the
-#    walk-off-vs-PM-angle relation is the binding uncertainty for the BBO BK
-#    analysis. Belongs in `KD-UV280-005 Section C`.
-# 3. **Cavity mirror radii of curvature (LBO and BBO ring cavities)** — missing
-#    from the YAML extraction at this commit, but partly recoverable from the
-#    paper itself: Friedenauer 2006 reports e.g. f = 25 mm for the LBO cavity's
-#    curved focusing mirrors. Re-reading §3 / Table 1 to add these to
-#    `extracted.yaml` is straightforward and unblocks
-#    `src.abcd.cavity_eigenmode_q` against this geometry.
+# 2. **Sellmeier coefficients and walk-off for BBO at 559 → 280 nm Type-I** —
+#    *Closed (2026-05-04, two passes).* `[P:Eimerl1987]` and
+#    `[P:Tamosauskas2018]` are now both extracted as parallel Sellmeier
+#    anchors, agreeing on derived θ_PM and ρ within 0.07° / 1 mrad despite
+#    ~10⁻³ disagreement in absolute indices. Eimerl values: θ_PM = 44.21°,
+#    ρ = 83.1 mrad; Tamošauskas values: θ_PM = 44.28°, ρ = 83.8 mrad.
+#    `KD-UV280-005 Section C` carries both as parallel anchors.
+# 3. **Cavity mirror radii of curvature (LBO and BBO ring cavities)** —
+#    *Closed (2026-05-04).* `LBO_focusing_mirror_focal_length` = 25 mm
+#    (direct from §3) and `BBO_focusing_mirror_focal_length` = 25 mm
+#    (paper-stated equivalence) added to `data/literature/Friedenauer2006/extracted.yaml`.
+#    Both cavities can now be driven against `src.abcd.cavity_eigenmode_q`.
 # 4. **Friedenauer's BK criterion for BBO** — single-pass BK with literature ρ
 #    over-predicts the optimum waist by a factor ≈ 2.17 (recomputed 42 μm vs
-#    paper's 19.4 μm). Likely the paper used a cavity-specific figure of merit.
-#    Resolving this is post-G1 Phase 3 simulation work; not blocking pre-G1
-#    progress.
-# 5. **`d_eff` for both crystals** — needed for any conversion-efficiency
-#    recomputation. Belongs in `KD-UV280-005` and `KD-UV280-007 Section C`.
+#    paper's 19.4 μm). The Eimerl-anchored ρ = 83.1 mrad (item 2) confirms
+#    that the discrepancy is *not* driven by the walk-off estimate. The most
+#    likely explanation remains
+#    that Friedenauer used a cavity-specific (build-up + round-trip-loss)
+#    figure of merit rather than single-pass BK. Resolving this is post-G1
+#    Phase 3 simulation work; not blocking pre-G1 progress.
+# 5. **`d_eff` for both crystals** — *Closed for BBO (2026-05-04).*
+#    BBO central anchor revised upward from the bare Eimerl-anchored value
+#    (1.15 pm/V) to the modern `[P:Eckardt1990]` anchor: `|d_22| = 2.2 pm/V`
+#    (37 % higher than Eimerl's `|d_11| = 1.6`), giving
+#    `BBO_d_eff_typeI_559_to_280nm_eckardt` ≈ 1.44 pm/V central
+#    (range 1.30–1.60, ±10 % from the Eckardt absolute accuracy). The
+#    conversion-efficiency-at-fixed-intensity ratio is (1.44/1.15)² = 1.57,
+#    consistent with modern Friedenauer-class observations. Both anchors
+#    are kept in the dossier (`data/literature/Eimerl1987/` for the
+#    historical lower bound; `data/literature/Eckardt1990/` for the
+#    central value), with the cross-set discrepancy logged in Eimerl's
+#    `cross_check_notes.d_eff_eckardt1990_vs_eimerl1987`. LBO `d_eff` at
+#    1118 nm is captured from Friedenauer 2006 §3 as 0.84 pm/V
+#    (`deff_LBO_at_1118` in `data/literature/Friedenauer2006/extracted.yaml`,
+#    paper attribution to SNLO); the LBO side does not yet have a
+#    modern-absolute-d_eff cross-check (item 1 above).
 #
 # **Promotion guard.** None of this notebook's logic is suitable for promotion
 # to `/src/` without first (a) cleaning up the cited-literature constants into a
