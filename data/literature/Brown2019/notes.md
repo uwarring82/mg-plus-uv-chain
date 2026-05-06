@@ -1,28 +1,40 @@
 # Brown2019 Extraction Notes
 
-**Citation:** A. Brown, D. Bernot, A. Ogloza, K. Olson, J. Thomas, and J. Talghader, "Physical Origin of Early Failure for Contaminated Optics," *Scientific Reports* **9**, 635 (2019), DOI: `10.1038/s41598-018-37337-5`. (Author list to be confirmed against PDF.)
+**Citation:** A. Brown, D. Bernot, A. Ogloza, K. Olson, J. Thomas, and J. Talghader, "Physical Origin of Early Failure for Contaminated Optics," *Scientific Reports* **9**, 635 (2019), DOI: `10.1038/s41598-018-37337-5`. Affiliations: ¹University of Minnesota Twin Cities (Brown, Olson, Talghader), ²Penn State Electro-Optic Center (Bernot, Thomas), ³Schafer Corporation (Ogloza). Corresponding author: J. Talghader (joey@umn.edu).
 
-**Source available:** open-access *Scientific Reports* PDF copied on 2026-05-06 to ignored path `downloads/literature/task-e/Brown2019_SciRep_open.pdf`. Structured extraction still pending.
+**Source used:** open-access *Scientific Reports* PDF (CC-BY-4.0) copied on 2026-05-06 to ignored path `downloads/literature/task-e/Brown2019_SciRep_open.pdf`. CC-BY-4.0 licence permits redistribution, but per repository policy the PDF is **not** committed to the repository. Citation in this extraction is sufficient.
 
 ## Why this paper
 
-Identified in the third scout pass as **the contamination-mechanism anchor** for `KD-UV280-012`. The experiment stresses contaminated optical coatings with a 17 kW continuous-wave fiber laser at 1070 nm; breakdown occurs at intensities many orders of magnitude below clean-sample thresholds, and damage threshold scales with coating bandgap. The thermal free-carrier breakdown model the authors develop is wavelength-scalable and directly applicable to the Friedenauer-class cavity mirrors operating in a non-UHV environment with realistic hydrocarbon contamination from mechanical components. Wavelength is far from 280 nm; the import of value lies in the *mechanism model and bandgap scaling*, not numerical LIDT.
+Identified in the third scout pass as **the contamination-mechanism anchor** for `KD-UV280-012` and the canonical demonstration of bandgap-dependent CW-driven coating breakdown. The 17 kW CW Yb-fiber-laser test bench at 1070 nm exercises contaminated multilayer coatings to failure; carbon and steel microparticle contaminants cause failures at irradiances **3 to 6 orders of magnitude below** the pristine-sample thresholds. The thermal free-carrier breakdown model the authors develop quantitatively reproduces the experimentally observed bandgap scaling and is the canonical mechanism statement for CW contamination-induced LIDT lowering. Wavelength is far from 280 nm — but the import of value lies in the *mechanism functional form and bandgap-dependence model*, not in numerical LIDT thresholds.
 
-## Extraction targets
+## Extraction Scope
 
-When the structured pass is run, extract:
+The 2026-05-06 pass extracts:
 
-1. Contamination types tested (carbon, steel, particulate composition), preparation protocol, and area density.
-2. Power-handling regime: 17 kW CW fiber-laser geometry, beam diameter, focused intensity at sample.
-3. Damage-threshold drop factor (clean → contaminated) for each contamination type and each coating material.
-4. Coating-bandgap dependence: damage threshold as a function of E_g.
-5. Thermal free-carrier breakdown model parameters (carrier-generation rate, free-carrier absorption coefficient, runaway timescale).
-6. The companion 2015 paper (Brown et al., Appl. Opt. 54, 5216-5222 (2015)) and any laser-conditioning protocol it introduces.
+- §1 introduction: the prior-art context that lab-controlled LIDT measurements rarely match field-deployment LIDT due to contamination, motivating the systematic contaminated-sample study.
+- §Materials and Methods: superpolished 1" fused-silica substrate; six oxide film types tested (titania, niobia, tantala, hafnia, alumina, silica); λ/2 single-layer and λ/4 DBR multilayer coatings; carbon (7 μm diameter, 0.07 g / mL suspension) and stainless-steel (35-40 μm) microparticle contaminants; 17 kW IPG fiber laser at 1070 nm CW; 3 × 3 test grid with 4 mm spacing; thermal-camera surface-temperature monitor; PCI absorption mapping.
+- §Results: Fig. 3 (DBR damage thresholds vs bandgap, both carbon and steel contaminants); Fig. 4 (λ/2 single-layer carbon-contaminated thresholds vs bandgap, with the free-carrier model curve); Table 1 (irradiance test counts); Fig. 5 (silica capping-layer ineffectiveness); the IR + UV co-illumination experiment (40 mW 224 nm laser added to 17 kW 1070 nm beam — no UV-photo-excitation effect on damage).
+- §Thermally Generated Free Carrier Model: Eq. 1 heat-transport with free-carrier source term; Eq. 2 Drude-Lorentz free-carrier absorption coefficient; Eq. 3 Maxwell-Boltzmann carrier density; Eq. 4-5 contaminant evaporation rate; Fig. 6 simulated temperature evolution near runaway threshold.
+- §Discussion: the bandgap dependence is consistent across all film/contaminant combinations and rules out conventional film-property explanations (thermal conductivity, melting point, intrinsic absorption); statistical particle-size variations explain the residual scatter, but the bandgap dependence is deterministic.
+- Table 2: material-property table for the six oxide films (absorption ppm, thermal conductivity, melting point, bandgap energy).
 
-## Status
+## Extraction Passes
 
-`SCAFFOLD` — open-access *Scientific Reports* PDF is available locally, but no numerical extraction has been performed.
+- **2026-05-06 (assistant under steward direction, DRAFT).** Initial full-body extraction from the open-access *Scientific Reports* PDF. Numerical extractions cover the failure thresholds for each film type and contaminant, the model parameters (TCC, particle size, evaporation temperature), and the material-property table. The detailed model derivation is captured in `notes.md` rather than `extracted.yaml`. Status promoted from `SCAFFOLD` to `DRAFT`.
 
-## Extraction passes
+## Review Notes
 
-- **2026-05-06 (assistant under steward direction, SCAFFOLD).** Created bibliographic scaffold from public *Scientific Reports* metadata and the third scout pass. Author list and exact citation to be confirmed against the PDF in the next pass.
+- **Wavelength caveat is severe.** All damage testing is at 1070 nm CW with a 0.5-1 mm spot. The companion 224 nm UV illumination experiment showed *no* measurable contribution of UV photons to damage initiation under the test conditions (50 kW / cm² of 224 nm + 13 MW / cm² of 1070 nm with same contaminants caused no damage). The mechanism is *thermally driven free-carrier generation from contaminant heating*, with the contamination acting as the absorber and the underlying coating's bandgap setting the runaway threshold. This is wavelength-scalable as long as the contamination absorbs the operating wavelength; for visible / UV, contamination absorption is typically higher than at 1070 nm, so thresholds may *drop* further at 280 nm.
+- **The bandgap scaling is the headline result.** Across six oxide film types spanning bandgaps from 3 eV (titania) to 9 eV (silica), the carbon-contaminated λ / 2 LIDT scales monotonically with bandgap from ~10² kW / cm² to >10⁴ kW / cm² (silica did not damage at the highest tested irradiance, 17.8 MW / cm²). The free-carrier model curve fits the data within the experimental scatter. **For the Friedenauer-class 280 nm cavity, this means coatings should use the highest-bandgap material possible (silica > alumina > hafnia > tantala > niobia > titania) when contamination cannot be excluded.**
+- **The capping-layer ineffectiveness is the second-most-important result.** Silica capping layers from 1 to 5.5 μm thick over tantala-silica DBRs gave **no measurable improvement** in carbon-contaminated LIDT (Fig. 5). The model explains this: heat from the heated contaminant diffuses through 1-5 μm of silica in <1 ms, but the contaminant evaporates over the same timescale; only mm-thick caps would be effective, which would require backside illumination to access the lower-bandgap underlying coating (Fig. 5 control experiment confirms this).
+- **The free-carrier model is portable and quantitative.** Equations 1-3 are dimensionally tractable and require only the bandgap (Eg), thermal diffusivity (D), free-carrier absorption coefficient (α_FC), and the laser irradiance. The TCC (thermal contact conductance) of 48 kW / m² / K for ~1 μm graphite-like contact is the key fit parameter; this is consistent with independent measurements (~46 kW / m² / K from Wolff & Schneider 1998, ref [14]) and bracketed by graphene (tens of MW / m² / K) and metal-metal contact (few kW / m² / K).
+- **Free-carrier source term is the late-time runaway driver.** Once the surface temperature exceeds the threshold for thermal Maxwell-Boltzmann free-carrier population in the conduction band, free-carrier absorption dominates over the contact heat-transfer term and drives runaway breakdown. The runaway timescale for tantala at 1.6 MW / cm² is ~10 μs; for hafnia at 3.8 MW / cm² is ~5 μs; for alumina at 6.3 MW / cm² is ~1 μs (Fig. 6b).
+- **No primary 280 nm content.** This paper does not measure damage at any wavelength below 1070 nm except for the 224 nm UV-co-illumination negative control. The ~50 kW / cm² 224 nm survival of pristine optics is *not* a UV LIDT — it's an upper bound on UV-photo-excitation contribution to the contamination-driven damage process at 1070 nm, and the 280 nm Section C cannot use it.
+- **CC-BY-4.0 licence.** This is the only paper in the current Task-E inventory under an unrestricted Creative Commons licence. The PDF could in principle be redistributed, but the repo's per-folder LICENSE.md protocol does not currently differentiate by source-paper licence; PDFs remain in the gitignored staging area for now.
+
+## Downstream Dossier Links
+
+- `KD-UV280-008`: cavity-mirror / AR-coating selection. Brown2019 contributes the bandgap-vs-LIDT scaling argument: in the presence of unavoidable contamination, mirror-coating materials should be ranked silica > alumina > hafnia > tantala > niobia > titania for damage resistance. The Friedenauer-class HfO₂ / Al₂O₃ / SiO₂ multilayer (per Turcicova2022 §4.3) sits in the middle of this ranking.
+- `KD-UV280-009`: gas-environment dependence. Brown2019 contributes the cleanliness rationale: contamination cannot be eliminated outside a dust-free clean room, but its effect on LIDT can be attenuated by choice of high-bandgap surface materials. Cross-links to the Burkley2021 hydrocarbon-vs-oxygen-depletion mechanism (Burkley2021 emphasises gaseous hydrocarbon contamination during operation, Brown2019 emphasises particulate carbon contamination from handling).
+- `KD-UV280-012`: AR-coating durability. Brown2019 contributes the canonical free-carrier breakdown model and the capping-layer ineffectiveness result. The model is portable to other wavelengths and other contaminants; the absolute thresholds are not.

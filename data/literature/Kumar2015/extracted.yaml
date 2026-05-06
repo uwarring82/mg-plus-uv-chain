@@ -1,12 +1,12 @@
 citation_key: "Kumar2015"
 source_tier: "P"
 doi: "10.1364/OE.23.028091"
-citation: "S. Chaitanya Kumar, J. Canals Casals, J. Wei, and M. Ebrahim-Zadeh, Optics Express 23, 28091-28103 (2015)"
+citation: "S. Chaitanya Kumar, J. Canals Casals, Junxiong Wei, and M. Ebrahim-Zadeh, Optics Express 23, 28091-28103 (2015)"
 title: "High-power, high-repetition-rate performance characteristics of beta-BaB2O4 for single-pass picosecond ultraviolet generation at 266 nm"
 extracted_by: "assistant under steward direction"
 extracted_on: "2026-05-06"
-extraction_status: "SCAFFOLD"
-source_document: "Open-access UPCommons / institutional-repository PDF copied on 2026-05-06 to ignored path downloads/literature/task-e/Kumar2015_UPCommons_open.pdf. Structured extraction still pending."
+extraction_status: "DRAFT"
+source_document: "Open-access UPCommons (UPC institutional repository) PDF copied on 2026-05-06 to ignored path downloads/literature/task-e/Kumar2015_UPCommons_open.pdf. PDF is not committed to the repository."
 charter_section_refs:
   - "§5 Phase 1"
   - "§8.4"
@@ -16,19 +16,408 @@ dossier_entries:
   - "KD-UV280-009"
   - "KD-UV280-011"
 
-parameters: []
+parameters:
+  - symbol: "architecture_route"
+    value_text: "Mode-locked Yb-fiber laser at 1064 nm, 20 ps, ~80 MHz -> single-pass SHG in 30-mm-long LBO (NCPM Type-I) at 148.2 deg C -> green at 532 nm -> single-pass SHG in 5- or 10-mm-long BBO (critical Type-I, 47.56 deg) -> 266 nm UV"
+    units: null
+    location_in_paper: "Section 2"
+    notes: "All-fiber-pumped picosecond fourth-harmonic-generation chain. Single-pass throughout (no cavity). The repetition-rate / pulse-duration combination puts the BBO stage in the thermally quasi-CW regime."
+
+  - symbol: "lambda_fundamental"
+    value: 1.064e-6
+    units: "m"
+    location_in_paper: "Section 2"
+    notes: "Yb-fiber laser fundamental wavelength."
+
+  - symbol: "P_fundamental_max_avg"
+    value: 20
+    units: "W"
+    location_in_paper: "Section 2"
+    notes: "Maximum 1064 nm average power available from the Femto Power FP-1060-20 source."
+
+  - symbol: "pulse_duration"
+    value: 20e-12
+    units: "s"
+    location_in_paper: "Section 2"
+    notes: "20 ps pulse duration."
+
+  - symbol: "repetition_rate"
+    value: 80e6
+    units: "Hz"
+    location_in_paper: "Section 2"
+    notes: "80 MHz pulse repetition rate; 12.5 ns inter-pulse interval."
+
+  - symbol: "fundamental_FWHM_bandwidth"
+    value: 1.4e-9
+    units: "m"
+    location_in_paper: "Section 2"
+    notes: "Double-peaked spectrum, full width at half maximum 1.4 nm at 1064 nm."
+
+  - symbol: "LBO_crystal_length"
+    value: 30e-3
+    units: "m"
+    location_in_paper: "Section 2"
+    notes: "30 mm long LBO SHG crystal."
+
+  - symbol: "LBO_aperture"
+    value: [3e-3, 4e-3]
+    units: "m"
+    location_in_paper: "Section 2"
+    notes: "3 x 4 mm^2 aperture."
+
+  - symbol: "LBO_phase_match_type"
+    value_text: "Type-I (oo->e) noncritical phase-matching along the optical x-axis"
+    units: null
+    location_in_paper: "Section 2"
+    notes: "theta = 90 deg, phi = 0 deg."
+
+  - symbol: "LBO_oven_temp"
+    value: 148.2
+    units: "degC"
+    location_in_paper: "Section 2"
+    notes: "LBO oven phase-matching temperature, +/- 0.1 deg C stability."
+
+  - symbol: "P_532_max"
+    value: 9.1
+    units: "W"
+    location_in_paper: "Section 2"
+    notes: "Maximum 532 nm average power generated in the LBO SHG stage at 16.8 W of 1064 nm input. Single-pass green-stage efficiency 54 %, 16.2 ps green pulses, 0.5 % rms passive stability over 16 hours."
+
+  - symbol: "BBO_crystal_lengths_tested"
+    value: [5e-3, 10e-3]
+    units: "m"
+    location_in_paper: "Section 2"
+    notes: "Two BBO crystal lengths tested for FHG to 266 nm."
+
+  - symbol: "BBO_phase_match_type"
+    value_text: "Type-I (oo->e) critical phase-matching"
+    units: null
+    location_in_paper: "Section 2"
+    notes: "Standard 532 -> 266 nm Type-I configuration."
+
+  - symbol: "BBO_phase_match_angle"
+    value: 47.56
+    units: "deg"
+    location_in_paper: "Section 2; Table 1"
+    notes: "BBO Type-I 532 -> 266 nm phase-matching angle. Compare with Kondo1998 47.5 deg cut (within rounding) and Kubota1998 47.9 deg phase-matching (angle resolution 0.4 deg)."
+
+  - symbol: "BBO_AR_coating"
+    value_text: "antireflection coated for high transmission (R<0.1%) at both 532 nm and 266 nm"
+    units: null
+    location_in_paper: "Section 2"
+    notes: "Dual-wavelength AR coating; long-term degradation observed on the 266 nm AR coating of the exit face after several hours of operation (recoverable by translating)."
+
+  - symbol: "BBO_walk_off_angle_at_47p56_phase_match"
+    value: 0.085
+    units: "rad"
+    location_in_paper: "Table 1; Section 5"
+    notes: "Walk-off angle rho = 85 mrad. Sets the effective interaction length L_eff in the absence of walk-off compensation."
+
+  - symbol: "BBO_deff_at_266"
+    value: 1.75e-12
+    units: "m/V"
+    location_in_paper: "Table 1; reference [5] Nikogosyan"
+    notes: "Effective nonlinear coefficient at the 47.56 deg Type-I phase-matching geometry. Compare with Kondo1998 1.642 pm/V (5 % difference, within Sellmeier-vs-Miller-delta convention noise)."
+
+  - symbol: "BBO_alpha_at_266"
+    comparator: "<"
+    value: 17.0
+    units: "1/m"
+    location_in_paper: "Table 1"
+    notes: "Linear absorption coefficient alpha_UV at 266 nm in BBO, reported as <0.17 cm^-1. Compare with Kubota1998 (1 %/cm in e-pol = 1.0 m^-1, but Kubota's value is the long-wavelength scattering loss, not the linear-absorption-edge tail at 266 nm)."
+
+  - symbol: "BBO_angular_acceptance"
+    value: 1.9e-3
+    units: "rad*m"
+    location_in_paper: "Table 1"
+    notes: "Angular acceptance in mrad-cm units; 0.19 mrad-cm. Set by the walk-off-limited effective interaction length."
+
+  - symbol: "P_UV_5mm_single_crystal_max"
+    value: 1.4
+    units: "W"
+    location_in_paper: "Section 3; Fig. 1a"
+    notes: "Maximum 266 nm UV average power from the 5-mm BBO single-crystal scheme at 8 W green input. Single-pass FHG efficiency 18 %."
+
+  - symbol: "P_UV_10mm_single_crystal_max"
+    value: 1.8
+    units: "W"
+    location_in_paper: "Section 3; Fig. 1b"
+    notes: "Maximum 266 nm UV average power from the 10-mm BBO single-crystal scheme at 8.4 W green input. Single-pass FHG efficiency 21.4 %. Saturation observed at high green powers due to thermal effects (linear-vs-quadratic scaling deviation in inset of Fig. 1b)."
+
+  - symbol: "P_UV_walk_off_compensation_max"
+    value: 2.9
+    units: "W"
+    location_in_paper: "Section 4; Fig. 3"
+    notes: "Maximum 266 nm UV average power from the two-crystal walk-off-compensation scheme (10+10 mm BBO at 47.56 deg, w_SH ~20 um in second crystal) at 8.2 W green input. Single-pass FHG efficiency 35 %. +60 % vs single-crystal scheme."
+
+  - symbol: "L_eff_walk_off_limited_w55um"
+    value: 1.1e-3
+    units: "m"
+    location_in_paper: "Section 5"
+    notes: "Walk-off-limited effective interaction length for the 10-mm BBO at green-beam waist w_SH ~55 um."
+
+  - symbol: "L_eff_walk_off_limited_w19um"
+    value: 0.4e-3
+    units: "m"
+    location_in_paper: "Section 5"
+    notes: "Walk-off-limited effective interaction length for the 10-mm BBO at green-beam waist w_SH ~19 um (tight focus)."
+
+  - symbol: "delta_theta_5mm_w55"
+    value: 1.5e-3
+    units: "rad"
+    location_in_paper: "Section 5; Fig. 4a"
+    notes: "FWHM angular-acceptance bandwidth, 5-mm BBO, w_SH = 55 um. Theoretical Sellmeier value 0.3 mrad — wider experimental value attributed to walk-off-limited effective length."
+
+  - symbol: "delta_theta_5mm_w19"
+    value: 4.1e-3
+    units: "rad"
+    location_in_paper: "Section 5; Fig. 4b"
+    notes: "FWHM angular-acceptance bandwidth, 5-mm BBO, w_SH = 19 um."
+
+  - symbol: "delta_theta_10mm_w55"
+    value: 1.9e-3
+    units: "rad"
+    location_in_paper: "Section 5; Fig. 4c"
+    notes: "FWHM angular-acceptance bandwidth, 10-mm BBO, w_SH = 55 um."
+
+  - symbol: "delta_theta_10mm_w19"
+    value: 4.8e-3
+    units: "rad"
+    location_in_paper: "Section 5; Fig. 4d"
+    notes: "FWHM angular-acceptance bandwidth, 10-mm BBO, w_SH = 19 um."
+
+  - symbol: "delta_T_temperature_acceptance"
+    value: 33
+    units: "K"
+    location_in_paper: "Section 6; Fig. 5"
+    notes: "Measured FWHM temperature-acceptance bandwidth for the 10-mm BBO at w_SH = 55 um. Theoretical (Sellmeier) value 5.3 K. Wider experimental value implies a temperature-bandwidth-limited interaction length L_eff = 1.6 mm."
+
+  - symbol: "BBO_surface_T_at_low_power"
+    value: 21.8
+    units: "degC"
+    location_in_paper: "Section 6; Fig. 6"
+    notes: "Direct surface-temperature measurement at the BBO crystal centre at room-temperature ambient and low laser power."
+
+  - symbol: "BBO_surface_T_at_1p7W_UV"
+    value: 27.9
+    units: "degC"
+    location_in_paper: "Section 6; Fig. 6"
+    notes: "Direct surface-temperature measurement at the BBO crystal centre at the maximum UV power of 1.7 W (green and UV both present, optimum phase-matching)."
+
+  - symbol: "BBO_surface_T_at_8p3W_green_only"
+    value: 22.1
+    units: "degC"
+    location_in_paper: "Section 6; Fig. 6 inset (a)"
+    notes: "Direct surface-temperature with green only (8.3 W o-pol, BBO out of phase-matching, no UV generated). Green-only contribution is small."
+
+  - symbol: "BBO_surface_T_at_1p2W_UV_only"
+    value: 23.1
+    units: "degC"
+    location_in_paper: "Section 6; Fig. 6 inset (b)"
+    notes: "Direct surface-temperature with UV only (1.2 W e-pol on a separate 10-mm BBO out of phase-matching). UV-only contribution is larger than green-only contribution: 1.3 K rise vs 0.3 K rise. Combined contribution (1.7 W UV + green present) is 6.1 K rise, much larger than the sum of the individual contributions."
+
+  - symbol: "BBO_thermal_gradient_input_to_output_face"
+    value_text: "output-face temperature is approximately 50 % higher than input-face temperature at full UV power"
+    units: null
+    location_in_paper: "Section 6"
+    notes: "Asymmetric thermal gradient consistent with UV being the dominant heater and growing along propagation. Direct mechanism observation: the UV stage of harmonic generation generates its own thermal load via TPA / colour-centre formation."
+
+  - symbol: "TPA_BBO_at_22C"
+    value: 3.9e-9
+    units: "cm/W"
+    location_in_paper: "Section 7; Fig. 7a"
+    notes: "Two-photon absorption coefficient at 266 nm at room temperature (22 deg C), e-polarization. Fitted from the transmission-vs-intensity data (5-45 MW/cm^2) with the colour-centre dynamics model of refs [16] (Marshall1994)."
+
+  - symbol: "TPA_BBO_at_100C"
+    value: 2.0e-9
+    units: "cm/W"
+    location_in_paper: "Section 7; Fig. 7b"
+    notes: "TPA coefficient at 100 deg C. Reduction by factor 1.95 vs room temperature."
+
+  - symbol: "TPA_BBO_at_200C"
+    value: 1.1e-9
+    units: "cm/W"
+    location_in_paper: "Section 7; Fig. 7c"
+    notes: "TPA coefficient at 200 deg C. Reduction by factor 3.55 vs room temperature. THIS IS THE HEADLINE TEMPERATURE-MITIGATION NUMBER often cited as '3.5x lower at 200 deg C' (e.g. in Turcicova2022)."
+
+  - symbol: "color_center_density_reduction_at_100C"
+    value: 0.44
+    units: "1"
+    location_in_paper: "Section 7; Fig. 7d"
+    notes: "Relative reduction in colour-centre density at 100 deg C compared to 22 deg C, evaluated at the maximum tested UV intensity 45.7 MW/cm^2."
+
+  - symbol: "color_center_density_reduction_at_200C"
+    value: 0.69
+    units: "1"
+    location_in_paper: "Section 7; Fig. 7d"
+    notes: "Relative reduction in colour-centre density at 200 deg C compared to 22 deg C. THIS IS THE HEADLINE COLOUR-CENTRE-MITIGATION NUMBER also cited in Turcicova2022."
+
+  - symbol: "color_center_cross_section"
+    value: 8e-21
+    units: "m^2"
+    location_in_paper: "Section 7"
+    notes: "Defect-absorption cross-section sigma_4omega used in the colour-centre dynamics model (Eq. 1, 2). Reported as 8e-17 cm^2."
+
+  - symbol: "BBO_thermal_relaxation_time"
+    value: 53e-6
+    units: "s"
+    location_in_paper: "Section 7"
+    notes: "Computed thermal relaxation time tau = (rho * C_p / K) * d^2 with d a characteristic length. Inputs: density rho = 3.85e6 g/m^3, heat capacity C_p = 490 mJ/g/K, thermal conductivity K = 1.6 W/m/K. The 53 us relaxation time is much longer than the 12.5 ns inter-pulse interval at 80 MHz, so the BBO operates in a thermally quasi-CW regime."
+
+  - symbol: "BBO_density"
+    value: 3.85e6
+    units: "g/m^3"
+    location_in_paper: "Section 7"
+    notes: "BBO density used in the thermal-relaxation-time computation."
+
+  - symbol: "BBO_heat_capacity"
+    value: 0.490
+    units: "J/g/K"
+    location_in_paper: "Section 7"
+    notes: "BBO specific heat used in the thermal-relaxation-time computation."
+
+  - symbol: "BBO_thermal_conductivity"
+    value: 1.6
+    units: "W/m/K"
+    location_in_paper: "Section 7"
+    notes: "BBO thermal conductivity used in the thermal-relaxation-time computation. Compare with Kubota1998: 1.07 W/m/K perpendicular to c-axis, 1.55 W/m/K parallel. Kumar's value sits at the parallel-direction edge, consistent with crystal geometry and propagation direction."
+
+  - symbol: "long_term_stability_5mm_22C_decline"
+    value_text: "1.15 W -> 0.4 W after 6 hours at 22 deg C"
+    units: null
+    location_in_paper: "Section 8; Fig. 8a"
+    notes: "Rapid degradation of UV power at room temperature; recoverable by translating crystal to a fresh spot (visible jumps in the time trace)."
+
+  - symbol: "long_term_stability_10mm_200C_runtime"
+    value: 16
+    units: "h"
+    location_in_paper: "Section 8; Fig. 8b"
+    notes: "10-mm BBO at 200 deg C operating temperature: stable run for 16 hours from 1.5 W initial to ~1 W final."
+
+  - symbol: "long_term_stability_10mm_200C_3pct_rms_window"
+    value: 8
+    units: "h"
+    location_in_paper: "Section 8; Fig. 8b inset"
+    notes: "After initial transient, 10-mm BBO at 200 deg C exhibits 3 % rms passive UV power stability over 8+ hours."
+
+  - symbol: "AR_coating_damage_localisation"
+    value_text: "AR-coating damage observed on the BBO exit face after long-term operation at high UV power; recoverable by translating crystal. NO damage in the BBO crystal bulk."
+    units: null
+    location_in_paper: "Section 8"
+    notes: "Failure mode is AR-coat damage at the UV-exit face (the same as Kondo1998 at 266 nm and as the CLBO-doubling-cavity output coupler in Burkley2021 at 244 nm). Recovery-by-translation protocol identical across all three CW deep-UV studies."
+
+  - symbol: "UV_pointing_stability_loose_focus_1p2W"
+    value: [3.5e-5, 3.2e-5]
+    units: "rad"
+    location_in_paper: "Section 9; Fig. 9d"
+    notes: "[sigma_x, sigma_y] = [35, 32] urad over 1 hour at 1.2 W UV with green-beam waist w_SH = 55 um (loose focus) at 200 deg C."
+
+  - symbol: "UV_pointing_stability_tight_focus_1p2W"
+    value: [6.7e-5, 2.4e-5]
+    units: "rad"
+    location_in_paper: "Section 9; Fig. 9c"
+    notes: "[sigma_x, sigma_y] = [67, 24] urad over 1 hour at 1.2 W UV with green-beam waist w_SH = 19 um (tight focus) at 200 deg C. Loose focus gives more symmetric and smaller pointing fluctuations."
+
+  - symbol: "UV_beam_circularity_native"
+    value: 0.20
+    units: "1"
+    location_in_paper: "Section 10; Fig. 10a"
+    notes: "Native far-field UV beam circularity ~20 % (4.9 mm major / 1 mm minor) due to walk-off ellipticisation."
+
+  - symbol: "UV_beam_circularity_after_cylindrical_optics"
+    value: 0.90
+    units: "1"
+    location_in_paper: "Section 10; Fig. 10b"
+    notes: "After circularisation with cylindrical lenses (f = 100 + 75 mm separated by 26 cm), UV beam circularity ~90 % over 1 m."
+
+  - symbol: "UV_spectrum_FWHM"
+    value: 0.9e-9
+    units: "m"
+    location_in_paper: "Section 11; Fig. 11a"
+    notes: "UV spectrum FWHM 0.9 nm; instrument-resolution-limited."
+
+  - symbol: "max_UV_intensity_for_TPA_measurement"
+    value: 4.57e11
+    units: "W/m^2"
+    location_in_paper: "Section 7"
+    notes: "Peak UV intensity used in the TPA / colour-centre measurement (45.7 MW/cm^2). This is a peak intensity, not a CW intensity; the relevant CW-equivalent for thermal effects is the average power divided by the beam area at w_SH = 15 x 104 um waist."
 
 open_extraction_items:
-  - "Run full extraction from the open-access PDF. Highest-priority targets: TPA coefficient beta at 266 nm at room temperature and at 200 deg C; colour-centre formation rate and steady-state density vs temperature; 8-hour power-stability trace; beam geometry; crystal source / growth method."
-  - "Verify the 3.5x TPA reduction and 69 % colour-centre density reduction quoted in the Turcicova2022 extraction against the Kumar2015 PDF text."
-  - "Decide how the 80 MHz / 2.9 W average / picosecond regime maps onto the Friedenauer-class CW operating point: the thermal-load envelope overlaps; the multiphoton-defect-formation mechanism may not. Capture the regime-mapping decision in KD-UV280-011 Section C."
+  - "Verify the BBO_alpha_at_266 value <0.17 cm^-1 against Table 1 — paper text reports it as <0.17 cm^-1; confirm the lower bound."
+  - "Decide how the 80 MHz / 20 ps quasi-CW regime maps onto the Friedenauer-class CW operating point: thermal relaxation time 53 us is much longer than the 12.5 ns inter-pulse interval, so the BBO sees an average thermal load. Average UV intensity at the operating point is the meaningful number for KD-UV280-005 / -009 / -011 thermal-load mapping."
+  - "Cross-reference Marshall1994 (J. Opt. Soc. Am. B 11, 774-785; ref [16]) for the colour-centre dynamics model used to fit the TPA data. If the model is to be cited in KD-UV280-011 Section C, create a companion folder."
+  - "Cross-reference Takahashi2010 (ref [9]; Jpn. J. Appl. Phys. 49, 080211) for the BBO 262 nm pulse-rate / temperature TPA study. The Optica metadata probe in downloads/literature/task-e/Takahashi2010_*.html (if present) should be checked for retrieval status."
 
 extraction_passes:
   - date: "2026-05-06"
     by: "assistant under steward direction"
     scope: >
-      Scaffold created from public Optica / Optics Express metadata,
-      the second scout pass, and the Turcicova2022 cross-reference.
-      Open-access UPCommons PDF copied to the ignored downloads area;
-      no article-body values have been extracted yet.
-    status: "SCAFFOLD"
+      Initial full-body extraction from the open-access UPCommons PDF
+      (13 pages). Sections covered: full architecture chain, LBO and
+      BBO crystal specifications, single-crystal and walk-off-
+      compensated power scaling, angular- and temperature-acceptance
+      bandwidths, direct surface-temperature measurements with green-
+      only / UV-only / combined decoupling, the TPA temperature-
+      dependent measurement (the headline result), the colour-centre
+      density-reduction measurement, the thermal relaxation time and
+      quasi-CW regime identification, long-term power stability traces
+      at 22, 100, and 200 deg C, AR-coating damage observations,
+      pointing-stability measurements, beam-profile circularisation,
+      and spectrum / pulse-train. Status promoted from SCAFFOLD to
+      DRAFT.
+    status: "DRAFT"
+
+cross_check_notes:
+  - id: "wavelength_266nm_not_280nm"
+    summary: >
+      The result is at 266 nm, not 280 nm. Same caveat as Kondo1998 /
+      Kubota1998 / Burkley2021 (244 nm). The TPA temperature scaling
+      and the colour-centre density-reduction observations are
+      mechanism-level results that are wavelength-scalable in
+      functional form, but the absolute coefficients (3.9 cm/GW at
+      266 nm, 22 deg C) depend on the wavelength-dependent BBO
+      transparency edge and the specific defect-state spectroscopy.
+    resolution: >
+      Adjacent-wavelength caveat applies. KD-UV280-009 / -011
+      Section C should cite Kumar2015 for the temperature-mitigation
+      lever and the asymmetric heating observation, with explicit
+      search-boundary clause from the task-E logbook acceptance
+      criteria.
+    informs_dossier_entries:
+      - "KD-UV280-009"
+      - "KD-UV280-011"
+
+  - id: "quasi_CW_regime_thermally"
+    summary: >
+      The 80 MHz / 20 ps regime has 12.5 ns inter-pulse interval and
+      53 us thermal relaxation time, so each BBO crystal element
+      experiences the time-averaged thermal load of the pulse train,
+      not the per-pulse thermal kick. Thermal effects (Sec. 6
+      observations) are at the average-power level. The peak intensity
+      (45.7 MW/cm^2 max) is a different quantity relevant to TPA /
+      colour-centre formation.
+    resolution: >
+      For KD-UV280-005 thermal-load mapping, use the average UV power
+      / beam area at the BBO exit face. For KD-UV280-011 mechanism
+      mapping, use the peak intensity / TPA model.
+    informs_dossier_entries:
+      - "KD-UV280-005"
+      - "KD-UV280-011"
+
+  - id: "uv_drives_heating_not_green"
+    summary: >
+      Decoupled measurements show that, at the operating point, UV-only
+      heating is larger than green-only heating (1.3 K rise vs 0.3 K
+      rise per W of generated UV vs incident green). The combined
+      heating (with phase-matching satisfied and harmonic generation
+      occurring) is much larger than the sum of the individual
+      contributions. Cross-check with Kubota1998's HeNe tomographic
+      image (defect formation along the UV propagation direction):
+      both papers identify UV as the dominant degradation actor.
+    resolution: >
+      Direct mechanism evidence for KD-UV280-011 Section C. The dossier
+      should cite both Kubota1998 (HeNe defect-localisation image) and
+      Kumar2015 (decoupled green-only / UV-only thermal measurement)
+      as the empirical basis for the UV-driven-failure mechanism.
+    informs_dossier_entries:
+      - "KD-UV280-011"

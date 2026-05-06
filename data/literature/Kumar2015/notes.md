@@ -1,30 +1,49 @@
 # Kumar2015 Extraction Notes
 
-**Citation:** S. Chaitanya Kumar, J. Canals Casals, J. Wei, and M. Ebrahim-Zadeh, "High-power, high-repetition-rate performance characteristics of β-BaB₂O₄ for single-pass picosecond ultraviolet generation at 266 nm," *Optics Express* **23**, 28091-28103 (2015), DOI: `10.1364/OE.23.028091`.
+**Citation:** S. Chaitanya Kumar, J. Canals Casals, Junxiong Wei, and M. Ebrahim-Zadeh, "High-power, high-repetition-rate performance characteristics of β-BaB₂O₄ for single-pass picosecond ultraviolet generation at 266 nm," *Optics Express* **23**, 28091-28103 (2015), DOI: `10.1364/OE.23.028091`. Affiliations: ¹ICFO-Institut de Ciencies Fotoniques, Mediterranean Technology Park, 08860 Castelldefels, Barcelona, Spain (all four authors); ²ICREA, Barcelona (Ebrahim-Zadeh).
 
-**Source available:** open-access UPCommons / institutional-repository PDF copied on 2026-05-06 to ignored path `downloads/literature/task-e/Kumar2015_UPCommons_open.pdf`. Structured extraction still pending.
+**Source used:** open-access UPCommons (UPC institutional repository) PDF copied on 2026-05-06 to ignored path `downloads/literature/task-e/Kumar2015_UPCommons_open.pdf`. The article is also published in Optics Express by OSA / Optica and is open access through the publisher; the UPCommons copy is a legitimate institutional deposit. **Not** committed to the repository per per-folder LICENSE.md protocol.
 
 ## Why this paper
 
-Identified in the second scout pass as a **high-payoff mechanism source** for `KD-UV280-011` and a **temperature-mitigation source** for `KD-UV280-009`. Reports dynamic colour-centre formation from two-photon absorption in BBO at 266 nm; TPA coefficient ~3.5× lower at 200 °C than at 22 °C; long-term power stability >8 h at 2.9 W average power, 80 MHz. The 80 MHz, multi-watt-average regime is thermally closer to CW than single-shot pulsed studies, making it the closest "quasi-CW" point for the Friedenauer-class thermal-load envelope.
+Identified in the second scout pass as a **high-payoff mechanism source** for `KD-UV280-011` and a **temperature-mitigation source** for `KD-UV280-009`. The 80 MHz, multi-watt-average-power regime is thermally closer to CW than single-shot pulsed studies, making it the closest "quasi-CW" point for the Friedenauer-class thermal-load envelope at 266 nm. The TPA temperature-dependent measurement is the directly transferable result that other reviews (e.g. [Turcicova2022](../Turcicova2022/extracted.yaml) — already cross-references the 3.5 × TPA reduction at 200 °C and the 69 % colour-centre density reduction at 200 °C from this paper).
 
-Already cross-referenced in the [Turcicova2022 extraction](../Turcicova2022/extracted.yaml) (the 3.5× TPA reduction and 69 % colour-centre-density reduction at 200 °C are quoted from this paper). Promoting to its own folder so the primary numbers stand on a `[P]`-tier source.
+## Extraction Scope
 
-## Extraction targets
+The 2026-05-06 pass extracts the full body of the 13-page paper:
 
-When the structured pass is run, extract:
+- §1 introduction: BBO and CLBO comparison, motivation for high-power 266 nm picosecond sources, prior demonstrations.
+- §2 experimental setup: mode-locked Yb-fiber laser (Femto Power FP-1060-20) at 1064 nm, 20 W avg, 20 ps pulses, ~80 MHz; LBO 30 mm long, NCPM Type-I along x-axis, oven 148.2 ± 0.1 °C; BBO 5 mm and 10 mm long, AR-coated R<0.1% at 532 and 266 nm.
+- §3 power scaling: 5-mm BBO single-crystal scheme (1.4 W UV from 8 W green, 18 % efficiency); 10-mm BBO single-crystal (1.8 W UV from 8.4 W green, 21.4 %); chopped operation (5.3 % duty) confirms quadratic scaling and isolates thermal effects.
+- §4 walk-off compensation: two 10-mm BBO crystals in WC scheme, 2.9 W UV from 8.2 W green (35 % efficiency, +60 % vs single crystal); plano-concave 200 mm RoC mirrors compensate walk-off; second-crystal waist 20 μm.
+- §5 angular-acceptance bandwidth: experimental Δθ = 1.5 mrad (5 mm, w_SH = 55 μm), 4.1 mrad (5 mm, w_SH = 19 μm), 1.9 mrad (10 mm, w_SH = 55 μm), 4.8 mrad (10 mm, w_SH = 19 μm). Theoretical values 0.3 mrad (5 mm) and 0.2 mrad (10 mm) using Sellmeier-derived bandwidth — wider experimental values attributed to walk-off-limited effective length L_eff = 1.1 mm (w_SH = 55 μm) or 0.4 mm (w_SH = 19 μm) for the 10-mm crystal.
+- §6 temperature-acceptance bandwidth and thermal effects: ΔT = 33 °C measured vs theoretical 5.3 °C → temperature-bandwidth-limited L_eff = 1.6 mm (>walk-off-limited). Direct surface temperature measurement: 21.8 °C → 27.9 °C at 1.7 W UV. Decoupled green-only and UV-only contributions: green-only rises 21.8 → 22.1 °C at 8.3 W; UV-only rises 21.8 → 23.1 °C at 1.2 W. Asymmetric heating: output face 50 % hotter than input face.
+- §7 two-photon absorption at 266 nm: TPA coefficient β = 3.9 cm/GW at 22 °C, 2.0 cm/GW at 100 °C, 1.1 cm/GW at 200 °C → β(22 °C) / β(200 °C) = 3.55. Defect cross-section σ_4ω = 8 × 10⁻¹⁷ cm². Color-centre density relative to 22 °C: ΔN ~ 44 % at 100 °C, 69 % at 200 °C. Density ρ = 3.85 × 10⁶ g / m³, C_p = 490 mJ / g / K, K = 1.6 W / m / K → thermal relaxation τ = 53 μs vs 12.5 ns inter-pulse → quasi-CW regime with accumulated thermal effects.
+- §8 long-term UV power stability: 5-mm BBO at 22 °C: 1.15 W → 0.4 W after 6 hours (rapid). 5-mm BBO at 100 °C: slower decline. 10-mm BBO at 200 °C: 1.5 W → ~1 W after 16 hours, 3 % rms power stability over 8+ hours. AR-coating damage on exit face after long-term operation; recoverable by translating crystal.
+- §9 UV beam pointing stability at 200 °C: σ_x = 28 μrad / σ_y = 14 μrad at 0.5 W UV with w_SH = 19 μm; σ_x = 35 / σ_y = 32 μrad at 1.2 W UV with w_SH = 55 μm. Loose-focus generally improves pointing stability at fixed UV power.
+- §10 UV beam profile: elliptic 4.9 × 1 mm at output (~20 % circularity) due to ρ = 85 mrad walk-off; circularised to ~90 % over 1 m using cylindrical lenses (f = 100 + 75 mm separated by 26 cm).
+- §11 spectrum and pulse train: central 266 nm, FWHM 0.9 nm (instrument-limited), 80 MHz pulse train.
+- §12 conclusions.
 
-1. Beam geometry (waist, focusing parameter), repetition rate, pulse duration, average and peak powers.
-2. TPA coefficient β at 266 nm vs temperature; the 3.5× reduction at 200 °C.
-3. Colour-centre formation rate and steady-state density vs temperature; the 69 % reduction at 200 °C.
-4. 8-hour power-stability trace conditions and any visible degradation.
-5. Authors' mechanism statement on multiphoton-driven defect formation vs thermal annealing.
-6. Crystal vendor / growth method / dimensions.
+## Extraction Passes
 
-## Status
+- **2026-05-06 (assistant under steward direction, DRAFT).** Initial full-body extraction from the open-access UPCommons PDF. Status promoted from `SCAFFOLD` to `DRAFT`.
 
-`SCAFFOLD` — open-access PDF is available locally, but no numerical extraction has been performed.
+## Review Notes
 
-## Extraction passes
+- **Wavelength caveat applies.** This is a 266 nm result, not a 280 nm result. Same caveat as Kondo1998 / Kubota1998 / Burkley2021. The acceptance-criterion #2 search-boundary clause must accompany any port to `KD-UV280-005` / `KD-UV280-009` / `KD-UV280-011` Section C.
+- **80 MHz, 20 ps regime is thermally quasi-CW.** Thermal relaxation time τ = 53 μs is much longer than the 12.5 ns inter-pulse interval, so the BBO experiences a pulse-train-averaged thermal load. The crystal-temperature rise (Fig. 6) is driven by the *average* power, not the peak. This makes Kumar2015 a closer thermal-load proxy for CW operation than any single-shot pulsed study; the *peak intensity* (45.7 MW / cm² maximum) is a different question relevant to TPA / colour-centre formation but not to thermal mechanical effects.
+- **The 3.5 × TPA reduction at 200 °C is the headline number** that Turcicova2022 already cross-references. Kumar2015's primary measurement gives β(22 °C) = 3.9 cm / GW, β(100 °C) = 2.0 cm / GW, β(200 °C) = 1.1 cm / GW. The exact ratio is 3.55, rounded to 3.5 in Turcicova's paraphrase. **Mitigation lever:** operating BBO at elevated temperature (100-200 °C) reduces both TPA and resulting colour-centre density without requiring crystal or cavity changes.
+- **The 69 % colour-centre density reduction at 200 °C is the second headline number.** This is at the maximum tested UV intensity of 45.7 MW / cm² (a peak-intensity quantity). The relative reduction is the operationally meaningful number: at any fixed peak UV intensity in the 5-45 MW / cm² range, operating at 200 °C reduces colour-centre formation by ~70 % relative to room temperature.
+- **Long-term operational stability is the third headline number.** 10-mm BBO at 200 °C: 3 % rms power stability over 8+ hours, slow decline from 1.5 W to ~1 W over 16 hours. Compare with Kondo1998's 1200 h at the same wavelength (266 nm) but at a CW power of 100 mW (vs Kumar's 1.5 W average / 80 MHz pulsed). Kumar's degradation rate is dominated by AR-coating damage on the exit face, NOT BBO bulk damage; the recovery-by-translation protocol is the same as Kondo1998 and Burkley2021.
+- **Thermal-load asymmetry is mechanistically important.** The output-face temperature is 50 % higher than the input-face temperature at full UV power. This is consistent with UV being the dominant heater (per Kubota1998's HeNe tomographic image showing UV-driven defect formation); since UV power increases along the propagation direction, the output face sees a larger thermal load. **For dossier `KD-UV280-011`, this is a direct mechanism observation.**
+- **Walk-off and angular-acceptance characterisation.** The 85 mrad walk-off in BBO at 47.56° Type-I 532 → 266 nm phase matching limits the effective interaction length to 1.1 mm (loose focus, w = 55 μm) or 0.4 mm (tight focus, w = 19 μm) for the 10-mm crystal. This explains why the 10-mm BBO is only marginally better than the 5-mm BBO in single-pass: the *effective* length is set by walk-off, not the physical crystal length. Useful for `KD-UV280-005` Section C.
+- **Walk-off compensation gives 60 % UV-power improvement.** Two 10-mm BBO crystals in WC scheme yield 2.9 W UV vs 1.8 W single-crystal — a +60 % improvement at the same input green power. WC operating-temperature 200 °C, optimised crystal separation. Architecture decision lever for any high-power 280 nm source design.
+- **Comparison with Friedenauer 2006.** Friedenauer's BBO is 4 × 4 × 10 mm Brewster-cut, operating at 50 °C (just to prevent water condensation), in an external resonant cavity. Kumar's BBO is 5- or 10-mm, AR-coated normal-incidence, in a single-pass (no cavity), at 200 °C operating temperature. The high-temperature operating point is the divergent design choice; cross-section measurements at 50 °C and 200 °C in BBO are not directly compared in the literature, but Kumar's TPA temperature scan provides the bracket: β(50 °C) ≈ 3.5 cm / GW (interpolated linearly between Kumar's 22 °C and 100 °C points, although Kumar does not explicitly measure this).
+- **Useful Phase-Matching Properties Table 1.** §1 Table 1 gives a direct comparison of BBO, CLBO, KABO, KBBF, RBBF for 266 nm phase-matching properties: BBO ϕ_PM = 47.56°, d_eff = 1.75 pm / V, walk-off ρ = 85 mrad, angular acceptance 0.19 mrad·cm. Useful for the §5 Phase 1 evidence table in the dossier.
 
-- **2026-05-06 (assistant under steward direction, SCAFFOLD).** Created bibliographic scaffold from public Optica / *Optics Express* metadata and the Turcicova2022 cross-reference. Open-access UPCommons PDF copied to the ignored downloads area for the next extraction pass.
+## Downstream Dossier Links
+
+- `KD-UV280-005`: BBO at 280 nm — phase-matching, walk-off, damage threshold. Kumar2015 contributes the angular-acceptance bandwidth measurement (consistent with walk-off-limited L_eff at 266 nm), the temperature-acceptance bandwidth, and the Phase-Matching Properties Table 1 comparison data. The d_eff = 1.75 pm/V at 47.56° Type-I 532 → 266 nm geometry is consistent with Kondo1998's 1.642 pm/V (5 % difference, within the angle uncertainty).
+- `KD-UV280-009`: gas-environment dependence. Kumar2015 contributes the temperature-mitigation lever: operating BBO at 100-200 °C reduces TPA by 2-3.5× and colour-centre density by 44-69 % relative to room temperature. This is independent of and complementary to the dry-N₂ purge / sealed-cavity protocol of Kondo1998. The Friedenauer-class operating point (50 °C just to prevent water condensation) is far below this temperature-mitigation envelope.
+- `KD-UV280-011`: UV-induced BBO degradation mechanism. Kumar2015 contributes the temperature-dependent TPA and colour-centre density measurements (the headline numbers), the asymmetric heating observation (output face 50 % hotter than input, consistent with UV-driven), and the long-term operational stability trace (UV-driven AR-coating damage with recovery-by-translation protocol).

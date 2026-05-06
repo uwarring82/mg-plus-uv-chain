@@ -1,12 +1,12 @@
 citation_key: "Brown2019"
 source_tier: "P"
 doi: "10.1038/s41598-018-37337-5"
-citation: "A. Brown, D. Bernot, A. Ogloza, K. Olson, J. Thomas, and J. Talghader, Scientific Reports 9, 635 (2019). Author list to be confirmed against the PDF."
+citation: "A. Brown, D. Bernot, A. Ogloza, K. Olson, J. Thomas, and J. Talghader, Scientific Reports 9, 635 (2019)"
 title: "Physical Origin of Early Failure for Contaminated Optics"
 extracted_by: "assistant under steward direction"
 extracted_on: "2026-05-06"
-extraction_status: "SCAFFOLD"
-source_document: "Open-access Scientific Reports PDF copied on 2026-05-06 to ignored path downloads/literature/task-e/Brown2019_SciRep_open.pdf. Structured extraction still pending."
+extraction_status: "DRAFT"
+source_document: "Open-access Scientific Reports PDF (CC-BY-4.0) copied on 2026-05-06 to ignored path downloads/literature/task-e/Brown2019_SciRep_open.pdf. PDF is not committed to the repository."
 charter_section_refs:
   - "§5 Phase 1"
   - "§8.6"
@@ -15,19 +15,250 @@ dossier_entries:
   - "KD-UV280-009"
   - "KD-UV280-012"
 
-parameters: []
+parameters:
+  - symbol: "test_laser_wavelength"
+    value: 1070e-9
+    units: "m"
+    location_in_paper: "Materials and Methods"
+    notes: "IPG YLS-17000 ytterbium-doped fiber laser CW at 1070 nm. The wavelength is set by the fiber-laser tooling, not by an experimental design choice; it is far from the 280 nm dossier target. The mechanism extracted from this paper is wavelength-scalable in functional form, not in absolute thresholds."
+
+  - symbol: "test_laser_power_max"
+    value: 17e3
+    units: "W"
+    location_in_paper: "Materials and Methods"
+    notes: "Continuous-wave 17 kW maximum power at 1070 nm. Used to access several MW/cm^2 irradiance with mm-scale spot sizes, large enough to average over typical defect / contamination densities."
+
+  - symbol: "test_spot_size_primary"
+    value: 1e-3
+    units: "m"
+    location_in_paper: "Materials and Methods"
+    notes: "1 mm primary spot size; up to 3 MW/cm^2 irradiance accessible. Reduced to 400 um for tests on the highest-bandgap films (silica) which required higher irradiances."
+
+  - symbol: "test_grid_spacing"
+    value: 4e-3
+    units: "m"
+    location_in_paper: "Materials and Methods; Fig. 2"
+    notes: "3x3 site grid with 4 mm spacing on each test sample. Spacing chosen to prevent any influence from previously exposed adjacent sites."
+
+  - symbol: "contaminant_carbon_diameter"
+    value: 7e-6
+    units: "m"
+    location_in_paper: "Materials and Methods"
+    notes: "Carbon microparticle average diameter 7 um; very high optical opacity. Suspended in isopropyl alcohol at 0.07 g/mL; 0.15 mL drop placed on optic, settled, and dried under N2 flow."
+
+  - symbol: "contaminant_steel_diameter_range"
+    value: [35e-6, 40e-6]
+    units: "m"
+    location_in_paper: "Materials and Methods"
+    notes: "Stainless steel microparticle 35 to 40 um diameter; metallic particles frequently encountered during assembly of optical systems."
+
+  - symbol: "contamination_absorption_typical"
+    value: 20000
+    units: "ppm"
+    location_in_paper: "Fig. 1; Materials and Methods"
+    notes: "Typical PCI-measured absorption of carbon-contaminated samples: thousands to tens of thousands of ppm; average value used in the model is 20000 ppm."
+
+  - symbol: "DBR_titania_silica_carbon_LIDT_lowest_damaging"
+    value: 17e6
+    units: "W/m^2"
+    location_in_paper: "Results; Fig. 3"
+    notes: "Lowest damaging irradiance for carbon-contaminated titania-silica DBR: 17 kW/cm^2."
+
+  - symbol: "DBR_niobia_silica_carbon_LIDT_lowest_damaging"
+    value: 28e6
+    units: "W/m^2"
+    location_in_paper: "Table 1; Fig. 3"
+    notes: "Lowest damaging irradiance for carbon-contaminated niobia-silica DBR: 28 kW/cm^2."
+
+  - symbol: "DBR_tantala_silica_carbon_LIDT_lowest_damaging"
+    value: 53e6
+    units: "W/m^2"
+    location_in_paper: "Table 1; Fig. 3"
+    notes: "Lowest damaging irradiance for carbon-contaminated tantala-silica DBR: 53 kW/cm^2."
+
+  - symbol: "DBR_hafnia_silica_carbon_LIDT_lowest_damaging"
+    value: 2.25e9
+    units: "W/m^2"
+    location_in_paper: "Results; Fig. 3"
+    notes: "Lowest damaging irradiance for carbon-contaminated hafnia-silica DBR: 2.25 MW/cm^2. Significantly higher than the lower-bandgap DBRs."
+
+  - symbol: "halfwave_titania_carbon_LIDT_lowest_damaging"
+    value: 105e6
+    units: "W/m^2"
+    location_in_paper: "Results; Fig. 4"
+    notes: "Lowest damaging irradiance for carbon-contaminated titania halfwave (lambda/2) coating: 105 kW/cm^2."
+
+  - symbol: "halfwave_silica_carbon_LIDT_max_tested_no_damage"
+    comparator: ">"
+    value: 17.8e9
+    units: "W/m^2"
+    location_in_paper: "Results; Fig. 4"
+    notes: "Carbon-contaminated silica halfwave coating did NOT damage at the highest tested irradiance of 17.8 MW/cm^2. Silica is the highest-bandgap film tested (Eg = 9 eV). Max-tested-irradiance is a lower bound on the silica LIDT under these conditions, not a measurement."
+
+  - symbol: "pristine_silica_at_1070nm_max_tested_no_damage"
+    comparator: ">"
+    value: 13e9
+    units: "W/m^2"
+    location_in_paper: "Table 1; Results"
+    notes: "Pristine silica halfwave coating did not damage at 13 MW/cm^2 of 1070 nm illumination during the IR + UV control experiment."
+
+  - symbol: "pristine_silica_at_224nm_max_tested_no_damage"
+    comparator: ">"
+    value: 50e6
+    units: "W/m^2"
+    location_in_paper: "Materials and Methods; Results"
+    notes: "Pristine silica halfwave coating exposed to 40 mW of 224 nm DUV light focused to <5 um spot, equivalent to >50 kW/cm^2 irradiance; no damage observed. Used as control for the IR + UV co-illumination experiment. NOT a UV LIDT measurement; only an upper bound on UV-photo-excitation contribution to the contamination-driven damage process."
+
+  - symbol: "IR_plus_UV_co_illumination_damage"
+    value_text: "no damage observed at any IR + UV combination tested up to 13 MW/cm^2 IR + >50 kW/cm^2 UV on pristine silica halfwave coatings. Carbon-contaminated coatings still failed at 17 to 53 kW/cm^2 IR alone."
+    units: null
+    location_in_paper: "Results; Table 1"
+    notes: "Effectively rules out UV photo-excitation as the dominant damage mechanism for the 1070 nm contaminated-optic damage. Functional damage process is thermally driven free-carrier generation from contaminant heating."
+
+  - symbol: "capping_layer_ineffectiveness"
+    value_text: "Silica capping layers of thickness 1 to 5.5 um deposited over tantala-silica DBRs gave NO appreciable increase in carbon-contaminated damage threshold (Fig. 5)."
+    units: null
+    location_in_paper: "Results; Fig. 5"
+    notes: "The thermal-diffusion model (Sec. Thermally Generated Free Carrier Model) explains this: heat from the heated contaminant diffuses through 1 to 5 um of silica in <1 ms, but the contaminant takes ~1 ms to fully evaporate. Effective capping requires mm-thick layers, demonstrated by backside contamination of bare silica substrates that survive at the highest tested powers."
+
+  - symbol: "TCC_carbon_particle_to_film"
+    value: 48e3
+    units: "W/m^2/K"
+    location_in_paper: "Thermally Generated Free Carrier Model"
+    notes: "Thermal contact conductance between 7 um carbon particle and oxide-coated film, fit to experimental data. Independent measurements (Wolff and Schneider 1998, ref [14]) on 1 um graphite flakes give 46 kW/m^2/K. Bracketed by graphene / metal-metal contact (~few MW/m^2/K) and clean-metal-metal mechanical contact (~few kW/m^2/K)."
+
+  - symbol: "particle_evaporation_T"
+    value: 4000
+    units: "K"
+    location_in_paper: "Thermally Generated Free Carrier Model"
+    notes: "Carbon-particle sublimation temperature used in the heat-transport simulation. Particle assumed to stabilise at this temperature once laser-induced heating exceeds the threshold for sublimation."
+
+  - symbol: "free_carrier_density_formula"
+    value_text: "N = sqrt(N_c * N_v) * exp(-E_g / (2 * k_B * T))"
+    units: null
+    location_in_paper: "Thermally Generated Free Carrier Model; Eq. 3"
+    notes: "Maxwell-Boltzmann free-carrier density vs film bandgap E_g and temperature T. Sets the bandgap-dependent runaway threshold. N_c, N_v are conduction- and valence-band effective densities of states (taken from amorphous SiO2 throughout for lack of data on other oxides)."
+
+  - symbol: "free_carrier_absorption_formula"
+    value_text: "alpha_FC = N * e^2 / (m_eff * eps_0 * n * c * tau) * 1 / omega^2"
+    units: null
+    location_in_paper: "Thermally Generated Free Carrier Model; Eq. 2"
+    notes: "Drude-Lorentz free-carrier absorption coefficient. m_eff is the effective electron mass (taken as the free-space electron mass for amorphous oxide films), tau is the phonon mean-free-path / sound-speed phonon lifetime, omega is the angular frequency. The 1 / omega^2 wavelength scaling means that, for the same N, alpha_FC is ~16x larger at 280 nm than at 1070 nm; the mechanism becomes more rather than less aggressive at deep-UV wavelengths."
+
+  - symbol: "runaway_timescale_tantala_at_1p6MWcm2"
+    value: 10e-6
+    units: "s"
+    location_in_paper: "Fig. 6b"
+    notes: "Simulated runaway thermal timescale for tantala film at 1.6 MW/cm^2 (just above the carbon-contaminated tantala damage threshold)."
+
+  - symbol: "runaway_timescale_hafnia_at_3p8MWcm2"
+    value: 5e-6
+    units: "s"
+    location_in_paper: "Fig. 6b"
+    notes: "Simulated runaway thermal timescale for hafnia film at 3.8 MW/cm^2 (just above the carbon-contaminated hafnia damage threshold)."
+
+  - symbol: "runaway_timescale_alumina_at_6p3MWcm2"
+    value: 1e-6
+    units: "s"
+    location_in_paper: "Fig. 6b"
+    notes: "Simulated runaway thermal timescale for alumina film at 6.3 MW/cm^2 (just above the carbon-contaminated alumina damage threshold)."
+
+  - symbol: "material_property_titania_bandgap"
+    value: 3.0
+    units: "eV"
+    location_in_paper: "Table 2"
+    notes: "Lowest-bandgap of the six tested oxide films. Lowest LIDT under contamination."
+
+  - symbol: "material_property_niobia_bandgap"
+    value: 3.85
+    units: "eV"
+    location_in_paper: "Table 2"
+    notes: "Niobia film bandgap."
+
+  - symbol: "material_property_tantala_bandgap"
+    value: 4.3
+    units: "eV"
+    location_in_paper: "Table 2"
+    notes: "Tantala film bandgap."
+
+  - symbol: "material_property_hafnia_bandgap"
+    value: 5.7
+    units: "eV"
+    location_in_paper: "Table 2"
+    notes: "Hafnia film bandgap; commonly used in deep-UV mirror coatings (cf. Steinert2024 thesis at 286 nm and Turcicova2022 §4.3)."
+
+  - symbol: "material_property_alumina_bandgap"
+    value: 7.0
+    units: "eV"
+    location_in_paper: "Table 2"
+    notes: "Alumina film bandgap."
+
+  - symbol: "material_property_silica_bandgap"
+    value: 9.0
+    units: "eV"
+    location_in_paper: "Table 2"
+    notes: "Highest-bandgap of the six tested films. Did not damage under any tested condition with contamination."
+
+  - symbol: "ranking_by_carbon_contamination_LIDT"
+    value_text: "silica > alumina > hafnia > tantala > niobia > titania, in order of increasing LIDT under carbon contamination at 1070 nm CW"
+    units: null
+    location_in_paper: "Discussion; Fig. 4"
+    notes: "Material-selection ranking that follows from the bandgap-LIDT scaling. Strong implication for cavity-mirror / AR-coating choice in the Friedenauer-class architecture: prefer surfaces of silica or alumina; use hafnia only when refractive-index considerations require it."
 
 open_extraction_items:
-  - "Confirm full author list, journal status, and DOI against the open-access PDF."
-  - "Run full extraction. Highest-priority targets: damage-threshold drop factor for clean-vs-contaminated optics, coating-bandgap-vs-LIDT scaling, thermal free-carrier breakdown model parameters, and contamination-type ordering (carbon, steel, particulate)."
-  - "Decide how the 1070 nm CW result maps onto 280 nm CW: the thermal free-carrier breakdown model is bandgap-driven and largely wavelength-independent in its functional form, but the absolute breakdown threshold scales with the inverse photon energy and the coating absorption at the operating wavelength. Note adjacent-wavelength caveat in Section C."
-  - "Cross-reference Brown2015 (Appl. Opt. 54, 5216-5222) for the laser-conditioning protocol; create a companion data/literature/Brown2015/ folder if the conditioning protocol is to be cited in KD-UV280-009."
+  - "Confirm the complete material-table values (absorption ppm, thermal conductivity W/m/K, melting point K) for each oxide film against Table 2; only the bandgaps are extracted here."
+  - "Decide how the 1070 nm result maps onto KD-UV280-008 / -012 Section C: the 1 / omega^2 free-carrier-absorption scaling means the mechanism becomes more aggressive at 280 nm, but the absolute irradiance thresholds will differ in ways the model can predict if the steward feeds in 280 nm-specific film optical properties."
+  - "Cross-reference Brown2015 (Appl. Opt. 54, 5216-5222) for the laser-conditioning protocol; if that protocol is to be cited in KD-UV280-009, create a companion data/literature/Brown2015/ folder."
+  - "Per the third scout pass, also extract Brown2015 if its conditioning data informs the Burkley2021 UV-conditioning protocol."
 
 extraction_passes:
   - date: "2026-05-06"
     by: "assistant under steward direction"
     scope: >
-      Scaffold created from public Scientific Reports metadata and the
-      third scout pass. Open-access PDF copied to the ignored downloads
-      area; no article-body values have been extracted yet.
-    status: "SCAFFOLD"
+      Initial full-body extraction from the open-access Scientific
+      Reports PDF (9 pages). Sections covered: experimental method,
+      DBR damage thresholds (Fig. 3), halfwave-coating damage
+      thresholds with bandgap-scaling free-carrier model (Fig. 4),
+      capping-layer ineffectiveness (Fig. 5), thermal model and
+      runaway timescales (Fig. 6), material-property table (Table 2),
+      and the IR + UV co-illumination negative control. Status
+      promoted from SCAFFOLD to DRAFT.
+    status: "DRAFT"
+
+cross_check_notes:
+  - id: "wavelength_1070nm_not_280nm"
+    summary: >
+      The damage testing is at 1070 nm CW, not 280 nm. The control
+      experiment (40 mW 224 nm + 17 kW 1070 nm) showed no UV
+      photo-excitation contribution under the test conditions. The
+      mechanism the paper establishes is thermally driven free-carrier
+      generation from contaminant heating, which is wavelength-scalable
+      in functional form (Eq. 1-3 are bandgap-driven) but not in
+      absolute thresholds (alpha_FC ~ 1 / omega^2; absorption of
+      contaminants varies with wavelength).
+    resolution: >
+      Adjacent-wavelength caveat applies. KD-UV280-008 / -012
+      Section C should cite Brown2019 for the bandgap-LIDT scaling
+      argument and the capping-layer-ineffectiveness result, with
+      explicit search-boundary clause from the task-E logbook
+      acceptance criteria.
+    informs_dossier_entries:
+      - "KD-UV280-008"
+      - "KD-UV280-012"
+
+  - id: "free_carrier_absorption_wavelength_scaling"
+    summary: >
+      The Drude-Lorentz free-carrier absorption coefficient alpha_FC
+      scales as 1 / omega^2. At 280 nm vs 1070 nm, alpha_FC is ~16x
+      larger for the same free-carrier density N. This means the
+      contamination-driven CW breakdown mechanism becomes MORE
+      aggressive at deep-UV wavelengths, not less.
+    resolution: >
+      Important for KD-UV280-012: the cleanliness rationale developed
+      in Brown2019 is even more important at 280 nm than at 1070 nm.
+      The 1 / omega^2 scaling is only the absorption-coefficient piece;
+      the carrier-generation piece (which is bandgap-driven and
+      temperature-driven) is wavelength-independent except through
+      the contaminant absorption itself.
+    informs_dossier_entries:
+      - "KD-UV280-012"
