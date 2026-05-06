@@ -1,0 +1,31 @@
+citation_key: "Hume2010"
+source_tier: "S"
+doi: null
+citation: "D. B. Hume, 'Two-Species Ion Arrays for Quantum Logic Spectroscopy,' Ph.D. thesis (University of Colorado / NIST Boulder, 2010)"
+title: "Two-Species Ion Arrays for Quantum Logic Spectroscopy"
+extracted_by: "assistant under steward direction"
+extracted_on: "2026-05-06"
+extraction_status: "SCAFFOLD"
+source_document: "Open-access NIST PDF copied on 2026-05-06 to ignored path downloads/literature/task-e/Hume2010_NIST_open.pdf. Structured extraction still pending."
+charter_section_refs:
+  - "§2"
+  - "§5 Phase 1"
+dossier_entries:
+  - "KD-UV280-001"
+  - "KD-UV280-005"
+
+parameters: []
+
+open_extraction_items:
+  - "Run targeted extraction of the chapters / sections that describe the Mg+ 280 nm laser system. Targets: BBO specifications, cavity geometry, output powers, locking scheme, and any maintenance / lifetime notes."
+  - "Determine whether the thesis points to NIST internal records (memos, lab notebooks, oral-tradition handoffs) that could be solicited as the institutional [I] record required by acceptance criterion #2 of the task-E logbook."
+  - "Note that this is an [S]-tier (thesis) source. It cannot stand alone in Section C and should accompany a peer-reviewed [P] anchor."
+
+extraction_passes:
+  - date: "2026-05-06"
+    by: "assistant under steward direction"
+    scope: >
+      Scaffold created from public NIST metadata and the first scout
+      pass. Open-access PDF copied to the ignored downloads area; no
+      thesis-body values have been extracted yet.
+    status: "SCAFFOLD"

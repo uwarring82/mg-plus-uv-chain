@@ -1,0 +1,482 @@
+citation_key: "Kubota1998"
+source_tier: "P"
+doi: "10.1364/DLAI.1998.FC4"
+citation: "S. Kubota, H. Masuda, H. Kikuchi, K. Kondo, M. Oka, K. Tatsuki, T. Okamoto, N. Umezu, T. Fukui, H. Wada, and K. Morita, in OSA TOPS Vol. 17 'Diode Pumped Solid State Lasers: Applications and Issues', M. W. Dowley (ed.), pp. 79-83 (Optical Society of America, 1998)"
+title: "Efficient 213 nm and 266 nm generations in Czochralski-grown beta-barium borates"
+extracted_by: "assistant under steward direction"
+extracted_on: "2026-05-06"
+extraction_status: "DRAFT"
+source_document: "Local user-library scanned PDF copied on 2026-05-06 to ignored path downloads/literature/task-e/Kubota1998_OSAProceedings_user_scan.pdf; not committed to repository. Scan is legible without OCR."
+charter_section_refs:
+  - "§5 Phase 1"
+  - "§8.2"
+  - "§8.4"
+dossier_entries:
+  - "KD-UV280-005"
+  - "KD-UV280-009"
+  - "KD-UV280-011"
+
+parameters:
+  - symbol: "BBO_growth_method"
+    value_text: "Czochralski-grown beta-BaB2O4 from pure BBO melt"
+    units: null
+    location_in_paper: "Introduction (p. 79); Fig. 1"
+    notes: "Sony in-house Czochralski (Cz) growth from pure BBO melt, building on Itoh et al. 1990 (ref [4]). Distinct from the more common flux-grown BBO. The HeNe laser tomographic test shows much lower point-defect density than typical flux-grown samples."
+
+  - symbol: "BBO_boule_dimensions"
+    value: [0.0508, 0.0254]
+    units: "m"
+    location_in_paper: "Introduction (p. 79); Fig. 1 caption"
+    notes: "2-inch diameter, 1-inch high boule grown in 8 hours."
+
+  - symbol: "BBO_polish_roughness_rms"
+    value: 0.2
+    units: "nm"
+    location_in_paper: "Introduction (p. 79)"
+    notes: "Polished surface grade reported as 0.2 rms-nm roughness. Authors state surfaces 'may be protected from humidity by applying antireflection coating layers' (slight-hygroscopy mitigation)."
+
+  - symbol: "absorption_213nm_e_pol"
+    value: 6.0
+    units: "%/cm"
+    location_in_paper: "Introduction (p. 79) and Fig. 2"
+    notes: "Linear absorption coefficient at 213 nm in extraordinary polarisation, measured spectrophotometrically (Varian Cary 5G). Three samples taken from Sector C, cut at 47.5 deg to c-axis."
+
+  - symbol: "absorption_edge_exponential_tail_termination"
+    value: 230e-9
+    units: "m"
+    location_in_paper: "Introduction (p. 79) and Fig. 2"
+    notes: "Steep exponential absorption tail terminates around 230 nm in the o-polarisation. Likely intrinsic and relevant to LO phonon in lattice vibration. Below 230 nm the long-wavelength loss decreases as 1/lambda^4 (Rayleigh scattering)."
+
+  - symbol: "scattering_loss_o_pol_at_266nm"
+    value: 2.0
+    units: "%/cm"
+    location_in_paper: "Introduction (p. 79); discussion of Fig. 2"
+    notes: "Long-wavelength scattering loss at 266 nm in o-polarisation, evaluated by subtracting the Sellmeier-derived Fresnel-loss baseline from the spectrophotometer transmission curve. Considered extrinsic; origin not identified by the authors."
+
+  - symbol: "scattering_loss_e_pol_at_266nm"
+    value: 1.0
+    units: "%/cm"
+    location_in_paper: "Introduction (p. 79); discussion of Fig. 2"
+    notes: "Long-wavelength scattering loss at 266 nm in e-polarisation. Lower than o-polarisation by a factor of 2."
+
+  - symbol: "TPA_coefficient_at_266nm"
+    value: 0.9e-9
+    units: "cm/W"
+    location_in_paper: "Introduction (p. 79); reference [6] DeSalvo 1996"
+    notes: "Two-photon absorption coefficient beta = 0.9 cm/GW at 266 nm. Used by the authors to compute the nonlinear-absorption loss = 3 %/cm at the pulsed-266-nm peak intensity I = 31 MW/cm^2 via beta*I."
+
+  - symbol: "thermal_conductivity_perpendicular_c"
+    value: 1.07
+    units: "W/m/K"
+    location_in_paper: "Introduction (p. 79)"
+    notes: "BBO thermal conductivity normal to the c-axis."
+
+  - symbol: "thermal_conductivity_parallel_c"
+    value: 1.55
+    units: "W/m/K"
+    location_in_paper: "Introduction (p. 79)"
+    notes: "BBO thermal conductivity parallel to the c-axis. Anisotropy ratio 1.45:1 (parallel:perpendicular)."
+
+  - symbol: "BBO_cut_angle_relative_to_c_axis"
+    value: 47.5
+    units: "deg"
+    location_in_paper: "Fig. 2 caption (p. 80)"
+    notes: "Cut angle of the three Sector-C samples used in this work. Same as Kondo1998."
+
+  - symbol: "phase_match_angle_532_to_266"
+    value: 47.9
+    units: "deg"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "Sellmeier-predicted Type-I SHG phase-matching angle for 532 -> 266 nm in Cz-BBO, computed from the Kato 1990 Sellmeier (ref [5]). The 0.4 deg offset from the 47.5 deg cut angle is the small-detuning that the authors operate at."
+
+  - symbol: "walk_off_angle_rho_532_to_266"
+    value: 4.8
+    units: "deg"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "Sellmeier-derived walk-off angle at the 47.9 deg phase-matching angle. Same value (within rounding) as Kondo1998's 4.88 deg."
+
+  - symbol: "L_BBO_crystal_CW"
+    value: 6.0e-3
+    units: "m"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "Crystal length used in the CW-266 nm reliability test, matching Kondo1998."
+
+  - symbol: "w0_BBO_CW"
+    value: 46e-6
+    units: "m"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "Beam-waist radius (1/e^2 intensity) at the BBO for the CW-266 nm reliability test, matching Kondo1998."
+
+  - symbol: "confocal_parameter_b"
+    value: 4.18e-2
+    units: "m"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "Confocal parameter b = k * w0^2 = 4.18 cm at the operating point."
+
+  - symbol: "focusing_parameter_xi"
+    value: 0.143
+    units: "1"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "Boyd-Kleinman focusing parameter xi = L/b. Same value (within rounding) as Kondo1998."
+
+  - symbol: "walk_off_parameter_beta_kubota_convention"
+    value: 37.9
+    units: "1"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "Walk-off parameter as reported by Kubota1998. Numerically inconsistent with the B = 14.67 reported by Kondo1998 for the same physical setup; the discrepancy is due to a definition difference in the Boyd-Kleinman walk-off-parameter convention. The single-pass conversion factor gamma_SH = 5e-5 W^-1 agrees between the two papers, so the underlying physics is consistent."
+
+  - symbol: "BK_focusing_factor_h_m"
+    value: 0.022
+    units: "1"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80); reference [8] BK1968"
+    notes: "Boyd-Kleinman h_m(beta, xi) factor for the operating geometry. Drives gamma_SH via gamma_SH = K * l * h_m."
+
+  - symbol: "Miller_delta_222"
+    value: 4.5e-2
+    units: "m^2/C"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80); reference [9] Eckardt 1990"
+    notes: "Miller's delta tensor element used to compute d_eff for the operating phase-matching geometry."
+
+  - symbol: "deff_BBO_at_266"
+    value: 1.64e-12
+    units: "m/V"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "Effective nonlinearity calculated from the Miller's delta and the Sellmeier-derived phase-matching geometry. Matches Kondo1998's 1.642 pm/V (rounding)."
+
+  - symbol: "K_constant"
+    value: 1.92e-8
+    units: "1"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80); Eq. 2"
+    notes: "K = 2 * omega^2 * d_eff^2 / (pi * n^3 * eps_0 * c^3) factor in gamma_SH = K * l * h_m formula."
+
+  - symbol: "gamma_SH"
+    value: 5.0e-5
+    units: "1/W"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80); Eq. 1"
+    notes: "Single-pass SHG conversion factor P_UV = gamma_SH * P_c^2. Matches Kondo1998's 4.952e-5 W^-1."
+
+  - symbol: "P_green_incident"
+    value: 0.5
+    units: "W"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "Incident 532 nm power on the cavity, matching Kondo1998."
+
+  - symbol: "T_R1_at_532"
+    value: 0.01
+    units: "1"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "Input mirror transmission at 532 nm, matching Kondo1998."
+
+  - symbol: "R_R1_at_532"
+    value: 0.99
+    units: "1"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "Input mirror reflectance R_1 = 0.99."
+
+  - symbol: "R_m_cavity_reflectance"
+    value: 0.99
+    units: "1"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "Round-trip cavity reflectance under perfect impedance matching."
+
+  - symbol: "T_c_enhancement"
+    value: 100
+    units: "1"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "Cavity power-enhancement factor under impedance matching."
+
+  - symbol: "P_c_intracavity_green"
+    value: 50
+    units: "W"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "Intracavity-circulating green power at the operating point (P_c = T_c * P_i = 100 * 0.5 W)."
+
+  - symbol: "eta_SH_single_pass"
+    value: 2.5e-3
+    units: "1"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "Single-pass nonlinear-conversion efficiency eta_SH = gamma_SH * P_c = 0.25 %."
+
+  - symbol: "delta_cav_initial"
+    value: 7.5e-3
+    units: "1"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80); Eq. 3"
+    notes: "Initial round-trip cavity loss delta_cav = 1 - R_m - eta_SH = 0.75 %. Matches Kondo1998 Fig. 2 intercept (0.685 % to 0.75 % range across the time trace)."
+
+  - symbol: "loss_decomposition_mirrors"
+    value: 3.0e-3
+    units: "1"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "Total reflection-loss contribution from the four high-reflectivity mirrors: 0.3 %. The largest single contribution to the round-trip loss budget."
+
+  - symbol: "loss_decomposition_Rayleigh_o_at_532_in_0p6cm_BBO"
+    value: 3.6e-4
+    units: "1"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "Rayleigh-scattering loss in the 0.6-cm-long BBO at 532 nm in the o-ray, computed from the Sellmeier-derived index. 0.036 % of round-trip loss."
+
+  - symbol: "P_UV_CW"
+    value: 0.100
+    units: "W"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80); Fig. 3"
+    notes: "Output 266 nm CW power, kept constant at 100 mW by adjusting the input green power. Matches Kondo1998."
+
+  - symbol: "conversion_efficiency_CW_266"
+    value: 0.20
+    units: "1"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "External conversion efficiency 100 mW UV / 500 mW green = 20 % at the operating point."
+
+  - symbol: "purge_atmosphere"
+    value_text: "dry nitrogen flow at 0.4 L/min"
+    units: null
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "Same purge protocol as Kondo1998. Re-stated explicitly here."
+
+  - symbol: "UV_power_density_at_BBO_CW"
+    value: 2.6e6
+    units: "W/m^2"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "Average 266 nm UV power density at the BBO crystal end, accounting for walk-off-driven elongation of the conversion volume. Reported as 260 W/cm^2."
+
+  - symbol: "CW_degradation_rate_delta_dot_cav"
+    value: 5.0e-7
+    units: "1/h"
+    location_in_paper: "Abstract; CW-266 nm generation in BBO section (p. 80)"
+    notes: "Cavity-loss-increase rate during the >1000 h CW-266 nm reliability test. Reported as 5e-5 %/hour at 260 W/cm^2 UV power density. Three samples from different boules. Converted to dimensionless 1/h."
+
+  - symbol: "CW_lifetime_to_0p1pct_loss_increase"
+    value: 2000
+    units: "h"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "Authors' extrapolation: with input-power compensation up to a 0.1 % round-trip-loss increase from the initial 0.75 %, the lifetime is 2000 h."
+
+  - symbol: "CW_damage_rate_field_scaling_exponent"
+    value: 0.5
+    units: "1"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 80)"
+    notes: "Cavity-loss-increase rate scales approximately as the 0.5th power of the generated UV power density, equivalently linear in the UV optical electric field. Same scaling Kondo1998 reports as the 0.566 exponent in the empirical Fig. 4 fit."
+
+  - symbol: "pulsed_repetition_rate"
+    value: 7.0e3
+    units: "Hz"
+    location_in_paper: "Pulsed 266 nm generation in BBO section (p. 81)"
+    notes: "Repetition frequency f = 7 kHz used in the high-power pulsed reliability test."
+
+  - symbol: "pulsed_pulse_duration"
+    value: 29e-9
+    units: "s"
+    location_in_paper: "Pulsed 266 nm generation in BBO section (p. 81)"
+    notes: "29 ns pulse duration in the pulsed test."
+
+  - symbol: "pulsed_average_green_input"
+    value: 2.6
+    units: "W"
+    location_in_paper: "Pulsed 266 nm generation in BBO section (p. 81)"
+    notes: "Average green power for pulsed 266 nm generation."
+
+  - symbol: "pulsed_BBO_length"
+    value: 1.0e-2
+    units: "m"
+    location_in_paper: "Pulsed 266 nm generation in BBO section (p. 81)"
+    notes: "Crystal length used for the pulsed-266 nm test (1 cm); longer than the 0.6 cm used in the CW test."
+
+  - symbol: "pulsed_BBO_waist_along_walk_off"
+    value: 35.5e-6
+    units: "m"
+    location_in_paper: "Pulsed 266 nm generation in BBO section (p. 81)"
+    notes: "Beam-waist radius along the walk-off direction in the pulsed setup (elliptical waist due to walk-off-elongation in the 1-cm crystal)."
+
+  - symbol: "pulsed_BBO_waist_perp_walk_off"
+    value: 87.5e-6
+    units: "m"
+    location_in_paper: "Pulsed 266 nm generation in BBO section (p. 81)"
+    notes: "Beam-waist radius perpendicular to the walk-off direction in the pulsed setup."
+
+  - symbol: "pulsed_average_UV_output"
+    value: 0.8
+    units: "W"
+    location_in_paper: "Pulsed 266 nm generation in BBO section (p. 81)"
+    notes: "Average 266 nm output in the pulsed test."
+
+  - symbol: "pulsed_conversion_efficiency_depleted"
+    value: 0.31
+    units: "1"
+    location_in_paper: "Pulsed 266 nm generation in BBO section (p. 81)"
+    notes: "Depleted-pump conversion efficiency, computed via an extension of the Boyd-Kleinman algorithm developed by the authors (ref [11])."
+
+  - symbol: "pulsed_peak_UV_power_density"
+    value: 3.1e11
+    units: "W/m^2"
+    location_in_paper: "Pulsed 266 nm generation in BBO section (p. 81); abstract"
+    notes: "Peak power density at 31 MW/cm^2. Compare to the CW value of 2.6 kW/m^2 (260 W/cm^2): roughly 10^5 ratio."
+
+  - symbol: "pulsed_degradation_rate_transmittance"
+    value: 5.0e-4
+    units: "1/h"
+    location_in_paper: "Pulsed 266 nm generation in BBO section (p. 81); abstract"
+    notes: "Reported as 0.05 %/hour scattering-loss increase in the BBO at 31 MW/cm^2 peak. Converted to dimensionless 1/h."
+
+  - symbol: "damage_probability_model_form"
+    value_text: "p(E) = C exp(-K/E)"
+    units: null
+    location_in_paper: "Pulsed 266 nm generation in BBO section (p. 81); Eq. 6"
+    notes: "Empirical (Bass-Barrett ref [12]) form for the single-pulse damage probability as a function of the UV optical electric field. The same functional form is fitted independently to the CW and pulsed regimes; the two parameter sets do not overlap (see C1, K1, C2, K2 entries below) and the ratio between them is interpreted as evidence of a thermal -> multiphoton excitation transition."
+
+  - symbol: "damage_C1_pulsed_sample_a"
+    value: 3.5e-11
+    units: "1"
+    location_in_paper: "Pulsed 266 nm generation in BBO section (p. 81); Fig. 4"
+    notes: "Pulsed-regime damage-probability model parameter C1 for sample (a)."
+
+  - symbol: "damage_C1_pulsed_sample_b"
+    value: 6.5e-11
+    units: "1"
+    location_in_paper: "Pulsed 266 nm generation in BBO section (p. 81); Fig. 4"
+    notes: "Pulsed-regime damage-probability model parameter C1 for sample (b). Sample-to-sample variation in C1 by a factor of ~2 at constant K1, suggesting C1 reflects scattering-centre density and K1 reflects an intrinsic field threshold."
+
+  - symbol: "damage_K1_pulsed_field"
+    value: 7.0e6
+    units: "V/m"
+    location_in_paper: "Pulsed 266 nm generation in BBO section (p. 81); Fig. 4"
+    notes: "Pulsed-regime damage-probability field threshold K1 = 7 MV/m. Constant across the two samples. Corresponds to a power density of 11 MW/cm^2."
+
+  - symbol: "damage_C2_CW"
+    value: 2.1e-17
+    units: "1"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 82); Eq. 7; Fig. 6"
+    notes: "CW-regime damage-probability model parameter C2 (typical Cz-BBO sample)."
+
+  - symbol: "damage_K2_CW_field"
+    value: 5.0e7
+    units: "V/m"
+    location_in_paper: "CW-266 nm generation in BBO section (p. 82); Eq. 7"
+    notes: "CW-regime damage-probability field threshold K2 = 50 KV/mm = 5e7 V/m. Reported as corresponding to a power density of 550 W/cm^2."
+
+  - symbol: "damage_C2_over_C1_ratio"
+    value: 1.0e-6
+    units: "1"
+    location_in_paper: "Discussion (p. 82)"
+    notes: "Ratio C2/C1 ~ 1e-6 between the CW and pulsed regimes. Authors interpret as evidence that the damage mechanism transitions from thermal excitation (CW low-power regime, K2 dominates) to multiphoton excitation (pulsed high-power regime, K1 dominates) in the electron-supply step of the local avalanche optical-breakdown chain. K2 and C2 are 'much smaller than K1 and C1 for pulsed 266 nm generation' is the authors' phrasing."
+
+  - symbol: "single_pulse_damage_probability_typical"
+    value: 2.0e-11
+    units: "1"
+    location_in_paper: "Pulsed 266 nm generation in BBO section (p. 81)"
+    notes: "Typical p value calculated from the 0.05 %/hour pulsed degradation rate via Eq. 4 (p = -ln(1-delta) / N with N = f * t)."
+
+  - symbol: "single_pulse_damage_probability_long_lifetime"
+    comparator: "<"
+    value: 8.0e-12
+    units: "1"
+    location_in_paper: "Pulsed 266 nm generation in BBO section (p. 81)"
+    notes: "Threshold p value required for >1000 h pulsed-266-nm lifetime under the 0.02 %/hour target. 'Such grade Cz-BBO has been obtained exceptionally' (authors' phrasing): the high-grade samples meet this bar, but not all samples."
+
+  - symbol: "post_pulsed_microdefect_localisation"
+    value_text: "After pulsed 266 nm operation, increased crystal defects are observed along the *generated UV* propagation direction, not along the input *532 nm* direction. HeNe tomography (Fig. 5)."
+    units: null
+    location_in_paper: "Discussion (p. 81-82); Fig. 5"
+    notes: "The cleanest published evidence that BBO surface failure under quadrupling-cavity operation is driven by the generated UV, not by the green pump. Directly relevant to KD-UV280-011 (mechanism)."
+
+  - symbol: "BBO_hygroscopy_protection"
+    value_text: "BBO is slightly hygroscopic; polished surfaces may be protected from humidity by applying antireflection coating layers"
+    units: null
+    location_in_paper: "Introduction (p. 79)"
+    notes: "Direct quote on BBO surface protection. Relevant to KD-UV280-009. The authors' protocol was AR coatings + N2 purge; sealed-cavity recommendation comes from Kondo1998."
+
+open_extraction_items:
+  - "Sample-to-sample sample-(a) vs sample-(b) variation in C1 (factor of ~2) suggests scattering-centre-density variation across the Sony Cz-BBO inventory; vendor / batch / boule-region metadata for the three CW samples and the two pulsed samples is not given. The hypothetical mapping to Crystals of Siberia / CASTECH / EKSMA / FEEFO BBO is therefore unconstrained by Kubota1998."
+  - "K1 = 7 MV/m and K2 = 50 KV/mm are reported with their power-density equivalents (11 MW/cm^2 and 550 W/cm^2); but the sample-to-sample variation of K1 (constant across two samples) and K2 (single typical sample) is not characterised."
+  - "Phase-matching-angle (47.9 deg) is given for 532 -> 266 nm, NOT 559 -> 280 nm. Conversion to the Friedenauer-class geometry must come from KD-UV280-005 Section C / Sellmeier (Tamosauskas2018 or Kato1990)."
+  - "Decision required: in Section C, do we credit Kondo1998 + Kubota1998 as one programme (preferred, given the overlap) or two? If one, the 'three samples' reproducibility statement must be cited from Kubota1998 (more detailed) and the headline runtime number from Kondo1998 (more directly stated)."
+
+extraction_passes:
+  - date: "2026-05-06"
+    by: "assistant under steward direction"
+    scope: >
+      Initial full-body extraction from the user-provided scanned PDF.
+      Covers Cz-BBO crystal characterisation (boule, polish, linear
+      absorption, scattering, two-photon absorption, thermal
+      conductivity), the CW-266 nm cavity reliability test (geometry,
+      cavity reflectance, intracavity power, single-pass conversion,
+      round-trip loss decomposition, degradation rate vs UV power
+      density, lifetime extrapolation), the pulsed-266 nm test
+      (repetition rate, pulse duration, average / peak powers, conversion
+      efficiency, single-pulse damage probability), the empirical
+      p(E) = C exp(-K/E) damage-probability model with separate CW and
+      pulsed parameter sets, the C2/C1 ~ 1e-6 thermal -> multiphoton
+      transition argument, and the post-pulsed microdefect-localisation
+      evidence. Status promoted from SCAFFOLD to DRAFT.
+    status: "DRAFT"
+
+cross_check_notes:
+  - id: "kondo_kubota_overlap"
+    summary: >
+      Authorship overlap (Kondo, Oka, Wada, Fukui, Umezu, Tatsuki, Kubota
+      all in both author lists), same Sony Research Center affiliation,
+      identical CW operating point (532 -> 266 nm SHG, 100 mW UV from
+      500 mW green, w0 = 46 um, three samples, 1000+ h, 0.4 L/min N2
+      purge), identical d_eff = 1.64 pm/V, identical gamma_SH = 5e-5
+      W^-1, and identical degradation-rate scaling all confirm Kondo1998
+      and Kubota1998 are the same Sony experimental programme reported
+      in two venues. The proceedings paper (Kubota1998) is the more
+      comprehensive document and adds the crystal characterisation, the
+      pulsed result, and the unified damage-probability model.
+    resolution: >
+      For dossier Section C use, treat Kondo1998 + Kubota1998 as one
+      programme citation, not two independent measurements. Anchor
+      runtime / qualitative claims to the journal article (Kondo1998);
+      anchor numerical mechanism / damage-probability claims to the
+      proceedings paper (Kubota1998).
+    informs_dossier_entries:
+      - "KD-UV280-005"
+      - "KD-UV280-011"
+
+  - id: "phase_match_vs_cut_angle"
+    summary: >
+      The Sector-C boule was cut at 47.5 deg to the c-axis. The
+      Sellmeier-predicted Type-I 532 -> 266 nm phase-matching angle in
+      Cz-BBO at the operating temperature is 47.9 deg. The 0.4 deg
+      offset is the small detuning the authors operate at; this is
+      consistent with Kondo1998's 47.5 deg cut-angle quote and
+      Kondo1998's 4.88 deg walk-off-angle quote.
+    resolution: >
+      No discrepancy. Cut and phase-matching angles are different
+      quantities, and the 0.4 deg offset is the experimental phase-
+      matching-tuning margin.
+    informs_dossier_entries:
+      - "KD-UV280-005"
+
+  - id: "walk_off_parameter_convention_difference"
+    summary: >
+      Kondo1998 reports B = 14.67 with B = rho * sqrt(k * l) / 2.
+      Kubota1998 reports beta = 37.9 for the same physical setup. The
+      values are not numerically consistent under the Kondo definition;
+      the difference is a Boyd-Kleinman walk-off-parameter convention
+      difference between the two papers. The downstream single-pass
+      conversion factor gamma_SH = 5e-5 W^-1 agrees, so the underlying
+      physics is consistent.
+    resolution: >
+      Record both as-stated. Do not derive one from the other. When
+      reproducing the result in src.shg.bk_efficiency, pick a single
+      convention and apply it consistently; the gamma_SH value is the
+      cross-check anchor.
+    informs_dossier_entries:
+      - "KD-UV280-005"
+      - "KD-UV280-013"
+
+  - id: "uv_drives_failure_not_green"
+    summary: >
+      Fig. 5 (HeNe tomographic image after pulsed 266 nm operation)
+      shows defect formation along the *generated UV* propagation
+      direction, not along the *input 532 nm* direction. The authors
+      conclude damage is induced primarily by the 266 nm UV, ruling
+      out the green pump as the dominant degradation actor.
+    resolution: >
+      This is the cleanest single-paragraph published evidence that
+      UV (not the visible pump) drives BBO surface failure in
+      quadrupling-cavity operation. Cite explicitly in KD-UV280-011
+      Section C and use as the basis for any UV-stage thermal /
+      defect-mechanism modelling.
+    informs_dossier_entries:
+      - "KD-UV280-011"

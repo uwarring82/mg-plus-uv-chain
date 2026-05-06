@@ -1,0 +1,33 @@
+citation_key: "Brown2019"
+source_tier: "P"
+doi: "10.1038/s41598-018-37337-5"
+citation: "A. Brown, D. Bernot, A. Ogloza, K. Olson, J. Thomas, and J. Talghader, Scientific Reports 9, 635 (2019). Author list to be confirmed against the PDF."
+title: "Physical Origin of Early Failure for Contaminated Optics"
+extracted_by: "assistant under steward direction"
+extracted_on: "2026-05-06"
+extraction_status: "SCAFFOLD"
+source_document: "Open-access Scientific Reports PDF copied on 2026-05-06 to ignored path downloads/literature/task-e/Brown2019_SciRep_open.pdf. Structured extraction still pending."
+charter_section_refs:
+  - "§5 Phase 1"
+  - "§8.6"
+dossier_entries:
+  - "KD-UV280-008"
+  - "KD-UV280-009"
+  - "KD-UV280-012"
+
+parameters: []
+
+open_extraction_items:
+  - "Confirm full author list, journal status, and DOI against the open-access PDF."
+  - "Run full extraction. Highest-priority targets: damage-threshold drop factor for clean-vs-contaminated optics, coating-bandgap-vs-LIDT scaling, thermal free-carrier breakdown model parameters, and contamination-type ordering (carbon, steel, particulate)."
+  - "Decide how the 1070 nm CW result maps onto 280 nm CW: the thermal free-carrier breakdown model is bandgap-driven and largely wavelength-independent in its functional form, but the absolute breakdown threshold scales with the inverse photon energy and the coating absorption at the operating wavelength. Note adjacent-wavelength caveat in Section C."
+  - "Cross-reference Brown2015 (Appl. Opt. 54, 5216-5222) for the laser-conditioning protocol; create a companion data/literature/Brown2015/ folder if the conditioning protocol is to be cited in KD-UV280-009."
+
+extraction_passes:
+  - date: "2026-05-06"
+    by: "assistant under steward direction"
+    scope: >
+      Scaffold created from public Scientific Reports metadata and the
+      third scout pass. Open-access PDF copied to the ignored downloads
+      area; no article-body values have been extracted yet.
+    status: "SCAFFOLD"

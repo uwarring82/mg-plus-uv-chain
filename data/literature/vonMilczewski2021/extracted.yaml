@@ -1,0 +1,35 @@
+citation_key: "vonMilczewski2021"
+source_tier: "P"
+doi: null
+arxiv_id: "2105.14977"
+citation: "J. S. B. von Milczewski et al., 'Stable High Power deep-UV Enhancement Cavity in Ultra High Vacuum with Fluoride Coatings,' arXiv:2105.14977 (2021). Author list and journal status to be confirmed against the PDF."
+title: "Stable High Power deep-UV Enhancement Cavity in Ultra High Vacuum with Fluoride Coatings"
+extracted_by: "assistant under steward direction"
+extracted_on: "2026-05-06"
+extraction_status: "SCAFFOLD"
+source_document: "Open-access arXiv preprint copied on 2026-05-06 to ignored path downloads/literature/task-e/vonMilczewski2021_arxiv_open.pdf. Structured extraction still pending."
+charter_section_refs:
+  - "§5 Phase 1"
+  - "§8.4"
+  - "§8.6"
+dossier_entries:
+  - "KD-UV280-008"
+  - "KD-UV280-009"
+  - "KD-UV280-012"
+
+parameters: []
+
+open_extraction_items:
+  - "Confirm full author list against the arXiv PDF; the citation field above is a placeholder."
+  - "Confirm whether the work has been published in a peer-reviewed journal since the 2021 preprint; if so, update DOI and downgrade arxiv_id to a secondary identifier."
+  - "Run full extraction. Highest-priority numerical targets: oxide coating time-to-failure at 5 W intracavity, fluoride coating survival window at 10-16 W intracavity, oxygen partial-pressure thresholds, UV-ozone recovery factor, and explicit cavity wavelength (likely ~244 nm)."
+  - "Decide how the ~244 nm result maps onto KD-UV280-008 / -012 at 280 nm: the oxygen-depletion / hydrocarbon-contamination mechanism is wavelength-scalable, but the photo-cross-sections for hydrocarbon photopolymerisation and the coating-material absorption shoulders are wavelength-dependent. Note adjacent-wavelength caveat in Section C."
+
+extraction_passes:
+  - date: "2026-05-06"
+    by: "assistant under steward direction"
+    scope: >
+      Scaffold created from public arXiv metadata and the third scout
+      pass. Open-access PDF copied to the ignored downloads area; no
+      article-body values have been extracted yet.
+    status: "SCAFFOLD"

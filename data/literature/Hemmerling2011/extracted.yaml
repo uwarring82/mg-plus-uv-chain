@@ -1,0 +1,35 @@
+citation_key: "Hemmerling2011"
+source_tier: "P"
+doi: "10.1007/s00340-011-4472-9"
+citation: "B. Hemmerling et al. (full author list to be confirmed against the PDF), Applied Physics B 104, 583-590 (2011)"
+title: "A single laser system for ground-state cooling of 25Mg+"
+extracted_by: "assistant under steward direction"
+extracted_on: "2026-05-06"
+extraction_status: "SCAFFOLD"
+source_document: "Open-access arXiv preprint copied on 2026-05-06 to ignored path downloads/literature/task-e/Hemmerling2011_arxiv_open.pdf. Structured extraction still pending."
+charter_section_refs:
+  - "§2"
+  - "§5 Phase 1"
+  - "§8.1"
+dossier_entries:
+  - "KD-UV280-001"
+  - "KD-UV280-005"
+  - "KD-UV280-009"
+  - "KD-UV280-010"
+
+parameters: []
+
+open_extraction_items:
+  - "Confirm full author list against the arXiv PDF. The scout-pass guess included U. Warring (the project Steward) among the authors; if confirmed, flag this in the dossier and ensure citations rely on the published numbers rather than Steward-recollection."
+  - "Run full extraction. Targets: harmonic-generation chain (fundamentals, crystals, cavity geometry, intracavity / output powers); 280 nm UV output and conversion efficiency; operational-stability data; crystal vendor and AR-coating specifications; any maintenance / lifetime notes."
+  - "Cross-reference to Friedenauer 2006 (data/literature/Friedenauer2006/) - Hemmerling2011 may be the same architecture family or a divergent one. Capture the architecture-family-mapping decision in KD-UV280-001 Section C."
+  - "Determine whether the paper reports operating in the 14-GHz unlockable domain (KD-UV280-010) or whether the choice of 25Mg+ vs 24Mg+ avoided it."
+
+extraction_passes:
+  - date: "2026-05-06"
+    by: "assistant under steward direction"
+    scope: >
+      Scaffold created from public Applied Physics B / arXiv metadata
+      and the second scout pass. Open-access PDF copied to the ignored
+      downloads area; no article-body values have been extracted yet.
+    status: "SCAFFOLD"

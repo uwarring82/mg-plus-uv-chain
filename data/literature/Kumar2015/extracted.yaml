@@ -1,0 +1,34 @@
+citation_key: "Kumar2015"
+source_tier: "P"
+doi: "10.1364/OE.23.028091"
+citation: "S. Chaitanya Kumar, J. Canals Casals, J. Wei, and M. Ebrahim-Zadeh, Optics Express 23, 28091-28103 (2015)"
+title: "High-power, high-repetition-rate performance characteristics of beta-BaB2O4 for single-pass picosecond ultraviolet generation at 266 nm"
+extracted_by: "assistant under steward direction"
+extracted_on: "2026-05-06"
+extraction_status: "SCAFFOLD"
+source_document: "Open-access UPCommons / institutional-repository PDF copied on 2026-05-06 to ignored path downloads/literature/task-e/Kumar2015_UPCommons_open.pdf. Structured extraction still pending."
+charter_section_refs:
+  - "§5 Phase 1"
+  - "§8.4"
+  - "§8.6"
+dossier_entries:
+  - "KD-UV280-005"
+  - "KD-UV280-009"
+  - "KD-UV280-011"
+
+parameters: []
+
+open_extraction_items:
+  - "Run full extraction from the open-access PDF. Highest-priority targets: TPA coefficient beta at 266 nm at room temperature and at 200 deg C; colour-centre formation rate and steady-state density vs temperature; 8-hour power-stability trace; beam geometry; crystal source / growth method."
+  - "Verify the 3.5x TPA reduction and 69 % colour-centre density reduction quoted in the Turcicova2022 extraction against the Kumar2015 PDF text."
+  - "Decide how the 80 MHz / 2.9 W average / picosecond regime maps onto the Friedenauer-class CW operating point: the thermal-load envelope overlaps; the multiphoton-defect-formation mechanism may not. Capture the regime-mapping decision in KD-UV280-011 Section C."
+
+extraction_passes:
+  - date: "2026-05-06"
+    by: "assistant under steward direction"
+    scope: >
+      Scaffold created from public Optica / Optics Express metadata,
+      the second scout pass, and the Turcicova2022 cross-reference.
+      Open-access UPCommons PDF copied to the ignored downloads area;
+      no article-body values have been extracted yet.
+    status: "SCAFFOLD"

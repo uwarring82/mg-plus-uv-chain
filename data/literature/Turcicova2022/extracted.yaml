@@ -1,0 +1,250 @@
+citation_key: "Turcicova2022"
+source_tier: "S"
+doi: "10.1016/j.optlastec.2022.107876"
+citation: "H. Turcicova, O. Novak, J. Muzik, D. Stepankova, M. Smrz, and T. Mocek, Optics & Laser Technology 149, 107876 (2022)"
+title: "Laser induced damage threshold (LIDT) of beta-barium borate (BBO) and cesium lithium borate (CLBO) - Overview"
+extracted_by: "assistant under steward direction"
+extracted_on: "2026-05-06"
+extraction_status: "DRAFT"
+source_document: "Local user-library PDF copied on 2026-05-06 to ignored path downloads/literature/task-e/Turcicova2022_Elsevier_user.pdf; not committed to repository."
+charter_section_refs:
+  - "§5 Phase 1"
+  - "§8.2"
+  - "§8.4"
+  - "§8.6"
+dossier_entries:
+  - "KD-UV280-005"
+  - "KD-UV280-006"
+  - "KD-UV280-008"
+  - "KD-UV280-009"
+  - "KD-UV280-011"
+  - "KD-UV280-012"
+
+parameters:
+  - symbol: "BBO_transparency_cutoff"
+    value: 189e-9
+    units: "m"
+    location_in_paper: "Introduction (p. 1)"
+    notes: "Transparency cut-off wavelength of BBO, equivalent to 6.6 eV bandgap energy. Sets the lower wavelength limit for harmonic generation in BBO."
+
+  - symbol: "CLBO_transparency_cutoff"
+    value: 180e-9
+    units: "m"
+    location_in_paper: "Introduction (p. 1)"
+    notes: "Transparency cut-off wavelength of CLBO, equivalent to 6.9 eV bandgap energy. CLBO has 0.3 eV more bandgap headroom than BBO."
+
+  - symbol: "BBO_deff_typical"
+    value: 1.8e-12
+    units: "m/V"
+    location_in_paper: "Introduction (p. 1); reference [2] SNLO"
+    notes: "Typical effective nonlinear coefficient of BBO at SHG, cited as 'about 1.8 pm/V'. Per the SNLO reference. Twice that of CLBO."
+
+  - symbol: "CLBO_deff_typical"
+    value: 0.9e-12
+    units: "m/V"
+    location_in_paper: "Introduction (p. 1); reference [2] SNLO"
+    notes: "Typical effective nonlinear coefficient of CLBO at SHG, cited as 'about 0.9 pm/V'. Half that of BBO."
+
+  - symbol: "BBO_walk_off_at_FHG"
+    value: 90e-3
+    units: "rad"
+    location_in_paper: "Introduction (p. 1); reference [2] SNLO"
+    notes: "Walk-off angle of BBO at the fourth harmonic generation (FHG) operating point, cited as ~90 mrad."
+
+  - symbol: "CLBO_walk_off_at_FHG"
+    value: 30e-3
+    units: "rad"
+    location_in_paper: "Introduction (p. 1); reference [2] SNLO"
+    notes: "Walk-off angle of CLBO at FHG, cited as ~30 mrad. CLBO has 3x lower walk-off than BBO at FHG."
+
+  - symbol: "BBO_birefringence_at_1um"
+    value: 0.05
+    units: "1"
+    location_in_paper: "Introduction (p. 1); reference [2] SNLO"
+    notes: "Birefringence delta-n of BBO around 1 micrometer wavelength."
+
+  - symbol: "BBO_LIDT_higher_than_CLBO_by"
+    value: -0.20
+    units: "1"
+    location_in_paper: "Introduction (p. 1); reference [19] Yoshida2006"
+    notes: "BBO damage threshold is approximately 20 % lower than CLBO under the comparison conditions of Yoshida2006. Sign convention: negative means BBO is lower."
+
+  - symbol: "TPA_BBO_o_at_248nm_0p65ps"
+    value: 0.5e-9
+    units: "cm/W"
+    location_in_paper: "Introduction (p. 1); reference [32] Kurdi2005"
+    notes: "Two-photon absorption coefficient of BBO at 248 nm in o-polarisation, 0.65 ps pulse duration, room temperature, intensity range 0.2-80 GW/cm^2."
+
+  - symbol: "TPA_BBO_e_at_248nm_0p65ps"
+    value: 0.3e-9
+    units: "cm/W"
+    location_in_paper: "Introduction (p. 1); reference [32] Kurdi2005"
+    notes: "Two-photon absorption coefficient of BBO at 248 nm in e-polarisation. Lower than o-polarisation by a factor of ~1.7."
+
+  - symbol: "TPA_CLBO_at_248nm_0p65ps"
+    value: 0.5e-9
+    units: "cm/W"
+    location_in_paper: "Introduction (p. 1); reference [32] Kurdi2005"
+    notes: "Two-photon absorption coefficient of CLBO at 248 nm. Comparable to BBO o-polarisation under the same conditions."
+
+  - symbol: "TPA_BBO_high_intensity_no_TPA_at_2H_plus_2H"
+    value_text: "no TPA observed for 2H + 2H process at 40 GW/cm^2 in BBO"
+    units: null
+    location_in_paper: "Introduction (p. 1); reference [23] Li1997"
+    notes: "Negative result on second-harmonic-photon TPA in BBO at very high intensity. Distinct from the 4H + 4H or 4H + 1H TPA processes that do occur at much lower intensities."
+
+  - symbol: "TPA_BBO_temperature_reduction_at_200C"
+    value: 3.5
+    units: "1"
+    location_in_paper: "Introduction (p. 1); reference [27] Kumar2015"
+    notes: "TPA in BBO at elevated temperature (200 deg C) was reported as 3.5 times lower than at room temperature. Mitigates thermal-load problems for high-power CW or quasi-CW operation."
+
+  - symbol: "TPA_intensity_threshold_negligible"
+    value: 1.0e7
+    units: "W/m^2"
+    location_in_paper: "Introduction (p. 1)"
+    notes: "Intensity below which the effect of nonlinear absorption is negligible: 10 MW/cm^2. Sets the operating-envelope rule of thumb for keeping the BBO / CLBO operation in the linear-absorption regime."
+
+  - symbol: "BBO_LIDT_scatter_range_pulsed_10ps_to_10ns"
+    value: [0.1e13, 10e13]
+    units: "W/m^2"
+    location_in_paper: "Section 2 (p. 2); Fig. 1a"
+    notes: "BBO LIDT scatter spans two orders of magnitude (0.1 to 10 GW/cm^2) for pulse durations 10 ps to 10 ns, across the 55 data points compiled. The scatter is dominated by crystallinity, surface preparation, and measurement-method differences (1-on-1 vs S-on-1)."
+
+  - symbol: "BBO_CW_LIDT_compendium_data_point_range"
+    value: [1.0e7, 1.0e8]
+    units: "W/m^2"
+    location_in_paper: "Section 2 (p. 2); Fig. 1b lower-right corner"
+    notes: "The single CW BBO data point in Fig. 1b sits at approximately 10^-3 to 10^-4 GW/cm^2 (1-10 kW/cm^2 to 1-10 W/cm^2 unclear from log-scale figure). Source not identified in the body text; bibliographic chain via Nikogosyan 2005 [Ref 6]. NOT to be conflated with the Sony / Cz-BBO operational-lifetime measurement (Kondo1998 / Kubota1998) at 260 W/cm^2 average UV power density - that is an operating point, not a damage threshold."
+
+  - symbol: "BBO_LIDT_directional_anisotropy_at_1064nm"
+    value: 2.0
+    units: "1"
+    location_in_paper: "Section 2 (p. 3); reference [19] Yoshida2006"
+    notes: "BBO LIDT for a 1064 nm beam propagating along the {001} plane is approximately 2 x higher than along the {100} or {010} planes. Not measured at 532 nm or 257 nm."
+
+  - symbol: "S_on_1_LIDT_lower_than_1_on_1_by"
+    value: 2.0
+    units: "1"
+    location_in_paper: "Section 3 (p. 4); reference [39] Bhar2000"
+    notes: "S-on-1 (multi-pulse) LIDT can be ~2 x lower than 1-on-1 (single-pulse) LIDT at the same wavelength and pulse duration. Vendor-catalogue LIDT numbers without an S-on-1 disclosure should be treated as upper bounds."
+
+  - symbol: "color_center_lifetime_BBO_range"
+    value: [1.0e-3, 100e-3]
+    units: "s"
+    location_in_paper: "Section 4.1 (p. 5); references [24], [26], [56]"
+    notes: "Lifetime of dynamic colour centres in BBO is on the 1-100 ms scale. They bleach between pulses if the laser repetition rate is below ~100 Hz, and they accumulate at higher repetition rates."
+
+  - symbol: "color_center_density_reduction_BBO_at_200C"
+    value: 0.69
+    units: "1"
+    location_in_paper: "Section 4.1 (p. 5); reference [27] Kumar2015"
+    notes: "Density of colour centres in BBO is reduced by ~69 % when operating the crystal at 200 deg C. Provides a direct mitigation lever for high-power BBO operation that does not require changing the crystal or the cavity."
+
+  - symbol: "HiLASE_FiHG_combined_intensity_envelope"
+    value: 7.0e13
+    units: "W/m^2"
+    location_in_paper: "Section 4.2 (p. 6)"
+    notes: "HiLASE operational rule for FiHG: keep the sum of 4H + 1H peak intensities below 7 GW/cm^2 for 1-2 ps pulses by using larger crystal apertures. Empirical envelope learned from a high-quality CLBO crystal cracking at 4H = 2 GW/cm^2 + 1H = 11 GW/cm^2. Applies to picosecond SFG / FiHG, NOT to Friedenauer-class CW doubling."
+
+  - symbol: "BBO_AR_coating_LIDT_FHG_dual_wavelength"
+    value: 1.0e13
+    units: "W/m^2"
+    location_in_paper: "Section 4.3 (p. 6); reference [63] (Wagner 2018 Cristal-Laser invited talk)"
+    notes: "BBO AR-coated for FHG (532 nm + 266 nm) using HfO2 + Al2O3 + SiO2 multilayer: LIDT 1 GW/cm^2. Authors note this was likely not a premium-quality crystal. The dual-wavelength AR LIDT was the same as AR-at-266-nm-only and 20 % lower than AR-at-532-nm-only."
+
+  - symbol: "AR_coating_deposition_method_ranking"
+    value_text: "ion beam sputtering (IBS) > magnetron sputtering > electron beam evaporation > pulsed laser deposition, in terms of LIDT for AR coatings on nonlinear crystals"
+    units: null
+    location_in_paper: "Section 4.3 (p. 6); references [62], [64], [65]"
+    notes: "Qualitative ordering of AR-coating deposition methods for damage threshold. Mixture coatings (e.g. ZrO2-SiO2 gradient at 355 nm on LBO) outperform discrete-layer coatings (Al2O3 / SiO2)."
+
+  - symbol: "CLBO_surface_LIDT_enhancement_ion_beam_etch"
+    value: 1.4
+    units: "1"
+    location_in_paper: "Section 2 (p. 4); reference [15] Kamimura2002"
+    notes: "Surface LIDT of CLBO is enhanced by a factor of 1.4 after ion-beam etching following polishing (CLBO surface LIDT increases from ~9-12 to ~15-19 GW/cm^2 at 266 nm, 8 ns, single shot). The enhancement scales with etch depth up to ~60 nm."
+
+  - symbol: "CLBO_high_quality_LIDT_TSSG"
+    value: 24e13
+    units: "W/m^2"
+    location_in_paper: "Section 2 (p. 4); reference [20] Nishioka2005"
+    notes: "Solution-stirring top-seeded solution growth (SS-TSSG) CLBO from Osaka 2005: LIDT 24 GW/cm^2 (266 nm, 7 ns, 1-on-1 method). High crystallinity and reduced dislocation density; superior water resistance correlated with low defect density."
+
+  - symbol: "CLBO_operating_temperature"
+    value: 150
+    units: "degC"
+    location_in_paper: "Introduction (p. 1); references [10], [26], [27]"
+    notes: "Recommended operating temperature for CLBO long-term harmonic conversion. Mitigates hygroscopicity and lowers nonlinear absorption."
+
+open_extraction_items:
+  - "Identify the source of the single CW BBO data point in Fig. 1b. Bibliographic chain leads to Nikogosyan 2005 [Ref 6] (Springer book, not in repo). Likely the Sony Cz-BBO programme; cross-check with Kondo1998 / Kubota1998 numbers and update the link in extracted.yaml."
+  - "Promote Kumar2015 to its own data/literature/Kumar2015/ folder. PDF retrieved (downloads/literature/task-e/Kumar2015_UPCommons_open.pdf). The +200 deg C TPA reduction and the 69 % colour-centre-density reduction are directly transferable to KD-UV280-009 thermal-mitigation strategy."
+  - "Decide whether to extract Yoshida2006 (ref [19]). It is the source of the BBO-vs-CLBO 20 % LIDT difference and the BBO {001}-vs-{100} 2x anisotropy at 1064 nm. The wavelength-anisotropy result does not generalise to 280 nm without a separate measurement; if the steward chooses not to extract, log this as a deferred Section C TODO."
+  - "Decide whether to extract Manenkov2014 (ref [52]). Canonical theoretical review of laser-induced-damage mechanisms; useful as the [S]-tier theory anchor for KD-UV280-011. Pure literature review, no numerical extraction needed beyond the mechanism vocabulary already captured in notes.md."
+  - "Verify ref [27] is Kumar2015 (DOI 10.1364/OE.23.028091): Turcicova2022 cites it as 'High-power, high-repetition-rate performance characteristics of beta-BaB2O4 for single-pass picosecond ultraviolet generation at 266 nm'. Match against the downloaded PDF."
+
+extraction_passes:
+  - date: "2026-05-06"
+    by: "assistant under steward direction"
+    scope: >
+      Initial full-body extraction from the user-provided PDF. Covers
+      §1 BBO/CLBO physical-property comparison and TPA discussion,
+      §2 LIDT-vs-pulse-duration compendium (with explicit identification
+      of the single CW BBO data point in Fig. 1b), §2 wavelength /
+      crystal-direction / crystallinity dependence, §3 measurement-
+      technique distinction, §4 intrinsic-vs-extrinsic damage mechanisms,
+      §4.1 colour-centre lifetime and temperature dependence, §4.2 LIDT
+      at SFG / FiHG with the HiLASE operational envelope, and §4.3 AR-
+      coating LIDT including the BBO HfO2+Al2O3+SiO2 multilayer
+      number and the deposition-method ranking. Bibliographic-hub
+      observations and harvested-reference list are captured in
+      notes.md; numerical extractions in extracted.yaml are limited to
+      values the review actually reports as quantitative. Status
+      promoted from SCAFFOLD to DRAFT.
+    status: "DRAFT"
+
+cross_check_notes:
+  - id: "secondary_source_section_C_rule"
+    summary: >
+      Turcicova2022 is a review (source_tier: S). The dossier's Section C
+      rule requires at least one peer-reviewed primary [P] source per
+      constraint. Turcicova2022 cannot be the sole citation for any
+      KD-UV280-005 / -006 / -008 / -009 / -011 / -012 Section C
+      constraint; it must accompany a primary anchor.
+    informs_dossier_entries:
+      - "KD-UV280-005"
+      - "KD-UV280-006"
+      - "KD-UV280-008"
+      - "KD-UV280-009"
+      - "KD-UV280-011"
+      - "KD-UV280-012"
+
+  - id: "vendor_catalogue_LIDT_caveat"
+    summary: >
+      Section 5 conclusion explicitly states 'It is unclear whether or
+      not the producers always present their own measured LIDT values
+      or if they simply take those over from other producers.' The
+      compendium of 55 BBO data points and the corresponding CLBO
+      compendium include vendor-catalogue values from Altechna,
+      Bluebean Optical, CASTECH, Edmund Optics, MTOptics, Raicol,
+      United Crystals (BBO) and CASTECH, GWU-Lasertechnik, Laser
+      Crylink, OXIDE Corporation (CLBO). These values should be
+      treated as [V] (vendor) tier or as upper bounds, never as the
+      sole anchor for a Section C constraint.
+    informs_dossier_entries:
+      - "KD-UV280-005"
+      - "KD-UV280-006"
+
+  - id: "no_280nm_CW_lifetime_in_review"
+    summary: >
+      Turcicova2022 reinforces the negative result from the task-E
+      scout passes: there is no peer-reviewed BBO-at-280-nm CW
+      operational-lifetime measurement in the published LIDT review
+      literature. The Fig. 1b CW data point is at 266 nm (per the
+      Nikogosyan compendium chain), not 280 nm. The dossier Section C
+      acceptance criterion requiring an explicit search-boundary
+      statement when adjacent-wavelength evidence stands in for direct
+      280 nm data still applies.
+    informs_dossier_entries:
+      - "KD-UV280-005"

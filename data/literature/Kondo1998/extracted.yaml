@@ -1,0 +1,318 @@
+citation_key: "Kondo1998"
+source_tier: "P"
+doi: "10.1364/OL.23.000195"
+citation: "K. Kondo, M. Oka, H. Wada, T. Fukui, N. Umezu, K. Tatsuki, and S. Kubota, Optics Letters 23, 195-197 (1998)"
+title: "Demonstration of long-term reliability of a 266-nm, continuous-wave, frequency-quadrupled solid-state laser using beta-BaB2O4"
+extracted_by: "assistant under steward direction"
+extracted_on: "2026-05-06"
+extraction_status: "DRAFT"
+source_document: "Local user-library PDF copied on 2026-05-06 to ignored path downloads/literature/task-e/Kondo1998_OpticsLetters_user.pdf; not committed to repository."
+charter_section_refs:
+  - "§5 Phase 1"
+  - "§8.2"
+  - "§8.4"
+dossier_entries:
+  - "KD-UV280-005"
+  - "KD-UV280-009"
+  - "KD-UV280-011"
+
+parameters:
+  - symbol: "architecture_route"
+    value_text: "Diode-pumped intracavity-doubled Nd:YVO4 -> 532 nm -> external resonant SHG in BBO -> 266 nm"
+    units: null
+    location_in_paper: "Abstract; introduction; Fig. 1"
+    notes: "All-solid-state CW frequency-quadrupling chain using a Cz-grown BBO doubler in a bow-tie ring cavity. This is a 266 nm result, not a 280 nm result; mapping to KD-UV280-005 requires an explicit adjacent-wavelength caveat."
+
+  - symbol: "lambda_pump_diode"
+    value: 808e-9
+    units: "m"
+    location_in_paper: "Abstract; introduction"
+    notes: "Implicit diode-laser pump for the Nd:YVO4 source. The paper states a 4-W laser-diode pump but does not explicitly quote 808 nm; this assignment follows from the Nd:YVO4 absorption line and is recorded for cross-checking only."
+
+  - symbol: "P_pump_diode"
+    value: 4.0
+    units: "W"
+    location_in_paper: "Abstract"
+    notes: "Pump-diode power for the intracavity-doubled Nd:YVO4 green source."
+
+  - symbol: "lambda_green_pump"
+    value: 532e-9
+    units: "m"
+    location_in_paper: "Abstract; Fig. 1"
+    notes: "Single-longitudinal-mode 532 nm green light from intracavity-doubled Nd:YVO4."
+
+  - symbol: "P_green_incident_on_cavity"
+    value: 0.500
+    units: "W"
+    location_in_paper: "Abstract; Section text near Eqs. 1-3; Fig. 3"
+    notes: "Incident 532 nm power on the external resonant BBO cavity."
+
+  - symbol: "lambda_UV_output"
+    value: 266e-9
+    units: "m"
+    location_in_paper: "Abstract; Fig. 1"
+    notes: "266 nm UV output from BBO Type-I SHG of 532 nm."
+
+  - symbol: "P_UV_output"
+    value: 0.100
+    units: "W"
+    location_in_paper: "Abstract; Fig. 3"
+    notes: "100 mW CW 266 nm output, the operating point at which the reliability test was run."
+
+  - symbol: "BBO_growth_method"
+    value_text: "Czochralski-grown beta-BaB2O4"
+    units: null
+    location_in_paper: "Abstract; introduction"
+    notes: "The Cz growth method is the experimental novelty of the Sony programme relative to flux-grown BBO. The paper does not name a vendor."
+
+  - symbol: "BBO_cut_angle"
+    value: 47.5
+    units: "deg"
+    location_in_paper: "Section text after Fig. 1"
+    notes: "Type-I phase-matched cut angle for 532 -> 266 nm SHG."
+
+  - symbol: "BBO_phase_match_type"
+    value_text: "type-I"
+    units: null
+    location_in_paper: "Section text after Fig. 1"
+    notes: "Phase-matching type for 532 -> 266 nm in BBO."
+
+  - symbol: "L_BBO_crystal"
+    value: 6.0e-3
+    units: "m"
+    location_in_paper: "Section text after Fig. 1"
+    notes: "Crystal length used in the >1000 h experiment."
+
+  - symbol: "BBO_AR_coating"
+    value_text: "antireflection coated for 532 nm at normal incidence"
+    units: null
+    location_in_paper: "Section text after Fig. 1"
+    notes: "AR coating is for the green fundamental. The paper notes AR-coat damage as the failure mode at small beam waist (Fig. 6 caption)."
+
+  - symbol: "deff_BBO_at_266"
+    value: 1.642e-12
+    units: "m/V"
+    location_in_paper: "Equation 1 derivation; reference [6]"
+    notes: "Effective nonlinearity used by the authors to compute gamma_SH. Cited from Eckardt et al. 1990 (data/literature/Eckardt1990/). This is the 532 -> 266 nm value at the Sony 47.5 deg cut, NOT the 559 -> 280 nm value needed for KD-UV280-005 Section C."
+
+  - symbol: "gamma_SH"
+    value: 4.952e-5
+    units: "1/W"
+    location_in_paper: "Equation 1 derivation"
+    notes: "Single-pass SHG conversion factor P_UV = gamma_SH * P_c^2, computed from d_eff (Eckardt 1990), the focusing parameter, and the walk-off parameter via Boyd-Kleinman."
+
+  - symbol: "cavity_geometry"
+    value_text: "bow-tie ring with two curved mirrors (R1 input coupler, R2 dichroic output coupler) and two flat mirrors (R3 voice-coil-actuated PDH lock, R4)"
+    units: null
+    location_in_paper: "Fig. 1; section text"
+    notes: "External resonant doubler. R3 is mounted on a voice-coil motor for the Pound-Drever-Hall lock."
+
+  - symbol: "cavity_locking_scheme"
+    value_text: "Pound-Drever-Hall, voice-coil-motor actuator on R3"
+    units: null
+    location_in_paper: "Section text after Fig. 1"
+    notes: "External cavity is frequency-locked to the Nd:YVO4 green laser via PDH. Differs from Friedenauer 2006, which uses Hansch-Couillaud."
+
+  - symbol: "T_R1_at_532"
+    value: 0.01
+    units: "1"
+    location_in_paper: "Section text after Fig. 1"
+    notes: "Transmission of the input coupler R1 at the 532 nm green fundamental."
+
+  - symbol: "T_R2_at_266"
+    value: 0.92
+    units: "1"
+    location_in_paper: "Section text after Fig. 1"
+    notes: "Transmission of the dichroic output coupler R2 at 266 nm UV."
+
+  - symbol: "R_R2_at_532"
+    value: 0.999
+    units: "1"
+    location_in_paper: "Section text after Fig. 1"
+    notes: "Reflectivity of the dichroic output coupler R2 at the 532 nm fundamental."
+
+  - symbol: "R_curvature_R1_R2"
+    value: 0.10
+    units: "m"
+    location_in_paper: "Section text after Fig. 1"
+    notes: "Both curved mirrors R1 and R2 have a 10 cm radius of curvature."
+
+  - symbol: "l1_R1_to_R2"
+    value: 0.120
+    units: "m"
+    location_in_paper: "Section text after Fig. 1; Fig. 1 annotation"
+    notes: "Distance between the two curved mirrors R1 and R2 (the BBO sits between them)."
+
+  - symbol: "l2_for_w0_46um"
+    value: 0.105
+    units: "m"
+    location_in_paper: "Section text after Fig. 1; Fig. 1 annotation"
+    notes: "Long-arm length set to 105 mm to realise the w0 = 46 um intracavity beam waist."
+
+  - symbol: "w0_BBO_46um"
+    value: 46e-6
+    units: "m"
+    location_in_paper: "Section text after Fig. 1"
+    notes: "Beam-waist radius (1/e^2 intensity) at the BBO for the >1000 h reliability run. Defined to suppress AR-coat damage (compare w0_BBO_23um)."
+
+  - symbol: "focusing_parameter_xi"
+    value: 0.1434
+    units: "1"
+    location_in_paper: "Section text after Fig. 1"
+    notes: "Boyd-Kleinman focusing parameter xi = l/b with b = k*w0^2 the confocal parameter. Low xi suppresses surface power density, traded against single-pass SHG efficiency."
+
+  - symbol: "walk_off_parameter_B"
+    value: 14.67
+    units: "1"
+    location_in_paper: "Section text after Fig. 1; reference [5] Boyd-Kleinman"
+    notes: "Walk-off parameter B = rho * sqrt(k*l) / 2."
+
+  - symbol: "walk_off_angle_rho"
+    value: 4.88
+    units: "deg"
+    location_in_paper: "Section text after Fig. 1"
+    notes: "Walk-off angle of the BBO at the 47.5 deg Type-I 532 -> 266 nm phase-matching geometry. Drives the elliptical damage trace seen at small w0 (Fig. 6)."
+
+  - symbol: "delta_cav_initial"
+    value: 6.85e-3
+    units: "1"
+    location_in_paper: "Fig. 2 fit (intercept)"
+    notes: "Initial round-trip cavity loss at t=0 from the Fig. 2 fit y = 0.68478 + 7.6141e-05 * x with R = 0.9717. Units in the figure are percent; the value here is the dimensionless fraction."
+
+  - symbol: "degradation_rate_at_100mW_w0_46um"
+    value: 7.61e-7
+    units: "1/h"
+    location_in_paper: "Fig. 2 fit (slope); section text"
+    notes: "Round-trip-loss degradation rate at the 100 mW UV operating point with w0 = 46 um. Reported as 7.61e-5 %/hour in the paper; converted to dimensionless 1/h. Linear regression slope from the Fig. 2 fit."
+
+  - symbol: "long_term_runtime_fixed_beam"
+    comparator: ">"
+    value: 1200
+    units: "h"
+    location_in_paper: "Abstract; section text near Fig. 3"
+    notes: "More than 1200 h continuous operation at fixed beam position with <5% adjustments to the input green power. Reproduced three times in different samples."
+
+  - symbol: "long_term_runtime_with_beam_translation"
+    comparator: ">"
+    value: 5000
+    units: "h"
+    location_in_paper: "Section text near Fig. 3"
+    notes: "Operational-protocol claim, not continuous fixed-beam runtime: by translating the beam onto a fresh spot on the BBO surface after each 1200 h interval, 100 mW UV operation can be maintained for >5000 h."
+
+  - symbol: "RIN_above_2MHz"
+    comparator: "<"
+    value: -130
+    units: "dB/Hz"
+    location_in_paper: "Abstract; Fig. 5"
+    notes: "Relative-intensity-noise floor of the 266 nm output between 2 and 10 MHz. Measurement bandwidth: 30 kHz resolution, 100 Hz video, 1 mW input power."
+
+  - symbol: "degradation_rate_fit_form"
+    value_text: "delta_dot_cav [%/h] = 2.806e-6 * (P_UV/A [W/cm^2])^0.566"
+    units: null
+    location_in_paper: "Fig. 4"
+    notes: "Empirical fit of the round-trip-loss degradation rate vs UV power density on the BBO surface. R = 0.98272. The sub-linear exponent (0.566) is what the abstract paraphrases as 'proportional to the strength of the UV optical electric field' (|E| proportional to sqrt(I)). The fit was anchored by data points at multiple operating powers up to ~1000 W/cm^2."
+
+  - symbol: "degradation_rate_at_100mW_w0_23um"
+    value: 1.35e-6
+    units: "1/h"
+    location_in_paper: "Section text near Fig. 6; reference [3] (Oka 1995)"
+    notes: "Round-trip-loss degradation rate at 100 mW UV in the prior Oka 1995 experiment with w0 = 23 um. Reported as 1.35e-4 %/h; converted to dimensionless 1/h. ~18x worse than the w0 = 46 um run, consistent with Fig. 4 sub-linear scaling."
+
+  - symbol: "runtime_at_100mW_w0_23um"
+    value: 400
+    units: "h"
+    location_in_paper: "Section text near Fig. 6; reference [3] (Oka 1995)"
+    notes: "Operating runtime at 100 mW UV in the prior Oka 1995 experiment with w0 = 23 um."
+
+  - symbol: "runtime_at_1W_w0_23um"
+    value: 8
+    units: "h"
+    location_in_paper: "Section text near Fig. 6; reference [3] (Oka 1995)"
+    notes: "Operating runtime at 1 W UV in the prior Oka 1995 experiment with w0 = 23 um. Documents the steep drop in lifetime as UV power scales beyond the 100 mW operating point at fixed waist."
+
+  - symbol: "damage_morphology_at_w0_23um"
+    value_text: "elliptical AR-coat damage trace on BBO surface, ellipse elongated along the walk-off direction"
+    units: null
+    location_in_paper: "Fig. 6 caption; section text"
+    notes: "Microscope image (160x magnification) of the BBO AR-coat surface after the prior small-waist run. Elliptical shape is attributed to the BBO walk-off (rho = 4.88 deg). At w0 = 46 um no such damage is seen."
+
+  - symbol: "purge_gas"
+    value_text: "nitrogen"
+    units: null
+    location_in_paper: "Section text after Fig. 6"
+    notes: "Used to purge out-gas from the mechanical components inside the external cavity."
+
+  - symbol: "purge_flow_rate"
+    value: 0.4
+    units: "L/min"
+    location_in_paper: "Section text after Fig. 6"
+    notes: "Effective N2 purge rate for avoiding contamination during the experiments."
+
+  - symbol: "contamination_dominant_source"
+    value_text: "residual oil vapor from mechanical components inside the external cavity"
+    units: null
+    location_in_paper: "Section text after Fig. 6"
+    notes: "Identified as the dominant contamination mechanism that degrades both the BBO crystal and the cavity mirrors. Couples directly to KD-UV280-009 (gas-environment dependence)."
+
+  - symbol: "operational_protocol_recommendation"
+    value_text: "hermetically sealed external cavity recommended to remove the need for an active N2 purge"
+    units: null
+    location_in_paper: "Conclusion"
+    notes: "Authors' recommendation for long-term operation at this UV power level."
+
+  - symbol: "degradation_mechanism_hypothesis"
+    value_text: "two candidate mechanisms: (1) UV optical electric field disorders the spontaneous-polarization direction of the BBO, increasing scattering loss; or (2) UV field increases crystal defects via avalanche breakdown, also increasing scattering loss"
+    units: null
+    location_in_paper: "Section text near Fig. 4"
+    notes: "Authors' hypothesis to explain the |E|-scaling of the degradation rate. Both mechanisms are bulk / surface-defect models; neither is uniquely identified by the data. Couples to KD-UV280-011."
+
+open_extraction_items:
+  - "Vendor / supplier identity for the Cz-grown BBO is not given. Recover from Kubota1998 (companion paper, same Sony programme) if reported there."
+  - "Exact AR-coating vendor / specification is not given."
+  - "Sample-to-sample variation among the three reproducible runs is not quantified beyond <5% input-power adjustments."
+  - "Phase-matching-angle conversion from 47.5 deg (532->266 nm) to the 559->280 nm Friedenauer geometry must be done in KD-UV280-005 Section C, not here. The d_eff = 1.642 pm/V cannot be ported across wavelengths without that conversion."
+  - "Whether the cavity was operated in air, dry N2, or a sealed atmosphere is left ambiguous: 0.4 L/min N2 purge implies an open cavity flushed with dry N2, not a sealed one. The conclusion explicitly recommends sealing as a future improvement."
+  - "Cross-check against Kubota1998 to determine whether the >1000 h result reproduced 'three times in different samples' is the same dataset reported in two venues or independent."
+
+extraction_passes:
+  - date: "2026-05-06"
+    by: "assistant under steward direction"
+    scope: >
+      Initial full-body extraction from the user-provided PDF. Covers
+      cavity geometry, Boyd-Kleinman focusing/walk-off parameters, BBO
+      crystal specifications, operating powers, the round-trip-loss
+      reliability framework, the empirical degradation-rate-vs-UV-power-
+      density fit (Fig. 4), the RIN spectrum, the comparison with the
+      prior Oka 1995 short-waist experiment, and the cleanliness controls.
+      Bibliographic references resolved against the references list.
+      Status promoted from SCAFFOLD to DRAFT.
+    status: "DRAFT"
+
+cross_check_notes:
+  - id: "wavelength_adjacent_to_280nm"
+    summary: >
+      The headline result is at 266 nm, not 280 nm. The paper does not
+      and cannot establish a 280 nm CW LIDT or operational-lifetime
+      number on its own. Any port of these numbers into KD-UV280-005
+      Section C must (i) state the search-boundary clause specified by
+      the task-E logbook acceptance criteria and (ii) include an
+      explicit phase-matching-angle and d_eff conversion from the Sony
+      47.5 deg Type-I 532->266 geometry to the Friedenauer-class
+      559->280 Type-I geometry.
+    informs_dossier_entries:
+      - "KD-UV280-005"
+      - "KD-UV280-009"
+
+  - id: "kondo_kubota_overlap"
+    summary: >
+      Authorship overlap with Kubota1998 (Kondo, Oka, Wada, Fukui, Umezu,
+      Tatsuki, Kubota all appear in both author lists) suggests this
+      Letter and the OSA Trends conference paper report the same
+      experimental programme at the Sony Research Center. The 'three
+      times in different samples' claim in this Letter and the 'three
+      Cz-grown BBO samples' claim in Kubota1998 may refer to the same
+      sample set; that overlap should be resolved when Kubota1998 is
+      extracted before either is used as an independent Section C
+      anchor.
+    informs_dossier_entries:
+      - "KD-UV280-005"

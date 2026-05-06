@@ -1,0 +1,31 @@
+citation_key: "Burd2016"
+source_tier: "P"
+doi: null
+citation: "S. C. Burd et al. (full author list and DOI to be confirmed against the PDF), Optica 3, 1294-1300 (2016)"
+title: "VECSEL systems for the generation and manipulation of trapped magnesium ions"
+extracted_by: "assistant under steward direction"
+extracted_on: "2026-05-06"
+extraction_status: "SCAFFOLD"
+source_document: "Open-access NIST author-deposit PDF copied on 2026-05-06 to ignored path downloads/literature/task-e/Burd2016_NIST_open.pdf. Structured extraction still pending."
+charter_section_refs:
+  - "§2"
+  - "§5 Phase 1"
+dossier_entries:
+  - "KD-UV280-001"
+  - "KD-UV280-015"
+
+parameters: []
+
+open_extraction_items:
+  - "Confirm full author list, DOI, and title against the open-access PDF."
+  - "Run full extraction. Targets: VECSEL fundamental wavelength / power / linewidth, conversion-stage chain, 280 nm output power / beam quality, operational-stability data, lifetime data."
+  - "Map to KD-UV280-015 (VECSEL pump option). Lower-priority for Task E than the LIDT / coating / mechanism papers; extract only after the Task E LIDT cluster is closed."
+
+extraction_passes:
+  - date: "2026-05-06"
+    by: "assistant under steward direction"
+    scope: >
+      Scaffold created from public Optica / NIST metadata and the second
+      scout pass. Open-access PDF copied to the ignored downloads area;
+      no article-body values have been extracted yet.
+    status: "SCAFFOLD"
