@@ -1,31 +1,179 @@
 citation_key: "Burd2016"
 source_tier: "P"
-doi: null
-citation: "S. C. Burd et al. (full author list and DOI to be confirmed against the PDF), Optica 3, 1294-1300 (2016)"
+doi: "10.1364/OPTICA.3.001294"
+citation: "S. C. Burd, D. T. C. Allcock, T. Leinonen, J. P. Penttinen, D. H. Slichter, R. Srinivas, A. C. Wilson, R. Joerdens, M. Guina, D. Leibfried, and D. J. Wineland, Optica 3, 1294-1300 (2016)"
 title: "VECSEL systems for the generation and manipulation of trapped magnesium ions"
 extracted_by: "assistant under steward direction"
 extracted_on: "2026-05-06"
-extraction_status: "SCAFFOLD"
-source_document: "Open-access NIST author-deposit PDF copied on 2026-05-06 to ignored path downloads/literature/task-e/Burd2016_NIST_open.pdf. Structured extraction still pending."
+extraction_status: "DRAFT"
+source_document: "Open-access NIST author-deposit PDF copied on 2026-05-06 to ignored path downloads/literature/task-e/Burd2016_NIST_open.pdf."
 charter_section_refs:
   - "§2"
   - "§5 Phase 1"
 dossier_entries:
   - "KD-UV280-001"
+  - "KD-UV280-005"
   - "KD-UV280-015"
 
-parameters: []
+parameters:
+  - symbol: "IC_architecture_route"
+    value_text: "I-cavity externally-frequency-quadrupled VECSEL: VECSEL gain mirror at 1117 nm IR (3 W) -> commercial fiber-coupled QPM lithium niobate waveguide doubler at 559 nm (260 mW) -> BBO buildup cavity -> 280 nm UV (23 mW)"
+    units: null
+    location_in_paper: "Section 2; Fig. 2(a)"
+    notes: "First of two VECSEL architectures characterised in this paper. Used for Doppler cooling, repumping, and stimulated Raman transitions on 25Mg+. Conversion efficiency 1118 -> 559 nm = 22 +/- 2 %. Conversion efficiency 559 -> 280 nm = 9 +/- 1 % (visible-to-UV)."
+
+  - symbol: "VC_architecture_route"
+    value_text: "V-cavity intracavity-frequency-doubled VECSEL: VECSEL gain mirror at 1141 nm IR -> intracavity LBO 3 x 3 x 15 mm Type-I CPM at 65 mm short arm -> 571 nm (1.2 W per output beam) -> BBO buildup cavity -> 285 nm UV"
+    units: null
+    location_in_paper: "Section 2; Fig. 2(b)"
+    notes: "Second VECSEL architecture used for Mg photoionization at 285 nm. Gain mirror cooled to 8 deg C."
+
+  - symbol: "P_IR_IC_VECSEL"
+    value: 3.0
+    units: "W"
+    location_in_paper: "Section 2"
+    notes: "IC VECSEL IR output power 3.0 +/- 0.1 W at 1117 nm with 21 +/- 1 W of 807 nm pump power (slope efficiency 19 +/- 1 %)."
+
+  - symbol: "P_pump_IC_VECSEL"
+    value: 21
+    units: "W"
+    location_in_paper: "Section 2"
+    notes: "807 nm fiber-coupled multimode diode laser pump power for IC VECSEL."
+
+  - symbol: "lambda_pump_VECSEL"
+    value: 807e-9
+    units: "m"
+    location_in_paper: "Section 2"
+    notes: "VECSEL diode-laser pump wavelength."
+
+  - symbol: "lambda_IR_IC"
+    value: 1117e-9
+    units: "m"
+    location_in_paper: "Section 2"
+    notes: "IC VECSEL IR fundamental wavelength. Compare with Friedenauer 2006 at 1118 nm: Burd2016 IC system at 1117 nm is 1 nm shorter, outside the Friedenauer 14-GHz unlockable window (1118.339-1118.409 nm)."
+
+  - symbol: "lambda_IR_VC"
+    value: 1141e-9
+    units: "m"
+    location_in_paper: "Section 2"
+    notes: "VC VECSEL IR fundamental wavelength. 23 nm longer than Friedenauer 2006."
+
+  - symbol: "P_visible_IC_after_waveguide"
+    value: 0.260
+    units: "W"
+    location_in_paper: "Section 2"
+    notes: "559 nm power after waveguide doubler in IC system: 260 +/- 10 mW. Conversion 22 +/- 2 % from 1160 +/- 40 mW IR (note: 1160 mW IR cited in §2, distinct from the 3 W IR output of the VECSEL itself; a portion of the 3 W is split off for spectroscopy)."
+
+  - symbol: "P_visible_VC_per_beam"
+    value: 1.2
+    units: "W"
+    location_in_paper: "Section 2"
+    notes: "Two equal output beams of 1.2 +/- 0.1 W at 571 nm exit the VC cavity through the fold and end mirrors at 8 deg C gain-mirror temperature."
+
+  - symbol: "waveguide_doubler_max_power_safe"
+    value: 0.300
+    units: "W"
+    location_in_paper: "Section 2"
+    notes: "Authors operate the LiNbO3 waveguide doubler 'below 300 mW SH to avoid potential damage to the waveguide'. The waveguide damage threshold (NOT the BBO 280 nm stage) is the bottleneck for power scaling in the IC system."
+
+  - symbol: "P_UV_IC_at_280nm"
+    value: 0.023
+    units: "W"
+    location_in_paper: "Section 2"
+    notes: "UV output 23 +/- 2 mW at 280 nm from BBO buildup cavity in IC system, with 23 mW of input visible (note: paper says 'with 1160 +/- 40 mW in the IR, resulting in 260 +/- 10 mW SH power, we generate 23 +/- 2 mW in the UV'). Conversion 9 +/- 1 % visible-to-UV."
+
+  - symbol: "RIN_IC_280nm_above_10kHz"
+    comparator: "<"
+    value: -75
+    units: "dBc/Hz"
+    location_in_paper: "Section 2; Fig. 3"
+    notes: "RIN spectrum of the IC system at 280 nm at output power 13 +/- 1 mW. Compare with Friedenauer 2006 (-130 dB/Hz at 2-10 MHz) - Burd2016 measurement is at lower frequencies (above 10 kHz) so direct comparison not possible."
+
+  - symbol: "linewidth_VC_VECSEL"
+    value: 50e3
+    units: "Hz"
+    location_in_paper: "Section 2"
+    notes: "Linewidth of VC VECSEL system: 50 +/- 10 kHz from the electronic Haensch-Couillaud error signal at 470 kHz detector bandwidth. Comparable to fiber-laser sources (cf. Friedenauer 2006 < 200 kHz) and to the Hemmerling2011 fiber laser (<70 kHz)."
+
+  - symbol: "frequency_deviation_IC_VECSEL"
+    comparator: "<"
+    value: 20e3
+    units: "Hz"
+    location_in_paper: "Section 2; Fig. 4"
+    notes: "Three-cornered hat measurement: IC VECSEL frequency deviation <20 kHz over all averaging times tested, comparable to a fiber laser and an external-cavity diode laser."
+
+  - symbol: "Mg_photoionization_power_used"
+    value: 1.0e-3
+    units: "W"
+    location_in_paper: "Section 3"
+    notes: "Roughly 1 mW of 285 nm light fiber-coupled to the ion trap, focused to 26 um 1/e^2 intensity diameter. Operating intensity ~190 W/cm^2, marginally above the Hemmerling2011 surface-damage threshold of 32-64 W/cm^2 -- Burd2016 uses a different (higher-power) operating intensity but does not report any beam-degradation issue."
+
+  - symbol: "Mg_photoionization_focused_diameter"
+    value: 26e-6
+    units: "m"
+    location_in_paper: "Section 3"
+    notes: "1/e^2 intensity diameter of the photoionization beam at the trap. Used in solarisation-resistant single-mode fiber [ref 34]."
+
+  - symbol: "ion_loading_time"
+    value: 10
+    units: "s"
+    location_in_paper: "Section 3"
+    notes: "Single 25Mg+ loaded reliably and repeatably within 10 s after oven reaches steady state. Faster than Kjaergaard2000's 20 s baseline."
+
+  - symbol: "ion_axial_ground_state_population"
+    value: 0.992
+    units: "1"
+    location_in_paper: "Section 3; Fig. 7"
+    notes: "Mean motional-state occupation number ⟨n⟩ = 0.008 +0.013 / -0.008 after resolved sideband cooling. Ground-state population 1 - 0.008 = 99.2 %. Better than Hemmerling2011's 97 %."
+
+  - symbol: "Doppler_cooling_residual_linewidth"
+    value: 69e6
+    units: "Hz"
+    location_in_paper: "Section 3; Fig. 6"
+    notes: "Atomic linewidth measured to be 69 +/- 3 MHz. Residual width above the natural 41.8 MHz attributed to Doppler broadening."
+
+  - symbol: "Mg_fine_structure_splitting"
+    value: 2.74e12
+    units: "Hz"
+    location_in_paper: "Section 3; Fig. 6"
+    notes: "Fine-structure splitting between 2P1/2 and 2P3/2 of 25Mg+ is approximately 2.74 THz. Useful absolute-frequency reference."
 
 open_extraction_items:
-  - "Confirm full author list, DOI, and title against the open-access PDF."
-  - "Run full extraction. Targets: VECSEL fundamental wavelength / power / linewidth, conversion-stage chain, 280 nm output power / beam quality, operational-stability data, lifetime data."
-  - "Map to KD-UV280-015 (VECSEL pump option). Lower-priority for Task E than the LIDT / coating / mechanism papers; extract only after the Task E LIDT cluster is closed."
+  - "Retrieve Wilson et al. SPIE 9349 (2015) 'Optically pumped semiconductor lasers for atomic and molecular physics' (ref [19]) for the BBO buildup-cavity design details that are referenced but not given in this paper."
+  - "Retrieve Burd et al. NIST tech report or LaserOptik / vendor data on the BBO crystals used in the buildup cavities (vendor, dimensions, cut, AR coating). Burd2016 §2 says 'beta-barium borate (BBO) crystal for frequency doubling to 280 nm. Details of the cavity design are given by Wilson et al. [26]' but does not give crystal-level details."
+  - "Decide whether Burd2016 is the [P]-tier anchor for KD-UV280-015 or whether other VECSEL papers (e.g. Wilson 2011 [ref 24] for Be+) should be cited as well. The cluster of VECSEL pump references is currently underdocumented in the dossier."
 
 extraction_passes:
   - date: "2026-05-06"
     by: "assistant under steward direction"
     scope: >
-      Scaffold created from public Optica / NIST metadata and the second
-      scout pass. Open-access PDF copied to the ignored downloads area;
-      no article-body values have been extracted yet.
-    status: "SCAFFOLD"
+      Initial full-body extraction from the open-access NIST author-
+      deposit PDF (6 pages). Sections covered: prior-art context for
+      Mg+ light sources, two VECSEL designs (IC externally-quadrupled
+      and VC intracavity-doubled), output powers and slope efficiencies,
+      frequency-stability characterisation, ion-trapping spectroscopy,
+      and resolved sideband cooling fidelity. Future-work conclusion
+      identifies LiNbO3 waveguide doubler (NOT BBO 280 nm stage) as
+      the bottleneck for power scaling. Status promoted from SCAFFOLD
+      to DRAFT.
+    status: "DRAFT"
+
+cross_check_notes:
+  - id: "BBO_not_the_bottleneck_in_VECSEL_architecture"
+    summary: >
+      §4 conclusion explicitly states that the limit on power scaling
+      is the LiNbO3 waveguide doubler at the 1118 -> 559 nm stage, not
+      the BBO 280 nm stage. The waveguide is operated below 300 mW SH
+      to avoid damage. In the Burd2016 architecture, the BBO 280 nm
+      stage is therefore *not* the binding component for power scaling
+      -- a different conclusion than the Friedenauer-class assumption
+      that the UV stage is the binding one (Friedenauer 2006 prediction
+      B-2; cf. Friedenauer2006 extracted.yaml).
+    resolution: >
+      Useful boundary-condition observation for KD-UV280-015 Section C:
+      VECSEL-pumped architectures may shift the bottleneck from the BBO
+      280 nm stage to the visible-stage frequency converter (LiNbO3
+      waveguide here, vs LBO crystal in Friedenauer 2006). Section C
+      should track this divergence between architecture families.
+    informs_dossier_entries:
+      - "KD-UV280-015"

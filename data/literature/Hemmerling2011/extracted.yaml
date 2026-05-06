@@ -1,35 +1,237 @@
 citation_key: "Hemmerling2011"
 source_tier: "P"
 doi: "10.1007/s00340-011-4472-9"
-citation: "B. Hemmerling et al. (full author list to be confirmed against the PDF), Applied Physics B 104, 583-590 (2011)"
-title: "A single laser system for ground-state cooling of 25Mg+"
+arxiv_id: "1010.5664v2"
+citation: "B. Hemmerling, F. Gebert, Y. Wan, D. Nigg, I. V. Sherstov, and P. O. Schmidt, Applied Physics B 104, 583-590 (2011)"
+title: "A Single Laser System for Ground-State Cooling of 25Mg+"
 extracted_by: "assistant under steward direction"
 extracted_on: "2026-05-06"
-extraction_status: "SCAFFOLD"
-source_document: "Open-access arXiv preprint copied on 2026-05-06 to ignored path downloads/literature/task-e/Hemmerling2011_arxiv_open.pdf. Structured extraction still pending."
+extraction_status: "DRAFT"
+source_document: "Open-access arXiv preprint (arXiv:1010.5664v2, 22 Feb 2011) copied on 2026-05-06 to ignored path downloads/literature/task-e/Hemmerling2011_arxiv_open.pdf."
 charter_section_refs:
   - "§2"
   - "§5 Phase 1"
-  - "§8.1"
+  - "§8.4"
+  - "§8.6"
 dossier_entries:
   - "KD-UV280-001"
   - "KD-UV280-005"
-  - "KD-UV280-009"
-  - "KD-UV280-010"
+  - "KD-UV280-008"
+  - "KD-UV280-011"
+  - "KD-UV280-012"
 
-parameters: []
+parameters:
+  - symbol: "architecture_route"
+    value_text: "Yb-fiber laser at 1118.21 nm -> SHG in LBO bow-tie cavity -> 559 nm -> 9.2 GHz EOM (sideband generation) -> SHG in BBO bow-tie cavity -> 280 nm"
+    units: null
+    location_in_paper: "Section 2.1; Fig. 1"
+    notes: "Closest published descendant of the Friedenauer 2006 architecture, with the addition of a 9.2 GHz EOM between the two SHG cavities for fast Doppler / Raman switching."
+
+  - symbol: "fiber_laser_model"
+    value_text: "Koheras Boostik Y10 / Menlo Systems orange one-1"
+    units: null
+    location_in_paper: "Section 2.1 footnote 1"
+    notes: "Commercial Yb-fiber laser product."
+
+  - symbol: "lambda_fundamental"
+    value: 1.11821e-6
+    units: "m"
+    location_in_paper: "Section 2.1"
+    notes: "Yb-fiber laser fundamental wavelength."
+
+  - symbol: "fiber_laser_linewidth_specified"
+    comparator: "<"
+    value: 70e3
+    units: "Hz"
+    location_in_paper: "Section 2.1"
+    notes: "Specified line width <70 kHz."
+
+  - symbol: "fiber_laser_output_power"
+    value: 1.0
+    units: "W"
+    location_in_paper: "Section 2.1"
+    notes: "Fiber-laser output power. Half of the Friedenauer 2006 2 W input level."
+
+  - symbol: "LBO_crystal_size"
+    value: [4e-3, 4e-3, 18e-3]
+    units: "m"
+    location_in_paper: "Section 2.1"
+    notes: "AR-coated 4 x 4 x 18 mm^3 LBO crystal. Vendor: Castech Crystals Inc."
+
+  - symbol: "LBO_phase_match_type"
+    value_text: "90 deg noncritical phase-matching of type I"
+    units: null
+    location_in_paper: "Section 2.1"
+    notes: "Same as Friedenauer 2006."
+
+  - symbol: "LBO_vendor"
+    value_text: "Castech Crystals Inc."
+    units: null
+    location_in_paper: "Section 2.1 footnote 2"
+    notes: "Different vendor than Friedenauer 2006 (Crystals of Siberia). Useful datapoint for the KD-UV280-005 vendor-comparison concern."
+
+  - symbol: "P_559_after_LBO_cavity"
+    value: 0.450
+    units: "W"
+    location_in_paper: "Section 2.1"
+    notes: "Typical output ~450 mW at 559 nm. Compare with Friedenauer 2006: 950 mW (with 1.8 W input), so Hemmerling-style efficiency 45 % vs Friedenauer 53 % (consistent with smaller crystal and lower input power)."
+
+  - symbol: "BBO_crystal_size"
+    value: [3e-3, 3e-3, 10e-3]
+    units: "m"
+    location_in_paper: "Section 2.1"
+    notes: "Brewster-cut 3 x 3 x 10 mm^3 BBO crystal. Smaller cross-section than Friedenauer 2006 (4 x 4 x 10 mm^3). Vendor: Doehrer Elektrooptik."
+
+  - symbol: "BBO_phase_match_type"
+    value_text: "Brewster-cut, critical phase-matching of type I"
+    units: null
+    location_in_paper: "Section 2.1"
+    notes: "Same phase-matching geometry as Friedenauer 2006."
+
+  - symbol: "BBO_vendor"
+    value_text: "Doehrer Elektrooptik"
+    units: null
+    location_in_paper: "Section 2.1 footnote 3"
+    notes: "Different vendor than Friedenauer 2006. Useful datapoint for the KD-UV280-005 vendor-comparison concern."
+
+  - symbol: "P_280_UV_output"
+    value: 0.060
+    units: "W"
+    location_in_paper: "Section 2.1"
+    notes: "Typical output ~60 mW at 280 nm. Compare with Friedenauer 2006: 275 mW UV from 2 W fundamental (Hemmerling uses 1 W fundamental, so the comparison is per-input). Per-input efficiency ~6 % (Hemmerling) vs ~13.75 % (Friedenauer)."
+
+  - symbol: "cavity_locking_scheme"
+    value_text: "Haensch-Couillaud polarisation locking on both LBO and BBO cavities"
+    units: null
+    location_in_paper: "Section 2.1"
+    notes: "Same locking scheme as Friedenauer 2006."
+
+  - symbol: "EOM_model"
+    value_text: "Laser 2000 NFO-4851-M 9.2 GHz electro-optic modulator"
+    units: null
+    location_in_paper: "Section 2.1 footnote 4"
+    notes: "Located between the LBO and BBO cavities to imprint 9.2 GHz sidebands on the 559 nm green light. Free spectral range of BBO cavity adjusted so both 2omega +/- Omega sidebands transmit."
+
+  - symbol: "EOM_RF_power_typical"
+    value: 0.7
+    units: "W"
+    location_in_paper: "Section 2.1"
+    notes: "Typical RF drive power achieving carrier-to-single-sideband ratio ~11 (modulation index beta ~0.58). Frequency-doubling doubles the modulation index."
+
+  - symbol: "EOM_RF_power_thermal_deflection_threshold"
+    value: 1.3
+    units: "W"
+    location_in_paper: "Section 2.1"
+    notes: "Above 1.3 W RF drive, the EOM crystal exhibits significant beam deflection on switching, attributed to thermal effects in the EOM crystal. Sets an operational ceiling on EOM drive power."
+
+  - symbol: "UV_surface_damage_intensity_lower_bound"
+    value: 3.2e5
+    units: "W/m^2"
+    location_in_paper: "Section 2.1 paragraph 5"
+    notes: "Lower bound of the observed CW UV-induced surface-damage intensity range (320 kW/m^2 = 32 W/cm^2) on UV-grade fused silica AOM crystal surface or right-angle prism cathetus. From a ~5 mW UV beam focused to a ~70 um waist."
+
+  - symbol: "UV_surface_damage_intensity_upper_bound"
+    value: 6.4e5
+    units: "W/m^2"
+    location_in_paper: "Section 2.1 paragraph 5"
+    notes: "Upper bound of the observed CW UV-induced surface-damage intensity range (640 kW/m^2 = 64 W/cm^2) on UV-grade fused silica surfaces. From a ~5 mW UV beam focused to a ~50 um waist. Damage manifested as 'degradation of the laser beam shape along with a significant decrease of the overall light transmission efficiency over a timescale of a few hours'. Damage observed only on the first reflecting surfaces that were hit by the laser beam, suggesting a threshold above which the effect emerges."
+
+  - symbol: "UV_surface_damage_timescale"
+    value: 7200
+    units: "s"
+    location_in_paper: "Section 2.1 paragraph 5"
+    notes: "Approximate timescale 'a few hours' for the surface-damage effect to manifest as observable beam-shape degradation and transmission decrease. Coarsely 1-3 hours."
+
+  - symbol: "UV_surface_damage_mitigation_design_rule"
+    value_text: "Re-design optical layouts so that the laser beam is NOT focused near any reflecting / transmitting optical surface; place the focus inside a crystal or in a free-air region instead."
+    units: null
+    location_in_paper: "Section 2.1; Fig. 2"
+    notes: "Authors' empirical design rule that resolved the AOM double-pass surface-damage problem. Directly transferable to KD-UV280-008 / -012 cavity-design choices."
+
+  - symbol: "UV_surface_damage_reference_chain"
+    value_text: "Negres, Norton, Cross, Carr, 'Growth behavior of laser-induced damage on fused silica optics under UV, ns laser irradiation,' Optics Express 18, 19966 (2010) [ref 29 in Hemmerling2011]"
+    units: null
+    location_in_paper: "Section 2.1 paragraph 5; reference [29]"
+    notes: "Authors cite this reference as the basis for the 'threshold above which damage emerges' framing. Note: ref [29] is a pulsed-ns study; Hemmerling2011 itself reports a CW observation, so the citation is for the qualitative threshold framing rather than for the absolute numerical value."
+
+  - symbol: "ionization_chain"
+    value_text: "Toptica DL pro diode laser at 1140 nm, 100 mW -> SHG in LiNbO3-MgO doped (HG Photonics) -> 570 nm -> SHG in BBO (Castech) -> 285 nm at ~300 uW for routine ionization. Both cavities Pound-Drever-Hall locked."
+    units: null
+    location_in_paper: "Section 2.2 footnote 9"
+    notes: "Separate frequency-quadrupling chain for 285 nm photoionization. No degradation noted at this lower UV power (300 uW)."
+
+  - symbol: "Doppler_cooling_saturation_intensity"
+    value: 2500
+    units: "W/m^2"
+    location_in_paper: "Section 2.3"
+    notes: "Doppler cooling beam set to saturation intensity ~250 mW/cm^2 = 2500 W/m^2. Two orders of magnitude below the observed UV surface-damage threshold (32-64 W/cm^2 = 320-640 kW/m^2). Operating margin is healthy when the beam is collimated rather than focused."
+
+  - symbol: "ion_axial_ground_state_population"
+    value: 0.97
+    units: "1"
+    location_in_paper: "Section 4; Fig. 9"
+    notes: "Ground-state cooling fidelity ~97 %, mean axial vibrational population ⟨n⟩ = 0.03 +/- 0.01."
+
+  - symbol: "Doppler_cooling_count_rate"
+    value: 240e3
+    units: "1/s"
+    location_in_paper: "Section 2.4"
+    notes: "Typical PMT count rate from a single 25Mg+ ion during Doppler cooling, when laser is red-detuned by ~20 MHz from 2S1/2 -> 2P3/2 and set to saturation intensity. Useful figure-of-merit for the operational signal-to-noise of a Friedenauer-class system."
 
 open_extraction_items:
-  - "Confirm full author list against the arXiv PDF. The scout-pass guess included U. Warring (the project Steward) among the authors; if confirmed, flag this in the dossier and ensure citations rely on the published numbers rather than Steward-recollection."
-  - "Run full extraction. Targets: harmonic-generation chain (fundamentals, crystals, cavity geometry, intracavity / output powers); 280 nm UV output and conversion efficiency; operational-stability data; crystal vendor and AR-coating specifications; any maintenance / lifetime notes."
-  - "Cross-reference to Friedenauer 2006 (data/literature/Friedenauer2006/) - Hemmerling2011 may be the same architecture family or a divergent one. Capture the architecture-family-mapping decision in KD-UV280-001 Section C."
-  - "Determine whether the paper reports operating in the 14-GHz unlockable domain (KD-UV280-010) or whether the choice of 25Mg+ vs 24Mg+ avoided it."
+  - "Cross-check the LBO crystal vendor: the paper says 'Castech Crystals Inc.' (which is Castech Inc., based in Fuzhou, Fujian, China). Confirm whether 'Castech Crystals Inc.' is the same legal entity as 'CASTECH' on the Turcicova2022 vendor-list table."
+  - "Cross-check the BBO crystal vendor: 'Doehrer Elektrooptik' (Germany). Not on the Turcicova2022 vendor list (which includes Altechna, Bluebean Optical, CASTECH, Edmund Optics, MTOptics, Raicol, United Crystals). Add to the dossier vendor-comparison record as a fourth-tier source not yet directly compared."
+  - "Decide whether to extract Negres2010 (Opt. Express 18, 19966) - the cited prior-art reference for fused-silica UV damage threshold - as its own folder. The Hemmerling 32-64 W/cm^2 number is cited as 'a certain threshold to produce this effect [29]'; the Negres2010 paper would give the absolute pulsed threshold for context."
+  - "The paper does not give an operational-lifetime number for the BBO cavity itself. The institutional [I] record from the Schmidt group at PTB Braunschweig (or successors) is a candidate for closing acceptance criterion #3 of the task-E logbook."
 
 extraction_passes:
   - date: "2026-05-06"
     by: "assistant under steward direction"
     scope: >
-      Scaffold created from public Applied Physics B / arXiv metadata
-      and the second scout pass. Open-access PDF copied to the ignored
-      downloads area; no article-body values have been extracted yet.
-    status: "SCAFFOLD"
+      Initial full-body extraction from the open-access arXiv preprint
+      (8 pages). Author-list correction logged: U. Warring is NOT on
+      this paper, despite the scout-pass speculation. Sections covered:
+      full architecture chain (1118 nm Yb-fiber -> LBO -> 559 nm ->
+      EOM -> BBO -> 280 nm at 60 mW), CW UV surface-damage observation
+      and design-rule mitigation, 285 nm photoionization chain,
+      ion-trap parameters, ground-state-cooling fidelity, and operating
+      vs damage intensity comparison. Status promoted from SCAFFOLD to
+      DRAFT.
+    status: "DRAFT"
+
+cross_check_notes:
+  - id: "scout_pass_authorship_correction"
+    summary: >
+      The Task-E scaffold (74d4e86 commit) noted that the scout-pass
+      author guess included U. Warring. Direct read confirms U. Warring
+      is NOT on this paper. The actual authors are Hemmerling, Gebert,
+      Wan, Nigg, Sherstov, and Schmidt (PTB Braunschweig + Hannover +
+      Innsbruck). Provenance for the speculative co-authorship claim
+      is unclear; possibly conflated with a different Schmidt-group
+      paper.
+    resolution: >
+      Notes.md and extracted.yaml in this folder reflect the corrected
+      author list. The scaffold's "co-authored by Steward" note in
+      notes.md was removed.
+    informs_dossier_entries:
+      - "KD-UV280-001"
+      - "KD-UV280-005"
+
+  - id: "uv_surface_damage_at_30_60Wcm2"
+    summary: >
+      The CW UV-induced surface damage observed in Hemmerling2011 occurs
+      on UV-grade fused silica AOM-crystal surfaces and / or right-angle
+      prism cathetus and dielectric mirror surfaces at intensities
+      32-64 W/cm^2 over timescales of a few hours. This is a
+      Friedenauer-class architecture (1118 -> 559 -> 280 nm), and the
+      damaged components are auxiliary optics outside the SHG cavities.
+    resolution: >
+      Direct Section C contribution for KD-UV280-008 and -012: design
+      cavities and beam paths to avoid focused spots near reflecting
+      / transmitting optical surfaces. Cite explicitly with the
+      adjacent-wavelength caveat - Hemmerling2011 IS at 280 nm, so
+      the wavelength caveat does NOT apply here. This is one of the
+      cleanest 280 nm-specific data points available.
+    informs_dossier_entries:
+      - "KD-UV280-008"
+      - "KD-UV280-012"

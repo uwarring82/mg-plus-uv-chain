@@ -1,31 +1,133 @@
 citation_key: "Hume2010"
 source_tier: "S"
 doi: null
-citation: "D. B. Hume, 'Two-Species Ion Arrays for Quantum Logic Spectroscopy,' Ph.D. thesis (University of Colorado / NIST Boulder, 2010)"
+citation: "D. B. Hume, 'Two-Species Ion Arrays for Quantum Logic Spectroscopy,' Ph.D. thesis (University of Colorado / NIST Boulder, 2010), 129 pp."
 title: "Two-Species Ion Arrays for Quantum Logic Spectroscopy"
 extracted_by: "assistant under steward direction"
 extracted_on: "2026-05-06"
-extraction_status: "SCAFFOLD"
-source_document: "Open-access NIST PDF copied on 2026-05-06 to ignored path downloads/literature/task-e/Hume2010_NIST_open.pdf. Structured extraction still pending."
+extraction_status: "DRAFT (partial)"
+source_document: "Open-access NIST PDF copied on 2026-05-06 to ignored path downloads/literature/task-e/Hume2010_NIST_open.pdf. 129 pages; targeted partial extraction of §3.2.3 (Mg+ Lasers, page 39) and adjacent §3.2.1-3.2.2 (Be+ / Al+ context, pages 32-39). Most of the thesis is about Be+ / Al+ quantum-logic experiments and is not relevant to Task E."
 charter_section_refs:
-  - "§2"
   - "§5 Phase 1"
 dossier_entries:
   - "KD-UV280-001"
-  - "KD-UV280-005"
+  - "KD-UV280-015"
 
-parameters: []
+parameters:
+  - symbol: "Mg_Doppler_architecture_route"
+    value_text: "Dye laser at 560 nm (similar to Be+ laser system) -> BBO doubling cavity -> 280 nm. Dither-locked to a reference cavity external to the dye-laser cavity."
+    units: null
+    location_in_paper: "Section 3.2.3, page 39"
+    notes: "Mg-Doppler laser system at NIST Boulder. Architecture parallels the Kjaergaard2000 Aarhus dye-laser + BBO at 280 nm. UV output power not given in the thesis."
+
+  - symbol: "Mg_Raman_architecture_route"
+    value_text: "Yb-fiber laser at 1120 nm (similar to Al+ laser system) -> LBO doubling cavity -> 560 nm -> BBO doubling cavity -> 280 nm. Natural fiber-laser stability sufficient for stimulated Raman transitions; not stabilised to any external reference."
+    units: null
+    location_in_paper: "Section 3.2.3, page 39"
+    notes: "Mg-Raman laser system at NIST Boulder. Architecture parallels Friedenauer 2006 (1118 nm) and Hemmerling2011 (1118.21 nm). UV output power not given in the thesis."
+
+  - symbol: "lambda_Mg_Raman_fundamental"
+    value: 1120e-9
+    units: "m"
+    location_in_paper: "Section 3.2.3, page 39"
+    notes: "Yb-fiber-laser fundamental wavelength for Mg+ stimulated Raman transitions at NIST Boulder. 2 nm offset from Friedenauer 2006 (1118 nm); operationally outside the 14-GHz unlockable window characterised in Friedenauer 2006 (1118.339-1118.409 nm)."
+
+  - symbol: "lambda_Mg_Doppler_fundamental"
+    value: 560e-9
+    units: "m"
+    location_in_paper: "Section 3.2.3, page 39"
+    notes: "Dye-laser visible wavelength feeding the Mg-Doppler BBO doubling cavity. Same as the Friedenauer / Hemmerling 559 nm intermediate (within 1 nm; Hume reports 560 nm for the Doppler chain)."
+
+  - symbol: "Mg_hyperfine_splitting"
+    value: 1.8e9
+    units: "Hz"
+    location_in_paper: "Section 3.2.3, page 39"
+    notes: "Mg+ hyperfine splitting spanned by AOMs in both Mg-Doppler and Mg-Raman chains. Cf. Hemmerling2011 1.789 GHz."
+
+  - symbol: "Yb_fiber_amplifier_pump_power"
+    value: 4.0
+    units: "W"
+    location_in_paper: "Section 3.2.2, page 37"
+    notes: "Pump power for the home-built Yb-doped fiber amplifier used in the Al+ system (the Mg-Raman system uses a similar configuration, per §3.2.3)."
+
+  - symbol: "Yb_fiber_amplifier_pump_lambda"
+    value: 976e-9
+    units: "m"
+    location_in_paper: "Section 3.2.2, page 37"
+    notes: "Pump-diode wavelength for the Yb-fiber amplifier."
+
+  - symbol: "LBO_NCPM_temperature"
+    value: 140
+    units: "degC"
+    location_in_paper: "Section 3.2.2, page 37"
+    notes: "LBO crystal NCPM phase-matching temperature in the Al+ system (used as analogous reference for the Mg-Raman 1120 nm -> 560 nm SHG stage). Cf. Friedenauer 2006: 89-94 deg C at 1118 nm."
+
+  - symbol: "LBO_crystal_length_Al_system"
+    value: 0.02
+    units: "m"
+    location_in_paper: "Section 3.2.2, page 37"
+    notes: "LBO crystal length in the Al+ system (2 cm). Cf. Friedenauer 2006: 1.8 cm at 1118 nm and Hemmerling2011: 1.8 cm at 1118.21 nm. Hume's NIST LBO is slightly longer."
+
+  - symbol: "Al_3P0_UV_power"
+    value: 1e-3
+    units: "W"
+    location_in_paper: "Section 3.2.2, page 37"
+    notes: "3P0 (clock) laser UV power at 267 nm. Used as adjacent-architecture context only; Mg+ UV power at 280 nm is not given in the thesis."
+
+  - symbol: "Al_3P1_UV_power_range"
+    value: [5e-3, 25e-3]
+    units: "W"
+    location_in_paper: "Section 3.2.2, page 37"
+    notes: "3P1 laser UV power range at 267 nm. Used as adjacent-architecture context only. Al+ uses BBO for the 3P0 doubler and KD*P for the 3P1 doubler; Mg-Raman uses BBO for both the 1120 -> 560 nm and 560 -> 280 nm stages."
 
 open_extraction_items:
-  - "Run targeted extraction of the chapters / sections that describe the Mg+ 280 nm laser system. Targets: BBO specifications, cavity geometry, output powers, locking scheme, and any maintenance / lifetime notes."
-  - "Determine whether the thesis points to NIST internal records (memos, lab notebooks, oral-tradition handoffs) that could be solicited as the institutional [I] record required by acceptance criterion #2 of the task-E logbook."
-  - "Note that this is an [S]-tier (thesis) source. It cannot stand alone in Section C and should accompany a peer-reviewed [P] anchor."
+  - "BBO crystal vendor / dimensions / cut for the Mg-Doppler and Mg-Raman doubling cavities are NOT given in the thesis. Useful for KD-UV280-005 vendor-comparison; would require checking the cited Wineland-group memos or Wilson 2011 (Be+ paper at 313 nm)."
+  - "UV output power for the Mg-Doppler and Mg-Raman 280 nm stages is NOT given in the thesis (the 1 mW / 5-25 mW values are for the Al+ 267 nm system, not Mg+ 280 nm)."
+  - "Operational lifetime, degradation rate, replacement schedule, cleanliness protocol: NONE of these are documented in the thesis. The Wineland-group institutional archive may have logbook records from the 2008-2010 era when this apparatus was operational."
+  - "Decide whether to extract the §3.2.1 Be+ laser system (313 nm, KDP doubler) as its own folder. Be+ at 313 nm is closer to 280 nm than Al+ at 267 nm; the architecture might inform KD-UV280-001 lineage discussion, but Be+ is not the dossier target."
 
 extraction_passes:
   - date: "2026-05-06"
     by: "assistant under steward direction"
     scope: >
-      Scaffold created from public NIST metadata and the first scout
-      pass. Open-access PDF copied to the ignored downloads area; no
-      thesis-body values have been extracted yet.
-    status: "SCAFFOLD"
+      Targeted partial extraction of the 129-page thesis. Pages
+      examined: 1-15 (Acknowledgements + Table of Contents +
+      Introduction §1.1-1.2), 32-47 (§3.2 Laser Systems + §3.3
+      Experimental Primitives). Sections relevant to Task E are
+      concentrated in §3.2.3 Mg+ Lasers (one paragraph on page 39).
+      Sections 1, 2 (Laser Ion Interactions), 4 (Two-Species Ion
+      Dynamics), 5 (QND Measurements), and 6 (Dicke State
+      Preparation) are not relevant to Task E and were not extracted.
+      Status promoted from SCAFFOLD to DRAFT (partial).
+    status: "DRAFT"
+
+cross_check_notes:
+  - id: "thesis_S_tier_caveat"
+    summary: >
+      Hume2010 is an unpublished PhD thesis. Source-tier S. Cannot be
+      the sole anchor for any KD-UV280-005 / -009 / -011 / -012
+      Section C constraint. Used here only for KD-UV280-001 / -015
+      architecture-family corroboration alongside the peer-reviewed
+      Friedenauer2006, Hemmerling2011, Burd2016, and Kjaergaard2000.
+    informs_dossier_entries:
+      - "KD-UV280-001"
+
+  - id: "1120_nm_vs_1118_nm_lineage"
+    summary: >
+      The NIST Mg-Raman fiber-laser fundamental wavelength is 1120 nm,
+      vs Friedenauer 2006's 1118 nm and Hemmerling2011's 1118.21 nm.
+      The 2-nm spread across the lineage represents different
+      manufacturers / model years of Yb-fiber laser; operationally
+      these all double to 559-560 nm and quadruple to 279.5-280 nm
+      with the same Type-I BBO geometry.
+    resolution: >
+      Document the wavelength variation in KD-UV280-001 / -015 Section
+      C. The 14-GHz unlockable domain reported by Friedenauer 2006
+      (1118.339-1118.409 nm) does not appear to be addressed in the
+      Hume2010 thesis; the NIST 1120 nm operating point is well
+      outside this domain so its absence in the thesis is consistent
+      with non-observation rather than disproof.
+    informs_dossier_entries:
+      - "KD-UV280-001"
+      - "KD-UV280-010"
+      - "KD-UV280-015"
