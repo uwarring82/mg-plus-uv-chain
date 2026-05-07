@@ -6,11 +6,21 @@ Converts the jupytext-paired .py tutorial sources under
 .html pages under ``docs/tutorials/`` so GitHub Pages can serve them as
 a static, reproducible page set.
 
-The HTML output uses nbconvert's ``basic`` template (body-only, no own
-``<html>``/``<head>``) and is wrapped in Jekyll front matter so the
-``notebook`` layout (``docs/_layouts/notebook.html``) provides the
-site chrome. Cell-level styling lives in ``docs/assets/notebook.css``
-and targets nbconvert 7's ``jp-*`` class names.
+The HTML output uses nbconvert's ``basic`` template — which in
+nbconvert 7 still emits a complete ``<html>``/``<head>``/``<body>``
+document with embedded JupyterLab CSS variables that don't resolve
+outside JupyterLab. The script extracts the ``<body>`` content via
+regex and prepends Jekyll front matter so the ``notebook`` layout
+(``docs/_layouts/notebook.html``) provides the site chrome.
+Cell-level styling lives in ``docs/assets/notebook.css`` and targets
+nbconvert 7's ``jp-*`` class names.
+
+A normalisation pass (``_normalize_for_idempotency``) strips volatile
+fields — random per-read cell IDs from jupytext, ``iopub`` execution
+timestamps from nbclient, the language-info Python version, and the
+kernelspec display name — so re-running the script against unchanged
+sources produces byte-identical output. This makes a
+``git diff --exit-code docs/tutorials`` check viable for CI.
 
 Usage
 -----
@@ -67,6 +77,9 @@ def render(stem_filter: str | None = None) -> int:
         nb = jupytext.read(src)
 
         print(f"[2/3] {src.name}: execute (kernel cwd = repo root)")
+        # Normalise cell IDs *before* execution so the IDs that leak into
+        # the rendered HTML cell anchors are deterministic too.
+        _normalize_cell_ids(nb)
         client = NotebookClient(
             nb,
             timeout=600,
@@ -74,6 +87,7 @@ def render(stem_filter: str | None = None) -> int:
             resources={"metadata": {"path": str(REPO_ROOT)}},
         )
         client.execute()
+        _normalize_post_execute(nb)
         with out_ipynb.open("w", encoding="utf-8") as fh:
             nbformat.write(nb, fh)
 
@@ -120,6 +134,35 @@ def _extract_title(nb, default: str) -> str:
                 # Quote any colons so YAML stays valid
                 return f'"{m.group(1)}"'
     return f'"{default}"'
+
+
+def _normalize_cell_ids(nb) -> None:
+    """Replace jupytext-generated random cell IDs with deterministic ones.
+
+    nbformat 4.5+ requires cell IDs to be unique within a notebook. The
+    `cell-NNNN` scheme keyed on cell index satisfies that and produces
+    byte-identical output across runs. Cell IDs leak into the rendered
+    HTML as anchor IDs, so normalising before execution keeps both the
+    .ipynb and the .html idempotent.
+    """
+    for i, cell in enumerate(nb.cells):
+        cell["id"] = f"cell-{i:04d}"
+
+
+def _normalize_post_execute(nb) -> None:
+    """Strip post-execution volatile fields so renders are idempotent."""
+    for cell in nb.cells:
+        # iopub execution timestamps from nbclient
+        if "metadata" in cell and "execution" in cell["metadata"]:
+            del cell["metadata"]["execution"]
+    # Python version varies with the build environment
+    if "language_info" in nb.metadata:
+        nb.metadata["language_info"].pop("version", None)
+    # Kernelspec display_name is required by nbformat.validate, so we
+    # canonicalise it to a fixed value rather than stripping it (typical
+    # variants observed: "Python 3", "Python 3 (ipykernel)").
+    if "kernelspec" in nb.metadata:
+        nb.metadata["kernelspec"]["display_name"] = "Python 3"
 
 
 if __name__ == "__main__":

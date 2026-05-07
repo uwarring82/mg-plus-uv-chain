@@ -308,7 +308,7 @@ Uses the architecture-neutral primitives from Phases A–C plus parameter values
 
 Documents discrepancies for follow-up in KD-UV280-005 / -007 (these were already flagged as `open_extraction_items` — `d_eff(BBO)`, `walk-off ρ`, refractive indices). This notebook is **architecture-specific in its parameters** and therefore lives in `/notebooks/`, never in `/src/`.
 
-### Phase F · Site integration ✅ **DONE 2026-05-07** (commit pending push)
+### Phase F · Site integration ✅ **DONE 2026-05-07** (commit `84be4b4`; idempotency normalisation in a follow-up commit)
 
 **Render pipeline.** `nbconvert`'s CLI does not expose a kernel-cwd flag, so
 the published `--ExecutePreprocessor.cwd` and `--ExecutePreprocessor.kernel_cwd`
@@ -337,8 +337,9 @@ Requires `pip install -e .[notebooks]` (the extra landed in Phase D).
 
 **Site placement.**
 
-- New top-level `Tutorials` nav entry in `docs/_layouts/default.html` (sixth
-  item, after `Components`).
+- New top-level `Tutorials` nav entry in `docs/_layouts/default.html`,
+  placed between `Calculations` and `Status` to match the order in
+  `docs/_layouts/notebook.html`.
 - Landing page at `docs/tutorials/index.md` with a one-line summary per
   notebook keyed to the question each one answers; explicit cross-link
   to the [components inventory](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/docs/components/inventory.md)
@@ -348,10 +349,23 @@ Requires `pip install -e .[notebooks]` (the extra landed in Phase D).
 
 **CI follow-up not in scope this turn.** The workplan noted "CI runs it on
 each PR so broken notebooks fail the build". A GitHub Actions workflow that
-installs the `notebooks` extra and runs `make tutorials` (failing on
-non-zero exit) is the natural next step, but creating
-`.github/workflows/tutorials.yml` is a separate small follow-up rather than
-part of the Phase F closure.
+installs the `notebooks` extra, runs `make tutorials`, and then runs
+`git diff --exit-code docs/tutorials/` (failing on any drift) is the natural
+next step. The render is now idempotent — see "Idempotency normalisation"
+below — so the diff-exit-code check is viable.
+
+**Idempotency normalisation** (added in the Phase F follow-up commit). The
+first cut of the pipeline produced different output on every run because
+(a) `jupytext.read()` assigns fresh random cell IDs (which leak into HTML
+anchor IDs), (b) `nbclient.NotebookClient.execute()` records `iopub.*`
+timestamps under `cell.metadata.execution`, and (c) the `language_info.version`
+and `kernelspec.display_name` vary by environment. The script now
+canonicalises all four — cell IDs become `cell-NNNN` keyed on cell index,
+execution metadata is stripped, the language version is dropped, and the
+kernelspec display name is fixed at `"Python 3"` (canonicalised rather than
+stripped because nbformat requires it). Two consecutive runs of
+`make tutorials` against unchanged sources now produce byte-identical output,
+so a CI `git diff --exit-code` check is meaningful.
 
 ---
 
@@ -372,7 +386,7 @@ and is out of Phase 4 scoring scope.
   3. Both `.ipynb` and rendered `.html` are committed under `docs/tutorials/` so GitHub Pages serves a static, reproducible page set; the `.py` source remains the version-controlled truth.
   4. A `Makefile` (or single shell script) at the repo root captures this; CI runs it on each PR so broken notebooks fail the build.
 
-### Phase G · Documentation surface ✅ **DONE 2026-05-07** (commit pending push)
+### Phase G · Documentation surface ✅ **DONE 2026-05-07** (commit `ec76fc0`)
 
 - `docs/principles.md` Anti-seeding clause: list of architecture-neutral `/src/` modules extended to include `shg_single_pass.py`, `enhancement_cavity.py`, `shg_cascade.py`; enforcement marker now references both `tests/test_diagnostic_surrogate_imports.py` and `tests/test_anti_seeding_src_imports.py`; tutorial and diagnostic notebook directories explicitly placed outside `/src/` and outside Phase 4 scoring admissibility.
 - `notebooks/tutorials/REFERENCES.md` added: pointer-only list of canonical sources keyed to each tutorial — Boyd & Kleinman 1968 (Tut. 01), Ashkin et al. 1966 (Tut. 01), Polzik & Kimble 1991 (Tut. 03), Le Targat et al. 2005 (Tut. 04), Friedenauer 2006 (Tut. 04 closing). DOIs throughout, no commentary.
