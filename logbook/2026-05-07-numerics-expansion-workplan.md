@@ -93,7 +93,30 @@ of the two arguments was always dead.
 - Cross-check vs `boyd_kleinman.h_m_factor` at `ξ_opt ≈ 2.84`, `β = κ = μ = 0`: recover the textbook `K · L · k₁ · 1.068` to numerical precision.
 - Energy conservation: `single_pass_harmonic_power_W(P, γ) ≤ P` for all `γ > 0` and `P > 0`.
 
-### Phase B · Enhancement-cavity steady state — `src/enhancement_cavity.py`
+### Phase B · Enhancement-cavity steady state — `src/enhancement_cavity.py` ✅ **DONE 2026-05-07** (commit `232e3d5`; 91 → 119 tests green)
+
+**Implementation refinements** (compatible with v1.1 design; recorded for the audit trail):
+
+- **Adaptive `T_high` in `optimal_input_coupler`.** For highly-depleted
+  regimes (`γ P_in ≳ 10`), `T_match` approaches 1 so closely that a fixed
+  `T_high = 1 − 1e-6` cannot bracket the root. The solver now expands
+  `T_high → 1` in decade steps until the residual flips sign.
+- **Cavity-level Manley–Rowe clamp in `harmonic_output_W`.** The brentq
+  cavity solver and Phase A's `tanh²` short-circuit (at `γP > 700`) compound
+  to a ~1e-13 floating-point overshoot above `P_in` in the saturated
+  regime. A `min(p_h, power_in_W)` clamp at the cavity output enforces
+  the physical ceiling exactly. The clamp is a no-op in linear and
+  small-signal regimes.
+- **Saturated-regime graceful fallback.** When `T_match → 1` within
+  machine precision (single-pass conversion ≈ 100 %), the solver returns
+  `T_high` rather than raising — cavity enhancement is degenerate but
+  the output is well-defined.
+- **Test tolerance on the linearised quadratic oracle.** The oracle
+  assumes `η_nl = γ P_circ` exactly while the solver uses depleted
+  `tanh²`. Leading-order correction is `~γ P_circ / 3`, so the test
+  uses `rel=1e-2` at `γ P_circ ≈ 0.02` (the operating point of the
+  test) and `rel=1e-3` for a deep-small-signal companion test where
+  `γ P_circ < 1e-3`.
 
 **Goal.** Solve the impedance-matching equation for an SHG ring cavity with
 passive loss `L_passive` and a *single-pass conversion fraction*
