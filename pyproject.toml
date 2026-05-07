@@ -48,6 +48,12 @@ dev = [
     "ruff>=0.2",
     "mypy>=1.8",
 ]
+notebooks = [
+    "jupytext>=1.16",
+    "nbconvert>=7",
+    "nbclient>=0.10",
+    "ipykernel",
+]
 
 [project.urls]
 Homepage = "https://github.com/uwarring82/mg-plus-uv-chain"

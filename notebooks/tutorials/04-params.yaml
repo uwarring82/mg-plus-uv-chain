@@ -1,0 +1,15 @@
+# Generic cascade parameters for Tutorial 04
+# Modify these values and re-run the notebook cells.
+
+stage_1:
+  loss_per_pass: 0.02
+  gamma_shg: 0.001       # W⁻¹ — upstream stage, lower nonlinearity
+
+stage_2:
+  loss_per_pass: 0.02
+  gamma_shg: 0.01        # W⁻¹ — downstream stage, higher nonlinearity
+
+transport:
+  efficiency: 0.95       # fractional throughput between stages
+
+power_in_W: 1.0

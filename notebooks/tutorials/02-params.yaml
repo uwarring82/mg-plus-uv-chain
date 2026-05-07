@@ -1,0 +1,12 @@
+# Generic enhancement-cavity parameters for Tutorial 02
+# Modify these values and re-run the notebook cells.
+
+cavity:
+  power_in_W: 1.0        # pump power into the cavity (W)
+  loss_per_pass: 0.02    # round-trip passive loss (dimensionless)
+  gamma_shg: 0.0         # single-pass SHG coefficient (W⁻¹); 0 = purely passive
+
+sweep:
+  T_IC_min: 0.001
+  T_IC_max: 0.20
+  n_points: 200

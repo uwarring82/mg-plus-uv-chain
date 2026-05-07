@@ -1,0 +1,14 @@
+# Generic SHG single-pass parameters for Tutorial 01
+# Modify these values and re-run the notebook cells.
+
+crystal:
+  d_eff_pm_per_V: 0.84   # effective nonlinear coefficient (pm/V)
+  n_omega: 1.605         # refractive index at fundamental
+  n_2omega: 1.620        # refractive index at harmonic
+  wavelength_nm: 1118    # fundamental vacuum wavelength (nm)
+  length_mm: 18          # crystal length (mm)
+
+focusing:
+  # If w0_um is null, the notebook uses the BK σ-optimum waist.
+  w0_um: null
+  walk_off_angle_mrad: 0.0  # walk-off angle (mrad); 0 for NCPM

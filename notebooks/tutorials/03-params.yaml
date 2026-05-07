@@ -1,0 +1,16 @@
+# Generic optimal-input-coupler parameters for Tutorial 03
+# Modify these values and re-run the notebook cells.
+
+cavity:
+  power_in_W: 1.0        # pump power into the cavity (W)
+  loss_per_pass: 0.02    # round-trip passive loss (dimensionless)
+  gamma_shg: 0.01        # single-pass SHG coefficient (W⁻¹)
+
+sensitivity:
+  gamma_relative_variation: 0.20   # vary γ by ±20 %
+  loss_absolute_variation: 0.005   # vary L by ±0.5 percentage points
+
+sweep:
+  T_IC_min: 0.001
+  T_IC_max: 0.20
+  n_points: 200
