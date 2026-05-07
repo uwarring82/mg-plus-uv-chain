@@ -164,7 +164,28 @@ under the radical**, contra the original draft's `√(γ P_in L_passive)`.
 - Manley–Rowe ceiling: `harmonic_output_W ≤ P_in` (the per-photon energy ratio for SHG is 2:1 but the *power* ratio is bounded by 1; tighter Manley–Rowe bound is `harmonic_output_W ≤ P_in`).
 - Depleted regime: with parameters chosen so that `η_nl(P_circ) > 0.4`, the solver must not blow up and the result must agree with a direct `tanh²` evaluation at the converged `P_circ` to numerical precision.
 
-### Phase C · Cascade composition — `src/shg_cascade.py`
+### Phase C · Cascade composition — `src/shg_cascade.py` ✅ **DONE 2026-05-07** (commit `b820214`; 119 → 142 tests green)
+
+**Sharpened during implementation** (compatible with v1.1; recorded for the audit trail):
+
+- **Optimum factorisation is exact, not just small-signal.** The workplan
+  framed the cascade optimum as factorising "in the small-signal limit".
+  Implementation showed the property is regime-independent: differentiating
+  the cascade harmonic with respect to T_1 gives `dP_h2/dT_1 =
+  (∂P_h2/∂P_h1)·(dP_h1/dT_1) + (∂P_h2/∂T_2)·(dT_2*/dT_1)`, the second
+  term vanishes at the local stage-2 optimum (∂P_h2/∂T_2 = 0 by
+  definition), and ∂P_h2/∂P_h1 > 0 always — so the cascade-optimum
+  condition reduces to `dP_h1/dT_1 = 0` regardless of regime. This
+  follows from the cascade being one-way coupled (stage 2 cannot feed
+  back into stage 1). The strong form is captured in
+  `test_stage_1_optimum_independent_of_stage_2_params`, which sweeps
+  stage 2's gamma over 4 decades and confirms stage 1's optimum is
+  identical (rel < 1e-12) at every point.
+- **Return shape: `dict` with `per_stage` list + totals.** Matches the
+  workplan; `into_next_stage_W` is `None` (not `0.0`) for the last
+  stage to make the cascade boundary unambiguous.
+- **`Stage` is `frozen=True`.** Hashable; optimiser-returned instances
+  can't be mutated by accident downstream.
 
 **Goal.** Compose two `enhancement_cavity` stages with a transport efficiency `η_transport` between them, so the LBO → BBO chain is a one-call object.
 
