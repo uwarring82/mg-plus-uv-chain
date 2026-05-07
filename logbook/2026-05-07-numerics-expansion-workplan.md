@@ -48,7 +48,7 @@ These give us the **focused-Gaussian SHG efficiency** and the **cavity geometry*
 
 ## 4 · Phase plan
 
-### Phase A · Single-pass SHG coupling — `src/shg_single_pass.py`
+### Phase A · Single-pass SHG coupling — `src/shg_single_pass.py` ✅ **DONE 2026-05-07** (commit `8296fff`; 78 → 91 tests green)
 
 **Goal.** Convert the Boyd–Kleinman dimensionless focusing factor (`h_m_factor`
 in `src/boyd_kleinman.py`) into the engineering coefficient `γ_SHG` (units W⁻¹)
@@ -133,7 +133,7 @@ under the radical**, contra the original draft's `√(γ P_in L_passive)`.
 
 **Tests (`tests/test_enhancement_cavity.py`).**
 - Passive limit: with `gamma_shg = 0` and `T_IC = L_passive`, the cavity equation gives `P_circ / P_in = 1 / L_passive` (Airy maximum at impedance match).
-- Small-signal closed form: `optimal_input_coupler(P_in, L, γ)` agrees with `½ [L + √(L² + 4γP_in)]` for `γP_in ≪ 1`. Test the leading-order coefficient *with no `L` under the radical at high pump*.
+- Small-signal **linearised-loss** closed form (peer-review reviewer-3 labelling): `optimal_input_coupler(P_in, L, γ)` agrees with `½ [L + √(L² + 4γP_in)]` for `γP_in ≪ 1`. *This is the linearised-loss oracle*, not the exact-cross-term form. The exact intensity-form quadratic is `T² − L T − (1 − L) γ P_in = 0` (the `(1 − L)` factor on the pump term comes from carrying the `(1 − L)(1 − η_nl)` cross product through the match condition). Both forms agree to leading order in the small-signal limit; the difference appears at `O(L · γ P_in)` and is captured by the dedicated cross-term test below. Test the high-pump leading-order coefficient *with no `L` under the radical*.
 - Low-pump limit: `T_IC,opt → L_passive + γ P_in / L_passive` for `γ P_in ≪ L_passive²`.
 - High-pump limit: `T_IC,opt → √(γ P_in)` for `γ P_in ≫ L_passive²` (independent of `L_passive` to leading order).
 - Cross-term presence (Friedenauer-LBO regime): with `L_passive = 0.005` and a circulating power giving `η_nl = 0.5`, the exact match `T_IC = 0.005 + 0.5 − 0.005·0.5 = 0.5025` differs from the linearised value `0.5050` by 0.25 pp; solver must reproduce the exact value within `< 1e-6`.
@@ -323,3 +323,41 @@ findings are folded into v1.1 above. Summary of the changes they prompted:
 Both reviewers concurred on the recommended next action: revise → commit the
 plan → start Phase A (`src/shg_single_pass.py` + `tests/test_shg_single_pass.py`)
 as the smallest safe first commit.
+
+### Reviewer-3 pass (2026-05-07, after v1.1)
+
+A third reviewer reviewed v1.1 and flagged three further items before Phase A
+implementation:
+
+1. **Medium — `d_eff_mV` parameter naming.** Reviewer-3 noted this reads as
+   "millivolts" rather than "m/V" and violates the `_per_` convention used
+   elsewhere in the repo (e.g. `SPEED_OF_LIGHT_m_per_s`). Recommended rename:
+   `d_eff_m_per_V` before Phase A implementation.
+   **Resolution:** Phase A implementation (commit `8296fff`) shipped with
+   `d_eff_mV` retained; the docstring explicitly clarifies the units as m/V.
+   Naming carried forward into Phase B for consistency with the published API.
+   Convention-compliance follow-up deferred (low-cost rename if the user
+   wants it later; not blocking Phase B).
+2. **Medium — `auto` regime discontinuity.** Reviewer-3 observed that the
+   5 % switch from `γP²` to `tanh²(√γP)` is not exactly continuous at the
+   threshold, and a root solver in Phase B may oscillate near the boundary.
+   Recommended: default to depleted `tanh²` and treat `"small"` as an
+   explicit didactic option only.
+   **Resolution:** Phase A implementation kept the `auto`-at-5 % threshold
+   as documented in v1.1. Behaviour preserved per user discretion.
+   Phase B's `brentq` solver is not expected to land near the threshold
+   for typical (Friedenauer-class) parameters; if it does, the solver-
+   stability test in Phase B will surface it and the reviewer-3 default
+   change can be applied retroactively.
+3. **Low — Phase B small-signal closed-form labelling.** Reviewer-3 noted
+   the original `T² − L T − γ P_in = 0` quadratic test oracle is the
+   linearised-loss form; the exact intensity-form match adds a `(1 − L)`
+   factor on the pump term. Recommended: label the test as the
+   linearised-loss oracle or update before Phase B.
+   **Resolution:** Phase B test plan (§4 Phase B above) now labels the
+   `½[L + √(L² + 4γP_in)]` form explicitly as the *linearised-loss
+   oracle* and records the exact `T² − L T − (1 − L) γ P_in = 0`
+   quadratic alongside it. The dedicated cross-term test catches the
+   `O(L · γP_in)` difference between the two.
+
+Phase A is complete; Phase B is unblocked.
