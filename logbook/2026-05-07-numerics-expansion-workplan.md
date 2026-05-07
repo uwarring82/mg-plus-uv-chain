@@ -199,7 +199,25 @@ under the radical**, contra the original draft's `√(γ P_in L_passive)`.
 - Optimum factorises in the small-signal limit (each stage independently impedance-matched).
 - Total efficiency upper-bounded by `Π η_i` of the per-stage Manley–Rowe limits.
 
-### Phase D · Tutorial notebooks — `notebooks/tutorials/`
+### Phase D · Tutorial notebooks — `notebooks/tutorials/` ✅ **DONE 2026-05-07** (commit `3740afa`; test count unchanged at 142)
+
+**Landed:**
+
+- `pyproject.toml` gained the `[project.optional-dependencies] notebooks` extra (`jupytext>=1.16`, `nbconvert>=7`, `nbclient>=0.10`, `ipykernel`).
+- Four jupytext-paired `.py` source notebooks under `notebooks/tutorials/`, each with its own `NN-params.yaml` so visitors can re-run with their own numbers.
+- All four execute end-to-end with `MPLBACKEND=Agg` (headless-safe, suitable for CI).
+- No `.ipynb` artefacts committed at this stage; rendered notebooks land at site-build time in Phase F.
+
+**Tutorial 03 narrative (the user's headline question)** explicitly contrasts
+the linearised Polzik–Kimble closed form against the depleted-regime solver,
+maps the deviation to `~ γ P_circ / 3`, and ends with a procurement-implication
+sidebar. Sensitivity sweeps span `γ ± 20 %` and `L ± 0.5 pp`.
+
+**Tutorial 04** uses the exact-factorisation insight surfaced during Phase C
+(one-way coupling → independent stage optima, regime-independent) and closes
+with the Phase E Friedenauer recompute as a frank end-to-end parable: BBO
+agrees to 1.5 %, LBO exposes an `L_passive` definitional gap that the source
+paper itself does not disambiguate.
 
 These are the visitor-facing deliverable. Each notebook is paired (`.py` jupytext + `.ipynb` rendered) so they live in version control as text and render as notebooks.
 
