@@ -77,7 +77,7 @@ print("Imports OK")
 # -----------------------------------------------------------------------------
 # Load parameters
 # -----------------------------------------------------------------------------
-YAML_PATH = Path(__file__).with_suffix("").parent / "03-params.yaml"
+YAML_PATH = REPO_ROOT / "notebooks" / "tutorials" / "03-params.yaml"
 with YAML_PATH.open() as f:
     params = yaml.safe_load(f)
 

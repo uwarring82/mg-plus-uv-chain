@@ -1,0 +1,498 @@
+---
+layout: notebook
+title: "Tutorial 1 — From Boyd–Kleinman to γ_SHG"
+description: Tutorial notebook (01-shg-single-pass). Architecture-neutral; uses /src/ primitives only.
+---
+
+<main>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d3b3cb97">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Tutorial-1-%E2%80%94-From-Boyd%E2%80%93Kleinman-to-%CE%B3_SHG">Tutorial 1 — From Boyd–Kleinman to γ_SHG<a class="anchor-link" href="#Tutorial-1-%E2%80%94-From-Boyd%E2%80%93Kleinman-to-%CE%B3_SHG">¶</a></h1><p><strong>Architecture-neutral · pre-G1 admissible</strong></p>
+<p>This notebook explains how the dimensionless Boyd–Kleinman (BK) focusing
+factor $h_m$ is turned into the engineering single-pass efficiency
+coefficient $\gamma_\mathrm{SHG}$ (units W⁻¹).  It is the first stepping
+stone toward answering:</p>
+<blockquote>
+<p><em>"Given a crystal, a pump wavelength, and a focused beam — how much
+harmonic power comes out in a single pass?"</em></p>
+</blockquote>
+<p>No cavity physics yet; that is Tutorial 2.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=69f9f0d9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="c1"># Imports and path setup</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">REPO_ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="p">(</span><span class="n">REPO_ROOT</span> <span class="o">/</span> <span class="s2">"pyproject.toml"</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">and</span> <span class="n">REPO_ROOT</span> <span class="o">!=</span> <span class="n">REPO_ROOT</span><span class="o">.</span><span class="n">parent</span><span class="p">:</span>
+    <span class="n">REPO_ROOT</span> <span class="o">=</span> <span class="n">REPO_ROOT</span><span class="o">.</span><span class="n">parent</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">REPO_ROOT</span><span class="p">))</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># noqa: E402</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># noqa: E402</span>
+<span class="kn">import</span> <span class="nn">yaml</span>  <span class="c1"># noqa: E402</span>
+
+<span class="kn">from</span> <span class="nn">src</span> <span class="kn">import</span> <span class="n">boyd_kleinman</span> <span class="k">as</span> <span class="n">bk</span>  <span class="c1"># noqa: E402</span>
+<span class="kn">from</span> <span class="nn">src.shg_single_pass</span> <span class="kn">import</span> <span class="p">(</span>  <span class="c1"># noqa: E402</span>
+    <span class="n">boyd_kleinman_K_factor</span><span class="p">,</span>
+    <span class="n">gamma_shg_coefficient</span><span class="p">,</span>
+    <span class="n">single_pass_conversion_fraction</span><span class="p">,</span>
+    <span class="n">single_pass_harmonic_power_W</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Imports OK"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Imports OK
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3a6c69e1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="1.-The-Boyd%E2%80%93Kleinman-focusing-factor">1. The Boyd–Kleinman focusing factor<a class="anchor-link" href="#1.-The-Boyd%E2%80%93Kleinman-focusing-factor">¶</a></h2><p>Boyd &amp; Kleinman (1968) showed that, for a focused Gaussian pump in a
+non-depleted crystal, the harmonic power is</p>
+<p>$$P_{2\omega} = K \; L \; k_1 \; h(\sigma, \beta, \kappa, \xi, \mu) \; P_\omega^2$$</p>
+<p>where $h$ is a <strong>dimensionless</strong> double integral that depends only on
+geometric and optical parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\xi = L/b$</td>
+<td>focusing parameter ($b = 2z_R$ is the confocal parameter)</td>
+</tr>
+<tr>
+<td>$\sigma = \tfrac{1}{2}\Delta k \, b$</td>
+<td>phase mismatch</td>
+</tr>
+<tr>
+<td>$\beta = \tfrac{1}{2}\rho\sqrt{L k_1}$</td>
+<td>walk-off parameter</td>
+</tr>
+<tr>
+<td>$\kappa = (\alpha_1 + \alpha_2/2)L/2$</td>
+<td>absorption</td>
+</tr>
+<tr>
+<td>$\mu$</td>
+<td>focus offset from crystal centre</td>
+</tr>
+</tbody>
+</table>
+<p>In the lab you tune $\sigma$ (temperature or angle) for maximum conversion.
+The $\sigma$-optimised version is $h_m(\xi, \beta, \kappa, \mu)$.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b50e5986">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Quick look: h_m(ξ) for several walk-off parameters β.</span>
+<span class="c1"># (For β=0 we can use the fast analytic limit; for β&gt;0 we call h_m_factor.)</span>
+<span class="n">xi_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+
+<span class="c1"># β = 0  →  analytic arctan²(ξ)/ξ</span>
+<span class="n">h_beta0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">bk</span><span class="o">.</span><span class="n">h_analytic_no_walkoff_no_loss</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xi_grid</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xi_grid</span><span class="p">,</span> <span class="n">h_beta0</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">"$\beta = 0$ (analytic)"</span><span class="p">)</span>
+
+<span class="c1"># β = 1 and β = 2  →  numerical (a few evaluations, still fast)</span>
+<span class="k">for</span> <span class="n">beta_val</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]:</span>
+    <span class="n">h_vals</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="n">xi_grid</span><span class="p">[::</span><span class="mi">5</span><span class="p">]:</span>  <span class="c1"># coarse sub-sample for speed</span>
+        <span class="n">h_vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bk</span><span class="o">.</span><span class="n">h_m_factor</span><span class="p">(</span><span class="n">xi</span><span class="o">=</span><span class="n">xi</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="n">beta_val</span><span class="p">,</span> <span class="n">kappa</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xi_grid</span><span class="p">[::</span><span class="mi">5</span><span class="p">],</span> <span class="n">h_vals</span><span class="p">,</span> <span class="s2">"o-"</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">"$\beta = </span><span class="si">{</span><span class="n">beta_val</span><span class="si">}</span><span class="s2">$"</span><span class="p">)</span>
+
+<span class="c1"># Mark the classic BK optimum (β = 0, σ-optimised)</span>
+<span class="n">xi_opt</span><span class="p">,</span> <span class="n">h_max</span> <span class="o">=</span> <span class="n">bk</span><span class="o">.</span><span class="n">h_m_optimum</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">kappa</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">xi_opt</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"C2"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+           <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">"$\xi_\mathrm</span><span class="se">{{</span><span class="s2">opt</span><span class="se">}}</span><span class="s2"> \approx </span><span class="si">{</span><span class="n">xi_opt</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">$"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">h_max</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"C2"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xi_opt</span><span class="p">],</span> <span class="p">[</span><span class="n">h_max</span><span class="p">],</span> <span class="s2">"C2*"</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">"$h_m^\max = </span><span class="si">{</span><span class="n">h_max</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">$"</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"$\xi = L / b$"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"$h_m(\xi, \beta)$"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">"BK $\sigma$-optimised focusing factor for several walk-off parameters"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"upper right"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Classic BK optimum:  ξ_opt = </span><span class="si">{</span><span class="n">xi_opt</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">,  h_m_max = </span><span class="si">{</span><span class="n">h_max</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Classic BK optimum:  ξ_opt = 2.838,  h_m_max = 1.0677
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ed89f7da">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><strong>Take-away.</strong> Walk-off drags the optimum to <strong>smaller</strong> ξ (looser focus)
+and suppresses the peak $h_m$.  For a walk-off-limited crystal you do not
+simply use the textbook ξ ≈ 2.84 — you must re-optimise.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=64f88b44">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="2.-From-$h_m$-to-the-engineering-coefficient-$%5Cgamma_%5Cmathrm%7BSHG%7D$">2. From $h_m$ to the engineering coefficient $\gamma_\mathrm{SHG}$<a class="anchor-link" href="#2.-From-$h_m$-to-the-engineering-coefficient-$%5Cgamma_%5Cmathrm%7BSHG%7D$">¶</a></h2><p>The material constant $K$ packages all the wavelength- and crystal-specific
+physics:</p>
+<p>$$K = \frac{2\,\omega^2 \, d_\mathrm{eff}^2}{\pi \, \varepsilon_0 \, c^3 \, n_\omega \, n_{2\omega}}$$</p>
+<p>and the single-pass coefficient is</p>
+<p>$$\gamma_\mathrm{SHG} = K \; k_1 \; L \; h_m$$</p>
+<p>so that</p>
+<p>$$P_{2\omega} = \gamma_\mathrm{SHG} \; P_\omega^2 \qquad (\text{small-signal})$$</p>
+<p>$$P_{2\omega} = P_\omega \; \tanh^2\!\bigl(\sqrt{\gamma_\mathrm{SHG} \, P_\omega}\bigr) \qquad (\text{depleted})$$</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=dcc5e155">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="c1"># Load generic parameters from the paired YAML</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="n">YAML_PATH</span> <span class="o">=</span> <span class="n">REPO_ROOT</span> <span class="o">/</span> <span class="s2">"notebooks"</span> <span class="o">/</span> <span class="s2">"tutorials"</span> <span class="o">/</span> <span class="s2">"01-params.yaml"</span>
+<span class="k">with</span> <span class="n">YAML_PATH</span><span class="o">.</span><span class="n">open</span><span class="p">()</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">"crystal"</span><span class="p">]</span>
+<span class="n">d_eff</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s2">"d_eff_pm_per_V"</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1e-12</span>  <span class="c1"># convert pm/V → m/V</span>
+<span class="n">n_o</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s2">"n_omega"</span><span class="p">]</span>
+<span class="n">n_2</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s2">"n_2omega"</span><span class="p">]</span>
+<span class="n">lam</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s2">"wavelength_nm"</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1e-9</span>
+<span class="n">L_mm</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s2">"length_mm"</span><span class="p">]</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">L_mm</span> <span class="o">*</span> <span class="mf">1e-3</span>
+
+<span class="n">foc</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">"focusing"</span><span class="p">]</span>
+<span class="n">w0_um</span> <span class="o">=</span> <span class="n">foc</span><span class="p">[</span><span class="s2">"w0_um"</span><span class="p">]</span>
+<span class="n">rho_mrad</span> <span class="o">=</span> <span class="n">foc</span><span class="p">[</span><span class="s2">"walk_off_angle_mrad"</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Loaded parameters from 01-params.yaml"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  d_eff = </span><span class="si">{</span><span class="n">d_eff</span><span class="o">*</span><span class="mf">1e12</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> pm/V"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  n_ω = </span><span class="si">{</span><span class="n">n_o</span><span class="si">}</span><span class="s2">,  n_2ω = </span><span class="si">{</span><span class="n">n_2</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  λ = </span><span class="si">{</span><span class="n">lam</span><span class="o">*</span><span class="mf">1e9</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> nm,  L = </span><span class="si">{</span><span class="n">L_mm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> mm"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  w0 = </span><span class="si">{</span><span class="n">w0_um</span><span class="si">}</span><span class="s2"> μm,  ρ = </span><span class="si">{</span><span class="n">rho_mrad</span><span class="si">}</span><span class="s2"> mrad"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Loaded parameters from 01-params.yaml
+  d_eff = 0.84 pm/V
+  n_ω = 1.605,  n_2ω = 1.62
+  λ = 1118 nm,  L = 18 mm
+  w0 = None μm,  ρ = 0.0 mrad
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1918d1ae">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="2.1-Compute-the-BK-focusing-factor">2.1 Compute the BK focusing factor<a class="anchor-link" href="#2.1-Compute-the-BK-focusing-factor">¶</a></h3><p>If <code>w0_um</code> is <code>null</code> in the YAML, we use the σ-optimised BK waist.
+Otherwise we compute ξ from the specified waist and evaluate $h_m$ there.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=213b0d6b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="n">w0_um</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># Use the BK σ-optimum (β includes walk-off if ρ &gt; 0)</span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">rho_mrad</span> <span class="o">*</span> <span class="mf">1e-3</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">L</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">n_o</span> <span class="o">/</span> <span class="n">lam</span><span class="p">)</span>
+    <span class="n">xi_opt_val</span><span class="p">,</span> <span class="n">h_m_val</span> <span class="o">=</span> <span class="n">bk</span><span class="o">.</span><span class="n">h_m_optimum</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="n">beta</span><span class="p">,</span> <span class="n">kappa</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">w0_calc</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">L</span> <span class="o">*</span> <span class="n">lam</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">n_o</span> <span class="o">*</span> <span class="n">xi_opt_val</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"BK σ-optimum:  ξ = </span><span class="si">{</span><span class="n">xi_opt_val</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">,  h_m = </span><span class="si">{</span><span class="n">h_m_val</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Corresponding waist: w0 = </span><span class="si">{</span><span class="n">w0_calc</span><span class="o">*</span><span class="mf">1e6</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> μm"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">w0_m</span> <span class="o">=</span> <span class="n">w0_um</span> <span class="o">*</span> <span class="mf">1e-6</span>
+    <span class="n">xi_val</span> <span class="o">=</span> <span class="n">L</span> <span class="o">*</span> <span class="n">lam</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">n_o</span> <span class="o">*</span> <span class="n">w0_m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">rho_mrad</span> <span class="o">*</span> <span class="mf">1e-3</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">L</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">n_o</span> <span class="o">/</span> <span class="n">lam</span><span class="p">)</span>
+    <span class="n">h_m_val</span> <span class="o">=</span> <span class="n">bk</span><span class="o">.</span><span class="n">h_m_factor</span><span class="p">(</span><span class="n">xi</span><span class="o">=</span><span class="n">xi_val</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="n">beta</span><span class="p">,</span> <span class="n">kappa</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Specified waist:  ξ = </span><span class="si">{</span><span class="n">xi_val</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">,  h_m = </span><span class="si">{</span><span class="n">h_m_val</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>BK σ-optimum:  ξ = 2.838,  h_m = 1.0677
+Corresponding waist: w0 = 26.52 μm
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3c1b93c2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="2.2-Compute-%CE%B3_SHG-and-the-single-pass-harmonic-power">2.2 Compute γ_SHG and the single-pass harmonic power<a class="anchor-link" href="#2.2-Compute-%CE%B3_SHG-and-the-single-pass-harmonic-power">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=323baf3e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="n">boyd_kleinman_K_factor</span><span class="p">(</span><span class="n">d_eff</span><span class="p">,</span> <span class="n">n_o</span><span class="p">,</span> <span class="n">n_2</span><span class="p">,</span> <span class="n">lam</span><span class="p">)</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="n">gamma_shg_coefficient</span><span class="p">(</span><span class="n">d_eff</span><span class="p">,</span> <span class="n">n_o</span><span class="p">,</span> <span class="n">n_2</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">h_m_val</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Material constant K = </span><span class="si">{</span><span class="n">K</span><span class="si">:</span><span class="s2">.4e</span><span class="si">}</span><span class="s2"> W⁻¹·m⁻¹"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Single-pass coefficient γ_SHG = </span><span class="si">{</span><span class="n">gamma</span><span class="si">:</span><span class="s2">.4e</span><span class="si">}</span><span class="s2"> W⁻¹"</span><span class="p">)</span>
+
+<span class="c1"># Plot single-pass conversion vs pump power</span>
+<span class="n">P_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">h_small</span> <span class="o">=</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">P_range</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">h_depl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="n">single_pass_harmonic_power_W</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="s2">"depleted"</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P_range</span>
+<span class="p">])</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">P_range</span><span class="p">,</span> <span class="n">h_small</span><span class="p">,</span> <span class="s2">"--"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">"Small-signal  $\gamma P^2$"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">P_range</span><span class="p">,</span> <span class="n">h_depl</span><span class="p">,</span> <span class="s2">"-"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">"Depleted  $P \tanh^2(\sqrt{\gamma P})$"</span><span class="p">)</span>
+
+<span class="c1"># Mark the 5 % auto-switch threshold</span>
+<span class="n">P_switch</span> <span class="o">=</span> <span class="mf">0.05</span> <span class="o">/</span> <span class="n">gamma</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">P_switch</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"C2"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+           <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"Auto-switch  (</span><span class="si">{</span><span class="n">P_switch</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> W)"</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Pump power $P_\omega$ (W)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Harmonic power $P_{2\omega}$ (W)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Single-pass harmonic generation"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"upper left"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">h_depl</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.2</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Material constant K = 2.0557e-09 W⁻¹·m⁻¹
+Single-pass coefficient γ_SHG = 3.5637e-04 W⁻¹
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=da0105e1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><strong>Take-away.</strong> At low power the two curves sit on top of each other.
+Once $\gamma P_\omega$ exceeds ~5 % the depleted curve bends away:
+the pump is being consumed, and the conversion fraction can never exceed
+100 % (the Manley–Rowe ceiling).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d6e2a7a9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="3.-Conversion-fraction-vs-pump-power">3. Conversion fraction vs pump power<a class="anchor-link" href="#3.-Conversion-fraction-vs-pump-power">¶</a></h2><p>The <strong>conversion fraction</strong> $\eta = P_{2\omega} / P_\omega$ is what the
+cavity solver (Tutorial 3) consumes.  It is not simply $\gamma P_\omega$
+outside the small-signal regime.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=b6010b4a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">eta_small</span> <span class="o">=</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">P_range</span>
+<span class="n">eta_depl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="n">single_pass_conversion_fraction</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="s2">"depleted"</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">P_range</span>
+<span class="p">])</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">P_range</span><span class="p">,</span> <span class="n">eta_small</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="s2">"--"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">"Small-signal  $\gamma P$"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">P_range</span><span class="p">,</span> <span class="n">eta_depl</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="s2">"-"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">"Depleted  $\tanh^2(\sqrt{\gamma P})$"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Pump power $P_\omega$ (W)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Conversion fraction  $\eta$ (%)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Single-pass conversion fraction"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"lower right"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">105</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a5844901">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="4.-Try-this">4. Try this<a class="anchor-link" href="#4.-Try-this">¶</a></h2><p>Open <code>01-params.yaml</code> next to this notebook and change the crystal
+parameters.  For example:</p>
+<ul>
+<li>Set <code>d_eff_pm_per_V: 2.2</code> (a high-nonlinearity crystal like KNB)</li>
+<li>Set <code>length_mm: 25</code></li>
+<li>Set <code>walk_off_angle_mrad: 50</code> (a walk-off-limited geometry)</li>
+</ul>
+<p>Re-run the cells above and watch how $\gamma_\mathrm{SHG}$ and the
+conversion curves shift.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2cd93f34">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Tutorial 01 complete."</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Tutorial 01 complete.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>

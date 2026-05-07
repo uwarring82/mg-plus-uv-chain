@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="{{ '/assets/tokens.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/notebook.css' | relative_url }}">
   <link rel="icon" type="image/svg+xml" href="{{ '/assets/emblem-32.svg' | relative_url }}">
 </head>
 <body>
@@ -43,8 +44,10 @@
   </header>
 
   <main id="content">
-    <div class="site-shell prose">
-      {{ content }}
+    <div class="site-shell">
+      <article class="notebook-content">
+        {{ content }}
+      </article>
     </div>
 
     <footer class="colophon site-shell">

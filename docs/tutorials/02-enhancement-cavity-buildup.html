@@ -1,0 +1,301 @@
+---
+layout: notebook
+title: "Tutorial 2 — Passive Enhancement-Cavity Buildup"
+description: Tutorial notebook (02-enhancement-cavity-buildup). Architecture-neutral; uses /src/ primitives only.
+---
+
+<main>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=45ada488">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Tutorial-2-%E2%80%94-Passive-Enhancement-Cavity-Buildup">Tutorial 2 — Passive Enhancement-Cavity Buildup<a class="anchor-link" href="#Tutorial-2-%E2%80%94-Passive-Enhancement-Cavity-Buildup">¶</a></h1><p><strong>Architecture-neutral · pre-G1 admissible</strong></p>
+<p>Before adding a nonlinear crystal, it helps to understand how a <em>passive</em>
+ring cavity builds up circulating power.  This notebook derives the Airy
+formula in plain language and shows where the impedance-matched maximum
+sits.</p>
+<blockquote>
+<p><em>"Given an input coupler with transmission $T$ and a round-trip passive
+loss $L$, what is the circulating power?"</em></p>
+</blockquote>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5aabcabd">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="c1"># Imports and path setup</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">REPO_ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="p">(</span><span class="n">REPO_ROOT</span> <span class="o">/</span> <span class="s2">"pyproject.toml"</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">and</span> <span class="n">REPO_ROOT</span> <span class="o">!=</span> <span class="n">REPO_ROOT</span><span class="o">.</span><span class="n">parent</span><span class="p">:</span>
+    <span class="n">REPO_ROOT</span> <span class="o">=</span> <span class="n">REPO_ROOT</span><span class="o">.</span><span class="n">parent</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">REPO_ROOT</span><span class="p">))</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># noqa: E402</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># noqa: E402</span>
+<span class="kn">import</span> <span class="nn">yaml</span>  <span class="c1"># noqa: E402</span>
+
+<span class="kn">from</span> <span class="nn">src.enhancement_cavity</span> <span class="kn">import</span> <span class="n">circulating_power</span><span class="p">,</span> <span class="n">passive_buildup</span>  <span class="c1"># noqa: E402</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Imports OK"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Imports OK
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c5842d00">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="1.-The-Airy-buildup-formula">1. The Airy buildup formula<a class="anchor-link" href="#1.-The-Airy-buildup-formula">¶</a></h2><p>For a ring cavity on resonance, the circulating power is</p>
+<p>$$\frac{P_\mathrm{circ}}{P_\mathrm{in}} = \frac{T}{(1 - \sqrt{R\,(1-L)})^2}$$</p>
+<p>where $R = 1-T$ is the input-coupler reflectivity and $L$ is the
+round-trip passive loss <em>excluding</em> the input coupler.</p>
+<p><strong>Why this formula?</strong>  On each round trip the beam:</p>
+<ol>
+<li>Reflects off the input coupler → factor $R$</li>
+<li>Suffers passive loss → factor $1-L$</li>
+<li>Returns to the input coupler</li>
+</ol>
+<p>The amplitude that survives one round trip is $\sqrt{R(1-L)}$.  The
+geometric series of all round trips gives the denominator $(1 - \sqrt{R(1-L)})^2$.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4d48ef99">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="c1"># Load parameters</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="n">YAML_PATH</span> <span class="o">=</span> <span class="n">REPO_ROOT</span> <span class="o">/</span> <span class="s2">"notebooks"</span> <span class="o">/</span> <span class="s2">"tutorials"</span> <span class="o">/</span> <span class="s2">"02-params.yaml"</span>
+<span class="k">with</span> <span class="n">YAML_PATH</span><span class="o">.</span><span class="n">open</span><span class="p">()</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">"cavity"</span><span class="p">]</span>
+<span class="n">P_in</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s2">"power_in_W"</span><span class="p">]</span>
+<span class="n">L_loss</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s2">"loss_per_pass"</span><span class="p">]</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s2">"gamma_shg"</span><span class="p">]</span>
+
+<span class="n">sweep</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">"sweep"</span><span class="p">]</span>
+<span class="n">T_min</span> <span class="o">=</span> <span class="n">sweep</span><span class="p">[</span><span class="s2">"T_IC_min"</span><span class="p">]</span>
+<span class="n">T_max</span> <span class="o">=</span> <span class="n">sweep</span><span class="p">[</span><span class="s2">"T_IC_max"</span><span class="p">]</span>
+<span class="n">n_pts</span> <span class="o">=</span> <span class="n">sweep</span><span class="p">[</span><span class="s2">"n_points"</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Parameters: P_in = </span><span class="si">{</span><span class="n">P_in</span><span class="si">}</span><span class="s2"> W,  L = </span><span class="si">{</span><span class="n">L_loss</span><span class="si">}</span><span class="s2">,  γ = </span><span class="si">{</span><span class="n">gamma</span><span class="si">}</span><span class="s2"> W⁻¹"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Parameters: P_in = 1.0 W,  L = 0.02,  γ = 0.0 W⁻¹
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=68e7537c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="2.-Buildup-curves-for-several-passive-losses">2. Buildup curves for several passive losses<a class="anchor-link" href="#2.-Buildup-curves-for-several-passive-losses">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=744fb306">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">T_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">T_min</span><span class="p">,</span> <span class="n">T_max</span><span class="p">,</span> <span class="n">n_pts</span><span class="p">)</span>
+<span class="n">losses</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">L_val</span> <span class="ow">in</span> <span class="n">losses</span><span class="p">:</span>
+    <span class="n">buildup</span> <span class="o">=</span> <span class="p">[</span><span class="n">passive_buildup</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">L_val</span><span class="p">)</span> <span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="n">T_grid</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_grid</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">buildup</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"L = </span><span class="si">{</span><span class="n">L_val</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="c1"># Mark the impedance-matched maximum at T = L</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">T_grid</span> <span class="o">-</span> <span class="n">L_val</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">L_val</span> <span class="o">*</span> <span class="mi">100</span><span class="p">],</span> <span class="p">[</span><span class="n">buildup</span><span class="p">[</span><span class="n">idx</span><span class="p">]],</span> <span class="s2">"o"</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Input-coupler transmission  T (%)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Buildup  $P_\mathrm</span><span class="si">{circ}</span><span class="s2"> / P_\mathrm</span><span class="si">{in}</span><span class="s2">$"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Passive ring-cavity buildup vs. input-coupler transmission"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"upper right"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Passive loss"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=94809cd2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><strong>Take-away.</strong> Each curve has a sharp maximum at <strong>T = L</strong> (the open
+circles).  This is the <strong>impedance-matched</strong> point: the input coupler
+transmits exactly as much power as the cavity loses per round trip, so
+no power is reflected back to the source.  At this point the buildup is
+$1/L$ — for $L = 0.01$ the circulating power is 100× the input power.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9e2b3b83">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="3.-Circulating-power-with-nonlinear-loss">3. Circulating power with nonlinear loss<a class="anchor-link" href="#3.-Circulating-power-with-nonlinear-loss">¶</a></h2><p>When a crystal is inside the cavity, each round trip converts a fraction
+$\eta_\mathrm{nl}$ of the circulating power to harmonic.  The nonlinear
+loss modifies the buildup.  Here we compare the passive curve with the
+nonlinear curve for a small SHG coefficient.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=8d91068c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">T_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">L_val</span> <span class="o">=</span> <span class="mf">0.02</span>
+<span class="n">gamma_small</span> <span class="o">=</span> <span class="mf">1e-3</span>  <span class="c1"># W⁻¹ — small enough to stay in the small-signal regime</span>
+
+<span class="n">buildup_passive</span> <span class="o">=</span> <span class="p">[</span><span class="n">passive_buildup</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">L_val</span><span class="p">)</span> <span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="n">T_grid</span><span class="p">]</span>
+<span class="n">buildup_nonlinear</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">circulating_power</span><span class="p">(</span><span class="n">P_in</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">L_val</span><span class="p">,</span> <span class="n">gamma_small</span><span class="p">)</span> <span class="o">/</span> <span class="n">P_in</span> <span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="n">T_grid</span>
+<span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_grid</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">buildup_passive</span><span class="p">,</span> <span class="s2">"-"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Passive (γ = 0)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_grid</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">buildup_nonlinear</span><span class="p">,</span> <span class="s2">"--"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">"Nonlinear ($\gamma = </span><span class="si">{</span><span class="n">gamma_small</span><span class="si">}</span><span class="s2">$ W⁻¹)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">L_val</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+           <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"Impedance match  T = L = </span><span class="si">{</span><span class="n">L_val</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Input-coupler transmission  T (%)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Buildup  $P_\mathrm</span><span class="si">{circ}</span><span class="s2"> / P_\mathrm</span><span class="si">{in}</span><span class="s2">$"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Passive vs. small-nonlinear-loss buildup"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"upper right"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=21d2e30d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><strong>Take-away.</strong> Even a tiny SHG coefficient pulls the optimum to slightly
+larger T (the nonlinear loss acts like extra round-trip loss).  The shift
+is small here, but it grows with pump power — that is the subject of
+Tutorial 3.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=07481e81">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="4.-Try-this">4. Try this<a class="anchor-link" href="#4.-Try-this">¶</a></h2><p>Open <code>02-params.yaml</code> and change the passive loss <code>loss_per_pass</code>.  Try
+values from 0.001 (very low-loss super-mirror cavity) to 0.10 (a
+lossy prototype).  Re-run the cells and watch how the impedance-matched
+buildup $1/L$ changes.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=42c2c7a0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Tutorial 02 complete."</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Tutorial 02 complete.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>

@@ -142,7 +142,7 @@ print(f"Classic BK optimum:  ξ_opt = {xi_opt:.3f},  h_m_max = {h_max:.4f}")
 # -----------------------------------------------------------------------------
 # Load generic parameters from the paired YAML
 # -----------------------------------------------------------------------------
-YAML_PATH = Path(__file__).with_suffix("").parent / "01-params.yaml"
+YAML_PATH = REPO_ROOT / "notebooks" / "tutorials" / "01-params.yaml"
 with YAML_PATH.open() as f:
     params = yaml.safe_load(f)
 

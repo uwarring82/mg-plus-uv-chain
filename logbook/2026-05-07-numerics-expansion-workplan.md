@@ -308,7 +308,60 @@ Uses the architecture-neutral primitives from Phases A–C plus parameter values
 
 Documents discrepancies for follow-up in KD-UV280-005 / -007 (these were already flagged as `open_extraction_items` — `d_eff(BBO)`, `walk-off ρ`, refractive indices). This notebook is **architecture-specific in its parameters** and therefore lives in `/notebooks/`, never in `/src/`.
 
-### Phase F · Site integration
+### Phase F · Site integration ✅ **DONE 2026-05-07** (commit pending push)
+
+**Render pipeline.** `nbconvert`'s CLI does not expose a kernel-cwd flag, so
+the published `--ExecutePreprocessor.cwd` and `--ExecutePreprocessor.kernel_cwd`
+suggestions are silently ignored — the kernel inherits the directory of the
+input file, which is `notebooks/tutorials/` and breaks the in-notebook `from
+src import ...` after the path-walking. Workaround:
+[`scripts/render_tutorials.py`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/scripts/render_tutorials.py)
+calls `nbclient.NotebookClient` directly with
+`resources={"metadata": {"path": str(REPO_ROOT)}}`, which is the underlying
+mechanism nbconvert wraps but doesn't surface. The script is in `/scripts/`,
+not `/src/`, so it stays clear of CHARTER §5.1 enforcement.
+
+**Render output.** Each `notebooks/tutorials/NN-*.py` produces an executed
+`.ipynb` and a rendered `.html` (`nbconvert` `lab` template) under
+`docs/tutorials/`. Source `.py` is the version-controlled truth; `.ipynb` and
+`.html` are committed alongside so GitHub Pages serves a static, reproducible
+page set.
+
+**Make targets** at the repo root:
+
+- `make tutorials` — render all four.
+- `make tutorials-one STEM=03` — render a single notebook by stem.
+- `make test` — `pytest -q`.
+
+Requires `pip install -e .[notebooks]` (the extra landed in Phase D).
+
+**Site placement.**
+
+- New top-level `Tutorials` nav entry in `docs/_layouts/default.html` (sixth
+  item, after `Components`).
+- Landing page at `docs/tutorials/index.md` with a one-line summary per
+  notebook keyed to the question each one answers; explicit cross-link
+  to the [components inventory](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/docs/components/inventory.md)
+  (Tutorial 03 is the load-bearing piece for the procurement question that
+  motivated the inventory work).
+- Footer source-list on `docs/index.md` extended with a `Tutorials` link.
+
+**CI follow-up not in scope this turn.** The workplan noted "CI runs it on
+each PR so broken notebooks fail the build". A GitHub Actions workflow that
+installs the `notebooks` extra and runs `make tutorials` (failing on
+non-zero exit) is the natural next step, but creating
+`.github/workflows/tutorials.yml` is a separate small follow-up rather than
+part of the Phase F closure.
+
+---
+
+**Workplan summary as of close-out (2026-05-07):** Phases A through G all
+DONE. Net changes: 4 new `/src/` modules (Phase A/B/C); 4 tutorial
+notebooks + 1 diagnostic (Phase D/E); render pipeline + site integration
+(Phase F); principles update + tutorial REFERENCES (Phase G). Test count
+went 78 → 142 (+64). All Phase A/B/C work is anti-seeding-clean; all
+architecture-specific application of those primitives lives outside `/src/`
+and is out of Phase 4 scoring scope.
 
 - Add a `Tutorials` page to `/docs/`, listing the notebook set with rendered HTML output.
 - Update `/docs/calculations.md` to point to the new modules and the tutorials.
