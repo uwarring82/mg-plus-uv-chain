@@ -32,6 +32,12 @@ KD-UV280-005/-007 procurement work is unblocked. Each addition must preserve
 the per-row provenance tier — vendor links sit alongside, not in place of,
 paper-stated specifications.
 
+**See also.** [Optical-components inventory](inventory.html) — actual on-shelf
+stock (mirrors, output couplers, sub-assemblies, BBO crystals from Raicol /
+A-Star / Castech) keyed to the LBO and BBO roles described below, with a
+glossary of cavity / nonlinear-optics terminology and a per-item verification
+trail (Qty checked / Initials / Date).
+
 ---
 
 ## A. Pump conditioning at 1118 nm (pre-LBO)

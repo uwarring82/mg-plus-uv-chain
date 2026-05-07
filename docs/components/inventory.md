@@ -1,28 +1,96 @@
 ---
 layout: default
-title: Inventory — SHG/FHG shelf, 2026-05-07
-description: Inventory snapshot of an existing optical-components shelf (Laseroptik / Layertec / LO Laseroptik / Newport / Thorlabs boxes), tagged against the Friedenauer 2006 LBO and BBO ring-cavity roles. Working artefact.
+title: Optical-components inventory — SHG/FHG shelf
+description: Inventory of optical components for the LBO and BBO doubling stages, keyed to the Friedenauer 2006 baseline. Working artefact with verification trail.
 ---
 
-<p class="endorsement"><strong>Endorsement Marker.</strong> Local lab inventory snapshot — AG Schätz stewardship. Items listed here are pre-existing stock identified from a single shelf photograph; their fitness for any specific build is conditional on later inspection (coating verification, scratch/dig, batch consistency).</p>
+<p class="endorsement"><strong>Endorsement Marker.</strong> Local lab inventory — AG Schätz stewardship. Items listed here are pre-existing stock identified from photographs and vendor documentation; their fitness for any specific build is conditional on later inspection (coating verification, scratch/dig, batch consistency).</p>
 
-<p class="eyebrow">Inventory snapshot</p>
+<p class="eyebrow">Inventory</p>
 
-# SHG/FHG component shelf — 2026-05-07
+# Optical-components inventory — SHG/FHG shelf
 
-**Source:** single shelf photograph supplied 2026-05-07 (original 4087 × 3441 px). Not committed to repo as binary; transcription only.
+**Last updated:** 2026-05-07 (initial inventory pass; BBO crystals added the same day from vendor documentation).
 **Status:** DRAFT. Working inventory; line-item readings need bench verification before procurement decisions.
-**Scope:** maps each identified box / loose item to its likely role in either the **LBO ring cavity** (1118 nm → 559 nm; conventionally labelled here at the coating-stated 1120 nm / 560 nm) or the **BBO ring cavity** (559 nm → near 280 nm) of the [Friedenauer 2006 baseline](friedenauer-baseline.html).
-**Reading conventions:**
+**Source documents (referenced for traceability; not committed to repo because they include personal contact data and pricing):**
 
-- Wavelengths on coatings (1120 nm, 560 nm, 280 nm) are vendor round figures; the Friedenauer chain runs at 1118 / 559 / ~280 nm. Coating bandwidth typically covers both. AR/HR specs at 1120 nm should be re-verified at 1118 nm before final use.
-- `IC` = input coupler, `OC` = output coupler, `HR` = high-reflective end mirror, `PR` = partial reflector, `r` (or `R`) = radius of curvature, signed if the label is signed (concave = negative on some labels, positive on others — vendors are inconsistent).
-- `FS` = fused silica, `Herasil` = a Heraeus FS grade, `SQ2` and `BK7` = standard substrates. Quantities are the box's stated unit count where readable.
-- `AOI` = angle of incidence stated on the label. **AOI must match folding angle of the cavity** (Friedenauer LBO = 5° per mirror at 10° full fold; BBO = 13.7° per mirror at 27.4° full fold). Coatings specified at 0° or 12° / 15° AOI may not be drop-in for the Friedenauer geometry.
-- `Source-tier` = `O` (label observed directly from photo, high confidence), `O*` (label partially obscured / handwritten / partial reading; flagged), `OPEN` (cannot read).
+- Shelf photograph, 2026-05-07 (original 4087 × 3441 px).
+- Raicol Crystals *Certificate of Compliance & Tests No. 6331*, 08 Jun 2025.
+- EKSMA Optics *Order Confirmation No. 4100143296*, 15 Apr 2025 (delivered Jun 2025).
+- A-Star vendor labels (photographed 2026-05-07; PO BL170229 / SO AS171206-01).
+- Castech vendor label (photographed 2026-05-07; G8115-2 / Crystal ID 2-21577).
+- Raicol *Quotation PQ250167*, 04 Jul 2025 (expired; reference for restocking only).
+
+**Scope.** Maps each identified box / loose item to its likely role in either the **LBO ring cavity** (1118 nm → 559 nm; conventionally labelled here at the coating-stated 1120 nm / 560 nm) or the **BBO ring cavity** (559 nm → near 280 nm) of the [Friedenauer 2006 baseline](friedenauer-baseline.html).
+
+---
+
+## Glossary
+
+This document uses the terms and abbreviations listed below. Each entry links to a publicly available reference (Wikipedia or the original-paper DOI) where one exists, so the page is self-contained for readers approaching from outside the laser-cavity world.
+
+**Cavity / mirror terminology**
+
+- **IC** — *Input coupler.* Partial reflector through which the pump beam enters the resonator; reflectivity is chosen to impedance-match the cavity round-trip loss.
+- **OC** — *Output coupler.* Partial reflector that lets the desired output (here, the second harmonic) escape the cavity. Often a dichroic: HR at the fundamental, HT at the harmonic.
+- **HR** — *High reflector.* [Dielectric mirror](https://en.wikipedia.org/wiki/Dielectric_mirror) with reflectivity typically > 99 %.
+- **AR** — *Anti-reflection.* [Multilayer coating](https://en.wikipedia.org/wiki/Anti-reflective_coating) that suppresses surface reflection at a chosen wavelength.
+- **PR** — *Partial reflector.* Mirror with intentional sub-unity reflectivity, used as IC or OC.
+- **AOI** — *Angle of incidence.* Angle between the beam and the local surface normal; coatings are designed for a specific AOI and degrade off-design.
+- **FSR** — *[Free spectral range](https://en.wikipedia.org/wiki/Free_spectral_range).* Frequency spacing between adjacent longitudinal cavity modes; equals `c / L` for a ring of round-trip path `L`.
+- **TEM₀₀** — *Fundamental [transverse mode](https://en.wikipedia.org/wiki/Transverse_mode)* — the lowest-order Gaussian cavity mode.
+- **HC lock** — *[Hänsch–Couillaud](https://doi.org/10.1016/0030-4018(80)90069-3) polarisation lock* (Opt. Commun. **35**, 441 (1980)). Locks a laser to a passive resonator using polarisation analysis of the reflected light.
+- **piezo / PZT** — *[Piezoelectric actuator](https://en.wikipedia.org/wiki/Piezoelectricity).* Displaces a cavity mirror by sub-nm steps for frequency lock or scanning.
+
+**Nonlinear-optics terminology**
+
+- **SHG** — *[Second-harmonic generation](https://en.wikipedia.org/wiki/Second-harmonic_generation).* Frequency doubling: ω + ω → 2ω in a noncentrosymmetric crystal.
+- **FHG** — *Fourth-harmonic generation.* ω → 4ω, here implemented as two cascaded SHG stages (1118 nm → 559 nm → 280 nm).
+- **CW** — *[Continuous-wave](https://en.wikipedia.org/wiki/Continuous_wave) operation* (non-pulsed).
+- **PM** / **NCPM** — *[Phase matching](https://en.wikipedia.org/wiki/Nonlinear_optics#Phase_matching) / noncritical phase matching.* The fundamental and harmonic phase velocities match in the crystal. NCPM removes spatial walk-off and is tuned by temperature; critical PM is tuned by crystal angle. Friedenauer 2006: LBO stage NCPM, BBO stage critical.
+- **Type-I PM** — Both fundamental photons polarised parallel (`o + o → e` in a negative-uniaxial crystal). Used in both Friedenauer stages.
+- **Brewster cut** — Crystal end-faces cut at [Brewster's angle](https://en.wikipedia.org/wiki/Brewster%27s_angle) so that p-polarised light has zero Fresnel reflection. The BBO Brewster cut at 59.1° external corresponds to the Type-I `θ = 44.4°` internal phase-matching angle for 559 → 280 nm.
+- **`d_eff`** — *Effective nonlinear coefficient.* The d-tensor projected onto the field polarisations of the chosen interaction; sets SHG conversion efficiency together with phase matching, focusing, and crystal length.
+- **Sellmeier equation** — *[Empirical dispersion fit](https://en.wikipedia.org/wiki/Sellmeier_equation)* `n²(λ) = 1 + Σ Bᵢ λ² / (λ² − Cᵢ)`. Drives both refractive indices and the PM angle.
+- **Boyd–Kleinman** — *Focusing analysis for SHG* — [G. D. Boyd & D. A. Kleinman, J. Appl. Phys. **39**, 3597 (1968)](https://doi.org/10.1063/1.1656831). Gives the optimum confocal parameter relative to crystal length.
+
+**Crystal materials and substrates**
+
+- **LBO** — *[Lithium triborate](https://en.wikipedia.org/wiki/Lithium_triborate)* (LiB₃O₅). Borate nonlinear crystal used here for 1118 → 559 nm SHG; broad transparency, modest `d_eff`, very high LIDT.
+- **BBO** — *[β-Barium borate](https://en.wikipedia.org/wiki/Barium_borate)* (β-BaB₂O₄). Borate nonlinear crystal used here for 559 → 280 nm SHG; large `d_eff`, hygroscopic surfaces.
+- **FS** — *[Fused silica](https://en.wikipedia.org/wiki/Fused_quartz).* Generic UV-grade amorphous SiO₂ substrate.
+- **Herasil** — Heraeus fused-silica grade.
+- **SQ2** / **Suprasil** — Heraeus high-purity FS grades; UV-transmissive.
+- **BK7** / **N-BK7** — Schott [borosilicate crown](https://en.wikipedia.org/wiki/Crown_glass_(optics)) glass; transparent in visible/NIR but **not UV-transmissive at 280 nm**.
+
+**Source / pump terminology**
+
+- **ASE** — *[Amplified spontaneous emission](https://en.wikipedia.org/wiki/Amplified_spontaneous_emission).* Broadband background output from a fibre amplifier; non-resonant with the SHG cavity but contributes thermal load and isolator stress.
+- **UV** — *Ultraviolet.* Here meaning the ~ 280 nm output of the FHG chain.
+
+**Coating / measurement terminology**
+
+- **IBS** — *[Ion-beam sputtering](https://en.wikipedia.org/wiki/Sputter_deposition).* Coating-deposition technique producing the lowest-loss dielectric stacks; standard for cavity-grade HRs > 99.9 %.
+- **Scratch / dig** — *[Surface-quality specification](https://en.wikipedia.org/wiki/Optical_flat#Surface_quality)* per MIL-PRF-13830B; lower numbers = better surface.
+- **Flatness λ/N** — Surface flatness relative to a reference wavelength (commonly 633 nm). Smaller `λ/N` = flatter.
+- **`r` / `R`** — Radius of curvature. For a concave mirror at normal incidence the focal length is `f = R / 2`. Sign conventions vary by vendor (concave = negative on some labels, positive on others).
+
+**Provenance tags used in the tables below**
+
+- `O` — label observed directly from photo / vendor document, high confidence.
+- `O*` — label partially obscured / handwritten / partial reading; flagged.
+- `OPEN` — cannot be read from the source material.
+
+---
+
+## Reading conventions (operational)
+
+The terms above are general-purpose. The following are document-specific:
+
+- **Coating wavelength offset.** Most LBO-stage items are labelled at 1120 nm; Friedenauer runs at 1118 nm. The 2 nm offset is well within typical coating bandwidth, but the [14-GHz unlockable domain](friedenauer-baseline.html) (Friedenauer §4) sits inside this offset range and should be considered before fielding any pre-existing 1120 nm coating.
+- **AOI must match cavity folding angle.** Friedenauer LBO = 5° per mirror at 10° full fold; BBO = 13.7° per mirror at 27.4° full fold. Coatings specified at 0° or 12° / 15° AOI may not be drop-in for the Friedenauer geometry — coating R/T/phase response shifts with AOI off-design.
 - **Verification trail.** The last three columns of every component table (`Qty checked`, `Initials`, `Date`) are filled in by the person doing the physical verification. `Date` in `YYYY-MM-DD`. An em dash (`—`) means "not yet checked". The first verification pass is scheduled for the week of 2026-05-11. Initials should be added at the same time as the count so a single audit pass produces a self-consistent triple.
-
-> **Important:** boxes labelled in German handwriting (`Einkoppler`, `Umlenker`, `Resonator`, `verlustarm`) translate to *input coupler*, *fold/turn mirror*, *resonator*, *low-loss*. Where my reading is partial, the relevant row is tagged `O*` and the uncertainty is called out.
+- **German handwriting on legacy boxes.** `Einkoppler` = input coupler, `Umlenker` = fold/turn mirror, `Resonator` = resonator, `verlustarm` = low-loss, `Beschichtung Vorrat` = coating-stock reserve. Where the reading is partial, the row is tagged `O*` and the uncertainty is called out.
 
 ---
 
