@@ -44,15 +44,20 @@ Each gate closes via an Integrator-acknowledged logbook entry following the [`lo
 
 ### Anti-seeding clause *Coastline*
 
-<p class="classification classification--coastline">Coastline · §5.1 · enforced at code-review time and by tests/test_diagnostic_surrogate_imports.py</p>
+<p class="classification classification--coastline">Coastline · §5.1 · enforced at code-review time, by tests/test_diagnostic_surrogate_imports.py (no /src/ → /src/diagnostic_surrogates_archive/ imports), and by tests/test_anti_seeding_src_imports.py (no /src/ → data.literature imports)</p>
 
-Pre-G1, no Boyd–Kleinman optimisation, impedance-matching computation, or parameter sweep on any candidate architecture (including the Friedenauer baseline) may be committed to `/src/`. Architecture-neutral shared infrastructure — generic ABCD utilities, generic Boyd–Kleinman functions without architecture presets, units handling, plotting, test fixtures — *is* permitted pre-G1 and lives in `/src/`.
+Pre-G1, no Boyd–Kleinman optimisation, impedance-matching computation, or parameter sweep on any candidate architecture (including the Friedenauer baseline) may be committed to `/src/`. Architecture-neutral shared infrastructure — generic ABCD utilities, generic Boyd–Kleinman functions without architecture presets, generic SHG / enhancement-cavity / cascade primitives without material or wavelength presets, units handling, plotting, test fixtures — *is* permitted pre-G1 and lives in `/src/`. Architecture-specific *applications* of those primitives (e.g. reproducing the Friedenauer 0.95 W LBO and 0.275 W BBO outputs) live exclusively under `/notebooks/diagnostic/` or `/notebooks/tutorials/`, never in `/src/`.
 
 The architecture-neutral layer at this commit:
 
 - [`src/parameters.py`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/src/parameters.py) — SI-units contract, Phase 0.5 reference triple, G3 enforcement helper.
 - [`src/boyd_kleinman.py`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/src/boyd_kleinman.py) — generic h(σ, β, κ, ξ, μ), σ-optimised h_m, optimum finder, analytic limit.
 - [`src/abcd.py`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/src/abcd.py) — elementary ABCD matrices, Gaussian-beam q-parameter, cavity stability, eigenmode.
+- [`src/shg_single_pass.py`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/src/shg_single_pass.py) — generic single-pass SHG coupling: `gamma_shg_coefficient`, `single_pass_harmonic_power_W`, `single_pass_conversion_fraction` (small-signal and depleted regimes; consumes `h_m` from the BK layer with no walk-off arg of its own).
+- [`src/enhancement_cavity.py`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/src/enhancement_cavity.py) — generic ring-cavity steady state: `passive_buildup`, `circulating_power`, `harmonic_output_W`, `optimal_input_coupler` (Polzik–Kimble impedance match with the exact `−L · η_nl` cross term and depleted-regime solver).
+- [`src/shg_cascade.py`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/src/shg_cascade.py) — generic cascade composition: `Stage` dataclass, `cascade_output`, `optimise_cascade` (factorisation of the cascade optimum is exact, not just small-signal, by virtue of one-way coupling).
+
+Visitor-facing tutorials over the architecture-neutral layer live at [`notebooks/tutorials/`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/notebooks/tutorials/); the Friedenauer 2006 cross-check that validates the layer end-to-end is at [`notebooks/diagnostic/`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/notebooks/diagnostic/). Both directories may import from `data.literature` and instantiate architecture-specific parameter values; neither is in `/src/` and neither is admissible as a Phase 4 scoring input.
 
 ### Diagnostic-surrogate exception *Coastline*
 

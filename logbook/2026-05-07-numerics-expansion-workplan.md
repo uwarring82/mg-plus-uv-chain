@@ -319,7 +319,10 @@ Documents discrepancies for follow-up in KD-UV280-005 / -007 (these were already
   3. Both `.ipynb` and rendered `.html` are committed under `docs/tutorials/` so GitHub Pages serves a static, reproducible page set; the `.py` source remains the version-controlled truth.
   4. A `Makefile` (or single shell script) at the repo root captures this; CI runs it on each PR so broken notebooks fail the build.
 
-### Phase G · Documentation surface
+### Phase G · Documentation surface ✅ **DONE 2026-05-07** (commit pending push)
+
+- `docs/principles.md` Anti-seeding clause: list of architecture-neutral `/src/` modules extended to include `shg_single_pass.py`, `enhancement_cavity.py`, `shg_cascade.py`; enforcement marker now references both `tests/test_diagnostic_surrogate_imports.py` and `tests/test_anti_seeding_src_imports.py`; tutorial and diagnostic notebook directories explicitly placed outside `/src/` and outside Phase 4 scoring admissibility.
+- `notebooks/tutorials/REFERENCES.md` added: pointer-only list of canonical sources keyed to each tutorial — Boyd & Kleinman 1968 (Tut. 01), Ashkin et al. 1966 (Tut. 01), Polzik & Kimble 1991 (Tut. 03), Le Targat et al. 2005 (Tut. 04), Friedenauer 2006 (Tut. 04 closing). DOIs throughout, no commentary.
 
 - One paragraph in `/docs/principles.md` confirming that the new modules are architecture-neutral and pre-G1 admissible (anti-seeding-clause-clean).
 - A short *theory references* note inside the new tutorials directory listing canonical sources: Boyd & Kleinman (1968), Polzik & Kimble (1991), Ashkin et al. (1966), Le Targat et al. (2005). Pure pointer list, no commentary.
