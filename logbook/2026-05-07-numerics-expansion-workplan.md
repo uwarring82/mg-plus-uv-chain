@@ -243,7 +243,42 @@ rendered `.ipynb` and `.html` artefacts are produced at site-build time
 (see Phase F). The current `pyproject.toml` does not yet include any of
 these; adding the extra is part of the Phase A → D bring-up.
 
-### Phase E · Friedenauer cross-check (diagnostic surrogate) — `notebooks/diagnostic/`
+### Phase E · Friedenauer cross-check (diagnostic surrogate) — `notebooks/diagnostic/` ✅ **DONE 2026-05-07** (commit `d5855cb`; notebook executes end-to-end against the published values)
+
+**Recomputation results (first execution):**
+
+| Quantity | Paper | Recomputed | Discrepancy |
+|---|---|---|---|
+| LBO 559 nm output | 0.950 W | 0.702 W | −26.1 % |
+| BBO 280 nm output | 0.275 W | 0.271 W | −1.5 % |
+| Overall 1118 → 280 nm η | 15.2 % | 8.0 % | −47.6 % |
+
+**Acceptance criterion #3 partially met.** The BBO stage matches the
+published value to 1.5 %, validating the depleted-regime solver, the
+Eckardt-anchored `d_eff` (1.44 pm/V), and the Eimerl walk-off
+(`ρ = 83.1 mrad`) end-to-end through the cascade. The LBO stage is
+the dominant gap.
+
+**LBO gap attribution.** Most likely cause: the notebook sets
+`L_passive = T_IC = 0.025`, but Friedenauer's quoted `T_IC = 0.025`
+appears to be the *impedance-matched* transmission already including
+the nonlinear conversion load (`T_IC = L_passive + (1−L)·η_nl`). If
+true, the actual passive loss is ~ 0.015–0.020 and the implied
+circulating power is correspondingly higher, which would close most of
+the 26 % gap on the LBO stage and cascade through to recover overall
+efficiency. The notebook documents this hypothesis and the alternative
+parameter set in §8.
+
+**Open-items follow-up.** The notebook §8 maps each discrepancy to the
+corresponding `open_extraction_items` entries in
+`data/literature/Friedenauer2006/extracted.yaml`. Closing those items
+(`d_eff(BBO at 559)`, `ρ(BBO)`, refractive indices, and now the
+inferred `L_passive(LBO)` separately from the reported `T_IC`) is
+where the next acceptance-criterion-#3 iteration should focus.
+
+**Anti-seeding check** (CHARTER §5.1, mechanical): notebook lives in
+`/notebooks/diagnostic/` and imports from `data.literature`; `/src/`
+is clean; `test_anti_seeding_src_imports.py` still passes 142/142.
 
 `notebooks/diagnostic/2026-MM-DD-friedenauer-cascade-recompute.{py,ipynb}` (date filled at commit time).
 
