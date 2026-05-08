@@ -22,16 +22,25 @@ Replace the three-cavity Friedenauer chain (Yb-fibre seed → external LBO ring 
 
 ## Task scope and revised power target
 
-This option is sized for **cooling and repumping only**. The Raman task moves to the parallel [pulsed-Raman alternative](pulsed-raman-alternative.html) operating at a far-red-detuned point. The UV power target for *this* chain shrinks accordingly to **~ 50 mW @ ~ 280 nm**, well below the CHARTER §1.5 ≥ 500 mW indicative anchor (which assumed a single-architecture all-tasks chain).
+This option is sized for **cooling and repumping only**. The Raman task moves to the parallel [pulsed-Raman alternative](pulsed-raman-alternative.html) operating at a far-red-detuned point. The **UV** power target for *this* chain shrinks accordingly to **~ 50 mW @ ~ 280 nm**, well below the CHARTER §1.5 ≥ 500 mW indicative anchor (which assumed a single-architecture all-tasks chain).
 
-The reduced target relaxes the design envelope materially:
+The visible-stage requirement does **not** shrink proportionally. The BBO buildup cavity at the in-house operating point converts only ~ 10 % of input visible to UV: [[Guth21]](../references.html#guth21) §3.4 measured 78(5) mW UV from 780(15) mW visible (10.0(11) %); [[Frie06]](../references.html#frie06) reports ≥ 100 mW UV from 1.4 W visible (~ 7 %). To deliver 50 mW UV the BBO ring must therefore see **~ 500 mW @ 559 nm** at its input. The implied stage-by-stage budget for this sketch is:
 
-- Intracavity LBO output of **~ 50–100 mW @ 559 nm** is sufficient. At this scale the IC-VECSEL operates inside the [[Burd16]](../references.html#burd16) envelope (~ 30–80 mW visible direct from the IC topology) rather than ~ 10× beyond it, retiring the dominant open-question concern from earlier framings of the IC topology.
-- Intracavity power circulation is correspondingly lower; thermal coupling between the LBO oven and the gain-mirror Peltier eases.
-- BBO buildup-cavity demand drops to ~ 50 mW UV from ~ 100 mW visible — within typical Friedenauer-class BBO performance.
-- The ≤ 50 mW UV operating point sits comfortably below typical CW BBO LIDT bounds ([[Eime87]](../references.html#eime87), [[Turc22]](../references.html#turc22)) and within the surface-contamination-limited regime where [[Burk21]](../references.html#burk21)-style atmosphere control is the effective lever.
+| Stage | Power |
+|---|---|
+| IC-VECSEL direct output (intracavity-doubled) | ~ 500 mW @ 559 nm |
+| Free-space coupling to BBO ring (no fibre loss) | ~ 500 mW @ 559 nm |
+| BBO ring output at ~ 10 % visible-to-UV | **~ 50 mW @ ~ 280 nm** |
 
-In Charter terms this is *not* a relaxation of the reference triple — Level 0 and Level 1 for the cooling-and-repumping task are unaffected. What changes is the **task allocation between architectures**: cooling+repumping → this CW chain at ~ 50 mW; Raman → pulsed chain at the red-detuned operating point. The 500 mW anchor of CHARTER §1.5 was a single-architecture figure; the slate-of-three approach decomposes it.
+The visible-output-scaling question therefore **remains** the dominant open-question concern for the IC-VECSEL topology at this operating point. [[Burd16]](../references.html#burd16) reported ~ 30–80 mW direct visible from the 1117 nm IC topology; extending this to ~ 500 mW is a ~ 5–10× scaling step that is the principal numerical target of the open `shg_intracavity.py` notebook exploration. At the W-class intracavity IR circulation consistent with [[Span25]](../references.html#span25) gain-mirror operating points, ~ 500 mW direct intracavity-doubled visible appears achievable in principle (industrial DPSS-green intracavity-LBO at 532 nm at multi-W is mature in adjacent fields) — but is **not directly demonstrated** for the 1118 nm operating point.
+
+What does relax at the 50 mW UV target:
+
+- The UV-side operating point ≤ 50 mW sits comfortably below typical CW BBO LIDT bounds ([[Eime87]](../references.html#eime87), [[Turc22]](../references.html#turc22)) and within the surface-contamination-limited regime where [[Burk21]](../references.html#burk21)-style atmosphere control is the effective lever.
+- BBO mirror coatings, crystal length, and waist can be chosen for *operational longevity* rather than peak conversion efficiency.
+- Sensitivity to BBO efficiency is high: if hard-fluoride coatings + tighter waist push the BBO to 20–30 % visible-to-UV (a 2–3× improvement above the [Guth21] / [Frie06] envelope), the IC-VECSEL visible target relaxes to ~ 170–250 mW — inside the [Burd16] precedent envelope.
+
+In Charter terms this is *not* a relaxation of the reference triple — Level 0 and Level 1 for the cooling-and-repumping task are unaffected. What changes is the **task allocation between architectures**: cooling+repumping → this CW chain at ~ 50 mW UV (~ 500 mW visible); Raman → pulsed chain at the red-detuned operating point. The 500 mW UV anchor of CHARTER §1.5 was a single-architecture figure; the slate-of-three approach decomposes it.
 
 ## Topology
 
@@ -51,7 +60,9 @@ In Charter terms this is *not* a relaxation of the reference triple — Level 0 
   │  Dichroic OC: HR @1118, HT @559│         │
   │  PZT-tuned cavity length       │         │
   │       │                                  │
-  │       ▼  ~ 50–100 mW @ 559 nm direct out │
+  │       ▼  ~ 500 mW @ 559 nm direct out    │
+  │          (BBO ~ 10 % visible-to-UV       │
+  │           per [Guth21] / [Frie06])       │
   └───────┼──────────────────────────────────┘
           │
           ▼   Optical isolator (visible)
