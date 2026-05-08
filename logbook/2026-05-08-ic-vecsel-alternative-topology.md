@@ -7,8 +7,8 @@
 ## Header (Charter §9 trigger questions)
 
 - **Affects Level 0 parameter?** no — reference triple `{Δ_ref = 40 GHz, Ω_R/2π = 400 kHz, Γ_sc = 2.0 × 10⁴ s⁻¹}` (locked at G3 closure 2026-05-01) is unaffected.
-- **Affects Level 1 parameter?** no — UV target ≥ 500 mW @ 280 nm and source linewidth budget unchanged. This sketch explores *one alternative topology* for reaching those targets.
-- **Affects success criterion?** no.
+- **Affects Level 1 parameter?** **Conditional, paired-architecture only.** As a stand-alone option this sketch *cannot* meet the CHARTER §1.5 indicative anchor of ≥ 500 mW UV at 280 nm — the §1a task-scoping shrinks the chain to ~ 50 mW UV (~ 500 mW visible at the BBO input). The reduced UV target is **valid only as a paired task allocation** with the [pulsed-Raman alternative](2026-05-08-pulsed-raman-alternative-topology.md), which would carry the Raman-task power requirement at a separate operating point. Without that pairing (or an equivalent off-board Raman pathway), this sketch underdelivers Level 1 and would not be admissible as a single-architecture candidate.
+- **Affects success criterion?** Conditional — same paired-architecture framing as Level 1.
 
 This entry sits **alongside** the [next-gen 500 mW workplan](2026-05-08-next-gen-500mW-workplan.md), which optimises parameters *within* the Friedenauer two-cavity topology. The present sketch proposes a **different topology** — to be evaluated as a Phase 4 architecture-comparison candidate once G1 and G2 close. The anti-seeding clause (`docs/principles.md` §5.1) is in force throughout: no `/src/architecture/` code follows from this sketch.
 

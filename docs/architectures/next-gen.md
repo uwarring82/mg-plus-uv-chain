@@ -29,10 +29,20 @@ This page treats the **two-stage SHG topology** (LBO 1118 → 559 nm
 followed by BBO 559 → 280 nm) as a fixed input. Alternative topologies
 (PPLN-MgO, PPKTP, single-pass UV with build-up only at 559 nm) sit
 outside the current workplan and will be evaluated in a separate
-follow-up. The reason for fixing topology now: the Phase E cross-check
-gives us a 1.5 %-accurate stake in the LBO+BBO chain, and the
-per-component literature is dense enough to anchor a defensible
-exploration.
+follow-up. The reason for fixing topology now: **the Phase E
+cross-check validates the BBO stage to 1.5 %**, and the per-component
+literature is dense enough to anchor a defensible exploration.
+
+**LBO passive-loss definition still open.** The Phase E cross-check
+also exposed a −26 % residual on the LBO stage (0.702 W computed vs
+0.950 W published) that is most likely a definitional gap between the
+paper-stated `T_IC = 0.025` (impedance-matched, including nonlinear
+load) and the bare passive loss `L_passive`. **Phase NG-A must close
+this gap to ≤ 5 % residual before any 500 mW recommendation derived
+from a swept LBO parameter set is admissible** — every LBO sweep is
+otherwise anchored to a wrong loss number. Until NG-A lands, the
+1.5 % stake belongs to the BBO stage only, not to the full LBO + BBO
+chain.
 
 ## Design space (free parameters)
 

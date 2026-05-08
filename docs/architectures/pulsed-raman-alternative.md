@@ -12,7 +12,9 @@ description: Architecture sketch — a phase-locked mode-locked Ti:Sapphire freq
 
 **Status:** SKETCH (logbook entry [`logbook/2026-05-08-pulsed-raman-alternative-topology.md`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-08-pulsed-raman-alternative-topology.md) carries the full Charter §9 trigger questions, Coastline / Sail labels, and G1-G2-G3 boundary statements; this page is the public surface).
 
-**Charter compliance — conditional.** The reference triple `{Δ_ref = 40 GHz, Ω_R/2π = 400 kHz, Γ_sc = 2.0 × 10⁴ s⁻¹}` (locked at G3 closure 2026-05-01) is *preserved* as the **CW-chain operating point**. This option proposes a *separate* Raman pathway at a *different* operating point — Δ ≫ Δ_ref, by ~ tens of nm to the red of resonance — where Γ_sc is suppressed by ~ 10⁶ relative to the locked reference and Ω_R is supplied by pulsed peak intensity rather than CW intensity. Under the asymmetric-erosion-protection rule, *tightenings* (lower scattering, larger detuning) are permitted; **promotion** of this sketch to a Phase 4 architecture-comparison candidate requires Council-3 review of the multi-operating-point question. Anti-seeding clause is in force — no `/src/architecture/` code follows.
+**Charter compliance — load-bearing scope conflict.** [`CHARTER.md`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/CHARTER.md) §3 line 105 explicitly lists *"Pulsed UV systems (the stroboscopic / fs-comb discussion with Leibfried is a distinct project)"* as **out of scope** for `mg-plus-uv-chain`. This sketch sits across that Charter line and **cannot be promoted to a Phase 4 architecture-comparison candidate without one of:** (i) a Council-3 Charter exception that rewrites §3, or (ii) explicit re-classification as a **parallel Raman sub-project** that links to `mg-plus-uv-chain` via shared ²⁵Mg⁺ infrastructure but lives outside this repository's Charter scope. Until one of those is resolved, the sketch is logged as a forward-looking artefact only — not as a Phase 4 input.
+
+**Reference triple — conditional.** The reference triple `{Δ_ref = 40 GHz, Ω_R/2π = 400 kHz, Γ_sc = 2.0 × 10⁴ s⁻¹}` (locked at G3 closure 2026-05-01) is *preserved* as the **CW-chain operating point**. This option proposes a *separate* Raman pathway at a *different* operating point — Δ ≫ Δ_ref, by ~ tens of nm to the red of resonance — where Γ_sc is suppressed by ~ 10⁶ relative to the locked reference and Ω_R is supplied by pulsed peak intensity rather than CW intensity. Under the asymmetric-erosion-protection rule, *tightenings* (lower scattering, larger detuning) are permitted; **promotion** to a Phase 4 candidate requires both the CHARTER §3 scope question above *and* Council-3 review of the multi-operating-point question to be resolved. Anti-seeding clause is in force — no `/src/architecture/` code follows.
 
 ---
 
@@ -99,8 +101,9 @@ The Yb-fibre alternative (1030–1118 nm fundamental, *quadrupled* to ~ 257–28
 | `pulsed_raman_kicks.py` architecture-neutral primitive in `/src/` | ⏳ open follow-up |
 | `pulsed_shg_single_pass.py` (or pulsed-regime extension of existing primitive) | ⏳ open follow-up |
 | Notebook exploration of Ti:S → tripled at the red-detuned operating point | ⏳ open follow-up |
-| Council-3 deliberation on the multi-operating-point question | ⏳ requested if and when promotion to Phase 4 candidate is desired |
-| Phase 4 candidate-slate opening | ⏳ gated by G1 + G2 closure + Council-3 sign-off |
+| **Multi-level ²⁵Mg⁺ pulse-train model — Phase 4 acceptance prerequisite** | ⏳ open — scaling-argument prose (1/Δ², duty-cycle) is *not* sufficient. Acceptance requires a multi-level ²⁵Mg⁺ model with both ³P₁/₂ and ³P₃/₂ addressed simultaneously by the ~ 3 THz comb spectral envelope, validated against a Monroe-group Yb⁺ benchmark before being applied to ²⁵Mg⁺. |
+| Council-3 deliberations | ⏳ requested if and when promotion to Phase 4 candidate is desired: (i) CHARTER §3 scope question, (ii) multi-operating-point question |
+| Phase 4 candidate-slate opening | ⏳ gated by G1 + G2 closure + the two Council-3 deliberations above |
 
 ## Boundaries (what this page is **not**)
 

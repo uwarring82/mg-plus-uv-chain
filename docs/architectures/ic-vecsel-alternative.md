@@ -12,7 +12,7 @@ description: Architecture sketch — an intracavity-doubled VECSEL (1118 nm + in
 
 **Status:** SKETCH (logbook entry [`logbook/2026-05-08-ic-vecsel-alternative-topology.md`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-08-ic-vecsel-alternative-topology.md) carries the full Charter §9 trigger questions, Coastline / Sail labels, and G1-G2-G3 boundary statements; this page is the public surface).
 
-**Charter compliance.** Reference triple `{Δ_ref = 40 GHz, Ω_R/2π = 400 kHz, Γ_sc = 2.0 × 10⁴ s⁻¹}` (locked at G3 closure 2026-05-01) is unaffected. Anti-seeding clause (`docs/principles.md` §5.1) is in force — no `/src/architecture/` code follows from this sketch.
+**Charter compliance.** Reference triple `{Δ_ref = 40 GHz, Ω_R/2π = 400 kHz, Γ_sc = 2.0 × 10⁴ s⁻¹}` (locked at G3 closure 2026-05-01) is unaffected. **Level 1 is affected conditionally**: the chain's ~ 50 mW UV output is below the CHARTER §1.5 ≥ 500 mW indicative anchor and is **valid only as a paired task allocation** with the [pulsed-Raman alternative](pulsed-raman-alternative.html) (or an equivalent off-board Raman pathway). Without that pairing, this sketch underdelivers Level 1. Anti-seeding clause (`docs/principles.md` §5.1) is in force — no `/src/architecture/` code follows from this sketch.
 
 ---
 
@@ -104,7 +104,7 @@ In Charter terms this is *not* a relaxation of the reference triple — Level 0 
 |---|---|
 | Architecture sketch logged | ✅ done — [logbook entry](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-08-ic-vecsel-alternative-topology.md) |
 | `shg_intracavity.py` architecture-neutral primitive in `/src/` | ⏳ open follow-up |
-| Notebook exploration of intracavity-LBO at 50–100 mW visible target | ⏳ open follow-up |
+| Notebook exploration of intracavity-LBO output | ⏳ open follow-up — **baseline ~ 500 mW @ 559 nm at the BBO input** (assumes [Guth21] ~ 10 % BBO efficiency); sensitivity case ~ 170–250 mW visible **only after** measured BBO efficiency 20–30 % is demonstrated. |
 | 1118 nm Type-I NCPM LBO temperature from [[Eime87]](../references.html#eime87) Sellmeier | ⏳ open follow-up |
 | 559 nm vacuum-compatible EOM vendor short list | ⏳ open follow-up |
 | Hard-fluoride-coating vendor short list at 559 / 280 nm | ⏳ open follow-up |
