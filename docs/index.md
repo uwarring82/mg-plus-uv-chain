@@ -22,7 +22,7 @@ The repository itself is the canonical record. This site is a navigational index
 - **[Calculations](calculations.html)** — what has been computed against the Friedenauer 2006 baseline, what the recomputation tells us, and which open questions the dossier should resolve.
 - **[Status](status.html)** — kill-gate state, Phase 1 dossier population, what is unblocked, what is still gated. Snapshot at HEAD.
 
-If you want the source: [GitHub repository](https://github.com/uwarring82/mg-plus-uv-chain) · [Charter v1.0](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/CHARTER.md) · [Phase 1 dossier](KD-2026-XXX-uv-280nm.html) · [Components — Friedenauer baseline](components/friedenauer-baseline.html) · [Tutorials](tutorials/) · [BK recalculation notebook](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/notebooks/2026-05-01-friedenauer-bk-recalculation.py)
+If you want the source: [GitHub repository](https://github.com/uwarring82/mg-plus-uv-chain) · [Charter v1.0](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/CHARTER.md) · [Phase 1 dossier](KD-2026-XXX-uv-280nm.html) · [Architectures](architectures/) · [Components — Friedenauer baseline](components/friedenauer-baseline.html) · [Tutorials](tutorials/) · [BK recalculation notebook](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/notebooks/2026-05-01-friedenauer-bk-recalculation.py)
 
 ---
 
