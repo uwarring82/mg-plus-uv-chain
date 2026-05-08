@@ -66,3 +66,8 @@ Thumbs.db
 
 # Per-developer agent / editor configs (Claude Code, etc.)
 .claude/
+
+# Literature PDFs — held locally under data/literature/<key>/<key>.pdf,
+# not committed (publisher-formatted PDFs and group-internal theses).
+# Extraction artefacts (extracted.yaml, notes.md) are tracked.
+data/literature/**/*.pdf
