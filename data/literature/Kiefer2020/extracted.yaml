@@ -1,0 +1,227 @@
+citation_key: "Kiefer2020"
+source_tier: "S"
+doi: null
+citation: "P. Kiefer, 'Playing tricks to phonons - Floquet engineering in a two-dimensional array of trapped ions,' Ph.D. dissertation, Albert-Ludwigs-Universitaet Freiburg (defended 2020-03-03), 158 pp. Supervisors: Prof. Dr. Tobias Schaetz (1st), Prof. Dr. Giuseppe Sansone (2nd)."
+title: "Playing tricks to phonons - Floquet engineering in a two-dimensional array of trapped ions"
+extracted_by: "assistant under steward direction"
+extracted_on: "2026-05-08"
+extraction_status: "DRAFT"
+source_document: "AG Schaetz internal copy of the deposited dissertation PDF; held at data/literature/Kiefer2020/Kiefer2020.pdf (not committed to repository)."
+charter_section_refs:
+  - "1.5"
+  - "2"
+  - "5.4"
+dossier_entries:
+  - "KD-UV280-015"
+
+related_extractions:
+  - "Burd2016"        # NIST/Tampere VECSEL anchor at 1117/1141 nm cited as the design source
+  - "Friedenauer2006" # Yb-fiber baseline at 1118 nm that the Kiefer2020 VECSEL replaces in-house
+  - "Guth2021"        # successor MSc that re-assembled this VECSEL and added the modular LBO+BBO chain
+  - "Spanke2023"      # subsequent BSc that benchmarked and improved this VECSEL ("VECSEL Nr.4")
+  - "Spanke2025"      # next-generation MSc redesign ("neXt VECSEL" / VECSEL Nr.6)
+
+# This is the dissertation in which the AG Schaetz / mg-plus-uv-chain VECSEL platform
+# was first built and characterised at the 1118 nm Friedenauer fundamental. The VECSEL
+# physics and SHG-chain (LBO bow-tie + BBO ring, Haensch-Couillaud-locked) described
+# here are the in-house implementation that Burd2023 / Burd2016 supply the design
+# principles for, and that Guth2021 / Spanke2023 / Spanke2025 progressively rebuild.
+# The science focus of the dissertation is Floquet engineering with 25Mg+; the
+# extraction below is restricted to Section 3.3 ("Laser system for generation of
+# ultraviolet radiation") and Section 3.4 ("Optical beam setup").
+
+parameters:
+
+  # ---------------------------------------------------------------------------
+  # VECSEL gain mirror and cavity (Section 3.3.1)
+  # ---------------------------------------------------------------------------
+  - symbol: "gain_mirror_vendor"
+    value_text: "Vexlum Ltd. (Finland) - flip-chip GaInAs/GaAs gain mirror, pentagonal active area with 2.5 mm circumcircle; soldered to home-built copper carrier with 2 um nickel + 0.2-0.5 um gold plating"
+    units: null
+    location_in_paper: "Section 3.3.1 'Cooling block and gain mirror'"
+    notes: "Manufacturer Vexlum is a Tampere-area spin-out; same NIST + Tampere collaboration ecosystem as Burd2016 / Burd2023 gain mirrors."
+
+  - symbol: "gain_mirror_heat_spreader"
+    value_text: "3.0 mm x 3.0 mm x 0.3 mm CVD diamond, soldered to gain mirror; mounted on 40 x 40 x 4 mm copper carrier with 1.1 mm slit for thermal sensor (TE-Tech MP-2444)"
+    units: null
+    location_in_paper: "Section 3.3.1 'Cooling block and gain mirror'"
+    notes: "Flip-chip configuration with diamond heat spreader is the Burd2023 940 nm design family transferred to 1118 nm by the Vexlum gain mirror."
+
+  - symbol: "gain_mirror_cooling"
+    value_text: "TE-Tech HP-199-1.4-0.8P Peltier element + Mikros 02749 micro-channel-plate water cooling; gain-chip stack clamped in invar (1.3912 alloy) support with 3 mm machinable-ceramic thermal isolators"
+    units: null
+    location_in_paper: "Section 3.3.1 'Cooling block and gain mirror'"
+    notes: "Active dual-stage cooling - Peltier for set-point control, water-cooled microchannel for bulk heat removal. Spanke2023 later redesigned the water-cooling loop."
+
+  - symbol: "outcoupler"
+    value_text: "Layertec custom (charge 145645): 6.35(10) mm diameter, 2.3(1) mm thick, R = 97.5(3) % at 1118 nm on the curved side (RoC = 200(2) mm); plain side AR-coated to <0.3 % at 1118 nm; multimode-operation R = 97.0(5) %"
+    units: null
+    location_in_paper: "Section 3.3.1 'Outcoupling mirror'"
+    notes: "Identical RoC = 200 mm to the Burd2023 940 nm and 1252 nm builds; reflectivity slightly higher than Burd2023's 2 % T to forgive intracavity losses from the BRF + etalon."
+
+  - symbol: "cavity_length_VECSEL"
+    value: 0.128
+    units: "m"
+    location_in_paper: "Section 3.3.1"
+    notes: "128 mm linear cavity; matches Burd2023 ~125 mm geometry. Stability parameter g = 0.36; computed TEM00 1/e^2 beam diameter 370 um on the gain chip and 620 um on the outcoupler."
+
+  - symbol: "cavity_PZT_actuator"
+    value_text: "Physik Instrumente P-080.311 ring piezo, 8 mm OD x 4.5 mm ID x 8.5 mm length; <= 5.5 um displacement at 100 V"
+    units: null
+    location_in_paper: "Section 3.3.1"
+    notes: "Outcoupler is glued to the ring piezo; mounted in Thorlabs Polaris-K1-H mirror mount."
+
+  - symbol: "intracavity_BRF"
+    value_text: "Newlight Photonics BIR0030 quartz Lyot filter, 12.7 mm dia x 3 mm; mounted at Brewster angle theta_B ~ 57 deg on Thorlabs KM05DR/M mount + Thorlabs GN1/M goniometer (+/-10 deg rotation); two Heat Scientific MCH ceramic heaters for temperature stabilisation"
+    units: null
+    location_in_paper: "Section 3.3.1 'Frequency selective elements'"
+    notes: "Same vendor / part-number used in Spanke2023 and Spanke2025 (in-house standardised)."
+
+  - symbol: "intracavity_etalon"
+    value_text: "Light Machinery OP-3167-1000 uncoated YAG etalon, 5 mm dia x 1.004 mm thick (FSR 82.3 GHz nominal at 1064.15 nm; remeasured at 72 GHz at 1118 nm in Spanke2025); mounted in aluminium ring with ring ceramic heater"
+    units: null
+    location_in_paper: "Section 3.3.1 'Frequency selective elements'"
+    notes: "Same etalon part-number across Kiefer2020 / Guth2021 / Spanke2023 / Spanke2025 - the standard intracavity FSR-selection element of the in-house VECSEL family."
+
+  - symbol: "pump_laser"
+    value_text: "Ostech dst11-DILAS 40 W 808 nm fibre-coupled diode (DILAS M1F2S22 module), volume-Bragg-grating-stabilised; 5 m polished-airgap SMA905 connector; OzOptics LPF-D4-808-200/240-QM-1.6-17-11AS,18AS-35-5HP-3A-5 focuser, 1/e^2 = 320 um at 17 mm working distance"
+    units: null
+    location_in_paper: "Section 3.3.1 'Pump laser'"
+    notes: "VBG-stabilised pump suppresses fibre-induced multimode beating that would otherwise raise pump RIN at the gain chip."
+
+  - symbol: "P_out_VECSEL_max_single_mode"
+    value: 4.5
+    uncertainty: 0.1
+    units: "W"
+    location_in_paper: "Section 3.3.1 'Characterization measurements / Pump power'"
+    notes: "Single-mode output at maximum pump power, with cavity stabilised at T_GC = 20.00(1) C, T_etalon = 27.00(1) C, T_BRF = 30.00(1) C. Multi-mode threshold P*_pump,ts = 2.25(5) W; single-mode threshold P_pump,ts = 3.7(5) W. Multi-mode optical-to-optical efficiency 28.2(3) %; single-mode efficiency 12.4(3) %."
+
+  - symbol: "lambda_emission_range"
+    value_text: "1116-1122 nm spanning the gain-mirror emission profile under pump-power tuning; covers 4 lambda_D2 ~ 1118.5 nm and 4 lambda_D1 ~ 1121.4 nm of 25Mg+"
+    units: null
+    location_in_paper: "Section 3.3.1 'Characterization / Pump power'; Fig. 3.10"
+    notes: "Coarse tuning ~ 0.12-0.15 nm/K via gain-chip temperature; coarser still by the BRF; fine tuning < 0.5 nm by BRF + etalon temperatures (operated in 25-70 C range); finest by PZT cavity-length voltage."
+
+  - symbol: "linewidth_VECSEL"
+    comparator: "~"
+    value: 5.0e4
+    uncertainty: 1.0e4
+    units: "Hz"
+    location_in_paper: "Section 3.3.1 'Frequency stability' (citing similar setup [46] = Burd2016)"
+    notes: "Not measured directly in this work; quoted as 50(10) kHz from a similar VECSEL setup at NIST (Burd2016). Direct measurement would require optical spectrum analyser or beat-note - first attempted in Guth2021 (1.207(12) MHz iodine-locked, 1.635(13) MHz free-running)."
+
+  - symbol: "VECSEL_long_term_drift_passive"
+    comparator: "<"
+    value: 5.0e7
+    units: "Hz"
+    location_in_paper: "Section 3.3.1 'Frequency stability'; Fig. 3.11"
+    notes: "Passive frequency stability: max absolute deviation < 50 MHz over ~1 hour with all set-points fixed and PZT voltage fixed. Allan deviation sigma_y(tau) plotted in Fig. 3.11 - rises on long timescales, attributed to ambient-temperature variations."
+
+  - symbol: "VECSEL_baseplate"
+    value_text: "(80 x 250 x 25) mm^3 invar 36 (1.3912) baseplate; alpha_in ~ 1e-6 /K; aluminium enclosure (EN AW 5083) on three ceramic pedestals (Thorlabs RS05PC/M); Brewster output window (Thorlabs BW2502); LEMO ERN.0S / FFA.0S multipin feedthroughs"
+    units: null
+    location_in_paper: "Section 3.3.1 'Baseplate and enclosure'"
+    notes: "Invar baseplate is the thermal-stability anchor of the design; same approach inherited by Spanke2025 (FeNi36 plate, smaller A4 footprint)."
+
+  - symbol: "control_electronics"
+    value_text: "Arroyo Instruments 5305 (gain chip TEC, 60 W) + 5240 (BRF/etalon TECs, 28 W); manufacturer-spec stability < 0.004 K/h. PZT driven manually (Agilent E3612A) or by HighFinesse WSU-30 wavemeter control loop. Bosch BME 280 (T/RH/P) + Arduino Uno Rev3 microcontroller for environmental monitoring inside the case."
+    units: null
+    location_in_paper: "Section 3.3.1 'Control electronics'"
+    notes: "Arroyo TECs were later replaced by 7154-04-08 multisource controller in Guth2021/Spanke2023, then by a custom Raspberry-Pi-based <500 EUR controller in Spanke2025."
+
+  # ---------------------------------------------------------------------------
+  # SHG chain (Section 3.3.2)
+  # ---------------------------------------------------------------------------
+  - symbol: "SHG_NIR_to_visible"
+    value_text: "LBO crystal in bow-tie ring cavity (similar to [110]); critical phase-matching by crystal temperature; Haensch-Couillaud cavity-length lock; alternative path uses fibre-coupled PPLN waveguides limited to ~ 500 mW visible (vs > 1 W from LBO ring)"
+    units: null
+    location_in_paper: "Section 3.3.2"
+    notes: "Reference [110] is the Friedenauer2006 paper. PPLN waveguides have superior maintenance (no realignment for months) but lower output and thermally-handicapped for the 4 lambda_D1 ~ 1121 nm point - LBO is the workhorse."
+
+  - symbol: "SHG_visible_to_UV"
+    value_text: "BBO ring cavity, critically phase-matched, near 280 nm; same Friedenauer2006-style topology"
+    units: null
+    location_in_paper: "Section 3.3.2"
+    notes: "No waveguide alternative exists at 280 nm; the BBO buildup cavity is the only practical route for the 559 -> 280 nm step at this power class."
+
+  - symbol: "P_UV_at_experiment"
+    value: 0.030
+    units: "W"
+    location_in_paper: "Section 3.3.2"
+    notes: "Doppler-cooling laser system delivers ~ 30 mW near lambda_D2 at typical operating point, split into multiple beams downstream (BD, BDdet, BDX). Photoionization laser is a separate dye laser (Rhodamin 6G) -> BBO ring cavity."
+
+  - symbol: "frequency_lock_method"
+    value_text: "Doppler-free saturation iodine spectroscopy (visible) + HighFinesse WSU-30 fibre-coupled wavemeter (350-1120 nm range, 4-channel switch); wavemeter accuracy calibrated against iodine reference once per day; residual deviations from iodine signal typically < 2 pi * 1 MHz; AOM-bridged frequency gaps of 10 MHz between iodine line and target wavelength"
+    units: null
+    location_in_paper: "Section 3.3.2"
+    notes: "Same iodine R(53)28-3 anchor as Friedenauer2006; wavemeter scaffold is the in-house extension that replaces / augments direct iodine locking."
+
+  - symbol: "AOM_chain"
+    value_text: "Four AOMs (Intraaction ASM-2202B3 + ASM-1202LA3) on four-axis tilt stages (New Focus 9071); single-pass first-order eta ~ 80 %, double-pass > 60 %; first AOM after final SHG serves as 'noise eater' (TEM Messtechnik Noise Eater AOM 1.0); subsequent AOMs in series feed BD / BDdet / BDX beam paths"
+    units: null
+    location_in_paper: "Section 3.4.1"
+    notes: "The noise-eater AOM is the intensity-stabilisation point - it sets the RIN at the experiment and is independent of the seed laser linewidth."
+
+  # ---------------------------------------------------------------------------
+  # Atomic context (relevant constraint, not VECSEL-specific)
+  # ---------------------------------------------------------------------------
+  - symbol: "atomic_natural_linewidth_25Mg"
+    value: 4.18e7
+    units: "Hz"
+    location_in_paper: "Section 3.3.2"
+    notes: "Gamma / 2 pi ~ 42 MHz natural linewidth of 25Mg+ 3p excited state. Frequency-stability requirement is set well below this: < 2 pi * 1 MHz typical, achieved by iodine + wavemeter feedback."
+
+open_extraction_items:
+  - "VECSEL relative-intensity-noise (RIN) is not measured in Kiefer2020. The dissertation references the Henry factor of the gain medium as the high-frequency intensity-noise-to-frequency-noise coupler but does not quantify. RIN at the LBO loaded-piezo bandwidth (~ 18 kHz per Friedenauer2006) is the binding number for the seed-laser linewidth budget; first quantitative VECSEL linewidth measurement appears in Guth2021 (1.207 MHz iodine-locked) and Spanke2025 (101(8) kHz locked)."
+  - "Specific LBO and BBO cavity geometries (mirror RoCs, cavity lengths, finesse) are not transcribed in this extraction; they are documented in Guth2021 Section 2.2 'Frequency Multiplication via Second Harmonic Generation' which is the primary in-house reference for the SHG chain."
+  - "Long-term VECSEL output drift over weeks/months is not measured (Section 3.3.1 reports ~ 1 hour passive stability only). Burd2023 reports < 10 % drift over > 8 months at ~ 1 W on a different gain mirror; in-house long-term data may exist in lab logbooks but is not in the dissertation."
+
+extraction_passes:
+  - date: "2026-05-08"
+    by: "assistant under steward direction"
+    scope: >
+      VECSEL+SHG-focused extraction from Section 3.3 (Laser system for generation
+      of ultraviolet radiation) and Section 3.4 (Optical beam setup) of the
+      dissertation. Floquet-physics chapters (1, 2, 4-7) are out of scope for
+      mg-plus-uv-chain literature work and are not extracted here. Status DRAFT
+      pending steward sign-off.
+    status: "DRAFT"
+
+cross_check_notes:
+  - id: "kiefer_is_the_in_house_vecsel_origin"
+    summary: >
+      Kiefer2020 is the dissertation in which the AG Schaetz / mg-plus-uv-chain
+      VECSEL platform first appears as a built and characterised laser at the
+      1118 nm Friedenauer fundamental. The Burd2016 NIST/Tampere design [46] is
+      cited as the source; the implementation here is the Freiburg adaptation,
+      with vendor-specific parts (Vexlum gain mirror, Layertec outcoupler,
+      LightMachinery etalon, Newlight Photonics BRF, Ostech pump, Arroyo TECs,
+      HighFinesse wavemeter) that propagate into Guth2021, Spanke2023, and
+      Spanke2025. Operationally, this is the laser that was running 25Mg+
+      experiments at the time of the Floquet results in the dissertation.
+    informs_dossier_entries:
+      - "KD-UV280-015"
+  - id: "vendor_parts_chain_is_stable"
+    summary: >
+      The intracavity BRF (Newlight BIR0030), etalon (LightMachinery
+      OP-3167-1000), gain mirror vendor (Vexlum), and pump diode (Ostech 40 W
+      808 nm) are common across all four in-house theses (Kiefer2020 ->
+      Guth2021 -> Spanke2023 -> Spanke2025). The thermal-management,
+      cavity-length, and control-electronics layers are what evolve. This
+      stability is the practical anchor for the steward direction (2026-05-08)
+      that VECSELs are the seed-laser source class for current and future
+      builds: continuity is demonstrated, not asserted.
+    informs_dossier_entries:
+      - "KD-UV280-015"
+  - id: "shg_chain_is_friedenauer2006_topology"
+    summary: >
+      The SHG chain in Kiefer2020 (LBO bow-tie ring + BBO ring, both
+      Haensch-Couillaud-locked) is the Friedenauer2006 topology, ported to the
+      in-house in-house VECSEL seed. Reference [110] in Section 3.3.2 of the
+      dissertation cites Friedenauer2006 directly. This is the operational
+      validation that the VECSEL seed-class direction (Burd2023 anchor) and
+      the LBO+BBO doubling-chain topology (Friedenauer2006 anchor) are
+      independent, composable choices - the Kiefer2020 chain is the
+      composition.
+    informs_dossier_entries:
+      - "KD-UV280-015"

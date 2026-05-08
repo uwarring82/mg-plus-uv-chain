@@ -1,0 +1,306 @@
+citation_key: "Spanke2025"
+source_tier: "S"
+doi: null
+citation: "T. Spanke, 'Die naechste Generation von Festkoerperlasern fuer die Manipulation von gefangenen Ionen / Next Generation of Solid State Lasers for the Manipulation of Trapped Ions,' Master thesis, Studiengang Elektro- und Informationstechnik (Sensorsystemtechnik), Hochschule Karlsruhe University of Applied Sciences. Work performed at AG Schaetz / Faculty of Mathematics and Physics, University of Freiburg, 01.01.2025 - 30.06.2025 (thesis lists '31.06.2025' which is a typo). Referees: Prof. Dr.-Ing. Christian Karnutsch (HKA), Prof. Dr. Harald Sehr (HKA); on-site supervisors: Prof. Dr. Tobias Schaetz, Dr. Ulrich Warring."
+title: "Next Generation of Solid State Lasers for the Manipulation of Trapped Ions"
+extracted_by: "assistant under steward direction"
+extracted_on: "2026-05-08"
+extraction_status: "DRAFT"
+source_document: "AG Schaetz internal copy of the deposited thesis PDF; held at data/literature/Spanke2025/Spanke2025.pdf (not committed to repository)."
+charter_section_refs:
+  - "1.5"
+  - "2"
+  - "5.4"
+dossier_entries:
+  - "KD-UV280-015"
+
+related_extractions:
+  - "Kiefer2020"      # PhD origin point of in-house VECSEL platform
+  - "Guth2021"        # MSc with first quantitative linewidth + LBO/BBO cavity build
+  - "Spanke2023"      # BSc by same author; benchmarks "VECSEL Nr.4" with new water cooling
+  - "Burd2016"        # NIST/Tampere VECSEL anchor [16]
+  - "Burd2023"        # NIST/Tampere design-principles anchor
+
+# Spanke2025 builds the "neXt VECSEL" (= VECSEL Nr.6 in in-house naming): a complete
+# ground-up redesign of the in-house VECSEL platform with three headline outcomes:
+# (i) 5x linewidth improvement to 101(8) kHz wavemeter-locked at short timescales
+# (free-running 110(4) kHz with noise/temperature isolation enclosure), bringing the
+# in-house build into Burd2023-class linewidth performance for the first time;
+# (ii) ~ 15-16x volume reduction to an A4-sheet footprint (260 x 177 mm) housing
+# the VECSEL cavity + optical isolator + PBS + fiber couplers in a single aluminium
+# enclosure; and (iii) a custom Raspberry-Pi-based controller replacing the
+# ~ 4 x EUR 2000-4000 Arroyo TEC chain at sub-EUR 500 cost, while delivering TEC
+# Allan deviation 0.08 mK on long timescales (surpassing manufacturer spec).
+# Volume reduction is achieved by removing the active water-cooling loop entirely:
+# the gain chip is passively radiated through an aluminium housing.
+
+parameters:
+
+  # ---------------------------------------------------------------------------
+  # Two systems characterised in parallel
+  # ---------------------------------------------------------------------------
+  - symbol: "VECSEL_Nr4_role"
+    value_text: "VECSEL Nr.4 (the Spanke2023 + Guth2021 + Kiefer2020 platform on a 19'' rack) is set up in parallel as the reference baseline for comparison; not modified in this thesis"
+    units: null
+    location_in_paper: "Section 2.1.7 'VECSEL Nr.4'; 'Personal contribution'"
+    notes: "The Nr.4 system is preserved as a reference and to avoid impacting the systems already in use during the construction of the new design."
+
+  - symbol: "VECSEL_neXt_role"
+    value_text: "neXt VECSEL (= VECSEL Nr.6 in in-house numbering) - a ground-up redesign developed in collaboration with Ulrich Warring (project oversight + experiments), Joern Denter (theory + experiments), Mario Niebuhr (3D optical layout)"
+    units: null
+    location_in_paper: "Section 2.1.8 'VECSEL Nr. 6 - neXt'; 'Personal contribution'"
+    notes: "Personal contribution: noise isolation + control electronics; assembled experiments and analysis. Co-supervised by Schaetz."
+
+  # ---------------------------------------------------------------------------
+  # neXt VECSEL hardware (Section 2.1.8, Appendix A)
+  # ---------------------------------------------------------------------------
+  - symbol: "neXt_footprint"
+    value_text: "260 mm x 177 mm aluminium enclosure (~ A4 sheet of paper); houses VECSEL cavity + optical isolator + lambda/2 + PBS + 2 fibre couplers in the same housing"
+    units: null
+    location_in_paper: "Section 2.1.8; Fig. 13"
+    notes: "Volume reduction ~ 15-16x vs VECSEL Nr.4 19'' rack assembly. Removable aluminium baseplates for assembly outside the housing."
+
+  - symbol: "neXt_thermal_management"
+    value_text: "Passive radiation through aluminium housing; gain-chip cooling by Peltier element only (no water-cooling loop); BRF + etalon temperature-stabilised by independent TECs"
+    units: null
+    location_in_paper: "Section 2.1.8; Discussion §4"
+    notes: "Removing the water-cooling loop is the key volume-reduction enabler and the lesson learned from Spanke2023 (water cooling had diminishing returns on stability and added vibration noise). Cooling system limit: max pump power that can be cooled = 35.3 W (above 22.4 W operating point of Spanke2023)."
+
+  - symbol: "gain_chip"
+    value_text: "Vexlum VL1120 family (same vendor as Kiefer2020 / Guth2021 / Spanke2023); gain peak around 1119-1124 nm"
+    units: null
+    location_in_paper: "Section 2.1.8; Fig. 6 emission curve"
+    notes: "Emission shifts from ~ 1119 nm at 10 W pump to ~ 1124 nm at 45 W pump, with output power 2.6 - 3.8 W. Wavelength-temperature slope 0.15 nm/deg C as per band-gap + refractive-index theory."
+
+  - symbol: "intracavity_etalon_FSR_at_1118nm"
+    value: 7.2e10
+    units: "Hz"
+    location_in_paper: "Section 3.1.2; Fig. 26"
+    notes: "Light Machinery OP-3167-1000 etalon (1.004 mm thick) measured FSR at 1118 nm operating point: 72 GHz. (Manufacturer-spec FSR is 82.3 GHz at 1064.15 nm; the FSR scales as 1/(n*L) so at 1118 nm vs 1064 nm a small downshift is expected, but 72 GHz vs 82.3 GHz is larger than purely dispersive scaling - consistent with the Spanke2023 cited 82 GHz being a quoted spec rather than a measurement.) Same etalon part-number as Kiefer2020 / Guth2021 / Spanke2023."
+
+  - symbol: "intracavity_BRF"
+    value_text: "Light Machine BRF (vexlum-supplied; same family as previous in-house builds)"
+    units: null
+    location_in_paper: "Section 2.1.8"
+    notes: "Mounted on a goniometer for rotation tuning; resistive heater for temperature tuning."
+
+  - symbol: "PZT_actuator"
+    value_text: "Thorlabs PK44LA2P2 piezo stack; 0-150 V; gain 78.41(41) MHz/V (matches Spanke2023) on one branch and 93.91(333) MHz/V on a second mode"
+    units: null
+    location_in_paper: "Section 2.1.4; Section 3.1.3 / Fig. 27"
+    notes: "Same piezo-gain calibration as Spanke2023 - PZT and outcoupling-mirror geometry match. 1 GHz cavity-length tuning range."
+
+  - symbol: "optical_isolator"
+    value_text: "Thorlabs OI-3-1118-HP optical isolator, factory-adjusted; longer than spec (interferes with lambda/2 + PBS placement; flagged for replacement in outlook)"
+    units: null
+    location_in_paper: "Appendix A.2 'Assembly of the Optical path'; Outlook"
+    notes: "Newport 05-1064 isolator suggested as more compact alternative."
+
+  - symbol: "pump_laser"
+    value_text: "Ostech 40 W 808 nm pump (same hardware as Kiefer2020 / Guth2021 / Spanke2023); range 4-43.5 W; line width 0.3 nm at 25 deg C / full output"
+    units: null
+    location_in_paper: "Section 2.1.7"
+    notes: "Same pump hardware reused. Pump current converted to optical output via mfg conversion chart (Fig. 12)."
+
+  - symbol: "control_electronics"
+    value_text: "Custom Raspberry-Pi-based 4-channel TEC controller; <500 EUR (vs ~ EUR 2000-4000 each for 4x Arroyo TECSource 5240/5305 in old design); mimics Arroyo network interface; pass-through PCB connects TECs + temp sensors + ADCs to Raspberry Pi Hat"
+    units: null
+    location_in_paper: "Section 2.3 'Control systems'; Fig. 24; Discussion §4 'Temperature stability'"
+    notes: "Design philosophy: replace per-channel commercial TEC + central computer + protocol with a single Raspberry-Pi-based controller, integrating compute and sensors. Allows additional automation. Web interface for remote config."
+
+  - symbol: "TEC_temperature_stability_short"
+    value: 0.020
+    units: "K"
+    location_in_paper: "Section 3.2.1 / Fig. 28"
+    notes: "TEC2 temperature variance: Allan deviation 20 mK at short timescales (< 1 s). At long timescales drops to 0.08 mK - surpassing Arroyo manufacturer spec of < 4 mK/h."
+
+  - symbol: "TEC_temperature_stability_long"
+    value: 8.0e-5
+    units: "K"
+    location_in_paper: "Section 3.2.1 / Fig. 28"
+    notes: "Long-timescale TEC Allan deviation 0.08 mK. Operationally relevant for laser-frequency stability since gain-chip thermal stability sets the wavelength stability via Delta lambda / Delta T ~ 0.15 nm/deg C."
+
+  # ---------------------------------------------------------------------------
+  # neXt VECSEL frequency stability (Section 3.2)
+  # ---------------------------------------------------------------------------
+  - symbol: "linewidth_neXt_unlocked_no_box_short"
+    value: 1.3e6
+    uncertainty: 6e4
+    units: "Hz"
+    location_in_paper: "Section 3.2.2 / Fig. 29"
+    notes: "Free-running, no isolation box: short-timescale Allan deviation 1.3(0.06) MHz - similar to Guth2021 baseline."
+
+  - symbol: "linewidth_neXt_unlocked_no_box_long"
+    value: 4.7e6
+    uncertainty: 6e5
+    units: "Hz"
+    location_in_paper: "Section 3.2.2 / Fig. 29"
+    notes: "Free-running, no isolation box: long-timescale 4.7(0.6) MHz."
+
+  - symbol: "linewidth_neXt_unlocked_with_box_short"
+    value: 1.10e5
+    uncertainty: 4e3
+    units: "Hz"
+    location_in_paper: "Section 3.2.2 / Fig. 30"
+    notes: "Free-running, WITH noise/temperature isolation enclosure: 110(4) kHz at short timescales. Note: at the wavemeter resolution limit of 100 kHz - more precise characterisation (delayed self-heterodyne) needed for sub-100-kHz numbers."
+
+  - symbol: "linewidth_neXt_unlocked_with_box_long"
+    value: 2.7e6
+    uncertainty: 2e5
+    units: "Hz"
+    location_in_paper: "Section 3.2.2 / Fig. 30"
+    notes: "Free-running, with isolation box: long-timescale 2.7(0.2) MHz - drift-dominated."
+
+  - symbol: "linewidth_neXt_locked_with_box_short"
+    value: 1.013e5
+    uncertainty: 7.8e3
+    units: "Hz"
+    location_in_paper: "Section 3.2.3 / Fig. 32"
+    notes: "Wavemeter-locked, with isolation box: 101(8) kHz at short timescales. This is the headline linewidth result of the thesis - a 5x improvement vs VECSEL Nr.4 baseline (Spanke2023 ~ 500 kHz; Guth2021 ~ 1.6 MHz free-running, ~ 1.2 MHz iodine-locked at 100 ms)."
+
+  - symbol: "linewidth_neXt_locked_with_box_mid"
+    value: 1.72e5
+    uncertainty: 1.42e4
+    units: "Hz"
+    location_in_paper: "Section 3.2.3 / Fig. 32"
+    notes: "Locked + box: 172(14) kHz at mid timescales (~ 1 s)."
+
+  - symbol: "linewidth_neXt_locked_with_box_long"
+    value: 1.40e5
+    uncertainty: 3e4
+    units: "Hz"
+    location_in_paper: "Section 3.2.3 / Fig. 32"
+    notes: "Locked + box: 140(30) kHz at long timescales. Average change in laser frequency at all timescales is below 250 kHz - well within Burd2023 940 nm class (< 100 kHz) and substantially better than Burd2016 1141 nm class (< 50 kHz, but with HC error signal). Note: limit of measurement is the 100 kHz wavemeter resolution; a delayed self-heterodyne setup is the recommended next-step characterisation."
+
+  - symbol: "linewidth_improvement_factor_vs_VECSEL_Nr4"
+    value: 5
+    units: "1"
+    location_in_paper: "Abstract; Section 4 / Section 5 'Outlook'"
+    notes: "Headline: 5x linewidth improvement vs VECSEL Nr.4 (the Spanke2023 platform). Frequency stability of the neXt system improves the previous best by a factor of 5."
+
+  - symbol: "isolation_box_acoustic_noise_reduction"
+    value: 3
+    units: "dB"
+    location_in_paper: "Section 3.2.2 / Fig. 31"
+    notes: "Sound pressure level outside vs inside the isolation enclosure: 3 dB average reduction. Largest reduction in 1-100 Hz range (acoustic noise band). Microphone is uncalibrated - relative measurement only."
+
+  # ---------------------------------------------------------------------------
+  # neXt VECSEL tuning and turnkey behaviour (Section 3.1, 3.3, 4)
+  # ---------------------------------------------------------------------------
+  - symbol: "neXt_PZT_modehopfree_span"
+    value: 1e9
+    units: "Hz"
+    location_in_paper: "Section 3.1.3"
+    notes: "PZT cavity-length tuning gives 1 GHz mode-hop-free range (matching the 0-150 V piezo travel)."
+
+  - symbol: "neXt_etalon_thermal_modehopfree_span"
+    value: 1.0e10
+    units: "Hz"
+    location_in_paper: "Section 3.1.2 / Fig. 26"
+    notes: "Etalon temperature tuning gives ~ 10 GHz adjustable range before mode-hop, consistent with FSR = 72 GHz at 1118 nm."
+
+  - symbol: "neXt_BRF_thermal_modehop"
+    value_text: "Mode jump observed at T_BRF = 33 deg C; nominal operating point T_BRF = 24 deg C maximises transmitting power"
+    units: null
+    location_in_paper: "Section 3.1.1 / Fig. 25"
+    notes: "BRF temperature scan 20-35 deg C; output frequency essentially constant up to mode jump."
+
+  - symbol: "neXt_full_tuning_range"
+    value_text: "Gain chip emission 1118-1124 nm = 267.91-266.72 THz; frequency-quadrupled to 279.5-281 nm covering all 25Mg+ transitions"
+    units: null
+    location_in_paper: "Section 4 'Tunability'"
+    notes: "Coarse tuning by gain-chip temperature (band-gap shift + refractive-index shift = total 0.15 nm/deg C); BRF angle for medium tuning; etalon temperature for fine tuning over ~ 10 GHz; PZT for sub-GHz fine-tuning."
+
+  - symbol: "neXt_turnkey_dayToDay_reproducibility"
+    value: 2.5e8
+    units: "Hz"
+    location_in_paper: "Section 3.3 / Fig. 33; Section 4 'Turnkey operation'"
+    notes: "Day-to-day frequency reproducibility 250 MHz after switching pump laser off overnight (TEC setpoints maintained). After 1 h thermalisation, target frequency restored within 250 MHz - within the 1 GHz piezo limit, so single-mode operation can be re-established without manual readjustment."
+
+  - symbol: "neXt_target_operating_frequency"
+    value: 269.07e12
+    units: "Hz"
+    location_in_paper: "Section 3.3 / Fig. 33"
+    notes: "Target operating frequency 269.0745 THz (= 1114.0 nm). The neXt system is being prepared for ions / EIT-cooling at the 4 lambda_D2 quadrupling point ~ 280 nm."
+
+  # ---------------------------------------------------------------------------
+  # Tampere / NIST design lineage (explicit acknowledgement)
+  # ---------------------------------------------------------------------------
+  - symbol: "design_lineage"
+    value_text: "Original VECSEL design from National Institute of Standards and Technology (NIST) [16 = Burd2016]; Spanke2023 BSc set up one of the No.4 designs; new neXt design developed in-house with Warring + Denter + Niebuhr + Schaetz supervision"
+    units: null
+    location_in_paper: "Section 1 'Personal contribution'"
+    notes: "Explicit acknowledgement of the design heritage. The vendor BOM (Vexlum gain mirror, Light Machinery etalon, Newlight BIR0030 BRF, Ostech 40 W pump) is preserved across generations; what changes between Nr.4 and neXt is mechanics + electronics + thermal layout."
+
+open_extraction_items:
+  - "True linewidth of the neXt VECSEL is below the wavemeter resolution of 100 kHz at short timescales. Delayed self-heterodyne interferometry (long fibre delay + AOM) is suggested as the next-step characterisation in the Outlook (Section 5). Pre that measurement, the 101(8) kHz / 110(4) kHz numbers are upper bounds."
+  - "Beat-note characterisation between neXt and VECSEL Nr.4 (or the fibre laser) is not performed. The 56(4) MHz unresolved beat-note modulation flagged in Guth2021 §2.3.4 may or may not be present; not measured."
+  - "SHG-chain conversion efficiencies (LBO + BBO) are not re-measured for the neXt VECSEL output. The Guth2021 numbers (LBO 87(6) %, BBO 10.0(11) %) remain the in-house operational reference; comparing those with the 5x narrower neXt seed would test the linewidth-to-amplitude conversion design principle directly."
+  - "Cavity diagnostics suggested in the Outlook (intracavity-loss monitoring via photodiodes on Raspberry-Pi ADCs) are not deployed yet; mentioned as a planned extension of the controller architecture."
+  - "Modular AOM double-pass + frequency-shift module is mentioned in Guth2021 outlook + here (Outlook §5) as the next layer downstream of the BBO cavity, but not built in this thesis."
+
+extraction_passes:
+  - date: "2026-05-08"
+    by: "assistant under steward direction"
+    scope: >
+      VECSEL+SHG-focused extraction of Section 1 (Introduction +
+      Personal contribution), Section 2.1 (Components: theory, BRF,
+      etalon, piezo mirror, gain chip, frequency stability, VECSEL Nr.4
+      reference, neXt VECSEL design), Section 2.2 (Data acquisition:
+      InfluxDB, wavemeter, laser power), Section 2.3 (Control systems:
+      frequency lock, temperature stabilisation, thermoelectric cooling,
+      PID control loop, temperature tuning), Section 3 (Results:
+      tunability via BRF / etalon / outcoupling-mirror; stability
+      including TEC variance and free-running and locked frequency
+      stability; turnkey operation), Section 4 (Discussion), Section 5
+      (Outlook), and Appendix A (Assembly and adjustment of the neXt
+      VECSEL and optical path). Status DRAFT pending steward sign-off.
+    status: "DRAFT"
+
+cross_check_notes:
+  - id: "next_first_in_house_burd_class_linewidth"
+    summary: >
+      The neXt VECSEL is the first AG Schaetz in-house build that brings
+      the 1118 nm in-house VECSEL into Burd2023-class linewidth
+      performance. Wavemeter-locked Allan deviation 101(8) kHz at short
+      timescales matches Burd2023's < 100 kHz at 940 nm and is well
+      within the 'target <= 100 kHz' operating budget set in the
+      seed-laser components page (docs/components/seed-lasers.md). The
+      seed-laser linewidth budget direction (steward direction,
+      2026-05-08) is therefore experimentally underwritten by an
+      in-house, wavelength-matched, 25Mg+-targeted system - not only
+      by the Burd2016 / Burd2023 design-principles literature.
+    informs_dossier_entries:
+      - "KD-UV280-015"
+  - id: "passive_thermal_management_works"
+    summary: >
+      Removing the water-cooling loop (the headline change between Nr.4
+      and neXt) does not increase short-term frequency variance and
+      reduces volume by ~ 16x. The Spanke2023 lesson - that further
+      refinement of active water cooling has diminishing returns - is
+      validated by the neXt system's superior stability without water
+      cooling. For mg-plus-uv-chain build planning, this means a
+      VECSEL seed laser does not require the per-laser closed-loop
+      water plumbing of the previous-generation Friedenauer or
+      Kiefer2020-era systems; passive radiation through an aluminium
+      housing + Peltier on the gain chip is sufficient. Material
+      consequence: rack-space requirements drop, infrastructure
+      overhead drops, and the 'compact, semiconductor-bandwidth-defined
+      cavity' Sail principle from Burd2023 is reified.
+    informs_dossier_entries:
+      - "KD-UV280-015"
+  - id: "raspberry_pi_controller_replaces_arroyo"
+    summary: >
+      The Raspberry-Pi-based custom controller delivers TEC Allan
+      deviation 0.08 mK on long timescales (better than Arroyo
+      manufacturer spec of < 4 mK/h) at < EUR 500 cost vs the
+      ~ EUR 2000-4000 per-channel Arroyo TECSource it replaces. This is
+      a ~ 10x cost reduction for the temperature-control infrastructure
+      of the seed-laser layer. Operationally, it also adds compute and
+      sensor I/O to the controller - the architecture suits future
+      automation (e.g. real-time loss monitoring on the SHG cavities
+      via ADC channels). For mg-plus-uv-chain build planning, this is
+      the operational evidence that the seed-laser layer is becoming
+      cheaper as well as narrower-linewidth.
+    informs_dossier_entries:
+      - "KD-UV280-015"

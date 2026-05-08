@@ -21,7 +21,7 @@ description: Inventory of optical components for the LBO and BBO doubling stages
 - Castech vendor label (photographed 2026-05-07; G8115-2 / Crystal ID 2-21577).
 - Raicol *Quotation PQ250167*, 04 Jul 2025 (expired; reference for restocking only).
 
-**Scope.** Maps each identified box / loose item to its likely role in either the **LBO ring cavity** (1118 nm → 559 nm; conventionally labelled here at the coating-stated 1120 nm / 560 nm) or the **BBO ring cavity** (559 nm → near 280 nm) of the [Friedenauer 2006 baseline](friedenauer-baseline.html).
+**Scope.** Maps each identified box / loose item to its likely role in either the **LBO ring cavity** (1118 nm → 559 nm; conventionally labelled here at the coating-stated 1120 nm / 560 nm) or the **BBO ring cavity** (559 nm → near 280 nm) of the [Friedenauer 2006 baseline](friedenauer-baseline.html). The seed-laser layer that feeds the LBO cavity is documented separately under [Seed lasers (VECSEL)](seed-lasers.html); items on this page are downstream of that seed.
 
 ---
 

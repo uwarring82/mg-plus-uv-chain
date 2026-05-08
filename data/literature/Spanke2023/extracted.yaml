@@ -1,0 +1,212 @@
+citation_key: "Spanke2023"
+source_tier: "S"
+doi: null
+citation: "T. Spanke, 'Benchmarking a Solid State Laser for the Manipulation of Trapped Ions,' Bachelor thesis, Faculty of Mathematics and Physics, University of Freiburg, March 2023. Supervisor: Prof. Dr. Tobias Schaetz; advisor: Dr. Ulrich Warring."
+title: "Benchmarking a Solid State Laser for the Manipulation of Trapped Ions"
+extracted_by: "assistant under steward direction"
+extracted_on: "2026-05-08"
+extraction_status: "DRAFT"
+source_document: "AG Schaetz internal copy of the deposited thesis PDF; held at data/literature/Spanke2023/Spanke2023.pdf (not committed to repository)."
+charter_section_refs:
+  - "1.5"
+  - "5.4"
+dossier_entries:
+  - "KD-UV280-015"
+
+related_extractions:
+  - "Kiefer2020"      # PhD with original VECSEL build
+  - "Guth2021"        # immediate predecessor; Spanke2023 references "previous works [6]" = Guth2021
+  - "Spanke2025"      # successor MSc by the same author (neXt VECSEL)
+  - "Burd2016"        # NIST/Tampere VECSEL anchor
+
+# Spanke2023 is the bachelor thesis that benchmarks the in-house VECSEL prototype
+# (locally referred to as "VECSEL Nr.4") and delivers two specific improvements:
+# (i) replacement of the cooling-water chiller with an Alphacool PC-water-cooling
+# loop based on PC-grade components, eliminating frequency oscillations driven by
+# the previous chiller's cooling cycle, and (ii) thermal redesign of the pump-fibre
+# output holder with a copper cooling sleeve, reducing the temperature delta at
+# 22.4 W pump from ~ 35 deg C to ~ 21 deg C. Net frequency-stability improvement
+# is a factor of ~ 5 vs the Guth2021 baseline at short timescales.
+
+parameters:
+
+  # ---------------------------------------------------------------------------
+  # VECSEL operating point ("VECSEL Nr.4")
+  # ---------------------------------------------------------------------------
+  - symbol: "VECSEL_designation"
+    value_text: "VECSEL Nr.4 (in-house naming) - same physical platform as Kiefer2020 / Guth2021 with thermal-management upgrades"
+    units: null
+    location_in_paper: "Section 2.5; Spanke2025 Section 2.1.7"
+    notes: "Numbering is sequential across in-house builds; 'Nr.4' is the operational Doppler-cooling laser at the time of writing. 'Nr.6' = neXt VECSEL is the successor in Spanke2025."
+
+  - symbol: "lambda_VECSEL_operating_point"
+    value: 1118e-9
+    units: "m"
+    location_in_paper: "Section 2.5"
+    notes: "Operating wavelength 1118 nm (~ 268 THz), targeting 4 lambda_D2 of 25Mg+. Gain chip: VL1120_4477_842 (Vexlum VL1120 family). Frequency range across pump-power tuning: 268.151 THz to 267.195 THz."
+
+  - symbol: "pump_laser"
+    value_text: "Ostech Diode Laser System 40 W 808 nm Nr.4 - same hardware as Kiefer2020 / Guth2021"
+    units: null
+    location_in_paper: "Section 2.3"
+    notes: "Pump current typically 20-30 A (= 12.7 - 22.4 W output). Linewidth 0.3 nm at 25 deg C / full output (mfg spec)."
+
+  - symbol: "intracavity_etalon"
+    value_text: "Light Machinery OP-3167-1000 YAG etalon, 1.004 mm thick, 5 mm dia; FSR 82.3 GHz nominal at 1064.15 nm"
+    units: null
+    location_in_paper: "Section 2.5; Datasheet appendix"
+    notes: "Same part number as Kiefer2020 / Guth2021. (FSR remeasured at ~ 72 GHz at 1118 nm operating point in Spanke2025.) Each etalon temperature-tuning rate ~ 10.8 pm/deg C."
+
+  - symbol: "intracavity_BRF"
+    value_text: "Newlight Photonics BIR0030 quartz Lyot filter; LIDT 1 GW/cm^2 at 1064 nm, 500 MW/cm^2 at 532 nm"
+    units: null
+    location_in_paper: "Section 2.5; Datasheet appendix"
+    notes: "Same vendor / part-number as Kiefer2020 / Guth2021 / Spanke2025."
+
+  - symbol: "PZT_actuator_gain"
+    value: 78
+    uncertainty: 0.41
+    units: "MHz/V"
+    location_in_paper: "Section 3.1 / Fig. 15"
+    notes: "Outcoupling-mirror PZT slope at 268.0545 THz: 78.41(41) MHz/V. Spanke2025 measures the same piezo at 78.41(41) MHz/V (matching) and a second branch at 93.91(333) MHz/V."
+
+  - symbol: "PZT_modehopfree_span"
+    value: 1e8
+    units: "Hz"
+    location_in_paper: "Section 3.1"
+    notes: "Mode-hop-free piezo tuning ~ 100 MHz at fixed BRF + etalon temperatures, requiring delta U_piezo = 12 V."
+
+  - symbol: "etalon_thermal_FSR"
+    value: 1e10
+    units: "Hz"
+    location_in_paper: "Section 3.1.2"
+    notes: "Etalon temperature tuning gives ~ 10 GHz frequency tunability before mode-hopping; this is consistent with the etalon's nominal FSR of 82.3 GHz at design wavelength 1064 nm."
+
+  # ---------------------------------------------------------------------------
+  # Water-cooling redesign (Section 3.2.1 - the main result of the thesis)
+  # ---------------------------------------------------------------------------
+  - symbol: "watercooling_old"
+    value_text: "Neslab RTE-111 chiller; cooling cycle observed to drive periodic temperature oscillations on the gain chip and corresponding TEC current oscillations and laser-frequency oscillations - unsealed lid, water dust contamination, kinking-prone hose"
+    units: null
+    location_in_paper: "Section 3.2.1; Fig. 19"
+    notes: "Operational failure mode of the legacy water chiller: the chiller's compressor cycle modulated the gain-chip temperature, which propagated through to the laser frequency (visible in Fig. 19 plot 3 logging WVM frequency oscillating ~ 200 MHz peak-to-peak in sync with the chiller cycle)."
+
+  - symbol: "watercooling_new"
+    value_text: "Alphacool Eisstation 40 DC-LT pressure compensator + Alphacool DC-LT 3600 ceramic pump (reservoir + pump combo) + Alphacool NexXxoS UT60 full-copper radiator + 2x Noctua NF-A4x20 fans + Alphacool temperature/flow meter; Keyestudio W5500 Ethernet controller for fan PWM (5V) and flow-meter readout"
+    units: null
+    location_in_paper: "Section 3.2.1; Fig. 20-22"
+    notes: "PC-water-cooling-grade components - eliminates the chiller's cooling-cycle modulation. Flow rate 150 l/h or 265 l/h tested. Web interface or potentiometer for fan speed control."
+
+  - symbol: "watercooling_new_short_term_stability"
+    value: 4e5
+    units: "Hz"
+    location_in_paper: "Section 3.2.1 / Fig. 23 / Section 4 Discussion"
+    notes: "With piezo to 50 Ohm + flow rate 150 l/h + fan duty 50 % (best configuration): short-term Allan deviation 308.5(98) kHz at ~ 60 ms timescales. Section 4 quotes 'as low as 400 kHz with some fine tuning' as the achieved short-term frequency stability. This is improvement of up to 5x over the previous (Guth2021) ~ 1.6 MHz free-running short-term stability."
+
+  - symbol: "watercooling_new_mid_term_stability"
+    value: 3e5
+    units: "Hz"
+    location_in_paper: "Section 4 Discussion"
+    notes: "Mid-term (~ 500 ms) frequency stability ~ 300 kHz consistently achieved with new water cooling, vs Guth2021 free-running ~ 700 kHz."
+
+  - symbol: "watercooling_new_long_term_drift"
+    value: 9.4e5
+    units: "Hz"
+    location_in_paper: "Section 3.2.1 / Fig. 23, 24"
+    notes: "Long-term (> 10 s) Allan deviation ~ 940 kHz in best configuration. 24 h measurement: 473.2(150) kHz / 335.4(107) kHz / 937.8(590) kHz at short / medium / long timescales respectively. Long-term variance is far below the 100 MHz piezo correction range, so long-term drift can be corrected with the piezo and does not require additional locking."
+
+  - symbol: "radiator_temperature_limit"
+    value: 41
+    units: "deg C"
+    location_in_paper: "Section 3.2.1"
+    notes: "Operating limit: at pump current 22.4 A (= ~ 22.4 W pump light) the new water-cooling loop's reservoir temperature reaches 41 deg C - too high for the gain-chip Peltier to maintain T_GC = 25 deg C. A larger radiator is required for higher continuous pump power. Spanke2025 dropped water cooling for the gain chip entirely in the neXt design."
+
+  # ---------------------------------------------------------------------------
+  # Pump fibre output thermal redesign (Section 3.2.2)
+  # ---------------------------------------------------------------------------
+  - symbol: "pump_fiber_holder_old_dT"
+    value: 35
+    units: "deg C"
+    location_in_paper: "Section 3.2.2 / Fig. 25"
+    notes: "Old steel pump-fibre output holder: temperature delta to ambient was 20 deg C at 13 W pump and 35 deg C at 22.5 W pump (i.e. holder up to ~ 56 deg C). High temperature moves the pump spot on the gain chip, reducing VECSEL output."
+
+  - symbol: "pump_fiber_holder_new_dT"
+    value: 21
+    units: "deg C"
+    location_in_paper: "Section 3.2.2 / Fig. 25"
+    notes: "New holder + copper cooling sleeve + copper cooling cable to base plate: delta T = 21 deg C at 22.4 W pump (i.e. holder ~ 42 deg C). Reduction of 14 deg C at 22.4 W pump. Mounting the cooling sleeve alone gives 7 deg C reduction at 12.7 W and 14 deg C at 22.4 W."
+
+  - symbol: "pump_fiber_short_term_stability_old_FC"
+    value_text: "Allan deviation 382.6(121) kHz / 247.3(79) kHz / 627.9(399) kHz at short / medium / long timescales (old fibre coupler)"
+    units: null
+    location_in_paper: "Section 3.2.2 / Fig. 26"
+    notes: "Short-term frequency stability before fibre-coupler replacement."
+
+  - symbol: "pump_fiber_short_term_stability_new_FC"
+    value_text: "Allan deviation 348.5(110) kHz / 231.5(74) kHz / 997.6(679) kHz at short / medium / long timescales (new fibre coupler)"
+    units: null
+    location_in_paper: "Section 3.2.2 / Fig. 26"
+    notes: "Short-term and mid-term stability essentially unchanged with new fibre coupler; long-term slightly worse but the difference is comparable to run-to-run variation. Long-term drift can be corrected by the piezo-mounted cavity mirror."
+
+  # ---------------------------------------------------------------------------
+  # Frequency stability summary (Section 4)
+  # ---------------------------------------------------------------------------
+  - symbol: "stability_improvement_factor_vs_guth2021"
+    value: 5
+    units: "1"
+    location_in_paper: "Section 4 'Discussion and Outlook'"
+    notes: "Quote from Section 4: 'Compared to previous works [= Guth2021] this is an improvement of up to 5 times. For mid-term stability 300 kHz is achieved consistently, this is also an improvement from 700 kHz, previously achieved free running.' This is the operational headline result of the thesis."
+
+  - symbol: "long_term_drift_vs_piezo_range"
+    value_text: "Long-term variance < 100 MHz piezo correction limit, so long-term drift does not require active locking - drift can be tracked by the piezo-mounted mirror"
+    units: null
+    location_in_paper: "Section 3.2.1 / Section 4"
+    notes: "Operational consequence: free-running operation suffices for sessions of several hours; iodine or wavemeter lock is needed only for absolute-frequency reference and longer-term operation."
+
+open_extraction_items:
+  - "Iodine and wavemeter locking are not deployed in this thesis (laser left free-running for stability characterisation). Locked-mode stability is reported in Guth2021 (1.207(12) MHz iodine-locked at 100 ms) and Spanke2025 (101(8) kHz wavemeter-locked at short timescales)."
+  - "Beat-note measurements vs the fibre laser are not repeated. The unresolved 56(4) MHz modulation noted in Guth2021 §2.3.4 may or may not have been affected by the new water-cooling loop; not characterised."
+  - "Larger radiator for > 20 W continuous pump operation listed as future work; Spanke2025 superseded this question by removing the water-cooling loop entirely (passive radiation only)."
+  - "BBO and LBO cavity stability not in scope of this thesis - those are characterised in Guth2021 §3.3 and would need a re-measurement in the new thermal environment."
+
+extraction_passes:
+  - date: "2026-05-08"
+    by: "assistant under steward direction"
+    scope: >
+      VECSEL+SHG-focused extraction of Section 2 (Methods: VECSEL setup,
+      pump laser, optical assembly, gain-chip assembly, BRF, etalon, piezo
+      mirror, optical processing, temperature stabilisation, Allan
+      deviation), Section 3 (Results: free spectral range from BRF / etalon
+      / outcoupling-mirror; frequency stability with new water cooling and
+      pump-fibre output holder), and Section 4 (Discussion and outlook).
+      Status DRAFT pending steward sign-off.
+    status: "DRAFT"
+
+cross_check_notes:
+  - id: "spanke2023_isolates_thermal_noise_drivers"
+    summary: >
+      Spanke2023 isolates two specific thermal-noise drivers of the in-house
+      VECSEL Nr.4 short-term frequency stability: (i) the legacy water
+      chiller's cooling-cycle modulation, fixed by replacement with a
+      PC-water-cooling loop, and (ii) the pump-fibre output holder thermal
+      drift, fixed by a copper cooling sleeve. The combined improvement is
+      a factor of ~ 5 in short-term stability (1.6 MHz Guth2021 free-running
+      -> 300-400 kHz Spanke2023 free-running). This identifies the
+      load-bearing noise sources for the seed-laser-linewidth budget at
+      the in-house operating point and feeds directly into the design
+      decision in Spanke2025 (neXt VECSEL) to pursue passive thermal
+      management with mechanical noise isolation rather than further
+      active-cooling refinement.
+    informs_dossier_entries:
+      - "KD-UV280-015"
+  - id: "free_running_long_term_drift_within_piezo_range"
+    summary: >
+      Long-term Allan variance of the new water-cooled VECSEL Nr.4 is far
+      below the 100 MHz piezo correction range. Operationally this means
+      the laser can run free for several hours and still be tracked by
+      piezo correction; iodine or wavemeter lock is needed only for
+      absolute-frequency reference and longer-term operation. This is the
+      operational baseline against which the seed-laser linewidth budget
+      in 'docs/components/seed-lasers.md' is set.
+    informs_dossier_entries:
+      - "KD-UV280-015"

@@ -1,0 +1,308 @@
+citation_key: "Burd2023"
+source_tier: "P"
+doi: "10.1364/JOSAB.475467"
+citation: "S. C. Burd, J.-P. Penttinen, P.-Y. Hou, H. M. Knaack, S. Ranta, M. Mäki, E. Kantola, M. Guina, D. H. Slichter, D. Leibfried, and A. C. Wilson, Journal of the Optical Society of America B 40, 773-781 (2023)"
+title: "VECSEL systems for quantum information processing with trapped beryllium ions"
+extracted_by: "assistant under steward direction"
+extracted_on: "2026-05-08"
+extraction_status: "DRAFT"
+source_document: "Open-access (Optica) at https://opg.optica.org/josab/fulltext.cfm?uri=josab-40-4-773 ; not committed to repository (publisher-formatted PDF)."
+charter_section_refs:
+  - "§1.5"
+  - "§2"
+  - "§3"
+  - "§5"
+dossier_entries:
+  - "KD-UV280-015"
+
+related_extractions:
+  - "Burd2016"  # 25Mg+ companion: same NIST/Tampere collaboration, two prior VECSEL architectures (IC and VC)
+
+# This extraction is the design-principles anchor for the seed-laser layer of
+# mg-plus-uv-chain (steward direction, 2026-05-08). The system in this paper
+# targets 9Be+ at 235 nm and 313 nm, not 25Mg+ at 280 nm; what carries over is
+# the *design philosophy* — single-frequency narrow-linewidth VECSEL feeding
+# external SHG cavities — not the specific wavelengths or crystal choices.
+
+parameters:
+
+  # ---------------------------------------------------------------------------
+  # System A: 940 nm VECSEL → 470 nm (PPKTP) → 235 nm (BBO)
+  # ---------------------------------------------------------------------------
+  - symbol: "system_A_route"
+    value_text: "940 nm single-frequency VECSEL (2.4 W) -> PPKTP enhancement-cavity SHG (PDH-locked) -> 470 nm (270 mW) -> BBO Brewster-cut enhancement-cavity SHG (Haensch-Couillaud-locked) -> 235 nm (54 mW)"
+    units: null
+    location_in_paper: "Abstract; §3"
+    notes: "9Be+ photoionisation. Drop-in replacement for a 235 nm Ti:Sapphire FHG system; comparable performance for ion-loading."
+
+  - symbol: "lambda_VECSEL_A"
+    value: 940e-9
+    units: "m"
+    location_in_paper: "§2; §3"
+    notes: "Fundamental wavelength of system-A VECSEL. Tuning range ~30 nm achievable via birefringent filter and etalon."
+
+  - symbol: "P_VECSEL_A_single_frequency"
+    value: 2.4
+    units: "W"
+    location_in_paper: "Abstract; §2"
+    notes: "Single-frequency output power at 940 nm; multimode slope efficiency 27 +/- 1 % into a 14.5 W 808 nm pump diode."
+
+  - symbol: "linewidth_VECSEL_A"
+    comparator: "<"
+    value: 1.0e5
+    units: "Hz"
+    location_in_paper: "§2"
+    notes: "Free-running linewidth measured by heterodyne against a free-running Ti:Sapphire reference. <100 kHz; far below the relevant 9Be+ atomic linewidths and below the SHG-cavity-locking bandwidth, so frequency noise is not converted to amplitude noise downstream."
+
+  - symbol: "P_470_after_PPKTP_cavity"
+    value: 0.270
+    units: "W"
+    location_in_paper: "§3"
+    notes: "470 nm output from PPKTP enhancement cavity, with 0.48(2) W of 940 nm injected (cavity-locking instabilities, attributed to thermal lensing in PPKTP, set the upper bound on injected pump near 0.5 W). Conversion 470/940 ~ 56 %."
+
+  - symbol: "P_235_after_BBO_cavity"
+    value: 0.054
+    units: "W"
+    location_in_paper: "Abstract; §3"
+    notes: "235 nm UV output from Brewster-cut BBO enhancement cavity at 0.27 W of 470 nm injected. Visible-to-UV conversion ~ 20 %."
+
+  - symbol: "eta_chain_A_overall"
+    value: 0.022
+    units: "1"
+    location_in_paper: "§3 (computed)"
+    notes: "Overall 940 nm -> 235 nm chain efficiency ~ 54 mW / 2.4 W = 2.2 %. (Fraction of the IR that reaches 235 nm if the full VECSEL output were sent into the chain; the paper injects only 0.48 W of the 2.4 W into the first cavity, so 11 % per the as-built injection split.)"
+
+  # ---------------------------------------------------------------------------
+  # System B: 1252 nm VECSEL → 626 nm (PPLN waveguide) → 313 nm (BBO)
+  # ---------------------------------------------------------------------------
+  - symbol: "system_B_route"
+    value_text: "1252 nm single-frequency VECSEL (1.6 W) -> fiber-coupled PPLN waveguide doubler (NTT WH-0626-000-A-B-C) -> 626 nm (530 mW) -> BBO Brewster-cut enhancement-cavity SHG -> 313 nm (41 mW)"
+    units: null
+    location_in_paper: "Abstract; §4"
+    notes: "9Be+ Doppler cooling and repumping. Drop-in replacement for a Yb-fiber-laser-based 313 nm system; spectroscopic line shape and repumping time constant indistinguishable from the fiber-laser source."
+
+  - symbol: "lambda_VECSEL_B"
+    value: 1252e-9
+    units: "m"
+    location_in_paper: "§2; §4"
+    notes: "Fundamental wavelength of system-B VECSEL. 50 nm tuning range; peak gain near 1231 nm where the same VECSEL produces 3.0 W single-frequency."
+
+  - symbol: "P_VECSEL_B_single_frequency"
+    value: 1.63
+    units: "W"
+    location_in_paper: "Abstract; §2"
+    notes: "Single-frequency output at the operating 1252 nm; slope efficiency 12.5(2) %; pumped by 40.3 W 808 nm multimode diode."
+
+  - symbol: "linewidth_VECSEL_B"
+    comparator: "<"
+    value: 1.1e5
+    units: "Hz"
+    location_in_paper: "§2"
+    notes: "Linewidth measured against an iodine-locked fiber-laser reference at 626 nm and inferred at 1252 nm. <110 kHz; same role as System A linewidth — well below the atomic and cavity-locking bandwidths."
+
+  - symbol: "P_626_after_PPLN_waveguide"
+    value: 0.530
+    units: "W"
+    location_in_paper: "§4"
+    notes: "626 nm output of NTT PPLN waveguide doubler from 1.63 W IR injection; conversion 33(2) % including fiber coupling losses."
+
+  - symbol: "P_313_after_BBO_cavity"
+    value: 0.041
+    units: "W"
+    location_in_paper: "Abstract; §4"
+    notes: "313 nm UV output from BBO buildup cavity at 0.33 W of 626 nm injected. Visible-to-UV conversion ~ 12 %."
+
+  # ---------------------------------------------------------------------------
+  # VECSEL architecture (common to both systems)
+  # ---------------------------------------------------------------------------
+  - symbol: "VECSEL_cavity_topology"
+    value_text: "Linear (I-shape) external cavity, ~125 mm length; gain mirror with bonded diamond heat spreader at one end, partially-transmitting concave output coupler at the other"
+    units: null
+    location_in_paper: "§2; Fig. 1"
+    notes: "Compact, external linear cavity. Long photon-lifetime / short carrier-lifetime ratio puts the VECSEL in the class-A laser regime, suppressing relaxation oscillations and ASE pedestal."
+
+  - symbol: "VECSEL_output_coupler_T"
+    value: 0.02
+    units: "1"
+    location_in_paper: "§2"
+    notes: "Output-coupler transmission ~2 %; output-coupler RoC = 200 mm. Identical for the 940 nm and 1252 nm cavities."
+
+  - symbol: "VECSEL_intracavity_BRF"
+    value_text: "Birefringent filter for coarse mode selection (~80 GHz step rotation; 0.1-1 THz temperature tuning at ~37 GHz/K)"
+    units: null
+    location_in_paper: "§2"
+    notes: "Coarse / intermediate frequency tuning. Combined with the etalon, selects a single longitudinal cavity mode."
+
+  - symbol: "VECSEL_intracavity_etalon"
+    value_text: "1 mm YAG etalon for fine mode selection; 1-100 GHz temperature tuning at ~3 GHz/K"
+    units: null
+    location_in_paper: "§2"
+    notes: "Fine wavelength selection. Mode-hop-free tuning over several GHz is achieved by simultaneously sliding the etalon temperature and the cavity-length PZT."
+
+  - symbol: "VECSEL_PZT_tuning"
+    value: 3.0e7
+    units: "Hz/V"
+    location_in_paper: "§2"
+    notes: "PZT-driven cavity-length tuning: ~30 MHz/V; total range 0.01-1 GHz."
+
+  - symbol: "VECSEL_class_A_dynamics"
+    value_text: "Long external cavity (~125 mm) and short semiconductor carrier lifetime put the VECSEL in the photon-lifetime-dominated (class-A) regime"
+    units: null
+    location_in_paper: "§1; §2"
+    notes: "Consequence: very low intensity noise, no relaxation oscillation, no ASE pedestal. This is the load-bearing design feature — VECSELs trade output power for spectral and intensity purity."
+
+  # ---------------------------------------------------------------------------
+  # Gain-mirror design (940 nm)
+  # ---------------------------------------------------------------------------
+  - symbol: "gain_mirror_A_material"
+    value_text: "GaInAs/GaAs quantum wells, 24 QWs in 12 antinodes (2 per antinode), GaAsP strain compensation, GaAs/AlAs DBR"
+    units: null
+    location_in_paper: "§2"
+    notes: "Resonant periodic gain (RPG) design with QWs at standing-wave antinodes. Active region ~1600 nm; pump absorption ~89 % single-pass."
+
+  - symbol: "gain_mirror_A_heat_management"
+    value_text: "Flip-chip configuration; multi-crystal diamond heat spreader (3x3x0.3 mm) bonded to DBR side; substrate removed by lapping + wet etch; IBS AR coating on exposed semiconductor; soldered to TEC-stabilised water-cooled copper heatsink"
+    units: null
+    location_in_paper: "§2"
+    notes: "Heat sinking is the dominant design constraint that sets max power and spectral cleanliness."
+
+  # ---------------------------------------------------------------------------
+  # Gain-mirror design (1252 nm)
+  # ---------------------------------------------------------------------------
+  - symbol: "gain_mirror_B_material"
+    value_text: "GaInNAs/GaAs quantum wells, 10 QWs (Structure A: 2 per antinode for first 6 QWs, 1 per antinode thereafter), no strain compensation, GaAs/AlAs DBR"
+    units: null
+    location_in_paper: "§2"
+    notes: "Nitrogen incorporation extends the GaInAs/GaAs material system to longer wavelengths via bandgap bowing without forcing prohibitive lattice mismatch. Trade-off: minimise N to limit N-related defects while keeping enough N to reach 1252 nm. Two candidate structures (A vs B) characterised; Structure A selected as closer to target wavelength."
+
+  - symbol: "gain_mirror_B_heat_management"
+    value_text: "Top-emitting intra-cavity configuration; single-crystal diamond heat spreader (3x3x0.25 mm) liquid-capillary-bonded to active region; 2 deg wedge between diamond facets to suppress spurious etalons; IBS AR on diamond top face; copper heatsink with central opening for the intracavity beam"
+    units: null
+    location_in_paper: "§2"
+    notes: "The top-emitting configuration is preferred at longer wavelengths where bonding through the substrate is harder; the 2-degree wedge is the elimination-of-etalon-fringes design feature."
+
+  # ---------------------------------------------------------------------------
+  # Frequency stabilisation and cavity locking (downstream of the VECSEL)
+  # ---------------------------------------------------------------------------
+  - symbol: "VECSEL_A_frequency_reference"
+    value_text: "Wavemeter (940 nm system); long-term drift bounded by the wavemeter accuracy"
+    units: null
+    location_in_paper: "§3"
+    notes: "The 940 nm system is locked to a wavemeter for long-term frequency stability. Adequate for photoionisation."
+
+  - symbol: "VECSEL_B_frequency_reference"
+    value_text: "Iodine-locked fiber laser at 626 nm (existing 313 nm Doppler-cooling reference)"
+    units: null
+    location_in_paper: "§4"
+    notes: "The 1252 nm system inherits the iodine reference of the existing fiber-laser-based 313 nm chain. Critical: the iodine cell sits at the visible (626 nm), not the IR fundamental."
+
+  - symbol: "PPKTP_cavity_locking"
+    value_text: "Pound-Drever-Hall (PDH) on the 940 nm cavity"
+    units: null
+    location_in_paper: "§3"
+    notes: "First-stage SHG enhancement cavity uses PDH because the locking error signal is dispersive and survives the depleted-pump regime that loads the cavity at high injected power."
+
+  - symbol: "BBO_cavity_locking_A_and_B"
+    value_text: "Haensch-Couillaud (HC) polarisation locking on both the 235 nm and 313 nm BBO cavities"
+    units: null
+    location_in_paper: "§3; §4"
+    notes: "Same HC scheme as Friedenauer 2006; the Brewster-cut BBO provides the polarisation-selective element that HC requires. Servo bandwidth typically set by the loaded cavity-mirror piezo resonance."
+
+  # ---------------------------------------------------------------------------
+  # Operational stability
+  # ---------------------------------------------------------------------------
+  - symbol: "VECSEL_A_long_term_drift"
+    comparator: "<"
+    value: 0.10
+    units: "1"
+    location_in_paper: "§3"
+    notes: "Less than 10 % power drift observed over more than 8 months of continuous use at ~ 1 W output. Demonstrates VECSEL operational maturity for trapped-ion-laboratory use."
+
+  - symbol: "purge_environment"
+    value_text: "Dry-nitrogen desiccant purge inside the VECSEL enclosure improves frequency stability and output power at moisture-sensitive wavelengths (especially the 940 nm system)"
+    units: null
+    location_in_paper: "§2"
+    notes: "Environmental control is a VECSEL design parameter, not an afterthought. Relevant when planning the seed-laser enclosure for mg-plus-uv-chain."
+
+  # ---------------------------------------------------------------------------
+  # Atomic validation (9Be+)
+  # ---------------------------------------------------------------------------
+  - symbol: "Be_photoionisation_resonance"
+    value: 1.276080e15
+    units: "Hz"
+    location_in_paper: "§3"
+    notes: "Quadrupled 940 nm -> 235 nm UV resonance frequency for 9Be 1S0 -> 1P1 photoionisation. Agrees with prior literature."
+
+  - symbol: "Be_repumping_time_constant"
+    value: 5.5e-7
+    units: "s"
+    location_in_paper: "§4"
+    notes: "Repumping time constant tau = 0.55(4) us; indistinguishable from the existing fiber-laser-based 313 nm source after intensity normalisation."
+
+open_extraction_items:
+  - "VECSEL relative-intensity-noise (RIN) spectra are not given numerically in the paper; only the class-A regime claim is made. If RIN data are needed for the seed-laser linewidth / amplitude budget, contact the authors or use the Burd2016 RIN measurements (cf. Burd2016 extracted.yaml RIN_IC_280nm_above_10kHz) as a stand-in with caveats."
+  - "VECSEL gain-mirror vendor / manufacturing pipeline (Tampere ORC under Guina) is named but not linked to a specific commercial source; if mg-plus-uv-chain pursues a 1118 nm VECSEL gain mirror, the Tampere group is the natural collaboration anchor."
+  - "Mode-hop-free tuning range is stated as 'several GHz' but not given a single binding figure; relevant when sizing the seed laser's continuous-scan envelope."
+  - "Fiber-coupling losses into the PPLN waveguide are not partitioned from the bulk PPLN conversion (cited as 33(2) % combined); not directly comparable to bulk-PPKTP cavity figures from System A."
+
+extraction_passes:
+  - date: "2026-05-08"
+    by: "assistant under steward direction"
+    scope: >
+      Initial extraction from the open-access JOSAB version of the paper.
+      Sections covered: §1 introduction (VECSEL design philosophy, class-A
+      dynamics motivation), §2 VECSEL designs (gain-mirror materials and
+      heat-management for both 940 nm and 1252 nm; intracavity BRF + etalon +
+      PZT mode-selection scheme; output-coupler geometry; long-term stability),
+      §3 235 nm chain (PPKTP enhancement cavity, BBO buildup cavity, 9Be+
+      photoionisation validation), §4 313 nm chain (PPLN waveguide doubler,
+      BBO buildup cavity, 9Be+ Doppler cooling and repumping validation).
+    status: "DRAFT"
+
+cross_check_notes:
+  - id: "linewidth_principle_carries_to_mg_plus_uv_chain"
+    summary: >
+      Burd2023 §1-§2 makes explicit the design principle that the seed
+      VECSEL linewidth must be considerably less than the relevant atomic
+      linewidth and the SHG-cavity locking bandwidth, so that frequency
+      noise is not converted to amplitude noise by the resonant doubling
+      stages. The 940 nm system meets this with <100 kHz; the 1252 nm
+      system meets it with <110 kHz. For mg-plus-uv-chain at 1118 nm, the
+      same principle binds: the 25Mg+ 3P1/2-3P3/2 detuning window
+      (Delta_ref = 40 GHz at G3 closure) and the LBO+BBO cavity-locking
+      bandwidths set the seed-laser linewidth budget. Friedenauer 2006
+      operated at <200 kHz; the VECSEL state of the art at 1117 nm
+      (Burd2016) is <50 kHz; Burd2023 confirms <100 kHz at adjacent
+      wavelengths is routine. The design principle scales.
+    informs_dossier_entries:
+      - "KD-UV280-015"
+  - id: "class_A_regime_distinguishes_VECSEL_from_fiber"
+    summary: >
+      The class-A laser regime (photon-lifetime dominated, no relaxation
+      oscillation, suppressed ASE pedestal) is the load-bearing reason
+      Burd2023 prefers VECSELs to fiber lasers for this application. For
+      mg-plus-uv-chain this argument bears directly on §8.5 of CHARTER
+      (RIN budget): a VECSEL seed laser would replace the Friedenauer
+      Yb-fiber 1.2 W ASE budget (Friedenauer2006 P_ASE) with a
+      structurally narrower spectrum, removing ASE-handling components
+      from the source-conditioning chain. That is a material change to
+      the upstream architecture and belongs in any future architecture-
+      comparison evaluation under Phase 4 axis 4 (thermal/nonlinear load,
+      since ASE contributes thermal load) and axis 6 (complexity).
+    informs_dossier_entries:
+      - "KD-UV280-015"
+  - id: "wavelength_gap_to_mg_plus_uv_chain_1118nm"
+    summary: >
+      Burd2023 demonstrates VECSELs at 940 nm and 1252 nm. Neither
+      hits the 1118 nm fundamental of the Friedenauer 25Mg+ chain, but
+      Burd2016 already demonstrates 1117 nm and 1141 nm VECSELs from the
+      same NIST + Tampere collaboration. The 1118 nm wavelength is
+      therefore in the demonstrated-gain-mirror envelope; the design
+      principles in Burd2023 transfer without wavelength-specific
+      caveats, with the proviso that the gain-mirror MBE growth and
+      diamond bonding would have to be respecified for the 1118 nm
+      target (in collaboration with Tampere ORC under Guina). This is
+      not a Phase 4 input pre-G1, but it is a viable upstream path that
+      replaces the Friedenauer Yb-fiber pump.
+    informs_dossier_entries:
+      - "KD-UV280-015"

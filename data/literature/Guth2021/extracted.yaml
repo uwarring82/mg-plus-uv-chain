@@ -1,0 +1,290 @@
+citation_key: "Guth2021"
+source_tier: "S"
+doi: null
+citation: "L. Guth, 'Assembling and Benchmarking the Next Generation of Solid-State Laser Systems for Controlling Trapped Magnesium Ions,' Master's thesis, Faculty of Mathematics and Physics, University of Freiburg, August 2021. Supervisor: Prof. Dr. Tobias Schaetz."
+title: "Assembling and Benchmarking the Next Generation of Solid-State Laser Systems for Controlling Trapped Magnesium Ions"
+extracted_by: "assistant under steward direction"
+extracted_on: "2026-05-08"
+extraction_status: "DRAFT"
+source_document: "AG Schaetz internal copy of the deposited thesis PDF; held at data/literature/Guth2021/Guth2021.pdf (not committed to repository)."
+charter_section_refs:
+  - "1.5"
+  - "2"
+  - "3"
+  - "5.4"
+dossier_entries:
+  - "KD-UV280-015"
+
+related_extractions:
+  - "Burd2016"        # NIST/Tampere VECSEL anchor at 1117/1141 nm cited [2] as the design source
+  - "Friedenauer2006" # Yb-fiber + LBO + BBO baseline at 1118 nm that this VECSEL replaces in-house
+  - "Kiefer2020"      # predecessor PhD with the original in-house VECSEL build (Spanke2023 calls it "VECSEL Nr.4" lineage)
+  - "Spanke2023"      # successor BSc that benchmarked and improved this VECSEL ("VECSEL Nr.4")
+  - "Spanke2025"      # next-generation MSc redesign ("neXt VECSEL" / VECSEL Nr.6)
+
+# Guth2021 is the first MSc thesis in the AG Schaetz VECSEL-platform sequence after
+# Kiefer2020. The contribution is two-fold: (i) re-assembling the VECSEL prototype
+# at 1118 nm and producing the first systematic in-house characterisation of its
+# linewidth (1.207(12) MHz iodine-locked), and (ii) building the modular LBO + BBO
+# frequency-doubling cavities ("version 2" and "version 3") that achieve 87(6) %
+# IR -> visible conversion at 1.27 W coupled IR and 10.0(11) % visible -> UV
+# conversion at 780 mW coupled visible. This thesis is the in-house operational
+# reference for the SHG chain.
+
+parameters:
+
+  # ---------------------------------------------------------------------------
+  # VECSEL output (Section 2.1, 3.2)
+  # ---------------------------------------------------------------------------
+  - symbol: "P_out_VECSEL_at_laser_head"
+    value: 2.8
+    units: "W"
+    location_in_paper: "Abstract; Section 3.2; Tab. 8"
+    notes: "VECSEL output power measured directly after the laser head, before fibre coupling. Practical usable power is reduced by 20-25 % due to subsequent resonator + fibre-coupling losses. Gain chip VL1120_4477_842 (Vexlum); same physical platform as Kiefer2020 dissertation."
+
+  - symbol: "lambda_VECSEL"
+    value: 1118e-9
+    units: "m"
+    location_in_paper: "Abstract; Section 2.5"
+    notes: "Operating wavelength 1118 nm (~ 268.0 THz). Frequency range accessible across pump-power tuning: 268.151 THz down to 267.195 THz (1118 nm to 1126 nm) - covers all 25Mg+ transitions after frequency quadrupling (~280 nm)."
+
+  - symbol: "linewidth_VECSEL_iodine_locked_100ms"
+    value: 1.207e6
+    uncertainty: 1.2e4
+    units: "Hz"
+    location_in_paper: "Section 2.3.4 / Tab. 5; Section 3.2 / Tab. 6 / Tab. 8"
+    notes: "Overlapping Allan deviation of the VECSEL frequency at tau = 100 ms when locked to the iodine standard manifold (f_std ~ 536.040890 THz, visible). This is the first quantitative in-house VECSEL linewidth measurement. Comparison: Yb-fibre seed used in the same lab achieves 0.70(5) MHz at 100 ms - the VECSEL prototype is about 40 % broader. Burd2023 940 nm system is < 100 kHz; in-house VECSEL needs further work (delivered subsequently in Spanke2025: 101(8) kHz locked)."
+
+  - symbol: "linewidth_VECSEL_iodine_locked_1s"
+    value: 0.396e6
+    uncertainty: 4e3
+    units: "Hz"
+    location_in_paper: "Section 3.2 / Tab. 6"
+    notes: "Iodine-locked Allan deviation at tau = 1 s. Free-running: 0.715(6) MHz; wavemeter-locked: 0.600(7) MHz. Iodine lock improves stability by ~ 2x at 1 s."
+
+  - symbol: "linewidth_VECSEL_iodine_locked_100s"
+    value: 0.0676e6
+    uncertainty: 8e2
+    units: "Hz"
+    location_in_paper: "Section 3.2 / Tab. 6"
+    notes: "Iodine-locked Allan deviation at tau = 100 s = 67.6(8) kHz. Free-running: 3.52(4) MHz (drift-dominated); wavemeter-locked: 0.359(5) MHz (limited by wavemeter internal drift ~ 10 MHz/day). Iodine lock outperforms free-run by ~ 50x at 100 s."
+
+  - symbol: "linewidth_VECSEL_free_run_100ms"
+    value: 1.635e6
+    uncertainty: 1.3e4
+    units: "Hz"
+    location_in_paper: "Section 3.2 / Tab. 6"
+    notes: "Free-running VECSEL frequency stability at tau = 100 ms = 1.635(13) MHz. This is the baseline against which Spanke2023 (factor-5 improvement to ~ 700 kHz with new water cooling) and Spanke2025 (110(4) kHz with noise-isolation box) measure progress."
+
+  - symbol: "tuning_range_continuous"
+    value_text: "Several 100 GHz mode-hop-free range from BRF + etalon + PZT combined; tunability comfortably covers all 25Mg+ transitions of interest"
+    units: null
+    location_in_paper: "Section 3.1; Tab. 8"
+    notes: "Compared to ~100 GHz of the previous Yb-fibre laser. PZT mode-hop-free span at fixed BRF/etalon temperatures: ~ 100 MHz (78 MHz/V piezo gain reported in Spanke2023)."
+
+  - symbol: "thermalisation_time"
+    value_text: "Three-phase thermalisation: phase 1 (gain chip, 0-10 min, k1 = 0.327(2) /min, freq increase ~ 0.55 GHz); phase 2 (etalon, 9-80 min, k1 = 0.0240(2) /min, freq increase ~ 0.36 GHz); phase 3 (thermalised, > 80 min, residual drift slope 1.596(7) MHz/min)"
+    units: null
+    location_in_paper: "Section 3.1"
+    notes: "VECSEL warm-up time after switching on the pump laser (after ~ 14 h off): output power decreases to 80 % of maximum after etalon phase, then stabilises. Output-power Allan deviation in the third interval has slope 0.0049(5) a.u./min."
+
+  - symbol: "VECSEL_thermalisation_continuous_recommendation"
+    value_text: "Pump laser is the only element switched off when the VECSEL is not in use; TECs and water-cooling system kept active to bound thermalisation effects"
+    units: null
+    location_in_paper: "Section 3.1"
+    notes: "Operational practice that minimises warm-up time. Carried forward in Spanke2023 / Spanke2025."
+
+  # ---------------------------------------------------------------------------
+  # SHG: LBO bow-tie ring cavity (Section 2.2, 3.3)
+  # ---------------------------------------------------------------------------
+  - symbol: "LBO_cavity_topology"
+    value_text: "Bow-tie ring cavity; M1 input coupler R = 97.5 %; Haensch-Couillaud lock; same Friedenauer2006-style geometry as Kiefer2020 SHG chain"
+    units: null
+    location_in_paper: "Section 2.2.2 'Geometry of Cavities'"
+    notes: "Two cavity revisions characterised: 'version 2' (older build) and 'version 3' (new build of this thesis)."
+
+  - symbol: "P_visible_v3_max"
+    value: 1.11
+    uncertainty: 7e-2
+    units: "W"
+    location_in_paper: "Section 3.3 / Fig. 41"
+    notes: "Highest measured second-harmonic visible output of LBO cavity v3 at coupled IR power P_F = 1.27(4) W. Conversion eta_IR_to_visible = 87(6) %. Implies LBO v3 passive losses x'_3 = L / (2 sqrt(E)) = 0.0008(2) /sqrt(W) - far smaller than v2's 0.054(4) /sqrt(W)."
+
+  - symbol: "P_visible_v2_max"
+    value: 0.820
+    uncertainty: 6e-3
+    units: "W"
+    location_in_paper: "Section 3.3 / Fig. 41"
+    notes: "Highest measured SH output of LBO cavity v2 at P_F = 1.50(5) W. Conversion eta = 56(4) %. v3 vs v2 efficiency improvement (87 % vs 56 %) attributed to improved passive cavity losses + better mode-matching."
+
+  - symbol: "LBO_v3_passive_loss_figure_of_merit"
+    value: 0.0008
+    uncertainty: 2e-4
+    units: "1/sqrt(W)"
+    location_in_paper: "Section 3.3"
+    notes: "x' = L / (2 sqrt(E)) figure of merit; x'_v3 = 0.0008(2) << x'_v2 = 0.054(4). Lower x' -> higher SHG efficiency at fixed coupled IR power. The smaller value sets the lower limit of v3's true passive loss; quality of coupling and mode-matching also contributes."
+
+  - symbol: "LBO_v3_relative_stability_200ms"
+    value: 0.01563
+    uncertainty: 1.3e-4
+    units: "1"
+    location_in_paper: "Section 3.3 / Tab. 7"
+    notes: "Relative overlapping Allan deviation of LBO v3 visible output at tau = 200 ms = 1.563(13) %. v2: 2.287(9) %. v3 is ~ 30 % more stable on this timescale - attributed to improved passive cavity stability."
+
+  - symbol: "LBO_v3_relative_stability_1s"
+    value: 0.00781
+    uncertainty: 6e-5
+    units: "1"
+    location_in_paper: "Section 3.3 / Tab. 7"
+    notes: "Relative Allan deviation at tau = 1 s = 0.781(6) % for v3 vs 2.497(10) % for v2 - v3 is factor 3 more stable."
+
+  - symbol: "LBO_v3_relative_stability_100s"
+    value: 0.002679
+    uncertainty: 2.2e-5
+    units: "1"
+    location_in_paper: "Section 3.3 / Tab. 7"
+    notes: "Relative Allan deviation at tau = 100 s = 0.268(2) % vs 0.525(2) % for v2; both well below 1 %. Long-term drift attributed to crystal heating + non-critical phase-matching shift under steady-state load."
+
+  - symbol: "LBO_phase_matching"
+    value_text: "Critically phase-matched, temperature-controlled; non-critical phase-matching condition (NCPM) - implication is local crystal heating shifts efficiency on long timescales"
+    units: null
+    location_in_paper: "Section 3.3 (discussion of long-timescale drift)"
+    notes: "LBO is operated as a temperature-tuned NCPM stage; thermal lensing under high coupled IR power is the documented stability bottleneck."
+
+  # ---------------------------------------------------------------------------
+  # SHG: BBO ring cavity (Section 2.2, 3.4)
+  # ---------------------------------------------------------------------------
+  - symbol: "BBO_cavity_topology"
+    value_text: "Ring cavity, critically phase-matched, near 280 nm (lambda_D2)"
+    units: null
+    location_in_paper: "Section 2.2; Section 3.4"
+    notes: "Same Friedenauer2006 BBO ring cavity topology. Stability and passive-loss characterisation of the BBO cavity is left as future work in this thesis."
+
+  - symbol: "P_UV_at_BBO_output"
+    value: 0.078
+    uncertainty: 5e-3
+    units: "W"
+    location_in_paper: "Section 3.4 / Discussion §4"
+    notes: "78(5) mW of 280 nm UV light generated from 780(15) mW of coupled visible. eta_visible_to_UV = 10.0(11) %. No statement made about passive losses or stability - explicit follow-up item."
+
+  - symbol: "P_visible_into_BBO"
+    value: 0.780
+    uncertainty: 1.5e-2
+    units: "W"
+    location_in_paper: "Section 3.4 / Discussion §4"
+    notes: "Coupled visible power at the BBO input that produces the 78 mW UV. Note: this is a small fraction of the LBO v3 maximum of 1.11(7) W - i.e. the BBO conversion is measured in a regime well below the LBO source's full output."
+
+  # ---------------------------------------------------------------------------
+  # Frequency stabilization (Section 2.3)
+  # ---------------------------------------------------------------------------
+  - symbol: "iodine_lines_used"
+    value_text: "f_b ~ 536.03960 THz (benchmark manifold; transition strength ~ 6x stronger than standard) and f_std ~ 536.040890 THz (standard manifold; closer to target frequency)"
+    units: null
+    location_in_paper: "Section 2.3.3"
+    notes: "Doppler-free saturation spectroscopy on iodine. Standard manifold typically used for frequency lock at f_BD; benchmark manifold useful for adjustment due to higher S/N. Same iodine-spectroscopy approach as Kiefer2020 / Friedenauer2006."
+
+  - symbol: "iodine_lock_PD_bandwidth"
+    value: 1.25e5
+    units: "Hz"
+    location_in_paper: "Section 2.3.3"
+    notes: "Nirvana photodiode bandwidth = 125 kHz - fundamentally limits the iodine-lock control bandwidth. Servo voltage processing is analog, kept fast."
+
+  - symbol: "wavemeter"
+    value_text: "HighFinesse - same as Kiefer2020 (WSU-30 family)"
+    units: null
+    location_in_paper: "Section 2.3.2"
+    notes: "Internal wavemeter drift ~ 10 MHz/day - dominates the long-term (> 100 s) frequency stability when locking to wavemeter alone."
+
+  - symbol: "operating_frequency_for_25Mg_groundstate_cooling"
+    value: 268.001790e12
+    uncertainty: 5e6
+    units: "Hz"
+    location_in_paper: "Discussion §4"
+    notes: "VECSEL set to f = 268.001790(5) THz for ground-state cooling experiments using the procedures developed in this thesis. 25Mg+ ions cooled near motional ground state with this VECSEL replacing the previous fibre laser."
+
+  - symbol: "beat_note_modulation_unresolved"
+    value: 5.6e7
+    uncertainty: 4e6
+    units: "Hz"
+    location_in_paper: "Section 2.3.4 / Fig. 37"
+    notes: "Optical beat-note between fibre laser and VECSEL shows unexplained 56(4) MHz width modulation; cause not identified within this thesis. Optical beat-note locking ruled out for this prototype until root cause is found. Possible candidates: SHG-cavity PZT noise; VECSEL high-frequency amplitude or frequency noise."
+
+  # ---------------------------------------------------------------------------
+  # Comparison to fibre laser (Tab. 8 in §4)
+  # ---------------------------------------------------------------------------
+  - symbol: "comparison_fibre_vs_VECSEL"
+    value_text: "Single-mode bandwidth: requirement << 41 MHz, fibre 0.70(5) MHz, VECSEL 1.207(12) MHz. Tunability: requirement 1 GHz, fibre ~ 100 GHz, VECSEL several 100 GHz. Output power: requirement no upper limit, fibre 3 W, VECSEL 2.8 W (after head, no fibre coupling included)."
+    units: null
+    location_in_paper: "Section 4 / Tab. 8"
+    notes: "Direct comparison: VECSEL meets atomic-linewidth requirement (<< 41 MHz) but is ~ 40 % broader than the fibre laser at 100 ms. Tunability significantly exceeds fibre. Output power slightly below fibre due to fibre-coupling losses not yet optimised. Material cost ~ EUR 20,000 (moderate)."
+
+  - symbol: "fibre_laser_obsolescence"
+    value_text: "Koheras / Menlo fibre lasers no longer sold by manufacturer; the VECSEL is the in-house replacement strategy"
+    units: null
+    location_in_paper: "Section 1"
+    notes: "Operational driver for building VECSELs in-house: the Yb-fibre laser supply chain has lapsed."
+
+  # ---------------------------------------------------------------------------
+  # Future-build note
+  # ---------------------------------------------------------------------------
+  - symbol: "second_VECSEL_under_construction"
+    value_text: "Second VECSEL at lambda = 1140 nm being built as photoionisation laser (red-detuned gain chip); first VECSEL was tuned to f = 268.001790 THz to replace the defective Doppler-cooling fibre laser; two more VECSELs planned at thesis date (August 2021)"
+    units: null
+    location_in_paper: "Discussion §4"
+    notes: "Demonstrates the in-house plan to replicate VECSELs across the laser-system fleet. The 1140 nm photoionisation VECSEL operates at the 4 lambda_D2 + offset point - matches the Burd2016 1141 nm IC system at NIST."
+
+open_extraction_items:
+  - "BBO cavity passive losses and Allan-deviation stability are not measured in Guth2021 (left as explicit follow-up). The 78(5) mW / 780(15) mW = 10.0(11) % conversion is the only BBO-stage figure given. Updated BBO stability data may exist in subsequent in-house work (Spanke2023, Spanke2025) or unpublished lab logbooks."
+  - "VECSEL RIN spectrum is not published. The unresolved 56(4) MHz beat-note modulation hints at a high-frequency amplitude or frequency noise source on the VECSEL or fibre-laser side; root cause not identified in the thesis."
+  - "Fibre coupling losses on the VECSEL output (cited as 20-25 % reduction of usable power) are not partitioned by mode-matching vs propagation. Improvements to fibre coupling are out of scope of the thesis."
+  - "LBO cavity v3 mode-matching efficiency is acknowledged as a contributor to the figure of merit x'_3 = 0.0008(2) /sqrt(W); not partitioned from the bare passive-loss component."
+
+extraction_passes:
+  - date: "2026-05-08"
+    by: "assistant under steward direction"
+    scope: >
+      VECSEL+SHG-focused extraction of Section 2.1 (VECSEL as IR source),
+      Section 2.2 (Frequency multiplication via SHG: LBO + BBO), Section 2.3
+      (Frequency stabilisation: wavemeter + iodine + beat-note), Section 3
+      (Results: thermalisation, frequency stability, LBO comparison, BBO UV
+      generation), and Section 4 (Discussion + comparison to fibre laser).
+      Status DRAFT pending steward sign-off.
+    status: "DRAFT"
+
+cross_check_notes:
+  - id: "guth_first_quantitative_in_house_linewidth"
+    summary: >
+      Guth2021 is the first AG Schaetz thesis with a quantitative in-house
+      VECSEL linewidth measurement. Iodine-locked Allan deviation at 100 ms
+      is 1.207(12) MHz. Previous in-house statements (Kiefer2020) cited
+      Burd2016's ~ 50 kHz figure without measuring directly. The Guth2021
+      number is about 12x broader than Burd2016 / Burd2023 940 nm VECSELs,
+      indicating that the first in-house build did not reach
+      design-principle-level performance. Spanke2025 closes most of this
+      gap (101(8) kHz locked, with noise-isolation box).
+    informs_dossier_entries:
+      - "KD-UV280-015"
+  - id: "lbo_v3_to_v2_jump_is_passive_losses"
+    summary: >
+      The LBO v3 cavity achieves 87(6) % NIR -> visible conversion at 1.27 W
+      coupled IR; v2 achieved only 56(4) %. The figure-of-merit x' decreased
+      from 0.054(4) /sqrt(W) (v2) to 0.0008(2) /sqrt(W) (v3) - a ~ 70x
+      reduction in (passive_losses / sqrt(SHG_efficiency)). For Phase NG-A
+      (LBO L_passive gap closure in the next-gen workplan), this is the
+      operational benchmark: in-house cavity-build practice can produce
+      sub-percent passive losses on the LBO ring at 1118 nm. Carried forward
+      to the architecture-comparison framework as an upstream operational
+      datum.
+    informs_dossier_entries:
+      - "KD-UV280-015"
+  - id: "shg_chain_reproduces_friedenauer2006"
+    summary: >
+      The Guth2021 SHG chain (LBO bow-tie ring with HC lock + BBO ring with
+      HC lock, NIR -> visible -> UV at 280 nm) reproduces the Friedenauer2006
+      topology with the in-house VECSEL substituted for the Yb-fibre seed.
+      The 78(5) mW UV output at 780(15) mW visible input is below the
+      Friedenauer2006 reference baseline but consistent with the early-build
+      stage of the new BBO cavity (no stability characterisation yet at
+      the time of writing).
+    informs_dossier_entries:
+      - "KD-UV280-015"
