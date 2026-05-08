@@ -11,6 +11,25 @@
   <link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/notebook.css' | relative_url }}">
   <link rel="icon" type="image/svg+xml" href="{{ '/assets/emblem-32.svg' | relative_url }}">
+
+  <!-- MathJax 3 (loaded only on notebook pages so the rest of the site
+       isn't burdened with the JS payload). Tutorials use $...$ for
+       inline math and $$...$$ for display math, matching what Jupyter
+       writes into the rendered HTML. processEscapes lets \$ stay
+       literal. The default skipHtmlTags includes <code> and <pre>, so
+       dollar signs inside code blocks are not processed. -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 <body>
   <a href="#content" class="skip-link">Skip to content</a>

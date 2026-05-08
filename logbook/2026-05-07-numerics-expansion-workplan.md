@@ -380,11 +380,13 @@ and is out of Phase 4 scoring scope.
 - Add a `Tutorials` page to `/docs/`, listing the notebook set with rendered HTML output.
 - Update `/docs/calculations.md` to point to the new modules and the tutorials.
 - Cross-link from [`/docs/components/inventory.html`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/docs/components/inventory.md) under "Section G — next actions": once the IC-reflectivity tutorial is online, the on-shelf coupling-strength sweep (I-B10) becomes the natural worked example.
-- **Notebook rendering pipeline.** [`docs/_config.yml`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/docs/_config.yml) currently excludes `*.py` from the Jekyll build, which correctly hides the jupytext-paired source. The pipeline:
-  1. `jupyter nbconvert --to notebook --execute notebooks/tutorials/*.py` (executes against the test environment; produces `.ipynb`).
-  2. `jupyter nbconvert --to html --template lab notebooks/tutorials/*.ipynb --output-dir docs/tutorials/` (HTML output served by Jekyll).
-  3. Both `.ipynb` and rendered `.html` are committed under `docs/tutorials/` so GitHub Pages serves a static, reproducible page set; the `.py` source remains the version-controlled truth.
-  4. A `Makefile` (or single shell script) at the repo root captures this; CI runs it on each PR so broken notebooks fail the build.
+- **Notebook rendering pipeline (as shipped — supersedes the earlier draft of this list).** [`docs/_config.yml`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/docs/_config.yml) excludes `*.py` from the Jekyll build, so the jupytext-paired source files are not exposed by Jekyll. The implemented pipeline is in [`scripts/render_tutorials.py`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/scripts/render_tutorials.py) and runs:
+  1. `jupytext.read()` on each `notebooks/tutorials/NN-*.py` source.
+  2. `nbclient.NotebookClient.execute()` with `resources={"metadata": {"path": REPO_ROOT}}` so the kernel cwd is forced at the repo root (nbconvert's CLI does not expose a working `cwd` / `kernel_cwd` flag — the documented options are silently ignored in nbconvert 7).
+  3. `nbconvert.HTMLExporter` with `template_name = "basic"`. Despite its name, the `basic` template in nbconvert 7 emits a complete `<html><head><body>` document with embedded JupyterLab CSS variables; the script extracts only the `<body>` content with a regex and prepends Jekyll front matter (`layout: notebook`, title from the first H1) so [`docs/_layouts/notebook.html`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/docs/_layouts/notebook.html) wraps it with site chrome.
+  4. Cell-level styling lives in [`docs/assets/notebook.css`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/docs/assets/notebook.css) and targets nbconvert 7's `jp-*` class names.
+  5. Both `.ipynb` and rendered `.html` are committed under `docs/tutorials/` so GitHub Pages serves a static, reproducible page set; the `.py` source remains the version-controlled truth.
+  6. A [`Makefile`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/Makefile) at the repo root captures this. The render is byte-idempotent (see Phase F follow-up), so a CI job running `make tutorials && git diff --exit-code docs/tutorials/` would fail on broken or drifted notebooks.
 
 ### Phase G · Documentation surface ✅ **DONE 2026-05-07** (commit `ec76fc0`)
 
