@@ -42,6 +42,39 @@ What does relax at the 50 mW UV target:
 
 In Charter terms this is *not* a relaxation of the reference triple — Level 0 and Level 1 for the cooling-and-repumping task are unaffected. What changes is the **task allocation between architectures**: cooling+repumping → this CW chain at ~ 50 mW UV (~ 500 mW visible); Raman → pulsed chain at the red-detuned operating point. The 500 mW UV anchor of CHARTER §1.5 was a single-architecture figure; the slate-of-three approach decomposes it.
 
+## Visible-power go/no-go boundaries (P3 from 2026-05-08 review)
+
+The ~ 500 mW @ 559 nm visible target is **derived**, not free: `P_visible = P_UV_target / η_BBO`. Bounding η_BBO at the in-house operating point gives explicit go/no-go thresholds that the IC-VECSEL must clear before the architecture is admissible:
+
+| BBO efficiency η_BBO | Required P_visible (for 50 mW UV) | Status of the IC-VECSEL output requirement |
+|---|---|---|
+| 30 % (optimistic, [Burk21]-style hard fluoride + tight waist) | 167 mW | **Inside [Burd16] envelope** (~ 30–80 mW) → modest scaling; viable |
+| 20 % (optimistic-conservative midpoint) | 250 mW | **At [Burd16] envelope upper edge** → still viable but no headroom |
+| 10 % ([Guth21] in-house operational) | 500 mW | **~ 5–10× beyond [Burd16] envelope** → scaling is the load-bearing question |
+| 7 % ([Frie06] published) | 714 mW | **~ 10× beyond [Burd16] envelope** → conservative-case requirement |
+
+**Decision rule (binding for the architecture's admissibility):**
+
+- If the IC-VECSEL **cannot deliver > 250 mW visible** at 559 nm at the operating point: the architecture **fails even at the optimistic (η_BBO = 20 %) BBO efficiency**.
+- If the IC-VECSEL **cannot deliver > 170 mW visible**: the architecture **fails even at the most-optimistic plausible (η_BBO = 30 %) efficiency** and is therefore **not admissible** as a Phase 4 candidate.
+- The 500 mW visible figure is the **conservative-case** target consistent with the demonstrated in-house [Guth21] BBO efficiency; until a higher BBO efficiency is *measured*, the conservative target binds.
+
+These thresholds are the go/no-go numbers the open `shg_intracavity.py` notebook exploration must compute against. **Until the primitive lands and a sweep at the 1118 nm intracavity-doubled operating point reports the achievable visible output with sensitivity envelope, the ~ 500 mW visible figure is unfalsifiable** and the architecture cannot be promoted to a Phase 4 candidate. See `REQ-IC-001` and `REQ-IC-003` in the [requirements specification](requirements.html) for the formal spec hooks.
+
+## G1 inheritance and G2-failure impact (P1 from 2026-05-08 review)
+
+**G1 inheritance.** This sketch holds the BBO ring + 559 nm input geometry topologically equivalent to the [Friedenauer 2006 baseline](friedenauer-2006.html); the 14 GHz unlockable-domain anomaly (CHARTER §8.1) is therefore **inherited unchanged** at the BBO stage. The IC-VECSEL replaces the Yb-fibre + external LBO ring upstream, which removes one cavity-locking surface from the G1 search space, but the BBO-stage anomaly carries forward. G1 closure remains a Phase 2 discriminant-scan task, not a simulation task.
+
+**G2-failure impact.** The sketch's sealed-envelope atmosphere control is a *candidate* G2 mitigation, not a closure. If G2 closes at a worse-than-hoped degradation rate, the impact on this architecture is bounded as follows:
+
+| If G2 closes at … | Impact on the IC-VECSEL alternative | Mitigation already in design | Fallback |
+|---|---|---|---|
+| ≤ 5 %/100 h UV-output drop | Marginal — sealed envelope absorbs most of the stress; 50 mW UV cooling target stays viable for ≥ 1000 h between maintenance | Atmosphere class A (UHV) or B (N₂ purge) per [Burk21] | None needed |
+| 10–20 %/100 h | Manageable — sealed envelope insufficient on its own; need hard-fluoride coatings + tighter waist + reduced visible drive | Promote atmosphere class to A; relax `REQ-IC-001` only if `REQ-IC-003` escape clause activates | Increase visible drive to compensate; accept shorter BBO-mirror life |
+| > 20 %/100 h | Architecture failure-mode envelope exceeded; UV output drops below 40 mW within < 200 h | Architectural change required (e.g. switch to single-pass UV with build-up only at 559 nm) | Architecture withdrawn; cooling falls back to next-gen Friedenauer-topology chain |
+
+The sealed envelope reduces the *probability* of the higher-rate scenarios but does not eliminate them; G2 closure measurement is what bounds the actual rate.
+
 ## Topology
 
 ```

@@ -80,6 +80,27 @@ The Ti:S repetition rate (or its sub-/super-harmonic) chosen commensurate with m
 
 The Yb-fibre alternative (1030–1118 nm fundamental, *quadrupled* to ~ 257–280 nm) exists as a fallback that maximally reuses the existing 1118 nm BOM, but the Ti:S route at 870–960 nm → tripled to 290–320 nm is the natural fit for the *tens-of-nm-red-detuned* operating point and matches the Monroe-group precedent most directly.
 
+## Ti:S operating point — nominal + sensitivity envelope (P2 from 2026-05-08 review)
+
+The earlier framing left the Ti:S parameters as ranges (~ 870–960 nm fundamental, ~ 80–100 MHz rep rate, ~ 100 fs pulse, ~ 1–2 W average). Ranges this wide are not falsifiable — they cannot be plugged into a peak-intensity / conversion-efficiency calculation. Tightened operating point:
+
+| Parameter | Nominal | Lower | Upper | Notes |
+|---|---|---|---|---|
+| λ_fund | 920 nm | 870 nm | 960 nm | Tripled to ~ 307 nm at nominal (~ 27 nm red-detuned from ²⁵Mg⁺ ³P₃/₂); tripled to ~ 290 / 320 nm at the bounds (~ 10 / 40 nm red-detuned) |
+| f_rep | 80 MHz | 80 MHz | 100 MHz | Sets the duty-cycle amplification |
+| τ_pulse | 100 fs | 50 fs | 150 fs | Transform-limited; sets peak intensity at fixed pulse energy |
+| P_avg | 1.5 W | 1.0 W | 2.0 W | Average IR power before tripler |
+
+**Derived quantities at nominal** (λ = 920 nm, f_rep = 80 MHz, τ = 100 fs, P_avg = 1.5 W):
+
+- Pulse energy `E_pulse = P_avg / f_rep ≈ 19 nJ`.
+- Peak intensity at w₀ = 20 µm focus: `I_peak ≈ E_pulse / (τ_pulse · π w₀²) ≈ 60 GW/cm²`.
+- Single-pass third-harmonic efficiency at 920 nm → 307 nm in BBO: bounded by `pulsed_shg_single_pass.py` primitive (open follow-up); plausible η_SHG ≈ 30 %, η_SFG ≈ 20 % give average UV ≈ 90 mW.
+
+**Detuning constraint.** *"Tens of nanometres red-detuned"* tightens to: **Δλ ≥ 20 nm** (≈ 70 THz from the ³P₃/₂ line) is the minimum acceptable red shift; the preferred target is **Δλ ≈ 30 nm** (≈ 100 THz). At the lower bound λ_fund = 870 nm, the tripled output sits at ≈ 290 nm = ~ 10 nm red-detuned, which is *insufficient* under this rule and forces λ_fund ≥ 880 nm (tripled ≥ 293 nm).
+
+**Single-pass tripling efficiency floor.** The current "0.1–0.5 W average UV" is an assertion, not a derived bound. Defining the **minimum acceptable UV average power** to drive the Raman Ω_R per gate at the chosen detuning and waist is `REQ-PR-008`. If the single-pass route falls short of that minimum, fallback options activate: Yb-fibre quadrupled at 1030 nm (lands at 257 nm = blue-detuned, wrong sign for this option's premise), or OPA-assisted tripling at lower peak intensity. Both fallbacks add complexity and need their own architecture sketches.
+
 ## What it changes vs the existing CW chain
 
 | Element | [Friedenauer 2006](friedenauer-2006.html) | [Next-gen workplan](next-gen.html) | [IC-VECSEL alternative](ic-vecsel-alternative.html) | This sketch |
@@ -104,6 +125,18 @@ The Yb-fibre alternative (1030–1118 nm fundamental, *quadrupled* to ~ 257–28
 | **Multi-level ²⁵Mg⁺ pulse-train model — Phase 4 acceptance prerequisite** | ⏳ open — scaling-argument prose (1/Δ², duty-cycle) is *not* sufficient. Acceptance requires a multi-level ²⁵Mg⁺ model with both ³P₁/₂ and ³P₃/₂ addressed simultaneously by the ~ 3 THz comb spectral envelope, validated against a Monroe-group Yb⁺ benchmark before being applied to ²⁵Mg⁺. |
 | Council-3 deliberations | ⏳ requested if and when promotion to Phase 4 candidate is desired: (i) CHARTER §3 scope question, (ii) multi-operating-point question |
 | Phase 4 candidate-slate opening | ⏳ gated by G1 + G2 closure + the two Council-3 deliberations above |
+
+## G2-failure impact (P1 from 2026-05-08 review)
+
+Pulsed peak fluence at the BBO output is comparable to or higher than the CW intensity at the next-gen chain output; G2 (UV-induced degradation) is *not* sidestepped by going pulsed and may in fact be tightened. Impact bounds if G2 closes worse than hoped:
+
+| If G2 closes at … | Impact on the pulsed-Raman alternative | Mitigation already in design | Fallback |
+|---|---|---|---|
+| ≤ 5 %/100 h UV-output drop | Marginal — UV stays within Raman-Ω_R envelope for ~ 1000 h; maintenance interval comparable to next-gen | Tight focus + clean optics; rack-internal cleanliness | None needed |
+| 10–20 %/100 h | Tight — pulsed peak fluence likely accelerates surface contamination; need larger spot size or lower rep rate | Larger BBO waist (relaxes peak fluence at fixed Ω_R); lower repetition rate (lowers average power) | Move to OPA-assisted tripling at lower peak intensity |
+| > 20 %/100 h | Architecture failure-mode envelope exceeded; pulsed peak fluence is the dominant accelerator | Replacement of single-pass BBO tripler with cavity-enhanced visible + single-pass UV, or full alternative architecture | Architecture withdrawn |
+
+(Note: the entire G2-failure-impact analysis here is contingent on the CHARTER §3 scope question being resolved per the [Council-3 trigger](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-09-council-3-trigger-task-split-success-criterion.md). Until that trigger disposes, the analysis is forward-looking only.)
 
 ## Boundaries (what this page is **not**)
 

@@ -98,3 +98,79 @@ needed regardless of whether the eventual build is single-architecture
 (next-gen workplan as-is) or two-architecture (IC-VECSEL + pulsed-Raman).
 The slate-of-three is presented for steward and Council-3 deliberation,
 not as a decision in advance of G1 / G2 closure.
+
+The task-split disposition is in turn gated by the [Council-3 trigger filed
+2026-05-09](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-09-council-3-trigger-task-split-success-criterion.md);
+until that trigger is disposed, the IC-VECSEL alternative + pulsed-Raman
+alternative pair sits as forward-looking sketches only, not as Phase 4
+candidates.
+
+---
+
+## Traceability matrix — architecture parameters → Level 0 / Level 1 (P5)
+
+Every parameter feeding into Phase 4 scoring traces back to a Level 0
+(reference triple, locked at G3) or Level 1 (loss-budget-derived, source-
+side-mapped) parent. The table below makes that lineage explicit so
+sensitivity analyses on any architecture parameter can identify the
+binding upstream constraint.
+
+| Parameter | Architecture | Level 0 / 1 parent | If this drifts, what breaks? |
+|---|---|---|---|
+| `P_UV` = 500 mW (nominal) | Next-gen | Level 1 — UV power after loss budget | Raman Ω_R (overhead consumed); loss-budget headroom |
+| `P_UV` = 50 mW (cooling + repump) | IC-VECSEL | Level 1 — same, under task split | Detection SNR, cooling rate |
+| `P_visible` = 500 mW @ 559 nm | IC-VECSEL | Level 1 — derived from `P_UV` / η_BBO | Visible-stage scaling envelope; go/no-go thresholds |
+| Δ_ref = 40 GHz | All CW chains | Level 0 — locked at G3 | Γ_sc, AC Stark shift |
+| Δ ≈ 100 THz (~ 30 nm red) | Pulsed-Raman | Level 0 — tightened detuning at separate operating point | Ω_R (must be recovered by peak intensity) |
+| Ω_R / 2π = 400 kHz | All | Level 0 — locked at G3 | Gate speed, scattering / gate |
+| Γ_sc = 2.0 × 10⁴ s⁻¹ | All CW | Level 0 — locked at G3 | Gate fidelity |
+| `S_φ(f) ≤ −101 dBc/Hz` | All | Level 0 — locked at G3 | Gate infidelity |
+| `Δν_source` ≤ 500 kHz | All CW | Level 1 — absolute linewidth | Detection SNR, long-term drift |
+| M² ≤ 1.2 | All | Level 1 — beam quality | Ion-side waist, Ω_R uniformity |
+| `L_passive` per stage | Next-gen, IC-VECSEL | Level 1 — impedance match | Buildup, UV output, thermal load |
+| `T_oven` stability | Next-gen, IC-VECSEL | Level 1 — thermal-load envelope | Phase-matching drift, output stability |
+| `P_pump` ≤ 10 W | Next-gen | Level 1 — thermal-load envelope (`constraints/loss-budget.md` §3.1) | Crystal damage, coating degradation |
+| Sealed-envelope class (UHV / N₂ purge / rough vacuum) | IC-VECSEL | Level 1 — UV robustness (G2-dependent) | Degradation rate, lifetime |
+| `f_rep` jitter, `f₀` lock residual | Pulsed-Raman | Level 1 — timing stability | Motional dephasing |
+| `τ_pulse`, `λ_fund` | Pulsed-Raman | Level 1 — derived from Δ, Ω_R | Conversion efficiency, spectral overlap |
+
+Per-parameter detailed specs live in the [requirements
+specification](requirements.html); per-architecture full Charter §9 /
+Coastline / Sail / G1-G2-G3 statements live in each architecture page's
+backing logbook entry.
+
+---
+
+## Phase 4 axis readiness checklist (P4)
+
+The six fixed Phase 4 scoring axes (CHARTER §5.2, [`docs/principles.md`](../principles.html))
+are not yet populated for the slate. The table below records each
+axis × architecture cell with a draft state and the data source needed
+to land a final score. **The slate is not opened for Phase 4 scoring
+until every cell carries at least a draft value with citation.**
+
+| Axis | Next-gen 500 mW | IC-VECSEL alternative | Pulsed-Raman alternative | Data source |
+|---|---|---|---|---|
+| **1 Raman capability** | TBD — depends on NG-C (IC reflectivity sweep) and NG-D (crystal geometry) results at 500 mW | N/A under task split — Raman task is offloaded; CW chain serves cooling + repumping only | TBD — depends on `pulsed_raman_kicks.py` primitive + multi-level ²⁵Mg⁺ model (`REQ-PR-009`) | Simulation in `/notebooks/exploration/`; literature ([Burd16] for CW; Monroe-group ultrafast extractions for pulsed) |
+| **2 Phase coherence** | TBD — depends on rack-output linewidth and RIN (`REQ-NG-003`) | TBD — depends on PDH residual phase noise (`REQ-IC-003` adjacent) and IC-VECSEL inherent linewidth | TBD — depends on f_rep / f₀ lock residuals (`REQ-PR-006`) and timing-jitter spectrum (`REQ-PR-007`) | Phase 2 baseline measurement (CW); vendor + bench-test (pulsed) |
+| **3 UV robustness** | TBD — bounded by NG-E loss-budget anchoring + G2-closure outcome | **Better** — sealed envelope is architectural mitigation for surface-contamination LIDT; atmosphere-class-A or B per [Burk21] | **Worse** — pulsed peak fluence may accelerate degradation; mitigation requires larger spot or lower rep rate | G2-closure measurement campaign + [Brow19] / [Burk21] / [Turc22] envelope |
+| **4 Thermal / nonlinear load** | TBD — depends on NG-D (crystal geometry sweep and walk-off penalty factor) at 500 mW | **Lower** — 50 mW UV target reduces thermal stress at the BBO output; 500 mW visible target inside the [Burd16] envelope only if `REQ-IC-003` activates | **Lower** — no buildup cavities mean no IC mode-matching thermal load; pulsed average power modest (≤ 0.5 W UV) | Simulation in `/notebooks/exploration/`; ABCD stability budget |
+| **5 Tunability / modularity** | TBD — depends on operational tuning range at the 500 mW operating point | **Good** — VECSEL mode-hop-free range (~ 1 GHz piezo, ~ 10 GHz etalon) carries through; 50 mW headroom allows operational tuning | **Excellent** — comb-tooth selection allows GHz-scale fine tuning; coarse Ti:S range 870–960 nm | Literature ([Burd23], [Span25]); vendor specs (Ti:S) |
+| **6 Complexity** | TBD — count of cavity locks, BOM, alignment surfaces at the 500 mW recommendation point | TBD — sealed envelope + thermal-isolation engineering offsets cavity-count reduction; needs explicit BOM count | TBD — comb lock + tripler + dispersion management; offsets buildup-cavity removal | Component count + BOM analysis |
+
+**Status legend:** `Better` / `Worse` / `Lower` / `Higher` are *qualitative* indicators relative to the [Friedenauer 2006 baseline](friedenauer-2006.html); each must be replaced with a quantitative score before Phase 4 scoring is admissible. `TBD` cells block slate opening per the recommendation in the [2026-05-08 review](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-08-architecture-review-tightening-specs.md) §4.3.
+
+---
+
+## Deferred items from the 2026-05-08 review
+
+The review's priority items P7–P9 require implementation work that is
+not in scope for the spec-tightening pass landed 2026-05-09:
+
+| Item | Scope | Why deferred |
+|---|---|---|
+| **P7 — NG-B forward map with hard 10 W pump ceiling + Yb-fibre vs VECSEL ASE bifurcation** | Notebook implementation in `/notebooks/exploration/` | Requires the next-gen workplan's Phase NG-A (LBO `L_passive` gap) to land first; the tightening is captured in the requirements page (`REQ-NG-001`, `REQ-NG-002`) and as a Phase plan item in [`logbook/2026-05-08-next-gen-500mW-workplan.md`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-08-next-gen-500mW-workplan.md). |
+| **P8 — Thermal-isolation FEA + thermal-resistance budget for IC-VECSEL** | Mechanical / thermal CAD + FEA simulation | Requires CAD-layer work outside the documentation pass; the spec target is captured in [`REQ-IC-004`](requirements.html#req-ic-004--thermal-isolation-150-c-lbo-oven-vs-gain-mirror-peltier) (target: gain-mirror drift < 1 mK with LBO oven at full power). |
+| **P9 — Timing-jitter budget + lock-architecture choice for pulsed-Raman** | Literature extraction (Monroe-group ultrafast Raman papers `[Haye10]` / `[Camp10]` / `[Mizr13]` / `[Inle14]`) + lock-architecture spec | Requires the literature extraction batch flagged in [`logbook/2026-05-08-pulsed-raman-alternative-topology.md`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-08-pulsed-raman-alternative-topology.md) §11. The spec hooks live at [`REQ-PR-006`](requirements.html#req-pr-006--repetition-rate--ceo-lock-residuals) and [`REQ-PR-007`](requirements.html#req-pr-007--timing-jitter-spectrum). |
+
+The `TBD` flags in the Phase 4 axis readiness checklist above point at these deferred items where applicable; closing the deferred items is what closes the corresponding `TBD` cells.

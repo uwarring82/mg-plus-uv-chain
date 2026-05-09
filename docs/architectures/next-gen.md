@@ -100,6 +100,20 @@ closures.
 | Phase NG-F · synthesis + sensitivity | ⏳ pending NG-A through NG-E |
 | Phase NG-G · documentation surface | ⏳ pending NG-F |
 
+## G1 inheritance and G2-failure impact (P1 from 2026-05-08 review)
+
+**G1 inheritance.** This workplan holds the two-stage SHG topology fixed (LBO ring + BBO ring); the 14 GHz unlockable-domain anomaly (CHARTER §8.1) is therefore **inherited unchanged** from [Friedenauer 2006](friedenauer-2006.html) §4. NG-D may test whether alternative crystal lengths or temperatures shift the anomaly, but G1 closure remains a Phase 2 discriminant-scan task, not a simulation task. Until G1 closes, the workplan recommendations are inputs to a future scoring decision, not outputs of one.
+
+**G2-failure impact.** The 500 mW UV target is the most exposed of the three architectures to a worse-than-hoped G2 outcome, because it operates at the highest UV intensity at the BBO output. Impact bounds:
+
+| If G2 closes at … | Impact on next-gen 500 mW | Mitigation already in design | Fallback |
+|---|---|---|---|
+| ≤ 5 %/100 h UV-output drop | Acceptable — UV stays above 475 mW for ≥ 100 h; maintenance interval ~ months | Tight L_passive budget; high-LIDT BBO; rack-internal cleanliness | None needed |
+| 10–20 %/100 h | Tight — UV drops below 400 mW within ~ 100 h; maintenance interval shrinks to ~ weeks | Tighten L_passive budget per NG-E; reduce crystal intensity; hard-fluoride coatings | Reduce UV target to 300 mW; accept shorter maintenance interval |
+| > 20 %/100 h | Architecture failure-mode envelope exceeded; 500 mW figure not sustainable | Architectural change required | Reduce UV target to 200 mW; or switch to alternative-topology slate (IC-VECSEL + pulsed-Raman, gated on Council-3 task-split disposition) |
+
+G2 closure measurement bounds the actual rate. Until G2 closes, the workplan delivers a *parameterised recommendation*, not a sustained-power commitment.
+
 ## Boundaries (what this page is **not**)
 
 - **Not Phase 4 architecture scoring.** That is gated by G1 + G2.
