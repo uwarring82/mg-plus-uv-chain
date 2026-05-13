@@ -1,13 +1,13 @@
-citation_key: "vonMilczewski2021"
+citation_key: "Burkley2021"
 source_tier: "P"
 doi: null
 arxiv_id: "2105.14977"
-citation: "J. S. B. von Milczewski et al., 'Stable High Power deep-UV Enhancement Cavity in Ultra High Vacuum with Fluoride Coatings,' arXiv:2105.14977 (2021). Author list and journal status to be confirmed against the PDF."
+citation: "Z. Burkley, L. de Sousa Borges, B. Ohayon, A. Golovozin, J. Zhang, and P. Crivelli, 'Stable High Power deep-UV Enhancement Cavity in Ultra High Vacuum with Fluoride Coatings,' arXiv:2105.14977v1 (31 May 2021). Journal status to be confirmed (preprint as of last check)."
 title: "Stable High Power deep-UV Enhancement Cavity in Ultra High Vacuum with Fluoride Coatings"
 extracted_by: "assistant under steward direction"
-extracted_on: "2026-05-06"
+extracted_on: "2026-05-13"
 extraction_status: "SCAFFOLD"
-source_document: "Open-access arXiv preprint copied on 2026-05-06 to ignored path downloads/literature/task-e/vonMilczewski2021_arxiv_open.pdf. Structured extraction still pending."
+source_document: "Open-access arXiv preprint (arXiv:2105.14977v1) copied on 2026-05-06 to ignored path downloads/literature/task-e/vonMilczewski2021_arxiv_open.pdf. The filename retains the scaffold-era misnomer (see notes.md, Scaffold author-list correction). Structured numerical extraction still pending."
 charter_section_refs:
   - "§5 Phase 1"
   - "§8.4"
@@ -20,16 +20,52 @@ dossier_entries:
 parameters: []
 
 open_extraction_items:
-  - "Confirm full author list against the arXiv PDF; the citation field above is a placeholder."
-  - "Confirm whether the work has been published in a peer-reviewed journal since the 2021 preprint; if so, update DOI and downgrade arxiv_id to a secondary identifier."
-  - "Run full extraction. Highest-priority numerical targets: oxide coating time-to-failure at 5 W intracavity, fluoride coating survival window at 10-16 W intracavity, oxygen partial-pressure thresholds, UV-ozone recovery factor, and explicit cavity wavelength (likely ~244 nm)."
+  - "Confirm whether the work has been published in a peer-reviewed journal since the 2021 preprint (e.g. Optics Express, Applied Optics, J. Phys. B); if so, update doi and downgrade arxiv_id to a secondary identifier."
+  - "Run full extraction. Highest-priority numerical targets: oxide-coating time-to-failure at ~5 W intracavity, fluoride-coating survival window at 10-20 W intracavity, oxygen partial-pressure thresholds (10^-8 mbar UHV through 1 mbar O2-rich), UV-ozone / O2 recovery factor across application count, and explicit cavity wavelength (~244 nm from the abstract's introduction context)."
   - "Decide how the ~244 nm result maps onto KD-UV280-008 / -012 at 280 nm: the oxygen-depletion / hydrocarbon-contamination mechanism is wavelength-scalable, but the photo-cross-sections for hydrocarbon photopolymerisation and the coating-material absorption shoulders are wavelength-dependent. Note adjacent-wavelength caveat in Section C."
 
 extraction_passes:
   - date: "2026-05-06"
     by: "assistant under steward direction"
     scope: >
-      Scaffold created from public arXiv metadata and the third scout
-      pass. Open-access PDF copied to the ignored downloads area; no
-      article-body values have been extracted yet.
+      Scaffold created from public arXiv metadata and the third scout pass.
+      The first-author guess (recorded as "vonMilczewski2021" in the
+      citation_key and citation strings, inside the Burkley2021/ folder)
+      was an error; the folder name was correct from creation.
+      Open-access PDF copied to the ignored downloads area; no article-body
+      values extracted.
     status: "SCAFFOLD"
+  - date: "2026-05-13"
+    by: "assistant under steward direction"
+    scope: >
+      Confirmed authorship against the arXiv PDF (now in hand). Corrected
+      citation_key from "vonMilczewski2021" to "Burkley2021", and rewrote
+      the citation, title, and source_document fields to match the actual
+      first-page author list (Z. Burkley, L. de Sousa Borges, B. Ohayon,
+      A. Golovozin, J. Zhang, P. Crivelli; ETH Zurich + Lebedev). No
+      numerical values extracted yet; status remains SCAFFOLD. Logged in
+      logbook/2026-05-04-bbo-cw-uv-lidt-task.md third scout pass.
+    status: "SCAFFOLD"
+
+cross_check_notes:
+  - id: "scout_pass_authorship_correction"
+    summary: >
+      The 2026-05-06 scaffold recorded this paper as "vonMilczewski2021"
+      based on a public-metadata guess before the PDF was in hand. Direct
+      read of the arXiv PDF on 2026-05-13 confirms the correct first author
+      is Zakary Burkley (ETH Zurich). There is no author named
+      "von Milczewski" on this paper. The folder name (Burkley2021/) was
+      correct from creation; the internal citation_key and citation strings
+      were the locus of the error.
+    resolution: >
+      citation_key and citation strings corrected in the 2026-05-13 pass.
+      The download filename vonMilczewski2021_arxiv_open.pdf is retained
+      in the gitignored downloads/ tree as a historical artefact (and is
+      not committed to the repo). This correction is analogous to the
+      scout_pass_authorship_correction logged in Hemmerling2011 and is
+      cross-referenced from the third scout pass in
+      logbook/2026-05-04-bbo-cw-uv-lidt-task.md.
+    informs_dossier_entries:
+      - "KD-UV280-008"
+      - "KD-UV280-009"
+      - "KD-UV280-012"

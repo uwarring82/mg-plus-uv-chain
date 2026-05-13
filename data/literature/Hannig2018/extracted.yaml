@@ -1,0 +1,42 @@
+citation_key: "Hannig2018"
+source_tier: "P"
+doi: "10.1063/1.5005515"
+arxiv_id: null
+citation: "S. Hannig, J. Mielke, J. A. Fenske, M. Misera, N. Beev, C. Ospelkaus, and P. O. Schmidt, Review of Scientific Instruments 89, 013106 (2018)"
+title: "A highly stable monolithic enhancement cavity for second harmonic generation in the ultraviolet"
+extracted_by: "assistant under steward direction"
+extracted_on: "2026-05-13"
+extraction_status: "SCAFFOLD"
+source_document: "Publisher PDF (AIP, Creative Commons CC-BY 4.0) copied on 2026-05-13 to ignored path downloads/literature/task-e/013106_1_online.pdf. The CC-BY licence makes commit admissible under the project's mixed-licence policy if the steward chooses to mirror; this scaffold defers the decision."
+charter_section_refs:
+  - "§5 Phase 1"
+  - "§8.4"
+  - "§8.6"
+dossier_entries:
+  - "KD-UV280-005"
+  - "KD-UV280-008"
+  - "KD-UV280-012"
+
+parameters: []
+
+open_extraction_items:
+  - "Run full extraction. Highest-priority numerical targets: cavity geometry (bow-tie finesse, mirror ROCs, beam waist at BBO crystal), Brewster-cut BBO dimensions and vendor, pump wavelength (likely 626 nm for the 313 nm second-harmonic), intracavity power, fundamental input power, 313 nm UV output power, the cavity-gas environment of the enclosure during the 130 h operation, and the STEMlab 125-14 digital-lock parameters."
+  - "Confirm whether the 130 h uninterrupted operation at 313 nm is bracketed by any auxiliary observation of the cavity gas environment, crystal temperature, or intracavity intensity. The abstract quotes only the headline 'no decay in output power'; the body may give a power-decay-rate upper bound and the operating conditions under which it was observed."
+  - "Decide how the 313 nm result maps onto KD-UV280-005 at 280 nm. 313 nm sits ~ 100 nm above the BBO UV-onset (215 nm); 280 nm sits ~ 65 nm above the UV-onset. The 130 h no-decay observation is therefore an UPPER-wavelength bracket for the BBO CW operational-lifetime envelope; combined with Kondo1998 and Kubota1998 at 266 nm (which bracket the 280 nm point from below in wavelength), the published wavelength brackets are 266 nm < 280 nm < 313 nm."
+  - "Cross-reference vibration-robustness data (1 g, 3 g_rms) against the transportable-setup direction in the next-gen 500 mW workplan (logbook/2026-05-08-next-gen-500mW-workplan.md)."
+
+extraction_passes:
+  - date: "2026-05-13"
+    by: "assistant under steward direction"
+    scope: >
+      Bibliographic scaffold created from the publisher PDF (now in hand
+      under downloads/literature/task-e/013106_1_online.pdf). Confirmed
+      authorship, journal volume/year/DOI, abstract, and section I
+      lineage statement (Brewster-cut BBO bow-tie cavity, architectural
+      relative of Friedenauer 2006 / Hemmerling 2011). Headline result
+      confirmed from abstract: 130 h uninterrupted operation without
+      decay in output power at 313 nm. Robustness: <10 % in-lock output
+      variation at 1 g acceleration; 30 min at 3 g_rms without
+      substantial change. No numerical values from the body extracted
+      yet.
+    status: "SCAFFOLD"

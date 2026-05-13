@@ -150,6 +150,75 @@ The priority list from the first scout pass is superseded as follows:
 6. Keep `Bhar2004`, `Isaenko2001`, and `Deyra2015` as lower-priority mechanistic / extrinsic context; extract only if steps 1–5 reveal gaps they can fill.
 7. Start the Q4 institutional query in parallel; the expanded published literature still does not replace the value of MPQ Garching / AG Schätz Freiburg operating records at exactly 280 nm.
 
+## Third scout pass — 2026-05-13 (filing of newly-arrived publisher PDFs)
+
+Source basis: publisher / preprint PDFs newly arrived under `downloads/literature/task-e/` and inspected on 2026-05-13 (first-page and abstract / §1-2 read; no full extraction). The downloads batch confirms a number of previously-scaffolded candidates (Kondo1998, Kubota1998, Hemmerling2011, Kumar2015, Turcicova2022, Eckardt1990, Tamosauskas2018, Eimerl1987, Friedenauer2006, Hume2010, Burd2016, Kjaergaard2000, Brown2019) and **adds three new entries** plus one **scaffold authorship correction**.
+
+### Bibliographic confirmations and additions
+
+| Citation key | Filename in downloads batch | Folder status before 2026-05-13 | Folder status after 2026-05-13 |
+|---|---|---|---|
+| `Kondo1998` | `Kondo1998_OpticsLetters_user.pdf` (+ `_official_probe.html`) | DRAFT | unchanged |
+| `Kubota1998` | `Kubota1998_OSAProceedings_user_scan.pdf` (+ `_official_probe.html`) | DRAFT | unchanged |
+| `Hemmerling2011` | `Hemmerling2011_arxiv_open.pdf` | DRAFT | unchanged |
+| `Kumar2015` | `Kumar2015_UPCommons_open.pdf` (+ Optica probe HTML) | DRAFT | unchanged |
+| `Turcicova2022` | `Turcicova2022_Elsevier_user.pdf` | DRAFT | unchanged |
+| `Eckardt1990` | `Eckardt1990_IEEE_user.pdf` | DRAFT | unchanged |
+| `Tamosauskas2018` | `Tamosauskas2018_OME_user.pdf` | DRAFT | unchanged |
+| `Eimerl1987` | `Eimerl1987_AIP_user.pdf` | DRAFT | unchanged |
+| `Friedenauer2006` | `Friedenauer2006_Springer_user.pdf` | DRAFT (existing) | unchanged |
+| `Hume2010` | `Hume2010_NIST_open.pdf` | existing scaffold | unchanged |
+| `Burd2016` | `Burd2016_NIST_open.pdf` | existing scaffold | unchanged |
+| `Kjaergaard2000` | `Kjaergaard2000_Aarhus_open.pdf` | existing scaffold | unchanged |
+| `Brown2019` | `Brown2019_SciRep_open.pdf` | DRAFT (existing) | unchanged |
+| **`Burkley2021`** | `vonMilczewski2021_arxiv_open.pdf` (misnomer; see correction below) | SCAFFOLD under wrong internal author | SCAFFOLD with corrected citation_key / citation strings |
+| **`Hannig2018`** *(new)* | `013106_1_online.pdf` | n/a | SCAFFOLD created |
+| **`Shaw2021`** *(new)* | `oe-29-23-37140.pdf` | n/a | SCAFFOLD created |
+| **`Kraus2022`** *(new)* | `oe-30-25-44992.pdf` | n/a | SCAFFOLD created |
+
+Two of the downloads batch are probe-only HTML captures with no associated PDF (`Kumar2015_Optica_captcha_probe.html`, `Takachiho2014_Optica_captcha_probe.html`) and one is a metadata-probe page for Kubota1998 / Kondo1998 (the actual PDFs are filed alongside). The Takachiho 2014 paper remains a published `[P]`-tier candidate per the second scout pass priority list but no PDF was retrieved in this batch.
+
+### Scaffold authorship correction: `vonMilczewski2021` → `Burkley2021`
+
+The 2026-05-06 scaffold under [`data/literature/Burkley2021/`](../data/literature/Burkley2021/) attributed the arXiv:`2105.14977` paper to a first author "von Milczewski" based on a public-metadata guess made before the PDF was in hand. Direct read of the PDF on 2026-05-13 confirms the correct first author is **Z. (Zakary) Burkley** (ETH Zürich), with co-authors L. de Sousa Borges, B. Ohayon, A. Golovozin (Lebedev), J. Zhang, and P. Crivelli. There is no author named "von Milczewski" on the paper. The folder name `Burkley2021/` was correct from creation; the internal `citation_key`, `citation`, and notes-header strings were the locus of the error and have been corrected in this pass. The download filename `vonMilczewski2021_arxiv_open.pdf` is retained in the gitignored `downloads/` tree as a historical artefact and is **not** renamed (renaming would break the chain-of-provenance trail back to the 2026-05-06 scout pass commit). The corresponding `cross_check_notes` entry `scout_pass_authorship_correction` is now logged in [`data/literature/Burkley2021/extracted.yaml`](../data/literature/Burkley2021/extracted.yaml), parallel to the matching note in [`data/literature/Hemmerling2011/extracted.yaml`](../data/literature/Hemmerling2011/extracted.yaml).
+
+### Newly-added candidate triage
+
+| Candidate | Source verified | Regime | Task-E mapping | Triage |
+|---|---|---|---|---|
+| `Hannig2018` | S. Hannig, J. Mielke, J. A. Fenske, M. Misera, N. Beev, C. Ospelkaus, P. O. Schmidt, "A highly stable monolithic enhancement cavity for second harmonic generation in the ultraviolet," *Review of Scientific Instruments* **89**, 013106 (2018), DOI `10.1063/1.5005515`. Brewster-cut BBO bow-tie cavity for 313 nm; **130 h uninterrupted operation without decay in output power**. Vibration robustness: <10 % in-lock variation at 1 g; 30 min at 3 g_rms. Open-source STEMlab 125-14 digital PI lock. Published Creative Commons CC-BY 4.0. | CW, 313 nm, Brewster-cut BBO, monolithic bow-tie | Q2 upper-wavelength operational-lifetime anchor for BBO cavity CW operation; combined with Kondo1998 / Kubota1998 at 266 nm, brackets the 280 nm operating point from above and below in wavelength | **High payoff.** One of the cleanest published examples of "no decay over multi-day BBO-cavity CW operation in the UV". PTB-Schmidt-group lineage, same as Hemmerling2011 / Kraus2022. Adjacent-wavelength caveat applies (313 nm sits deeper into the BBO transparency window than 280 nm). Next pass: full extraction of cavity geometry, BBO dimensions, intracavity power, gas environment. |
+| `Shaw2021` | J. C. Shaw, S. Hannig, D. J. McCarron, "Stable 2 W continuous-wave 261.5 nm laser for cooling and trapping aluminum monochloride," *Optics Express* **29**, 37140-37155 (2021), DOI `10.1364/OE.441741`. LBO + CLBO cascaded bow-tie cavities (1046 nm ECDL + IPG fibre amp → 523 nm → 261.5 nm); **2.75 W peak / 2 W steady-state CW at 261.5 nm over 13 h**; "largely unexplored high-intensity regime in CLBO for continuous-wave DUV light" (abstract verbatim). Monolithic aluminium-housing bow-tie from Agile Optic GmbH (Hannig). Optica Open Access. | CW, 261.5 nm, CLBO + LBO cascade, high-intensity DUV | D (CLBO comparison literature) bracket; Q2 short-duration high-power CW DUV anchor on CLBO | **High payoff for the CLBO arm.** The 261.5 nm operating point and 2 W CW power scaling exceed prior published CLBO CW DUV anchors; directly relevant to `KD-UV280-006`. Next pass: full extraction of LBO + CLBO crystal specs, intracavity intensities, gas environment, output-power time trace. |
+| `Kraus2022` | B. Kraus, F. Dawel, S. Hannig, J. Kramer, C. Nauk, P. O. Schmidt, "Phase-stabilized UV light at 267 nm through twofold second harmonic generation," *Optics Express* **30**, 44992-45003 (2022), DOI `10.1364/OE.471450`. Twofold *single-pass* SHG: 1069.6 nm fibre laser → 10 mm PPLN waveguide (HC Photonics) → 534.8 nm → 50 mm DKDP non-critical Type-I at ~100 °C → **267.4 nm at >50 µW with fractional frequency instability <5×10⁻¹⁷ at 1 s** (electronics-limited 1×10⁻¹⁸ at 1 s). Optica Open Access. | CW, 267.4 nm, DKDP + PPLN waveguide, no cavities | Architectural-alternative datapoint for `KD-UV280-006` and the alternative-topology slate. Not a Task-E LIDT or lifetime anchor. | **Medium payoff for Task E specifically; high payoff for the alternative-crystal / alternative-topology dossier branch.** PTB-Schmidt-group lineage with Hannig as bridging author. DKDP at 267 nm is structurally distinct from both BBO and CLBO; the trade-off is no walk-off and no cavity required, at the cost of ~10⁻⁴× lower output power than Friedenauer-class systems. Next pass: full extraction of DKDP operating conditions, PPLN waveguide specs, phase-stability method. |
+
+### Cross-paper observation: PTB-Schmidt-group hardware lineage
+
+The three newly-filed papers (`Hannig2018`, `Shaw2021`, `Kraus2022`) plus the previously-filed `Hemmerling2011` together span four distinct UV-stage architectures all attached to the same institutional lineage:
+
+| Paper | Year | Stage architecture | Crystal | Wavelength | Headline result |
+|---|---|---|---|---|---|
+| Hemmerling2011 | 2011 | bow-tie cavity | Brewster-cut BBO | 280 nm | 60 mW UV; CW UV-induced surface damage on fused silica at 32-64 W/cm² over hours |
+| Hannig2018 | 2018 | monolithic bow-tie cavity | Brewster-cut BBO | 313 nm | 130 h uninterrupted operation; vibration-robust |
+| Shaw2021 | 2021 | LBO + CLBO cascaded monolithic bow-tie cavities | CLBO | 261.5 nm | 2 W steady-state over 13 h; "largely unexplored high-intensity regime" |
+| Kraus2022 | 2022 | PPLN waveguide + DKDP single-pass | DKDP (non-critical Type-I) | 267.4 nm | <5×10⁻¹⁷ phase stability at 1 s |
+
+Co-authors S. Hannig (PTB / Agile Optic GmbH) and P. O. Schmidt (PTB) appear across multiple combinations. The institutional Q4 record from the Schmidt group (per the task-E acceptance criterion #3) likely covers all four of these architectures, not only the Friedenauer-style BBO route; this widens the scope of the institutional-`[I]`-tier extraction window when the steward chooses to pursue it.
+
+### Updated priority after third scout pass
+
+The previous priority list is augmented (not replaced) with the new candidates:
+
+1. *(unchanged)* Retrieve / extract `Kondo1998` and `Kubota1998` (now in hand under `downloads/literature/task-e/`).
+2. *(unchanged)* Extract `Turcicova2022` (in hand) for its bibliographic-hub reference list.
+3. *(unchanged)* Extract `Kumar2015` and `Takahashi2010` for mechanism / temperature-mitigation evidence.
+4. **Extract `Hannig2018`** in parallel with step 1 — direct CW-BBO operational-lifetime anchor at 313 nm; the 130 h figure is one of the cleanest available.
+5. **Extract `Shaw2021`** as the CLBO arm anchor at 261.5 nm; feeds `KD-UV280-006` and the alternative-crystal branch.
+6. **Extract `Burkley2021`** (now with corrected scaffold) for the coating-and-gas-environment branch (`KD-UV280-008` / `-009` / `-012`).
+7. *(unchanged)* Extract `Hemmerling2011` — already DRAFT.
+8. **Extract `Kraus2022`** as architectural-alternative datapoint for the alternative-topology slate; lower priority for Task E itself.
+9. *(unchanged)* Verify and retrieve `Nagashima2009`.
+10. *(unchanged)* Keep `Bhar2004`, `Isaenko2001`, `Deyra2015` as lower-priority mechanistic / extrinsic context.
+11. *(unchanged)* Start the Q4 institutional query, now widened to cover the four PTB-Schmidt-group UV-stage architectures identified above.
+
 ## Acceptance criteria for closing this task
 
 This logbook entry is closed when **all** of the following are true:

@@ -1,0 +1,44 @@
+citation_key: "Kraus2022"
+source_tier: "P"
+doi: "10.1364/OE.471450"
+arxiv_id: null
+citation: "B. Kraus, F. Dawel, S. Hannig, J. Kramer, C. Nauk, and P. O. Schmidt, Optics Express 30, 44992-45003 (2022)"
+title: "Phase-stabilized UV light at 267 nm through twofold second harmonic generation"
+extracted_by: "assistant under steward direction"
+extracted_on: "2026-05-13"
+extraction_status: "SCAFFOLD"
+source_document: "Publisher PDF (Optica Open Access Publishing Agreement) copied on 2026-05-13 to ignored path downloads/literature/task-e/oe-30-25-44992.pdf. The open-access licence makes commit admissible under the project's mixed-licence policy if the steward chooses to mirror; this scaffold defers the decision."
+charter_section_refs:
+  - "§5 Phase 1"
+  - "§8.4"
+  - "§8.6"
+dossier_entries:
+  - "KD-UV280-006"
+  - "KD-UV280-009"
+
+parameters: []
+
+open_extraction_items:
+  - "Run full extraction. Highest-priority numerical targets: fibre-laser model and power at 1069.6 nm; PPLN waveguide specs (HC Photonics, 10.3 mm, intrinsic 125 %/W, 45 deg C) and 534.8 nm output; DKDP crystal specs (50 mm, non-critical Type-I, ~100 deg C, d_eff 0.43 pm/V, 3.2 K cm tuning bandwidth, 32 um focus waist, 0.15 %/W calculated single-pass conversion); 267.4 nm UV output power (>50 uW from the abstract); phase-stability characterisation (<5e-17 at 1 s beat-note, 1e-18 electronics-limited)."
+  - "Decide how the DKDP non-critical Type-I route at 267.4 nm maps onto KD-UV280-006 (alternative crystal at 280 nm). DKDP is hygroscopic and has lower d_eff than BBO; the trade-off is no walk-off and no cavity required. Frame as an architectural-alternative datapoint, not an in-class BBO comparison."
+  - "Cross-check whether the DKDP non-critical Type-I phase-matching temperature scales smoothly from 534.8 nm to ~559 nm (Friedenauer-class fundamental); if so, the 280 nm DKDP analogue is worth a scaffold entry under KD-UV280-006 as an alternative-crystal candidate."
+  - "Cross-reference to alternative-topology slate: logbook/2026-05-08-ic-vecsel-alternative-topology.md and logbook/2026-05-08-pulsed-raman-alternative-topology.md. DKDP single-pass is structurally distinct from both the IC-VECSEL and pulsed-Raman alternative topologies, and could either complement them (as a low-power, high-phase-stability probe-laser route) or stand on its own as a fourth alternative."
+
+extraction_passes:
+  - date: "2026-05-13"
+    by: "assistant under steward direction"
+    scope: >
+      Bibliographic scaffold created from the publisher PDF (now in hand
+      under downloads/literature/task-e/oe-30-25-44992.pdf). Confirmed
+      authorship, journal volume/issue/year/DOI, abstract, and section 2
+      (Crystal selection) architecture statement: 1069.6 nm fibre laser
+      -> 10.3 mm PPLN waveguide (HC Photonics) -> 534.8 nm -> 50 mm DKDP
+      non-critical Type-I at ~100 deg C -> 267.4 nm. Headline phase
+      stability from abstract: fractional frequency instability <5e-17
+      at 1 s (beat-note); 1e-18 at 1 s electronics-limited (in-loop).
+      Output power: >50 uW at 267.4 nm. Hardware lineage: PTB Braunschweig
+      (Schmidt group), same as Hannig 2018, Hemmerling 2011. Hannig (PTB
+      / Agile Optic GmbH) is the bridging author with the BBO-cavity and
+      CLBO-cavity papers in this scout pass (Hannig 2018, Shaw 2021).
+      No numerical values from the body extracted yet.
+    status: "SCAFFOLD"

@@ -1,0 +1,44 @@
+citation_key: "Shaw2021"
+source_tier: "P"
+doi: "10.1364/OE.441741"
+arxiv_id: null
+citation: "J. C. Shaw, S. Hannig, and D. J. McCarron, Optics Express 29, 37140-37155 (2021)"
+title: "Stable 2 W continuous-wave 261.5 nm laser for cooling and trapping aluminum monochloride"
+extracted_by: "assistant under steward direction"
+extracted_on: "2026-05-13"
+extraction_status: "SCAFFOLD"
+source_document: "Publisher PDF (OSA / Optica Open Access Publishing Agreement) copied on 2026-05-13 to ignored path downloads/literature/task-e/oe-29-23-37140.pdf. The open-access licence makes commit admissible under the project's mixed-licence policy if the steward chooses to mirror; this scaffold defers the decision."
+charter_section_refs:
+  - "§5 Phase 1"
+  - "§8.4"
+  - "§8.6"
+dossier_entries:
+  - "KD-UV280-005"
+  - "KD-UV280-006"
+  - "KD-UV280-008"
+  - "KD-UV280-009"
+
+parameters: []
+
+open_extraction_items:
+  - "Run full extraction. Highest-priority numerical targets: LBO and CLBO crystal dimensions / vendor / phase-matching geometry / temperature; intracavity power at each stage; beam waist at the CLBO crystal; 261.5 nm output-power time trace over the >13 h stability window; cavity-gas environment of the monolithic aluminium housing; ECDL-and-amplifier source-laser parameters (1046 nm, IPG YAR-10-1050-LP-SF, ~10.75 W, M^2 ~ 1.05)."
+  - "Cross-reference Shaw 2021 ref [17] (cited as 'similar previous design') against Hannig2018; verify whether the monolithic bow-tie geometry and the Agile Optic GmbH manufacturing route are the same hardware lineage."
+  - "Decide how the 261.5 nm CLBO result maps onto KD-UV280-006 (CLBO at 280 nm, currently SCAFFOLD). The wavelength offset is ~18 nm and CLBO operates routinely at 266 nm / 213 nm; the 261.5 nm operating point therefore sits in a well-established CLBO regime. Power-and-time bracket: 2 W steady-state over 13 h."
+  - "Decide whether the 'largely unexplored high-intensity regime in CLBO for CW DUV' framing in the abstract maps to a published CW-CLBO LIDT anchor or whether it confirms the negative-result framing in the second scout pass of the Task-E logbook."
+
+extraction_passes:
+  - date: "2026-05-13"
+    by: "assistant under steward direction"
+    scope: >
+      Bibliographic scaffold created from the publisher PDF (now in hand
+      under downloads/literature/task-e/oe-29-23-37140.pdf). Confirmed
+      authorship, journal volume/issue/year/DOI, abstract, and sections
+      1-2 architecture statement: 1046 nm ECDL + IPG fibre amplifier ->
+      LBO bow-tie cavity -> 523 nm -> CLBO bow-tie cavity -> 261.5 nm.
+      Headline result from abstract and section 1: 2.75 W peak / 2 W
+      steady-state CW at 261.5 nm with >13 h stability; "largely
+      unexplored high-intensity regime in CLBO for continuous-wave DUV".
+      Hardware lineage: monolithic aluminium housing from Agile Optic
+      GmbH (Hannig), same lineage as Hannig 2018 / Kraus 2022. No
+      numerical values from the body extracted yet.
+    status: "SCAFFOLD"
