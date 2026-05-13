@@ -37,6 +37,10 @@ stock (mirrors, output couplers, sub-assemblies, BBO crystals from Raicol /
 A-Star / Castech) keyed to the LBO and BBO roles described below, with a
 glossary of cavity / nonlinear-optics terminology and a per-item verification
 trail (Qty checked / Initials / Date).
+[Home-built doublers (lab survey)](home-built-doublers.html) —
+photographic archive of three currently-fielded 559&nbsp;→&nbsp;280&nbsp;nm
+BBO ring cavities (Raman, BD, RD) of the Bermuda apparatus and their
+topological mapping back to the BBO-stage role table below.
 
 ---
 
