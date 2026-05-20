@@ -1,7 +1,7 @@
 # BC-B · Impedance-match results — handoff to BC-C
 
 **Phase:** BC-B output ([`workplan.md`](workplan.md) §4 Phase BC-B)
-**Status:** DRAFT (2026-05-20) — values computed; pending steward sign-off at BC-F
+**Status:** **FROZEN at BC-F closure (2026-05-20).** Values computed; consumed by BC-C / BC-D / BC-E. See [`closure.md`](closure.md).
 **Authoritative for:** per-scenario `T_IC_opt`, recommended coating-spec
 tolerance band, per-mirror `Σ T_loss_VENDOR_max` budget, sensitivity envelopes.
 

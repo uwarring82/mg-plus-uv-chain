@@ -1,7 +1,7 @@
 # BC-D · LIDT and substrate constraints — handoff to BC-E
 
 **Phase:** BC-D output ([`workplan.md`](workplan.md) §4 Phase BC-D)
-**Status:** DRAFT (2026-05-20) — values pinned; pending steward sign-off at BC-F
+**Status:** **FROZEN at BC-F closure (2026-05-20).** Values pinned; consumed by BC-E. See [`closure.md`](closure.md).
 **Authoritative for:** per-mirror LIDT margin at the 1.5 W scenario,
 material-class recommendation for the M4' dichroic stack, substrate
 confirmation, surface-quality + flatness floor.

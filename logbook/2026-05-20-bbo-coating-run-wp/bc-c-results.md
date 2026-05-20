@@ -1,7 +1,7 @@
 # BC-C · Per-mirror coating targets — handoff to BC-D + BC-E
 
 **Phase:** BC-C output ([`workplan.md`](workplan.md) §4 Phase BC-C)
-**Status:** DRAFT (2026-05-20) — values pinned; pending steward sign-off at BC-F
+**Status:** **FROZEN at BC-F closure (2026-05-20).** Values pinned; consumed by BC-D / BC-E. See [`closure.md`](closure.md).
 **Authoritative for:** per-mirror R / T targets, AOI / polarization
 annotations, substrate choice, per-mirror mirror-loss allocation,
 beam-load hand-forwards to BC-D, per-mirror tolerance bands.

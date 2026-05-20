@@ -1,7 +1,7 @@
 # BC-A · Frozen constants for the BBO coating-run WP
 
 **Phase:** BC-A output ([`workplan.md`](workplan.md) §4 Phase BC-A)
-**Status:** DRAFT (2026-05-20) — values pinned; pending steward sign-off at BC-F
+**Status:** **FROZEN at BC-F closure (2026-05-20).** Values pinned; γ / L authority for the closed WP. See [`closure.md`](closure.md).
 **Authoritative for:** `γ_SHG_BBO`, `L_passive_PHE`, the three-row `L_passive`
 separation, the intensity envelope feeding BC-D, and the NG-D consistency
 check.
