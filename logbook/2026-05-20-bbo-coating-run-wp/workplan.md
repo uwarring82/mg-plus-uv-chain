@@ -1,11 +1,24 @@
-# BBO coating-run inquiry — work program (DRAFT for deliberation)
+# BBO coating-run inquiry — work program
 
 **Steward:** Ulrich Warring
 **Date opened:** 2026-05-20
-**Status:** **DRAFT — for deliberation. No action taken; no notebooks committed; no vendor contact.**
+**Status:** **CLOSED 2026-05-20 — BC-A through BC-F executed in one calendar day; specs frozen and committed to repo. No vendor contact made.** Closure index in [`closure.md`](closure.md).
 **Folder:** [`logbook/2026-05-20-bbo-coating-run-wp/`](.)
-**Companion folders (planned, not yet created):**
-`specs/` (per-mirror coating spec sheets), `notebooks/` (impedance-match sweeps once the WP is endorsed).
+**Companion artefacts (now landed):**
+- [`specs/`](specs/) — five vendor-facing pages (M1' / M2' / M3' / M4' + cover letter), frozen at BC-F closure.
+- [`constants.md`](constants.md) — γ / L authority.
+- [`bc-a-log.md`](bc-a-log.md) / [`bc-b-log.md`](bc-b-log.md) / [`bc-c-log.md`](bc-c-log.md) / [`bc-d-log.md`](bc-d-log.md) / [`bc-e-log.md`](bc-e-log.md) / [`bc-f-log.md`](bc-f-log.md) — per-phase running logs.
+- [`bc-b-results.md`](bc-b-results.md) / [`bc-c-results.md`](bc-c-results.md) / [`bc-d-results.md`](bc-d-results.md) — phase handoff artefacts.
+- [`closure.md`](closure.md) — WP-closure index + handoff to the downstream procurement KD.
+- BC-B notebook promoted to [`/notebooks/exploration/2026-05-20-bbo-ic-impedance-match.py`](../../notebooks/exploration/2026-05-20-bbo-ic-impedance-match.py).
+
+**Document state.** The numbered sections below preserve the workplan
+as it stood after the v3 review pass that endorsed BC-A start. The
+*deliberation framing* in those sections (e.g. "before BC-A starts",
+"§6 Q2 is open", "Recommendation: hold until BC-B") is historical —
+those questions are now *resolved* in the per-phase results and the
+closure document. See [`closure.md`](closure.md) §C (phase index) for
+the as-executed answers.
 
 ---
 

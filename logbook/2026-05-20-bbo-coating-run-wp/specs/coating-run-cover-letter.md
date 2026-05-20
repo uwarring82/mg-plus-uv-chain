@@ -4,7 +4,7 @@
 Steward: Ulrich Warring (u.j.warring@gmail.com).
 **Build:** Next-generation BBO ring cavity for ²⁵Mg⁺ ion-trap UV
 source, replacing the Friedenauer-2006 reference build.
-**Sheet status:** DRAFT (2026-05-20) — pending steward sign-off at BC-F.
+**Sheet status:** **FROZEN at BC-F closure (2026-05-20).** Package ready to send.
 
 ---
 
@@ -37,12 +37,16 @@ The Friedenauer ring uses a bowtie geometry with full folding angle
 spec across a ± 1.5° band**, i.e., over 12.2°–15.2°, not only at the
 nominal 13.7°.
 
-The reason: bench-build alignment realistically varies between
-near-identical bowtie cavities. Our procurement band is set
-conservatively to cover this — a coating that drifts off-spec by the
-band edge would degrade the cavity finesse and the dichroic T/R
-balance once installed. The ± 1.5° figure is a chosen procurement
-spec; it is not bench-measured tolerance data.
+The ± 1.5° figure is a **chosen procurement band**, *informed by* a
+photogrammetric survey of three currently-fielded bowtie BBO doublers
+in our lab (mean full folds 25°–29° with a ±5° pixel-identification
+budget, `O*`-tier in our internal dossier). **It is not a
+bench-measured build-variation result** — the survey itself does
+not resolve the 4° spread between doublers from photogrammetric
+noise. The procurement band sits at the conservative side of the
+combined photogrammetric + alignment uncertainty so that a coating
+that drifts off-spec at the band edge would not silently degrade
+cavity finesse or dichroic T/R balance once installed.
 
 The plane mirrors M1' and M2' sit at near-normal incidence (~ 0°);
 the AOI band there is ± 1°.
@@ -119,18 +123,31 @@ separate line item if your standard catalog supports it. This option
 is only worthwhile if we ever need to re-purpose M4' for a different
 build at a different UV wavelength — not required for the current run.
 
-## F · LIDT margin + G2-conditional service-life clauses
+## F · LIDT acceptance margin vs literature-supported service-life
 
-LIDT specs on each per-mirror sheet carry **3–8 × margin** over the
-worst-case CW operating intensity at the 1.5 W upstream scenario.
-This margin is set against the closest-wavelength published CW UV
-operational benchmark in our literature dossier:
+**Two separate things — please read both rows.**
+
+**Row 1 — vendor LIDT acceptance margin.** LIDT specs on each
+per-mirror sheet are set at **3–8 × above the worst-case CW
+operating intensity** at the 1.5 W upstream scenario. This is a
+**vendor-acceptance margin on the requested LIDT spec**: it asks
+the vendor to commit to a CW LIDT measurably above the operating
+intensity so that the as-delivered coating is *robust against
+in-build variation* in cavity buildup, beam-profile imperfection,
+and inspection scatter. It is **not** a claim about literature-
+supported service life.
+
+**Row 2 — literature-supported service-life evidence (separate).**
+The closest-wavelength CW UV operational benchmark in our dossier:
 
 - **Kondo / Kubota 1998** (Sony Cz-BBO at 266 nm CW): 260 W/cm² CW
   UV power density operating point, with 1 000 h of operation and
   5 × 10⁻⁵ %/h cavity-loss-rate increase.
 - **Our M4' transit 280 nm fluence**: ~ 300 W/cm² average (1.5 W
   scenario), i.e., **~ 1.15 × *above* the Kondo / Kubota benchmark**.
+  This is **not** a literature-supported service-life margin — the
+  280 nm operating fluence sits on the *same order of magnitude* as
+  the nearest 1 000-hour benchmark.
   Service life is expected to be *on the order of* (not comfortably
   below) the 1 000 h benchmark.
 

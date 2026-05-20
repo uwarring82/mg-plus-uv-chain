@@ -3,7 +3,7 @@
 **Build:** Next-generation BBO ring cavity, 559 → 280 nm CW SHG
 (AG Schätz, Universität Freiburg).
 **Reference architecture:** Friedenauer et al., *Appl. Phys. B* 84, 371 (2006).
-**Sheet status:** DRAFT (2026-05-20) — pending steward sign-off at BC-F closure.
+**Sheet status:** **FROZEN at BC-F closure (2026-05-20).** Ready to send as part of the [coating-run package](coating-run-cover-letter.md).
 **Differentiated element:** dual-wavelength dichroic stack — please
 read the cover letter §B (material recommendation) and §F
 (G2-conditional service-life clauses) before quoting.
@@ -54,8 +54,8 @@ read the cover letter §B (material recommendation) and §F
 
 | Surface | Spec | Notes |
 |---|---|---|
-| **Front face — dual-WL dichroic** | **CW LIDT ≥ 250 kW/cm² @ 559 nm** AND **≥ 5 kW/cm² @ 280 nm**, simultaneously, 1/e² spot ≥ 100 μm, surface | Binding LIDT case of the build. Front face carries the intracavity 559 nm load + the transmitted 280 nm load in the same dichroic coating layers. Margins: ~ 4 × @ 559 (over ~ 65 kW/cm² peak operating) and ~ 8 × @ 280 (over ~ 0.6 kW/cm² peak). G2-conditional service-life envelope: cover letter §F |
-| **Back face — planar AR @ 280** | **CW LIDT ≥ 5 kW/cm² @ 280 nm**, surface | ~ 8 × margin over the ~ 0.6 kW/cm² outgoing 280 nm peak |
+| **Front face — dual-WL dichroic** | **CW LIDT ≥ 250 kW/cm² @ 559 nm** AND **≥ 5 kW/cm² @ 280 nm**, simultaneously, 1/e² spot ≥ 100 μm, surface | Binding LIDT case of the build. Front face carries the intracavity 559 nm load + the transmitted 280 nm load in the same dichroic coating layers. The requested LIDT values sit **~ 4 × above the worst-case 559 nm operating peak** (~ 65 kW/cm²) and **~ 8 × above the worst-case 280 nm transit peak** (~ 0.6 kW/cm²); these are *vendor-acceptance margins on the requested LIDT spec*, **not** literature-supported service-life margins. The literature-supported service-life envelope is **G2-conditional** and discussed separately in cover letter §F — on the 280 nm axis, our operating fluence sits ~ 1.15 × *above* the nearest CW UV operational benchmark (Kondo / Kubota 1 000-hour 266 nm point), so service-life expectation is *order-of-magnitude match*, not margin |
+| **Back face — planar AR @ 280** | **CW LIDT ≥ 5 kW/cm² @ 280 nm**, surface | Vendor-acceptance margin ~ 8 × over the ~ 0.6 kW/cm² outgoing 280 nm peak. Service-life expectation as above |
 
 ---
 
@@ -97,8 +97,10 @@ The recommended material tier:
 - **AOI band is binding.** A dichroic stack that meets all four spec
   rows (R ≥ 99.91 % @ 559, T ≥ 95 % @ 280, plus the AOI tolerance)
   *only at the nominal 13.7°* but drops outside spec at 12.2° or
-  15.2° **fails this spec**. The bench-build alignment realistically
-  varies — see cover letter §A.
+  15.2° **fails this spec**. The ± 1.5° band is a *chosen procurement
+  spec*, informed by a photogrammetric survey of fielded BBO doublers
+  in our lab — not a bench-measured build-variation result. See
+  cover letter §A.
 - **Cleanliness on delivery is load-bearing.** MIL-STD-1246C
   Class 100 or better, double-bagged in cleanroom-grade packaging.
   Brown2019: particulate contamination drops LIDT by 3–6 orders of

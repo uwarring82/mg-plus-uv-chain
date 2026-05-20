@@ -3,7 +3,7 @@
 **Build:** Next-generation BBO ring cavity, 559 → 280 nm CW SHG
 (AG Schätz, Universität Freiburg).
 **Reference architecture:** Friedenauer et al., *Appl. Phys. B* 84, 371 (2006).
-**Sheet status:** DRAFT (2026-05-20) — pending steward sign-off at BC-F closure.
+**Sheet status:** **FROZEN at BC-F closure (2026-05-20).** Ready to send as part of the [coating-run package](coating-run-cover-letter.md).
 **Quote required by:** TBD (see cover letter §H).
 
 ---

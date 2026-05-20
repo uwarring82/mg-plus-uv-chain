@@ -3,7 +3,7 @@
 **Build:** Next-generation BBO ring cavity, 559 → 280 nm CW SHG
 (AG Schätz, Universität Freiburg).
 **Reference architecture:** Friedenauer et al., *Appl. Phys. B* 84, 371 (2006).
-**Sheet status:** DRAFT (2026-05-20) — pending steward sign-off at BC-F closure.
+**Sheet status:** **FROZEN at BC-F closure (2026-05-20).** Ready to send as part of the [coating-run package](coating-run-cover-letter.md).
 
 ---
 
@@ -67,12 +67,12 @@
 - **Material class.** Per BC-D §C.1: silica / alumina / hafnia /
   tantala admissible at single-WL 559 nm HR; **niobia and titania
   excluded**. **No silica cap layer** required.
-- **AOI band — critical detail.** Bench-build alignment realistically
-  varies by a few degrees per curved mirror across our existing
-  doubler builds; the ± 1.5° band on the spec is the *conservative
-  procurement choice* (see cover letter §A). A coating that meets
-  R ≥ 99.97 % only at 13.7° but drops to e.g. 99.93 % at 15.2°
-  **fails this spec**.
+- **AOI band — critical detail.** The ± 1.5° band on the spec is a
+  *chosen procurement band*, *informed by* a photogrammetric survey
+  of fielded BBO doublers in our lab (see cover letter §A for the
+  full provenance). **It is not a bench-measured build-variation
+  result.** A coating that meets R ≥ 99.97 % only at 13.7° but
+  drops to e.g. 99.93 % at 15.2° **fails this spec**.
 - **Deposition method.** **IBS (ion-beam sputtering)** required.
 - **Cleanliness on delivery:** MIL-STD-1246C Class 100 or better
   (see cover letter §G).
