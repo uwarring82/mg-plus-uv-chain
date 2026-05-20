@@ -115,6 +115,28 @@ LBO ring (Friedenauer Table 1) needs: M1 plane IC R = 97.5 % @ 1118 nm; M2 plane
 
 BBO ring (Friedenauer Table 1) needs: M1' plane IC R = 98.4 % @ 559 nm; M2' plane HR > 99.93 % @ 559 nm (piezo-mounted); M3' concave HR f = 25 mm > 99.93 % @ 559 nm; M4' concave OC f = 25 mm > 99.8 % @ 559 nm + > 94 % HT @ 280 nm. Folding angle 27.4° (13.7° per focusing mirror) → AOI ≈ 13.7° at the curved seats; AOI = 0° at the plane mirrors.
 
+**Next-generation coating spec for these seats** (2026-05-20). The
+[BBO coating-run WP](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-20-bbo-coating-run-wp/)
+re-specs the M1'–M4' coatings at the same Friedenauer §D geometry,
+with the upstream LBO output bracketed between ~ 0.5 W and ~ 1.5 W of
+559 nm. Frozen targets (full per-mirror sheets in
+[`logbook/2026-05-20-bbo-coating-run-wp/specs/`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-20-bbo-coating-run-wp/specs/)):
+
+- **M1'** (plane IC): **T = 19 965 ppm ± 500 ppm @ 559 nm**
+  (R = 98.00 % ± 0.05 %) — single-variant centre at the equal-penalty
+  optimum, ~ 0.6 pp *higher T* than Friedenauer's procured 1.6 %.
+- **M2'** (plane HR): **R ≥ 99.970 % @ 559 nm**, AOI ~ 0° p-pol.
+- **M3'** (curved HR): **R ≥ 99.970 % @ 559 nm**, AOI 13.7° ± 1.5° p-pol.
+- **M4'** (curved dichroic OC): **R ≥ 99.910 % @ 559 nm + T ≥ 95.0 % @ 280 nm**,
+  AOI 13.7° ± 1.5° p-pol; back-face narrow-band AR @ 280 nm.
+
+Substrate: Heraeus Herasil throughout, IBS deposition. The on-shelf
+inventory rows below show which items (e.g., **I-B7** at R = 98.5 %,
+**I-B9** IBS HR R = 50 mm) bracket the new spec but **none are
+drop-in matches** — the new spec's tolerance on T_IC (±500 ppm),
+its AOI band on the curved seats, and the M4' dichroic dual-WL
+requirement together exceed any of the on-shelf candidate rows.
+
 | ID | Box / vendor | Reading | Likely Friedenauer role | Notes | Source-tier | Qty checked | Initials | Date |
 |---|---|---|---|---|---|---|---|---|
 | I-B1 | Laseroptik, red, top row | 5 × FS Ø 12.7 × 6.35 mm, plan; R = 97 % @ 560 nm / 12° P-pol; rear AR @ 560 nm / 12° P-pol | **BBO M1' input coupler candidate** — R = 97 % is 1.4 pp lower than Friedenauer's 98.4 % (looser coupling) | 12° AOI close to Friedenauer's 13.7° per-curved-mirror geometry but these are *plane*; usable as the IC plane mirror with cavity re-balancing | O | — | — | — |

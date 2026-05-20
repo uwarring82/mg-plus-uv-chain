@@ -16,11 +16,13 @@
 # %% [markdown]
 # # BC-B · BBO IC impedance-match sweep — 2026-05-20
 #
-# **`pre-G1, exploratory, not promoted`** (CHARTER §5.1)
-# **WP-internal location.** This notebook lives inside the BBO coating-run WP
-# folder (`logbook/2026-05-20-bbo-coating-run-wp/notebooks/`) during BC-B
-# execution. At BC-F closure it is promoted to `/notebooks/exploration/`
-# per [`workplan.md`](../workplan.md) §6 Q8.
+# **`pre-G1, exploratory`** (CHARTER §5.1)
+# **Origin.** This notebook was produced during BC-B of the BBO
+# coating-run WP at
+# [`logbook/2026-05-20-bbo-coating-run-wp/`](../../logbook/2026-05-20-bbo-coating-run-wp/).
+# It was promoted from that folder to `/notebooks/exploration/` at
+# BC-F closure (2026-05-20) per the parent
+# [`workplan.md`](../../logbook/2026-05-20-bbo-coating-run-wp/workplan.md) §6 Q8.
 #
 # **Author:** assistant under steward direction · **Date:** 2026-05-20
 #
@@ -31,7 +33,8 @@
 #
 # **γ authority.** This notebook **does not derive γ**. It consumes
 # `γ_SHG_BBO_PHE = 1.4914e-4 W⁻¹` from
-# [`constants.md`](../constants.md) §A3 (sole γ authority for this WP).
+# [`constants.md`](../../logbook/2026-05-20-bbo-coating-run-wp/constants.md)
+# §A3 (sole γ authority for this WP).
 #
 # **Acceptance gates (workplan §4 BC-B):**
 # 1. Forward cross-check: at `(P_in = 0.95 W, T_IC = 0.016)` with the
@@ -67,7 +70,8 @@ print(f"REPO_ROOT: {REPO_ROOT}")
 # %% [markdown]
 # ## 1. Constants — sourced from `constants.md` §F
 #
-# Every numeric below comes from BC-A's [`constants.md`](../constants.md).
+# Every numeric below comes from BC-A's
+# [`constants.md`](../../logbook/2026-05-20-bbo-coating-run-wp/constants.md).
 # If any of these change, this notebook does not "fix" — `constants.md`
 # is updated first and the notebook is re-run.
 

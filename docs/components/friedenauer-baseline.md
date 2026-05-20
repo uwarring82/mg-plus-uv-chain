@@ -197,6 +197,19 @@ Focusing-mirror geometric separation d' = 59.4 mm (Table 1).
 | TEM₀₀ projection fraction | ≈ 0.95 (astigmatic output projected onto a Gaussian TEM₀₀ mode) | P (§3) |
 | Overall 1118 → near-280 nm efficiency | 0.152 | P (§6) |
 
+**Next-generation BBO coating-run WP** (2026-05-20).
+The new build holds this §D geometry fixed and re-specifies only the
+M1'–M4' coatings, with the upstream LBO output bracketed between
+~ 0.5 W and ~ 1.5 W of 559 nm. The frozen vendor-facing spec sheets
+are at
+[`logbook/2026-05-20-bbo-coating-run-wp/specs/`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-20-bbo-coating-run-wp/specs/);
+the impedance-match analysis behind them lives in
+[`notebooks/exploration/2026-05-20-bbo-ic-impedance-match.py`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/notebooks/exploration/2026-05-20-bbo-ic-impedance-match.py).
+**Headline finding:** Friedenauer's procured `T_IC = 0.016` sits
+~ 0.6 pp *below* the impedance-matched optimum at the published
+Phase-E-pinned γ, forfeiting ~ 3.6 % UV buildup. The new build
+spec'd at the equal-penalty optimum, T = 19 965 ppm ± 500 ppm.
+
 ---
 
 ## E. Behavioural / environmental constraints (relevant to mount and enclosure choices)
