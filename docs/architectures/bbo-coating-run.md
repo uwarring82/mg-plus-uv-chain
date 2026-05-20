@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "BBO coating run — 559 → 280 nm CW SHG, rationale and calculations"
-description: "Public-facing explainer for the 2026-05-20 coating-run work program: how a re-anchored impedance-match calculation against the Friedenauer 2006 baseline showed that the published M4' coating sits ~ 0.6 percentage points below the impedance-matched optimum, forfeiting ~ 3.6 % UV buildup, and how that motivated a new four-mirror coating-spec package for the next-generation BBO ring at 559 → 280 nm. Intended audience: trapped-ion / atomic-physics builders running Friedenauer-class CW SHG cavities."
+description: "Public-facing explainer for the 2026-05-20 coating-run work program: how a re-anchored impedance-match calculation against the Friedenauer 2006 baseline showed that the published M1' input coupler sits ~ 0.6 percentage points below the impedance-matched optimum at the published operating point, forfeiting ~ 3.6 % UV buildup, and how that motivated a new four-mirror coating-spec package for the next-generation BBO ring at 559 → 280 nm. Intended audience: trapped-ion / atomic-physics builders running Friedenauer-class CW SHG cavities."
 ---
 
 <p class="endorsement"><strong>Endorsement Marker.</strong> Local candidate framework — AG Schätz stewardship. This page explains a closed coating-run procurement work program: a vendor-facing spec package for the BBO ring of the next-generation ²⁵Mg⁺ UV source. Quantitative findings are anchored to the published Friedenauer 2006 reference and to the architecture-neutral numerics in <code>/src/</code>; LIDT claims are dossier-tier honest (Section 6 below).</p>
@@ -27,7 +27,7 @@ uncertainty inventory.
 
 ## TL;DR for the busy ion trapper
 
-1. **Friedenauer's published M4' input coupler had `R = 0.984`
+1. **Friedenauer's published M1' input coupler had `R = 0.984`
    (`T_IC = 0.016 = 1.6 %`).** Re-running the published operating
    point through the architecture-neutral cavity solver in
    [`src/enhancement_cavity.py`][enhancement_cavity] with the
@@ -91,8 +91,15 @@ P_circ / P_in = T_IC / (1 − √[(1 − T_IC)(1 − L_passive)(1 − η_nl)])²
 ```
 
 with `L_passive` the round-trip passive loss (everything except the
-input-coupler transmission) and `η_nl = γ_SHG · P_circ` the single-pass
-nonlinear conversion fraction. The exact impedance-matched coupling is
+input-coupler transmission) and `η_nl(P_circ)` the single-pass
+nonlinear conversion fraction. The **exact** depleted-regime form is
+
+```
+η_nl(P_circ) = tanh²(√[γ_SHG · P_circ])
+```
+
+(reducing to the small-signal approximation `η_nl ≈ γ_SHG · P_circ`
+when `γ_SHG · P_circ ≪ 1`). The exact impedance-matched coupling is
 
 ```
 T_IC_opt = L_passive + (1 − L_passive) · η_nl(P_circ(T_IC_opt))
@@ -100,8 +107,9 @@ T_IC_opt = L_passive + (1 − L_passive) · η_nl(P_circ(T_IC_opt))
 
 solved self-consistently. In the small-signal limit this reduces to
 `T_IC_opt ≈ L_passive + η_nl`, and in the high-pump limit to
-`T_IC_opt → √[(1 − L_passive) γ_SHG P_in]`. These relations are
-implemented in
+`T_IC_opt → √[(1 − L_passive) γ_SHG P_in]`. Both the buildup relation
+and the impedance-match solver consume the **exact tanh² form** of
+η_nl, not the small-signal approximation, and are implemented in
 [`src/enhancement_cavity.py`][enhancement_cavity] with no architecture
 or wavelength preset — references [Polzik & Kimble (1991)][PolzikKimble1991]
 and [Ashkin, Boyd & Dziedzic (1966)][Ashkin1966].
@@ -223,10 +231,16 @@ depletion `η_nl` scales with P_in:
 | High | 1.50 W | **22 945 ppm (2.295 %)** |
 
 (Same γ_SHG, same L_passive_PHE; only P_in changes.) The Δ`T_IC_opt`
-between the two scenarios is **+0.54 pp absolute** — well below a
-typical single IBS coating-run tolerance (±0.5–1 pp), so a single
-M1' coating variant covers both scenarios at acceptable buildup
-penalty.
+between the two scenarios is **+0.54 pp absolute** (≈ 5 400 ppm).
+This is **below the project's 1 pp branch-rule threshold** for going
+to two coating variants (the workplan's §6 Q2 default rule), so a
+single M1' coating variant is acceptable under the rule — *not*
+because the two optima fall inside any one vendor-tolerance band.
+The vendor manufacturing tolerance on the chosen centre is
+**±500 ppm = ±0.05 pp**, much tighter than the 5 400-ppm spread
+between the optima; the one-variant choice is therefore a
+**performance-acceptable** decision (acceptable UV penalty at the
+centre point), not a coverage decision.
 
 **The equal-penalty (minimax) centre.** A single coating sitting at
 some centre `T_C` between the two optima delivers less than the
@@ -245,9 +259,22 @@ High scenario penalty:   −0.68 % UV vs High's optimum
 
 With a ±500 ppm vendor manufacturing tolerance on this centre, the
 worst-case penalty across the band stays below ~ 1 % UV in either
-scenario. Both still **substantially outperform Friedenauer's
-off-optimum coating** at any scenario, including the 0.95 W
-historical point.
+scenario.
+
+**Where the new centre wins, and where the comparison is more subtle.**
+At the High scenario (1.5 W) and at the Friedenauer historical point
+(0.95 W) the new centre is much closer to the relevant optimum than
+Friedenauer's `T_IC = 0.016` would be — at 1.5 W the gain is large
+(centre penalty −0.68 % vs −4.33 % for the old T at the new build's
+loss budget). At the **Low scenario specifically, however, the old
+T = 0.016 coincidentally lands slightly closer to the Low optimum
+(17 565 ppm) than the equal-penalty centre does** — at the new build's
+default loss the old coating would pay −0.35 % at Low while the
+centre pays −0.68 %. The equal-penalty centre is therefore the
+**minimax (worst-case-minimising) choice across the two scenarios**,
+not the everywhere-better choice. The win that *does* hold uniformly
+is on the High side and at the Friedenauer historical operating
+point.
 
 ---
 
