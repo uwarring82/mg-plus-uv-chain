@@ -99,6 +99,7 @@ closures.
 | Phase NG-E · loss-budget anchoring | ⏳ pending NG-C |
 | Phase NG-F · synthesis + sensitivity | ⏳ pending NG-A through NG-E |
 | Phase NG-G · documentation surface | ⏳ pending NG-F |
+| BBO ring coating-run procurement spec | ✅ done — [BBO coating-run rationale](bbo-coating-run.html) (2026-05-20). Procurement-side detail of this next-gen build; froze a five-page vendor-facing spec package at the equal-penalty M1' centre `T_IC = 19 965 ± 500 ppm` and surfaced the finding that Friedenauer's published M4' sits ~ 0.57 pp below the impedance-matched optimum (3.6 % UV buildup forgone). |
 
 ## G1 inheritance and G2-failure impact (P1 from 2026-05-08 review)
 
