@@ -15,7 +15,9 @@ A four-mirror Brewster-cut-BBO bowtie ring of the kind that
 at 280 nm for ²⁵Mg⁺ detection, cooling, and Raman work, re-evaluated for
 a coating-class upgrade twenty years on.
 
-The work program ran from BC-A through BC-F in a single calendar day on
+The work program ran from BC-A through BC-F (six internal phases:
+*scope / impedance match / per-mirror allocation / damage threshold /
+spec sheets / freeze*) in a single calendar day on
 2026-05-20 ([phase log index][closure]) and closed with a
 [five-page vendor-ready spec package][specs] covering M1' / M2' / M3' /
 M4' plus a cover letter. **This page is not the spec sheet** — those are
@@ -25,7 +27,98 @@ uncertainty inventory.
 
 ---
 
+## Concepts for newcomers
+
+If you are new to cavity-enhanced second-harmonic generation, the
+following one-paragraph primers should be enough to read the rest of
+the page. Builders already familiar with the topic can skip to the
+TL;DR.
+
+**Why ²⁵Mg⁺ needs 280 nm UV.** The ²⁵Mg⁺ ion's strong dipole-allowed
+cooling and detection transitions sit at ~ 280 nm. Cooling, optical
+pumping, and Raman manipulation of trapped Mg⁺ all need CW
+(continuous-wave, i.e., not pulsed) laser light at this wavelength,
+with hundreds of milliwatts on the experiment.
+
+**Second-harmonic generation (SHG) in a nonlinear crystal.** Optical
+materials lacking inversion symmetry can convert two input photons at
+ω into one output photon at 2ω. β-barium borate (BBO, formula
+β-BaB₂O₄) is the workhorse crystal at our wavelengths: it converts
+559 nm (visible green-yellow) into 280 nm (deep UV). The conversion
+efficiency depends on the input intensity, the crystal length, the
+focusing geometry, the phase-matching angle, and the effective
+nonlinear coefficient `d_eff` of the crystal cut.
+
+**Cavity-enhanced SHG, and why one builds a ring.** At a few-watt CW
+pump (here 559 nm) the single-pass SHG conversion through a 10-mm
+BBO crystal is only a fraction of a percent. To get watt-class UV
+out, the build-up trick is to embed the crystal inside a low-loss
+resonator that recirculates the unconverted fundamental. The
+intracavity power grows by a factor up to `1 / L_total` (the inverse
+of the round-trip loss), so a 1-W input plus 1 % loss can give
+~ 50 W circulating — enough that the per-pass conversion delivers
+hundreds of mW of UV. A *bowtie ring* is one of the standard
+geometries: four mirrors arranged in a figure-eight shape (two flat
+mirrors on a long arm, two curved focusing mirrors at a short-arm
+waist where the crystal sits), used because the unidirectional travel
+prevents standing-wave artefacts in the crystal.
+
+**Impedance matching (what `T_IC` does).** The input coupler (`IC`,
+labelled M1' in this paper's geometry) is a partial reflector with
+transmission `T_IC`. If `T_IC` is too small, most of the pump bounces
+back off the cavity and never enters; if `T_IC` is too large, the
+cavity has no buildup. The optimum is **`T_IC` = round-trip loss the
+cavity actually consumes** (mirror absorption + scatter + crystal
+losses + nonlinear conversion). This is the *impedance match*. Real
+SHG cavities have a *nonlinear* contribution to round-trip loss
+(the SHG itself removes fundamental photons), so the optimal `T_IC`
+grows with input power.
+
+**Boyd-Kleinman focusing.** How tightly to focus a Gaussian beam into
+a nonlinear crystal? Too loose and the intensity is too low for
+efficient conversion; too tight and the beam diverges out of the
+phase-matched volume before converting. Boyd & Kleinman (1968)
+worked out the optimum and packaged it into a focusing factor
+`h_m(ξ, β)` where `ξ = L / b` is the ratio of crystal length to
+confocal parameter `b = π · n · w₀² / λ`. For BBO Type-I at our
+wavelengths there is an additional walk-off effect (the
+extraordinary harmonic beam exits the crystal at a small angle to
+the ordinary fundamental), which makes `h_m` substantially smaller
+than the no-walk-off optimum.
+
+**Hänsch–Couillaud locking.** The cavity must be held on resonance
+with the input laser to a tiny fraction of the line-width. The
+Hänsch–Couillaud (HC) scheme generates an error signal from the
+polarisation of the cavity-reflected light: any frequency mismatch
+rotates the reflected polarisation away from horizontal, and a
+balanced photodiode pair measures the offset. The error feeds a
+piezo-mounted cavity mirror (here M2', the second plane mirror) that
+adjusts the cavity length on the sub-nanometre scale.
+
+**Mirror coatings and damage thresholds (LIDT).** Each mirror in the
+ring carries a dielectric thin-film stack tens of layers deep: a
+high-reflector (HR) is a quarter-wave stack alternating high-index
+material (HfO₂, ZrO₂, Ta₂O₅, …) with low-index SiO₂; an
+anti-reflection (AR) coating suppresses the back-face reflection; the
+M4' dichroic in our build is a dual-band stack that simultaneously
+high-reflects the 559 nm fundamental and high-transmits the 280 nm
+harmonic. The Laser-Induced Damage Threshold (LIDT) is the peak
+intensity at which the coating begins to fail; for CW use it is
+typically expressed in kW/cm² and is set by the coating-material
+bandgap, the deposition method (Ion-Beam Sputtering, IBS, is the
+gold standard), and particulate contamination (which can drop the
+LIDT by orders of magnitude). The new build's spec sheets explicitly
+specify CW LIDT and a cleanroom-grade cleanliness clause on
+delivery.
+
+A more compact glossary of every abbreviation and symbol used on
+this page sits in [Section 10](#10--glossary-of-abbreviations-and-symbols).
+
+---
+
 ## TL;DR for the busy ion trapper
+
+(*TL;DR* = "too long, didn't read" — the headline summary.)
 
 1. **Friedenauer's published M1' input coupler had `R = 0.984`
    (`T_IC = 0.016 = 1.6 %`).** Re-running the published operating
@@ -529,6 +622,95 @@ In the spirit of honest dossier accounting:
 - **G1 (14 GHz unlockable domain)** is inherited from the Friedenauer
   crystal + cavity geometry and is *not* introduced or resolved by
   coating choices ([CHARTER][charter] §8.1).
+
+---
+
+## 10 · Glossary of abbreviations and symbols
+
+### Abbreviations and acronyms
+
+| Abbreviation | Expansion / meaning |
+|---|---|
+| **AOI** | Angle of incidence (measured from surface normal). |
+| **AR** | Anti-reflection coating: thin-film stack that suppresses surface reflection at a target wavelength and AOI. |
+| **BBO** | β-barium borate (β-BaB₂O₄). Negative-uniaxial nonlinear crystal used for SHG / SFG in the visible-to-UV range. |
+| **BC-A … BC-F** | The six internal phases of this work program (BBO-coating phases A–F): scope / impedance match / per-mirror allocation / LIDT / spec sheets / freeze. See the [closure index][closure]. |
+| **CA** | Clear aperture: the centred-circle region of a mirror over which the coating, surface figure, and damage threshold are guaranteed to spec. |
+| **CW** | Continuous-wave (as opposed to pulsed) laser operation. |
+| **DOI** | Digital Object Identifier — the persistent identifier used in the reference list. |
+| **EAR** | (US) Export Administration Regulations — dual-use export-control rules; flagged in the procurement letter alongside ITAR. |
+| **FS** | Fused silica (amorphous SiO₂); the standard UV-grade substrate for visible/UV cavity mirrors. *Herasil* and *Suprasil* are Heraeus product grades of UV-grade fused silica. |
+| **G1, G2, G3** | Project gates carried in the [CHARTER][charter]: G1 = the 14-GHz "unlockable domain" attribution; G2 = UV-induced coating degradation rate at 280 nm; G3 = Phase-0.5 reference triple (Δ, Ω_R, Γ_sc). Closures advance the WP through Council-3 governance. |
+| **HC** | Hänsch–Couillaud (polarisation-based cavity-locking scheme, 1980). |
+| **HR** | High reflector (dielectric mirror with R typically ≥ 99.9 %). |
+| **HT** | High transmission (used here for the 280 nm-transmissive face of the dichroic output coupler). |
+| **IBS** | Ion-Beam Sputtering — the highest-LIDT, lowest-loss thin-film deposition method for dielectric coatings. |
+| **IC** | Input coupler (the partial reflector through which the pump enters the cavity). |
+| **ITAR** | (US) International Traffic in Arms Regulations — export controls; flagged in the procurement letter. |
+| **kW / cm², MW / cm²** | Intensity units: kilowatts and megawatts per square centimetre. |
+| **LBO** | Lithium triborate (LiB₃O₅); the nonlinear crystal used *upstream* of the BBO ring to produce 559 nm from 1118 nm. Not redesigned in this WP. |
+| **LIDT** | Laser-Induced Damage Threshold (typically expressed as peak CW intensity or pulsed fluence at which the coating begins to fail). |
+| **MIL-STD-1246C** | US Military Standard cleanliness specification for optical surfaces and packaging. Class 100 = stringent particulate limit; the new spec's procurement-acceptance condition. |
+| **OC** | Output coupler — the mirror through which the harmonic output leaves the cavity. On M4' (a dichroic) this means HR @ 559 nm + HT @ 280 nm in the same stack. |
+| **PHE** | "Phase E" — the diagnostic notebook [`2026-05-07-friedenauer-cascade-recompute.py`][PhaseE] that first cross-checked the cavity model against Friedenauer's published numbers. Suffix on `L_passive_PHE`, `γ_SHG_BBO_PHE`. |
+| **PM** | Phase matching (the wavevector matching `k_2ω = 2 k_ω` required for efficient SHG). |
+| **ppm, pp** | parts per million (1 ppm = 10⁻⁶) and percentage points (1 pp = 10⁻² absolute). 500 ppm = 0.05 pp. |
+| **ROC** | Radius of curvature (of a concave or convex mirror). |
+| **SHG** | Second-Harmonic Generation: nonlinear process converting two ω photons into one 2ω photon. |
+| **SFG / FiHG** | Sum-frequency / fifth-harmonic generation — broader nonlinear processes; relevant in some of the LIDT literature cited (Turcicova2022 §4.2). |
+| **TL;DR** | "Too long; didn't read" — the headline summary. |
+| **UHV** | Ultra-High Vacuum (typically ≤ 10⁻⁸ mbar). |
+| **UV** | Ultraviolet light (here meaning the ≈ 280 nm second harmonic). |
+| **WP** | Work program (a structured multi-phase task; this page documents the BBO coating-run WP). |
+
+### Material symbols
+
+| Symbol | Meaning |
+|---|---|
+| **HfO₂, ZrO₂, Nb₂O₅, Ta₂O₅, TiO₂** | High-index oxide thin-film materials used in dielectric coatings. Bandgap descends in this order; LIDT generally tracks bandgap (Brown2019). |
+| **SiO₂** | Silicon dioxide / fused silica — the low-index counterpart in oxide multilayers. Highest bandgap (~ 9 eV), best LIDT screening tier. |
+| **MgF₂, LaF₃, CaF₂** | Fluoride thin-film materials — alternative low- and high-index choices for UV operation, with higher bandgaps than the oxide series. Burkley2021's preferred stack for UHV-UV cavities. |
+| **Al₂O₃** | Alumina; medium-index oxide used in some HR / AR stacks. |
+
+### Physical quantities
+
+| Symbol | Meaning | Typical value here |
+|---|---|---|
+| `λ` | Vacuum wavelength | 559 nm (pump), 280 nm (UV) |
+| `n` | Refractive index | `n_o(559) = 1.673` in BBO; 1 in air |
+| `n_o` / `n_e` | Ordinary / extraordinary index of a uniaxial crystal | per Eimerl Sellmeier |
+| `θ_PM` | Phase-matching angle (between optical axis and beam in the crystal) | 44.4° for Type-I 559 → 280 nm BBO |
+| `ρ` | Walk-off angle (between Poynting and wavevector for the extraordinary beam) | 83.1 mrad at θ_PM in BBO |
+| `d_eff` | Effective nonlinear coefficient (projected for the chosen interaction and polarisation) | 1.44 pm/V central, range 1.30–1.60 (BBO Type-I 559 → 280 nm) |
+| `w₀` | Gaussian beam waist (intensity 1/e² half-width at the focus) | 19.4 μm at the BBO short-arm waist |
+| `z_R` | Rayleigh range (`π · n · w₀² / λ`); distance over which the spot stays within √2 of waist | 3.54 mm in BBO (air-equivalent 2.12 mm) |
+| `ξ` | Boyd-Kleinman focusing parameter `L / b` where `b = 2 z_R` | 1.413 at the Friedenauer geometry |
+| `β` | Boyd-Kleinman walk-off parameter `(ρ / 2) √(L · k)` | 18.0 (deeply walk-off-limited) |
+| `h_m(ξ, β)` | Boyd-Kleinman focusing factor (≤ 1; product of phase-mismatch and walk-off reductions) | 0.0330 |
+| `γ_SHG` | Single-pass SHG conversion coefficient, `γ = η_nl / P_in_single_pass` in the small-signal limit | 1.49 × 10⁻⁴ W⁻¹ at our BBO geometry |
+| `η_nl` | Single-pass nonlinear conversion fraction inside the cavity (the cavity sees `η_nl(P_circ) = tanh²(√[γ · P_circ])`) | ~ 1 % at the impedance-matched point |
+| `T_IC` | Input-coupler transmission (front face of M1', at 559 nm) | 16 000 ppm in Friedenauer, 19 965 ppm in the new build |
+| `R` | Reflectivity (mirror front-face); `T + R + loss = 1` | 99.97 % on M2', M3' fronts; 99.91 % on M4' front @ 559 |
+| `L_passive` | Round-trip passive loss (everything in the cavity except the input-coupler transmission and the nonlinear conversion) | 15 288 ppm at the Friedenauer corner |
+| `L_total` | Round-trip operating loss = `L_passive` minus the nonlinear-conversion contribution + IC transmission | 13 388 ppm at the new-build default |
+| `P_in` | Pump power into the cavity at 559 nm | 0.5–1.5 W (two scenarios) |
+| `P_circ` | Steady-state circulating power inside the cavity at 559 nm | 28.5 W @ Low scenario, 65.4 W @ High |
+| `P_UV` | Output power at the harmonic, 280 nm | 0.12 W @ Low scenario, 0.63 W @ High |
+| `Δ_ref` | Raman detuning reference for the ²⁵Mg⁺ build (CHARTER §1.5 Phase 0.5 triple) | 40 GHz |
+| `Ω_R` | Raman Rabi frequency reference | 2π × 400 kHz |
+| `Γ_sc` | Scattering-rate reference per Raman gate | 2.0 × 10⁴ s⁻¹ |
+
+### Mirror identifiers (Friedenauer-2006 §3 / Table 1)
+
+| ID | Role | Position |
+|---|---|---|
+| **M1'** | Plane input coupler (IC); partial reflector at 559 nm + AR @ 559 on back | Long arm of the bowtie ring; near-normal AOI |
+| **M2'** | Plane high-reflector (HR @ 559 nm); piezo-mounted for the HC servo lock; AR @ 559 on back | Long arm; near-normal AOI |
+| **M3'** | Curved HR @ 559 nm (focusing mirror), ROC = 50 mm; AR @ 559 on back | Short arm; 13.7° AOI p-pol |
+| **M4'** | Curved dichroic output coupler — HR @ 559 nm AND HT @ 280 nm in the same stack on the concave front; narrow-band AR @ 280 nm on the planar back | Short arm; 13.7° AOI p-pol |
+
+The prime (`'`) distinguishes the four BBO-stage mirrors from their LBO-stage
+counterparts (M1, M2, M3, M4, all at 1118 nm) in the upstream cavity.
 
 ---
 
