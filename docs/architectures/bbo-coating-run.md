@@ -587,17 +587,21 @@ Five vendor-facing pages live under
 | Page | Front face | Back face | Quantity |
 |---|---|---|---|
 | [M1' input coupler][M1-spec] (plane) | T = 19 965 ± 500 ppm @ 559 nm, AOI ~ 0° | AR @ 559 nm | 4 |
-| [M2' plane HR][M2-spec] (HC servo seat) | R ≥ 99.970 % @ 559 nm, AOI ~ 0° | AR @ 559 nm | 4 |
+| [M2' plane HR][M2-spec] (HC servo seat, **Ø 6.35 × 2.0 mm** per BC-G addendum) | R ≥ 99.970 % @ 559 nm, AOI ~ 0° | AR @ 559 nm | 4 |
 | [M3' curved HR][M3-spec] (ROC = 50 mm) | R ≥ 99.970 % @ 559 nm, AOI 13.7° ± 1.5° p-pol | AR @ 559 nm | 4 |
 | [M4' curved dichroic OC][M4-spec] (ROC = 50 mm) | R ≥ 99.910 % @ 559 nm AND T ≥ 95.0 % @ 280 nm, AOI 13.7° ± 1.5° p-pol | AR @ 280 nm (narrow-band) | 4 |
 | [Coating-run cover letter][cover-letter] | Eight callouts: AOI band, M4' material tier, single-variant rationale, T_IC-above-Friedenauer justification, AR bandwidth, LIDT acceptance margin vs literature service-life, cleanliness clause, quote format | — | — |
 
-Substrate: Heraeus Herasil throughout (UV-grade fused silica;
-mandatory on M4' for the 280 nm transit, preferred uniformly for
-scatter-uniformity and procurement-simplicity). Deposition: IBS.
-N = 4 pieces per mirror role yields 4 full sets — one for the build,
-three as forward stock against coating-run rejection, build-time
-damage, and a future replacement cycle.
+Substrate **material**: Heraeus Herasil throughout (UV-grade fused
+silica; mandatory on M4' for the 280 nm transit, preferred uniformly for
+scatter-uniformity and procurement-simplicity). Substrate **size**:
+Ø 12.7 × 6.35 mm on M1' / M3' / M4'; **M2' is a smaller Ø 6.35 × 2.0 mm
+blank** — a [post-closure BC-G addendum][bc-g] dropped the piezo-mounted
+servo mirror's moving mass ~ 13× to raise the cavity-lock bandwidth
+(~ 1.5× over Friedenauer; the actuator's own mass, not the optic, sets
+the ceiling). Deposition: IBS. N = 4 pieces per mirror role yields 4 full
+sets — one for the build, three as forward stock against coating-run
+rejection, build-time damage, and a future replacement cycle.
 
 ---
 
@@ -784,6 +788,7 @@ counterparts (M1, M2, M3, M4, all at 1118 nm) in the upstream cavity.
 [M4-spec]: https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-20-bbo-coating-run-wp/specs/M4-curved-OC-dichroic.md
 [cover-letter]: https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-20-bbo-coating-run-wp/specs/coating-run-cover-letter.md
 [bc-b-results]: https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-20-bbo-coating-run-wp/bc-b-results.md
+[bc-g]: https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-20-bbo-coating-run-wp/bc-g-results.md
 [next-gen]: next-gen.html
 [charter]: https://github.com/uwarring82/mg-plus-uv-chain/blob/main/CHARTER.md
 [enhancement_cavity]: https://github.com/uwarring82/mg-plus-uv-chain/blob/main/src/enhancement_cavity.py

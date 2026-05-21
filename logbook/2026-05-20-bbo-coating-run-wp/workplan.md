@@ -2,7 +2,7 @@
 
 **Steward:** Ulrich Warring
 **Date opened:** 2026-05-20
-**Status:** **CLOSED 2026-05-20 — BC-A through BC-F executed in one calendar day; specs frozen and committed to repo. No vendor contact made.** Closure index in [`closure.md`](closure.md).
+**Status:** **CLOSED 2026-05-20 — BC-A through BC-F executed in one calendar day; specs frozen and committed to repo. No vendor contact made. REOPENED 2026-05-21 for the BC-G substrate-mechanics addendum (M2′ piezo-mirror blank) and RE-CLOSED 2026-05-21.** Closure index in [`closure.md`](closure.md); BC-G in [`bc-g-results.md`](bc-g-results.md) / [`bc-g-log.md`](bc-g-log.md).
 **Folder:** [`logbook/2026-05-20-bbo-coating-run-wp/`](.)
 **Companion artefacts (now landed):**
 - [`specs/`](specs/) — five vendor-facing pages (M1' / M2' / M3' / M4' + cover letter), frozen at BC-F closure.
@@ -11,6 +11,7 @@
 - [`bc-b-results.md`](bc-b-results.md) / [`bc-c-results.md`](bc-c-results.md) / [`bc-d-results.md`](bc-d-results.md) — phase handoff artefacts.
 - [`closure.md`](closure.md) — WP-closure index + handoff to the downstream procurement KD.
 - BC-B notebook promoted to [`/notebooks/exploration/2026-05-20-bbo-ic-impedance-match.py`](../../notebooks/exploration/2026-05-20-bbo-ic-impedance-match.py).
+- [`bc-g-log.md`](bc-g-log.md) / [`bc-g-results.md`](bc-g-results.md) — **post-closure addendum (2026-05-21):** M2′ piezo-mirror substrate mechanics; both actuator tiers; M2′ page re-frozen.
 
 **Document state.** The numbered sections below preserve the workplan
 as it stood after the v3 review pass that endorsed BC-A start. The
@@ -538,6 +539,45 @@ expensive; mid-quote revisions burn vendor goodwill.
 The act of *sending* the inquiry to a vendor is a separate decision (and
 arguably belongs to a procurement KD), not part of this WP.
 
+### Phase BC-G · M2′ piezo-mirror substrate mechanics (post-closure addendum, 2026-05-21, ~ 0.5 day)
+
+**Why reopened.** A steward add-on after closure: the frozen M2′ page
+carried a Friedenauer-LBO inheritance that does not survive scrutiny for
+the BBO stage — a stale actuator reference ("AE020304D04-class") and the
+blanket Ø 12.7 × 6.35 mm blank, which both overhangs the real actuator
+face and is far heavier than a piezo-lock seat should be. This is *spec
+content* (it changes the M2′ blank the vendor must make), so it is
+handled as a reopened amendment phase rather than a silent edit to a
+frozen page.
+
+**Deliverables.**
+- [`bc-g-results.md`](bc-g-results.md) — the reusable sizing model
+  (clamped-free spring–mass, actuator effective mass back-out, the
+  saturation knee), both actuator tiers, and the per-element
+  thickness review.
+- [`bc-g-log.md`](bc-g-log.md) — the reopening log + Charter §9
+  boundaries (Level 0/1/criterion untouched; *Sail*; no `/src/`; gates
+  unaffected).
+- Amended + re-frozen [`specs/M2-plane-HR.md`](specs/M2-plane-HR.md);
+  consistency edits to [`specs/coating-run-cover-letter.md`](specs/coating-run-cover-letter.md)
+  and [`closure.md`](closure.md).
+
+**Result.** Actuator pinned to **PI P-887.31**. **Tier 1 (implemented):**
+M2′ = **Ø 6.35 × 2.0 mm** Herasil on P-887.31 — fixes the overhang +
+mass + stale-ref defects with zero build change, at the resonance
+saturation stop-point (UGF ~ 6–9 kHz, ~ 1.5× Friedenauer). **Tier 2
+(documented, build-item):** Ø 5.0 × 1.5 mm on a P-885.11-class short
+stack (UGF ~ 10 kHz, ~ 2.5×) — carried to the procurement / build KD
+because it changes the actuator and mount. The earlier-floated 20 kHz
+UGF target is retired (unreachable on P-887.31 at any mirror size).
+Per-element thickness made explicit: only M2′ moves; M4′ keeps 6.35 mm
+(280 nm transit through UV-grade FS absorbs ≲ 0.06 %).
+
+**Acceptance.** M2′ blank derived from the real actuator (not a
+convention); both tiers documented; thickness explicit per element;
+frozen artefacts updated consistently and the M2′ page re-frozen
+2026-05-21; no `/src/` change, gates untouched, no vendor inquiry sent.
+
 ---
 
 ## 5 · Effort sketch
@@ -550,7 +590,8 @@ arguably belongs to a procurement KD), not part of this WP.
 | BC-D | LIDT + substrate constraints | 0.5 day | BC-A |
 | BC-E | Spec-sheet drafting | 1 day | BC-C, BC-D |
 | BC-F | Review + freeze | 0.5 day | BC-E |
-| **Total** | | **~ 4.5 days focused** | |
+| **Total (BC-A → BC-F)** | | **~ 4.5 days focused** | |
+| BC-G | M2′ substrate mechanics (post-closure addendum) | ~ 0.5 day | actuator part no. from steward |
 
 Realistic calendar window: **one week** with normal task-switching overhead.
 If BC-A's path-1 literature pass requires promoting a new

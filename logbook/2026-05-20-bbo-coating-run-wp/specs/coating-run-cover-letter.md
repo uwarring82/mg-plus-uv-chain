@@ -13,12 +13,19 @@ This run covers four optics in a 559 → 280 nm CW SHG ring cavity:
 | Optic | Geometry | Front coating | Back coating | Quantity |
 |---|---|---|---|---|
 | **M1'** input coupler | Plane | T = 19 965 ppm ± 500 ppm @ 559 nm, AOI ~ 0° | AR @ 559 nm | 4 |
-| **M2'** plane HR (piezo seat) | Plane | R ≥ 99.970 % @ 559 nm, AOI ~ 0° | AR @ 559 nm | 4 |
+| **M2'** plane HR (piezo seat) | Plane, **Ø 6.35 × 2.0 mm** (smaller blank — see below) | R ≥ 99.970 % @ 559 nm, AOI ~ 0° | AR @ 559 nm | 4 |
 | **M3'** curved HR | Concave ROC = 50 mm | R ≥ 99.970 % @ 559 nm, AOI 13.7° ± 1.5° p-pol | AR @ 559 nm | 4 |
 | **M4'** curved dichroic OC | Concave ROC = 50 mm | R ≥ 99.910 % @ 559 nm AND T ≥ 95.0 % @ 280 nm, AOI 13.7° ± 1.5° p-pol | AR @ 280 nm (narrow-band) | 4 |
 
-Substrate: Heraeus Herasil throughout (UV-grade fused silica; mandatory
-on M4', preferred on M1'/M2'/M3').
+Substrate **material**: Heraeus Herasil throughout (UV-grade fused
+silica; mandatory on M4', preferred on M1'/M2'/M3').
+Substrate **size**: Ø 12.7 × 6.35 mm on M1' / M3' / M4'; **M2' is a
+smaller Ø 6.35 × 2.0 mm blank** because it is glued to a piezo stack for
+the cavity lock and a lower moving mass raises the servo bandwidth (BC-G
+addendum, [`bc-g-results.md`](../bc-g-results.md)). All four are
+quotable in the same run; M2' simply uses a quarter-inch blank. (A
+Ø 5.0 × 1.5 mm M2' variant exists for a higher-bandwidth actuator option
+— quote on request, but the Ø 6.35 × 2.0 mm above is the spec.)
 Per-mirror sheets in
 [`M1-input-coupler.md`](M1-input-coupler.md),
 [`M2-plane-HR.md`](M2-plane-HR.md),

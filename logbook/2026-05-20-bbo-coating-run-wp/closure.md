@@ -1,9 +1,12 @@
 # BBO coating-run WP — closure document
 
-**Status:** **CLOSED 2026-05-20.**
+**Status:** **CLOSED 2026-05-20; reopened 2026-05-21 for the BC-G
+substrate-mechanics addendum, RE-CLOSED 2026-05-21.**
 **Steward:** Ulrich Warring.
 **Phases:** BC-A → BC-F, all closed within a single calendar day
-(2026-05-20).
+(2026-05-20). **BC-G** added 2026-05-21 (post-closure addendum: M2′
+piezo-mirror blank — [`bc-g-results.md`](bc-g-results.md) /
+[`bc-g-log.md`](bc-g-log.md)).
 **Workplan:** [`workplan.md`](workplan.md) (v3, endorsed 2026-05-20
 after a four-round review pass).
 
@@ -22,15 +25,18 @@ BC-F closure on 2026-05-20:
 | Page | Front-face spec | Back-face spec | Quantity |
 |---|---|---|---|
 | [M1'](specs/M1-input-coupler.md) input coupler (plane) | T = 19 965 ppm ± 500 ppm @ 559 nm, AOI ~ 0° p-pol | AR @ 559 nm | 4 |
-| [M2'](specs/M2-plane-HR.md) plane HR (HC servo seat) | R ≥ 99.970 % @ 559 nm, AOI ~ 0° p-pol | AR @ 559 nm | 4 |
+| [M2'](specs/M2-plane-HR.md) plane HR (HC servo seat, **Ø 6.35 × 2.0 mm** per BC-G) | R ≥ 99.970 % @ 559 nm, AOI ~ 0° p-pol | AR @ 559 nm | 4 |
 | [M3'](specs/M3-curved-HR.md) curved HR (ROC = 50 mm) | R ≥ 99.970 % @ 559 nm, AOI 13.7° ± 1.5° p-pol | AR @ 559 nm | 4 |
 | [M4'](specs/M4-curved-OC-dichroic.md) curved dichroic OC (ROC = 50 mm) | R ≥ 99.910 % @ 559 nm AND T ≥ 95.0 % @ 280 nm, AOI 13.7° ± 1.5° p-pol | AR @ 280 nm (narrow-band) | 4 |
 | [Cover letter](specs/coating-run-cover-letter.md) | Eight callouts: AOI band, M4' material tier, single-variant rationale, T_IC-above-Friedenauer justification, AR bandwidth, LIDT + G2-conditional clauses, cleanliness clause, quote format | — | — |
 
-Substrate: Heraeus Herasil throughout (UV-grade FS; mandatory on
-M4', preferred on M1'/M2'/M3'). Deposition: IBS required.
-Cleanliness on delivery: MIL-STD-1246C Class 100 or better
-(load-bearing — see cover letter §G).
+Substrate **material**: Heraeus Herasil throughout (UV-grade FS;
+mandatory on M4', preferred on M1'/M2'/M3'). Substrate **size**:
+Ø 12.7 × 6.35 mm on M1'/M3'/M4'; **M2' = Ø 6.35 × 2.0 mm** (BC-G
+reduced-mass servo blank — material uniformity preserved, size
+deliberately broken for piezo bandwidth; [`bc-g-results.md`](bc-g-results.md)).
+Deposition: IBS required. Cleanliness on delivery: MIL-STD-1246C
+Class 100 or better (load-bearing — see cover letter §G).
 
 ---
 
@@ -62,6 +68,7 @@ The single γ / L authority for the WP is
 | **BC-D** | LIDT margin per mirror at 1.5 W; M4' material tier (HfO₂ / SiO₂ default, ZrO₂ / SiO₂ alt, LaF₃ / MgF₂ on CaF₂ upgrade, no Nb₂O₅ / TiO₂); G2-conditional service-life envelope; MIL-STD-1246C cleanliness clause | [`bc-d-log.md`](bc-d-log.md) + [`bc-d-results.md`](bc-d-results.md) |
 | **BC-E** | Five vendor-facing pages in [`specs/`](specs/) (M1'–M4' + cover letter) | [`bc-e-log.md`](bc-e-log.md) + [`specs/`](specs/) |
 | **BC-F** | Steward review + freeze; notebook promotion; cross-links; this closure document | [`bc-f-log.md`](bc-f-log.md) + this file |
+| **BC-G** (post-closure addendum, 2026-05-21) | M2′ piezo-mirror substrate mechanics; actuator pinned to PI P-887.31; clamped-free spring–mass model; both tiers (T1 Ø6.35×2.0 implemented, T2 Ø5.0×1.5 documented); per-element thickness review; M2′ page re-frozen | [`bc-g-log.md`](bc-g-log.md) + [`bc-g-results.md`](bc-g-results.md) |
 
 Calendar: workplan estimate ~ 4.5 days focused. Actual ~ 1 calendar
 day (BC-A 1 day; BC-B / BC-C / BC-D / BC-E / BC-F each within
@@ -95,6 +102,21 @@ procurement KD downstream (KD-UV280-005 / -007):
 5. **G2 measurement at install.** Monitor M4' loss-rate increase
    under the 1.5 W operating scenario for 100+ h. Outcome closes
    the G2-conditional escalation paths in cover letter §F.
+6. **M2′ servo-actuator tier (BC-G).** Baseline is **Tier 1**:
+   PI P-887.31 (unchanged) with the Ø 6.35 × 2.0 mm blank now spec'd,
+   UGF ~ 6–9 kHz (~ 1.5× Friedenauer). **Tier 2** (P-885.11-class
+   short stack + Ø 5.0 × 1.5 mm blank, UGF ~ 10 kHz, ~ 2.5×
+   Friedenauer) is a documented upgrade that changes the actuator,
+   mount geometry, and driver capacitance — a build/mount decision,
+   not a coating one. See [`bc-g-results.md`](bc-g-results.md) §D.2 for
+   the build-side checklist.
+7. **Substrate sourcing matrix + sourcing consultant (add-on 2).**
+   For each shortlisted house, record whether it supplies / sources
+   substrates or coats customer-supplied blanks — material to whether
+   the non-standard Ø 6.35 × 2.0 mm M2′ blank (and a possible Tier-2
+   Ø 5.0 × 1.5 mm) is sourced by the coater, supplied by us, or
+   brokered through a sourcing consultant (e.g. agile-optic.com). This
+   couples the M2′ blank decision (item 6) to vendor intake (item 1).
 
 ---
 
@@ -207,6 +229,8 @@ geometric-dependency risk for the procurement KD.
 ## J · Sign-off
 
 Steward sign-off on the five spec pages: **frozen 2026-05-20.**
+**M2′ page substrate amended and re-frozen 2026-05-21 (BC-G);** the
+other four pages are unchanged from the 2026-05-20 freeze.
 
 WP closes here. The act of *sending* the quote package to coating
 houses is the first deliverable of the downstream procurement KD,
