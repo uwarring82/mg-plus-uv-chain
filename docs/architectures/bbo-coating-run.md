@@ -93,7 +93,10 @@ polarisation of the cavity-reflected light: any frequency mismatch
 rotates the reflected polarisation away from horizontal, and a
 balanced photodiode pair measures the offset. The error feeds a
 piezo-mounted cavity mirror (here M2', the second plane mirror) that
-adjusts the cavity length on the sub-nanometre scale.
+adjusts the cavity length on the sub-nanometre scale. In the new build
+this mirror is kept deliberately small and light — because the lock's
+*speed* is set not by the mirror but by the mass the piezo has to push
+(see [Section 8.1](#81--why-the-lock-mirror-is-a-smaller-blank-bc-g-addendum)).
 
 **Mirror coatings and damage thresholds (LIDT).** Each mirror in the
 ring carries a dielectric thin-film stack tens of layers deep: a
@@ -603,6 +606,51 @@ the ceiling). Deposition: IBS. N = 4 pieces per mirror role yields 4 full
 sets — one for the build, three as forward stock against coating-run
 rejection, build-time damage, and a future replacement cycle.
 
+### 8.1 · Why the lock mirror is a smaller blank (BC-G addendum)
+
+After the package was frozen, a review of **M2'** — the piezo-mounted
+mirror carrying the [Hänsch–Couillaud lock](#concepts-for-newcomers) —
+raised a question the other three mirrors don't face: *how fast can the
+servo move it?* M2' sits on the last cavity before the UV output, so its
+lock bandwidth feeds straight into UV-power stability, and a faster lock
+rejects more acoustic noise.
+
+The instinct — "make the mirror small and light" — turns out to be only
+half right. A piezo-mounted mirror is a spring–mass system whose first
+mechanical resonance caps the servo bandwidth (the unity-gain frequency,
+**UGF**, must sit a factor ~ 3–5 below it):
+
+```
+f_loaded = f_clamp · √[ m_piezo,eff / (m_piezo,eff + m_mirror) ]
+```
+
+The surprise hides in `m_piezo,eff` — the piezo stack's *own* effective
+moving mass. For the build's actuator (a **PI P-887.31** PICMA® stack,
+k = 130 N/µm, ~ 45 kHz clamped-free resonance) it is **~ 1.6 g**, heavier
+than any sensible mirror. So once the mirror drops below ~ 0.15 g the
+resonance *saturates* — **the actuator, not the optic, is the limit:**
+
+| M2' blank | mass | loaded resonance (real) | lock bandwidth |
+|---|---|---|---|
+| Ø 12.7 × 6.35 mm (default) | 1.77 g | ~ 19 kHz | ~ 1× (≈ Friedenauer) |
+| **Ø 6.35 × 2.0 mm (chosen)** | 0.14 g | ~ 26 kHz | **~ 1.5×** |
+| anything smaller | → 0 | ~ 27 kHz (ceiling) | saturated |
+
+The chosen **Ø 6.35 × 2.0 mm** blank captures essentially all the
+available gain *and* fits the 7 × 7 mm actuator face without the rim
+overhang the original ½-inch blank would have had (an overhang adds a
+low-frequency wobble mode that *lowers* the resonance). Going smaller
+trades real handling and coating-fixture risk for sub-kHz gains.
+
+A genuinely higher-bandwidth lock (~ 2.5× Friedenauer) is reachable, but
+only by swapping the *actuator* for a shorter, stiffer stack
+(PI P-885.11-class) carrying a Ø 5.0 × 1.5 mm blank — a build / mount
+change, documented as an option rather than baked into the coating run.
+Only M2' moves: the curved dichroic M4' is the one mirror with an
+*optical* reason to revisit thickness (280 nm transits its substrate),
+and there 6.35 mm absorbs ≲ 0.06 %, so it stays put. Full derivation:
+[`bc-g-results.md`][bc-g].
+
 ---
 
 ## 9 · What is *not* claimed
@@ -638,7 +686,7 @@ In the spirit of honest dossier accounting:
 | **AOI** | Angle of incidence (measured from surface normal). |
 | **AR** | Anti-reflection coating: thin-film stack that suppresses surface reflection at a target wavelength and AOI. |
 | **BBO** | β-barium borate (β-BaB₂O₄). Negative-uniaxial nonlinear crystal used for SHG / SFG in the visible-to-UV range. |
-| **BC-A … BC-F** | The six internal phases of this work program (BBO-coating phases A–F): scope / impedance match / per-mirror allocation / LIDT / spec sheets / freeze. See the [closure index][closure]. |
+| **BC-A … BC-G** | The internal phases of this work program: BC-A scope / BC-B impedance match / BC-C per-mirror allocation / BC-D LIDT / BC-E spec sheets / BC-F freeze, plus the post-closure **BC-G** addendum (M2' piezo-mirror substrate, [Section 8.1](#81--why-the-lock-mirror-is-a-smaller-blank-bc-g-addendum)). See the [closure index][closure]. |
 | **CA** | Clear aperture: the centred-circle region of a mirror over which the coating, surface figure, and damage threshold are guaranteed to spec. |
 | **CW** | Continuous-wave (as opposed to pulsed) laser operation. |
 | **DOI** | Digital Object Identifier — the persistent identifier used in the reference list. |
@@ -663,6 +711,7 @@ In the spirit of honest dossier accounting:
 | **SHG** | Second-Harmonic Generation: nonlinear process converting two ω photons into one 2ω photon. |
 | **SFG / FiHG** | Sum-frequency / fifth-harmonic generation — broader nonlinear processes; relevant in some of the LIDT literature cited (Turcicova2022 §4.2). |
 | **TL;DR** | "Too long; didn't read" — the headline summary. |
+| **UGF** | Unity-gain frequency: the loop frequency where the feedback's open-loop gain crosses 1 — the practical measure of servo bandwidth. For a piezo-mounted mirror it must sit a factor ~ 3–5 below the first mechanical resonance (Section 8.1). |
 | **UHV** | Ultra-High Vacuum (typically ≤ 10⁻⁸ mbar). |
 | **UV** | Ultraviolet light (here meaning the ≈ 280 nm second harmonic). |
 | **WP** | Work program (a structured multi-phase task; this page documents the BBO coating-run WP). |
