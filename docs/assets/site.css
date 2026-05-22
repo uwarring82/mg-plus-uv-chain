@@ -218,6 +218,19 @@ main { display: block; padding: 2.5rem 0 4rem; }
 .prose .classification--sail { color: var(--sea); font-style: italic; }
 .prose .classification--gate { color: var(--signal); }
 
+/* Outreach / call-out banner */
+.prose .banner {
+  background: var(--warm-white);
+  border: 1px solid var(--grid);
+  border-left: 3px solid var(--sea);
+  border-radius: 3px;
+  padding: 0.85rem 1.1rem;
+  margin: 1.5rem 0;
+  max-width: var(--measure);
+  line-height: 1.55;
+}
+.prose .banner strong { color: var(--sea); }
+
 /* Inline code and code blocks */
 .prose code {
   font-family: var(--font-mono);

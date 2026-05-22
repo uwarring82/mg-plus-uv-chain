@@ -14,6 +14,8 @@ This page summarises the principles, calculations, and current status of `mg-plu
 
 The repository itself is the canonical record. This site is a navigational index for readers who want the gist before reading the [Charter](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/CHARTER.md).
 
+<aside class="banner"><strong>Open call — coating review.</strong> We are finalising the mirror-coating specification for a 559 → 280 nm CW BBO doubling cavity and would value expert input before we approach coating vendors. <a href="architectures/bbo-coating-brief.html">Read the coating brief and open questions →</a></aside>
+
 ---
 
 ## Three pages
