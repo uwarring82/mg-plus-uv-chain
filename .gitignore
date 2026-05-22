@@ -71,3 +71,12 @@ Thumbs.db
 # not committed (publisher-formatted PDFs and group-internal theses).
 # Extraction artefacts (extracted.yaml, notes.md) are tracked.
 data/literature/**/*.pdf
+
+# Local working drafts — person-to-person correspondence kept out of the
+# repo. The sanitized, shareable public version lives at
+# docs/architectures/bbo-coating-brief.md.
+logbook/2026-05-20-bbo-coating-run-wp/expert-review-request-DRAFT.md
+
+# Private outreach / correspondence logs — vendor and collaborator
+# contact records. Local-only; never published to the site or committed.
+/outreach/
