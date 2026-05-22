@@ -6,11 +6,11 @@ description: Kill-gate state, dossier population, phase progress. Snapshot at HE
 
 <p class="endorsement"><strong>Endorsement Marker.</strong> Local candidate framework — AG Schätz stewardship. This page is a snapshot of repository state, not a claim about the underlying physics or the architecture choice.</p>
 
-<p class="eyebrow">Snapshot · 2026-05-02</p>
+<p class="eyebrow">Snapshot · 2026-05-22</p>
 
 # What is closed, what is open, what is gated.
 
-Snapshot at HEAD (commit `ee1f270`). The canonical state lives in the [git history](https://github.com/uwarring82/mg-plus-uv-chain/commits/main) and the [`logbook/`](https://github.com/uwarring82/mg-plus-uv-chain/tree/main/logbook).
+Snapshot at 2026-05-22. The canonical state lives in the [git history](https://github.com/uwarring82/mg-plus-uv-chain/commits/main) and the [`logbook/`](https://github.com/uwarring82/mg-plus-uv-chain/tree/main/logbook).
 
 ---
 
@@ -36,11 +36,11 @@ The diagnostic-surrogate import-path test (the §5.1 mechanical enforcement that
 |---|---|---|
 | 0 | Charter v1.0 + repo scaffold | Complete (frozen 2026-04-30) |
 | 0.5 | Reference triple `{Δ_ref, Ω_R,ref, Γ_sc,ref}` and Conservative / Nominal / Aggressive bounded-scenario set | Complete — locked at G3 closure (2026-05-01) |
-| 1 | Literature dossier `KD-2026-XXX-uv-280nm.md` with crystal/coating evidence table | In progress — 5 of 15 entries past SCAFFOLD |
+| 1 | Literature dossier `KD-2026-XXX-uv-280nm.md` with crystal/coating evidence table | Populating — 22 extracted reference folders; KD-UV280 evidence table at v0.2 (see below) |
 | 2 | Baseline measurement protocol + first-pass data on the existing chain | Not started |
-| 3 | Boyd–Kleinman cavity model, damage / degradation model, parameter sweeps; ≥ 90 % test coverage | Architecture-neutral layer in place; family-specific code G1-blocked |
-| 4 | Falsifiable architecture comparison against the six fixed scoring axes | Not started; G3-unblocked, G2-dependent inputs gated |
-| 5 | Procurement, assembly, validation against §2 targets | Not started |
+| 3 | Boyd–Kleinman cavity model, damage / degradation model, parameter sweeps; ≥ 90 % test coverage | Architecture-neutral numerics landed — single-pass SHG, enhancement-cavity solver, SHG cascade, Boyd–Kleinman, ABCD; Friedenauer-2006 cascade cross-check agrees to 1.5 %. Family-specific code still G1-blocked |
+| 4 | Falsifiable architecture comparison against the six fixed scoring axes | Exploration under way — a slate-of-three (next-gen / IC-VECSEL / pulsed-Raman) over a shared requirements artefact; formal scoring still G2-gated |
+| 5 | Procurement, assembly, validation against §2 targets | Not started — BBO coating-run mirror spec frozen 2026-05-20 as procurement-prep |
 | 6 | Manuscript + Zenodo deposit + tagged release | Not started |
 
 ---
@@ -70,7 +70,7 @@ The diagnostic-surrogate import-path test (the §5.1 mechanical enforcement that
 | KD-UV280-014 | Phase-locked dual-source phase-noise literature | TBD | SCAFFOLD |
 | KD-UV280-015 | Pump source options (Yb-fibre vs. VECSEL near 1118 nm) | Operationally bounded | POPULATING |
 
-**5 / 15** past SCAFFOLD. All five are backed by the structured [Friedenauer 2006 extraction](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/literature/Friedenauer2006/extracted.yaml) plus the dossier's first cited literature constants. Further entries require new source readings.
+**5 / 15** entries past SCAFFOLD in this summary table; the dossier's detailed evidence sections (BBO §5, coatings §8.6, environment §8.2/§8.4, pump §3) are populated ahead of this summary. **22 literature reference folders** are now extracted under [`data/literature/`](https://github.com/uwarring82/mg-plus-uv-chain/tree/main/data/literature) — from the [Friedenauer 2006 extraction](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/literature/Friedenauer2006/extracted.yaml) through the BBO / CLBO / coating LIDT and UV-degradation source set — feeding those sections. The [dossier itself](KD-2026-XXX-uv-280nm.html) is the authority for per-entry status.
 
 ---
 
@@ -81,12 +81,16 @@ The diagnostic-surrogate import-path test (the §5.1 mechanical enforcement that
 | Test file | Tests | Notes |
 |---|---|---|
 | `tests/test_parameters.py` | 24 | G3 lock helpers, defence-in-depth for revocation |
-| `tests/test_boyd_kleinman.py` | 22 | Includes regression for the bounded-`h_m_optimum` fix |
 | `tests/test_abcd.py` | 31 | Cavity stability and eigenmode |
+| `tests/test_enhancement_cavity.py` | 28 | Steady-state buildup + optimal-input-coupler solver |
+| `tests/test_shg_cascade.py` | 23 | Two-stage SHG cascade composition |
+| `tests/test_boyd_kleinman.py` | 22 | Includes regression for the bounded-`h_m_optimum` fix |
+| `tests/test_shg_single_pass.py` | 12 | Single-pass SHG coefficient |
+| `tests/test_anti_seeding_src_imports.py` | 1 | §5.1 mechanical enforcement — no architecture preset in `/src/` |
 | `tests/test_diagnostic_surrogate_imports.py` | 1 | §5.1 mechanical enforcement (G1) |
-| **Total** | **78** | All passing |
+| **Total** | **142** | All passing (`142 passed`, full run 2026-05-22) |
 
-Coverage at last full run: 91.23 % (target ≥ 90 % per Charter §5 Phase 3 row). The σ-optimised Boyd–Kleinman tests are the slow path (full BK suite ≈ 25 s; fast suite, excluding BK, runs in ≈ 2 s).
+Charter §5 Phase 3 requires ≥ 90 % coverage. The full suite runs in ≈ 28 s; the σ-optimised Boyd–Kleinman tests are the slow path (the fast suite, excluding BK, runs in a few seconds).
 
 ---
 
@@ -110,20 +114,23 @@ Coverage at last full run: 91.23 % (target ≥ 90 % per Charter §5 Phase 3 row)
 
 ## Recent commits
 
+Top of `main` at this snapshot (most recent first):
+
 ```
-ee1f270  chore(governance): add Steward ORCID; resolves last pre-push BLOCKING marker
-0237e30  docs(governance): add GitHub Pages site under docs/ with Cayman theme
-3fbe1bf  fix(simulation): bound h_m_optimum search; correct BK-recalc notebook narrative
-92f6f43  docs(simulation): add Friedenauer 2006 BK-recalculation notebook (pre-G1)
-145814e  chore(governance): tighten G3-vs-G2 wording; fix publication metadata
-23f2e59  docs(governance): update README — G3 closed; Phase 1 dossier 5/15 populated
+5e278d4  site: add coating-review outreach banner to the welcome page
+fbed344  docs(architectures): add shareable BBO coating brief (sanitized)
+c790265  docs(architectures): expand BBO page with BC-G lock-mirror finding (§8.1)
+b25f6a7  docs(logbook): BC-G addendum — M2′ piezo-mirror substrate (Ø6.35×2.0 mm)
+5bb43dd  docs(architectures): public-facing explainer for the BBO coating-run WP
+9630329  docs(logbook): close BBO coating-run WP — BC-D/E/F + spec sheets + closure
+c4bfb15  docs(logbook): open BBO coating-run WP — BC-A/B/C closed in one day
+5405269  docs(literature): file task-E third scout pass — three new scaffolds
+61d7773  docs(components): archive home-built doublers + fold-angle survey
+f241443  docs(architectures): IC-VECSEL + pulsed-Raman alternatives (slate-of-three)
+752885c  feat(site): introduce Architectures section + Next-Gen 500 mW workplan
+d5855cb  feat(notebooks): Phase E — Friedenauer 2006 cascade cross-check
+8296fff  feat(src): Phase A — single-pass SHG coefficient + anti-seeding test
 fd3cc47  gate(governance): close G3 — Integrator-acknowledged; Phase 4 unblocked
-3b855a6  docs(literature): populate KD-UV280-005 (BBO) and -010 (14-GHz domain) from Friedenauer
-a663965  docs(literature): populate KD-UV280-001 and -015 from Friedenauer extraction
-8b2ec74  docs(literature): populate KD-UV280-013 from Friedenauer 2006 (Resolved/DRAFT)
-9f3f464  docs(literature): scaffold Phase 1 KD-2026-XXX-uv-280nm.md dossier
-5eb63d6  gate(governance): file Phase 0.5 G3 candidate values; Phase 4 still blocked
-8c43c00  feat(infra): add architecture-neutral simulation utilities, build, tests
 0423b2f  Initial commit: Charter v1.0 frozen, Phase 0 complete
 ```
 

@@ -24,24 +24,31 @@ The repository itself is the canonical record. This site is a navigational index
 - **[Calculations](calculations.html)** — what has been computed against the Friedenauer 2006 baseline, what the recomputation tells us, and which open questions the dossier should resolve.
 - **[Status](status.html)** — kill-gate state, Phase 1 dossier population, what is unblocked, what is still gated. Snapshot at HEAD.
 
-If you want the source: [GitHub repository](https://github.com/uwarring82/mg-plus-uv-chain) · [Charter v1.0](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/CHARTER.md) · [Phase 1 dossier](KD-2026-XXX-uv-280nm.html) · [References](references.html) · [Architectures](architectures/) · [Components — Friedenauer baseline](components/friedenauer-baseline.html) · [Components — Seed lasers (VECSEL)](components/seed-lasers.html) · [Components — Home-built doublers (lab survey)](components/home-built-doublers.html) · [Tutorials](tutorials/) · [BK recalculation notebook](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/notebooks/2026-05-01-friedenauer-bk-recalculation.py)
+**Source & governance:** [GitHub repository](https://github.com/uwarring82/mg-plus-uv-chain) · [Charter v1.0](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/CHARTER.md) · [Phase 1 dossier](KD-2026-XXX-uv-280nm.html) · [References](references.html) · [Tutorials](tutorials/)
+
+**Architectures:** [overview](architectures/) · [Next-gen 500 mW](architectures/next-gen.html) · [BBO coating-run explainer](architectures/bbo-coating-run.html) · [coating brief & open questions](architectures/bbo-coating-brief.html) · [IC-VECSEL alternative](architectures/ic-vecsel-alternative.html) · [pulsed-Raman alternative](architectures/pulsed-raman-alternative.html) · [shared requirements](architectures/requirements.html)
+
+**Components:** [Friedenauer baseline](components/friedenauer-baseline.html) · [inventory](components/inventory.html) · [seed lasers (VECSEL)](components/seed-lasers.html) · [home-built doublers survey](components/home-built-doublers.html)
 
 ---
 
 ## At a glance
 
+*Snapshot at 2026-05-22.*
+
 | Item | State |
 |---|---|
 | Charter version | v1.0, frozen 2026-04-30 |
+| Kill-gates | **G1 open** (architecture-specific simulation) · **G2 open** (UV-degradation rate) · **G3 closed** 2026-05-01 |
 | Phase 0 (Charter, scaffold) | Complete |
-| Phase 0.5 (constraint extraction) | G3 closed 2026-05-01; reference triple locked |
-| Phase 1 (literature dossier) | In progress — 5 of 15 entries past SCAFFOLD |
-| Phase 2 (baseline measurement) | Unblocked, not yet started |
-| Phase 3 (simulation framework) | Architecture-neutral utilities only; family-specific code G1-blocked |
-| Phase 4 (architecture comparison) | G3-unblocked; G2-dependent inputs still gated |
-| Phase 5 (build and validation) | Not started |
+| Phase 0.5 (constraint extraction) | Complete — reference triple locked at G3 closure (2026-05-01) |
+| Phase 1 (literature dossier) | Populating — 22 extracted reference folders backing the KD-UV280 evidence table (v0.2) |
+| Phase 2 (baseline measurement) | Unblocked; not yet started |
+| Phase 3 (simulation framework) | Architecture-neutral numerics in place — single-pass SHG, enhancement-cavity solver, SHG cascade, Boyd–Kleinman, ABCD; Friedenauer-2006 cascade cross-check agrees to 1.5 %. Family-specific code still G1-blocked |
+| Phase 4 (architecture comparison) | Exploration under way — a slate-of-three (next-gen / IC-VECSEL / pulsed-Raman) over a shared requirements artefact; formal scoring still G2-gated |
+| Phase 5 (build & validation) | Not started — first procurement-prep artefact is the frozen BBO coating-run mirror spec (2026-05-20) |
 | Phase 6 (publication) | Not started |
-| Tests | 78 / 78 passing |
+| Tests | 142 / 142 passing |
 | Repository visibility | Public from day one |
 
 ---
