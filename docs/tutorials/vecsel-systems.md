@@ -317,7 +317,7 @@ When the in-house 1140 nm unit is fully characterised, its measured linewidth, o
 
 ### Lab notes (internal, AG Schätz)
 
-The in-house figures on this page are drawn from internal AG Schätz lab notebooks, extracted from Evernote to Markdown. Image/PDF attachments are kept local-only; the converted text is in-repo:
+The in-house figures on this page are drawn from internal AG Schätz lab notebooks, extracted to Markdown. Image/PDF attachments are kept local-only; the converted text is in-repo:
 
-- [**2021 VECSEL project summary**](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2021-07-vecsel-project-summary.md) — fleet overview (#1–#5), assembly/optical-element details, and the VECSEL #2 frequency-noise budget used throughout Sections 2–4. ([Evernote original, with figures](https://share.evernote.com/note/9b20181d-8814-83ae-e677-cf61ca88b517))
-- **2020-11 VECSEL #2 "Heidi" operational diary** — day-by-day operations log for the 1140 nm unit. ([Evernote original, with figures](https://share.evernote.com/note/f17d5fcf-0145-4114-90b6-7147c510ac4f))
+- [**2021 VECSEL project summary**](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2021-07-vecsel-project-summary.md) — fleet overview (#1–#5), assembly/optical-element details, and the VECSEL #2 frequency-noise budget used throughout Sections 2–4.
+- [**2020-11 VECSEL #2 "Heidi" operational diary**](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2020-11-vecsel-2-heidi.md) — day-by-day operations log for the 1140 nm unit (lab-internal IPs and controller register dumps redacted).
