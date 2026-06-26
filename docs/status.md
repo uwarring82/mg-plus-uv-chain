@@ -12,6 +12,8 @@ description: Kill-gate state, dossier population, phase progress. Snapshot at HE
 
 Snapshot at 2026-05-22. The canonical state lives in the [git history](https://github.com/uwarring82/mg-plus-uv-chain/commits/main) and the [`logbook/`](https://github.com/uwarring82/mg-plus-uv-chain/tree/main/logbook).
 
+> **Hardware vs. governance status.** This page tracks repository *governance* state (kill-gates, phases, dossier, tests). For the *hardware/operational* snapshot of the in-house VECSEL seed fleet — what is built and what is open — see the [Hardware status](hardware-status.html) page.
+
 ---
 
 ## Kill-gates *Coastline*
