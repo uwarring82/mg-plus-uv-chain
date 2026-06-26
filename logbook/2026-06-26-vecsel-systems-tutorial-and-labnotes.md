@@ -50,6 +50,7 @@ Two Evernote notes were exported to ENEX and converted to Markdown with a stream
 - **Spanke 2025** 101(8) kHz is no longer presented as a proven sub-100 kHz result — it is consistent with the ≤ 100 kHz target but not below it without a delayed self-heterodyne / beat-note measurement.
 - **Evidence labels** (`[in-house]`, `[external]`, `[analogue]`, `[inferred]`, `[open]`) added so in-house Heidi data are never silently blended with the Burd 2016 analogue.
 - **`docs/references.md` corrected** — Burd 2016: 1117 nm IC = **I-cavity, externally frequency-quadrupled**; 1141 nm VC = **V-cavity, intracavity-doubled to 571 nm** then externally doubled to 285 nm (the prior entry had the topologies reversed).
+- **Consistency pass on [`docs/components/seed-lasers.md`](../docs/components/seed-lasers.md)** — its linewidth section and RIN open-item were brought into line with the §3.4 transfer-function framing (frequency-noise PSD above the lock bandwidth is the input budget; UV RIN is the downstream observable; integrated linewidth is only a proxy). The tutorial tuning table was also corrected against the [Span25] extraction (PZT ~1 GHz travel; étalon ~10 GHz before mode hop, distinct from the ≈73 GHz FSR peak spacing), and the 1141 nm summary row updated to "in use (Heidi)".
 
 ## 4 · What is *not* in this entry / open items
 
