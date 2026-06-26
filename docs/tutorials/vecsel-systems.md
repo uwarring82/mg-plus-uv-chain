@@ -59,7 +59,7 @@ The rest of the tutorial is three sections, in the order the physics builds:
 
 > **Prerequisite framing.** *Why* a VECSEL (the class-A argument, the source-class steward direction) is on the [seed-lasers components page](../components/seed-lasers.html); this tutorial assumes it and goes inside the device. *What happens after* the seed — the LBO + BBO doubling chain — is the [SHG numerics tutorial series](index.html).
 
-> **Evidence labels** (used in the tables and §4 to keep evidence classes separate): **[in-house]** measured in the AG Schätz lab · **[external]** peer-reviewed external result · **[analogue]** a comparable but *different* device · **[inferred]** deduced, not directly measured · **[open]** not yet measured or extracted.
+> **Evidence labels** (used in the tables and §4 to keep evidence classes separate): **[in-house]** measured in the AG Schätz lab · **[external]** peer-reviewed external result · **[analogue]** a comparable but *different* device · **[inferred]** deduced, not directly measured · **[unverified]** in-house but channel-derived, pending logbook cross-check · **[open]** not yet measured or extracted.
 
 ---
 
@@ -299,7 +299,7 @@ We include the 1141 nm system here because **it reuses the entire architecture o
 | Gain chip (in-house) | GaInAs/GaAs, VL1120_4477_83x/84x, emission 1116–1122 nm | GaInAs/GaAs, **red-detuned VXL1140_1078** (2020) |
 | Étalon FSR (in-house) | ≈ 73 GHz | ≈ 70 GHz |
 | UV output | **280 nm** | **285 nm** |
-| Doubling route | **[in-house]** LBO ring → 559 nm → BBO ring → 280 nm (Friedenauer topology, Hänsch–Couillaud locks) | **[open]** in-house route not detailed in the 2021 summary · **[analogue]** [Burd16] VC: intracavity LBO → 571 nm → BBO |
+| Doubling route | **[in-house]** LBO ring → 559 nm → BBO ring → 280 nm (Friedenauer topology, Hänsch–Couillaud locks) | **[in-house, unverified]** extra-cavity LBO ring → ≈570 nm (2026; ~110 mW measured, [2026 rnd_vecsel record](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2026-06-rnd-vecsel-channel-record.md)); ≈570 → 285 nm second stage **[open]** · **[analogue]** [Burd16] VC: intracavity LBO → 571 nm → BBO |
 | Atomic target | ²⁵Mg⁺ 3s→3p (D2/D1) | **neutral Mg** 3s² ¹S₀ → 3s3p ¹P₁ (285.2 nm) |
 | Role | Doppler cooling, state detection, repump, stimulated-Raman gates | resonance-enhanced (1+1) photoionisation for **isotope-selective loading** ([[Kjae00]](../references.html#kjae00)) |
 | In-house fleet ID | #1 / #3 | **#2 ("Heidi")** — in use by PAULA / BERMUDA |
@@ -333,7 +333,7 @@ When the in-house 1140 nm unit is fully characterised, its measured linewidth, o
 
 - **1118 nm gain-mirror respecification.** The closest demonstrated gain mirror is Burd 2016's 1117 nm IC chip; a build-specific 1118 nm mirror is an MBE-growth procurement question, with the Tampere ORC group (Guina) the natural collaboration anchor. *(See the [seed-lasers components page](../components/seed-lasers.html) open questions.)*
 - **Seed frequency-noise PSD and downstream UV RIN — both unmeasured.** Two distinct quantities (§3.4): the *input* to the budget is the seed's residual **frequency-noise spectral density above the ~18 kHz lock bandwidth**; the *downstream observable* is the **UV relative-intensity noise** that the doubling cavities produce by converting that frequency noise to amplitude noise. Neither is published for the in-house build ([Kief20] · [Guth21] open items). On the input side, pump RIN feeding frequency noise via the Henry α factor is the un-quantified link (§3); on the output side, the UV RIN at the experiment is what actually limits gate/detection fidelity.
-- **1141 nm in-house unit (#2 "Heidi").** The [2021 VECSEL project summary](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2021-07-vecsel-project-summary.md) pins the gain chip (VXL1140_1078) and étalon (≈ 70 GHz) and confirms operational use for photoionisation (PAULA / BERMUDA). Still missing from the extracted record: its measured linewidth, output power, the route to 285 nm, and whether it doubles intra- or extra-cavity. This tutorial will be updated when a full extraction lands.
+- **1141 nm in-house unit (#2 "Heidi").** The [2021 VECSEL project summary](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2021-07-vecsel-project-summary.md) pins the gain chip (VXL1140_1078) and étalon (≈ 70 GHz) and confirms operational use for photoionisation (PAULA / BERMUDA). The [2026 rnd_vecsel record](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2026-06-rnd-vecsel-channel-record.md) now adds that Heidi runs an **extra-cavity LBO ring doubling 1141 → ≈570 nm** (~110 mW measured, 2026) — the first SHG step toward 285 nm, i.e. the same external-doubling topology as the 1118 nm path rather than the intra-cavity Burd 2016 analogue. Still missing: its measured linewidth, output power, and the ≈570 → 285 nm second stage. **[in-house, unverified — pending logbook cross-check]**
 
 **Charter governance note.**
 
@@ -355,3 +355,4 @@ The in-house figures on this page are drawn from internal AG Schätz lab noteboo
 
 - [**2021 VECSEL project summary**](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2021-07-vecsel-project-summary.md) — fleet overview (#1–#5), assembly/optical-element details, and the VECSEL #2 frequency-noise budget used throughout Sections 2–4.
 - [**2020-11 VECSEL #2 "Heidi" operational diary**](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2020-11-vecsel-2-heidi.md) — day-by-day operations log for the 1140 nm unit (lab-internal IPs and controller register dumps redacted).
+- [**2026 rnd_vecsel channel record**](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2026-06-rnd-vecsel-channel-record.md) — sanitised 2021–2026 build/operations extract: fleet status, 2026 operating points (V#5 ~2.6 W; "Heidi" 1141 → ≈570 nm), and current open items. **[in-house, unverified — pending cross-check]**
