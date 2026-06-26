@@ -135,6 +135,7 @@ What VECSEL replaces:
 
 ## See also
 
+- [Tutorial — VECSEL systems (1118 nm and 1141 nm)](../tutorials/vecsel-systems.html) — how the seed lasers work: gain-mirror properties, the intracavity Lyot + étalon filtering hierarchy, and the parameter sensitivities that set the achievable linewidth.
 - [`logbook/2026-05-08-vecsel-seed-lasers.md`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-08-vecsel-seed-lasers.md) — steward-direction logbook entry that this page surfaces.
 - [`data/literature/Burd2023/`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/literature/Burd2023/) — `extracted.yaml` + `notes.md`, design-principles literature artefact (DRAFT).
 - [`data/literature/Burd2016/`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/literature/Burd2016/) — wavelength-adjacent ²⁵Mg⁺ companion paper.

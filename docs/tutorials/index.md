@@ -8,7 +8,26 @@ description: Visitor-facing notebooks introducing focused-Gaussian SHG, enhancem
 
 <p class="eyebrow">Tutorials</p>
 
-# SHG enhancement-cavity tutorials
+# Tutorials
+
+Two tutorial tracks. The **seed-laser systems** track explains the VECSEL
+sources themselves — how they lase single-frequency and what limits their
+linewidth. The **SHG enhancement-cavity numerics** track picks the seed up at
+its output and follows it through the LBO + BBO doubling chain to the deep UV.
+
+## Seed-laser systems
+
+| Tutorial | What it explains |
+|---|---|
+| [VECSEL systems — 1118 nm and 1141 nm](vecsel-systems.html) | The two in-house VECSEL seeds (~1120 nm → 280 nm cooling/detection/Raman; ~1140 nm → 285 nm photoionisation): **gain-mirror properties**, the **intracavity Lyot + étalon filtering hierarchy**, and the **parameter sensitivities that set the achievable linewidth**. |
+
+This is a narrative tutorial over the published in-house thesis lineage
+([Kiefer 2020 → Guth 2021 → Spanke 2023 → Spanke 2025](../references.html)) and
+the NIST + Tampere design literature; it pairs with the
+[seed-lasers components page](../components/seed-lasers.html), which records the
+source-class steward direction.
+
+## SHG enhancement-cavity numerics
 
 Four worked notebooks taking a visitor from focused-Gaussian SHG efficiency
 through to a self-consistently impedance-matched two-stage cascade. They use
@@ -25,7 +44,7 @@ Each tutorial is paired with a YAML parameter file (`NN-params.yaml`) so you
 can re-run it with your own numbers; the rendered HTML below uses the bundled
 defaults.
 
-## The four notebooks
+### The four notebooks
 
 | # | Tutorial | Question it answers |
 |---|---|---|
@@ -41,7 +60,7 @@ Tutorial 04 closes with an honest end-to-end Friedenauer 2006 cross-check
 exposes an `L_passive` definitional gap in the source paper — the kind of
 result the tutorials are meant to make you trust *and* probe.
 
-## Source and reproducibility
+### Source and reproducibility
 
 - Notebook source (jupytext `.py`):
   [`notebooks/tutorials/`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/notebooks/tutorials/)
