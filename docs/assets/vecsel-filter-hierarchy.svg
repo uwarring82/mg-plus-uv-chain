@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 512" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-label="Nested intracavity filter hierarchy: the broad gain envelope is narrowed by the birefringent (Lyot) filter, then the YAG etalon, then the cavity-mode comb, to select a single longitudinal mode.">
+  <title>VECSEL intracavity mode-selection hierarchy</title>
+  <defs>
+    <pattern id="comb" width="12" height="34" patternUnits="userSpaceOnUse">
+      <line x1="0.5" y1="0" x2="0.5" y2="34" stroke="#6b6b6b" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="760" height="512" fill="#faf8f4"/>
+
+  <!-- ===== P1 gain envelope (base y=96) ===== -->
+  <line x1="44" y1="96" x2="596" y2="96" stroke="#e0dbd2" stroke-width="1"/>
+  <path d="M44,96 C170,96 250,48 320,48 C390,48 470,96 596,96 Z" fill="#2c5f7c" fill-opacity="0.13" stroke="#2c5f7c" stroke-width="1.4"/>
+  <text x="606" y="70" font-size="14" font-weight="600" fill="#1a1a1a">Gain envelope</text>
+  <text x="606" y="88" font-size="11.5" fill="#6b6b6b">tens of nm</text>
+  <polygon points="313,104 327,104 320,116" fill="#6b6b6b"/>
+
+  <!-- ===== P2 BRF / Lyot lobe (base y=176) ===== -->
+  <line x1="44" y1="176" x2="596" y2="176" stroke="#e0dbd2" stroke-width="1"/>
+  <path d="M150,176 C232,176 280,128 320,128 C360,128 408,176 490,176 Z" fill="#2c5f7c" fill-opacity="0.18" stroke="#2c5f7c" stroke-width="1.2"/>
+  <text x="606" y="150" font-size="14" font-weight="600" fill="#1a1a1a">BRF / Lyot filter</text>
+  <text x="606" y="168" font-size="11.5" fill="#6b6b6b">sub-nm passband</text>
+  <polygon points="313,184 327,184 320,196" fill="#6b6b6b"/>
+
+  <!-- ===== P3 etalon peaks (base y=256, FSR 72 GHz) ===== -->
+  <line x1="44" y1="256" x2="596" y2="256" stroke="#e0dbd2" stroke-width="1"/>
+  <g fill="#2c5f7c">
+    <polygon points="75,256 80,248 85,256"/>
+    <polygon points="135,256 140,238 145,256"/>
+    <polygon points="195,256 200,224 205,256"/>
+    <polygon points="255,256 260,210 265,256"/>
+    <polygon points="315,256 320,200 325,256"/>
+    <polygon points="375,256 380,210 385,256"/>
+    <polygon points="435,256 440,224 445,256"/>
+    <polygon points="495,256 500,238 505,256"/>
+    <polygon points="555,256 560,248 565,256"/>
+  </g>
+  <text x="606" y="230" font-size="14" font-weight="600" fill="#1a1a1a">YAG étalon</text>
+  <text x="606" y="248" font-size="11.5" fill="#6b6b6b">FSR ≈ 72 GHz</text>
+  <polygon points="313,264 327,264 320,276" fill="#6b6b6b"/>
+
+  <!-- ===== P4 cavity-mode comb (base y=336, 1.17 GHz) ===== -->
+  <rect x="44" y="306" width="552" height="30" fill="url(#comb)" fill-opacity="0.55"/>
+  <line x1="44" y1="336" x2="596" y2="336" stroke="#e0dbd2" stroke-width="1"/>
+  <text x="606" y="312" font-size="14" font-weight="600" fill="#1a1a1a">Cavity modes</text>
+  <text x="606" y="330" font-size="11.5" fill="#6b6b6b">1.17 GHz spacing</text>
+  <polygon points="313,344 327,344 320,356" fill="#6b6b6b"/>
+
+  <!-- ===== P5 selected single mode (base y=416) ===== -->
+  <rect x="44" y="386" width="552" height="30" fill="url(#comb)" fill-opacity="0.18"/>
+  <line x1="44" y1="416" x2="596" y2="416" stroke="#e0dbd2" stroke-width="1"/>
+  <line x1="320" y1="416" x2="320" y2="360" stroke="#2c5f7c" stroke-width="2.6"/>
+  <circle cx="320" cy="358" r="3.2" fill="#2c5f7c"/>
+  <text x="606" y="392" font-size="14" font-weight="600" fill="#1a1a1a">Selected mode</text>
+  <text x="606" y="410" font-size="11.5" fill="#6b6b6b">single frequency</text>
+
+  <!-- ===== narrowing annotation ===== -->
+  <text x="320" y="468" font-size="12.5" text-anchor="middle" fill="#2c5f7c">each stage has a narrower free spectral range than the one above it</text>
+  <text x="320" y="490" font-size="11.5" text-anchor="middle" fill="#6b6b6b">gain (tens of nm) ⊃ BRF (sub-nm) ⊃ étalon (72 GHz) ⊃ one cavity mode (1.17 GHz spacing)</text>
+</svg>

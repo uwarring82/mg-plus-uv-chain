@@ -21,11 +21,14 @@ its output and follows it through the LBO + BBO doubling chain to the deep UV.
 |---|---|
 | [VECSEL systems — 1118 nm and 1141 nm](vecsel-systems.html) | The two in-house VECSEL seeds (~1120 nm → 280 nm cooling/detection/Raman; ~1140 nm → 285 nm photoionisation): **gain-mirror properties**, the **intracavity Lyot + étalon filtering hierarchy**, and the **parameter sensitivities that set the achievable linewidth**. |
 
-This is a narrative tutorial over the published in-house thesis lineage
+This is a **narrative tutorial (no notebook)** over the published in-house
+thesis lineage
 ([Kiefer 2020 → Guth 2021 → Spanke 2023 → Spanke 2025](../references.html)) and
 the NIST + Tampere design literature; it pairs with the
 [seed-lasers components page](../components/seed-lasers.html), which records the
-source-class steward direction.
+source-class steward direction. A companion quantitative notebook (Lyot/étalon
+transmission curves, linewidth-vs-τ Allan plots) may join the numerics track
+below later.
 
 ## SHG enhancement-cavity numerics
 
