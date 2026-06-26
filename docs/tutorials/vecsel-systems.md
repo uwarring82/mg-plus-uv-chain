@@ -10,6 +10,8 @@ description: How the in-house VECSEL seed lasers work — gain-mirror properties
 
 # VECSEL systems — 1118 nm and 1141 nm
 
+> **The short version.** This project builds its own **VECSELs** (semiconductor disk lasers) as the seed lasers for two jobs: one near **1120 nm** (frequency-quadrupled to **280 nm**) to cool, detect, and manipulate ²⁵Mg⁺, and one near **1140 nm** (→ **285 nm**) to load it. The light is clean and single-frequency because of *what the gain chip is* (§1) and *how three nested filters pick out one mode* (§2). The subtle part is the linewidth (§3): a single "linewidth" number is the wrong scorecard — what actually matters is the seed's frequency-**noise spectrum**, and especially the part *above* the ~18 kHz doubling-cavity lock bandwidth that the lock cannot remove and that turns into intensity noise on the UV. The in-house lab record shows that noise was **technical and reducible** (thermal, mechanical, pump) and was driven down by more than an order of magnitude across four builds — while a true sub-100 kHz figure and the UV noise itself remain unmeasured (§3.5).
+
 > **After this tutorial you should be able to:**
 >
 > - explain why a VECSEL gain mirror is *simultaneously* the amplifier and one cavity mirror;
