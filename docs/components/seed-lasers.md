@@ -49,11 +49,7 @@ This is the load-bearing reason VECSELs are preferred to Yb-fibre seeds for the 
 
 ### Single-frequency narrow linewidth *Coastline*
 
-The seed-laser linewidth `Δν_seed` must satisfy:
-
-`Δν_seed  <<  min( Δν_atomic , Δν_cavity_lock_bandwidth )`
-
-so that frequency noise is not converted to amplitude noise by the resonant SHG cavities. Burd 2023 makes this criterion explicit (§1: *"considerably less than the linewidths of relevant atomic transitions and sufficiently narrow that frequency fluctuations will not be converted to significant amplitude fluctuations by subsequent resonant frequency-doubling stages"*) and meets it with intracavity birefringent-filter + 1 mm YAG-etalon mode selection plus a PZT-tuned cavity length.
+What the resonant SHG cavities respond to is the seed's residual **frequency-noise spectral density**, filtered by each doubling cavity's lock — *not* the integrated linewidth. Frequency noise slower than the lock bandwidth (≈ 18 kHz) is tracked out by the lock; the residual noise *above* the lock bandwidth is what converts into amplitude noise on the harmonic. The binding quantity is therefore the frequency-noise density weighted by the cavity/servo transfer function; the integrated linewidth is only a proxy for it. Burd 2023 states the requirement qualitatively (§1: *"considerably less than the linewidths of relevant atomic transitions and sufficiently narrow that frequency fluctuations will not be converted to significant amplitude fluctuations by subsequent resonant frequency-doubling stages"*) and meets it with intracavity birefringent-filter + 1 mm YAG-etalon mode selection plus a PZT-tuned cavity length. (The [VECSEL systems tutorial §3.4](../tutorials/vecsel-systems.html) gives the transfer-function treatment.)
 
 For `mg-plus-uv-chain`:
 
@@ -66,7 +62,7 @@ For `mg-plus-uv-chain`:
 | Burd 2016 1141 nm VECSEL | < 50 kHz (HC error signal) | Burd 2016, §2 |
 | **Operating budget (this project)** | **target ≤ 100 kHz; Friedenauer parity floor ≈ 200 kHz; stretch ceiling 50 kHz** *Sail* | derived in [`logbook/2026-05-08-vecsel-seed-lasers.md`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-08-vecsel-seed-lasers.md) |
 
-The *binding* term is the cavity-locking bandwidth, not the atomic linewidth. The cavity itself filters above its bandwidth, so seed linewidth above the loaded piezo resonance is acceptable provided the ratio `Δν_seed / Δν_cavity_lock_bandwidth` is bounded.
+These are integrated-linewidth **proxies**, not the binding quantity. Because the doubling cavity tracks out frequency noise *below* its ≈ 18 kHz lock bandwidth, a seed whose integrated linewidth sits well above that resonance can still be acceptable — what must be controlled is the frequency-noise spectral density *above* the lock bandwidth, the part that the lock cannot follow and that therefore converts to amplitude noise. The atomic linewidth and the iodine reference bind at other levels (cooling/detection resolution and long-term locking).
 
 ### Compact, integrated cavity *Sail*
 

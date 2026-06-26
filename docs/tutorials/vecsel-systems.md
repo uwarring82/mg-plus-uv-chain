@@ -42,7 +42,7 @@ The project runs **two** VECSEL seed lasers, distinguished by the trapped-ion ta
 | Seed (this tutorial) | × 4 → UV | ²⁵Mg⁺ task | Gain chip | In-house lineage | NIST/Tampere analogue |
 |---|---|---|---|---|---|
 | **~1118 nm** ("near 1120 nm") | **280 nm** (D lines) | Doppler cooling · detection · repump · stimulated Raman | GaInAs/GaAs | "VECSEL Nr.4" → "neXt VECSEL Nr.6" (Kiefer 2020 → Guth 2021 → Spanke 2023 → Spanke 2025) | IC system, 1117 nm (Burd 2016) |
-| **~1141 nm** ("near 1140 nm") | **285 nm** | Resonance-enhanced photoionisation (isotope-selective loading) | GaInAs/GaAs, **red-detuned** gain chip | second in-house VECSEL, under construction at Guth 2021 §4 | VC system, 1141 nm (Burd 2016) |
+| **~1141 nm** ("near 1140 nm") | **285 nm** | Resonance-enhanced photoionisation (isotope-selective loading) | GaInAs/GaAs, **red-detuned** gain chip | in-house #2 "Heidi" — in use (PAULA / BERMUDA) | VC system, 1141 nm (Burd 2016) |
 
 The quadrupling map is exact arithmetic on the ²⁵Mg⁺ structure:
 
@@ -149,10 +149,10 @@ Putting the ranges together gives the **mode-selection budget**:
 
 | Knob moved | Continuous (mode-hop-free) span | Note |
 |---|---|---|
-| **PZT only** (BRF/étalon fixed) | **~100 MHz** | ≈ 100 MHz/V in-house (78 MHz/V in [Span23]); the finest, fastest handle |
-| **Étalon temperature** (30–55 °C) | up to ~1 étalon FSR before a cavity-mode hop | walks the selected peak; re-grab a mode with the PZT after a hop |
+| **PZT only** (BRF/étalon fixed) | **~1 GHz** ([Span25] neXt, full piezo travel; ~100 MHz on the older Nr.4 platform) | piezo gain ≈ 71–100 MHz/V; the finest, fastest handle |
+| **Étalon temperature** (30–55 °C) | **~10 GHz** before a cavity-mode hop ([Span25]) | note: the ≈ 73 GHz étalon FSR is the peak *spacing*, **not** a continuous tuning span — the continuous span is the ~10 GHz before the lasing mode hops |
 | **Coordinated BRF + étalon + PZT** | **several 100 GHz** ([Guth21] §3.1) | the practical single-mode retuning range |
-| **Gain-chip temperature + BRF** | full **1116–1122 nm** gain envelope (~ several nm) | coarse coverage of the whole manifold |
+| **Gain-chip temperature + BRF** | full **1116–1122 nm** gain envelope (~ several nm; ~0.15 nm/°C, [Span25]) | coarse coverage of the whole manifold |
 
 **For scale.** Sitting anywhere *within one transition's hyperfine/Zeeman manifold* needs only a few GHz — easily inside the PZT/étalon range. But hopping between the two D lines is a far larger move: the D2–D1 fine-structure splitting is ≈ 2.74 THz at the UV ([Burd16]), i.e. **≈ 0.69 THz (~690 GHz) at the 1120 nm seed** — reached by coordinated thermal + gain-chip retuning, *not* by the PZT. The whole span still sits comfortably inside the gain envelope, and far beyond the ~100 GHz of the legacy Yb-fibre laser it replaced.
 
@@ -330,7 +330,7 @@ When the in-house 1140 nm unit is fully characterised, its measured linewidth, o
 **Build / measurement open items.**
 
 - **1118 nm gain-mirror respecification.** The closest demonstrated gain mirror is Burd 2016's 1117 nm IC chip; a build-specific 1118 nm mirror is an MBE-growth procurement question, with the Tampere ORC group (Guina) the natural collaboration anchor. *(See the [seed-lasers components page](../components/seed-lasers.html) open questions.)*
-- **RIN at the lock bandwidth.** The binding noise number for the linewidth budget is the relative-intensity-noise spectral density *at the ~18 kHz doubling-cavity lock bandwidth*. It is not published for the in-house build ([Kief20] · [Guth21] open items); the Henry-α conversion of this RIN into frequency noise is the un-measured link in Section 3.
+- **Seed frequency-noise PSD and downstream UV RIN — both unmeasured.** Two distinct quantities (§3.4): the *input* to the budget is the seed's residual **frequency-noise spectral density above the ~18 kHz lock bandwidth**; the *downstream observable* is the **UV relative-intensity noise** that the doubling cavities produce by converting that frequency noise to amplitude noise. Neither is published for the in-house build ([Kief20] · [Guth21] open items). On the input side, pump RIN feeding frequency noise via the Henry α factor is the un-quantified link (§3); on the output side, the UV RIN at the experiment is what actually limits gate/detection fidelity.
 - **1141 nm in-house unit (#2 "Heidi").** The [2021 VECSEL project summary](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2021-07-vecsel-project-summary.md) pins the gain chip (VXL1140_1078) and étalon (≈ 70 GHz) and confirms operational use for photoionisation (PAULA / BERMUDA). Still missing from the extracted record: its measured linewidth, output power, the route to 285 nm, and whether it doubles intra- or extra-cavity. This tutorial will be updated when a full extraction lands.
 
 **Charter governance note.**
