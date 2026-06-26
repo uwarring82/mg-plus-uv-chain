@@ -14,7 +14,7 @@ description: How the in-house VECSEL seed lasers work — gain-mirror properties
 >
 > - explain why a VECSEL gain mirror is *simultaneously* the amplifier and one cavity mirror;
 > - read the nested Lyot → étalon → cavity-mode hierarchy as a single-frequency **mode-selection budget**;
-> - state why the binding linewidth target is the **doubling-cavity lock bandwidth (~18 kHz)**, not the ²⁵Mg⁺ atomic linewidth (41.8 MHz);
+> - say why the **short-term linewidth budget** is bound by the doubling-cavity lock bandwidth (~18 kHz), while the ²⁵Mg⁺ atomic linewidth (41.8 MHz) and the iodine lock matter at other levels;
 > - name the dominant technical noise sources that have limited the in-house seed linewidth, and how each was closed.
 
 **Status:** TUTORIAL (pedagogical surface, 2026-06-26). Synthesises the in-house thesis lineage (Kiefer 2020 → Guth 2021 → Spanke 2023 → Spanke 2025) and the NIST + Tampere design literature (Burd 2016, Burd 2023) into a single explanation of how the seed lasers work and what limits their linewidth.
@@ -166,7 +166,7 @@ Because each element also subtracts from the round-trip gain margin, the output 
 
 ## 3. Parameter sensitivities → linewidth limitations
 
-<p class="classification classification--coastline">Coastline · the linewidth budget criterion (Δν_seed ≪ min(Δν_atomic, Δν_lock)) is a Level-1 derived optical constraint; the binding term is the doubling-cavity lock bandwidth, not the atomic linewidth.</p>
+<p class="classification classification--coastline">Coastline · the linewidth budget criterion (Δν_seed ≪ min(Δν_atomic, Δν_lock)) is a Level-1 derived optical constraint; for the short-term linewidth budget the binding term is the doubling-cavity lock bandwidth, with the atomic linewidth and the iodine reference binding at other levels (resolution and long-term locking).</p>
 
 This is the section the rest of the tutorial builds toward. The headline:
 
@@ -226,9 +226,15 @@ Each thesis in the lineage attacked the then-dominant sensitivity. Read the tabl
 
 Spanke 2025 is the first in-house build to reach the **Burd 2023 sub-100-kHz linewidth class** at the actual 1118 nm operating point — i.e. the design principles transferred end-to-end, in Freiburg, on a ²⁵Mg⁺-targeted laser.
 
-### 3.4 What the linewidth has to beat (and why it is *not* the atomic linewidth)
+### 3.4 What the linewidth has to beat — and at which level
 
-> ⚠️ **Common misconception.** *Do not size the seed against the atomic linewidth.* The ²⁵Mg⁺ natural linewidth (Γ/2π ≈ 41.8 MHz) is met with enormous margin by *every* build above. Concluding "101 kHz ≪ 41.8 MHz, therefore solved" misreads the budget. The binding quantity is the **frequency-noise spectral density near the doubling-cavity lock bandwidth (~18 kHz)**, because the resonant SHG cavities convert seed frequency noise into amplitude noise on the harmonic.
+> **Which linewidth matters, and where.** Three requirements act at different levels — all real, each tightest in a different place:
+>
+> - **Atomic linewidth (Γ/2π ≈ 41.8 MHz).** Sets the scale the seed must resolve for Doppler cooling and state detection. Every build above meets it with margin — a necessary check, not the tightest constraint.
+> - **Long-term absolute frequency (I₂ saturation spectroscopy).** The iodine reference holds the laser on the ²⁵Mg⁺ transition over hours to days; what matters here is the iodine hyperfine features and slow drift, not fast frequency noise.
+> - **Short-term frequency noise near the doubling-cavity lock bandwidth (~18 kHz).** This is the term that binds the *short-term linewidth budget*, because the resonant SHG cavities convert seed frequency noise into amplitude noise on the harmonic.
+>
+> The point is not that the atomic linewidth is irrelevant — it is the cooling/detection requirement, and the iodine lock is the long-term anchor. It is that clearing the 41.8 MHz atomic linewidth does not, on its own, settle the short-term budget, which lives on the much finer ~18 kHz scale.
 
 The criterion is
 
