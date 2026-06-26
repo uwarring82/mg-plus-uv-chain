@@ -80,3 +80,10 @@ logbook/2026-05-20-bbo-coating-run-wp/expert-review-request-DRAFT.md
 # Private outreach / correspondence logs — vendor and collaborator
 # contact records. Local-only; never published to the site or committed.
 /outreach/
+
+# Lab-note Evernote exports (.enex) and their extracted binary attachments
+# (photos, plots, vendor PDFs) are large and may hold unpublished material —
+# kept local-only. The converted Markdown *text* under "data/lab notes/" IS
+# committed (see data/lab notes/*.md).
+/data/lab notes/*.enex
+/data/lab notes/*.attachments/

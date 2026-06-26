@@ -35,14 +35,14 @@
     <polygon points="555,256 560,248 565,256"/>
   </g>
   <text x="606" y="230" font-size="14" font-weight="600" fill="#1a1a1a">YAG étalon</text>
-  <text x="606" y="248" font-size="11.5" fill="#6b6b6b">FSR ≈ 72 GHz</text>
+  <text x="606" y="248" font-size="11.5" fill="#6b6b6b">FSR ≈ 73 GHz</text>
   <polygon points="313,264 327,264 320,276" fill="#6b6b6b"/>
 
   <!-- ===== P4 cavity-mode comb (base y=336, 1.17 GHz) ===== -->
   <rect x="44" y="306" width="552" height="30" fill="url(#comb)" fill-opacity="0.55"/>
   <line x1="44" y1="336" x2="596" y2="336" stroke="#e0dbd2" stroke-width="1"/>
   <text x="606" y="312" font-size="14" font-weight="600" fill="#1a1a1a">Cavity modes</text>
-  <text x="606" y="330" font-size="11.5" fill="#6b6b6b">1.17 GHz spacing</text>
+  <text x="606" y="330" font-size="11.5" fill="#6b6b6b">1.18 GHz spacing</text>
   <polygon points="313,344 327,344 320,356" fill="#6b6b6b"/>
 
   <!-- ===== P5 selected single mode (base y=416) ===== -->
@@ -55,5 +55,5 @@
 
   <!-- ===== narrowing annotation ===== -->
   <text x="320" y="468" font-size="12.5" text-anchor="middle" fill="#2c5f7c">each stage has a narrower free spectral range than the one above it</text>
-  <text x="320" y="490" font-size="11.5" text-anchor="middle" fill="#6b6b6b">gain (tens of nm) ⊃ BRF (sub-nm) ⊃ étalon (72 GHz) ⊃ one cavity mode (1.17 GHz spacing)</text>
+  <text x="320" y="490" font-size="11.5" text-anchor="middle" fill="#6b6b6b">gain (tens of nm) ⊃ BRF (sub-nm) ⊃ étalon (≈73 GHz) ⊃ one cavity mode (1.18 GHz spacing)</text>
 </svg>

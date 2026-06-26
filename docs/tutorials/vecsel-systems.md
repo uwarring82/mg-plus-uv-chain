@@ -109,35 +109,35 @@ One more gain property bridges directly to linewidth: the **linewidth-enhancemen
 
 The gain medium is broadband and the external cavity is long, so left alone the laser would run multi-mode. **Single-frequency operation is engineered by a nested hierarchy of filters**, each with a narrower free spectral range (FSR) and higher selectivity than the last. The rule is simple: the *combined* round-trip loss difference between the chosen mode and every competitor must exceed what the homogeneously-broadened gain can equalise.
 
-The 1118 nm cavity is a **linear (I-shaped) resonator, L ≈ 128 mm** ([Kief20]), so its longitudinal-mode spacing is
+The 1118 nm cavity is a **linear (I-shaped) resonator, L ≈ 127.5 mm** (in-house [2021 VECSEL project summary](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2021-07-vecsel-project-summary.md); ≈ 128 mm in [Kief20]), so its longitudinal-mode spacing is
 
-> FSR_cavity = c / (2L) ≈ 3×10⁸ / (2 × 0.128) ≈ **1.17 GHz**.
+> FSR_cavity = c / (2L) ≈ 3×10⁸ / (2 × 0.1275) ≈ **1.18 GHz**.
 
-The filter stack, from coarsest to finest:
+The filter stack, from coarsest to finest (in-house part numbers and measured values from the [2021 VECSEL project summary](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2021-07-vecsel-project-summary.md) unless noted):
 
 | Stage | Element (in-house part) | Free spectral range / passband | Tuned by |
 |---|---|---|---|
 | Gain | GaInAs/GaAs quantum wells | tens of nm | gain-chip temperature (0.12–0.15 nm/K) |
-| **Coarse** | **Birefringent (Lyot) filter / BRF** — Newlight BIR0030 quartz, at Brewster angle θ_B ≈ 57° | sub-nm passband (~100s of GHz) | filter rotation + temperature |
-| **Medium** | **YAG étalon** — LightMachinery OP-3167-1000, 1.004 mm thick | **FSR ≈ 72 GHz at 1118 nm** (nominal 82.3 GHz at 1064 nm; re-measured 72 GHz in [Span25]) | étalon temperature |
-| **Fine** | **Cavity length** — PZT-actuated output coupler (PI P-080.311 ring piezo) | selects one mode of the 1.17 GHz comb | PZT voltage (≈ 78 MHz/V, [Span23]) |
+| **Coarse** | **Birefringent (Lyot) filter / BRF** — Newlight quartz, 12.7 mm × 3.0 mm, at Brewster angle **θ_B = 57.15°** | sub-nm passband (~100s of GHz) | filter rotation + temperature |
+| **Medium** | **YAG étalon** — 5 mm × 1 mm (LightMachinery OP-3167-1000) | **FSR ≈ 73 GHz near 1120 nm, ≈ 70 GHz near 1140 nm** (in-house; nominal 82.3 GHz at 1064 nm) | étalon temperature (operated 30–55 °C) |
+| **Fine** | **Cavity length** — PZT-actuated output coupler (PI P-080.311 ring piezo) | selects one mode of the 1.18 GHz comb | PZT voltage — **≈ 100 MHz/V** in-house measured (71 MHz/V used in the §3.2 noise budget; spec 5(1) nm/V) |
 
 <figure>
-  <img src="../assets/vecsel-filter-hierarchy.svg" alt="Five stacked spectra: a broad gain envelope spanning tens of nm; a narrower birefringent-filter lobe of sub-nm width; a comb of YAG-étalon peaks spaced 72 GHz; a dense comb of cavity modes spaced 1.17 GHz; and finally a single selected longitudinal mode. Each stage has a narrower free spectral range than the one above it." style="max-width:100%;height:auto;border:1px solid #e0dbd2;border-radius:6px;" />
+  <img src="../assets/vecsel-filter-hierarchy.svg" alt="Five stacked spectra: a broad gain envelope spanning tens of nm; a narrower birefringent-filter lobe of sub-nm width; a comb of YAG-étalon peaks spaced about 73 GHz; a dense comb of cavity modes spaced 1.18 GHz; and finally a single selected longitudinal mode. Each stage has a narrower free spectral range than the one above it." style="max-width:100%;height:auto;border:1px solid #e0dbd2;border-radius:6px;" />
   <figcaption style="font-size:0.85em;color:#6b6b6b;margin-top:0.4rem;">The mode-selection hierarchy. Each filter has a narrower free spectral range than the one above; their product leaves exactly one surviving cavity mode.</figcaption>
 </figure>
 
 **How the birefringent (Lyot) filter works.** A birefringent plate between the Brewster-angled intracavity surfaces rotates the polarisation by a wavelength-dependent amount; only wavelengths that emerge with the original polarisation pass the Brewster surfaces without loss. Tilting/rotating the plate slides this transmission comb. The BRF is the *coarse* wavelength selector — it picks the sub-nanometre window (e.g. the D2 versus D1 region) and, because it works through the Brewster loss, it also fixes the cavity's linear polarisation. (Newlight BIR0030, mounted at θ_B ≈ 57° on a goniometer, temperature-stabilised; [Kief20].)
 
-**How the étalon works.** The uncoated YAG étalon is a weak Fabry–Pérot (a two-surface interferometer whose transmission peaks repeat every FSR) whose 72 GHz peaks sit *inside* the BRF passband. Temperature-tuning its optical thickness walks one étalon peak onto the desired cavity mode and suppresses the étalon's neighbours. It is the *medium* selector — between the BRF's ~100s-of-GHz window and the cavity's 1.17 GHz comb.
+**How the étalon works.** The uncoated YAG étalon is a weak Fabry–Pérot (a two-surface interferometer whose transmission peaks repeat every FSR) whose ≈ 73 GHz peaks sit *inside* the BRF passband. Temperature-tuning its optical thickness walks one étalon peak onto the desired cavity mode and suppresses the étalon's neighbours. It is the *medium* selector — between the BRF's ~100s-of-GHz window and the cavity's 1.18 GHz comb.
 
-> **For scale.** 72 GHz ≈ **0.30 nm** at 1118 nm (Δλ = λ²Δν/c) — narrow against the gain envelope (tens of nm), but it still brackets ≈ **60 cavity modes** (72 GHz ÷ 1.17 GHz). The étalon alone does not isolate one mode; it hands a much thinner comb to the cavity-length selection below.
+> **For scale.** 73 GHz ≈ **0.30 nm** near 1120 nm (Δλ = λ²Δν/c) — narrow against the gain envelope (tens of nm), but it still brackets ≈ **62 cavity modes** (73 GHz ÷ 1.18 GHz). The étalon alone does not isolate one mode; it hands a much thinner comb to the cavity-length selection below.
 
-**How the cavity (PZT) works.** Even after BRF + étalon, several 1.17 GHz cavity modes can sit under the combined passband. Final selection is by **cavity length**: the PZT moves the output coupler so that exactly one longitudinal mode coincides with the filter maximum and wins the gain competition. The PZT also provides the *finest continuous tuning* — a **mode-hop-free range** (the span you can sweep before the laser jumps to the next longitudinal mode) of ~100 MHz at fixed BRF/étalon temperature ([Span23], 78 MHz/V).
+**How the cavity (PZT) works.** Even after BRF + étalon, several 1.18 GHz cavity modes can sit under the combined passband. Final selection is by **cavity length**: the PZT moves the output coupler so that exactly one longitudinal mode coincides with the filter maximum and wins the gain competition. The PZT also provides the *finest continuous tuning* — a **mode-hop-free range** (the span you can sweep before the laser jumps to the next longitudinal mode) of ~100 MHz at fixed BRF/étalon temperature (in-house ≈ 100 MHz/V; 78 MHz/V in [Span23]).
 
 Putting the ranges together gives the **mode-selection budget**:
 
-> gain (tens of nm) ⊃ BRF (sub-nm) ⊃ étalon (72 GHz) ⊃ **single cavity mode** (1.17 GHz spacing).
+> gain (tens of nm) ⊃ BRF (sub-nm) ⊃ étalon (≈ 73 GHz) ⊃ **single cavity mode** (1.18 GHz spacing).
 
 Coordinated tuning of all three stages yields a mode-hop-free range of **several 100 GHz** ([Guth21] §3.1) — comfortably more than the few-GHz span needed to sit anywhere on the ²⁵Mg⁺ manifold, and far beyond the ~100 GHz of the legacy Yb-fibre laser it replaced.
 
@@ -150,14 +150,14 @@ The filtering that buys single-frequency operation is also a **loss budget the c
 - **AR coatings** on the output-coupler back face (< 0.3 % at 1118 nm, [Kief20]);
 - a **2° facet wedge** on the diamond heat spreader in the Burd 2023 1252 nm build, to kill a parasitic étalon across the spreader.
 
-Because each element also subtracts from the round-trip gain margin, the output coupler is chosen slightly **over-reflective** to forgive these losses: R = 97.5 % at 1118 nm ([Kief20]), versus the ~2 % transmission (R ≈ 98 %) of the Burd 2023 builds. Loss that is not controlled here re-appears in Section 3 as frequency noise, because anything that modulates an intracavity loss or path length modulates the lasing frequency.
+Because each element also subtracts from the round-trip gain margin, the output coupler is chosen slightly **over-reflective** to forgive these losses: a **1.5 % output coupler (R ≈ 98.5 %)** at 1120 nm (in-house 2021 summary; R = 97.5 % in the earlier [Kief20] build), comparable to the ~2 % transmission of the Burd 2023 builds. Loss that is not controlled here re-appears in Section 3 as frequency noise, because anything that modulates an intracavity loss or path length modulates the lasing frequency.
 
 ```
-   GAIN MIRROR ──┐  linear cavity, L = 128 mm  ┌── OUTPUT COUPLER
-                 │  FSR = c/2L ≈ 1.17 GHz       │  R = 97.5 % @ 1118 nm
-   [ BRF / Lyot @ Brewster ]  coarse: sub-nm    │  RoC = 200 mm, on PZT
-   [ YAG étalon, 1.004 mm  ]  medium: 72 GHz     │
-   [ PZT cavity length     ]  fine: 1 mode, ~100 MHz mode-hop-free
+   GAIN MIRROR ──┐  linear cavity, L = 127.5 mm ┌── OUTPUT COUPLER
+                 │  FSR = c/2L ≈ 1.18 GHz       │  R ≈ 98.5 % (1.5 % OC) @ 1120 nm
+   [ BRF / Lyot @ Brewster 57.15° ] coarse: sub-nm │  RoC = 200 mm, on PZT
+   [ YAG étalon, 5×1 mm ]  medium: ≈ 73 GHz      │
+   [ PZT cavity length  ]  fine: 1 mode, ~100 MHz mode-hop-free
                  └──────► single-frequency 1118 nm out
                           → LBO ring → 559 nm → BBO ring → 280 nm
 ```
@@ -184,7 +184,7 @@ Each row is a physical parameter that modulates L (or, via the Henry factor, mod
 
 | Sensitivity | Timescale | Mechanism (how it moves the frequency) | Evidence / in-house handling |
 |---|---|---|---|
-| **Mechanical / acoustic** (mount vibration, PZT-driver noise) | fast | Direct δL of the 128 mm cavity; PZT gain 78 MHz/V means driver and acoustic noise couple straight to ν | Invar baseplate + ceramic-pedestal enclosure ([Kief20]); passive thermal-radiation design, A4 footprint, noise-isolation box ([Span25]) |
+| **Mechanical / acoustic** (mount vibration, PZT-driver noise) | fast | Direct δL of the 127.5 mm cavity; PZT gain ≈ 100 MHz/V (in-house) means driver and acoustic noise couple straight to ν | Invar baseplate + ceramic-pedestal enclosure ([Kief20]); passive thermal-radiation design, A4 footprint, noise-isolation box ([Span25]) |
 | **Intracavity-element temperature** (gain chip, étalon, BRF) | medium–slow | Gain peak 0.12–0.15 nm/K; étalon/BRF passband centres drift → frequency *pulling* of the selected mode | TEC stability < 0.004 K/h ([Kief20] Arroyo) → **0.08 mK** TEC set-point stability on long timescales ([Span25] custom controller) |
 | **Pump power / pump RIN** | fast–medium | Pump fluctuation → heat-load change on the gain chip → optical-path + gain-peak shift; residual amplitude noise → frequency noise via Henry α | VBG-stabilised pump suppresses fibre-multimode beating ([Kief20]); copper cooling sleeve on the pump-fibre output, −14 °C at 22.4 W ([Span23]) |
 | **Cooling-water / chiller cycling** | medium | The chiller's on/off thermal cycle modulates gain-chip temperature → large, periodic frequency swing | **The decisive in-house finding:** the legacy Neslab chiller drove ≈ **200 MHz peak-to-peak** oscillation; replacing it with an Alphacool PC-water loop removed it, a **factor-5** short-term improvement ([Span23]). *This is the single clearest example of how a facility-plumbing detail can dominate the linewidth budget.* |
@@ -192,6 +192,24 @@ Each row is a physical parameter that modulates L (or, via the Henry factor, mod
 | **Absolute-frequency reference drift** (the *lock*, not the laser) | slow | Holds ν against an external reference: wavemeter drift ~ 10 MHz/day; iodine lock bounded by the 125 kHz photodiode bandwidth | Doppler-free iodine saturation spectroscopy + HighFinesse wavemeter, calibrated daily ([Kief20] · [Guth21]) |
 
 The single most instructive entry is the **chiller cycle**: a mundane piece of facility plumbing produced a 200 MHz frequency oscillation — three orders of magnitude larger than the target linewidth — purely by modulating gain-chip temperature. It is the cleanest illustration of "linewidth limitation = cavity-length (here, gain-temperature) sensitivity."
+
+### 3.2.1 In-house measured noise budget (VECSEL #2, 2021)
+
+The [2021 VECSEL project summary](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2021-07-vecsel-project-summary.md) quantifies this ledger for one of the in-house units (system #2) at a ≈ 1.5 s timescale. Each element's frequency sensitivity is multiplied by its measured RMS fluctuation to give a short-term linewidth contribution:
+
+| Element | Sensitivity | RMS fluctuation (≈ 1.5 s) | Linewidth contribution | Dominant bandwidth |
+|---|---|---|---|---|
+| Gain chip (via Peltier) temperature | 621(10) MHz/K | ΔT = 3.2(3) mK | **1.98(3) MHz** | 0–100 Hz |
+| Base-plate temperature | 2200(100) MHz/K (calc.) | ΔT = 0.36(3) mK | **0.7(1) MHz** | < 1 Hz |
+| PZT voltage | 71(1) MHz/V | ΔV < 0.01 V | < 0.71(1) MHz | 0–10 kHz |
+| Cold-plate temperature | 425(2) MHz/K | ΔT = 0.42(3) mK | 0.18(2) MHz | 0–0.5 Hz |
+| Pump current (at 26 A) | 44(2) MHz/A | ΔA = 0.29 mA | 0.13(1) MHz | 0–100 kHz |
+| BRF temperature | < 28(7) MHz/K | ΔT = 4.0(4) mK | 0.11(3) MHz | < 1 Hz |
+| Étalon temperature | < 29(14) MHz/K | ΔT = 3.7(3) mK | 0.11(6) MHz | < 1 Hz |
+| **Sum of all effects** | | | **< 2.3(2) MHz** | 0–100 kHz |
+| **Measured frequency stability** | | | **2.5(1) MHz** | — |
+
+Two lessons jump out. First, **temperature dominates**: the gain-chip and base-plate terms alone account for almost the entire budget — exactly as the qualitative ledger predicts. The base-plate term is large because even the 127.5 mm Invar cavity expands at 153 nm/K (CLTE 1.2 × 10⁻⁶ /K) → 2200 MHz/K. Second, **the budget closes**: the summed estimate (< 2.3 MHz) matches the independently measured linewidth (2.5 MHz), the strongest possible confirmation that the device is technical-noise-limited and that the model is complete. The redesign items the note lists for the next units — new cold plate, chiller stability better than ± 0.1 K, a fixed pump-fibre coupler, an active pump-noise photodiode — each target the top rows of this table, and they are what carry the linewidth down through the [Span23] → [Span25] lineage below.
 
 ### 3.3 The in-house record: closing the sensitivities one by one
 
@@ -239,37 +257,39 @@ The project's operating budget follows from this:
 
 ## 4. The two systems, side by side
 
-<p class="classification classification--sail">Sail · the 1141 nm photoionisation system is documented from [Burd16] and the [Guth21] §4 build note; the in-house device is a build-in-progress and its as-built parameters are not yet pinned.</p>
+<p class="classification classification--sail">Sail · the 1140 nm column draws in-house data from the <a href="https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2021-07-vecsel-project-summary.md">2021 VECSEL project summary</a> (fleet system #2, gain chip VXL1140_1078, étalon FSR), with the NIST/Tampere [Burd16] V-cavity device shown as an external analogue. The in-house unit's full linewidth / power / 285 nm-conversion characterisation is not yet in the extracted record.</p>
 
-We include the 1141 nm system here because **it reuses the entire architecture of the 1118 nm laser** — the only deliberate differences are the gain-chip well composition (which sets ~1118 vs ~1141 nm) and the target UV wavelength (280 vs 285 nm). Seeing the two together is the clearest way to understand the source-class direction: a second VECSEL is mostly a re-use of the first one's engineering.
+We include the 1141 nm system here because **it reuses the entire architecture of the 1118 nm laser** — the same linear-cavity platform, the same BRF + étalon + PZT filter stack, the same thermal design. The only deliberate differences are the gain-chip well composition (a *red-detuned* chip that moves emission from ~1118 to ~1141 nm) and the target UV wavelength (280 vs 285 nm). In the in-house fleet this is **system #2 ("Heidi"), in use for photoionisation by the PAULA / BERMUDA experiments**; the 1118 nm cooling/Raman laser is systems #1 and #3.
 
 | | **1118 nm — cooling / detection / Raman** | **1141 nm — photoionisation** |
 |---|---|---|
 | Seed wavelength | 4 λ_D2 ≈ 1118.5 nm · 4 λ_D1 ≈ 1121.4 nm | ≈ 1141 nm (4 × 285.2 nm) |
-| Gain chip | GaInAs/GaAs, emission 1116–1122 nm | GaInAs/GaAs, **red-detuned** well design |
+| Gain chip (in-house) | GaInAs/GaAs, VL1120_4477_83x/84x, emission 1116–1122 nm | GaInAs/GaAs, **red-detuned VXL1140_1078** (2020) |
+| Étalon FSR (in-house) | ≈ 73 GHz | ≈ 70 GHz |
 | UV output | **280 nm** | **285 nm** |
-| Doubling route | LBO ring → 559 nm → BBO ring → 280 nm (Friedenauer topology, Hänsch–Couillaud locks) | Burd 2016 VC: intracavity LBO → 571 nm → BBO → 285 nm |
+| Doubling route | LBO ring → 559 nm → BBO ring → 280 nm (Friedenauer topology, Hänsch–Couillaud locks) | → 285 nm (in-house route not detailed in the 2021 summary; [Burd16] VC analogue: intracavity LBO → 571 nm → BBO) |
 | Atomic target | ²⁵Mg⁺ 3s→3p (D2/D1) | **neutral Mg** 3s² ¹S₀ → 3s3p ¹P₁ (285.2 nm) |
-| Role | Doppler cooling, state detection, repump, stimulated-Raman gates | resonance-enhanced (1+1) two-photon photoionisation for **isotope-selective loading** ([[Kjae00]](../references.html#kjae00)) |
+| Role | Doppler cooling, state detection, repump, stimulated-Raman gates | resonance-enhanced (1+1) photoionisation for **isotope-selective loading** ([[Kjae00]](../references.html#kjae00)) |
+| In-house fleet ID | #1 / #3 | **#2 ("Heidi")** — in use by PAULA / BERMUDA |
 | Operating point (analogue) | [Guth21]: f = 268.001790(5) THz for ground-state cooling | [Burd16]: ~ 1 mW at 285 nm at the trap, 26 µm waist, single ²⁵Mg⁺ in ~ 10 s |
-| In-house status | running (Nr.4); redesigned (Nr.6, [Span25]) | second VECSEL under construction at [Guth21] §4 |
 
-### Cavity/filter parameters for the 1141 nm system
+### Cavity/filter parameters across the fleet
 
-<p class="classification classification--sail">Sail · the numbers below are from the NIST/Tampere VC device ([Burd16] §2), not the in-house build; the in-house 1141 nm cavity and étalon FSR are not yet in the extracted record.</p>
+<p class="classification classification--sail">Sail · in-house values from the <a href="https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2021-07-vecsel-project-summary.md">2021 VECSEL project summary</a>; the Burd 2016 VC column is the external analogue, not the in-house build.</p>
 
-For the 1118 nm system the cavity and filter parameters are pinned in-house (Section 2). For 1141 nm the closest documented device is Burd 2016's **V-cavity (VC) intracavity-doubled** VECSEL, which differs in geometry from the in-house linear cavity:
+Both in-house wavelengths share **one linear-cavity platform** — only the gain chip and étalon set-point differ. Burd 2016's V-cavity device is shown for contrast because it doubles *intracavity*, a genuinely different topology:
 
-| Parameter | 1118 nm (in-house, [Kief20]) | 1141 nm (Burd 2016 VC analogue) |
-|---|---|---|
-| Cavity geometry | linear (I), L ≈ 128 mm | V-cavity, short arm ≈ 65 mm |
-| Cavity-mode spacing | FSR = c/2L ≈ 1.17 GHz | geometry-dependent (not stated for the in-house build) |
-| Intracavity doubling | none (LBO is in an *external* ring) | **intracavity** LBO, 3 × 3 × 15 mm Type-I CPM → 571 nm |
-| Gain-mirror temperature | 20 °C set-point | **8 °C** |
-| Filter stack | BRF + 1.004 mm YAG étalon + PZT | birefringent filter + étalon (FSRs not extracted) |
-| Linewidth | 101(8) kHz locked ([Span25]) | 50(10) kHz from the HC error signal |
+| Parameter | 1118/1120 nm (in-house #1/#3) | 1140 nm (in-house #2 "Heidi") | 1141 nm (Burd 2016 VC analogue) |
+|---|---|---|---|
+| Cavity geometry | linear (I), L ≈ 127.5 mm | linear (I), same platform | V-cavity, short arm ≈ 65 mm |
+| Cavity-mode spacing | FSR ≈ 1.18 GHz | ≈ 1.18 GHz | geometry-dependent |
+| Étalon FSR | ≈ 73 GHz | ≈ 70 GHz | not extracted |
+| Intracavity doubling | none (external LBO ring) | none (external, platform standard) | **intracavity** LBO 3×3×15 mm → 571 nm |
+| Gain chip | VL1120_4477_83x/84x | VXL1140_1078 | (Tampere 1141 nm) |
+| Gain-mirror temperature | 20 °C set-point | red-detuned chip | **8 °C** |
+| Linewidth | 101(8) kHz locked ([Span25]) | not yet characterised in-house | 50(10) kHz (HC error signal) |
 
-When the in-house 1141 nm device is characterised, its measured cavity length, étalon FSR, and linewidth will replace the Burd 2016 placeholders here.
+When the in-house 1140 nm unit is fully characterised, its measured linewidth, output power, and 285 nm conversion will fill the gaps above.
 
 ---
 
@@ -279,7 +299,7 @@ When the in-house 1141 nm device is characterised, its measured cavity length, �
 
 - **1118 nm gain-mirror respecification.** The closest demonstrated gain mirror is Burd 2016's 1117 nm IC chip; a build-specific 1118 nm mirror is an MBE-growth procurement question, with the Tampere ORC group (Guina) the natural collaboration anchor. *(See the [seed-lasers components page](../components/seed-lasers.html) open questions.)*
 - **RIN at the lock bandwidth.** The binding noise number for the linewidth budget is the relative-intensity-noise spectral density *at the ~18 kHz doubling-cavity lock bandwidth*. It is not published for the in-house build ([Kief20] · [Guth21] open items); the Henry-α conversion of this RIN into frequency noise is the un-measured link in Section 3.
-- **1141 nm in-house photoionisation VECSEL.** Documented as under construction at [Guth21] §4 and modelled on the Burd 2016 VC system; its as-built linewidth, output power, 285 nm conversion, and cavity/étalon parameters are not yet in the extracted record. This tutorial will be updated when an extraction lands.
+- **1141 nm in-house unit (#2 "Heidi").** The [2021 VECSEL project summary](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2021-07-vecsel-project-summary.md) pins the gain chip (VXL1140_1078) and étalon (≈ 70 GHz) and confirms operational use for photoionisation (PAULA / BERMUDA). Still missing from the extracted record: its measured linewidth, output power, the route to 285 nm, and whether it doubles intra- or extra-cavity. This tutorial will be updated when a full extraction lands.
 
 **Charter governance note.**
 
@@ -297,7 +317,7 @@ When the in-house 1141 nm device is characterised, its measured cavity length, �
 
 ### Lab notes (internal, AG Schätz)
 
-For more detail from the lab notebooks (internal AG Schätz records; access via the shared links):
+The in-house figures on this page are drawn from internal AG Schätz lab notebooks, extracted from Evernote to Markdown. Image/PDF attachments are kept local-only; the converted text is in-repo:
 
-- [VECSEL lab note — Evernote (f17d5fcf)](https://share.evernote.com/note/f17d5fcf-0145-4114-90b6-7147c510ac4f)
-- [VECSEL lab note — Evernote (9b20181d)](https://share.evernote.com/note/9b20181d-8814-83ae-e677-cf61ca88b517)
+- [**2021 VECSEL project summary**](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2021-07-vecsel-project-summary.md) — fleet overview (#1–#5), assembly/optical-element details, and the VECSEL #2 frequency-noise budget used throughout Sections 2–4. ([Evernote original, with figures](https://share.evernote.com/note/9b20181d-8814-83ae-e677-cf61ca88b517))
+- **2020-11 VECSEL #2 "Heidi" operational diary** — day-by-day operations log for the 1140 nm unit. ([Evernote original, with figures](https://share.evernote.com/note/f17d5fcf-0145-4114-90b6-7147c510ac4f))
