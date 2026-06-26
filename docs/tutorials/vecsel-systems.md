@@ -57,6 +57,8 @@ The rest of the tutorial is three sections, in the order the physics builds:
 
 > **Prerequisite framing.** *Why* a VECSEL (the class-A argument, the source-class steward direction) is on the [seed-lasers components page](../components/seed-lasers.html); this tutorial assumes it and goes inside the device. *What happens after* the seed — the LBO + BBO doubling chain — is the [SHG numerics tutorial series](index.html).
 
+> **Evidence labels** (used in the tables and §4 to keep evidence classes separate): **[in-house]** measured in the AG Schätz lab · **[external]** peer-reviewed external result · **[analogue]** a comparable but *different* device · **[inferred]** deduced, not directly measured · **[open]** not yet measured or extracted.
+
 ---
 
 ## 1. Gain properties: the semiconductor gain mirror
@@ -107,7 +109,7 @@ One more gain property bridges directly to linewidth: the **linewidth-enhancemen
 
 <p class="classification classification--coastline">Coastline · the filter free spectral ranges and the cavity mode spacing are fixed by component geometry; testable against [Kief20] §3.3.1 part numbers and [Span25] re-measurements.</p>
 
-The gain medium is broadband and the external cavity is long, so left alone the laser would run multi-mode. **Single-frequency operation is engineered by a nested hierarchy of filters**, each with a narrower free spectral range (FSR) and higher selectivity than the last. The rule is simple: the *combined* round-trip loss difference between the chosen mode and every competitor must exceed what the homogeneously-broadened gain can equalise.
+The gain medium is broadband and the external cavity is long, so left alone the laser would run multi-mode. **Single-frequency operation is engineered by a nested set of filters**, each acting on a different frequency scale. The mechanism is not that any one filter is "narrow enough" on its own — it is the **product of their losses**: the lasing mode is the one with the lowest *total* round-trip loss, and it stays single-frequency only if that loss advantage over every competing mode exceeds what the homogeneously-broadened gain can equalise. A broad filter with a small per-mode loss slope can still be decisive once multiplied with the others.
 
 The 1118 nm cavity is a **linear (I-shaped) resonator, L ≈ 127.5 mm** (in-house [2021 VECSEL project summary](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2021-07-vecsel-project-summary.md); ≈ 128 mm in [Kief20]), so its longitudinal-mode spacing is
 
@@ -115,12 +117,14 @@ The 1118 nm cavity is a **linear (I-shaped) resonator, L ≈ 127.5 mm** (in-hous
 
 The filter stack, from coarsest to finest (in-house part numbers and measured values from the [2021 VECSEL project summary](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2021-07-vecsel-project-summary.md) unless noted):
 
-| Stage | Element (in-house part) | Free spectral range / passband | Tuned by |
-|---|---|---|---|
-| Gain | GaInAs/GaAs quantum wells | tens of nm | gain-chip temperature (0.12–0.15 nm/K) |
-| **Coarse** | **Birefringent (Lyot) filter / BRF** — Newlight quartz, 12.7 mm × 3.0 mm, at Brewster angle **θ_B = 57.15°** | sub-nm passband (~100s of GHz) | filter rotation + temperature |
-| **Medium** | **YAG étalon** — 5 mm × 1 mm (LightMachinery OP-3167-1000) | **FSR ≈ 73 GHz near 1120 nm, ≈ 70 GHz near 1140 nm** (in-house; nominal 82.3 GHz at 1064 nm) | étalon temperature (operated 30–55 °C) |
-| **Fine** | **Cavity length** — PZT-actuated output coupler (PI P-080.311 ring piezo) | selects one mode of the 1.18 GHz comb | PZT voltage — **≈ 100 MHz/V** in-house measured (71 MHz/V used in the §3.2 noise budget; spec 5(1) nm/V) |
+| Stage | Element (in-house part) | Acts on / spacing | What it suppresses | Tuned by |
+|---|---|---|---|---|
+| Gain | GaInAs/GaAs quantum wells | gain envelope, tens of nm | nothing on its own — it provides gain, not selection | gain-chip temperature (0.12–0.15 nm/K) |
+| **Coarse** | **Birefringent (Lyot) filter / BRF** — Newlight quartz, 12.7 mm × 3.0 mm, at Brewster angle **θ_B = 57.15°** | one broad transmission lobe, sub-nm wide (~100s of GHz) | wavelengths outside the chosen ~nm window — and, via the Brewster surfaces, the wrong polarisation | rotation + temperature |
+| **Medium** | **YAG étalon** — 5 mm × 1 mm (LightMachinery OP-3167-1000) | transmission comb, **FSR ≈ 73 GHz near 1120 nm, ≈ 70 GHz near 1140 nm** (in-house; nominal 82.3 GHz at 1064 nm) | étalon orders away from the selected peak, within the BRF lobe | étalon temperature (operated 30–55 °C) |
+| **Fine** | **Cavity length** — PZT-actuated output coupler (PI P-080.311 ring piezo) | longitudinal-mode comb, 1.18 GHz spacing | every cavity mode but the one aligned with the combined BRF+étalon peak | PZT voltage — **≈ 100 MHz/V** in-house measured (71 MHz/V used in the §3.2 noise budget; spec 5(1) nm/V) |
+
+Read the table as a chain of *partial* filters: none isolates a single mode by itself; the étalon, for example, still leaves ≈ 60 cavity modes under one of its peaks (next paragraph). Single-frequency operation is the **product** of all three loss profiles.
 
 <figure>
   <img src="../assets/vecsel-filter-hierarchy.svg" alt="Five stacked spectra: a broad gain envelope spanning tens of nm; a narrower birefringent-filter lobe of sub-nm width; a comb of YAG-étalon peaks spaced about 73 GHz; a dense comb of cavity modes spaced 1.18 GHz; and finally a single selected longitudinal mode. Each stage has a narrower free spectral range than the one above it." style="max-width:100%;height:auto;border:1px solid #e0dbd2;border-radius:6px;" />
@@ -133,13 +137,24 @@ The filter stack, from coarsest to finest (in-house part numbers and measured va
 
 > **For scale.** 73 GHz ≈ **0.30 nm** near 1120 nm (Δλ = λ²Δν/c) — narrow against the gain envelope (tens of nm), but it still brackets ≈ **62 cavity modes** (73 GHz ÷ 1.18 GHz). The étalon alone does not isolate one mode; it hands a much thinner comb to the cavity-length selection below.
 
-**How the cavity (PZT) works.** Even after BRF + étalon, several 1.18 GHz cavity modes can sit under the combined passband. Final selection is by **cavity length**: the PZT moves the output coupler so that exactly one longitudinal mode coincides with the filter maximum and wins the gain competition. The PZT also provides the *finest continuous tuning* — a **mode-hop-free range** (the span you can sweep before the laser jumps to the next longitudinal mode) of ~100 MHz at fixed BRF/étalon temperature (in-house ≈ 100 MHz/V; 78 MHz/V in [Span23]).
+**How the cavity (PZT) works.** Even after BRF + étalon, several 1.18 GHz cavity modes can sit under the combined passband. Final selection is by **cavity length**: the PZT moves the output coupler so that exactly one longitudinal mode coincides with the filter maximum and wins the gain competition.
 
 Putting the ranges together gives the **mode-selection budget**:
 
 > gain (tens of nm) ⊃ BRF (sub-nm) ⊃ étalon (≈ 73 GHz) ⊃ **single cavity mode** (1.18 GHz spacing).
 
-Coordinated tuning of all three stages yields a mode-hop-free range of **several 100 GHz** ([Guth21] §3.1) — comfortably more than the few-GHz span needed to sit anywhere on the ²⁵Mg⁺ manifold, and far beyond the ~100 GHz of the legacy Yb-fibre laser it replaced.
+#### Tuning ranges (distinct, nested)
+
+"Tunable" means different spans depending on which knob moves — these should not be conflated:
+
+| Knob moved | Continuous (mode-hop-free) span | Note |
+|---|---|---|
+| **PZT only** (BRF/étalon fixed) | **~100 MHz** | ≈ 100 MHz/V in-house (78 MHz/V in [Span23]); the finest, fastest handle |
+| **Étalon temperature** (30–55 °C) | up to ~1 étalon FSR before a cavity-mode hop | walks the selected peak; re-grab a mode with the PZT after a hop |
+| **Coordinated BRF + étalon + PZT** | **several 100 GHz** ([Guth21] §3.1) | the practical single-mode retuning range |
+| **Gain-chip temperature + BRF** | full **1116–1122 nm** gain envelope (~ several nm) | coarse coverage of the whole manifold |
+
+**For scale.** Sitting anywhere *within one transition's hyperfine/Zeeman manifold* needs only a few GHz — easily inside the PZT/étalon range. But hopping between the two D lines is a far larger move: the D2–D1 fine-structure splitting is ≈ 2.74 THz at the UV ([Burd16]), i.e. **≈ 0.69 THz (~690 GHz) at the 1120 nm seed** — reached by coordinated thermal + gain-chip retuning, *not* by the PZT. The whole span still sits comfortably inside the gain envelope, and far beyond the ~100 GHz of the legacy Yb-fibre laser it replaced.
 
 ### Loss budget of the filter stack
 
@@ -166,11 +181,11 @@ Because each element also subtracts from the round-trip gain margin, the output 
 
 ## 3. Parameter sensitivities → linewidth limitations
 
-<p class="classification classification--coastline">Coastline · the linewidth budget criterion (Δν_seed ≪ min(Δν_atomic, Δν_lock)) is a Level-1 derived optical constraint; for the short-term linewidth budget the binding term is the doubling-cavity lock bandwidth, with the atomic linewidth and the iodine reference binding at other levels (resolution and long-term locking).</p>
+<p class="classification classification--coastline">Coastline · the seed frequency-noise requirement is a Level-1 derived optical constraint; for the short-term budget what binds is the residual frequency-noise spectral density shaped by the doubling-cavity/servo transfer function (~18 kHz lock bandwidth), not the integrated linewidth — with the atomic linewidth and the iodine reference binding at other levels (resolution and long-term locking).</p>
 
 This is the section the rest of the tutorial builds toward. The headline:
 
-> **The VECSEL's intrinsic (Schawlow–Townes) linewidth is negligible; its measured linewidth is set entirely by technical perturbations of the cavity optical length.** Reducing the linewidth is therefore an exercise in finding and suppressing length-noise sources — which is exactly the story of the in-house thesis lineage.
+> **The VECSEL's intrinsic (Schawlow–Townes) linewidth is negligible; its measured linewidth is dominated, in the in-house systems, by technical perturbations of the cavity optical length.** Reducing the linewidth is therefore mostly an exercise in finding and suppressing length-noise sources — which is exactly the story of the in-house thesis lineage.
 
 ### 3.1 Why the seed is technical-noise-limited
 
@@ -209,7 +224,7 @@ The [2021 VECSEL project summary](https://github.com/uwarring82/mg-plus-uv-chain
 | **Sum of all effects** | | | **< 2.3(2) MHz** | 0–100 kHz |
 | **Measured frequency stability** | | | **2.5(1) MHz** | — |
 
-Two lessons jump out. First, **temperature dominates**: the gain-chip and base-plate terms alone account for almost the entire budget — exactly as the qualitative ledger predicts. The base-plate term is large because even the 127.5 mm Invar cavity expands at 153 nm/K (CLTE 1.2 × 10⁻⁶ /K) → 2200 MHz/K. Second, **the budget closes**: the summed estimate (< 2.3 MHz) matches the independently measured linewidth (2.5 MHz), the strongest possible confirmation that the device is technical-noise-limited and that the model is complete. The redesign items the note lists for the next units — new cold plate, chiller stability better than ± 0.1 K, a fixed pump-fibre coupler, an active pump-noise photodiode — each target the top rows of this table, and they are what carry the linewidth down through the [Span23] → [Span25] lineage below.
+Two lessons jump out. First, **temperature dominates**: the gain-chip and base-plate terms alone account for almost the entire budget — exactly as the qualitative ledger predicts. The base-plate term is large because even the 127.5 mm Invar cavity expands at 153 nm/K (CLTE 1.2 × 10⁻⁶ /K) → 2200 MHz/K. Second, **the budget closes**: the summed estimate (< 2.3 MHz) matches the independently measured linewidth (2.5 MHz) — strong evidence that the device is technical-noise-limited at this timescale, and that the budget captures the dominant terms for this system (it is a closed accounting of the modelled effects, not a proof that no other term exists). The redesign items the note lists for the next units — new cold plate, chiller stability better than ± 0.1 K, a fixed pump-fibre coupler, an active pump-noise photodiode — each target the top rows of this table, and they are what carry the linewidth down through the [Span23] → [Span25] lineage below.
 
 ### 3.3 The in-house record: closing the sensitivities one by one
 
@@ -224,7 +239,7 @@ Each thesis in the lineage attacked the then-dominant sensitivity. Read the tabl
 
 *(In the in-house convention, a value such as 101(8) kHz means 101 kHz with a 1σ uncertainty of 8 kHz on the last figures, as reported.)*
 
-Spanke 2025 is the first in-house build to reach the **Burd 2023 sub-100-kHz linewidth class** at the actual 1118 nm operating point — i.e. the design principles transferred end-to-end, in Freiburg, on a ²⁵Mg⁺-targeted laser.
+Spanke 2025 brings the in-house build into the **Burd 2023 ~100 kHz linewidth class** at the actual 1118 nm operating point — the design principles transferred end-to-end, in Freiburg, on a ²⁵Mg⁺-targeted laser. A caution on reading the number: **101(8) kHz is consistent with the ≤ 100 kHz target but is not proof of a sub-100-kHz linewidth** — the 1σ band straddles 100 kHz, and the value is likely limited by the measurement method (locked Allan deviation), not the laser. Establishing a true sub-100-kHz *intrinsic* linewidth would need a delayed self-heterodyne or beat-note measurement against a second narrow laser.
 
 ### 3.4 What the linewidth has to beat — and at which level
 
@@ -236,28 +251,37 @@ Spanke 2025 is the first in-house build to reach the **Burd 2023 sub-100-kHz lin
 >
 > The point is not that the atomic linewidth is irrelevant — it is the cooling/detection requirement, and the iodine lock is the long-term anchor. It is that clearing the 41.8 MHz atomic linewidth does not, on its own, settle the short-term budget, which lives on the much finer ~18 kHz scale.
 
-The criterion is
+**The criterion is a transfer function, not a single inequality.** What the doubling stages actually respond to is not the seed's *integrated* linewidth but its residual **frequency-noise spectral density S_δν(f)**, shaped by the cavity and its servo. Each resonant SHG cavity is a tracking filter: seed frequency excursions slower than the lock bandwidth (≈ 18 kHz, the loaded-piezo resonance of the LBO ring, [[Frie06]](../references.html#frie06)) are followed by the lock and largely cancelled, while excursions faster than that are converted into **amplitude** noise on the harmonic (frequency-to-amplitude conversion) and reach the ion. The figure of merit is therefore S_δν(f) weighted by the cavity/servo transfer function around and above ~18 kHz — *not* a single number like Δν_seed.
 
-> **Δν_seed ≪ min( Δν_atomic , Δν_cavity-lock-bandwidth )**,
-
-and the smaller term is the **doubling-cavity locking bandwidth ≈ 18 kHz** (the loaded-piezo resonance of the LBO ring, [[Frie06]](../references.html#frie06)). The seed is quadrupled inside two *resonant* SHG cavities; seed frequency noise faster than a cavity's lock bandwidth is converted into **amplitude** noise on the harmonic (frequency-to-amplitude conversion), which is what ultimately reaches the ion:
+A rough inequality, Δν_seed ≲ min(Δν_atomic, Δν_lock-related), is still useful as a **sanity check** — it says the seed should not be grossly broader than the relevant scales — but it is neither necessary nor sufficient on its own: a seed with a ~100 kHz integrated linewidth can be perfectly acceptable if its in-band noise density is low, and a seed that nominally "passes" the inequality can still inject too much in-band noise. It is the spectral density, not the integrated linewidth, that has to be controlled:
 
 <figure>
-  <img src="../assets/vecsel-linewidth-conversion.svg" alt="A vertical chain: seed frequency noise at 1118 nm enters the LBO ring cavity, whose Hänsch–Couillaud lock has a bandwidth of about 18 kHz and low-passes the seed frequency noise; frequency noise is converted to amplitude noise on 559 nm; this passes through the BBO ring cavity to become amplitude noise on 280 nm at the ion. The integrated seed linewidth may exceed 18 kHz; what matters is the frequency-noise density at and below about 18 kHz." style="max-width:100%;height:auto;border:1px solid #e0dbd2;border-radius:6px;" />
-  <figcaption style="font-size:0.85em;color:#6b6b6b;margin-top:0.4rem;">Why ~18 kHz binds. The doubling cavity low-passes the seed's frequency noise; only the in-band part is converted to amplitude noise on the UV that the ion sees.</figcaption>
+  <img src="../assets/vecsel-linewidth-conversion.svg" alt="A vertical chain: seed frequency noise at 1118 nm enters the LBO ring cavity, whose Hänsch–Couillaud lock (bandwidth about 18 kHz) tracks out the slow, below-bandwidth frequency noise; the residual frequency noise above the lock bandwidth is converted to amplitude noise on 559 nm; this passes through the BBO ring cavity to become amplitude noise on 280 nm at the ion. The integrated seed linewidth may exceed 18 kHz; what matters is the frequency-noise density above the lock bandwidth." style="max-width:100%;height:auto;border:1px solid #e0dbd2;border-radius:6px;" />
+  <figcaption style="font-size:0.85em;color:#6b6b6b;margin-top:0.4rem;">Why ~18 kHz binds. The lock tracks out seed frequency noise <em>below</em> ~18 kHz; the residual noise <em>above</em> the lock bandwidth is what converts to amplitude noise on the UV the ion sees.</figcaption>
 </figure>
 
-> **For scale.** The ~100 kHz seed linewidth is itself *several times larger* than the ~18 kHz lock bandwidth — and that is fine, not a contradiction. The doubling cavity low-pass-filters seed frequency noise above its lock bandwidth, so what actually couples through is the frequency-noise **spectral density at and below ~18 kHz**, not the integrated linewidth. This is why the engineering in Section 3.3 targets low-frequency drift and thermal/acoustic noise specifically.
+> **For scale.** The ~100 kHz *integrated* seed linewidth is larger than the ~18 kHz lock bandwidth — and that is fine, not a contradiction. An integrated linewidth is dominated by **low-frequency** drift, which is exactly the part the doubling-cavity lock tracks out. The noise that converts to amplitude on the harmonic is the **high-frequency** part, *above* ~18 kHz, that the lock cannot follow. So a large integrated linewidth (mostly slow drift) and a clean harmonic are perfectly compatible — which is why §3.4 insists on the spectral density, not the single number. (The §3.3 work drove down that low-frequency drift; the high-frequency density above ~18 kHz — e.g. pump RIN — is the still-unmeasured term, §3.5.)
 
 The project's operating budget follows from this:
 
 | Budget point | Value | Status |
 |---|---|---|
-| Target | ≤ 100 kHz | met by Spanke 2025 (101 kHz) |
+| Target | ≤ 100 kHz | reached to within measurement — Spanke 2025 101(8) kHz, consistent with target; sub-100 kHz not independently proven |
 | Friedenauer-parity floor | ≈ 200 kHz | exceeded since Spanke 2023 |
 | Stretch ceiling | 50 kHz (Burd 2016 1141 nm parity) | open |
 
+The "linewidth" entries above are integrated-linewidth proxies; the binding quantity remains the in-band frequency-noise density of §3.4, which has not yet been measured at the SHG lock bandwidth (see the box below).
+
 *(Budget values per the [seed-lasers components page](../components/seed-lasers.html) and the [2026-05-08 steward-direction logbook entry](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-08-vecsel-seed-lasers.md).)*
+
+### 3.5 What the in-house data prove — and what they don't
+
+> **Proven.** The dominant **MHz-scale** linewidth in the in-house systems was **technical and reducible**: the §3.2.1 budget closes against the measured value, names temperature and mechanics as the leading terms, and the lineage drove the free-running/locked figure down by more than an order of magnitude (§3.3).
+>
+> **Not yet proven.**
+> - A true **sub-100-kHz intrinsic** linewidth — 101(8) kHz is consistent with, but not below, 100 kHz, and is likely measurement-floor-limited (needs delayed self-heterodyne or a beat note).
+> - The **UV relative-intensity noise at the SHG lock bandwidth** — the actual figure of merit of §3.4 — which has not been measured.
+> - The in-house **1140 nm** unit's linewidth, output power, and 285 nm conversion (§4).
 
 ---
 
@@ -273,11 +297,11 @@ We include the 1141 nm system here because **it reuses the entire architecture o
 | Gain chip (in-house) | GaInAs/GaAs, VL1120_4477_83x/84x, emission 1116–1122 nm | GaInAs/GaAs, **red-detuned VXL1140_1078** (2020) |
 | Étalon FSR (in-house) | ≈ 73 GHz | ≈ 70 GHz |
 | UV output | **280 nm** | **285 nm** |
-| Doubling route | LBO ring → 559 nm → BBO ring → 280 nm (Friedenauer topology, Hänsch–Couillaud locks) | → 285 nm (in-house route not detailed in the 2021 summary; [Burd16] VC analogue: intracavity LBO → 571 nm → BBO) |
+| Doubling route | **[in-house]** LBO ring → 559 nm → BBO ring → 280 nm (Friedenauer topology, Hänsch–Couillaud locks) | **[open]** in-house route not detailed in the 2021 summary · **[analogue]** [Burd16] VC: intracavity LBO → 571 nm → BBO |
 | Atomic target | ²⁵Mg⁺ 3s→3p (D2/D1) | **neutral Mg** 3s² ¹S₀ → 3s3p ¹P₁ (285.2 nm) |
 | Role | Doppler cooling, state detection, repump, stimulated-Raman gates | resonance-enhanced (1+1) photoionisation for **isotope-selective loading** ([[Kjae00]](../references.html#kjae00)) |
 | In-house fleet ID | #1 / #3 | **#2 ("Heidi")** — in use by PAULA / BERMUDA |
-| Operating point (analogue) | [Guth21]: f = 268.001790(5) THz for ground-state cooling | [Burd16]: ~ 1 mW at 285 nm at the trap, 26 µm waist, single ²⁵Mg⁺ in ~ 10 s |
+| Example operating point | **[in-house]** [Guth21]: f = 268.001790(5) THz for ground-state cooling | **[analogue]** [Burd16]: ~ 1 mW at 285 nm at the trap, 26 µm waist, single ²⁵Mg⁺ in ~ 10 s |
 
 ### Cavity/filter parameters across the fleet
 
@@ -285,17 +309,19 @@ We include the 1141 nm system here because **it reuses the entire architecture o
 
 Both in-house wavelengths share **one linear-cavity platform** — only the gain chip and étalon set-point differ. Burd 2016's V-cavity device is shown for contrast because it doubles *intracavity*, a genuinely different topology:
 
-| Parameter | 1118/1120 nm (in-house #1/#3) | 1140 nm (in-house #2 "Heidi") | 1141 nm (Burd 2016 VC analogue) |
-|---|---|---|---|
-| Cavity geometry | linear (I), L ≈ 127.5 mm | linear (I), same platform | V-cavity, short arm ≈ 65 mm |
-| Cavity-mode spacing | FSR ≈ 1.18 GHz | ≈ 1.18 GHz | geometry-dependent |
-| Étalon FSR | ≈ 73 GHz | ≈ 70 GHz | not extracted |
-| Intracavity doubling | none (external LBO ring) | none (external, platform standard) | **intracavity** LBO 3×3×15 mm → 571 nm |
-| Gain chip | VL1120_4477_83x/84x | VXL1140_1078 | (Tampere 1141 nm) |
-| Gain-mirror temperature | 20 °C set-point | red-detuned chip | **8 °C** |
-| Linewidth | 101(8) kHz locked ([Span25]) | not yet characterised in-house | 50(10) kHz (HC error signal) |
+Each value column is one evidence class (see the [evidence labels](#what-this-tutorial-covers) near the top): the two in-house columns are **[in-house]** measured/stated; the Burd 2016 column is an **[external] [analogue]** device. Per-cell **[inferred]** / **[open]** tags mark values that are deduced or not yet extracted, so the in-house and analogue data are never silently blended.
 
-When the in-house 1140 nm unit is fully characterised, its measured linewidth, output power, and 285 nm conversion will fill the gaps above.
+| Parameter | 1118/1120 nm — in-house #1/#3 **[in-house]** | 1140 nm — in-house #2 "Heidi" **[in-house]** | 1141 nm — Burd 2016 VC **[external] [analogue]** |
+|---|---|---|---|
+| Cavity geometry | linear (I), L ≈ 127.5 mm | linear (I), same platform **[inferred]** | V-cavity, short arm ≈ 65 mm |
+| Cavity-mode spacing | FSR ≈ 1.18 GHz | ≈ 1.18 GHz **[inferred]** | geometry-dependent |
+| Étalon FSR | ≈ 73 GHz | ≈ 70 GHz | not extracted **[open]** |
+| Intracavity doubling | none (external LBO ring) | none assumed (platform standard) **[inferred]** | **intracavity** LBO 3×3×15 mm → 571 nm |
+| Gain chip | VL1120_4477_83x/84x | VXL1140_1078 (red-detuned design) | (Tampere 1141 nm) |
+| Gain-mirror temperature | 20 °C set-point | not extracted **[open]** | **8 °C** |
+| Linewidth | 101(8) kHz locked ([Span25]) | not yet characterised **[open]** | 50(10) kHz (HC error signal) |
+
+When the in-house 1140 nm unit is fully characterised, its measured linewidth, output power, and 285 nm conversion will replace the **[open]** / **[inferred]** entries above.
 
 ---
 

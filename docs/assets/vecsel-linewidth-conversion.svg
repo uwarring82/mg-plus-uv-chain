@@ -16,10 +16,10 @@
   <rect x="140" y="90" width="360" height="56" rx="6" fill="#2c5f7c" fill-opacity="0.12" stroke="#2c5f7c" stroke-width="1.6"/>
   <text x="320" y="113" text-anchor="middle" font-size="14" font-weight="600" fill="#1a1a1a">LBO ring cavity — Hänsch–Couillaud lock</text>
   <text x="320" y="133" text-anchor="middle" font-size="12.5" fill="#2c5f7c">lock bandwidth ≈ 18 kHz</text>
-  <text x="512" y="112" font-size="11.5" fill="#6b6b6b">low-passes seed FM</text>
-  <text x="512" y="127" font-size="11.5" fill="#6b6b6b">above ≈ 18 kHz —</text>
-  <text x="512" y="142" font-size="11.5" fill="#6b6b6b">only in-band noise</text>
-  <text x="512" y="157" font-size="11.5" fill="#6b6b6b">converts</text>
+  <text x="512" y="112" font-size="11.5" fill="#6b6b6b">tracks out seed FM</text>
+  <text x="512" y="127" font-size="11.5" fill="#6b6b6b">below ≈ 18 kHz;</text>
+  <text x="512" y="142" font-size="11.5" fill="#6b6b6b">FM above it</text>
+  <text x="512" y="157" font-size="11.5" fill="#6b6b6b">converts to AM</text>
   <line x1="320" y1="146" x2="320" y2="172" stroke="#6b6b6b" stroke-width="1.4" marker-end="url(#arr)"/>
   <text x="332" y="164" font-size="11.5" font-style="italic" fill="#c0392b">frequency → amplitude</text>
 
@@ -37,5 +37,5 @@
   <rect x="140" y="310" width="360" height="46" rx="6" fill="#2c5f7c" fill-opacity="0.15" stroke="#2c5f7c" stroke-width="1.6"/>
   <text x="320" y="338" text-anchor="middle" font-size="14" font-weight="600" fill="#1a1a1a">Amplitude noise on 280 nm  →  ion</text>
 
-  <text x="320" y="388" text-anchor="middle" font-size="11.5" fill="#6b6b6b">The seed's integrated linewidth may exceed 18 kHz; what matters is its frequency-noise density at and below ≈ 18 kHz.</text>
+  <text x="320" y="388" text-anchor="middle" font-size="11.5" fill="#6b6b6b">The seed's integrated linewidth may exceed 18 kHz; what matters is its frequency-noise density above ≈ 18 kHz (the part the lock cannot track).</text>
 </svg>
