@@ -4,11 +4,9 @@ title: Components — Home-built BBO doublers (lab survey, 2026-05)
 description: Photographic survey of three home-built BBO ring-cavity doublers currently fielded in the AG Schätz lab (Bermuda apparatus). Topology, mount inventory, and open extraction items keyed to the Friedenauer 2006 BBO stage.
 ---
 
-<p class="endorsement"><strong>Endorsement Marker.</strong> Local lab record — AG Schätz stewardship. This page archives top-view photographs of three home-built 559&nbsp;→&nbsp;280&nbsp;nm doublers currently in operation in the lab and extracts what is directly observable in those photographs. It is <em>not</em> a build specification, vendor recommendation, or Phase 4 scoring input; coatings, focal lengths, and exact path lengths must be confirmed at the bench before any item is reused in a new build.</p>
-
-<p class="eyebrow">Components · home-built doublers</p>
-
 # Home-built BBO doublers — photographic survey (2026-05)
+
+This lab record describes three home-built 559 → 280 nm doublers from photographs. Coatings, focal lengths and exact path lengths need bench confirmation before reuse.
 
 **Status:** DRAFT (2026-05-13). Three photographs archived under
 [`docs/assets/components/home-built-doublers/`](https://github.com/uwarring82/mg-plus-uv-chain/tree/main/docs/assets/components/home-built-doublers);
@@ -67,7 +65,7 @@ extraction from the archived photos** (mirror-substrate pixel coordinates on
 each kinematic mount → angle between long-arm and short-arm vectors at the
 curved-mirror vertex) gives **mean folds of ≈ 26° (BD), ≈ 29° (Raman), and
 ≈ 25° (RD)** with a ±5° pixel-identification budget — all three within ±5° of
-27.4°. This is an `O*` *Sail* observational estimate, not a bench measurement;
+27.4°. This is an `O*` observational estimate, not a bench measurement;
 the per-doubler V-openings are detailed in §B and the cross-walk row in §C.
 A bench protractor / theodolite reading to ±1° is the natural next step and
 remains `OPEN`.
@@ -294,7 +292,7 @@ the dark hyperfine ground state during Doppler cooling and detection.
   L_cav = 0.470 m from breadboard-hole-pitch scaling, but not measured to
   better than ~10 % from a single top view without an in-frame ruler.
 - **Fold angles to bench-grade precision.** The photogrammetric reading in
-  §B and §C is `O*` *Sail* — pin-points each doubler to ±5° from the long-arm
+  §B and §C is `O*` — pin-points each doubler to ±5° from the long-arm
   and short-arm vectors at the curved-mirror vertices. A protractor /
   theodolite reading to ±1° (or, equivalently, a beam-card photograph with
   the laser visibly traced) is still `OPEN`. The 4° spread between the three
@@ -360,3 +358,11 @@ Listed in priority order for closing the `O*` / `OPEN` items above:
 - [Architectures → Next-generation 500 mW](../architectures/next-gen.html) —
   the doubling-chain workplan that takes the fielded doublers as one of
   several candidate physical seats for the next-gen build.
+
+
+---
+
+**Document licence:** [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
+under the existing LICENSE-DOCS declaration; attribution required.
+The split-category assignment is [pending D6 review](../LICENSE.html).
+Third-party material retains its stated terms.

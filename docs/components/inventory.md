@@ -4,11 +4,9 @@ title: Optical-components inventory — SHG/FHG shelf
 description: Inventory of optical components for the LBO and BBO doubling stages, keyed to the Friedenauer 2006 baseline. Working artefact with verification trail.
 ---
 
-<p class="endorsement"><strong>Endorsement Marker.</strong> Local lab inventory — AG Schätz stewardship. Items listed here are shelf stock and new receipts identified from photographs and vendor documentation; their fitness for any specific build is conditional on later inspection (coating verification, scratch/dig, batch consistency).</p>
-
-<p class="eyebrow">Inventory</p>
-
 # Optical-components inventory — SHG/FHG shelf
+
+Shelf stock and new receipts are identified from photographs and supplier documents. Count, condition, coating performance and suitability for a particular build remain subject to the checks recorded below.
 
 **Last updated:** 2026-09-09 (Agile receipt cross-check supplemented with selected specifications from the supplier coating reports).
 **Status:** DRAFT. Working inventory; line-item readings need bench verification before procurement decisions.
@@ -347,3 +345,11 @@ the delivery note's >5 % wording is a separate documentation clarification.
 3. Identify the **gap items** flagged in section D (LBO M2 > 99.98 %, LBO M4 OC) and add them to the [KD-2026-XXX-uv-280nm](KD-2026-XXX-uv-280nm.html) procurement queue.
 4. Cross-link verified items into the per-row vendor column of [Friedenauer 2006 components inventory](friedenauer-baseline.html), preserving the source-tier annotation (vendor link sits *alongside*, not in place of, the paper-stated specification).
 5. **BBO crystal verification pass:** for I-B20 / I-B21 / I-B22, in addition to a count: (a) inspect both faces under bright illumination for grey-track / haze / chips, (b) measure bulk transmission at 280 nm and 559 nm and compare against the Raicol freshly-QC'd pieces, (c) confirm `φ`-convention with each vendor's data sheet before assigning the Castech piece to either an SHG-active or coating-substrate role, (d) record the verification triple (`Qty checked` / `Initials` / `Date`) in the B.2 table.
+
+
+---
+
+**Document licence:** [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
+under the existing LICENSE-DOCS declaration; attribution required.
+The split-category assignment is [pending D6 review](../LICENSE.html).
+Third-party material retains its stated terms.

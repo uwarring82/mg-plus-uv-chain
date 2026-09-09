@@ -2,7 +2,7 @@
 
 **ID:** REPO-REVIEW-2026-09
 **Date:** 2026-09-09
-**Status:** FILED FOR DELIBERATION — follow-up feedback incorporated; correction packages remain proposed.
+**Status:** IMPLEMENTATION STARTED — public-facing D6/RC-09/RC-10 corrections underway; numerical packages and binding-value decisions remain open.
 **Steward:** Ulrich Warring
 **Prepared by:** assistant under steward direction; no Council-3 stance or sign-off inferred.
 **Review baseline:** scientific/code findings refer to `50da35f`. The initial card was filed at `60c1832`; the September receipt and coating-report state used by RC-08 is now committed in `ec4e7d401344fce6ff28c5ac88785e360205600f` ([inventory.md](../docs/components/inventory.md), especially §B.3 and §D). Checking out that revision reproduces the public code/document inputs; no working-tree inventory patch is required. Private supplier originals were consulted locally and remain outside the public reproducibility claim.
@@ -152,6 +152,7 @@ regression rather than freezing the earlier approximate 3.2% figure.
 
 **Evidence:** absent CI/lockfile and optional coverage invocation confirmed. **Dependency:** bootstrap and record existing failures now; add scientific regressions as RC-01–05 supply them. Independent of D2 for infrastructure.
 
+- Keep site configuration checks scoped to the actual `docs/` root. The existing `*.py`, `*.yml.bak` and `literature/` exclusions matched no paths; the initial public-facing correction removes these no-ops. Validate any future exclusions against real inputs.
 - Define a supported Python environment and committed dependency resolution. Add CI with documented install/test commands, ≥90% coverage enforcement, chosen lint/format/type checks, structured-data validation and link checks.
 - Choose one formatting policy and explicit exceptions for intentional physics/unit-bearing names. Reproduce the reported mypy findings with recorded command, version and scope; fix tutorial string escapes and validate their rendered mathematical labels.
 - Add a tutorial-regeneration drift check using the existing normalisation in [render_tutorials.py](../scripts/render_tutorials.py): run `python scripts/render_tutorials.py`, then `git diff --exit-code -- docs/tutorials` in a clean supported environment. Also detect untracked generated outputs, which `git diff` alone misses. Demonstrate that a stale committed output fails and that an unchanged second render passes. Record execution cost; the diff assertion is cheap, but notebook execution is not assumed free.
@@ -201,7 +202,7 @@ May coating targets tighten or loosen after the cavity model is rerun.
 
 **Evidence:** mixed units and stale/missing references confirmed. **Dependency:** link/schema/status work can proceed now; revised numerical content follows its particular RC-07 result.
 
-Add a literature/measurement schema separating reported values from SI computational values, uncertainty, source location and extraction status. Preserve explicit units for nested Sellmeier data. Make README distinguish existing paths from planned ones and link to a dated current-status record; distinguish dossier-slot counts from literature-folder counts and locked reference values from still-draft envelopes.
+Add a literature/measurement schema separating reported values from SI computational values, uncertainty, source location and extraction status. Preserve explicit units for nested Sellmeier data. Make README distinguish existing paths from planned ones and link to a dated current-status record; correct status.md's premature claim that ≥90% coverage is mechanically enforced (implementation belongs to RC-06); distinguish dossier-slot counts from literature-folder counts and locked reference values from still-draft envelopes.
 
 Repair missing targets in inventory and the BC-B/BC-F records. Check Markdown and HTML links and Jekyll `.html` destinations separately. **Local source check completed:** the tracked Heidi lab note references `.attachments/` images, but `git ls-files 'data/lab notes/*.attachments/*'` returns no files and `.gitignore` excludes those directories. A clean clone therefore lacks those linked images. The note is outside the configured `docs/` Pages source; this is a GitHub Markdown image issue, not a missing Jekyll site page. Repair the Evernote `tel:` conversion. For ignored lab attachments, choose a public summary with explicit omissions or an approved asset subset; do not publish the entire private archive just to satisfy a link checker.
 
@@ -211,7 +212,9 @@ Repair missing targets in inventory and the BC-B/BC-F records. Check Markdown an
 
 **Evidence:** internal inconsistencies confirmed; external absence claims unverified. **Dependency:** none for evidence gathering; steward disposition before licence/contact changes or release actions.
 
-Reconcile README, LICENSE-DOCS, [LICENSES.md](../LICENSES.md), folder declarations and [CITATION.cff](../CITATION.cff). Identify whether citation metadata describes the software release or the mixed repository. Explicitly map newer pages, nested work-package files, generated tutorials and assets; do not assign licences solely from Coastline/Sail styling. Verify the missing adoption record without inventing or backdating it.
+**D6 language decision:** retain Coastline, Sail and Handbook where they identify licence categories, with the SPDX licence on first use; gloss Model B as distributed copies pinned by checksum. Use plain language for public-facing review and ownership, preserving precise Charter references and G1–G3 conditions. Remove decorative endorsement/eyebrow language from README, the landing page, architecture/component pages and shared footers. Leave the frozen Charter unchanged. Licence scope is decided explicitly, never inferred from page styling. The initial audit finds **12**, not 15, Markdown pages under `docs/architectures/` and `docs/components/`; each is listed in the licence map. Their existing CC-BY-4.0 declaration is recorded while an explicit split assignment remains pending.
+
+Reconcile README, LICENSE-DOCS, [LICENSES.md](../LICENSES.md), folder declarations and [CITATION.cff](../CITATION.cff). Identify whether citation metadata describes the software release or the mixed repository. Explicitly map newer pages, nested work-package files, generated tutorials and assets; do not assign licences solely from Coastline/Sail styling. Verify the missing adoption record without inventing or backdating it. For the coating-run subtree, inspect whether the parent workplan's §9 trigger block covers each child artifact; do not mechanically add duplicate blocks to every file. The parent workplan and the BC-G log already contain trigger records.
 
 Check remote tags/releases and any existing Zenodo record before declaring them absent. If registration never occurred, correct the claims and propose a separate release/deposit task; if it did, record the verifiable identifiers. Inspect public contact fields in the [coating cover letter](2026-05-20-bbo-coating-run-wp/specs/coating-run-cover-letter.md) and adopt the Steward's intended public contact. The presence of a personal address alone does not establish unauthorised publication.
 
@@ -257,7 +260,7 @@ of implementation or approval.
 | D3 — Reliance on derived May results during correction | Mark affected recommendations as awaiting revalidation; preserve historical values and receipt facts | Ulrich; proposed, not enacted by this card |
 | D4 — Charter wording/history and frozen-spec amendments | Use dated corrections and the documented revision process; preserve original sign-offs and obtain applicable governance review | Ulrich; pending |
 | D5 — Toolchain and source of truth | Choose Python/dependency policy, formatter/naming exceptions, CI checks including tutorial drift, and generated-table strategy | Ulrich; pending |
-| D6 — Public records and optional migration | Decide licence/release dispositions and intended public contact, including future Git author/committer identity; adopt or defer package rename separately | Ulrich; pending |
+| D6 — Public language, licences and records | Plain public language; preserve and gloss licence categories, Charter references and gates. Decide page-by-page licence scope, release claims and public contact (including future Git identity); consider package rename separately | Ulrich; language direction accepted in this session; initial corrections underway; remaining scope/contact decisions pending |
 
 ## Completion criteria and handoff
 
@@ -296,7 +299,6 @@ n_bbo_ordinary_559nm = 1.67276
 print((0.039243 / 0.033050) / n_bbo_ordinary_559nm)  # conditional gamma factor
 ```
 
-**Handoff status:** filed for deliberation; cite the reviewed revision of this
+**Handoff status:** public-facing implementation is recorded in [the D6 correction log](2026-09-09-public-record-corrections.md); cite the reviewed revision of this
 card and the inventory baseline above in the subsequent deliberation record.
-Correction packages and binding value dispositions remain open; filing does not implement numerical fixes
-or change a gate.
+Numerical correction packages and binding-value dispositions remain open; this public-facing correction does not change a gate.

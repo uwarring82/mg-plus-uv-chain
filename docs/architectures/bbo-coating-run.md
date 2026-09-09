@@ -4,11 +4,9 @@ title: "BBO coating run — 559 → 280 nm CW SHG, rationale and calculations"
 description: "Public-facing explainer for the 2026-05-20 coating-run work program: how a re-anchored impedance-match calculation against the Friedenauer 2006 baseline showed that the published M1' input coupler sits ~ 0.6 percentage points below the impedance-matched optimum at the published operating point, forfeiting ~ 3.6 % UV buildup, and how that motivated a new four-mirror coating-spec package for the next-generation BBO ring at 559 → 280 nm. Intended audience: trapped-ion / atomic-physics builders running Friedenauer-class CW SHG cavities."
 ---
 
-<p class="endorsement"><strong>Endorsement Marker.</strong> Local candidate framework — AG Schätz stewardship. This page explains a closed coating-run procurement work program: a vendor-facing spec package for the BBO ring of the next-generation ²⁵Mg⁺ UV source. Quantitative findings are anchored to the published Friedenauer 2006 reference and to the architecture-neutral numerics in <code>/src/</code>; LIDT claims are dossier-tier honest (Section 6 below).</p>
-
-<p class="eyebrow">Architecture · BBO ring coating-run</p>
-
 # BBO coating run for a 559 → 280 nm CW SHG ring cavity
+
+This page explains the May 2026 mirror-coating specification for the BBO ring. It records the assumptions and calculations used at that time; their revalidation is covered by the September repository review.
 
 A four-mirror Brewster-cut-BBO bowtie ring of the kind that
 [Friedenauer et al. (2006)][Friedenauer2006] built to produce ~ 0.275 W
@@ -692,7 +690,7 @@ In the spirit of honest dossier accounting:
 | **DOI** | Digital Object Identifier — the persistent identifier used in the reference list. |
 | **EAR** | (US) Export Administration Regulations — dual-use export-control rules; flagged in the procurement letter alongside ITAR. |
 | **FS** | Fused silica (amorphous SiO₂); the standard UV-grade substrate for visible/UV cavity mirrors. *Herasil* and *Suprasil* are Heraeus product grades of UV-grade fused silica. |
-| **G1, G2, G3** | Project gates carried in the [CHARTER][charter]: G1 = the 14-GHz "unlockable domain" attribution; G2 = UV-induced coating degradation rate at 280 nm; G3 = Phase-0.5 reference triple (Δ, Ω_R, Γ_sc). Closures advance the WP through Council-3 governance. |
+| **G1, G2, G3** | Project gates carried in the [CHARTER][charter]: G1 = the 14-GHz "unlockable domain" attribution; G2 = UV-induced coating degradation rate at 280 nm; G3 = Phase-0.5 reference triple (Δ, Ω_R, Γ_sc). Closures advance the WP through the Charter gate-closure process. |
 | **HC** | Hänsch–Couillaud (polarisation-based cavity-locking scheme, 1980). |
 | **HR** | High reflector (dielectric mirror with R typically ≥ 99.9 %). |
 | **HT** | High transmission (used here for the 280 nm-transmissive face of the dichroic output coupler). |
@@ -846,3 +844,11 @@ counterparts (M1, M2, M3, M4, all at 1118 nm) in the upstream cavity.
 [abcd]: https://github.com/uwarring82/mg-plus-uv-chain/blob/main/src/abcd.py
 [PhaseE]: https://github.com/uwarring82/mg-plus-uv-chain/blob/main/notebooks/diagnostic/2026-05-07-friedenauer-cascade-recompute.py
 [BC-B-notebook]: https://github.com/uwarring82/mg-plus-uv-chain/blob/main/notebooks/exploration/2026-05-20-bbo-ic-impedance-match.py
+
+
+---
+
+**Document licence:** [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
+under the existing LICENSE-DOCS declaration; attribution required.
+The split-category assignment is [pending D6 review](../LICENSE.html).
+Third-party material retains its stated terms.

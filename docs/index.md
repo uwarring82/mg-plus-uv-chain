@@ -1,28 +1,24 @@
 ---
 layout: default
 title: mg-plus-uv-chain
-description: UV source redesign for ²⁵Mg⁺ detection, cooling, and coherent control. Single-steward FAIR effort under Council-3 governance.
+description: UV source redesign for ²⁵Mg⁺ detection, cooling, and coherent control. A research project led by Ulrich Warring, AG Schätz.
 ---
 
-<p class="endorsement"><strong>Endorsement Marker.</strong> Local candidate framework — AG Schätz stewardship at Albert-Ludwigs-Universität Freiburg. No external endorsement implied. The Charter is a coastline, not a claim about underlying physics beyond what is already endorsed elsewhere.</p>
-
-<p class="eyebrow">Project page</p>
-
-# A reference page that stays open to correction.
+# UV light near 280 nm for trapped magnesium ions
 
 This page summarises the principles, calculations, and current status of `mg-plus-uv-chain` — a redesign of the all-solid-state CW laser source producing radiation near 280 nm for trapped **²⁵Mg⁺** ions. Successor to Friedenauer *et al.*, *Appl. Phys. B* **84**, 371 (2006), incorporating two decades of progress in fibre and VECSEL sources, nonlinear crystal options, cavity-locking schemes, UV-induced degradation diagnostics, and Raman / spin–motion coherent control.
 
-The repository itself is the canonical record. This site is a navigational index for readers who want the gist before reading the [Charter](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/CHARTER.md).
+Ulrich Warring, AG Schätz, leads the project. The repository records the measurements, calculations and decisions; the [Charter](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/CHARTER.md) defines its constraints and gate conditions.
 
-<aside class="banner"><strong>Open call — coating review.</strong> We are finalising the mirror-coating specification for a 559 → 280 nm CW BBO doubling cavity and would value expert input before we approach coating vendors. <a href="architectures/bbo-coating-brief.html">Read the coating brief and open questions →</a></aside>
+<aside class="banner"><strong>September update.</strong> The Agile mirrors arrived on 7 September; selected supplier coating data are in the <a href="components/inventory.html#agile-receipt">inventory</a>. Numerical and documentation corrections are tracked in the <a href="https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-09-09-repository-review-task-card.md">repository review card</a>.</aside>
 
 ---
 
 ## Three pages
 
-- **[Principles](principles.html)** — the governance grammar: §1.5 constraint hierarchy, kill-gates, outcome classification, anti-seeding clause, asymmetric erosion protection. Each section labelled *Coastline* (hard, testable) or *Sail* (adaptive, contextual).
+- **[Principles](principles.html)** — the constraint hierarchy, gate conditions and rules for changing requirements.
 - **[Calculations](calculations.html)** — what has been computed against the Friedenauer 2006 baseline, what the recomputation tells us, and which open questions the dossier should resolve.
-- **[Status](status.html)** — kill-gate state, Phase 1 dossier population, what is unblocked, what is still gated. Snapshot at HEAD.
+- **[Status](status.html)** — kill-gate state, Phase 1 dossier population, what is unblocked, what is still gated. Dated project snapshot.
 
 **Source & governance:** [GitHub repository](https://github.com/uwarring82/mg-plus-uv-chain) · [Charter v1.0](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/CHARTER.md) · [Phase 1 dossier](KD-2026-XXX-uv-280nm.html) · [References](references.html) · [Tutorials](tutorials/)
 
@@ -34,7 +30,7 @@ The repository itself is the canonical record. This site is a navigational index
 
 ## At a glance
 
-*Snapshot at 2026-05-22.*
+*Historical snapshot at 2026-05-22; the September receipt and review are linked above. Numerical claims below await the corrections in the review card.*
 
 | Item | State |
 |---|---|
@@ -63,11 +59,18 @@ The repository itself is the canonical record. This site is a navigational index
 
 ## Licence
 
-| Layer | Content | Licence | Notes |
-|---|---|---|---|
-| Charter and governance documents | `CHARTER.md`, `endorsement.md`, `CONVENTIONS.md`, `constraints/` | CC-BY-4.0 | See [`LICENSE-DOCS`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/LICENSE-DOCS) |
-| Code | `src/`, `tests/` | MIT | See [`LICENSE`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/LICENSE) |
-| Borrowed site assets (`docs/assets/`) | `tokens.css`, `emblem-32.svg`, `wordmark-full.svg`, `site.css` (derived) | MIT | Borrowed from [`threehouse-plus-ec/cd-rules`](https://github.com/threehouse-plus-ec/cd-rules) at commit `ee01c80` per Model B. See [`docs/assets/SOURCE.md`](assets/SOURCE.md). |
-| Fonts | IBM Plex Mono, Crimson Pro | SIL OFL 1.1 | Loaded from Google Fonts; not relicensed. |
+This page is **Coastline — [CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/)**:
+reuse requires attribution and ShareAlike. The repository uses several licences:
 
-The cd-rules split-licence pattern (CC-BY-SA for coastlines, CC-BY-NC-SA for sails, MIT for handbook assets) is recommended but not yet adopted in this repository. Adoption would be a Steward + Council-3 action; flagged here for future deliberation.
+| Category | Content | Licence |
+|---|---|---|
+| Coastline | Mapped framework and navigation documents | CC-BY-SA-4.0 |
+| Sail | Mapped authored analyses | CC-BY-NC-SA-4.0 (attribution, NonCommercial, ShareAlike) |
+| Handbook | Borrowed site assets and mapped layouts | MIT |
+| Code | Software and tooling | MIT |
+| Data | Mapped structured extractions and measurements | CC-BY-4.0 |
+| External fonts | IBM Plex Mono and Crimson Pro | OFL-1.1 |
+
+See the [licence map](LICENSE.html) for file scope and remaining assignment
+questions. Borrowed assets use **Model B (distributed copies pinned by
+checksum)**; [asset provenance](assets/SOURCE.html) records the upstream source.

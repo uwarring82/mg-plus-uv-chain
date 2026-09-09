@@ -4,11 +4,9 @@ title: Architectures
 description: Doubling-stage UV source architectures for mg-plus-uv-chain — the Friedenauer 2006 reference baseline, the next-generation 500 mW @ 280 nm parameter-optimisation target, and two alternative-topology sketches (IC-VECSEL with intracavity LBO; phase-locked Ti:S comb single-pass tripled for far-red-detuned Raman).
 ---
 
-<p class="endorsement"><strong>Endorsement Marker.</strong> Local candidate framework — AG Schätz stewardship. Architecture pages here describe a published baseline, a parameterised next-generation target, and two alternative-topology sketches. None is a build commitment, and none has been admitted to Phase 4 architecture scoring (G1 still open).</p>
-
-<p class="eyebrow">Architectures</p>
-
 # Architectures
+
+These pages describe the published baseline, a next-generation target and two alternative designs. Their suitability remains subject to the project gates and the measurements described below.
 
 Four architecture stories live here. The first two share the same
 physics — a CW two-stage SHG chain 1118 nm → 559 nm → 280 nm — and the
@@ -24,7 +22,7 @@ Phase 4 architecture comparison.
 | [Friedenauer 2006](friedenauer-2006.html) | The published all-solid-state architecture: 2 W Yb fibre at 1118 nm → LBO → BBO → 0.275 W at ~ 280 nm. The reference baseline our recomputation [validates against](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/notebooks/diagnostic/2026-05-07-friedenauer-cascade-recompute.py). | **Reference baseline** — extraction and cross-check live; one open `L_passive` definitional gap to close. |
 | [Next-generation](next-gen.html) | A parameterised target: ≥ 500 mW UV at 280 nm via the same two-stage SHG topology, with the input pump, IC reflectivities, and crystal geometry derived from the architecture-neutral primitives. | **In design** — workplan drafted ([`logbook/2026-05-08-next-gen-500mW-workplan.md`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-08-next-gen-500mW-workplan.md)); not yet executed. |
 | [IC-VECSEL alternative](ic-vecsel-alternative.html) | An alternative topology: intracavity-doubled VECSEL (1118 nm + intracavity LBO → 559 nm direct) feeding a free-space PDH-locked BBO ring inside a sealed, temperature-controlled 19" rack envelope. Sized for cooling + repumping at ~ 50 mW UV; Raman handled by the parallel pulsed pathway. | **Sketch** — [logbook entry](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-08-ic-vecsel-alternative-topology.md) carries full Charter §9 statements; promotion gated by G1 + G2 closure and a new `shg_intracavity.py` architecture-neutral primitive. |
-| [Pulsed-Raman alternative](pulsed-raman-alternative.html) | An alternative-topology sketch for the *Raman task only*: phase-locked mode-locked Ti:Sapphire frequency comb single-pass tripled to ~ 290–320 nm, operated tens of nm red-detuned. Pulsed peak intensity supplies Ω_R; Γ_sc suppressed by ~ 10⁶ vs Δ_ref. | **Sketch — CHARTER §3 out-of-scope.** [`CHARTER.md`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/CHARTER.md) §3 line 105 lists pulsed UV explicitly out of scope; promotion to a Phase 4 candidate requires either a Council-3 Charter exception or explicit "parallel Raman sub-project" status, plus the multi-operating-point review (Δ ≫ Δ_ref). |
+| [Pulsed-Raman alternative](pulsed-raman-alternative.html) | An alternative-topology sketch for the *Raman task only*: phase-locked mode-locked Ti:Sapphire frequency comb single-pass tripled to ~ 290–320 nm, operated tens of nm red-detuned. Pulsed peak intensity supplies Ω_R; Γ_sc suppressed by ~ 10⁶ vs Δ_ref. | **Sketch — CHARTER §3 out-of-scope.** [`CHARTER.md`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/CHARTER.md) §3 line 105 lists pulsed UV explicitly out of scope; promotion to a Phase 4 candidate requires either a documented Charter exception or explicit "parallel Raman sub-project" status, plus the multi-operating-point review (Δ ≫ Δ_ref). |
 | [Requirements specification](requirements.html) | Shared requirements artefact for the slate above: per-architecture entries with task served, measurement plane, wavelength / detuning, output power or pulse energy, duration, environment, beam quality, linewidth / phase noise, degradation allowance, and evidence artefact. | **Living spec** — established 2026-05-08; all `REQ-NG-###`, `REQ-IC-###`, `REQ-PR-###` IDs traceable from architecture pages and logbook entries. |
 | [BBO coating-run rationale](bbo-coating-run.html) | Public-facing explainer for the 2026-05-20 BBO ring coating-run work program. Walks through the cavity impedance-match math, shows how Friedenauer's procured M1' input coupler sits ~ 0.57 pp below the impedance-matched optimum at the published operating point (forfeiting ~ 3.6 % UV buildup), and explains the per-mirror loss-budget allocation, material recommendation, LIDT framing, and the cleanliness clause that drives the spec sheets. | **Closed** — work program executed and frozen on 2026-05-20; five vendor-facing pages live under [`logbook/2026-05-20-bbo-coating-run-wp/specs/`](https://github.com/uwarring82/mg-plus-uv-chain/tree/main/logbook/2026-05-20-bbo-coating-run-wp/specs). |
 
@@ -97,10 +95,10 @@ The single-architecture [next-gen workplan](next-gen.html) remains the
 load-bearing pre-G2 deliverable: its parameter-optimisation effort is
 needed regardless of whether the eventual build is single-architecture
 (next-gen workplan as-is) or two-architecture (IC-VECSEL + pulsed-Raman).
-The slate-of-three is presented for steward and Council-3 deliberation,
+The slate-of-three is presented for steward review under Charter §9,
 not as a decision in advance of G1 / G2 closure.
 
-The task-split disposition is in turn gated by the [Council-3 trigger filed
+The task-split disposition is in turn gated by the [Charter §9 review request filed
 2026-05-09](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-09-council-3-trigger-task-split-success-criterion.md);
 until that trigger is disposed, the IC-VECSEL alternative + pulsed-Raman
 alternative pair sits as forward-looking sketches only, not as Phase 4
@@ -136,8 +134,7 @@ binding upstream constraint.
 | `τ_pulse`, `λ_fund` | Pulsed-Raman | Level 1 — derived from Δ, Ω_R | Conversion efficiency, spectral overlap |
 
 Per-parameter detailed specs live in the [requirements
-specification](requirements.html); per-architecture full Charter §9 /
-Coastline / Sail / G1-G2-G3 statements live in each architecture page's
+specification](requirements.html); the Charter §9 review and G1–G3 conditions for each architecture live in each architecture page's
 backing logbook entry.
 
 ---
@@ -175,3 +172,11 @@ not in scope for the spec-tightening pass landed 2026-05-09:
 | **P9 — Timing-jitter budget + lock-architecture choice for pulsed-Raman** | Literature extraction (Monroe-group ultrafast Raman papers `[Haye10]` / `[Camp10]` / `[Mizr13]` / `[Inle14]`) + lock-architecture spec | Requires the literature extraction batch flagged in [`logbook/2026-05-08-pulsed-raman-alternative-topology.md`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-08-pulsed-raman-alternative-topology.md) §11. The spec hooks live at [`REQ-PR-006`](requirements.html#req-pr-006--repetition-rate--ceo-lock-residuals) and [`REQ-PR-007`](requirements.html#req-pr-007--timing-jitter-spectrum). |
 
 The `TBD` flags in the Phase 4 axis readiness checklist above point at these deferred items where applicable; closing the deferred items is what closes the corresponding `TBD` cells.
+
+
+---
+
+**Document licence:** [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
+under the existing LICENSE-DOCS declaration; attribution required.
+The split-category assignment is [pending D6 review](../LICENSE.html).
+Third-party material retains its stated terms.

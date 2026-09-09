@@ -1,6 +1,12 @@
+---
+layout: default
+title: Site asset provenance
+description: Source commit, MIT attribution and checksums for borrowed design assets.
+---
+
 # `docs/assets/` — provenance record
 
-**Endorsement Marker:** Local copy of upstream design assets. Borrowed under the MIT licence per the threehouse-plus-ec/cd-rules split-licence architecture (cd-rules §0.3, §0.10, §0.11). No external endorsement of this project's content is implied by re-use of the visual identity.
+**Licence: Handbook (MIT).** Local copy of upstream design assets. Borrowed under the MIT licence per the threehouse-plus-ec/cd-rules split-licence architecture (cd-rules §0.3, §0.10, §0.11). No external endorsement of this project's content is implied by re-use of the visual identity.
 
 **Distribution model:** cd-rules §0.10 *Model B (distributed copy + checksum)* — local copies are pinned to a specific upstream commit; checksums make drift visible rather than silent.
 

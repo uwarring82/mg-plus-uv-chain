@@ -4,17 +4,15 @@ title: Architecture requirements specification
 description: Shared requirements table for the three architecture candidates (next-gen CW Friedenauer-topology, IC-VECSEL alternative, pulsed-Raman alternative). Per-requirement entries cover task served, measurement plane, wavelength / detuning, output / pulse energy, duration, environment, beam quality, linewidth / phase noise, degradation allowance, and evidence artefact.
 ---
 
-<p class="endorsement"><strong>Endorsement Marker.</strong> Local candidate framework — AG Schätz stewardship. This page captures requirements at the spec level; numerical values that are still TBD are marked as such and the binding form remains the CHARTER §1.5 Level 0 row coupled through the loss budget. None of the entries here is a build commitment, and several depend on Council-3 deliberations that have not yet happened.</p>
-
-<p class="eyebrow">Architectures · requirements</p>
-
 # Architecture requirements specification
+
+Requirements still awaiting a value are marked TBD. Binding requirements derive from Charter §1.5 and the loss budget; the conditional proposals below await a recorded decision.
 
 **Purpose.** This page is the shared requirements artefact for the [architecture slate](index.html). Each requirement carries a stable ID (`REQ-NG-###` for the [next-gen CW workplan](next-gen.html), `REQ-IC-###` for the [IC-VECSEL alternative](ic-vecsel-alternative.html), `REQ-PR-###` for the [pulsed-Raman alternative](pulsed-raman-alternative.html)). Entries are uniform: task served · measurement plane · wavelength / detuning · output power or pulse energy · duration · environment · beam quality · linewidth / phase noise · degradation allowance · evidence artefact.
 
 **What this page is not.** Not a build commitment, not a Phase 4 scoring output, not a closed numerical spec. Several entries below are **TBD** — they identify *what* must be specified before Phase 4 acceptance, not the specific numerical values. Each TBD is the spec to be measured; the requirement is that a binding number lands here before promotion.
 
-**Charter compliance.** The reference triple `{Δ_ref = 40 GHz, Ω_R/2π = 400 kHz, Γ_sc = 2.0 × 10⁴ s⁻¹}` (locked at G3 closure 2026-05-01) is unaffected. Two requirements below are **conditional** on Council-3 deliberations that have not yet happened: `REQ-IC-002` is valid only as a paired task allocation with the pulsed-Raman alternative (or an off-board Raman pathway); the entire `REQ-PR-###` block sits across CHARTER §3 line 105 (pulsed UV out of scope) and is forward-looking only until that scope question is resolved.
+**Charter compliance.** The reference triple `{Δ_ref = 40 GHz, Ω_R/2π = 400 kHz, Γ_sc = 2.0 × 10⁴ s⁻¹}` (locked at G3 closure 2026-05-01) is unaffected. Two requirements below are **conditional** on Charter §9 reviews that have not yet happened: `REQ-IC-002` is valid only as a paired task allocation with the pulsed-Raman alternative (or an off-board Raman pathway); the entire `REQ-PR-###` block sits across CHARTER §3 line 105 (pulsed UV out of scope) and is forward-looking only until that scope question is resolved.
 
 ---
 
@@ -173,7 +171,7 @@ Status legend: ⏳ open · ✅ closed · ⛔ blocked.
 
 ## Pulsed-Raman alternative (CHARTER §3 out-of-scope; sub-project status required)
 
-> ⚠️ **CHARTER §3 conflict — load-bearing.** `CHARTER.md` line 105 lists pulsed UV systems explicitly as out of scope (*"Pulsed UV systems (the stroboscopic / fs-comb discussion with Leibfried is a distinct project)"*). The `REQ-PR-###` block below is forward-looking only — it specifies *what would need to be specified* if and when one of (i) a Council-3 Charter exception that rewrites §3 or (ii) explicit "parallel Raman sub-project" status is granted. None of the entries below is binding until that scope question is resolved.
+> ⚠️ **CHARTER §3 conflict — load-bearing.** `CHARTER.md` line 105 lists pulsed UV systems explicitly as out of scope (*"Pulsed UV systems (the stroboscopic / fs-comb discussion with Leibfried is a distinct project)"*). The `REQ-PR-###` block below is forward-looking only — it specifies *what would need to be specified* if and when one of (i) a documented Charter exception that rewrites §3 or (ii) explicit "parallel Raman sub-project" status is granted. None of the entries below is binding until that scope question is resolved.
 
 ### `REQ-PR-001` · Central wavelength and detuning from D₁ / D₂
 
@@ -298,5 +296,13 @@ Status legend: ⏳ open · ✅ closed · ⛔ blocked.
 
 - [Architectures (catalog)](index.html) — the four-page architecture slate that this requirements page covers.
 - [Next-gen workplan](next-gen.html) · [IC-VECSEL alternative](ic-vecsel-alternative.html) · [Pulsed-Raman alternative](pulsed-raman-alternative.html) · [Friedenauer 2006 baseline](friedenauer-2006.html).
-- [Logbook entries](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/) — full Charter §9 / Coastline / Sail / G1-G2-G3 statements per architecture.
+- [Logbook entries](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/) — full Charter §9 review and G1–G3 conditions per architecture.
 - [References](../references.html) — alphabetical literature index.
+
+
+---
+
+**Document licence:** [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
+under the existing LICENSE-DOCS declaration; attribution required.
+The split-category assignment is [pending D6 review](../LICENSE.html).
+Third-party material retains its stated terms.

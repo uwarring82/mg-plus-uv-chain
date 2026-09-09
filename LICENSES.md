@@ -1,33 +1,66 @@
 # Licence map — `mg-plus-uv-chain`
 
-**Endorsement Marker.** Local stewardship — AG Schätz at Albert-Ludwigs-Universität Freiburg. The licensing architecture below is adopted from [`threehouse-plus-ec/cd-rules`](https://github.com/threehouse-plus-ec/cd-rules) §0.3 *Split licence architecture* and §0.10 *Distributed copy with checksum*; the model is not endorsed by external bodies and is local to this repository.
+**Steward:** Ulrich Warring, AG Schätz, Albert-Ludwigs-Universität Freiburg. The licence categories below follow [`threehouse-plus-ec/cd-rules`](https://github.com/threehouse-plus-ec/cd-rules) §0.3 *Split licence architecture* and §0.10 *Distributed copy with checksum*.
 
-**Effective date.** 2026-05-02 — Council-3 deliberation logged at [`logbook/2026-05-02-licence-split-adoption.md`](logbook/2026-05-02-licence-split-adoption.md). Supersedes the v1.0-cut Steward decision (CHARTER §13.2: "Document license: CC-BY-4.0") which was filed under the Charter's "(license decision pending)" parenthetical at §7. CHARTER.md itself is unchanged (frozen at v1.0); the present split is a derivative governance decision logged outside the Charter freeze.
+**Record checked 2026-09-09.** Commit `e67bdaa` introduced the split declarations
+on 2026-05-02. It did not include the adoption record cited by the earlier
+version of this map (`logbook/2026-05-02-licence-split-adoption.md`), and that
+file is absent from the current checkout. The declarations below are recorded
+as found; the missing approval record remains an RC-10 question. The original
+blanket CC-BY-4.0 notice is documented in [LICENSE-DOCS](LICENSE-DOCS).
+This correction does not amend the frozen Charter or revoke prior grants.
 
 **Contact.** Ulrich Warring · `https://orcid.org/0000-0001-8081-9718`
 
 ---
 
-## 1. Why a split, not a single licence
+## 1. Licence categories
 
-A uniform CC-BY licence would be internally consistent but externally frictional in three ways.
-
-1. **It under-protects authored interpretive work.** The Kompass dossier and the logbook entries are not just data — they are interpretive analyses whose meaning depends on the epistemic commitments (Council-3 governance, anti-seeding, asymmetric erosion protection) that produced them. Republishing them in a commercial product without those commitments would degrade their meaning. CC-BY allows that without recourse.
-2. **It over-restricts framework infrastructure.** The Charter, the constraint hierarchy, the kill-gate protocol, and the outcome-classification vocabulary are *infrastructure* meant to be adopted and adapted by other research groups. A NonCommercial restriction would block adoption inside any university or institute that mixes funding sources — exactly the reuse this project wants to enable.
-3. **It blurs the data layer.** Structured literature extractions (`extracted.yaml`) are *facts* (with permission to organise them in a particular schema) — they should follow FAIR-data norms, not the conventions used for authored prose.
-
-The cd-rules §0.3 split addresses all three by mapping content type → licence according to *what kind of work the file is*, not where it sits in the directory tree. Adopting that pattern here.
+The split distinguishes reusable framework documents, authored analyses,
+software/design assets and structured data. Keep the SPDX licence alongside
+each category so reuse conditions are visible. The category names follow the
+upstream licence/provenance records; they do not describe scientific certainty
+or require readers to adopt this project's governance.
 
 ## 2. The map
 
-| Layer | Term (cd-rules §0.3) | Content in this repo | Licence | SPDX | Rationale |
-|---|---|---|---|---|---|
-| Core frameworks | **Coastline** | `CHARTER.md`, `CONVENTIONS.md`, `endorsement.md`, `README.md`, `LICENSES.md` (this file), `constraints/`, `logbook/_templates/`, `data/README.md`, `docs/index.md`, `docs/principles.md`, `docs/status.md`, `docs/LICENSE.md`, `docs/assets/SOURCE.md` | CC-BY-SA-4.0 | `CC-BY-SA-4.0` | Freely reusable, must stay open. Attribution required. ShareAlike ensures derivatives remain open. No NC friction with mixed-funding research groups. |
-| Authored works | **Sail** | `docs/KD-2026-XXX-uv-280nm.md` (Kompass dossier), `docs/calculations.md` (interpretive analysis), `logbook/2026-04-30-kickoff.md`, `logbook/2026-04-30-architecture-neutral-infrastructure.md`, `logbook/2026-05-01-gate-g3-closure.md`, `logbook/2026-05-02-licence-split-adoption.md`, `data/literature/<key>/notes.md` | CC-BY-NC-SA-4.0 | `CC-BY-NC-SA-4.0` | Interpretive work protected from commercial repackaging without the epistemic commitments that give it meaning. |
-| Design assets | **Handbook** | `docs/assets/tokens.css`, `docs/assets/site.css`, `docs/assets/emblem-32.svg`, `docs/assets/wordmark-full.svg`, `docs/_layouts/default.html` | MIT | `MIT` | Maximum integrability. The borrowed assets carry the upstream MIT licence per cd-rules §0.10 Model B; the layout file is a derived work offered under the same licence. |
-| Code and tooling | **Infrastructure** | `src/`, `tests/`, `notebooks/`, `pyproject.toml`, `.gitignore`, `.github/`, build scripts | MIT | `MIT` | Standard open-source practice. Frictionless integration with GitHub workflows and Python tooling. |
-| FAIR-published data | **Data** | `data/literature/<key>/extracted.yaml`, `data/baseline/**/metadata.yaml`, raw and processed measurement files under `data/baseline/` | CC-BY-4.0 | `CC-BY-4.0` | FAIR-data norm. Permissive, attribution-only; maximises downstream reuse and re-aggregation. The structuring schema is mine; the underlying scientific facts are in the public domain. |
-| Fonts | **External** | IBM Plex Mono, Crimson Pro (loaded from Google Fonts; not redistributed in this repo) | SIL OFL 1.1 | `OFL-1.1` | Governed by their own licence; not relicensed by this project. |
+**Coastline means CC-BY-SA-4.0; Sail means CC-BY-NC-SA-4.0; Handbook means
+MIT.** These terms identify licence categories here, not levels of scientific
+confidence. Model B means distributed copies pinned by checksum; it specifies
+asset provenance, not a separate licence.
+
+### Public pages awaiting explicit split assignment
+
+The following 12 pages are absent from the original map. `LICENSE-DOCS`
+previously included them in its blanket CC-BY-4.0 declaration. Their current
+scope review is recorded individually below; no new NonCommercial or
+ShareAlike restriction is inferred from their subject or decorative labels.
+
+| Page | Existing declaration | D6 split assignment |
+|---|---|---|
+| [docs/architectures/bbo-coating-brief.md](docs/architectures/bbo-coating-brief.md) | CC-BY-4.0 in the original LICENSE-DOCS | Pending steward disposition |
+| [docs/architectures/bbo-coating-run.md](docs/architectures/bbo-coating-run.md) | CC-BY-4.0 in the original LICENSE-DOCS | Pending steward disposition |
+| [docs/architectures/friedenauer-2006.md](docs/architectures/friedenauer-2006.md) | CC-BY-4.0 in the original LICENSE-DOCS | Pending steward disposition |
+| [docs/architectures/ic-vecsel-alternative.md](docs/architectures/ic-vecsel-alternative.md) | CC-BY-4.0 in the original LICENSE-DOCS | Pending steward disposition |
+| [docs/architectures/index.md](docs/architectures/index.md) | CC-BY-4.0 in the original LICENSE-DOCS | Pending steward disposition |
+| [docs/architectures/next-gen.md](docs/architectures/next-gen.md) | CC-BY-4.0 in the original LICENSE-DOCS | Pending steward disposition |
+| [docs/architectures/pulsed-raman-alternative.md](docs/architectures/pulsed-raman-alternative.md) | CC-BY-4.0 in the original LICENSE-DOCS | Pending steward disposition |
+| [docs/architectures/requirements.md](docs/architectures/requirements.md) | CC-BY-4.0 in the original LICENSE-DOCS | Pending steward disposition |
+| [docs/components/friedenauer-baseline.md](docs/components/friedenauer-baseline.md) | CC-BY-4.0 in the original LICENSE-DOCS | Pending steward disposition |
+| [docs/components/home-built-doublers.md](docs/components/home-built-doublers.md) | CC-BY-4.0 in the original LICENSE-DOCS | Pending steward disposition |
+| [docs/components/inventory.md](docs/components/inventory.md) | CC-BY-4.0 in the original LICENSE-DOCS | Pending steward disposition |
+| [docs/components/seed-lasers.md](docs/components/seed-lasers.md) | CC-BY-4.0 in the original LICENSE-DOCS | Pending steward disposition |
+
+### Existing split declarations
+
+| Layer | Term (cd-rules §0.3) | Content in this repo | Licence | SPDX |
+|---|---|---|---|---|
+| Core frameworks | **Coastline** | `CHARTER.md`, `CONVENTIONS.md`, `endorsement.md`, `README.md`, `LICENSES.md` (this file), `constraints/`, `logbook/_templates/`, `data/README.md`, `docs/index.md`, `docs/principles.md`, `docs/status.md`, `docs/LICENSE.md`, `docs/assets/SOURCE.md` | CC-BY-SA-4.0 | `CC-BY-SA-4.0` |
+| Authored works | **Sail** | `docs/KD-2026-XXX-uv-280nm.md` (Kompass dossier), `docs/calculations.md` (interpretive analysis), `logbook/2026-04-30-kickoff.md`, `logbook/2026-04-30-architecture-neutral-infrastructure.md`, `logbook/2026-05-01-gate-g3-closure.md`, `data/literature/<key>/notes.md` | CC-BY-NC-SA-4.0 | `CC-BY-NC-SA-4.0` |
+| Design assets | **Handbook** | `docs/assets/tokens.css`, `docs/assets/site.css`, `docs/assets/emblem-32.svg`, `docs/assets/wordmark-full.svg`, `docs/_layouts/default.html` | MIT | `MIT` |
+| Code and tooling | **Infrastructure** | `src/`, `tests/`, `notebooks/`, `pyproject.toml`, `.gitignore`, `.github/`, build scripts | MIT | `MIT` |
+| FAIR-published data | **Data** | `data/literature/<key>/extracted.yaml`, `data/baseline/**/metadata.yaml`, raw and processed measurement files under `data/baseline/` | CC-BY-4.0 | `CC-BY-4.0` |
+| Fonts | **External** | IBM Plex Mono, Crimson Pro (loaded from Google Fonts; not redistributed in this repo) | SIL OFL 1.1 | `OFL-1.1` |
 
 Per-folder declaration files exist where useful: [`constraints/LICENSE.md`](constraints/LICENSE.md), [`logbook/LICENSE.md`](logbook/LICENSE.md), [`data/literature/LICENSE.md`](data/literature/LICENSE.md), [`docs/LICENSE.md`](docs/LICENSE.md). The matrix above governs in case of conflict.
 
@@ -51,15 +84,20 @@ For machine-readable licensing the repo follows the **REUSE** practice opportuni
 - Existing files are **not** retrofitted in bulk; they pick up their licence from the table in §2 and from per-folder declarations.
 - This is a soft norm, not a kill-gate.
 
-## 5. Why not NC-SA everywhere?
+## 5. Reuse conditions
 
-A uniform CC-BY-NC-SA-4.0 licence would protect authored interpretive work but would block adoption of the Charter's framework by university research groups, NIST/PTB-style institutes, and anyone with mixed funding (which is most academic research). The §1 argument from cd-rules §0.3 applies directly: NC introduces legal ambiguity and produces a chilling effect even when use is benign.
+[CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/) requires
+attribution and ShareAlike; [CC-BY-NC-SA-4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+adds NonCommercial. [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
+requires attribution. The applicable legal texts govern, including their
+exceptions and notices; these category names do not add licence conditions.
 
-Coastline content (Charter, constraint hierarchy, kill-gate protocol) is *infrastructure for governance*, not authored interpretive output. It should be reusable without the NC restriction.
+## 6. Prior declarations
 
-## 6. Why not CC-BY everywhere?
-
-A uniform CC-BY-4.0 licence (the v1.0-cut decision) under-protects authored interpretive work — it permits commercial repackaging of the Kompass dossier, the logbook deliberations, and the calculation narratives without preserving the epistemic commitments that produced them. The Sail layer is the right home for these.
+The initial blanket CC-BY-4.0 notice remains part of the licence history.
+The split map does not revoke rights already granted. Missing scope and
+approval records are resolved through RC-10 with explicit file assignments,
+not through assumptions about page design or subject matter.
 
 ## 7. Drift detection — borrowed assets
 
@@ -75,4 +113,4 @@ For any reuse, please cite per [`CITATION.cff`](CITATION.cff). The CITATION.cff 
 
 ---
 
-*Licence-map version: 1.0 — adopted 2026-05-02.*
+*Split declarations introduced 2026-05-02; scope and provenance clarification 2026-09-09. Missing adoption record and pending assignments remain under RC-10.*

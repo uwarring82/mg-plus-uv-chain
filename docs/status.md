@@ -78,7 +78,7 @@ The diagnostic-surrogate import-path test (the §5.1 mechanical enforcement that
 
 ## Test posture *Coastline*
 
-<p class="classification classification--coastline">Coastline · ≥ 90 % coverage required by §5 Phase 3 row; mechanically enforced via pytest + pytest-cov</p>
+<p class="classification classification--coastline">Coastline · ≥ 90 % coverage required by §5 Phase 3 row; CI enforcement pending (RC-06)</p>
 
 | Test file | Tests | Notes |
 |---|---|---|
@@ -92,7 +92,7 @@ The diagnostic-surrogate import-path test (the §5.1 mechanical enforcement that
 | `tests/test_diagnostic_surrogate_imports.py` | 1 | §5.1 mechanical enforcement (G1) |
 | **Total** | **142** | All passing (`142 passed`, full run 2026-05-22) |
 
-Charter §5 Phase 3 requires ≥ 90 % coverage. The full suite runs in ≈ 28 s; the σ-optimised Boyd–Kleinman tests are the slow path (the fast suite, excluding BK, runs in a few seconds).
+Charter §5 Phase 3 requires ≥ 90 % coverage. As checked on 2026-09-09, the repository does not yet enforce that threshold in CI; RC-06 tracks the correction. The historical full suite runs in ≈ 28 s; the σ-optimised Boyd–Kleinman tests are the slow path (the fast suite, excluding BK, runs in a few seconds).
 
 ---
 

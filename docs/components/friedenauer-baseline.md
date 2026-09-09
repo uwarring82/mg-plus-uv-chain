@@ -4,11 +4,9 @@ title: Components — Friedenauer 2006 baseline
 description: Optical components inventory mirroring the LBO and BBO doubling stages of Friedenauer et al., Appl. Phys. B 84, 371 (2006). Phase 1 literature artefact with paper-stated provenance per row.
 ---
 
-<p class="endorsement"><strong>Endorsement Marker.</strong> Local candidate framework — AG Schätz stewardship. This page reproduces optical-component data from a published source as a navigational/working inventory; it is not an endorsement, re-derivation, or vendor recommendation.</p>
-
-<p class="eyebrow">Components inventory</p>
-
 # Friedenauer 2006 — Optical Components List (LBO and BBO Doubling Stages)
+
+This working inventory records optical-component data from the published Friedenauer 2006 baseline. Source attributions and unresolved readings are retained below.
 
 **Status:** Phase 1 literature artefact, DRAFT (2026-05-07).
 **Scope:** Reproduces the two SHG ring-cavity stages of the all-solid-state CW chain
@@ -262,3 +260,11 @@ literature artefact:
 - It is **not** independent evidence; every row inherits the source-tier P
   ranking of [`extracted.yaml`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/literature/Friedenauer2006/extracted.yaml)
   and the `OPEN` rows mark precisely the gaps that the paper alone cannot close.
+
+
+---
+
+**Document licence:** [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
+under the existing LICENSE-DOCS declaration; attribution required.
+The split-category assignment is [pending D6 review](../LICENSE.html).
+Third-party material retains its stated terms.

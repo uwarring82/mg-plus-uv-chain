@@ -1,7 +1,7 @@
 title: mg-plus-uv-chain
 description: >
   UV source redesign for ²⁵Mg⁺ detection, cooling, and coherent control.
-  Single-steward FAIR effort under Council-3 governance (Charter v1.0).
+  Research project led by Ulrich Warring, AG Schätz.
 
 # No Jekyll theme: the site uses a hand-crafted layout in _layouts/default.html
 # that adopts the threehouse-plus-ec/cd-rules visual language under the
@@ -18,12 +18,6 @@ defaults:
 
 # The "View on GitHub" association (drives metadata only; no theme button).
 repository: uwarring82/mg-plus-uv-chain
-
-# Don't render Python source files, raw YAML extractions, or backups.
-exclude:
-  - "*.py"
-  - "*.yml.bak"
-  - literature/
 
 markdown: kramdown
 kramdown:

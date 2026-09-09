@@ -4,11 +4,9 @@ title: Next-generation UV source — 500 mW @ 280 nm via two SHG stages
 description: Parameterised target architecture for ≥ 500 mW CW UV at 280 nm via the same two-stage SHG topology as Friedenauer 2006, with pump power, IC reflectivities, crystal geometry, and loss-budget recommendations derived from the architecture-neutral primitives in /src/.
 ---
 
-<p class="endorsement"><strong>Endorsement Marker.</strong> Local candidate framework — AG Schätz stewardship. This page describes a *parameterised* target, not a build commitment. Phase 4 architecture scoring is gated by G1 / G2; recommendations on this page are <em>inputs</em> to a future scoring decision, not <em>outputs</em> of one.</p>
-
-<p class="eyebrow">Architecture · in design</p>
-
 # Next-generation UV source — 500 mW @ 280 nm via two SHG stages
+
+This page describes a parameterised design target. Recommendations remain inputs to the gated architecture comparison, not an approved build specification.
 
 ## Target
 
@@ -111,7 +109,7 @@ closures.
 |---|---|---|---|
 | ≤ 5 %/100 h UV-output drop | Acceptable — UV stays above 475 mW for ≥ 100 h; maintenance interval ~ months | Tight L_passive budget; high-LIDT BBO; rack-internal cleanliness | None needed |
 | 10–20 %/100 h | Tight — UV drops below 400 mW within ~ 100 h; maintenance interval shrinks to ~ weeks | Tighten L_passive budget per NG-E; reduce crystal intensity; hard-fluoride coatings | Reduce UV target to 300 mW; accept shorter maintenance interval |
-| > 20 %/100 h | Architecture failure-mode envelope exceeded; 500 mW figure not sustainable | Architectural change required | Reduce UV target to 200 mW; or switch to alternative-topology slate (IC-VECSEL + pulsed-Raman, gated on Council-3 task-split disposition) |
+| > 20 %/100 h | Architecture failure-mode envelope exceeded; 500 mW figure not sustainable | Architectural change required | Reduce UV target to 200 mW; or switch to alternative-topology slate (IC-VECSEL + pulsed-Raman, gated on recorded task-split decision) |
 
 G2 closure measurement bounds the actual rate. Until G2 closes, the workplan delivers a *parameterised recommendation*, not a sustained-power commitment.
 
@@ -130,3 +128,11 @@ G2 closure measurement bounds the actual rate. Until G2 closes, the workplan del
 
 See [Architectures → Friedenauer 2006](friedenauer-2006.html) for the
 reference baseline this page must keep agreeing with.
+
+
+---
+
+**Document licence:** [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
+under the existing LICENSE-DOCS declaration; attribution required.
+The split-category assignment is [pending D6 review](../LICENSE.html).
+Third-party material retains its stated terms.

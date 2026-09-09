@@ -4,11 +4,9 @@ title: Friedenauer 2006 — architecture summary
 description: As-published architecture summary of Friedenauer et al., Appl. Phys. B 84, 371 (2006). The reference baseline against which the next-generation 500 mW UV target is validated.
 ---
 
-<p class="endorsement"><strong>Endorsement Marker.</strong> Reference baseline — AG Schätz stewardship. This page summarises an externally published architecture; it is not an endorsement of any particular design choice for the next-generation build.</p>
-
-<p class="eyebrow">Architecture · reference baseline</p>
-
 # Friedenauer 2006 — all-solid-state CW 1118 → 559 → 280 nm
+
+This page summarises the published Friedenauer 2006 architecture as a reference for the new build.
 
 The Friedenauer 2006 architecture is the project's reference baseline.
 It is the only fully published all-solid-state CW two-stage SHG chain
@@ -139,3 +137,11 @@ re-checking the Boyd–Kleinman optimum at the new operating point.
 See [Architectures → Next-generation](next-gen.html) for the framing
 and the [logbook workplan](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-08-next-gen-500mW-workplan.md)
 for the formal phase plan.
+
+
+---
+
+**Document licence:** [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
+under the existing LICENSE-DOCS declaration; attribution required.
+The split-category assignment is [pending D6 review](../LICENSE.html).
+Third-party material retains its stated terms.

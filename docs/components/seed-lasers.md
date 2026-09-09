@@ -4,11 +4,9 @@ title: Components — Seed lasers (VECSEL)
 description: Seed-laser layer of mg-plus-uv-chain. Design principles per Burd 2023 (J. Opt. Soc. Am. B 40, 773); wavelength-adjacent ²⁵Mg⁺ demonstration per Burd 2016. Source-class direction recorded 2026-05-08.
 ---
 
-<p class="endorsement"><strong>Endorsement Marker.</strong> Local candidate framework — AG Schätz stewardship. This page records a source-class direction (VECSEL seed lasers) and the literature-anchored design principles guiding it; it is not a build commitment, vendor recommendation, or Phase 4 scoring input.</p>
-
-<p class="eyebrow">Components · seed-laser layer</p>
-
 # Seed lasers — VECSEL source class
+
+This page records the VECSEL seed-laser direction and its literature-based design requirements. It does not constitute a build commitment.
 
 **Status:** STEWARD DIRECTION (2026-05-08). Literature artefact landed; components-page surface drafted; no architecture-specific code.
 
@@ -35,9 +33,11 @@ The relevant design context for `mg-plus-uv-chain` is the trapped-ion-laboratory
 
 ## Design principles (Burd 2023 anchor)
 
-The principles below are stated in Burd 2023 §1-§2 and transferred verbatim to `mg-plus-uv-chain`. Each is labelled *Coastline* (testable design constraint inherited from the paper) or *Sail* (adaptive guidance scaled to the local operating point).
+The requirements below draw on Burd 2023 §1–§2. The operating budget and implementation choices are identified as local design proposals.
 
-### Class-A laser dynamics *Coastline*
+<a id="class-a-laser-dynamics-coastline"></a>
+
+### Class-A laser dynamics
 
 A long external cavity (≈ 125 mm) and short semiconductor carrier lifetime put the VECSEL in the **photon-lifetime-dominated** regime. Consequences:
 
@@ -47,7 +47,9 @@ A long external cavity (≈ 125 mm) and short semiconductor carrier lifetime put
 
 This is the load-bearing reason VECSELs are preferred to Yb-fibre seeds for the present application. Friedenauer 2006 §2 reported 1.2 W of ASE in front of the LBO cavity ([`Friedenauer2006::P_ASE`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/literature/Friedenauer2006/extracted.yaml)); a VECSEL seed eliminates this budget and the corresponding ASE-handling components.
 
-### Single-frequency narrow linewidth *Coastline*
+<a id="single-frequency-narrow-linewidth-coastline"></a>
+
+### Single-frequency narrow linewidth
 
 What the resonant SHG cavities respond to is the seed's residual **frequency-noise spectral density**, filtered by each doubling cavity's lock — *not* the integrated linewidth. Frequency noise slower than the lock bandwidth (≈ 18 kHz) is tracked out by the lock; the residual noise *above* the lock bandwidth is what converts into amplitude noise on the harmonic. The binding quantity is therefore the frequency-noise density weighted by the cavity/servo transfer function; the integrated linewidth is only a proxy for it. Burd 2023 states the requirement qualitatively (§1: *"considerably less than the linewidths of relevant atomic transitions and sufficiently narrow that frequency fluctuations will not be converted to significant amplitude fluctuations by subsequent resonant frequency-doubling stages"*) and meets it with intracavity birefringent-filter + 1 mm YAG-etalon mode selection plus a PZT-tuned cavity length. (The [VECSEL systems tutorial §3.4](../tutorials/vecsel-systems.html) gives the transfer-function treatment.)
 
@@ -60,15 +62,19 @@ For `mg-plus-uv-chain`:
 | Friedenauer Yb-fibre seed | < 200 kHz | Friedenauer 2006, §2 |
 | Burd 2023 940 nm VECSEL | < 100 kHz | Burd 2023, §2 |
 | Burd 2016 1141 nm VECSEL | < 50 kHz (HC error signal) | Burd 2016, §2 |
-| **Operating budget (this project)** | **target ≤ 100 kHz; Friedenauer parity floor ≈ 200 kHz; stretch ceiling 50 kHz** *Sail* | derived in [`logbook/2026-05-08-vecsel-seed-lasers.md`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-08-vecsel-seed-lasers.md) |
+| **Operating budget (this project)** | **target ≤ 100 kHz; Friedenauer parity floor ≈ 200 kHz; stretch ceiling 50 kHz** | derived in [`logbook/2026-05-08-vecsel-seed-lasers.md`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-08-vecsel-seed-lasers.md) |
 
 These are integrated-linewidth **proxies**, not the binding quantity. Because the doubling cavity tracks out frequency noise *below* its ≈ 18 kHz lock bandwidth, a seed whose integrated linewidth sits well above that resonance can still be acceptable — what must be controlled is the frequency-noise spectral density *above* the lock bandwidth, the part that the lock cannot follow and that therefore converts to amplitude noise. The atomic linewidth and the iodine reference bind at other levels (cooling/detection resolution and long-term locking).
 
-### Compact, integrated cavity *Sail*
+<a id="compact-integrated-cavity-sail"></a>
+
+### Compact, integrated cavity
 
 Burd 2023 uses a linear (I-shape) external cavity ≈ 125 mm long with a 200 mm-RoC concave output coupler at ~ 2 % transmission. The 940 nm and 1252 nm builds share this geometry; only the gain mirror differs. For `mg-plus-uv-chain`, the cavity geometry is a downstream design choice; what is inherited is the principle that a **compact, semiconductor-bandwidth-defined cavity** with intracavity etalon + BRF + PZT is the canonical implementation, not a Ti:Sapphire-style large-footprint solid-state laser.
 
-### Gain-mirror thermal management *Coastline*
+<a id="gain-mirror-thermal-management-coastline"></a>
+
+### Gain-mirror thermal management
 
 Heat sinking is the dominant constraint that sets max output power and spectral cleanliness. Burd 2023 implements two distinct thermal architectures:
 
@@ -77,7 +83,9 @@ Heat sinking is the dominant constraint that sets max output power and spectral 
 
 Both choices remain in scope as candidates for a 1118 nm `mg-plus-uv-chain` build. The Tampere ORC group (Guina) is the natural collaboration anchor for gain-mirror MBE growth at the 1118 nm wavelength.
 
-### Environmental purge *Sail*
+<a id="environmental-purge-sail"></a>
+
+### Environmental purge
 
 Dry-N₂ purge inside the VECSEL enclosure improves frequency stability and output power at moisture-sensitive wavelengths. Burd 2023 §2 documents this as a design parameter, not an afterthought. For `mg-plus-uv-chain`, the seed-laser enclosure should plan for dry-N₂ purge from the outset.
 
@@ -139,4 +147,12 @@ What VECSEL replaces:
 - [Friedenauer 2006 components](friedenauer-baseline.html) — the Yb-fibre seed + LBO + BBO baseline this VECSEL direction sits upstream of.
 - [Optical-components inventory](inventory.html) — on-shelf stock for the doubling chain (LBO + BBO mirrors, crystals, sub-assemblies).
 - [Architectures → Next-generation 500 mW](../architectures/next-gen.html) — the doubling-chain workplan that takes any seed-laser source as a fixed input.
-- [Principles](../principles.html) — Coastline / Sail vocabulary; anti-seeding clause; asymmetric erosion protection.
+- [Principles](../principles.html) — constraint hierarchy, gate conditions and requirement-change rules.
+
+
+---
+
+**Document licence:** [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
+under the existing LICENSE-DOCS declaration; attribution required.
+The split-category assignment is [pending D6 review](../LICENSE.html).
+Third-party material retains its stated terms.

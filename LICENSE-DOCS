@@ -1,6 +1,21 @@
-# Document License
+# Document licences
 
-The documents in this repository — including CHARTER.md, README.md, CONVENTIONS.md, files under /docs/, /constraints/, and /logbook/ — are licensed under the **Creative Commons Attribution 4.0 International License (CC-BY-4.0)**.
+Document licences vary by file. The [licence map](LICENSES.md) records the
+current split declarations: **Coastline (CC-BY-SA-4.0)** for mapped framework
+and navigation documents, **Sail (CC-BY-NC-SA-4.0)** for mapped analyses,
+and **CC-BY-4.0** for mapped data. **Handbook (MIT)** covers mapped design
+assets; **Model B** means distributed copies pinned by checksum.
+
+The original version of this file declared CC-BY-4.0 for all repository
+documents. That declaration remains part of the version history; this
+clarification does not revoke rights already granted. Files missing from the
+split map require the explicit scope review recorded there, rather than a
+licence inferred from a page's visual styling.
+
+## CC-BY-4.0 terms
+
+The following summary applies where CC-BY-4.0 is declared; it is not a
+universal licence statement for every document.
 
 You are free to:
 

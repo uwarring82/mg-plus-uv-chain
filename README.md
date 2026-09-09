@@ -8,7 +8,7 @@ A reproducible, version-controlled, FAIR design effort to redesign the all-solid
 
 **Steward.** Ulrich Warring (Albert-Ludwigs-Universität Freiburg, AG Schätz).
 
-**Project site (GitHub Pages).** [https://uwarring82.github.io/mg-plus-uv-chain/](https://uwarring82.github.io/mg-plus-uv-chain/) — summary of principles, calculation highlights, and current status. Source under [`docs/`](docs/). To enable: in GitHub repo *Settings → Pages*, set *Source: Deploy from a branch*, branch `main`, folder `/docs`. The site uses a hand-crafted layout adopting the visual identity and *Coastline / Sail* classification grammar from [`threehouse-plus-ec/cd-rules`](https://github.com/threehouse-plus-ec/cd-rules), borrowed under cd-rules §0.10 *Model B (distributed copy + checksum)*. Asset provenance and SHA-256 hashes are recorded in [`docs/assets/SOURCE.md`](docs/assets/SOURCE.md). No Jekyll build step required.
+**Project site (GitHub Pages).** [Project overview](https://uwarring82.github.io/mg-plus-uv-chain/), built from `main:/docs` using Jekyll. The site introduces the optics, calculations and current status. Borrowed visual assets use **Handbook (MIT)** licensing and **Model B (distributed copies pinned by checksum)**; attribution and hashes are in [asset provenance](docs/assets/SOURCE.md).
 
 ---
 
@@ -44,7 +44,7 @@ mg-plus-uv-chain/
 ├── CITATION.cff                Citation metadata
 ├── LICENSE                     MIT (code)
 ├── LICENSE-DOCS                CC-BY-4.0 (documents)
-├── endorsement.md              Coastline Template v2.0 endorsement marker
+├── endorsement.md              Historical scope and attribution record
 ├── src/
 │   ├── parameters.py           SI-units contract (single source of truth)
 │   └── …                       (architecture-neutral utilities pre-G1; family-specific code post-G1)
@@ -78,13 +78,13 @@ mg-plus-uv-chain/
 | G2 | Phase 4 / Phase 5 acceptance of degradation rate | OPEN — awaiting Phase 2 §8.2 protocol reproducibility |
 | G3 | Phase 4 architecture comparison | **CLOSED** 2026-05-01 — see [`logbook/2026-05-01-gate-g3-closure.md`](logbook/2026-05-01-gate-g3-closure.md) |
 
-Each gate closes via an Integrator-acknowledged logbook entry following [`logbook/_templates/gate-closure.md`](logbook/_templates/gate-closure.md).
+Gate closure requires the recorded acknowledgement defined in Charter §5.3, using [`logbook/_templates/gate-closure.md`](logbook/_templates/gate-closure.md).
 
 ---
 
 ## How to contribute
 
-This is a single-steward project under public-from-day-one FAIR conventions. External issues, suggestions, and reviews are welcome via standard GitHub mechanisms. Substantive proposals affecting Charter §1.5 Level 0/1 constraints, §6 success criteria, or kill-gate closures require Council-3 deliberation per CHARTER §9 — open an issue with the `council-3` label.
+Ulrich Warring is accountable for this project. External issues, suggestions and technical reviews are welcome. Changes to Charter §1.5 Level 0/1 constraints, §6 success criteria or gate closures require a recorded review under Charter §9. The historical `council-3` issue label identifies that review process; it does not imply a separately staffed committee.
 
 The Charter is frozen at v1.0. Revisions require a documented v1.x cycle.
 
@@ -92,9 +92,17 @@ The Charter is frozen at v1.0. Revisions require a documented v1.x cycle.
 
 ## Citation
 
-If this repository or its outputs inform your work, please cite as in [`CITATION.cff`](CITATION.cff). A Zenodo concept-DOI is registered against the v1.0 tag.
+If this repository or its outputs inform your work, please cite as in [`CITATION.cff`](CITATION.cff). A Zenodo DOI has not been verified. No tags or GitHub releases were present on the remote when checked on 2026-09-09. Cite the repository and the commit used; the frozen Charter version is not evidence of a tagged software release.
 
 ## License
 
-- Code: [MIT](LICENSE)
-- Documents (Charter, dossiers, logbook entries): [CC-BY-4.0](LICENSE-DOCS)
+Licensing is specified by content in the [licence map](LICENSES.md):
+
+- **Coastline — CC-BY-SA-4.0:** mapped framework and navigation documents, including this README; attribution and ShareAlike apply.
+- **Sail — CC-BY-NC-SA-4.0:** mapped authored analyses; attribution, NonCommercial and ShareAlike apply.
+- **Handbook — MIT:** borrowed site assets and mapped layouts. **Code — MIT.**
+- **Data — CC-BY-4.0:** mapped structured extractions and measurement data.
+
+These are licence categories, not ratings of scientific confidence. The map
+records remaining scope questions and prior declarations; third-party sources
+retain their own terms. [LICENSE-DOCS](LICENSE-DOCS) explains document scope.

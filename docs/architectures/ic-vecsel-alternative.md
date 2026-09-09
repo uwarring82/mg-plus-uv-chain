@@ -4,13 +4,11 @@ title: IC-VECSEL alternative — intracavity LBO + free-space PDH-locked BBO in 
 description: Architecture sketch — an intracavity-doubled VECSEL (1118 nm + intracavity LBO -> 559 nm direct) feeding a free-space PDH-locked BBO ring inside a sealed, temperature-controlled 19" rack envelope. Sized for cooling + repumping at ~ 50 mW UV; Raman handled by a parallel pulsed-comb pathway.
 ---
 
-<p class="endorsement"><strong>Endorsement Marker.</strong> Local candidate framework — AG Schätz stewardship. This page is an architecture sketch, not a build commitment. Phase 4 architecture scoring is gated by G1 / G2; this candidate is an <em>input</em> to a future scoring decision, not an output of one.</p>
-
-<p class="eyebrow">Architecture · sketch</p>
-
 # IC-VECSEL alternative — intracavity LBO + free-space PDH-locked BBO
 
-**Status:** SKETCH (logbook entry [`logbook/2026-05-08-ic-vecsel-alternative-topology.md`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-08-ic-vecsel-alternative-topology.md) carries the full Charter §9 trigger questions, Coastline / Sail labels, and G1-G2-G3 boundary statements; this page is the public surface).
+This architecture sketch remains subject to the G1/G2 gates and the task-allocation decision described below.
+
+**Status:** SKETCH (logbook entry [`logbook/2026-05-08-ic-vecsel-alternative-topology.md`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-08-ic-vecsel-alternative-topology.md) carries the full Charter §9 review questions and G1–G3 conditions).
 
 **Charter compliance.** Reference triple `{Δ_ref = 40 GHz, Ω_R/2π = 400 kHz, Γ_sc = 2.0 × 10⁴ s⁻¹}` (locked at G3 closure 2026-05-01) is unaffected. **Level 1 is affected conditionally**: the chain's ~ 50 mW UV output is below the CHARTER §1.5 ≥ 500 mW indicative anchor and is **valid only as a paired task allocation** with the [pulsed-Raman alternative](pulsed-raman-alternative.html) (or an equivalent off-board Raman pathway). Without that pairing, this sketch underdelivers Level 1. Anti-seeding clause (`docs/principles.md` §5.1) is in force — no `/src/architecture/` code follows from this sketch.
 
@@ -158,4 +156,12 @@ The sealed envelope reduces the *probability* of the higher-rate scenarios but d
 - [Next-gen 500 mW workplan](next-gen.html) — the Friedenauer-topology parameter-optimisation pre-G2 deliverable.
 - [Components → Seed lasers (VECSEL)](../components/seed-lasers.html) — the seed-laser source-class steward direction this sketch sits inside.
 - [References](../references.html) — alphabetical literature index.
-- [Logbook entry](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-08-ic-vecsel-alternative-topology.md) — full Charter §9 / Coastline / Sail / G1-G2-G3 statements.
+- [Logbook entry](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-08-ic-vecsel-alternative-topology.md) — full Charter §9 review and G1–G3 conditions.
+
+
+---
+
+**Document licence:** [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
+under the existing LICENSE-DOCS declaration; attribution required.
+The split-category assignment is [pending D6 review](../LICENSE.html).
+Third-party material retains its stated terms.
