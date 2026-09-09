@@ -27,6 +27,8 @@ Usage
     python scripts/render_tutorials.py            # render all tutorials
     python scripts/render_tutorials.py 03         # render just 03-*.py
 
+Run with the supported project interpreter (for example `.venv/bin/python`).
+A temporary kernelspec pins notebook execution to that same interpreter.
 Run from the repo root. The kernel cwd is forced to the repo root so
 the in-notebook path-walking finds ``pyproject.toml`` and adds the repo
 to ``sys.path`` (nbconvert's CLI does not expose a kernel-cwd flag, so
@@ -39,13 +41,16 @@ clear of CHARTER §5.1 anti-seeding enforcement.
 
 from __future__ import annotations
 
+import json
 import os
 import re
 import sys
 from pathlib import Path
+from tempfile import TemporaryDirectory
 
 import jupytext
 import nbformat
+from jupyter_client.kernelspec import KernelSpecManager
 from nbclient import NotebookClient
 from nbconvert import HTMLExporter
 
@@ -65,8 +70,8 @@ def render(stem_filter: str | None = None) -> int:
         print(f"No tutorials matched filter {stem_filter!r}", file=sys.stderr)
         return 1
 
-    # Headless matplotlib for any plotting cells.
-    os.environ.setdefault("MPLBACKEND", "Agg")
+    # Headless inline output: plain Agg renders no notebook figure outputs.
+    os.environ["MPLBACKEND"] = "module://matplotlib_inline.backend_inline"
 
     n_ok = 0
     for src in sources:
@@ -80,13 +85,36 @@ def render(stem_filter: str | None = None) -> int:
         # Normalise cell IDs *before* execution so the IDs that leak into
         # the rendered HTML cell anchors are deterministic too.
         _normalize_cell_ids(nb)
-        client = NotebookClient(
-            nb,
-            timeout=600,
-            kernel_name="python3",
-            resources={"metadata": {"path": str(REPO_ROOT)}},
-        )
-        client.execute()
+        # Use this process's interpreter, not an unrelated user "python3"
+        # kernel. The temporary spec leaves the user's kernels unchanged.
+        with TemporaryDirectory(prefix="mg-uv-kernel-") as kernel_dir:
+            spec = Path(kernel_dir) / "python3"
+            spec.mkdir()
+            (spec / "kernel.json").write_text(
+                json.dumps(
+                    {
+                        "argv": [
+                            sys.executable,
+                            "-m",
+                            "ipykernel_launcher",
+                            "-f",
+                            "{connection_file}",
+                        ],
+                        "display_name": "Python 3",
+                        "language": "python",
+                    }
+                ),
+                encoding="utf-8",
+            )
+            client = NotebookClient(
+                nb,
+                timeout=600,
+                kernel_name="python3",
+                resources={"metadata": {"path": str(REPO_ROOT)}},
+            )
+            client.create_kernel_manager()
+            client.km.kernel_spec_manager = KernelSpecManager(kernel_dirs=[kernel_dir])
+            client.execute()
         _normalize_post_execute(nb)
         with out_ipynb.open("w", encoding="utf-8") as fh:
             nbformat.write(nb, fh)
@@ -99,9 +127,7 @@ def render(stem_filter: str | None = None) -> int:
         # document; we want only the body content so the Jekyll "notebook"
         # layout wraps it. Extract <body>...</body>; if extraction fails, fall
         # back to the full document (defensive — shouldn't happen).
-        body_match = re.search(
-            r"<body[^>]*>(.*?)</body>", full_html, flags=re.S
-        )
+        body_match = re.search(r"<body[^>]*>(.*?)</body>", full_html, flags=re.S)
         body = body_match.group(1).strip() if body_match else full_html
 
         title = _extract_title(nb, default=src.stem)

@@ -1,0 +1,116 @@
+{
+  "baseline_revision": "9a498165532e029e1ba0706d380f760402dd7584",
+  "inputs_sha256": {
+    "data/review/2026-09-09/environment.txt": "7d9daf1ed6471db497fd9f033ca7de468525d4f4683be88b77210b04d8c98a8f",
+    "notebooks/tutorials/01-params.yaml": "14d6398abcc405acb2b93f464237c410af42607ac08057c277786a1aa3868837",
+    "notebooks/tutorials/01-shg-single-pass.py": "e1878a13e9e03c8b5ae442736db33ea5175ea8bb3d4a607900b4d6489e01db38",
+    "notebooks/tutorials/02-enhancement-cavity-buildup.py": "d29871e90a12eb0d01ceb7b1e629bfb2a958d1d94ab2c27ff8fd31923e0e88dd",
+    "notebooks/tutorials/02-params.yaml": "7a144d3cc8772d777a9b9a39792024bf15d7b6e3f60d8ccd97bc87878f88abaa",
+    "notebooks/tutorials/03-optimal-input-coupler.py": "63a4fc45134d3b569bc1b295aaa017aa0bcf5709e87fc8f58eeeb32a6c7a24b4",
+    "notebooks/tutorials/03-params.yaml": "c2c73ef717f8c5cfee547a7a6b0e255caae33a0fcedd59c412841326fee672dd",
+    "notebooks/tutorials/04-cascade-shg.py": "d622cab1f764f0c30b58ea17bd9c882f365b9d336be152f3ac21320ec1bc44cd",
+    "notebooks/tutorials/04-params.yaml": "6ed37d5b73a2317458a25bd2cb7976161f29062bd4b8a1f203b65b3b685b1bf3",
+    "scripts/render_tutorials.py": "fcf62db8651fcce1fcf66f9f1e27842fbcadafe4748aee24d7fc97a0f59a3621",
+    "scripts/review/tutorial_manifest.py": "fd2650a88074fa472098122845f9242d813f36e88582929e2d9e207e12819854",
+    "src/__init__.py": "084f18e838bcb3af8de5ccd76196f566092fe7fcd3067021b43b0d202080f287",
+    "src/abcd.py": "9b82bc5eea770e491a290740472763caf222244cc3d0b1cf6b8a19fa9293dde4",
+    "src/boyd_kleinman.py": "3f9f9ef4bee7212003c56a36d42afc41e120eb97cbf154259850b626819a7c23",
+    "src/enhancement_cavity.py": "0870faca9e5dc407fa93eb773c10a63b7634a82d7f40954a99a89a3f8ae6a392",
+    "src/parameters.py": "80a42f1ffe683fdee811c205733be0d2994eb50aefcc4a83e30dfb10ec38c523",
+    "src/shg_cascade.py": "8752b73795d371af11c4ea4abbaee51f16439ec77a99a0d6c5e208103f74c16d",
+    "src/shg_single_pass.py": "086afb5471eb3858f4958a7439b4870605d4c91bc2bdad97cd2b9e69e62214cc"
+  },
+  "tutorials": [
+    {
+      "source": "notebooks/tutorials/01-shg-single-pass.py",
+      "ipynb": "docs/tutorials/01-shg-single-pass.ipynb",
+      "html": "docs/tutorials/01-shg-single-pass.html",
+      "before_ipynb_sha256": "f9c5612c1ef233ec4cae0fd610bde7b4974de81f26c85e89b4d898def5bc7b36",
+      "after_ipynb_sha256": "fd8777209adf2364747a3b4360d76985d4bd81ad7c1615209d60aba1e260a5a8",
+      "before_html_sha256": "57bb6f37cb986f6179e3b7f89e9704cbfc7fd7e8b5789f5db1a86961b6d4cc2e",
+      "after_html_sha256": "3ce83bc842310266ad223bbfc81f8a340a5d4239e121138b7585cff77dbff50c",
+      "before_printed_results": [
+        "Imports OK\n",
+        "Classic BK optimum:  \u03be_opt = 2.838,  h_m_max = 1.0677\n",
+        "Loaded parameters from 01-params.yaml\n  d_eff = 0.84 pm/V\n  n_\u03c9 = 1.605,  n_2\u03c9 = 1.62\n  \u03bb = 1118 nm,  L = 18 mm\n  w0 = None \u03bcm,  \u03c1 = 0.0 mrad\n",
+        "BK \u03c3-optimum:  \u03be = 2.838,  h_m = 1.0677\nCorresponding waist: w0 = 26.52 \u03bcm\n",
+        "Material constant K = 2.0557e-09 W\u207b\u00b9\u00b7m\u207b\u00b9\nSingle-pass coefficient \u03b3_SHG = 3.5637e-04 W\u207b\u00b9\n",
+        "Tutorial 01 complete.\n"
+      ],
+      "after_printed_results": [
+        "Imports OK\n",
+        "Classic BK optimum:  \u03be_opt = 2.838,  h_m_max = 1.0677\n",
+        "Loaded parameters from 01-params.yaml\n  d_eff = 0.84 pm/V\n  n_\u03c9 = 1.605,  n_2\u03c9 = 1.62\n  \u03bb = 1118 nm,  L = 18 mm\n  w0 = None \u03bcm,  \u03c1 = 0.0 mrad\n",
+        "BK \u03c3-optimum:  \u03be = 2.838,  h_m = 1.0677\nCorresponding waist: w0 = 26.52 \u03bcm\n",
+        "Material constant K = 1.2808e-09 W\u207b\u00b9\nSingle-pass coefficient \u03b3_SHG = 2.2204e-04 W\u207b\u00b9\n",
+        "Tutorial 01 complete.\n"
+      ]
+    },
+    {
+      "source": "notebooks/tutorials/02-enhancement-cavity-buildup.py",
+      "ipynb": "docs/tutorials/02-enhancement-cavity-buildup.ipynb",
+      "html": "docs/tutorials/02-enhancement-cavity-buildup.html",
+      "before_ipynb_sha256": "18f6b1721c6e04c5a98ac16e3314972f87122a9bce082c04600f295e505e7734",
+      "after_ipynb_sha256": "35178433c76df9f3963792ebaf0314b0b126c31dce031abda8a2d819a45d53ba",
+      "before_html_sha256": "4ef3d81e6154885a5c92c2a1029d9aeca6753f187f94249a1845ffe2db468531",
+      "after_html_sha256": "7ebed8ca598a54dfa9a70c16084a2bb4b1a11ef084c84be8aeff1b30fe84cfe8",
+      "before_printed_results": [
+        "Imports OK\n",
+        "Parameters: P_in = 1.0 W,  L = 0.02,  \u03b3 = 0.0 W\u207b\u00b9\n",
+        "Tutorial 02 complete.\n"
+      ],
+      "after_printed_results": [
+        "Imports OK\n",
+        "Parameters: P_in = 1.0 W,  L = 0.02,  \u03b3 = 0.0 W\u207b\u00b9\n",
+        "Tutorial 02 complete.\n"
+      ]
+    },
+    {
+      "source": "notebooks/tutorials/03-optimal-input-coupler.py",
+      "ipynb": "docs/tutorials/03-optimal-input-coupler.ipynb",
+      "html": "docs/tutorials/03-optimal-input-coupler.html",
+      "before_ipynb_sha256": "6f2e68d701e892531a9c20b8fc6f4b99c5c23926a403d90a76aa65ab1d7257c7",
+      "after_ipynb_sha256": "6837d8947ca10c1c5e5caf6d7311d1fd4f4bdf4d53af38a4a9cf97a8e89460c8",
+      "before_html_sha256": "f86c6e30b1c9334c975c7f2758867665c2150d48b6ba35d9fc6e7a903cb641b1",
+      "after_html_sha256": "3da8d49321978f602589d222c41a424a4adcee45aedeaf4a6c063725e3dce15f",
+      "before_printed_results": [
+        "Imports OK\n",
+        "Parameters: P_in = 1.0 W,  L = 0.02,  \u03b3 = 0.01 W\u207b\u00b9\n",
+        "Analytic  T_opt = 0.10950  \u2192  P_h = 0.8286 W\nNumerical T_opt = 0.10653  \u2192  P_h = 0.8288 W\nDeviation in T_opt: -2.71 %\n",
+        "\nSensitivity summary:\n  \u03b3 = 0.0080 W\u207b\u00b9  \u2192  T_opt = 9.68 %  \u2192  P_h = 0.809 W\n  \u03b3 = 0.0100 W\u207b\u00b9  \u2192  T_opt = 10.65 %  \u2192  P_h = 0.829 W\n  \u03b3 = 0.0120 W\u207b\u00b9  \u2192  T_opt = 11.53 %  \u2192  P_h = 0.843 W\n  L = 0.0150    \u2192  T_opt = 10.40 %  \u2192  P_h = 0.869 W\n  L = 0.0200    \u2192  T_opt = 10.65 %  \u2192  P_h = 0.829 W\n  L = 0.0250    \u2192  T_opt = 10.91 %  \u2192  P_h = 0.791 W\n",
+        "Tutorial 03 complete.\n"
+      ],
+      "after_printed_results": [
+        "Imports OK\n",
+        "Parameters: P_in = 1.0 W,  L = 0.02,  \u03b3 = 0.01 W\u207b\u00b9\n",
+        "Analytic  T_opt = 0.10950  \u2192  P_h = 0.8286 W\nNumerical T_opt = 0.10653  \u2192  P_h = 0.8288 W\nDeviation in T_opt: -2.71 %\n",
+        "\nSensitivity summary:\n  \u03b3 = 0.0080 W\u207b\u00b9  \u2192  T_opt = 9.68 %  \u2192  P_h = 0.809 W\n  \u03b3 = 0.0100 W\u207b\u00b9  \u2192  T_opt = 10.65 %  \u2192  P_h = 0.829 W\n  \u03b3 = 0.0120 W\u207b\u00b9  \u2192  T_opt = 11.53 %  \u2192  P_h = 0.843 W\n  L = 0.0150    \u2192  T_opt = 10.40 %  \u2192  P_h = 0.869 W\n  L = 0.0200    \u2192  T_opt = 10.65 %  \u2192  P_h = 0.829 W\n  L = 0.0250    \u2192  T_opt = 10.91 %  \u2192  P_h = 0.791 W\n",
+        "Tutorial 03 complete.\n"
+      ]
+    },
+    {
+      "source": "notebooks/tutorials/04-cascade-shg.py",
+      "ipynb": "docs/tutorials/04-cascade-shg.ipynb",
+      "html": "docs/tutorials/04-cascade-shg.html",
+      "before_ipynb_sha256": "5bad1dd848c22f2c28f6e86a96f3a6225af21aeb164a254bb1b6b8131a081e53",
+      "after_ipynb_sha256": "c8c16367fb8377a450aac5448b138ca2254fbefbf8d2d41473c5b88b661cde1d",
+      "before_html_sha256": "66d423d78b7c60a17f1618b0f500e7e219aa8b9a1407a464ef1f768445fe9229",
+      "after_html_sha256": "01c9d88a612510225f55bf7f5a92f4a457eb9408d046e5a44d7548093978a785",
+      "before_printed_results": [
+        "Imports OK\n",
+        "Stage 1: L = 0.02,  \u03b3 = 0.001 W\u207b\u00b9\nStage 2: L = 0.02,  \u03b3 = 0.01 W\u207b\u00b9\nTransport efficiency: 0.95\nInput power: 1.0 W\n",
+        "Optimised cascade:\n  Stage 1:  T_IC = 4.263 %\n  Stage 2:  T_IC = 8.025 %\n",
+        "\nStage 1:\n  Input power      = 1.0000 W\n  Circulating power = 23.46 W\n  Harmonic power   = 0.5417 W\n  Into next stage  = 0.5146 W\n\nStage 2:\n  Input power      = 0.5146 W\n  Circulating power = 6.41 W\n  Harmonic power   = 0.3943 W\n\nTotal harmonic output = 0.3943 W\nOverall efficiency    = 39.43 %\n",
+        "Tutorial 04 complete.\n"
+      ],
+      "after_printed_results": [
+        "Imports OK\n",
+        "Stage 1: L = 0.02,  \u03b3 = 0.001 W\u207b\u00b9\nStage 2: L = 0.02,  \u03b3 = 0.01 W\u207b\u00b9\nTransport efficiency: 0.95\nInput power: 1.0 W\n",
+        "Optimised cascade:\n  Stage 1:  T_IC = 4.263 %\n  Stage 2:  T_IC = 8.025 %\n",
+        "\nStage 1:\n  Input power      = 1.0000 W\n  Circulating power = 23.46 W\n  Harmonic power   = 0.5417 W\n  Into next stage  = 0.5146 W\n\nStage 2:\n  Input power      = 0.5146 W\n  Circulating power = 6.41 W\n  Harmonic power   = 0.3943 W\n\nTotal harmonic output = 0.3943 W\nOverall efficiency    = 39.43 %\n",
+        "Tutorial 04 complete.\n"
+      ]
+    }
+  ],
+  "comparison_note": "Baseline notebooks have no embedded plots (plain Agg backend). Inline rendering now includes the figures; printed results compare scalars and hashes identify all outputs."
+}

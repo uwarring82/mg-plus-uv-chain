@@ -143,7 +143,7 @@ ax.axvline(T_opt_analytic * 100, ls=":", color="C3", lw=1.5,
 ax.plot([T_opt_numerical * 100], [P_h_numerical], "C2*", ms=12)
 
 ax.set_xlabel("Input-coupler transmission  T (%)")
-ax.set_ylabel("Harmonic output $P_{2\omega}$ (W)")
+ax.set_ylabel(r"Harmonic output $P_{2\omega}$ (W)")
 ax.set_title("Harmonic output vs. input-coupler transmission")
 ax.legend(loc="lower left")
 ax.grid(alpha=0.3)
@@ -174,7 +174,7 @@ for g in gammas:
     axs[0].axvline(T_opt * 100, ls="--", lw=1, alpha=0.5)
 
 axs[0].set_xlabel("Input-coupler transmission  T (%)")
-axs[0].set_ylabel("Harmonic output $P_{2\omega}$ (W)")
+axs[0].set_ylabel(r"Harmonic output $P_{2\omega}$ (W)")
 axs[0].set_title(rf"Sensitivity to $\gamma$  (nominal ±{gamma_rel*100:.0f} %)")
 axs[0].legend(loc="lower left", fontsize=9)
 axs[0].grid(alpha=0.3)
@@ -188,7 +188,7 @@ for L_val in Ls:
     axs[1].axvline(T_opt * 100, ls="--", lw=1, alpha=0.5)
 
 axs[1].set_xlabel("Input-coupler transmission  T (%)")
-axs[1].set_ylabel("Harmonic output $P_{2\omega}$ (W)")
+axs[1].set_ylabel(r"Harmonic output $P_{2\omega}$ (W)")
 axs[1].set_title(rf"Sensitivity to $L$  (nominal ±{loss_abs*100:.1f} pp)")
 axs[1].legend(loc="lower left", fontsize=9)
 axs[1].grid(alpha=0.3)

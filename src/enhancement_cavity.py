@@ -31,12 +31,12 @@ the radical) and low-pump leading order T_match → L + (1-L) γ P_in / L.
 
 Implementation choices
 ----------------------
-- The solver always evaluates η_nl with regime="depleted" — i.e. the
-  exact tanh² expression — so the residual is C¹-continuous and the
-  Brent root finder cannot oscillate at the small/depleted threshold
-  carried by the public Phase A "auto" default. Calling code that
-  wants the small-signal-only value can still pass through Phase A
-  directly.
+- The solver uses the continuous effective tanh² depletion model, also
+  used by the single-pass "auto" default. This is not a full solution
+  of depleted Gaussian-beam propagation.
+- P_circ is referenced immediately before conversion. Passive loss acts
+  on the remaining fundamental power, so round-trip dissipation is
+  [η_nl + L(1-η_nl)] P_circ. Harmonic extraction is assumed complete.
 - The gamma_shg = 0 path short-circuits to a closed-form passive
   Airy buildup; this avoids a degenerate brentq bracket and gives
   exact answers in the linear regime.
@@ -58,11 +58,7 @@ import math
 
 from scipy.optimize import brentq
 
-from src.shg_single_pass import (
-    single_pass_conversion_fraction,
-    single_pass_harmonic_power_W,
-)
-
+from src.shg_single_pass import single_pass_harmonic_power_W
 
 # =====================================================================
 # Passive / linearised closed forms
@@ -97,11 +93,14 @@ def passive_buildup(T_IC: float, loss_per_pass: float) -> float:
     if T_IC == 0.0:
         return 0.0
 
-    sqrt_arg = (1.0 - T_IC) * (1.0 - loss_per_pass)
-    denom = 1.0 - math.sqrt(sqrt_arg)
-    if denom == 0.0:
-        return float("inf")
-    return T_IC / denom**2
+    denom = _round_trip_denominator(T_IC, loss_per_pass, 0.0)
+    return (T_IC / denom) / denom
+
+
+def _round_trip_denominator(T: float, loss: float, eta: float) -> float:
+    """Rationalise 1 - sqrt((1-T)(1-L)(1-η)) at small total loss."""
+    total_loss = T + (1.0 - T) * (loss + (1.0 - loss) * eta)
+    return total_loss / (1.0 + math.sqrt((1.0 - T) * (1.0 - loss) * (1.0 - eta)))
 
 
 # =====================================================================
@@ -151,42 +150,24 @@ def circulating_power(
     if gamma_shg == 0.0:
         return power_in_W * passive_buildup(T_IC, loss_per_pass)
 
-    # Nonlinear path: brentq on the cavity equation
-    R = 1.0 - T_IC
-    one_minus_L = 1.0 - loss_per_pass
+    # Solve for a = sqrt(P_circ/P_in), avoiding a fixed tolerance in watts.
+    # Nonlinear loss only lowers the buildup: the passive field buildup is
+    # an exact upper bracket. Rationalisation preserves very small T and L.
+    sqrt_T = math.sqrt(T_IC)
+    nonlinear_scale = math.sqrt(gamma_shg) * math.sqrt(power_in_W)
+    upper = sqrt_T / _round_trip_denominator(T_IC, loss_per_pass, 0.0)
+    # Round the analytic upper bound outward: at vanishing nonlinear loss,
+    # division/multiplication roundoff can otherwise make f(upper) negative.
+    upper *= 1.0 + 8.0 * math.ulp(1.0)
 
-    def residual(p_circ: float) -> float:
-        eta_nl = single_pass_conversion_fraction(
-            p_circ, gamma_shg, regime="depleted"
-        )
-        denom = 1.0 - math.sqrt(R * one_minus_L * (1.0 - eta_nl))
-        # denom > 0 always (R, 1-L, 1-η_nl ≤ 1, with at least one < 1
-        # whenever T > 0 OR L > 0 OR η_nl > 0; T > 0 here by the early-return).
-        if denom <= 0.0:
-            return p_circ
-        return p_circ - power_in_W * T_IC / denom**2
+    def residual(a: float) -> float:
+        eta = math.tanh(nonlinear_scale * a) ** 2
+        return a * _round_trip_denominator(T_IC, loss_per_pass, eta) - sqrt_T
 
-    # Upper bracket: passive Airy max divided by no nonlinear loss is the
-    # absolute ceiling. With nonlinear loss P_circ is monotonically smaller
-    # at any given T, so this bound is conservative and brentq always finds
-    # the root in [0, upper].
-    if loss_per_pass > 0.0:
-        upper = power_in_W / loss_per_pass
-    else:
-        # Pure-nonlinear-loss limit: P_circ saturates near P_in / T_IC
-        # times a finite buildup; use a safe multiple.
-        upper = max(power_in_W / max(T_IC, 1e-9), 1e12 * power_in_W)
-
-    upper = max(upper, 1.01 * power_in_W)  # never less than the input
-
-    # Defensive expansion if residual at upper is still negative
-    # (shouldn't happen for valid inputs, but guards numerical edges).
-    iterations = 0
-    while residual(upper) < 0.0 and iterations < 60:
-        upper *= 10.0
-        iterations += 1
-
-    return brentq(residual, 0.0, upper, xtol=1e-14, rtol=1e-12)
+    amplitude = brentq(
+        residual, 0.0, upper, xtol=math.ulp(0.0), rtol=1e-12, maxiter=2048
+    )
+    return (power_in_W * amplitude) * amplitude
 
 
 # =====================================================================
@@ -219,12 +200,10 @@ def harmonic_output_W(
     """
     p_circ = circulating_power(power_in_W, T_IC, loss_per_pass, gamma_shg)
     p_h = single_pass_harmonic_power_W(p_circ, gamma_shg, regime="depleted")
-    # Cavity-level Manley-Rowe ceiling: P_in = L·P_circ + P_h at impedance
-    # match, so P_h ≤ P_in always. The min() guards against floating-point
-    # overshoot in the deeply saturated regime where the brentq solver and
-    # the tanh² short-circuit can compound to ~1e-13 above the physical
-    # bound; the clamp is exact in the linear and small-signal regimes.
-    return min(p_h, power_in_W)
+    # At match P_in = [η + L(1-η)] P_circ. Do not clamp the result:
+    # tests check this balance and the reflected-power balance off match.
+    # A relative ~1e-12 root tolerance can leave roundoff-sized overshoot.
+    return p_h
 
 
 def optimal_input_coupler(
@@ -239,7 +218,10 @@ def optimal_input_coupler(
 
         T = L + (1-L) · η_nl(P_circ(T))                                (1)
 
-    via Brent's method over T ∈ [L, 1). The (1-L) factor is the cross
+    using P_circ = P_in/T at match and Brent's method over T ∈ [L, 1].
+    The reduced residual is strictly increasing: η(P_in/T) decreases
+    with T. Its endpoint signs bracket the unique root without offsets.
+    At L=0 the lower-end residual is its T→0⁺ limit, -1. The (1-L) factor is the cross
     term that distinguishes the exact match from the linearised
     approximation T ≈ L + η_nl.
 
@@ -258,7 +240,7 @@ def optimal_input_coupler(
     Returns
     -------
     float
-        Impedance-matched input-coupler transmission, in (L, 1).
+        Impedance-matched transmission in [L, 1], including rounded limits.
     """
     _validate_cavity_inputs(
         power_in_W=power_in_W,
@@ -271,46 +253,17 @@ def optimal_input_coupler(
         return loss_per_pass
 
     one_minus_L = 1.0 - loss_per_pass
+    nonlinear_scale = math.sqrt(gamma_shg) * math.sqrt(power_in_W)
 
     def residual(T: float) -> float:
-        p_circ = circulating_power(power_in_W, T, loss_per_pass, gamma_shg)
-        eta_nl = single_pass_conversion_fraction(
-            p_circ, gamma_shg, regime="depleted"
-        )
-        return T - (loss_per_pass + one_minus_L * eta_nl)
+        if T == 0.0:
+            return -1.0
+        eta_nl = math.tanh(nonlinear_scale / math.sqrt(T)) ** 2
+        return (T - loss_per_pass) - one_minus_L * eta_nl
 
-    # T_match is strictly above L when gamma_shg · P_in > 0.
-    T_low = loss_per_pass + max(1e-12, 1e-6 * loss_per_pass)
-    T_high = 0.999_999
-
-    f_low = residual(T_low)
-    f_high = residual(T_high)
-
-    # Adaptive T_high expansion for highly-depleted regimes, where η_nl → 1
-    # and T_match → 1 from below. We push T_high closer to 1 in decade
-    # steps until residual flips sign or we hit machine precision.
-    while f_high < 0.0 and (1.0 - T_high) > 1e-14:
-        T_high = 1.0 - (1.0 - T_high) / 10.0
-        f_high = residual(T_high)
-
-    # Saturated regime: residual at T_high is negative but within numerical
-    # precision of zero — η_nl(P_circ(T_high)) = 1 to machine precision so
-    # T_match → 1 exactly. Cavity enhancement is degenerate (single-pass
-    # conversion ≈ 100 %); return T_high rather than failing the bracket.
-    if f_low < 0.0 and -1e-10 < f_high <= 0.0:
-        return T_high
-
-    if f_low * f_high > 0.0:
-        # Both ends on the same side after adaptive expansion *and* not in
-        # the recognised saturated regime — caller's inputs are pathological.
-        raise RuntimeError(
-            "optimal_input_coupler could not bracket the impedance match: "
-            f"residual(T={T_low:.3e})={f_low:.3e}, "
-            f"residual(T={T_high:.3e})={f_high:.3e}. "
-            f"Inputs: P_in={power_in_W}, L={loss_per_pass}, gamma={gamma_shg}."
-        )
-
-    return brentq(residual, T_low, T_high, xtol=1e-14, rtol=1e-12)
+    return brentq(
+        residual, loss_per_pass, 1.0, xtol=math.ulp(0.0), rtol=1e-12, maxiter=2048
+    )
 
 
 # =====================================================================
@@ -324,11 +277,13 @@ def _validate_cavity_inputs(
     loss_per_pass: float,
     gamma_shg: float,
 ) -> None:
-    if power_in_W < 0.0:
-        raise ValueError(f"power_in_W must be non-negative; got {power_in_W}")
+    if not math.isfinite(power_in_W) or power_in_W < 0.0:
+        raise ValueError(
+            f"power_in_W must be finite and non-negative; got {power_in_W}"
+        )
     if not 0.0 <= T_IC <= 1.0:
         raise ValueError(f"T_IC must be in [0, 1]; got {T_IC}")
     if not 0.0 <= loss_per_pass < 1.0:
         raise ValueError(f"loss_per_pass must be in [0, 1); got {loss_per_pass}")
-    if gamma_shg < 0.0:
-        raise ValueError(f"gamma_shg must be non-negative; got {gamma_shg}")
+    if not math.isfinite(gamma_shg) or gamma_shg < 0.0:
+        raise ValueError(f"gamma_shg must be finite and non-negative; got {gamma_shg}")

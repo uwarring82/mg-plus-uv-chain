@@ -21,7 +21,6 @@ from src.enhancement_cavity import (
 )
 from src.shg_single_pass import single_pass_conversion_fraction
 
-
 # =====================================================================
 # 1 · Passive (gamma_shg = 0) closed-form path
 # =====================================================================
@@ -55,9 +54,7 @@ class TestPassive:
         T = 0.02
         L = 0.005
         expected = P_in * passive_buildup(T, L)
-        assert circulating_power(P_in, T, L, 0.0) == pytest.approx(
-            expected, rel=1e-10
-        )
+        assert circulating_power(P_in, T, L, 0.0) == pytest.approx(expected, rel=1e-10)
 
     def test_optimal_T_passive_equals_L(self) -> None:
         """With gamma_shg = 0, T_match = L."""
@@ -203,7 +200,7 @@ class TestDepleted:
         assert math.isfinite(P_circ)
         assert math.isfinite(P_h)
         assert 0.0 < T_opt < 1.0
-        assert 0.5 * P_in < P_h <= P_in  # high-conversion regime
+        assert 0.5 * P_in < P_h <= P_in * (1.0 + 2e-12)  # high-conversion regime
 
     def test_depleted_harmonic_uses_tanh_squared_at_optimum(self) -> None:
         """harmonic_output_W = P_circ · tanh²(sqrt(γ P_circ)) at convergence,
@@ -233,7 +230,7 @@ class TestDepleted:
         # Expect monotonically decreasing P_circ as gamma rises (more
         # nonlinear loss).  Continuous (no kink) by construction since the
         # solver sticks to depleted regime throughout.
-        for a, b in zip(P_circs, P_circs[1:]):
+        for a, b in zip(P_circs, P_circs[1:], strict=False):
             assert a > b
 
 
@@ -244,18 +241,16 @@ class TestDepleted:
 
 class TestEnergyConservation:
     def test_round_trip_at_impedance_match(self) -> None:
-        """At impedance match, P_in = L · P_circ + harmonic (no reflection)."""
+        """At impedance match, P_in = L(1-η) · P_circ + harmonic (no reflection)."""
         L = 0.005
         gamma = 0.39
         P_in = 1.0
         T_opt = optimal_input_coupler(P_in, L, gamma)
         P_circ = circulating_power(P_in, T_opt, L, gamma)
         P_h = harmonic_output_W(P_in, T_opt, L, gamma)
-        P_passive_loss = L * P_circ
+        P_passive_loss = L * (P_circ - P_h)
         # At impedance match, all input power goes to passive loss + harmonic.
-        # Tolerance set to 0.5 % to absorb the higher-order terms in the
-        # impedance-match expansion that we don't model here.
-        assert P_in == pytest.approx(P_passive_loss + P_h, rel=5e-3)
+        assert P_in == pytest.approx(P_passive_loss + P_h, rel=2e-12)
 
     def test_manley_rowe_ceiling_grid(self) -> None:
         """Harmonic output never exceeds input over a parameter grid."""
@@ -264,7 +259,7 @@ class TestEnergyConservation:
             for gamma in [1e-4, 0.01, 1.0, 100.0]:
                 T = optimal_input_coupler(P_in, L, gamma)
                 P_h = harmonic_output_W(P_in, T, L, gamma)
-                assert 0.0 <= P_h <= P_in, (
+                assert 0.0 <= P_h <= P_in * (1.0 + 2e-12), (
                     f"Manley-Rowe violated at P_in={P_in}, gamma={gamma}: "
                     f"P_h={P_h}, T_opt={T}"
                 )
@@ -311,3 +306,65 @@ class TestValidation:
     def test_optimal_input_coupler_validates(self) -> None:
         with pytest.raises(ValueError):
             optimal_input_coupler(-1.0, 0.005, 1e-4)
+
+
+@pytest.mark.parametrize("loss", [0.0, 0.01, 0.99999999, math.nextafter(1.0, 0.0)])
+@pytest.mark.parametrize("P", [1e-20, 1e-8, 1.0, 1e8])
+def test_match_boundaries_and_energy_balance(loss: float, P: float) -> None:
+    gamma = 1e-4
+    T = optimal_input_coupler(P, loss, gamma)
+    assert loss <= T <= 1.0
+    Pc = circulating_power(P, T, loss, gamma)
+    assert Pc == pytest.approx(P / T, rel=3e-12)
+    eta = single_pass_conversion_fraction(Pc, gamma)
+    assert Pc * (eta + loss * (1.0 - eta)) == pytest.approx(P, rel=3e-12)
+
+
+def test_reported_low_power_failure_recovers_passive_asymptote() -> None:
+    P, loss, gamma = 1e-8, 0.01, 1e-4
+    T = optimal_input_coupler(P, loss, gamma)
+    assert T > loss
+    assert T - loss == pytest.approx((1.0 - loss) * gamma * P / loss, rel=1e-6)
+
+
+@pytest.mark.parametrize("loss", [1e-20, 1e-12, 0.01])
+def test_passive_match_at_tiny_losses(loss: float) -> None:
+    assert passive_buildup(loss, loss) == pytest.approx(1.0 / loss, rel=1e-14)
+
+
+@pytest.mark.parametrize("T", [1e-8, 0.01, 0.5, 1.0])
+@pytest.mark.parametrize("gamma", [0.0, 1e-4, 1.0, 1e4])
+def test_off_match_conserves_energy_without_output_clamp(
+    T: float, gamma: float
+) -> None:
+    P, loss = 1.0, 0.1
+    Pc = circulating_power(P, T, loss, gamma)
+    Ph = harmonic_output_W(P, T, loss, gamma)
+    eta = single_pass_conversion_fraction(Pc, gamma)
+    survival = math.sqrt((1.0 - loss) * (1.0 - eta))
+    reflection = (math.sqrt(1.0 - T) - survival) / (1.0 - math.sqrt(1.0 - T) * survival)
+    assert P * reflection**2 + Ph + loss * (Pc - Ph) == pytest.approx(P, rel=3e-12)
+
+
+@pytest.mark.parametrize("bad", [math.nan, math.inf, -math.inf, -1.0])
+def test_nonfinite_inputs_rejected_even_at_zero(bad: float) -> None:
+    for fn in (circulating_power, harmonic_output_W):
+        for args in [
+            (bad, 0.5, 0.01, 0.0),
+            (0.0, 0.5, 0.01, bad),
+            (0.0, bad, 0.01, 0.0),
+            (0.0, 0.5, bad, 0.0),
+        ]:
+            with pytest.raises(ValueError):
+                fn(*args)
+    for args in [(bad, 0.01, 0.0), (0.0, bad, 0.0), (0.0, 0.01, bad)]:
+        with pytest.raises(ValueError):
+            optimal_input_coupler(*args)
+
+
+@pytest.mark.parametrize("T", [1e-20, 0.9])
+@pytest.mark.parametrize("loss", [0.0, 0.9])
+def test_passive_bracket_rounds_outward(T: float, loss: float) -> None:
+    assert circulating_power(1.0, T, loss, 1e-100) == pytest.approx(
+        passive_buildup(T, loss), rel=2e-12
+    )

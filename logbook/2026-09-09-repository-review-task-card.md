@@ -2,7 +2,7 @@
 
 **ID:** REPO-REVIEW-2026-09
 **Date:** 2026-09-09
-**Status:** IMPLEMENTATION STARTED — public-facing D6/RC-09/RC-10 corrections underway; numerical packages and binding-value decisions remain open.
+**Status:** IMPLEMENTATION UNDERWAY — RC-01/05 generic corrections and independent checks filed; four tutorials regenerated. D1 acceptance, RC-02/D2, wider RC-07 recalculations and remaining public-record work are open.
 **Steward:** Ulrich Warring
 **Prepared by:** assistant under steward direction; no Council-3 stance or sign-off inferred.
 **Review baseline:** scientific/code findings refer to `50da35f`. The initial card was filed at `60c1832`; the September receipt and coating-report state used by RC-08 is now committed in `ec4e7d401344fce6ff28c5ac88785e360205600f` ([inventory.md](../docs/components/inventory.md), especially §B.3 and §D). Checking out that revision reproduces the public code/document inputs; no working-tree inventory patch is required. Private supplier originals were consulted locally and remain outside the public reproducibility claim.
@@ -47,7 +47,7 @@ not promote an open derivation into accepted physics.
 | Check | Evidence / disposition |
 |---|---|
 | Nonzero-walk-off normalisation | Initial independent quadrature gave `h_m ≈ 0.0392431` at `B ≈ 18.0166`, `ξ ≈ 1.41317`; steward-confirmed reproduction gives `0.0392430`, optimum waist **19.346 µm**, and recovery of the zero-walk-off optimum. Preserve as diagnostic evidence; implement durable, converged regressions in RC-01. The passing existing suite does not establish this convention |
-| Absolute SHG prefactor and absorption conventions | The extra fundamental-index factor is supported by a plane-wave derivation in the follow-up, but reconciliation with an external reference remains **open**. Resolve it and the absorption convention in RC-01 before accepting absolute powers |
+| Absolute SHG prefactor and absorption conventions | RC-01 now supplies the external normalization reference, separate absorption-depth derivation, independent radial-integration and propagation-ODE checks. [Evidence filed for D1](2026-09-09-numerical-foundations.md); full downstream absolute-power claims still require RC-07 |
 | Constraint arithmetic | Initial checks and steward-confirmed reproductions agree on optical products **22.77% / 35.58%** and per-beam powers **130.4 / 115.9 / 39.1 µW** from the currently printed relations. Scattering-table inconsistency is confirmed; prediction/limit/allowance semantics remain D2, not an arithmetic verdict on the physical model |
 | Parameter-test isolation | **Leak claim rejected and retracted in the follow-up.** `_restore_parameters_state` in [test_parameters.py](../tests/test_parameters.py) reloads before and after each test. The mutator-first pytest check passed 2/2; direct calls bypass fixtures. The generator's `-> None` annotation is a separate RC-06 type-cleanup item |
 | Solver limits / auto-path continuity | Passive-limit bracketing failure is confirmed and steward-reproduced. The continuity check was also rerun locally for this filing: **3.3478%** at γP = 0.049999 / 0.05, relative to the depleted-side conversion fraction. RC-05 records the values; the earlier ≈3.2% estimate used a less tightly localised comparison |
@@ -76,7 +76,7 @@ Required Charter dispositions remain separate from this staffing model.
 
 ### RC-01 · MUST — independently validate and correct SHG numerics
 
-**Evidence:** confirmed walk-off discrepancy; prefactor and absorption derivations open. **Dependency:** none for derivation or architecture-neutral corrections; D1 records acceptance evidence.
+**Progress 2026-09-09:** [Derivation and check report](2026-09-09-numerical-foundations.md#rc-01-conventions-and-independent-calculations) now records the corrected walk-off kernel and K, separate absorption depths, focus convention and bounded phase-lobe search. Independent tensor quadrature, weak-focus absolute-power and propagation-ODE tests pass. D1 evidence is filed for steward review; no gate or binding target is changed.
 
 - Reconcile the β/B convention in [boyd_kleinman.py](../src/boyd_kleinman.py): for `B = (ρ/2)√(Lk₁)`, the walk-off exponential requires `−B²(τ−τ′)²/ξ`. Resolve the suspected missing `n_omega` factor in [shg_single_pass.py](../src/shg_single_pass.py), and correct K's documented unit to W⁻¹. [Daniel, Tsai & Hemmerling, Eqs. 1–3](https://arxiv.org/pdf/2009.08430) provide an independent reference.
 - Resolve the absorption parameter κ and focus-offset convention from a cited derivation. The follow-up reports a length/confocal-parameter mismatch; treat the proposed correction as **unverified** until the absorption definitions and limiting cases are derived. Check pump versus harmonic absorption separately.
@@ -87,6 +87,8 @@ Required Charter dispositions remain separate from this staffing model.
 ### RC-02 · MUST — reconcile Raman derivation and locked-value semantics
 
 **Evidence:** confirmed arithmetic discrepancy; physical interpretation unresolved. **Dependency:** none for derivation; D2 before changing locked values or their meaning.
+
+**Progress 2026-09-09:** [D2 inputs](2026-09-09-numerical-foundations.md#rc-02-inputs-for-d2-without-changing-locked-values) derive the printed single-level relation with explicit frequency/intensity conventions and retain runnable scenario results. Full atomic modelling and prediction/limit/allowance disposition remain open; locked values are unchanged.
 
 Re-derive [raman-requirements.md](../constraints/raman-requirements.md) with explicit Hz/rad·s⁻¹ conventions, beam-intensity convention, linewidth definition, dipole matrix element, polarisation and multilevel limitations. Resolve the Gaussian peak-intensity versus `P/(πw₀²)` convention before tightening the prefactors.
 
@@ -134,7 +136,7 @@ Reconcile [phase-noise-budget.md](../constraints/phase-noise-budget.md), [vecsel
 
 ### RC-05 · MUST — correct solver/API edge behaviour
 
-**Evidence:** confirmed counterexamples; additional robustness checks proposed. **Dependency:** none for solver edge cases; coordinate SHG model semantics with RC-01. Independent of D2.
+**Progress 2026-09-09: implemented and verified.** [RC-05 report](2026-09-09-numerical-foundations.md#rc-05-continuous-model-and-physical-brackets) records continuous `auto`, exact match bounds, finite-input guards, explicit small-signal semantics and energy-balance regressions without an output clamp. The original samples below describe the baseline defect, not current API behaviour.
 
 Fix [optimal_input_coupler](../src/enhancement_cavity.py) bracketing near the passive limit (`P=1e-8 W, L=0.01, γ=1e-4 W⁻¹` currently fails) and near `L=1`. Resolve the **3.3478%** discontinuity sampled across `γP=0.05` in the single-pass `auto` path. For explicit `regime="small"`, decide whether to document its limited domain, warn, or reject out-of-domain use: it can return P₂>P₁ despite the current bounded-output docstring.
 
@@ -165,11 +167,13 @@ regression rather than freezing the earlier approximate 3.2% figure.
 
 **Evidence:** downstream dependence on corrected calculations confirmed. **Dependency:** stage each output by the inputs it actually uses; BK/SHG outputs depend on RC-01, affected solver sweeps also on RC-05. Raman/noise budgets wait only for their relevant RC-02–04 results and binding-value dispositions.
 
+**Progress 2026-09-09:** all four generic tutorials are regenerated with the corrected model and matching interpreter; the calculations page marks the ≈42 µm explanation superseded. [Before/after evidence and remaining work](2026-09-09-numerical-foundations.md#validation-outputs-and-remaining-work) are filed. Historical May recalculation, cascade fits, IC sweep, coating targets and their impact assessment remain open.
+
 Trace and rerun the [BK recalculation](../notebooks/2026-05-01-friedenauer-bk-recalculation.py), [cascade diagnostic](../notebooks/diagnostic/2026-05-07-friedenauer-cascade-recompute.py), [IC sweep](../notebooks/exploration/2026-05-20-bbo-ic-impedance-match.py), tutorial sources, [calculations page](../docs/calculations.md), and [coating work package](2026-05-20-bbo-coating-run-wp/).
 
 Revisit γ, fitted passive/non-mirror losses, IC optima, uncertainty bands, circulating intensities and all dependent coating targets. Distinguish a loss fitted to reproduce one output point from independent validation. State harmonic-extraction assumptions. Correct the published formula's missing `k₁` and confocal-parameter factor, and reassess the ≈42 µm discrepancy narrative.
 
-**Opposing corrections:** at the stated BBO point, the walk-off correction
+**Initial sensitivity estimate (superseded by the full-precision RC-01 report):** at the stated BBO point, the walk-off correction
 changes `h_m` from approximately **0.033050 to 0.039243**, scaling γ by
 **1.1874** if K is unchanged. The suspected extra fundamental-index factor
 would scale K by **1/n_omega ≈ 0.598**, using the existing notebook's
@@ -182,8 +186,8 @@ gives **1.672757646** at λ = 0.559 µm. The retained digits reproduce the
 existing notebook input; they are not a stated measurement uncertainty.
 Together these would scale γ by approximately **0.710**,
 with other inputs held fixed. This is a conditional sensitivity estimate,
-not an accepted recalculation. The net direction is unresolved until both
-RC-01 conventions are settled; neither change alone determines whether the
+not an accepted recalculation at filing. RC-01 now confirms a combined factor
+of **0.709844** at fixed inputs. Neither change alone determines whether the
 May coating targets tighten or loosen after the cavity model is rerun.
 
 **Acceptance:** before/after results with source revision and environment, regenerated notebook/HTML outputs, an explicit impact assessment for the frozen May specifications, and dated amendments preserving historical reasoning. The received Agile mirrors remain recorded as delivered stock; a model correction is not evidence of a supplier defect.
@@ -257,7 +261,7 @@ of implementation or approval.
 
 | Decision | Proposed disposition | Accountable owner / status |
 |---|---|---|
-| D1 — Evidence for accepting numerical corrections | Cited conventions and independently implemented, converged nonzero-walk-off and absolute-prefactor benchmarks; external review only if explicitly scoped and assigned | Ulrich; pending evidence |
+| D1 — Evidence for accepting numerical corrections | Cited conventions and independently implemented, converged nonzero-walk-off and absolute-prefactor benchmarks; external review only if explicitly scoped and assigned | Ulrich; independent calculations and converged tests filed in the numerical report; acceptance pending |
 | D2 — What do locked Γ_sc values mean? | Resolve prediction/limit/allowance semantics before changing those numbers or acceptance tests; record applicable §9 disposition | Ulrich; pending; does not gate unrelated work |
 | D3 — Reliance on derived May results during correction | Mark affected recommendations as awaiting revalidation; preserve historical values and receipt facts | Ulrich; proposed, not enacted by this card |
 | D4 — Charter wording/history and frozen-spec amendments | Use dated corrections and the documented revision process; preserve original sign-offs and obtain applicable governance review | Ulrich; pending |
@@ -267,7 +271,7 @@ of implementation or approval.
 ## Completion criteria and handoff
 
 - [ ] Each RC-01–11 entry links to a completed artifact/check report or a dated defer/block record stating the reason, exact dependency and next action; accountable owner is Ulrich unless explicitly reassigned.
-- [ ] RC-01's independent calculation records equations, input conventions, reference results, convergence and tolerances. RC-05's original counterexamples and boundary regressions pass; unresolved discrepancies are listed by test/input.
+- [x] RC-01's independent calculation records equations, input conventions, reference results, convergence and tolerances. RC-05's original counterexamples and boundary regressions pass; tested-domain limitations are listed in the [numerical report](2026-09-09-numerical-foundations.md). D1 acceptance remains separate.
 - [ ] D2 records prediction/limit/allowance semantics for every affected locked scattering value. Any changed binding value, frozen specification or Charter wording links to its dated disposition and original approval.
 - [ ] An output manifest maps each affected calculation/page to its inputs, revision and environment; every changed numerical output has before/after values or a stated reason why direct comparison is invalid.
 - [ ] A clean-environment report records install, test/coverage, lint/format/type, schema/link and tutorial-regeneration results. Representative injected defects fail their intended checks; a second unchanged tutorial render has no tracked or untracked output drift.
@@ -275,8 +279,9 @@ of implementation or approval.
 
 ## Reproduce the filing's arithmetic checks
 
-Run the following from the repository root. This checks the printed relations
-and existing API behaviour; it does not validate the atomic model or the
+Run the following from the repository root. This reconstructs the original
+threshold switch explicitly after RC-05 removed it from `auto`, and checks the
+printed relations; it does not validate the atomic model or the
 suspected SHG prefactor. Executed locally with Python 3.9.7; the steward
 also reports identical output on Python 3.9.7 and 3.13. These diagnostic runs
 do not select RC-06's supported environment or replace its full-suite checks.
@@ -288,12 +293,12 @@ from src.shg_single_pass import single_pass_conversion_fraction
 for detuning_Hz, rabi_Hz, recorded_per_s in [
     (80e9, 100e3, 2500), (40e9, 400e3, 20000), (15e9, 1e6, 110000)
 ]:
-    # Gamma is angular; Omega_R/Delta is convention-invariant (2*pi cancels).
+    # Gamma is the decay rate; Omega_R/Delta is convention-invariant (2*pi cancels).
     rate_per_s = (2 * math.pi * 41e6) * rabi_Hz / (2 * detuning_Hz)
     print(rate_per_s, recorded_per_s / rate_per_s)
 
-eta_small = single_pass_conversion_fraction(1.0, 0.049999)
-eta_depleted = single_pass_conversion_fraction(1.0, 0.05)
+eta_small = single_pass_conversion_fraction(1.0, 0.049999, regime="small")
+eta_depleted = single_pass_conversion_fraction(1.0, 0.05, regime="depleted")
 print(eta_small, eta_depleted, 100 * (eta_small - eta_depleted) / eta_depleted)
 # Ordinary BBO index at vacuum 559 nm; Eimerl 1987 Eq. (1), Table II(a).
 # Provenance and coefficient units: RC-07 and the linked draft extraction.
@@ -303,4 +308,6 @@ print((0.039243 / 0.033050) / n_bbo_ordinary_559nm)  # conditional gamma factor
 
 **Handoff status:** public-facing implementation is recorded in [the D6 correction log](2026-09-09-public-record-corrections.md); cite the reviewed revision of this
 card and the inventory baseline above in the subsequent deliberation record.
-Numerical correction packages and binding-value dispositions remain open; this public-facing correction does not change a gate.
+RC-01/05 implementation, independent checks and tutorial outputs are recorded in
+[the numerical report](2026-09-09-numerical-foundations.md). D1 review, D2 and
+the wider RC-07 impact assessment remain open; no gate is changed.

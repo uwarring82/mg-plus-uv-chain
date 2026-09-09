@@ -178,7 +178,7 @@ ax.plot(
 ax.set_xlabel("Stage-1 transmission  $T_1$ (%)")
 ax.set_ylabel("Stage-2 transmission  $T_2$ (%)")
 ax.set_title("Total harmonic output (W) — 2-D sweep")
-fig.colorbar(im, ax=ax, label="$P_{h,\mathrm{tot}}$ (W)")
+fig.colorbar(im, ax=ax, label=r"$P_{h,\mathrm{tot}}$ (W)")
 ax.legend(loc="lower right")
 fig.tight_layout()
 

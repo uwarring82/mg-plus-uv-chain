@@ -63,7 +63,7 @@ print("Imports OK")
 # Boyd & Kleinman (1968) showed that, for a focused Gaussian pump in a
 # non-depleted crystal, the harmonic power is
 #
-# $$P_{2\omega} = K \; L \; k_1 \; h(\sigma, \beta, \kappa, \xi, \mu) \; P_\omega^2$$
+# $$P_{2\omega} = K \; L \; k_1 \; h \; P_\omega^2$$
 #
 # where $h$ is a **dimensionless** double integral that depends only on
 # geometric and optical parameters:
@@ -73,22 +73,26 @@ print("Imports OK")
 # | $\xi = L/b$ | focusing parameter ($b = 2z_R$ is the confocal parameter) |
 # | $\sigma = \tfrac{1}{2}\Delta k \, b$ | phase mismatch |
 # | $\beta = \tfrac{1}{2}\rho\sqrt{L k_1}$ | walk-off parameter |
-# | $\kappa = (\alpha_1 + \alpha_2/2)L/2$ | absorption |
-# | $\mu$ | focus offset from crystal centre |
+# | $\alpha_1 L$, $\alpha_2 L$ | separate intensity absorption depths (zero here) |
+# | $\mu = 2z_\mathrm{focus}/L-1$ | focus offset from crystal centre |
+#
+# Nonzero legacy `kappa` is rejected: use `alpha_omega_L` and
+# `alpha_2omega_L` separately. This tutorial uses zero absorption.
+# Conventions and normalization follow [Daniel et al., Eqs. 1–3](https://arxiv.org/abs/2009.08430).
 #
 # In the lab you tune $\sigma$ (temperature or angle) for maximum conversion.
-# The $\sigma$-optimised version is $h_m(\xi, \beta, \kappa, \mu)$.
+# The $\sigma$-optimised version is $h_m(\xi, \beta)$ for the centred, lossless case used here.
 
 # %%
 # Quick look: h_m(ξ) for several walk-off parameters β.
-# (For β=0 we can use the fast analytic limit; for β>0 we call h_m_factor.)
+# All curves optimise σ; arctan²(ξ)/ξ would only give the σ=0 limit.
 xi_grid = np.linspace(0.2, 6.0, 150)
 
 fig, ax = plt.subplots(figsize=(8, 4.5))
 
-# β = 0  →  analytic arctan²(ξ)/ξ
-h_beta0 = np.array([bk.h_analytic_no_walkoff_no_loss(x) for x in xi_grid])
-ax.plot(xi_grid, h_beta0, lw=2, label=r"$\beta = 0$ (analytic)")
+# β = 0  →  σ-optimised; arctan²(ξ)/ξ is only the σ=0 limit.
+h_beta0 = np.array([bk.h_m_factor(x) for x in xi_grid])
+ax.plot(xi_grid, h_beta0, lw=2, label=r"$\beta = 0$ (σ-optimised)")
 
 # β = 1 and β = 2  →  numerical (a few evaluations, still fast)
 for beta_val in [1.0, 2.0]:
@@ -126,7 +130,7 @@ print(f"Classic BK optimum:  ξ_opt = {xi_opt:.3f},  h_m_max = {h_max:.4f}")
 # The material constant $K$ packages all the wavelength- and crystal-specific
 # physics:
 #
-# $$K = \frac{2\,\omega^2 \, d_\mathrm{eff}^2}{\pi \, \varepsilon_0 \, c^3 \, n_\omega \, n_{2\omega}}$$
+# $$K = \frac{2\,\omega^2 \, d_\mathrm{eff}^2}{\pi \, \varepsilon_0 \, c^3 \, n_\omega^2 \, n_{2\omega}}$$
 #
 # and the single-pass coefficient is
 #
@@ -192,7 +196,7 @@ else:
 K = boyd_kleinman_K_factor(d_eff, n_o, n_2, lam)
 gamma = gamma_shg_coefficient(d_eff, n_o, n_2, lam, L, h_m_val)
 
-print(f"Material constant K = {K:.4e} W⁻¹·m⁻¹")
+print(f"Material constant K = {K:.4e} W⁻¹")
 print(f"Single-pass coefficient γ_SHG = {gamma:.4e} W⁻¹")
 
 # Plot single-pass conversion vs pump power
@@ -206,13 +210,13 @@ fig, ax = plt.subplots(figsize=(8, 4))
 ax.plot(P_range, h_small, "--", lw=1.5, alpha=0.7, label=r"Small-signal  $\gamma P^2$")
 ax.plot(P_range, h_depl, "-", lw=2, label=r"Depleted  $P \tanh^2(\sqrt{\gamma P})$")
 
-# Mark the 5 % auto-switch threshold
-P_switch = 0.05 / gamma
-ax.axvline(P_switch, ls=":", color="C2", lw=1, alpha=0.6,
-           label=f"Auto-switch  ({P_switch:.1f} W)")
+# Mark a small-signal reference value; auto now uses tanh² everywhere.
+P_reference = 0.05 / gamma
+ax.axvline(P_reference, ls=":", color="C2", lw=1, alpha=0.6,
+           label=f"γP = 0.05  ({P_reference:.1f} W)")
 
-ax.set_xlabel("Pump power $P_\omega$ (W)")
-ax.set_ylabel("Harmonic power $P_{2\omega}$ (W)")
+ax.set_xlabel(r"Pump power $P_\omega$ (W)")
+ax.set_ylabel(r"Harmonic power $P_{2\omega}$ (W)")
 ax.set_title("Single-pass harmonic generation")
 ax.legend(loc="upper left")
 ax.grid(alpha=0.3)
@@ -222,7 +226,8 @@ fig.tight_layout()
 
 # %% [markdown]
 # **Take-away.** At low power the two curves sit on top of each other.
-# Once $\gamma P_\omega$ exceeds ~5 % the depleted curve bends away:
+# The default `auto` uses the depleted model continuously; the explicit
+# small-signal approximation increasingly overestimates conversion:
 # the pump is being consumed, and the conversion fraction can never exceed
 # 100 % (the Manley–Rowe ceiling).
 
@@ -245,8 +250,8 @@ ax.plot(P_range, eta_small * 100, "--", lw=1.5, alpha=0.7,
 ax.plot(P_range, eta_depl * 100, "-", lw=2,
         label=r"Depleted  $\tanh^2(\sqrt{\gamma P})$")
 ax.axhline(100, ls=":", color="gray", lw=1, alpha=0.5)
-ax.set_xlabel("Pump power $P_\omega$ (W)")
-ax.set_ylabel("Conversion fraction  $\eta$ (%)")
+ax.set_xlabel(r"Pump power $P_\omega$ (W)")
+ax.set_ylabel(r"Conversion fraction  $\eta$ (%)")
 ax.set_title("Single-pass conversion fraction")
 ax.legend(loc="lower right")
 ax.grid(alpha=0.3)

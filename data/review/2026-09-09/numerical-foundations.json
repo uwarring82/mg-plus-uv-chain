@@ -1,0 +1,142 @@
+{
+  "baseline_revision": "9a498165532e029e1ba0706d380f760402dd7584",
+  "provenance": "Changed source and this manifest are filed together; hashes identify the exact inputs.",
+  "python": "3.13.7",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "packages": {
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "pytest": "9.1.1"
+  },
+  "sha256": {
+    "src/boyd_kleinman.py": "3f9f9ef4bee7212003c56a36d42afc41e120eb97cbf154259850b626819a7c23",
+    "src/shg_single_pass.py": "086afb5471eb3858f4958a7439b4870605d4c91bc2bdad97cd2b9e69e62214cc",
+    "src/enhancement_cavity.py": "0870faca9e5dc407fa93eb773c10a63b7634a82d7f40954a99a89a3f8ae6a392",
+    "src/parameters.py": "80a42f1ffe683fdee811c205733be0d2994eb50aefcc4a83e30dfb10ec38c523",
+    "constraints/raman-requirements.md": "9d82303b067ee30e3ab2ab15c7974d37074344c3b0097869fc128473f7b900eb",
+    "scripts/review/shg_reference.py": "0a38b76c30494a7c142fee370949fa3f1751c78cae080ee21d12f50df62cd26c",
+    "scripts/review/verify_numerical_foundations.py": "e337555c70df49dea571580b4014d04d15c4aa9e1f03740d71f3f7699c062a84",
+    "tests/test_boyd_kleinman.py": "74c9db50c70027d261258d31636132d4c1e9ff4cb9741fccdc11325feecfef96",
+    "tests/test_shg_single_pass.py": "7d80346a40cb72b869648d728ab3fef4a1578a062af1a965d667b7ba2fb199e1",
+    "tests/test_enhancement_cavity.py": "96bfd5fdd575aee3b49580e7675374ce4fac8f1b1532e57e881e51074278562d"
+  },
+  "quadrature": [
+    {
+      "xi": 0.2,
+      "sigma": 0.9,
+      "B": 0.0,
+      "tensor_256": 0.19736653791636288,
+      "tensor_512": 0.19736653791636286,
+      "reduced": 0.1973665379163628,
+      "relative_refinement": 2.220446049250313e-16,
+      "relative_method_difference": 3.3306690738754696e-16
+    },
+    {
+      "xi": 1.0,
+      "sigma": 0.7,
+      "B": 1.0,
+      "tensor_256": 0.5080385603230582,
+      "tensor_512": 0.5080385603230524,
+      "reduced": 0.5080385603230434,
+      "relative_refinement": 1.1324274851176597e-14,
+      "relative_method_difference": 1.765254609153999e-14
+    },
+    {
+      "xi": 2.84,
+      "sigma": 0.57,
+      "B": 0.0,
+      "tensor_256": 1.0677023290134073,
+      "tensor_512": 1.0677023290133945,
+      "reduced": 1.0677023290133738,
+      "relative_refinement": 1.199040866595169e-14,
+      "relative_method_difference": 1.9317880628477724e-14
+    },
+    {
+      "xi": 4.0,
+      "sigma": 0.5,
+      "B": 4.0,
+      "tensor_256": 0.14374342288024397,
+      "tensor_512": 0.14374342288024083,
+      "reduced": 0.14374342288023573,
+      "relative_refinement": 2.1760371282653068e-14,
+      "relative_method_difference": 3.552713678800501e-14
+    },
+    {
+      "xi": 1.41317,
+      "sigma": 0.8,
+      "B": 18.0166,
+      "tensor_256": 0.03924291316046102,
+      "tensor_512": 0.039242913160460295,
+      "reduced": 0.03924291316045922,
+      "relative_refinement": 1.84297022087776e-14,
+      "relative_method_difference": 2.7422508708241367e-14
+    },
+    {
+      "xi": 0.5,
+      "sigma": -1.0,
+      "B": 8.0,
+      "tensor_256": 0.06892420144394376,
+      "tensor_512": 0.06892420144394286,
+      "reduced": 0.06892420144394151,
+      "relative_refinement": 1.3100631690576847e-14,
+      "relative_method_difference": 1.9539925233402755e-14
+    }
+  ],
+  "bbo_diagnostic": {
+    "xi": 1.41317,
+    "B": 18.0166,
+    "n_omega": 1.67276,
+    "wavelength_m": 5.59e-07,
+    "length_m": 0.01,
+    "old_hm": 0.033049548540182876,
+    "new_hm": 0.039243010481794696,
+    "independent_tensor_hm": 0.03924301048179577,
+    "xi_opt": 1.421116507354929,
+    "hm_opt": 0.03924326732798899,
+    "waist_opt_m": 1.934569383193708e-05,
+    "combined_gamma_factor_at_fixed_inputs": 0.7098443831234005
+  },
+  "solver": {
+    "low_power_match": 0.010000000099,
+    "gamma_P_samples": [
+      0.049999,
+      0.05
+    ],
+    "auto_fractions": [
+      0.04837841907939564,
+      0.04837935515122395
+    ]
+  },
+  "raman_printed_relation_only": [
+    {
+      "scenario": "Conservative",
+      "detuning_Hz": 80000000000.0,
+      "rabi_Hz": 100000.0,
+      "formula_rate_per_s": 161.0066234964769,
+      "recorded_rate_per_s": 2500.0,
+      "recorded_over_formula": 15.527311521160522,
+      "pi_pulse_s": 5e-06,
+      "formula_events_per_pi_pulse": 0.0008050331174823845
+    },
+    {
+      "scenario": "Nominal",
+      "detuning_Hz": 40000000000.0,
+      "rabi_Hz": 400000.0,
+      "formula_rate_per_s": 1288.0529879718151,
+      "recorded_rate_per_s": 20000.0,
+      "recorded_over_formula": 15.527311521160522,
+      "pi_pulse_s": 1.25e-06,
+      "formula_events_per_pi_pulse": 0.001610066234964769
+    },
+    {
+      "scenario": "Aggressive",
+      "detuning_Hz": 15000000000.0,
+      "rabi_Hz": 1000000.0,
+      "formula_rate_per_s": 8587.0199198121,
+      "recorded_rate_per_s": 110000.0,
+      "recorded_over_formula": 12.81003200495743,
+      "pi_pulse_s": 5e-07,
+      "formula_events_per_pi_pulse": 0.0042935099599060505
+    }
+  ]
+}

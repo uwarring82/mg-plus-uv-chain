@@ -10,6 +10,8 @@ description: Boyd–Kleinman recalculation against the Friedenauer 2006 baseline
 
 # What the recomputation tells us so far.
 
+**Review update — 2026-09-09:** RC-01/05 now correct the SHG normalization and solver edge cases; [derivations and reproducible checks](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-09-09-numerical-foundations.md) are filed. The four generic tutorials have been regenerated. The May tables below are historical: cascade fits, coating targets and Raman/noise budgets await their RC-02–04/07 recalculations.
+
 This page collects the substantive computational results to date. Each result is anchored to either the Friedenauer 2006 structured extraction or to a cited literature constant; results without a primary citation are flagged as such.
 
 ---
@@ -34,14 +36,25 @@ Match to within a few percent. Residual gap is consistent with the uncertainty i
 
 ### BBO 559 → 280 nm — Type-I, walk-off-limited
 
+**Historical May calculation (superseded by the correction below):**
+
 | Quantity | Paper | Recomputed | Δ |
 |---|---|---|---|
 | BK σ-optimum w₀ (β = 0, no walk-off) | 19.4 μm | 13.6 μm | −30 % |
 | BK σ-optimum w₀ (β = 18.4 with literature ρ ≈ 85 mrad) | 19.4 μm | ≈ 42 μm | +117 % |
 
-> **Interpretation.** Single-pass Boyd–Kleinman with the literature-typical ρ ≈ 85 mrad walk-off over-predicts the optimum waist by a factor ≈ 2.17. Conversely, the paper's reported w₀ corresponds (under this notebook's β-convention) to a much smaller effective walk-off ρ ≈ 2.5 mrad. Most likely explanation: Friedenauer's *BK-derived* optimum is for the enhancement cavity, where the figure of merit is parametric conversion at the intracavity intensity for the given round-trip loss budget — not the plain single-pass BK *h*<sub>m</sub>. Resolving this is post-G1 Phase 3 simulation work; the honest documentation of the discrepancy is the deliverable.
+**Correction — 2026-09-09.** The walk-off kernel was missing its divisor ξ.
+With the review's diagnostic inputs B=18.0166, L=10 mm, n₁=1.67276 and
+vacuum wavelength 559 nm, the corrected calculation gives an optimum waist
+**19.346 µm**, close to the reported 19.4 µm. The old ≈42 µm discrepancy
+therefore does not support the proposed enhancement-cavity explanation.
+At the fixed ξ=1.41317 anchor, hₘ changes from 0.03304955 to 0.03924301.
+The accompanying SHG-prefactor correction divides K by n₁; together they
+scale γ by **0.709844** with the other inputs fixed. This is not a new
+coating specification or a validation of the fitted cavity losses.
 
-### Five concrete data gaps surfaced
+
+### Five data gaps recorded in May (status requires RC-07 follow-through)
 
 1. **Sellmeier coefficients for LBO at 1118 nm** — to lock n_LBO beyond order-of-magnitude. Belongs in [KD-UV280-007 Section C](KD-2026-XXX-uv-280nm.html#kd-uv280-007--lbo-at-relevant-shgsfg-stages).
 2. **Sellmeier coefficients and walk-off for BBO at 559 → 280 nm Type-I** — the binding uncertainty for the BBO BK analysis. Belongs in [KD-UV280-005 Section C](KD-2026-XXX-uv-280nm.html#kd-uv280-005--bbo-at-280-nm--phase-matching-walk-off-damage-threshold).
@@ -81,9 +94,11 @@ The single-intermediate-level Raman prefactor used in `constraints/raman-require
 
 ## Architecture-neutral utilities — what they prove *Coastline*
 
-<p class="classification classification--coastline">Coastline · 78 / 78 tests pass; coverage 91 %; mechanically enforced by CI-runnable pytest</p>
+<p class="classification classification--coastline">Coastline · historical May test snapshot; current check recorded below</p>
 
-Test posture at HEAD across four test files.
+**Current check (2026-09-09):** 252 tests pass, 96.18% coverage including branches,
+in the recorded Python 3.13.7 environment. CI enforcement remains RC-06.
+The following table is the historical May snapshot across four test files.
 
 | Module | Tests | What it validates |
 |---|---|---|
