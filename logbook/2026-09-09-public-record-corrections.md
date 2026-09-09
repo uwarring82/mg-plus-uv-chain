@@ -68,6 +68,39 @@ unresolved. RC-09 still owns the wider status, schema and link audit; RC-06
 still owns CI and supported-environment enforcement. No release, DOI deposit,
 Git author-configuration change or history rewrite is made by this work.
 
-**Publication:** changes are prepared and committed locally. The public site
-continues to serve the remote branch until these commits are pushed; no push
-or deployment is included in this correction set.
+**Initial publication status (at `16eea0a`):** the first correction set was
+committed locally; it had not been pushed or deployed at that point. The
+README follow-up below precedes publication of the reviewed commits.
+
+
+## RC-09 follow-up — README status and existing paths
+
+**Baseline:** `16eea0a`; checked 2026-09-09.
+
+The dossier index lagged its own detail sections: entries **008, 009, 011
+and 012** each already stated **POPULATING / Operationally bounded** in
+their closing paragraphs, while their index rows said SCAFFOLD / TBD.
+The four index rows now reflect those existing classifications. The count
+is **8 POPULATING + 1 DRAFT + 6 SCAFFOLD = 15 entries**, so **9/15** are
+past scaffold. Separately, `git ls-files 'data/literature/*/extracted.yaml'`
+returns **22** tracked extraction files. Neither count is a new scientific
+acceptance or a gate disposition.
+
+The README now dates these counts, links their source and the September
+review/correction records, and lists only existing paths in its selected
+layout tree. The four absent paths (`data/baseline/` and the three proposed
+dedicated comparison/stability/protocol pages) are explicitly marked planned.
+The stale CC-BY-4.0 annotation on LICENSE-DOCS in that tree is also corrected.
+Draft constraints are distinguished from locked values in `parameters.py`.
+
+Validation: recomputed dossier status counts from the index, cross-checked
+the four changed rows against their detail sections, checked all listed tree
+paths against tracked repository content, and checked README local links and
+fragments. The planned paths remain absent. No numerical code, constraints,
+Charter text or gate records changed.
+
+The steward also withdrew the earlier regex-based claim that coating-run
+children need duplicate §9 blocks; their parent workplan and BC-G records
+supply the relevant context. The reported CSS-class check found only the
+pre-existing `notebook-content` hook; this is corroborating source inspection,
+not a substitute for the still-outstanding browser visual QA.

@@ -4,7 +4,9 @@ UV source redesign for ²⁵Mg⁺ detection, cooling, and coherent control.
 
 A reproducible, version-controlled, FAIR design effort to redesign the all-solid-state CW laser source producing radiation near 280 nm for trapped ²⁵Mg⁺. Successor to Friedenauer *et al.*, *Appl. Phys. B* **84**, 371 (2006).
 
-**Status.** Charter v1.0 frozen 2026-04-30. Phase 0.5 G3 closed 2026-05-01 (reference triple locked). Phase 1 literature dossier in progress (5/15 entries past SCAFFOLD). Phase 2 baseline measurement continues unblocked. **G3 no longer blocks Phase 4**, but the remaining Phase 4 entry conditions — including G2 (degradation-rate inputs) and the §5.1 G1 anti-seeding clause for architecture-family-specific simulation — remain governed by the Charter. G1 and G2 remain OPEN.
+**Status — checked 2026-09-09.** The [literature dossier index](docs/KD-2026-XXX-uv-280nm.md#entry-index) records **9 of 15 entries past SCAFFOLD** (8 POPULATING, 1 DRAFT). These are dossier topics, distinct from the **22 per-paper extraction files** under [data/literature/](data/literature/). The [September review card](logbook/2026-09-09-repository-review-task-card.md) tracks numerical corrections and documentation work; the [correction record](logbook/2026-09-09-public-record-corrections.md) records progress. The [inventory](docs/components/inventory.md#agile-receipt) includes the Agile mirror receipt and selected coating data.
+
+Phase 2 baseline measurement remains unblocked. G1 and G2 remain OPEN; G3 has been CLOSED since 2026-05-01 (reference triple locked). Architecture-specific simulation and degradation-dependent comparison inputs remain subject to their [gate conditions](#status-of-kill-gates-charter-51). The Charter remains frozen at v1.0.
 
 **Steward.** Ulrich Warring (Albert-Ludwigs-Universität Freiburg, AG Schätz).
 
@@ -36,37 +38,51 @@ This repository is governed by the [Charter](CHARTER.md). The Charter is the can
 
 ## Repository layout
 
-```
+Selected paths present in the repository:
+
+```text
 mg-plus-uv-chain/
 ├── CHARTER.md                  Frozen at v1.0; canonical design document
 ├── README.md                   This file
-├── CONVENTIONS.md              Code, units, naming, commit conventions
-├── CITATION.cff                Citation metadata
+├── CONVENTIONS.md              Units, code and contribution conventions
+├── CITATION.cff                Software citation metadata
 ├── LICENSE                     MIT (code)
-├── LICENSE-DOCS                CC-BY-4.0 (documents)
+├── LICENSE-DOCS                Document-licence scope and prior declaration
+├── LICENSES.md                 Licence map and pending assignments
 ├── endorsement.md              Historical scope and attribution record
 ├── src/
-│   ├── parameters.py           SI-units contract (single source of truth)
-│   └── …                       (architecture-neutral utilities pre-G1; family-specific code post-G1)
-├── constraints/                Immutable Level 0/1 reference objects (§1.5)
+│   ├── parameters.py           SI constants and locked reference values
+│   └── boyd_kleinman.py        One of the generic optical-model utilities
+├── constraints/                Constraint derivations; draft status noted in each file
 │   ├── raman-requirements.md
 │   ├── loss-budget.md
 │   └── phase-noise-budget.md
 ├── docs/
-│   ├── KD-2026-XXX-uv-280nm.md Literature dossier (Phase 1)
-│   ├── architecture-comparison.md
-│   ├── stability-budget.md
-│   └── degradation-protocol.md
-├── tests/                      ≥ 90 % coverage target; mechanical enforcement of §5.1
-├── notebooks/                  Exploratory; pre-G1 work tagged
+│   ├── KD-2026-XXX-uv-280nm.md  Literature dossier (Phase 1)
+│   ├── architectures/          Candidate sketches and requirements
+│   ├── components/             Baseline, stock inventory and seed-laser records
+│   ├── tutorials/              Generated tutorials and supporting documentation
+│   ├── hardware-status.md     Dated hardware record
+│   └── status.md              Dated phase/gate snapshot
+├── tests/                      Numerical tests and import guards; CI work in RC-06
+├── notebooks/                  Tutorial sources, diagnostics and explorations
+├── scripts/                    Rendering and conversion tools
 ├── data/
-│   ├── baseline/               Measurements on the existing chain (Phase 2)
-│   └── literature/             Parameters extracted from cited works
+│   ├── README.md               Data layout and measurement-metadata conventions
+│   ├── literature/             Per-paper extractions and notes
+│   └── lab notes/              Converted lab records; private attachments excluded
 └── logbook/
     ├── _templates/
     │   └── gate-closure.md     §5.3 template
-    └── 2026-04-30-kickoff.md   Charter deliberation history
+    └── 2026-09-09-repository-review-task-card.md
 ```
+
+**Planned, not yet present:** `data/baseline/` for Phase 2 measurement deposits,
+and `docs/architecture-comparison.md`, `docs/stability-budget.md` and
+`docs/degradation-protocol.md` as dedicated outputs. Current architecture
+requirements live under [docs/architectures/](docs/architectures/); measurement
+metadata conventions are in [data/README.md](data/README.md).
+
 
 ---
 

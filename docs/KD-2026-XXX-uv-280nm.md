@@ -10,7 +10,7 @@ description: Phase 1 literature dossier in Kompass-Dossier format. 15 ledger ent
 **Version:** v0.2-populating
 **Date opened:** 2026-05-01
 **Steward:** Ulrich Warring (Albert-Ludwigs-Universität Freiburg, AG Schätz)
-**Status:** POPULATING — scaffold defined; KD-UV280-013 populated from Friedenauer2006; other citation slots pending Phase 1 literature work.
+**Status:** POPULATING — per-entry status is recorded in the index below. The index was reconciled with the existing detail sections on 2026-09-09; this is a summary correction, not a new scientific acceptance.
 **Schema:** Kompass-Dossier, Section A/B/C with §8 outcome classification (Resolved / Operationally bounded / Underdetermined).
 **Charter reference:** [CHARTER §5 Phase 1 row](../CHARTER.md), [§4 architecture families](../CHARTER.md), [§8 open boundaries](../CHARTER.md).
 
@@ -75,11 +75,11 @@ External coastlines cited as constraints, not replicated:
 | KD-UV280-005 | BBO at 280 nm — phase-matching, walk-off, damage threshold | §5 P1, §8.4 | Operationally bounded | POPULATING |
 | KD-UV280-006 | CLBO at 280 nm — competing crystal characterisation | §5 P1 | TBD | SCAFFOLD |
 | KD-UV280-007 | LBO at relevant SHG/SFG stages | §5 P1 | TBD | SCAFFOLD |
-| KD-UV280-008 | UV mirror coatings — HR, OC, AR specifications and degradation | §5 P1, §8.6 | TBD | SCAFFOLD |
-| KD-UV280-009 | Hygroscopic and environmental constraints (BBO, CLBO) | §5 P1 | TBD | SCAFFOLD |
+| KD-UV280-008 | UV mirror coatings — HR, OC, AR specifications and degradation | §5 P1, §8.6 | Operationally bounded | POPULATING |
+| KD-UV280-009 | Hygroscopic and environmental constraints (BBO, CLBO) | §5 P1 | Operationally bounded | POPULATING |
 | KD-UV280-010 | 14-GHz unlockable resonance domain — published evidence | §8.1 | Underdetermined | POPULATING |
-| KD-UV280-011 | UV-induced BBO degradation and gas-environment dependence | §8.2, §8.4 | TBD | SCAFFOLD |
-| KD-UV280-012 | UV mirror coating degradation under CW exposure | §8.6 | TBD | SCAFFOLD |
+| KD-UV280-011 | UV-induced BBO degradation and gas-environment dependence | §8.2, §8.4 | Operationally bounded | POPULATING |
+| KD-UV280-012 | UV mirror coating degradation under CW exposure | §8.6 | Operationally bounded | POPULATING |
 | KD-UV280-013 | Friedenauer 2006 baseline parameter extraction | §1 baseline | Resolved | DRAFT |
 | KD-UV280-014 | Phase-locked dual-source phase-noise literature | §4 (counter-obs.) | TBD | SCAFFOLD |
 | KD-UV280-015 | Pump source options — Yb-fibre vs. VECSEL near 1118 nm | §3 open | Operationally bounded | POPULATING |
