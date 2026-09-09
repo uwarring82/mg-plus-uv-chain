@@ -4,6 +4,8 @@
 
 **Status:** Phase 0.5 deliverable. **DRAFT — NOT LOCKED.** This document quantifies the relative phase-noise spectral density $S_\varphi(f)$ between the two Raman beams and the absolute UV-source linewidth bound. All numeric envelopes are draft estimates for Steward review.
 
+**Review note — 2026-09-09:** The [repository review (RC-04)](../logbook/2026-09-09-repository-review-task-card.md) identified inconsistencies in linewidth scaling and the interpretation of coherence requirements; corrected definitions and budgets remain pending.
+
 ---
 
 ## 1. Relative phase-noise spectral density $S_\varphi(f)$ — Level 0

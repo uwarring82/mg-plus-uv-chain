@@ -4,6 +4,8 @@
 
 **Status:** Phase 0.5 deliverable. **DRAFT — NOT LOCKED.** This document contains a proposed bounded-scenario set (Conservative / Nominal / Aggressive) for Steward review. It does **not** constitute a G3 closure; locking requires the §5.3 gate-closure protocol, a logbook entry, and Integrator acknowledgement.
 
+**Review note — 2026-09-09:** The [repository review (RC-02/03, D2)](../logbook/2026-09-09-repository-review-task-card.md) identified a mismatch between the scattering-rate table and its printed equation; the interpretation of the recorded rates and the numerical corrections remain open.
+
 ---
 
 ## Draft scenario summary

@@ -4,6 +4,8 @@
 
 **Status:** Phase 0.5 deliverable. **DRAFT — NOT LOCKED.** This document links the ion-side intensity required for Raman operation (per `raman-requirements.md`) to the source-side power target. All numeric estimates are draft placeholders for Steward review.
 
+**Review note — 2026-09-09:** The [repository review (RC-03)](../logbook/2026-09-09-repository-review-task-card.md) identified errors in the per-beam power table and optical-throughput arithmetic (the printed 18% product evaluates to 22.77%); corrections remain pending.
+
 ---
 
 ## 1. Ion-side intensity requirement (from Level 0)

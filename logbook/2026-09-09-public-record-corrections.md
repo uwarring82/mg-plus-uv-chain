@@ -104,3 +104,25 @@ children need duplicate §9 blocks; their parent workplan and BC-G records
 supply the relevant context. The reported CSS-class check found only the
 pre-existing `notebook-content` hook; this is corroborating source inspection,
 not a substitute for the still-outstanding browser visual QA.
+
+
+## Constraint review notices and live-link corroboration
+
+**Date:** 2026-09-09. **Baseline:** `24cb6e0`.
+
+Each of the three constraint drafts now has one dated line below its existing
+status declaration, linking to the review card and naming the relevant
+finding: scattering-table inconsistency (RC-02/03, D2), power/throughput
+arithmetic (RC-03), or linewidth/coherence interpretation (RC-04). Removing
+that added line reproduces each original file byte-for-byte. Equations,
+tables, draft declarations, locked parameters and gate state are unchanged.
+Review links resolve locally; this is a notice of pending correction, not
+implementation or acceptance of a replacement model.
+
+The steward independently reports that 13 sampled live `.html` targets,
+covering root, architecture/component and both tutorial types, return HTTP
+200. Those sampled warnings are resolved as GitHub source-browsing/Jekyll
+path-convention differences, not site defects. The individual URL list was
+not supplied here, so this corroboration is not represented as a retained
+full-site link report. The remaining BC-B/BC-F source-link findings and the
+wider RC-09 link audit remain open.
