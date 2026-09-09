@@ -4,15 +4,15 @@ title: Optical-components inventory — SHG/FHG shelf
 description: Inventory of optical components for the LBO and BBO doubling stages, keyed to the Friedenauer 2006 baseline. Working artefact with verification trail.
 ---
 
-<p class="endorsement"><strong>Endorsement Marker.</strong> Local lab inventory — AG Schätz stewardship. Items listed here are pre-existing stock identified from photographs and vendor documentation; their fitness for any specific build is conditional on later inspection (coating verification, scratch/dig, batch consistency).</p>
+<p class="endorsement"><strong>Endorsement Marker.</strong> Local lab inventory — AG Schätz stewardship. Items listed here are shelf stock and new receipts identified from photographs and vendor documentation; their fitness for any specific build is conditional on later inspection (coating verification, scratch/dig, batch consistency).</p>
 
 <p class="eyebrow">Inventory</p>
 
 # Optical-components inventory — SHG/FHG shelf
 
-**Last updated:** 2026-05-07 (initial inventory pass; BBO crystals added the same day from vendor documentation).
+**Last updated:** 2026-09-09 (Agile receipt cross-check supplemented with selected specifications from the supplier coating reports).
 **Status:** DRAFT. Working inventory; line-item readings need bench verification before procurement decisions.
-**Source documents (referenced for traceability; not committed to repo because they include personal contact data and pricing):**
+**Source documents (referenced for traceability; originals held privately because of contact data, pricing or internal-use restrictions):**
 
 - Shelf photograph, 2026-05-07 (original 4087 × 3441 px).
 - Raicol Crystals *Certificate of Compliance & Tests No. 6331*, 08 Jun 2025.
@@ -20,6 +20,10 @@ description: Inventory of optical components for the LBO and BBO doubling stages
 - A-Star vendor labels (photographed 2026-05-07; PO BL170229 / SO AS171206-01).
 - Castech vendor label (photographed 2026-05-07; G8115-2 / Crystal ID 2-21577).
 - Raicol *Quotation PQ250167*, 04 Jul 2025 (expired; reference for restocking only).
+- Agile Optic *Delivery note 2026-09-03 / SH / 02*, issued 03 Sep 2026; receipt on 07 Sep 2026 confirmed by U. Warring.
+- Agile mirror-set photograph, dated 08 Sep 2026 in the filename (five labelled Layertec boxes).
+- Agile Optic *Quotations 2026-06-03_01 and 2026-06-03_02*, 03 Jun 2026, mirror items 1–2 (technical cross-check only).
+- Three Layertec coating reports forwarded by Agile, filed 09 Sep 2026 (internal-use originals; only selected specifications summarised below).
 
 **Scope.** Maps each identified box / loose item to its likely role in either the **LBO ring cavity** (1118 nm → 559 nm; conventionally labelled here at the coating-stated 1120 nm / 560 nm) or the **BBO ring cavity** (559 nm → near 280 nm) of the [Friedenauer 2006 baseline](friedenauer-baseline.html). The seed-laser layer that feeds the LBO cavity is documented separately under [Seed lasers (VECSEL)](seed-lasers.html); the BBO-ring cavities currently fielded in the lab (three home-built doublers: Raman / BD / RD) are documented under [Home-built doublers (lab survey)](home-built-doublers.html); items on this page are downstream of the seed and may map to either fielded or on-shelf seats.
 
@@ -131,11 +135,14 @@ with the upstream LBO output bracketed between ~ 0.5 W and ~ 1.5 W of
   AOI 13.7° ± 1.5° p-pol; back-face narrow-band AR @ 280 nm.
 
 Substrate: Heraeus Herasil throughout, IBS deposition. The on-shelf
-inventory rows below show which items (e.g., **I-B7** at R = 98.5 %,
+legacy inventory rows below show which items (e.g., **I-B7** at R = 98.5 %,
 **I-B9** IBS HR R = 50 mm) bracket the new spec but **none are
-drop-in matches** — the new spec's tolerance on T_IC (±500 ppm),
+verified drop-in matches** — the new spec's tolerance on T_IC (±500 ppm),
 its AOI band on the curved seats, and the M4' dichroic dual-WL
 requirement together exceed any of the on-shelf candidate rows.
+The September Agile receipt is recorded separately in [§B.3](#agile-receipt);
+it agrees with the quoted mirror scope but does not establish compliance
+with all May targets.
 
 | ID | Box / vendor | Reading | Likely Friedenauer role | Notes | Source-tier | Qty checked | Initials | Date |
 |---|---|---|---|---|---|---|---|---|
@@ -186,6 +193,87 @@ BBO M4' specifically requires high reflectivity at 559 nm and high transmission 
 
 ---
 
+<a id="agile-receipt"></a>
+
+### B.3 Agile mirror receipt — 2026-09-07
+
+**Received:** 2026-09-07, per U. Warring; reviewed 2026-09-09. The delivery
+note itself is dated **2026-09-03**, while the photograph filename is dated
+**2026-09-08**. Supplier: **Agile Optic**; packaging bears **Layertec**
+branding and the item identifiers below. These are new stock, separate from
+I-B1–I-B22 and I-C1–I-C5.
+
+**Reconciliation:** the note lists one bundle of **10 curved + 5 piezo +
+5 standard input mirrors**, plus **2 additional input mirrors**. This is
+**22 mirrors**, nominally **five four-mirror sets plus two spare ICs**,
+matching mirror items 1–2 of both June quotations. The photo shows five
+boxes labelled **5 + 5 + 5 + 5 + 2**; the two curved-mirror boxes share item
+209683. No distinct M3'/M4' coating split is documented. Labels and plastic
+obscure individual optics, so this is a document/box-label reconciliation,
+not a complete physical count. The physical-verification columns remain
+blank. No installation or bench acceptance is established by these sources.
+
+| ID | Supplier / photographed item | Specification and label reading | Quantity received (document / labels) | Likely Friedenauer role | Notes | Source-tier | Qty checked | Initials | Date |
+|---|---|---|---|---|---|---|---|---|---|
+| I-B23 | Agile / Layertec **209678**; middle-left box | Plane, Ø 12.7 × 6.35 mm (note); label: “Incoupler 560 nm”, ½″, PR **98.2 %**, PR pointing inwards | **5 pcs** (one box labelled 5×) | **M1' standard input coupler** | Note and quotation give Pr(560 nm) ≈ 98.2 %; matching coating report adds tolerance, AOI and rear AR (see below). Substrate and operating-point T remain unconfirmed | O | — | — | — |
+| I-B24 | Agile / Layertec **LT209685**; top box | Plane, Ø 6.35 × **2.3 mm** (note), **R(560 nm) > 99.95 %**; label: “Piezo mirror 560 nm”, ¼″, HR, HR pointing inwards | **5 pcs** (one box labelled 5×) | **M2' plane HR / piezo seat** | Thickness matches June quote but differs from May's 2.0 mm target; no actuator included in this inventory item | O | — | — | — |
+| I-B25 | Agile / Layertec **209683**; both bottom boxes | Curved **ROC 50 mm** (note and labels), Ø 12.7 mm (labels); **R(560 nm) > 99.95 %, T(280 nm) > 5 %** (note); labels: “HR 560 nm, AR SHG”, HR pointing inwards | **10 pcs** (two boxes, each labelled 5×) | **M3' curved HR candidate; M4' output-coupler candidate pending UV transmission confirmation** | Same item number on both boxes; do not count as two separate ten-piece lots. Curved thickness and substrate remain unspecified; likely matching HR report documents UV surface AR (see below), but not total operating-point UV transmission. Label prefix appears “Zerol.” (`O*` for this word only); material meaning unresolved | O (prefix O*) | — | — | — |
+| I-B26 | Agile / Layertec **202460**; middle-right box | Plane, Ø 12.7 × 6.35 mm (note); label: “Incoupler 560–590 nm”, ½″, PR **97.6 %**, PR pointing inwards | **2 pcs** (one box labelled 2×) | **M1' alternative input coupler** | June optional ICs are included in this receipt. Matching report supports the wider label band and adds tolerance and AOI (see below); performance at the intended operating point remains to be verified | O | — | — | — |
+
+#### Selected coating-report specifications
+
+Only a brief technical summary is reproduced here; full reports and batch
+identifiers remain in the private outreach archive. **Assignments below are
+provisional:** the reports identify coating batches, without the photographed
+item numbers. The IC assignments follow matching nominal R / wavelength
+bands; the HR report most plausibly matches the curved HR / UV-AR item.
+No separate report is explicitly identified for piezo mirror **I-B24**.
+
+| Likely inventory match | Selected green reflectivity specification | Conditions |
+|---|---|---|
+| I-B23 — standard IC | **R = 98.2 ± 0.2 %** | p polarisation; AOI **14°**; **560–600 nm** |
+| I-B25 — curved HR (assignment to confirm) | **R > 99.95 %** | p polarisation; AOI **5°–15°**; **560–600 nm** |
+| I-B26 — alternative IC | **R = 97.6 ± 0.3 %** | p polarisation; AOI **7.5°–15°**; **560–590 nm** |
+
+Both IC reports specify rear AR in their green bands. The HR report also
+specifies low surface reflectance at **280–300 nm for s polarisation**.
+**These are measurement-backed coating data:** the HR report includes a
+measured UV transmission spectrum at 0°; Layertec fits the coating design
+to the measured spectrum and calculates reflectance at the specified
+working angles. This supports high UV transmission and substantially
+improves on the delivery note's weak >5 % statement. The remaining question
+is the precise whole-optic transmission at **280 nm, s polarisation and
+14°**, and the report's assignment to the delivered item; it is not an
+absence of UV transmission measurements. No individual bench acceptance
+is recorded here.
+
+#### Cross-check against earlier specifications
+
+Comparison sources: [Friedenauer §D.1](friedenauer-baseline.html#d1-cavity-mirrors),
+legacy rows I-B7 / I-B9 / I-B15 above, and the
+[May coating brief](../architectures/bbo-coating-brief.html) plus its linked
+per-mirror sheets. Values below are supplier-stated specifications, not
+bench acceptance results for the received optics.
+
+| Parameter / role | Earlier reference | September receipt | Assessment |
+|---|---|---|---|
+| M1' coupling | Friedenauer R = 98.4 %; I-B7 R = 98.5 %; May centre R ≈ 98.00 %, T = 19 965 ± 500 ppm | Matching reports: I-B23 R = 98.2 ± 0.2 %; I-B26 R = 97.6 ± 0.3 % (conditions above) | Standard IC is 0.2 percentage point below Friedenauer and 0.3 below I-B7. Lossless estimates at the nominal centres, T ≈ 1.8 % / 2.4 %, bracket May's ≈ 2.0 % centre but lie outside its nominal tolerance. Reported R tolerances do not support a pass/fail decision from these centres alone; operating-point T and losses remain unverified. The May M1 sheet explicitly allows higher R with operating-point recomputation; 98.2 % is therefore a documented variation, not by itself a rejection |
+| M2' / M3' green HR | Friedenauer R > 99.93 % @ 559 nm; May R ≥ 99.970 % | R > 99.95 % @ 560 nm on piezo and curved mirrors | Stated floor exceeds the old numerical floor at the vendor wavelength; it does **not guarantee** May's tighter floor. This is not evidence that actual R fails either target; verify at 559 nm and operating AOI |
+| M4' green HR / UV transmission | Friedenauer R > 99.8 % @ 559, **T > 94 % @ 280**; May R ≥ 99.910 %, **T ≥ 95 %**; I-B15 labelled HR 560 / HT 280 without a numerical T | Curved R > 99.95 % @ 560, **T > 5 % @ 280**; “AR SHG” on boxes | **High UV transmission is supported by the supplier's measured 0° spectrum and fitted coating model.** The >5 % wording remains the literal procurement record, not the best available characterisation. Confirm the report-to-item mapping and a numerical whole-optic T at 280 nm / s / 14° to assess the >94 % / ≥95 % thresholds; the plotted 0° spectrum alone does not settle that precise operating-point comparison |
+| Curvature / AOI | Friedenauer and I-B9 / I-B15 ROC 50 mm; curved AOI 13.7° (legacy labels 15°); May curved band 12.2°–15.2°, plane ~0° ± 1° | ROC 50 mm; bundle AOI 14°; matching reports: standard IC 14°, alternative IC 7.5°–15°, HR 5°–15° (green p) | Curvature matches nominally. Reported IC conditions do not cover the near-normal plane target; the HR band does not cover the final 0.2° of May's curved band. Green specification bands start at 560 nm, so 559 nm remains to be confirmed. Piezo coating assignment is open; check UV s polarisation against the intended beam geometry |
+| Piezo blank | May M2' Ø 6.35 × 2.0 mm | Ø 6.35 × **2.3 mm** | Same diameter, 0.3 mm thicker (15 %). Matches the June quotation; revisit loaded-mount mass / servo assumptions before installation |
+| Substrates / coating qualification | May Herasil preference, mandatory Herasil on default M4'; IBS; specified surface figure, AR, aperture, CW LIDT and cleanliness | Reports add coating R/AR specifications; no item-specific substrate, IBS, surface-quality or CW LIDT certificate supplied | Partly documented. Coating reports do not establish substrate grade, IBS deposition, CW durability or bench acceptance |
+
+**Outstanding checks:** count and inspect each optic at the bench; confirm
+item 209683's substrate, concave geometry and thickness, and its complete
+front/back R/T data at 559/280 nm; confirm the report-to-item mapping,
+especially the piezo HR, and suitability at the actual AOI/polarisation;
+obtain missing qualification data, measure IC transmission and verify the piezo-seat
+fit. Procurement originals and full receipt references remain in the
+private outreach archive; only the technical inventory is transcribed here.
+
+---
+
 ## C. **Pre-built / packaged sub-assemblies** (highest leverage)
 
 | ID | Box / item | Reading | Likely Friedenauer role | Notes | Source-tier | Qty checked | Initials | Date |
@@ -206,10 +294,10 @@ BBO M4' specifically requires high reflectivity at 559 nm and high transmission 
 | LBO M2 (plane HR @ 1118 nm, AOI ~5°) | R > 99.98 % | None directly; I-A2 / I-A4 are HR @ 1120 / 0° but reflectivity not high enough or unread | **Open** — would need a > 99.98 % @ 1120 / 0° (or near-0°) HR coating run |
 | LBO M3 (concave HR @ 1118 nm, R = 50 mm, AOI ~5°) | R > 99.98 %, f = 25 mm | I-A1 (R ≥ 99.98 %, R = 50 mm — direct match) | Verify "alt!" (older) status before reuse |
 | LBO M4 (concave OC, R = 50 mm, AOI ~5°) | R > 99.9 % @ 1118; T > 95 % @ 559 | I-A8 (Newport HT 560 / HR 1120, but AOI / curvature unconfirmed) | **Likely open** — the LBO OC is the rarest spec; verify I-A8 or specify a coating run |
-| BBO M1' (plane IC @ 559 nm, AOI ~0°) | R = 98.4 % | **I-B7** (R = 98.5 %, 15° AOI; closest match) or I-B10 (R = 98.5 % box of the sweep set) | AOI 15° is acceptable for a plane mirror tilted slightly; closest directly usable item |
-| BBO M2' (plane HR @ 559 nm, AOI ~0°) | R > 99.93 % | I-B17 (R > 99.9 %, AOI 0°) | Borderline (99.9 % vs 99.93 %); acceptable for a first iteration |
-| BBO M3' (concave HR @ 559 nm, R = 50 mm, AOI ~13.7°) | R > 99.93 %, f = 25 mm | **I-B9** (IBS HR, R = 50 mm, AOI 15°) — direct match | AOI 15° vs 13.7° is a 1.3° offset; bandwidth-tolerant |
-| BBO M4' (concave OC, R = 50 mm, AOI ~13.7°) | R > 99.8 % @ 559; T > 94 % @ 280 | **I-B15** (HR 560 / HT 280, 15° AOI, r = ±50 mm) — direct match | Highest-priority candidate; verify HT @ 280 |
+| BBO M1' (plane IC @ 559 nm, AOI ~0°) | R = 98.4 % | **I-B7** / I-B10 (98.5 %, closest nominal R); new **I-B23** (98.2 %, 5 pcs), **I-B26** (97.6 %, 2 pcs) | Confirm R/T at operating wavelength and AOI; choose coupling against measured loss and input power. See §B.3 |
+| BBO M2' (plane HR @ 559 nm, AOI ~0°) | R > 99.93 % | New **I-B24** (plane, R > 99.95 % @ 560 nm, 5 pcs) | Stronger documented numerical floor than legacy candidates; verify plane-seat AOI, 559 nm performance and 2.3 mm thickness. May's 99.970 % target is not guaranteed |
+| BBO M3' (concave HR @ 559 nm, R = 50 mm, AOI ~13.7°) | R > 99.93 %, f = 25 mm | **I-B9** (IBS HR, ROC 50 mm, 15°); new **I-B25** (ROC 50 mm, R > 99.95 % @ 560, bundle AOI 14°) | Verify 559 nm R and actual AOI; I-B25 is one shared 10-piece pool for the two curved roles |
+| BBO M4' (concave OC, R = 50 mm, AOI ~13.7°) | R > 99.8 % @ 559; T > 94 % @ 280 | **I-B15** remains the legacy HT-labelled candidate; new **I-B25** is conditional on UV transmission confirmation | I-B15 has no quantified HT in the label transcription; I-B25 has measurement-backed high-UV-transmission evidence from the likely matching HR report. Confirm the report-to-item mapping and numerical T at 280 nm / s / 14° for the required threshold |
 | LBO–BBO transport: 559 nm separation from 1118 nm leakage | (not specified in Friedenauer; standard practice) | **I-B19** (HR 560 / HT 1120 / 45° p, Ø 25) | Drop-in |
 | BBO output projection (280 nm exit) | (not specified; standard practice) | **I-B18** (Thorlabs AR 280 / HT 560) | Drop-in |
 | 559 nm pickoff for I₂ lock | ~10 mW from 0.95 W → R ≈ 99 % beam-splitter | I-B12 (R = 80 % BS) is too aggressive; **gap** — pickoff fraction needs ~1 % not ~20 % | Open; standard low-pickoff plate would be added on procurement |
@@ -219,9 +307,9 @@ BBO M4' specifically requires high reflectivity at 559 nm and high transmission 
 
 ## E. What this inventory does NOT establish
 
-- **Coating measurement.** Reflectivities are *as labelled*. Coatings can drift over years of storage; for cavity-grade use, R, T, and scatter must be re-measured on a spectrophotometer plus a cavity ring-down before commitment.
+- **Coating measurement.** Reflectivities are *as labelled or supplier-specified*; §B.3 distinguishes coating-report specifications from acceptance measurements. Coatings can drift over years of storage; for cavity-grade use, R, T, and scatter must be re-measured on a spectrophotometer plus a cavity ring-down before commitment.
 - **Surface quality.** Scratch / dig, contamination, and UV-induced colour-centre damage are not visible in the photo and must be inspected at the bench before any item is mounted.
-- **Stock count.** The "5 ×", "12 ×", "6 ×" etc. counts are box-stated, not photo-confirmed.
+- **Stock count.** The "5 ×", "12 ×", "6 ×" etc. counts are box-stated, not individually photo-confirmed. For the September receipt (§B.3), delivery-note quantities and five box labels reconcile to 22 mirrors; a physical count is still pending.
 - **AOI-correct curved-mirror coatings.** Many coatings on this shelf are 0° AOI, but Friedenauer's curved-mirror seats sit at 13.7° AOI per mirror (BBO) or 5° AOI per mirror (LBO). For curved seats this matters: a coating designed at 0° will have noticeably different R / T / phase at 13.7°. Re-measurement at the design AOI is mandatory.
 - **Wavelength offset.** Most LBO-stage items here are labelled at 1120 nm; Friedenauer runs at 1118 nm. The 2 nm offset is well within typical coating bandwidth, but the 14 GHz unlockable domain (Friedenauer §4) sits inside this offset range and should be considered when fielding any pre-existing 1120 nm coating in a new build.
 - **Substrate UV-grade for 280 nm.** SQ2 / Herasil / Heraeus FS are UV-grade; BK7 and N-BK7 are *not* — items built on BK7 (e.g., I-B11, I-B12, I-B19) cannot serve as a 280 nm-transmissive surface.
@@ -247,6 +335,12 @@ The following items in the photograph have **partially obscured / handwritten la
 ---
 
 ## G. Suggested next actions (out of scope of this inventory file)
+
+For the September Agile receipt, prioritise the outstanding checks in
+[§B.3](#agile-receipt), particularly the report-to-item mapping and numerical
+UV transmission at the working angle before accepting I-B25 against the
+output-coupler threshold. Supplier transmission measurements are now available;
+the delivery note's >5 % wording is a separate documentation clarification.
 
 1. Photograph each box label individually at high resolution; replace `O*` rows with verified text.
 2. For the **highest-leverage matches** — I-A1 (LBO M3/M4), I-B9 (BBO M3'), I-B15 (BBO M4'), I-B19 (LBO→BBO dichroic), I-C2 (mount chassis), I-C1 (BBO mirror kit) — bench-verify R / T at the *Friedenauer* wavelengths (1118, 559, 280 nm) using a spectrophotometer.
