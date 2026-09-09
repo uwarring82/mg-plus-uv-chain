@@ -5,7 +5,7 @@
 **Status:** FILED FOR DELIBERATION — follow-up feedback incorporated; correction packages remain proposed.
 **Steward:** Ulrich Warring
 **Prepared by:** assistant under steward direction; no Council-3 stance or sign-off inferred.
-**Review baseline:** local HEAD `50da35f`, plus the existing uncommitted September receipt and coating-report update in [inventory.md](../docs/components/inventory.md). The private outreach record was available locally.
+**Review baseline:** scientific/code findings refer to `50da35f`. The initial card was filed at `60c1832`; the September receipt and coating-report state used by RC-08 is now committed in `ec4e7d401344fce6ff28c5ac88785e360205600f` ([inventory.md](../docs/components/inventory.md), especially §B.3 and §D). Checking out that revision reproduces the public code/document inputs; no working-tree inventory patch is required. Private supplier originals were consulted locally and remain outside the public reproducibility claim.
 
 ## Objective and intended outcome
 
@@ -172,7 +172,14 @@ Revisit γ, fitted passive/non-mirror losses, IC optima, uncertainty bands, circ
 changes `h_m` from approximately **0.033050 to 0.039243**, scaling γ by
 **1.1874** if K is unchanged. The suspected extra fundamental-index factor
 would scale K by **1/n_omega ≈ 0.598**, using the existing notebook's
-`n_omega = 1.67276`. Together these would scale γ by approximately **0.710**,
+`n_omega = 1.67276`: the **ordinary BBO index at vacuum wavelength 559 nm**,
+from Eimerl et al. (1987), Eq. (1) and Table II row a, as transcribed in the
+[repository's draft Sellmeier extraction](../data/literature/Eimerl1987/extracted.yaml)
+(`BBO_sellmeier_no_eimerl1987`; DOI `10.1063/1.339536`). Its formula
+`n_o² = 2.7405 + 0.0184/(λ² − 0.0179) − 0.0155 λ²`, with λ in µm,
+gives **1.672757646** at λ = 0.559 µm. The retained digits reproduce the
+existing notebook input; they are not a stated measurement uncertainty.
+Together these would scale γ by approximately **0.710**,
 with other inputs held fixed. This is a conditional sensitivity estimate,
 not an accepted recalculation. The net direction is unresolved until both
 RC-01 conventions are settled; neither change alone determines whether the
@@ -208,7 +215,9 @@ Reconcile README, LICENSE-DOCS, [LICENSES.md](../LICENSES.md), folder declaratio
 
 Check remote tags/releases and any existing Zenodo record before declaring them absent. If registration never occurred, correct the claims and propose a separate release/deposit task; if it did, record the verifiable identifiers. Inspect public contact fields in the [coating cover letter](2026-05-20-bbo-coating-run-wp/specs/coating-run-cover-letter.md) and adopt the Steward's intended public contact. The presence of a personal address alone does not establish unauthorised publication.
 
-**Acceptance:** explicit documented scope/precedence, verified or accurately qualified release/DOI statements, and a contact disposition. No new publication, release, DOI deposit or history rewrite is authorised by this card.
+- **Future Git author/committer identity:** local history inspection at `60c1832` finds **76 reachable commits**, all using the same personal Gmail address for author and committer; that address also appears in the coating cover letter. Include repository-local Git identity and any environment/automation overrides in D6's public-contact decision. Record the intended identity for future commits and verify the effective author/committer fields on the next commit after any configuration change. This extends the contact review beyond document text; it neither presumes the current identity is unauthorised nor calls for rewriting past commits. Remote publication of every local commit was not separately checked here.
+
+**Acceptance:** explicit documented scope/precedence, verified or accurately qualified release/DOI statements, and a contact disposition covering both public documents and future Git author/committer identity. No new publication, release, DOI deposit or history rewrite is authorised by this card.
 
 ### RC-11 · OPTIONAL — decide whether to rename the installed package
 
@@ -248,7 +257,7 @@ of implementation or approval.
 | D3 — Reliance on derived May results during correction | Mark affected recommendations as awaiting revalidation; preserve historical values and receipt facts | Ulrich; proposed, not enacted by this card |
 | D4 — Charter wording/history and frozen-spec amendments | Use dated corrections and the documented revision process; preserve original sign-offs and obtain applicable governance review | Ulrich; pending |
 | D5 — Toolchain and source of truth | Choose Python/dependency policy, formatter/naming exceptions, CI checks including tutorial drift, and generated-table strategy | Ulrich; pending |
-| D6 — Public records and optional migration | Decide licence/contact/release dispositions from evidence; adopt or defer package rename separately | Ulrich; pending |
+| D6 — Public records and optional migration | Decide licence/release dispositions and intended public contact, including future Git author/committer identity; adopt or defer package rename separately | Ulrich; pending |
 
 ## Completion criteria and handoff
 
@@ -263,9 +272,9 @@ of implementation or approval.
 
 Run the following from the repository root. This checks the printed relations
 and existing API behaviour; it does not validate the atomic model or the
-suspected SHG prefactor. Executed for this filing with Python 3.9.7; this small
-diagnostic run does not select RC-06's supported environment or replace its
-full-suite checks.
+suspected SHG prefactor. Executed locally with Python 3.9.7; the steward
+also reports identical output on Python 3.9.7 and 3.13. These diagnostic runs
+do not select RC-06's supported environment or replace its full-suite checks.
 
 ```python
 import math
@@ -274,16 +283,20 @@ from src.shg_single_pass import single_pass_conversion_fraction
 for detuning_Hz, rabi_Hz, recorded_per_s in [
     (80e9, 100e3, 2500), (40e9, 400e3, 20000), (15e9, 1e6, 110000)
 ]:
+    # Gamma is angular; Omega_R/Delta is convention-invariant (2*pi cancels).
     rate_per_s = (2 * math.pi * 41e6) * rabi_Hz / (2 * detuning_Hz)
     print(rate_per_s, recorded_per_s / rate_per_s)
 
 eta_small = single_pass_conversion_fraction(1.0, 0.049999)
 eta_depleted = single_pass_conversion_fraction(1.0, 0.05)
 print(eta_small, eta_depleted, 100 * (eta_small - eta_depleted) / eta_depleted)
-print((0.039243 / 0.033050) / 1.67276)  # conditional combined gamma factor
+# Ordinary BBO index at vacuum 559 nm; Eimerl 1987 Eq. (1), Table II(a).
+# Provenance and coefficient units: RC-07 and the linked draft extraction.
+n_bbo_ordinary_559nm = 1.67276
+print((0.039243 / 0.033050) / n_bbo_ordinary_559nm)  # conditional gamma factor
 ```
 
-**Handoff status:** filed for deliberation; cite the commit introducing this
-card in the subsequent deliberation record. Correction packages and binding
-value dispositions remain open; filing does not implement numerical fixes
+**Handoff status:** filed for deliberation; cite the reviewed revision of this
+card and the inventory baseline above in the subsequent deliberation record.
+Correction packages and binding value dispositions remain open; filing does not implement numerical fixes
 or change a gate.
