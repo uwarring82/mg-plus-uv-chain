@@ -8,7 +8,7 @@
     "notebooks/exploration/2026-09-10-rc07-recalculation.py": "df583718f5f36f25cbdc959d96728a29bebb2aeacf025dc2134fa7d0f463ef62",
     "notebooks/tutorials/04-cascade-shg.py": "8013449b6132068952439c1aa224b37f1b423e81a15b52857eb8c500ceac6b9e",
     "notebooks/tutorials/04-params.yaml": "6ed37d5b73a2317458a25bd2cb7976161f29062bd4b8a1f203b65b3b685b1bf3",
-    "scripts/render_tutorials.py": "777a8b9203e6b0b3e1b4cbec269775f7704309dae5ef92443a1493ba090d0d59",
+    "scripts/render_tutorials.py": "5569ae67c8d9073c9031c03109ff4a428ee3b0aa5e35311ae01fe8dc4e21da96",
     "scripts/review/render_rc07.py": "44a1d0e356edfc60f59a92e28b23d715f149525c6a052a3fb517afa5818cbbc6",
     "scripts/review/rc07_manifest.py": "e4667d80b99817962a7a528244d13159163c5d1a6b15c15812fc5baf570a2208",
     "scripts/review/cavity_fits.py": "886e04b95779119d649fc825547bd6d34f22bd88da5773d893a01b52a59ad71a",

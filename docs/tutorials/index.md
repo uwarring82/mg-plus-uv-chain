@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Student tutorials"
-description: "Read, run and extend four optics notebooks: single-pass SHG, cavity buildup, input coupling and cascades. Student exercises and contribution guide."
+description: "Read, run and extend five optics notebooks: single-pass SHG, cavity buildup, input coupling, cascades and VECSEL frequency noise. Student exercises and contribution guide."
 ---
 
 # Learn the optics, run the notebooks, contribute
@@ -18,11 +18,13 @@ You do not need an account or software installation to read the worked pages.
 The project website displays saved results; the Colab links open interactive
 notebooks in your browser.
 
-## Four worked notebooks
+## Five worked notebooks
 
-Work through these in order. Each has code, equations, plots and a small YAML
-file of example inputs, with a notebook cell for saved parameter overrides. The examples teach the shared models; they are not
-accepted specifications for a particular cavity.
+Tutorials 1–4 form the SHG sequence; Tutorial 5 is a standalone introduction
+to the VECSEL seed. Each has equations, plots and saved parameter overrides.
+The first four use YAML inputs; Tutorial 5 bundles its example inputs in cells.
+The examples are teaching models, not accepted specifications for a
+particular cavity. Tutorial 5 is **pre-G1, exploratory, not promoted**.
 
 | Step | Read online | Run in your browser | Notebook file | What you will learn |
 |---|---|---|---|---|
@@ -30,8 +32,9 @@ accepted specifications for a particular cavity.
 | 2 | [Passive cavity buildup](02-enhancement-cavity-buildup.html) | [Open in Colab](https://colab.research.google.com/github/uwarring82/mg-plus-uv-chain/blob/main/docs/tutorials/02-enhancement-cavity-buildup.ipynb) | <a href="02-enhancement-cavity-buildup.ipynb" download>Download .ipynb</a> | Sum returning field amplitudes and relate round-trip loss to the optimum input coupling. |
 | 3 | [Optimal input coupler](03-optimal-input-coupler.html) | [Open in Colab](https://colab.research.google.com/github/uwarring82/mg-plus-uv-chain/blob/main/docs/tutorials/03-optimal-input-coupler.ipynb) | <a href="03-optimal-input-coupler.ipynb" download>Download .ipynb</a> | Include nonlinear depletion and test sensitivity to uncertain loss and conversion strength. |
 | 4 | [Two-stage cascade](04-cascade-shg.html) | [Open in Colab](https://colab.research.google.com/github/uwarring82/mg-plus-uv-chain/blob/main/docs/tutorials/04-cascade-shg.ipynb) | <a href="04-cascade-shg.ipynb" download>Download .ipynb</a> | Track power through both stages and the relay; distinguish calibration from independent validation. |
+| 5 | [VECSEL principles and frequency noise](05-vecsel-principles-noise.html) | [Open in Colab](https://colab.research.google.com/github/uwarring82/mg-plus-uv-chain/blob/main/docs/tutorials/05-vecsel-principles-noise.ipynb) | <a href="05-vecsel-principles-noise.ipynb" download>Download .ipynb</a> | Explore the chip, cavity and filters; connect technical noise to frequency PSD and coherence. |
 
-Notebook files need the repository's `src/` modules and
+Notebook files need the repository's `src/` modules. Tutorials 1–4 also use
 [`notebooks/tutorials/NN-params.yaml`](https://github.com/uwarring82/mg-plus-uv-chain/tree/main/notebooks/tutorials)
 inputs. The Colab setup cell fetches these automatically from reviewed revision
 `3466c32` and installs the required packages in the runtime. For local work,
@@ -39,7 +42,7 @@ clone the repository as described below.
 
 The [VECSEL systems tutorial](vecsel-systems.html) is a complementary reading
 track on the seed lasers, gain mirrors, spectral filters and linewidth. It is
-a narrative page, without an executable notebook. Its
+a narrative companion to [Tutorial 5](05-vecsel-principles-noise.html). Its
 [references](../references.html) and the [seed-laser component record](../components/seed-lasers.html)
 connect the models to the group's sources.
 
@@ -58,7 +61,9 @@ connect the models to the group's sources.
    ```
 
    Use `{}` to return to the bundled defaults. The other notebooks provide
-   their own examples. Entering changes in this cell preserves them when
+   their own examples. Tutorial 5 uses `{"noise": {"pump_rin_asd_per_sqrtHz": 2e-7}}`
+   to reduce the illustrative pump-noise ASD tenfold. Entering changes in this
+   cell preserves them when
    you save or download the notebook.
 5. Save your copy with your observations, or use **File → Download → Download
    .ipynb** to share it for review. Include the parameter changes and the
@@ -134,6 +139,10 @@ The synthetic parameter changes isolate model behaviour; they do not describe
 changing one property of a real crystal independently of all its other
 properties. For extensions, always state which inputs were held fixed and
 which were refitted or re-optimized.
+
+For Tutorial 5, halve the cavity length, shift the etalon passband, and reduce
+pump noise. Predict how the cavity FSR, mode weights and noise PSD change.
+Explain why a following SHG cavity does not narrow the seed laser itself.
 
 ## Contribute your first improvement
 

@@ -149,12 +149,13 @@ def render(
         body = body_match.group(1).strip() if body_match else full_html
 
         title = _extract_title(nb, default=src.stem)
+        notebook_description = nb.metadata.get("tutorial_description", description)
         front_matter = (
             "---\n"
             f"layout: notebook\n"
             f"title: {title}\n"
             f"description: Tutorial notebook ({src.stem}). "
-            f"{description}\n"
+            f"{notebook_description}\n"
             "---\n\n"
         )
         out_html.write_text(front_matter + body, encoding="utf-8")

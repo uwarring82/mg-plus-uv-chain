@@ -1,4 +1,4 @@
-"""Opt-in fresh-runtime checks for the four Colab tutorial notebooks.
+"""Opt-in fresh-runtime checks for the Colab tutorial notebooks.
 
 Run from the repository root with the notebook dependencies installed:
     python scripts/check_colab_tutorials.py
@@ -12,6 +12,7 @@ This checks the bootstrap path, not Google's hosted runtime or sign-in UI.
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import os
@@ -28,8 +29,15 @@ from nbclient import NotebookClient
 REPO_ROOT: Path = Path(__file__).resolve().parent.parent
 
 
-def main() -> None:
+def main(stem: str = "") -> None:
     """Execute each notebook and report runtime provenance and cell counts."""
+    sources = sorted(
+        p
+        for p in (REPO_ROOT / "notebooks/tutorials").glob("*.py")
+        if p.stem.startswith(stem)
+    )
+    if not sources:
+        raise ValueError(f"No tutorial matches prefix {stem!r}")
     with TemporaryDirectory(prefix="mg-uv-colab-check-") as scratch:
         root = Path(scratch)
         environment = root / "environment"
@@ -64,7 +72,7 @@ def main() -> None:
                 }
             )
         )
-        for source in sorted((REPO_ROOT / "notebooks/tutorials").glob("*.py")):
+        for source in sources:
             work = root / source.stem
             work.mkdir()
             nb = jupytext.read(source)
@@ -73,10 +81,14 @@ def main() -> None:
                 "02": ("cavity", "loss_per_pass", 0.01),
                 "03": ("cavity", "power_in_W", 2.0),
                 "04": ("transport", "efficiency", 0.50),
+                "05": ("noise", "pump_rin_asd_per_sqrtHz", 2e-7),
             }
             section, key, value = experiments[source.name[:2]]
             load_cell = next(
-                c.source for c in nb.cells if "params = yaml.safe_load(f)" in c.source
+                c.source
+                for c in nb.cells
+                if "params = yaml.safe_load(f)" in c.source
+                or c.source.startswith("params = {")
             )
             override_check = (
                 f"\nparameter_overrides = {{{section!r}: {{{key!r}: {value!r}}}}}\n"
@@ -134,4 +146,6 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--stem", default="", help="Optional tutorial prefix, e.g. 05")
+    main(parser.parse_args().stem)

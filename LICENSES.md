@@ -41,7 +41,7 @@ page layout. No existing grant is revoked or new restriction imposed here.
 
 ### Public pages awaiting explicit split assignment
 
-The student guide at `docs/tutorials/index.md` and the four mixed
+The student guide at `docs/tutorials/index.md` and the five mixed
 tutorial notebook/HTML outputs also await explicit D6 split assignment.
 The notebook code remains covered by the existing MIT software declaration.
 Student access links do not change licence scope or revoke prior grants.

@@ -1,0 +1,43 @@
+{
+  "baseline_revision": "9a498165532e029e1ba0706d380f760402dd7584",
+  "environment_record": "data/review/2026-09-10/vecsel-environment.txt",
+  "inputs_sha256": {
+    "data/review/2026-09-10/vecsel-environment.txt": "6f3f980b95c669550a0d3fd3fff2c525ddb8e08052934aa33a3fe9b1b8bc4558",
+    "notebooks/tutorials/01-params.yaml": "14d6398abcc405acb2b93f464237c410af42607ac08057c277786a1aa3868837",
+    "notebooks/tutorials/02-params.yaml": "7a144d3cc8772d777a9b9a39792024bf15d7b6e3f60d8ccd97bc87878f88abaa",
+    "notebooks/tutorials/03-params.yaml": "c2c73ef717f8c5cfee547a7a6b0e255caae33a0fcedd59c412841326fee672dd",
+    "notebooks/tutorials/04-params.yaml": "6ed37d5b73a2317458a25bd2cb7976161f29062bd4b8a1f203b65b3b685b1bf3",
+    "notebooks/tutorials/05-vecsel-principles-noise.py": "0b62cb4396ed1737d26e2346b9ab7abe490d763742e966eab6812aaa230105b2",
+    "pyproject.toml": "d803e29e1ea2a4083e4e1cd8d008647d6503bc436d54ed6b16192a643f7b8f90",
+    "scripts/check_colab_tutorials.py": "102c209d1ae94fc568f232a654cd99f17a4f1ebc9f43611ae8d2f9a3cc87c03c",
+    "scripts/render_tutorials.py": "5569ae67c8d9073c9031c03109ff4a428ee3b0aa5e35311ae01fe8dc4e21da96",
+    "scripts/review/tutorial_manifest.py": "109ff8ae3f55b4a5b57b792f03c6789bc3b4cad82275fde5da0b177a1c8ff83b",
+    "src/__init__.py": "084f18e838bcb3af8de5ccd76196f566092fe7fcd3067021b43b0d202080f287",
+    "src/abcd.py": "9b82bc5eea770e491a290740472763caf222244cc3d0b1cf6b8a19fa9293dde4",
+    "src/boyd_kleinman.py": "3f9f9ef4bee7212003c56a36d42afc41e120eb97cbf154259850b626819a7c23",
+    "src/enhancement_cavity.py": "0870faca9e5dc407fa93eb773c10a63b7634a82d7f40954a99a89a3f8ae6a392",
+    "src/parameters.py": "80a42f1ffe683fdee811c205733be0d2994eb50aefcc4a83e30dfb10ec38c523",
+    "src/shg_cascade.py": "8752b73795d371af11c4ea4abbaee51f16439ec77a99a0d6c5e208103f74c16d",
+    "src/shg_single_pass.py": "086afb5471eb3858f4958a7439b4870605d4c91bc2bdad97cd2b9e69e62214cc"
+  },
+  "tutorials": [
+    {
+      "source": "notebooks/tutorials/05-vecsel-principles-noise.py",
+      "ipynb": "docs/tutorials/05-vecsel-principles-noise.ipynb",
+      "html": "docs/tutorials/05-vecsel-principles-noise.html",
+      "before_ipynb_sha256": null,
+      "after_ipynb_sha256": "0b914bd464a2c512cae8cb321addbd7cd74c4b08b1ee4199180a3dce234c607d",
+      "before_html_sha256": null,
+      "after_html_sha256": "916d34d5b52f89360a61b9c40656263d5c9a63e5da53c67afd70825b93457f25",
+      "before_printed_results": null,
+      "after_printed_results": [
+        "Illustrative FSRs, not measured hardware values:\n  cavity 1.199170 GHz; etalon 82.360565 GHz\n  ideal one-plate BRF 11.103424 THz\n",
+        "1 pm optical-length change -> -2145.205 Hz frequency change\n",
+        "free seed: RMS frequency deviation over 1 Hz\u20131 MHz = 32611.007 Hz (not linewidth)\nfrequency-locked seed: RMS frequency deviation over 1 Hz\u20131 MHz = 31668.258 Hz (not linewidth)\n",
+        "Ideal white-only Lorentzian FWHM = 3141.592654 Hz; not total technical linewidth\n",
+        "All teaching-model checks passed.\n"
+      ]
+    }
+  ],
+  "comparison_note": "Baseline notebooks have no embedded plots (plain Agg backend). Inline rendering now includes the figures; printed results compare scalars and hashes identify all outputs. Null before fields mean a tutorial did not exist at the baseline."
+}

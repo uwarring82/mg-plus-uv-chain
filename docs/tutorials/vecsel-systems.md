@@ -10,14 +10,22 @@ description: How the in-house VECSEL seed lasers work — gain-mirror properties
 
 # VECSEL systems — 1118 nm and 1141 nm
 
-> **The short version.** This project builds its own **VECSELs** (semiconductor disk lasers) as the seed lasers for two jobs: one near **1120 nm** (frequency-quadrupled to **280 nm**) to cool, detect, and manipulate ²⁵Mg⁺, and one near **1140 nm** (→ **285 nm**) to load it. The light is clean and single-frequency because of *what the gain chip is* (§1) and *how three nested filters pick out one mode* (§2). The subtle part is the linewidth (§3): a single "linewidth" number is the wrong scorecard — what actually matters is the seed's frequency-**noise spectrum**, and especially the part *above* the ~18 kHz doubling-cavity lock bandwidth that the lock cannot remove and that turns into intensity noise on the UV. The in-house lab record shows that noise was **technical and reducible** (thermal, mechanical, pump) and was driven down by more than an order of magnitude across four builds — while a true sub-100 kHz figure and the UV noise itself remain unmeasured (§3.5).
+**Interactive companion:** [Tutorial 5 — chip, cavity, filters and frequency noise](05-vecsel-principles-noise.html)
+([Open in Colab](https://colab.research.google.com/github/uwarring82/mg-plus-uv-chain/blob/main/docs/tutorials/05-vecsel-principles-noise.ipynb)).
+It adds original diagrams, adjustable ideal filter models, synthetic noise
+spectra and a coherence calculation. Its inputs are illustrative, not fitted
+linewidth predictions for the in-house lasers.
 
-> **After this tutorial you should be able to:**
->
-> - explain why a VECSEL gain mirror is *simultaneously* the amplifier and one cavity mirror;
-> - read the nested Lyot → étalon → cavity-mode hierarchy as a single-frequency **mode-selection budget**;
-> - say why the **short-term linewidth budget** is bound by the doubling-cavity lock bandwidth (~18 kHz), while the ²⁵Mg⁺ atomic linewidth (41.8 MHz) and the iodine lock matter at other levels;
-> - name the dominant technical noise sources that have limited the in-house seed linewidth, and how each was closed.
+After this tutorial you should be able to explain the gain mirror, distinguish
+mode selection from linewidth, and identify measurements that connect pump,
+thermal, mechanical and electronic disturbances to frequency noise.
+
+**Interpretation update — 2026-09-10:** linewidth, integrated RMS frequency
+variation and servo bandwidth are different quantities. The frequency-noise
+PSD, observation interval and measurement method must accompany a linewidth
+claim. A following SHG-cavity lock suppresses relative detuning; it does not
+narrow the seed's absolute frequency noise. Section 3.4 now makes this explicit.
+Historical in-house numbers below retain their existing evidence labels.
 
 **Status:** TUTORIAL (pedagogical surface, 2026-06-26). Synthesises the in-house thesis lineage (Kiefer 2020 → Guth 2021 → Spanke 2023 → Spanke 2025) and the NIST + Tampere design literature (Burd 2016, Burd 2023) into a single explanation of how the seed lasers work and what limits their linewidth.
 
@@ -88,7 +96,7 @@ The chip is **optically pumped** by a multimode fibre-coupled diode at ≈ 808 n
 - *It is a tuning knob.* Coarse wavelength setting is done by the gain-chip TEC set-point.
 - *It is the dominant disturbance.* The chip's efficiency depends on the detuning between the gain peak and the chip's own micro-cavity (sub-cavity) resonance; both move with temperature, and any drift in pump-deposited heat moves the operating point. This is why the 1141 nm VC gain mirror is run **cold (8 °C)** in [Burd16], and why thermal management — diamond spreader, dual-stage cooling, low-drift TECs — is treated as a first-class design layer rather than an afterthought. It is also the entry point for most of the linewidth-limiting sensitivities in Section 3.
 
-One more gain property bridges directly to linewidth: the **linewidth-enhancement (Henry α) factor**. In any semiconductor gain medium, carrier-density fluctuations modulate the refractive index as well as the gain, so **amplitude noise is partly converted into phase/frequency noise**, broadening the line by a factor (1 + α²). [Kief20] names the Henry factor as the high-frequency intensity-to-frequency-noise coupler. Keep it in mind: it is the mechanism by which *pump* and *thermal* amplitude disturbances become *frequency* noise.
+One more gain property bridges directly to linewidth: the **linewidth-enhancement (Henry α) factor**. In any semiconductor gain medium, carrier-density fluctuations modulate the refractive index as well as the gain, so carrier-related amplitude and phase fluctuations are coupled. The factor (1 + α²) belongs to the relevant semiconductor fundamental-linewidth model; it is not a universal multiplier for arbitrary technical pump noise. [Kief20] names the Henry factor as the high-frequency intensity-to-frequency-noise coupler. Pump fluctuations can couple through carrier index and heating; the relevant complex transfer functions must be measured.
 
 ```
   808 nm pump (multimode diode, VBG-stabilised)
@@ -191,9 +199,17 @@ This is the section the rest of the tutorial builds toward. The headline:
 
 ### 3.1 Why the seed is technical-noise-limited
 
-The fundamental (quantum) limit, the Schawlow–Townes linewidth, scales as Δν_ST ∝ (Δν_c)² / P_out and is broadened by the Henry factor to Δν_ST·(1 + α²). For a class-A VECSEL the cavity is long (so the cavity linewidth Δν_c is small), the circulating power is high, and the ASE pedestal is suppressed — together these push the intrinsic linewidth to the sub-kHz scale. **Every linewidth the project has actually measured (MHz down to ~100 kHz) is orders of magnitude above this floor**, so the floor is not the constraint. What *is* the constraint is technical frequency noise, and all technical frequency noise enters through one door:
+Fundamental linewidth models depend on photon lifetime, spontaneous emission
+and carrier-index coupling. They do not establish this device's noise floor
+without those inputs. Class-A operation does not eliminate technical noise.
+Use calibrated spectra and a stated observation interval to distinguish
+mechanical, thermal, pump and electronic contributions.
 
-> A cavity of optical length L resonates at ν = q·c/(2L). Hence **δν/ν = − δL/L**: *any* perturbation that changes the optical path length L shifts the frequency. Linewidth is the time-averaged spread of those shifts.
+For a fixed mode in a nondispersive cavity, differentiating ν=q·c/(2L) gives
+**δν/ν=−δL/L**, where L is one-way optical length. This is a direct path-length
+sensitivity, not a complete model of gain pulling, filter dispersion, carrier
+dynamics or mode hops. In particular, a gain-peak temperature coefficient
+is not automatically the frequency tuning coefficient of the lasing mode.
 
 ### 3.2 The sensitivity ledger
 
@@ -243,28 +259,29 @@ Each thesis in the lineage attacked the then-dominant sensitivity. Read the tabl
 
 Spanke 2025 brings the in-house build into the **Burd 2023 ~100 kHz linewidth class** at the actual 1118 nm operating point — the design principles transferred end-to-end, in Freiburg, on a ²⁵Mg⁺-targeted laser. A caution on reading the number: **101(8) kHz is consistent with the ≤ 100 kHz target but is not proof of a sub-100-kHz linewidth** — the 1σ band straddles 100 kHz, and the value is likely limited by the measurement method (locked Allan deviation), not the laser. Establishing a true sub-100-kHz *intrinsic* linewidth would need a delayed self-heterodyne or beat-note measurement against a second narrow laser.
 
-### 3.4 What the linewidth has to beat — and at which level
+### 3.4 Linewidth, frequency noise and a following doubling cavity
 
-> **Which linewidth matters, and where.** Three requirements act at different levels — all real, each tightest in a different place:
->
-> - **Atomic linewidth (Γ/2π ≈ 41.8 MHz).** Sets the scale the seed must resolve for Doppler cooling and state detection. Every build above meets it with margin — a necessary check, not the tightest constraint.
-> - **Long-term absolute frequency (I₂ saturation spectroscopy).** The iodine reference holds the laser on the ²⁵Mg⁺ transition over hours to days; what matters here is the iodine hyperfine features and slow drift, not fast frequency noise.
-> - **Short-term frequency noise near the doubling-cavity lock bandwidth (~18 kHz).** This is the term that binds the *short-term linewidth budget*, because the resonant SHG cavities convert seed frequency noise into amplitude noise on the harmonic.
->
-> The point is not that the atomic linewidth is irrelevant — it is the cooling/detection requirement, and the iodine lock is the long-term anchor. It is that clearing the 41.8 MHz atomic linewidth does not, on its own, settle the short-term budget, which lives on the much finer ~18 kHz scale.
+An optical line shape, a noise spectrum and a servo bandwidth answer different
+questions. For one-sided white frequency-noise PSD h₀, the ideal Lorentzian
+FWHM is πh₀. For colored noise, a frequency-noise spectrum and a measurement
+interval are needed; RMS frequency variation is not automatically a linewidth.
+The [interactive notebook](05-vecsel-principles-noise.html) derives this through
+the field coherence and shows examples with explicit frequency cutoffs.
 
-**The criterion is a transfer function, not a single inequality.** What the doubling stages actually respond to is not the seed's *integrated* linewidth but its residual **frequency-noise spectral density S_δν(f)**, shaped by the cavity and its servo. Each resonant SHG cavity is a tracking filter: seed frequency excursions slower than the lock bandwidth (≈ 18 kHz, the loaded-piezo resonance of the LBO ring, [[Frie06]](../references.html#frie06)) are followed by the lock and largely cancelled, while excursions faster than that are converted into **amplitude** noise on the harmonic (frequency-to-amplitude conversion) and reach the ion. The figure of merit is therefore S_δν(f) weighted by the cavity/servo transfer function around and above ~18 kHz — *not* a single number like Δν_seed.
+A laser-frequency lock actuates the seed against a reference. A following
+SHG-cavity lock instead actuates that cavity to reduce its detuning from the
+seed. The latter does **not** remove the seed's absolute frequency noise.
+The historical ≈18 kHz actuator/loop scale cited from Friedenauer is not a
+sharp frequency-noise boundary or a universal seed linewidth requirement.
 
-A rough inequality, Δν_seed ≲ min(Δν_atomic, Δν_lock-related), is still useful as a **sanity check** — it says the seed should not be grossly broader than the relevant scales — but it is neither necessary nor sufficient on its own: a seed with a ~100 kHz integrated linewidth can be perfectly acceptable if its in-band noise density is low, and a seed that nominally "passes" the inequality can still inject too much in-band noise. It is the spectral density, not the integrated linewidth, that has to be controlled:
+Residual detuning can contribute to harmonic intensity noise, but the
+conversion depends on the measured optical and servo transfer functions,
+lock offset and other disturbances. At the exact maximum of a static
+transmission curve, its first detuning derivative vanishes. Neither an
+integrated linewidth nor a lock bandwidth alone predicts the UV RIN.
 
-<figure>
-  <img src="../assets/vecsel-linewidth-conversion.svg" alt="A vertical chain: seed frequency noise at 1118 nm enters the LBO ring cavity, whose Hänsch–Couillaud lock (bandwidth about 18 kHz) tracks out the slow, below-bandwidth frequency noise; the residual frequency noise above the lock bandwidth is converted to amplitude noise on 559 nm; this passes through the BBO ring cavity to become amplitude noise on 280 nm at the ion. The integrated seed linewidth may exceed 18 kHz; what matters is the frequency-noise density above the lock bandwidth." style="max-width:100%;height:auto;border:1px solid #e0dbd2;border-radius:6px;" />
-  <figcaption style="font-size:0.85em;color:#6b6b6b;margin-top:0.4rem;">Why ~18 kHz binds. The lock tracks out seed frequency noise <em>below</em> ~18 kHz; the residual noise <em>above</em> the lock bandwidth is what converts to amplitude noise on the UV the ion sees.</figcaption>
-</figure>
-
-> **For scale.** The ~100 kHz *integrated* seed linewidth is larger than the ~18 kHz lock bandwidth — and that is fine, not a contradiction. An integrated linewidth is dominated by **low-frequency** drift, which is exactly the part the doubling-cavity lock tracks out. The noise that converts to amplitude on the harmonic is the **high-frequency** part, *above* ~18 kHz, that the lock cannot follow. So a large integrated linewidth (mostly slow drift) and a clean harmonic are perfectly compatible — which is why §3.4 insists on the spectral density, not the single number. (The §3.3 work drove down that low-frequency drift; the high-frequency density above ~18 kHz — e.g. pump RIN — is the still-unmeasured term, §3.5.)
-
-The project's operating budget follows from this:
+Historical comparison figures from the linked seed-laser record follow;
+they are not derived from a linewidth-versus-servo-bandwidth inequality:
 
 | Budget point | Value | Status |
 |---|---|---|
@@ -272,7 +289,7 @@ The project's operating budget follows from this:
 | Friedenauer-parity floor | ≈ 200 kHz | exceeded since Spanke 2023 |
 | Stretch ceiling | 50 kHz (Burd 2016 1141 nm parity) | open |
 
-The "linewidth" entries above are integrated-linewidth proxies; the binding quantity remains the in-band frequency-noise density of §3.4, which has not yet been measured at the SHG lock bandwidth (see the box below).
+The entries above retain their original measurement conventions. They do not establish an intrinsic linewidth or a downstream UV-noise budget; the spectra and transfer measurements described in §3.4 remain needed.
 
 *(Budget values per the [seed-lasers components page](../components/seed-lasers.html) and the [2026-05-08 steward-direction logbook entry](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-08-vecsel-seed-lasers.md).)*
 
@@ -282,7 +299,7 @@ The "linewidth" entries above are integrated-linewidth proxies; the binding quan
 >
 > **Not yet proven.**
 > - A true **sub-100-kHz intrinsic** linewidth — 101(8) kHz is consistent with, but not below, 100 kHz, and is likely measurement-floor-limited (needs delayed self-heterodyne or a beat note).
-> - The **UV relative-intensity noise at the SHG lock bandwidth** — the actual figure of merit of §3.4 — which has not been measured.
+> - The **seed frequency-noise PSD, cavity/servo transfer functions and downstream UV RIN** needed for the noise budget in §3.4, which have not been measured together.
 > - The in-house **1140 nm** unit's linewidth, output power, and 285 nm conversion (§4).
 
 ---
@@ -332,7 +349,7 @@ When the in-house 1140 nm unit is fully characterised, its measured linewidth, o
 **Build / measurement open items.**
 
 - **1118 nm gain-mirror respecification.** The closest demonstrated gain mirror is Burd 2016's 1117 nm IC chip; a build-specific 1118 nm mirror is an MBE-growth procurement question, with the Tampere ORC group (Guina) the natural collaboration anchor. *(See the [seed-lasers components page](../components/seed-lasers.html) open questions.)*
-- **Seed frequency-noise PSD and downstream UV RIN — both unmeasured.** Two distinct quantities (§3.4): the *input* to the budget is the seed's residual **frequency-noise spectral density above the ~18 kHz lock bandwidth**; the *downstream observable* is the **UV relative-intensity noise** that the doubling cavities produce by converting that frequency noise to amplitude noise. Neither is published for the in-house build ([Kief20] · [Guth21] open items). On the input side, pump RIN feeding frequency noise via the Henry α factor is the un-quantified link (§3); on the output side, the UV RIN at the experiment is what actually limits gate/detection fidelity.
+- **Seed frequency-noise PSD and downstream UV RIN — both unmeasured.** The seed PSD is an input to the budget; UV RIN is a downstream observable (§3.4). Their relation requires measured optical/servo responses and lock offsets across the relevant frequency band, alongside direct pump-intensity and other noise paths. Neither spectrum is published for the in-house build ([Kief20] · [Guth21] open items). Pump-to-frequency coupling includes thermal and carrier-index paths; a Henry-factor multiplier alone does not quantify it.
 - **1141 nm in-house unit (#2 "Heidi").** The [2021 VECSEL project summary](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2021-07-vecsel-project-summary.md) pins the gain chip (VXL1140_1078) and étalon (≈ 70 GHz) and confirms operational use for photoionisation (PAULA / BERMUDA). The [2026 rnd_vecsel record](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/lab%20notes/2026-06-rnd-vecsel-channel-record.md) now adds that Heidi runs an **extra-cavity LBO ring doubling 1141 → ≈570 nm** (~110 mW measured, 2026) — the first SHG step toward 285 nm, i.e. the same external-doubling topology as the 1118 nm path rather than the intra-cavity Burd 2016 analogue. Still missing: its measured linewidth, output power, and the ≈570 → 285 nm second stage. **[in-house, unverified — pending logbook cross-check]**
 
 **Charter governance note.**
