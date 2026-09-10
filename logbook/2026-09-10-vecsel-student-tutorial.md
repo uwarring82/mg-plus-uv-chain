@@ -47,6 +47,15 @@ historical actuator scale does not determine linewidth or UV RIN. Related
 Henry-factor and path-length statements are narrowed to their assumptions;
 historical in-house measurement values retain their evidence labels.
 
+**RC-04 traceability:** commit `480428b` partially addresses
+[RC-04](2026-09-09-repository-review-task-card.md#rc-04--next--repair-phase-noise-and-servo-interpretations)
+in `vecsel-systems.md`: linewidth/PSD definitions and the following-cavity
+servo interpretation now have explicit assumptions and worked examples.
+`phase-noise-budget.md`, `friedenauer-baseline.md` and `bc-g-results.md` were
+untouched by that commit. The four-document claim audit, harmonic-phase and
+path-length checks, and measurement-dependent conclusions remain open;
+this is partial progress, not RC-04 acceptance.
+
 ## Runtime and provenance
 
 The fifth notebook retains the existing shared-code pin `3466c32`. Its new
@@ -82,9 +91,12 @@ numerical results and rendered analysis outputs remain unchanged.
   are byte-identical on a second render.
 - Black, isort and Ruff pass on the new notebook and changed Python tools.
   Edited tutorial front matter and local Markdown links validate.
-- The fresh-runtime check passes all 20 cells outside any checkout, including
-  assertions for the imported module location, pinned Git revision and saved
-  pump-noise parameter override. All five PNGs exactly match the local render.
+- The published notebook has **19 cells: 10 code and 9 Markdown**; all ten
+  code cells have execution counts. The fresh-runtime checker appends one
+  validation code cell, so its reported **20 cells** describes the augmented
+  check notebook. That extra cell verifies the imported module location,
+  pinned Git revision and saved pump-noise parameter override. The check
+  passes outside any checkout; all five PNGs exactly match the local render.
   Two preliminary attempts encountered GitHub connection resets (HTTP/2 and
   a process-local HTTP/1.1 retry). The successful run uses the normal command
   and unchanged bootstrap; no persistent Git configuration was changed.

@@ -124,6 +124,15 @@ The nominal printed relation gives ≈0.00161 scattering events per π pulse, ve
 
 ### RC-04 · NEXT — repair phase-noise and servo interpretations
 
+**Progress 2026-09-10: partly addressed; package remains open.**
+[Tutorial 5 and its correction record](2026-09-10-vecsel-student-tutorial.md)
+(`480428b`) address linewidth/PSD definitions and following-cavity servo
+interpretation in `vecsel-systems.md`, with a worked frequency-noise/coherence
+example. `phase-noise-budget.md`, `friedenauer-baseline.md` and
+`bc-g-results.md` were untouched by that commit. The full four-document
+cross-reference table, harmonic-phase and path-length checks, and unavailable
+measurement evidence still require the acceptance work below.
+
 **Evidence:** confirmed conflicts with recorded definitions. **Dependency:** definitions, dimensional checks and measurement provenance can proceed now; scenario-dependent numerical limits depend only on the relevant RC-02/03 inputs.
 
 Reconcile [phase-noise-budget.md](../constraints/phase-noise-budget.md), [vecsel-systems.md](../docs/tutorials/vecsel-systems.md), the [baseline](../docs/components/friedenauer-baseline.md), and [piezo mechanics](2026-05-20-bbo-coating-run-wp/bc-g-results.md).
