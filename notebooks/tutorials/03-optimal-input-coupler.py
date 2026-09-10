@@ -27,6 +27,17 @@
 # We give both the **closed-form textbook answer** (small-signal, Polzik–Kimble)
 # and the **numerical solver** for the saturated regime.
 
+# %% [markdown]
+# ## Run in Google Colab
+#
+# [Open this notebook in Colab](https://colab.research.google.com/github/uwarring82/mg-plus-uv-chain/blob/main/docs/tutorials/03-optimal-input-coupler.ipynb).
+# Save a copy to your Drive, then run all cells using a standard CPU runtime.
+# The setup cell below downloads the reviewed code and inputs when no local
+# project checkout is present. No Drive mount is needed. For an experiment,
+# edit `parameter_overrides` below; your changes then travel with the notebook.
+# [Student guide and exercises](https://uwarring82.github.io/mg-plus-uv-chain/tutorials/).
+#
+
 # %%
 # -----------------------------------------------------------------------------
 # Imports and path setup
@@ -34,12 +45,37 @@
 from __future__ import annotations
 
 import math
+import os
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
+# A local checkout uses its own code. Colab starts without a checkout, so
+# fetch a fixed reviewed revision into a temporary runtime directory.
+REFERENCE_REVISION = "3466c3262aa72af93f10a3699c48782d401548f8"
 REPO_ROOT = Path.cwd().resolve()
-while not (REPO_ROOT / "pyproject.toml").exists() and REPO_ROOT != REPO_ROOT.parent:
+while not (REPO_ROOT / "src" / "enhancement_cavity.py").is_file():
+    if REPO_ROOT == REPO_ROOT.parent:
+        break
     REPO_ROOT = REPO_ROOT.parent
+if not (REPO_ROOT / "src" / "enhancement_cavity.py").is_file():
+    REPO_ROOT = Path(tempfile.mkdtemp(prefix="mg-uv-tutorial-"))
+    subprocess.run(
+        ["git", "clone", "--quiet",
+         "https://github.com/uwarring82/mg-plus-uv-chain.git", str(REPO_ROOT)],
+        check=True,
+    )
+    subprocess.run(
+        ["git", "-C", str(REPO_ROOT), "checkout", "--quiet", REFERENCE_REVISION],
+        check=True,
+    )
+    subprocess.run(
+        [sys.executable, "-m", "pip", "install", "--quiet", "-e", str(REPO_ROOT)],
+        check=True,
+    )
+    os.chdir(REPO_ROOT)
+    print("Runtime code and inputs:", REFERENCE_REVISION)
 sys.path.insert(0, str(REPO_ROOT))
 
 import matplotlib.pyplot as plt  # noqa: E402
@@ -53,6 +89,17 @@ from src.enhancement_cavity import (  # noqa: E402
 )
 
 print("Imports OK")
+
+# %% [markdown]
+# ## Your experiment
+#
+# Leave the dictionary empty to reproduce the bundled example. Then try
+# `{"cavity": {"power_in_W": 2.0}}` and run this cell and all cells below it again.
+# Change this cell rather than runtime files so saving the notebook preserves
+# your experiment. Input names and units are listed in the paired YAML file.
+#
+# %%
+parameter_overrides = {}
 
 # %% [markdown]
 # ## 1. The small-signal closed form
@@ -80,6 +127,18 @@ print("Imports OK")
 YAML_PATH = REPO_ROOT / "notebooks" / "tutorials" / "03-params.yaml"
 with YAML_PATH.open() as f:
     params = yaml.safe_load(f)
+
+# Apply saved notebook experiments to the bundled YAML defaults.
+for key, value in parameter_overrides.items():
+    if key not in params:
+        raise KeyError(f"Unknown parameter section: {key}")
+    if isinstance(value, dict):
+        unknown = value.keys() - params[key].keys()
+        if unknown:
+            raise KeyError(f"Unknown parameters in {key}: {sorted(unknown)}")
+        params[key].update(value)
+    else:
+        params[key] = value
 
 c = params["cavity"]
 P_in = c["power_in_W"]
@@ -117,10 +176,11 @@ print(f"Numerical T_opt = {T_opt_numerical:.5f}  →  P_h = {P_h_numerical:.4f} 
 print(f"Deviation in T_opt: {(T_opt_numerical - T_opt_analytic) / T_opt_analytic * 100:+.2f} %")
 
 # %% [markdown]
-# **Take-away.** The analytic formula is usually within a few percent of the
-# exact solver.  The deviation grows when $\gamma P_\mathrm{circ}$ approaches
-# the depleted regime ($\gtrsim 5$ %).  For procurement estimates the closed
-# form is excellent; for final performance predictions you want the solver.
+# **Take-away.** Compare the approximation with the numerical result at
+# your chosen inputs. Its small-signal assumption requires
+# $\gamma P_\mathrm{circ} \ll 1$; there is no universal accuracy guarantee
+# for a procurement estimate. Input uncertainties remain separate from
+# approximation error.
 
 # %% [markdown]
 # ## 2. Harmonic output vs. input-coupler transmission
@@ -207,11 +267,10 @@ for L_val in Ls:
     print(f"  L = {L_val:.4f}    →  T_opt = {T_opt*100:.2f} %  →  P_h = {P_h:.3f} W")
 
 # %% [markdown]
-# **Take-away.** A **±20 % error in γ** shifts the optimum T by a few
-# percent and changes the peak harmonic power by ~10 %.  A **±0.5 pp
-# error in L** has a comparable effect.  When you write a coating
-# specification, include both the central target T and the tolerance band
-# implied by your uncertainty in γ and L.
+# **Take-away.** Read the changes in optimum T and harmonic power from
+# the sweeps at your selected inputs. These independent variations are
+# sensitivity examples, not confidence intervals. If L was fitted using γ,
+# vary and refit them together before interpreting a coating tolerance.
 
 # %% [markdown]
 # ## 4. Procurement implication

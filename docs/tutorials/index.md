@@ -1,82 +1,211 @@
 ---
 layout: default
-title: Tutorials
-description: Visitor-facing notebooks introducing focused-Gaussian SHG, enhancement-cavity buildup, optimal input-coupler reflectivity, and two-stage cascade composition. Architecture-neutral, pre-G1 admissible.
+title: "Student tutorials"
+description: "Read, run and extend four optics notebooks: single-pass SHG, cavity buildup, input coupling and cascades. Student exercises and contribution guide."
 ---
 
-<p class="endorsement"><strong>Endorsement Marker.</strong> Local pedagogical material — AG Schätz stewardship. The tutorials below use the architecture-neutral primitives in <code>/src/</code>; they do not endorse any specific build, vendor, or architecture.</p>
+# Learn the optics, run the notebooks, contribute
 
-<p class="eyebrow">Tutorials</p>
+These tutorials are an entry point for students joining the UV-source project.
+You can read every worked notebook in your browser, run it in Google Colab, change its inputs,
+and contribute an explanation, calculation or test. Start with basic Python
+(functions, arrays and plotting), optical power and Gaussian beams. The first
+notebook introduces the nonlinear-optics notation as it is used.
 
-# Tutorials
+**Start here:** read [Tutorial 1](01-shg-single-pass.html), then follow
+[Run in Google Colab](#run-in-google-colab) and complete its first exercise below.
+You do not need an account or software installation to read the worked pages.
+The project website displays saved results; the Colab links open interactive
+notebooks in your browser.
 
-Two tutorial tracks. The **seed-laser systems** track explains the VECSEL
-sources themselves — how they lase single-frequency and what limits their
-linewidth. The **SHG enhancement-cavity numerics** track picks the seed up at
-its output and follows it through the LBO + BBO doubling chain to the deep UV.
+## Four worked notebooks
 
-## Seed-laser systems
+Work through these in order. Each has code, equations, plots and a small YAML
+file of example inputs, with a notebook cell for saved parameter overrides. The examples teach the shared models; they are not
+accepted specifications for a particular cavity.
 
-| Tutorial | What it explains |
-|---|---|
-| [VECSEL systems — 1118 nm and 1141 nm](vecsel-systems.html) | The two in-house VECSEL seeds (~1120 nm → 280 nm cooling/detection/Raman; ~1140 nm → 285 nm photoionisation): **gain-mirror properties**, the **intracavity Lyot + étalon filtering hierarchy**, and the **parameter sensitivities that set the achievable linewidth**. |
+| Step | Read online | Run in your browser | Notebook file | What you will learn |
+|---|---|---|---|---|
+| 1 | [Single-pass SHG](01-shg-single-pass.html) | [Open in Colab](https://colab.research.google.com/github/uwarring82/mg-plus-uv-chain/blob/main/docs/tutorials/01-shg-single-pass.ipynb) | <a href="01-shg-single-pass.ipynb" download>Download .ipynb</a> | Convert a focusing factor into a power prediction; distinguish small-signal and depleted conversion. |
+| 2 | [Passive cavity buildup](02-enhancement-cavity-buildup.html) | [Open in Colab](https://colab.research.google.com/github/uwarring82/mg-plus-uv-chain/blob/main/docs/tutorials/02-enhancement-cavity-buildup.ipynb) | <a href="02-enhancement-cavity-buildup.ipynb" download>Download .ipynb</a> | Sum returning field amplitudes and relate round-trip loss to the optimum input coupling. |
+| 3 | [Optimal input coupler](03-optimal-input-coupler.html) | [Open in Colab](https://colab.research.google.com/github/uwarring82/mg-plus-uv-chain/blob/main/docs/tutorials/03-optimal-input-coupler.ipynb) | <a href="03-optimal-input-coupler.ipynb" download>Download .ipynb</a> | Include nonlinear depletion and test sensitivity to uncertain loss and conversion strength. |
+| 4 | [Two-stage cascade](04-cascade-shg.html) | [Open in Colab](https://colab.research.google.com/github/uwarring82/mg-plus-uv-chain/blob/main/docs/tutorials/04-cascade-shg.ipynb) | <a href="04-cascade-shg.ipynb" download>Download .ipynb</a> | Track power through both stages and the relay; distinguish calibration from independent validation. |
 
-This is a **narrative tutorial (no notebook)** over the published in-house
-thesis lineage
-([Kiefer 2020 → Guth 2021 → Spanke 2023 → Spanke 2025](../references.html)) and
-the NIST + Tampere design literature; it pairs with the
-[seed-lasers components page](../components/seed-lasers.html), which records the
-source-class steward direction. A companion quantitative notebook (Lyot/étalon
-transmission curves, linewidth-vs-τ Allan plots) may join the numerics track
-below later.
+Notebook files need the repository's `src/` modules and
+[`notebooks/tutorials/NN-params.yaml`](https://github.com/uwarring82/mg-plus-uv-chain/tree/main/notebooks/tutorials)
+inputs. The Colab setup cell fetches these automatically from reviewed revision
+`3466c32` and installs the required packages in the runtime. For local work,
+clone the repository as described below.
 
-## SHG enhancement-cavity numerics
+The [VECSEL systems tutorial](vecsel-systems.html) is a complementary reading
+track on the seed lasers, gain mirrors, spectral filters and linewidth. It is
+a narrative page, without an executable notebook. Its
+[references](../references.html) and the [seed-laser component record](../components/seed-lasers.html)
+connect the models to the group's sources.
 
-Four worked notebooks taking a visitor from focused-Gaussian SHG efficiency
-through to a self-consistently impedance-matched two-stage cascade. They use
-only the architecture-neutral primitives in
-[`src/boyd_kleinman.py`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/src/boyd_kleinman.py),
-[`src/shg_single_pass.py`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/src/shg_single_pass.py),
-[`src/enhancement_cavity.py`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/src/enhancement_cavity.py),
-and
-[`src/shg_cascade.py`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/src/shg_cascade.py)
-— so the pedagogy never depends on Friedenauer-specific or other architecture
-presets.
+## Run in Google Colab
 
-Each tutorial is paired with a YAML parameter file (`NN-params.yaml`) so you
-can re-run it with your own numbers; the rendered HTML below uses the bundled
-defaults.
+1. Click **Open in Colab** beside a tutorial and sign in to Google if prompted.
+2. Use **File → Save a copy in Drive** to keep your own editable notebook.
+3. Use a standard Python CPU runtime, then **Runtime → Run all**. The first
+   code cell downloads the public code and inputs and installs dependencies.
+   These calculations do not require a GPU or a Drive mount.
+4. Edit the **Your experiment** cell and run that cell and the cells below
+   it again. For Tutorial 1, try:
 
-### The four notebooks
+   ```python
+   parameter_overrides = {"crystal": {"d_eff_pm_per_V": 1.68}}
+   ```
 
-| # | Tutorial | Question it answers |
+   Use `{}` to return to the bundled defaults. The other notebooks provide
+   their own examples. Entering changes in this cell preserves them when
+   you save or download the notebook.
+5. Save your copy with your observations, or use **File → Download → Download
+   .ipynb** to share it for review. Include the parameter changes and the
+   question you investigated.
+
+Colab runtimes are temporary: files edited only in the runtime are not saved
+with the notebook. Keep your experiment in cells and save the notebook before
+leaving. Google describes notebook sharing, downloads and runtime persistence
+in its [Colab FAQ](https://research.google.com/colaboratory/faq.html).
+
+The code and default inputs are pinned, while Colab's Python and installed
+package versions can change. Record those versions when reporting a numerical
+difference. For existing local checkouts, setup uses the checkout's code.
+
+## Optional: run locally
+
+Use Python 3.11 or later. The September numerical review was run with Python
+3.13.7; its [recorded environment](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/review/2026-09-09/environment.txt)
+is available for exact-environment comparisons. Installing the dependencies
+below provides a working setup, rather than a promise of identical package
+versions on every computer.
+
+From a terminal on macOS or Linux:
+
+```sh
+git clone https://github.com/uwarring82/mg-plus-uv-chain.git
+cd mg-plus-uv-chain
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -e '.[notebooks,test]' jupyterlab
+git switch -c student/shg-exercises
+python -m jupytext --to ipynb notebooks/tutorials/01-shg-single-pass.py
+python -m jupyterlab notebooks/tutorials/01-shg-single-pass.ipynb
+```
+
+On Windows, create the environment with `py -3 -m venv .venv` and activate
+it with `.venv\Scripts\Activate.ps1` in PowerShell; use the remaining `python`
+commands in that environment. An existing repository checkout can start at
+the environment step. Select the kernel belonging to this environment.
+
+[JupyterLab installation](https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html)
+and [Jupytext conversion commands](https://jupytext.readthedocs.io/en/latest/using-cli.html)
+are documented by their maintainers. You can also open the converted notebook
+in an editor with Jupyter support.
+
+Run all cells from a fresh kernel once before making changes. Keep the
+notebook inside the cloned repository so it can find the example inputs.
+Use the same `parameter_overrides` cell as in Colab, restart the kernel and
+run all cells again. You can also edit the local YAML inputs; record both the
+original and changed values, and clear overrides when comparing YAML defaults.
+For another tutorial, substitute its filename and matching `NN-params.yaml`.
+
+If an import fails, check the selected kernel and that the editable install
+used that same Python. If the YAML file is missing, check the notebook's
+location inside the clone. Running all cells after a restart avoids results
+that depend on forgotten cell execution order.
+
+## First exercises
+
+For each exercise, write your prediction **before** running it. Hand in the
+changed input, one labelled plot or table, and a short explanation of what
+agrees with your prediction and what still needs checking. Use the units in
+the YAML labels; the notebook converts them to SI for the calculations.
+
+| Notebook | Experiment | Check your reasoning |
 |---|---|---|
-| 01 | [From Boyd–Kleinman to γ_SHG](01-shg-single-pass.html) | Given a crystal, a wavelength, and a focused beam — how much harmonic comes out in a single pass? |
-| 02 | [Passive enhancement cavity](02-enhancement-cavity-buildup.html) | When does a ring cavity *build up* the circulating power, and what fixes the impedance match? |
-| 03 | [Optimal input coupler](03-optimal-input-coupler.html) | **The headline question.** What input-coupler reflectivity should I specify when ordering coatings, given my pump power and round-trip loss budget? |
-| 04 | [Two-stage cascade](04-cascade-shg.html) | How does the LBO → BBO chain compose, and why does the joint optimum factorise into two independent stage problems? |
+| 1 | Double `crystal.d_eff_pm_per_V` while retaining all other inputs. Compare γ and harmonic power at low and high pump power. | γ should increase fourfold. The fourfold power scaling applies in the small-signal limit; use the depleted model to check that harmonic power stays below input power. |
+| 2 | Keep `cavity.gamma_shg` at zero. Locate the maximum for losses 0.01 and 0.02; evaluate at the exact match as well as on the plotted grid. | The passive optimum is T=L. At match, buildup is 1/L: 100 and 50 respectively. Explain why a coarse grid may miss that value. |
+| 3 | Set `cavity.power_in_W` to 0.1, 1 and 2 W, leaving γ and passive loss fixed. Compare numerical optimum T with the small-signal approximation. | Plot the discrepancy and evaluate γ times the circulating power. Explain when the small-signal assumption is no longer adequate. |
+| 4 | Change `transport.efficiency` from 0.95 to 0.50. Compare fixed couplers with couplers re-optimized for the changed input to stage 2. | Stage 2 input equals stage 1 harmonic output times transport efficiency. Explain why final output need not scale linearly with that efficiency. |
 
-The tutorials are designed to be read in order. Tutorial 03 is the load-bearing
-one for the procurement question that motivated the [components inventory](../components/inventory.html);
-Tutorial 04 closes with an honest end-to-end Friedenauer 2006 cross-check
-([Phase E diagnostic notebook](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/notebooks/diagnostic/2026-05-07-friedenauer-cascade-recompute.py)) where the BBO stage agrees to 1.5 % and the LBO
-exposes an `L_passive` definitional gap in the source paper — the kind of
-result the tutorials are meant to make you trust *and* probe.
+The synthetic parameter changes isolate model behaviour; they do not describe
+changing one property of a real crystal independently of all its other
+properties. For extensions, always state which inputs were held fixed and
+which were refitted or re-optimized.
 
-### Source and reproducibility
+## Contribute your first improvement
 
-- Notebook source (jupytext `.py`):
-  [`notebooks/tutorials/`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/notebooks/tutorials/)
-- Theory references (Boyd–Kleinman 1968, Polzik–Kimble 1991, …):
-  [`notebooks/tutorials/REFERENCES.md`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/notebooks/tutorials/REFERENCES.md)
-- Render pipeline:
-  [`scripts/render_tutorials.py`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/scripts/render_tutorials.py)
-  (jupytext → executed `.ipynb` → nbconvert HTML; install `pip install -e
-  .[notebooks]`, then `make tutorials` from the repo root).
-- Workplan:
-  [`logbook/2026-05-07-numerics-expansion-workplan.md`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-07-numerics-expansion-workplan.md).
+A useful contribution can be small: clarify an equation, add an informative
+plot, reproduce a limiting case, or report a failure with the inputs needed
+to reproduce it. No new physics result is required.
 
-The rendered `.html` and executed `.ipynb` files in this directory are
-committed alongside the source so GitHub Pages can serve them statically; the
-`.py` files in [`notebooks/tutorials/`](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/notebooks/tutorials/)
-remain the version-controlled truth.
+For a first contribution from Colab, send your saved notebook to your
+supervisor or attach it to a GitHub issue, with the question, changed inputs
+and result. A maintainer can help turn it into a source change. For a PR:
+
+1. Work on a branch in your clone. For a pull request without repository write
+   access, fork the repository on GitHub and push your branch to that fork.
+2. Edit the tutorial's `.py` source and its YAML inputs. If you worked in the
+   notebook editor, export your edited notebook back to the canonical source:
+
+   ```sh
+   python -m jupytext --to py:percent --output notebooks/tutorials/01-shg-single-pass.py notebooks/tutorials/01-shg-single-pass.ipynb
+   ```
+
+3. Regenerate the affected public tutorial from the repository root and check
+   your diff. This updates the executed `.ipynb` and `.html` under `docs/tutorials/`:
+
+   ```sh
+   python scripts/render_tutorials.py 01
+   git diff --stat
+   git status --short
+   ```
+
+   Commit the source, relevant inputs and generated pair together. The working
+   `.ipynb` beside the source is a local editing copy; it need not be committed.
+   Check for unrelated changes before submitting. If shared numerical code
+   changes, run `python -m pytest -q` and include a meaningful regression check.
+4. Open a pull request with the question, input values and units, expected
+   behaviour, observed result and reproduction command. Cite the source and
+   equation for a new formula. Include the Python version and any limitations.
+   Ulrich Warring reviews contributions before they become part of the main
+   record. A [GitHub issue](https://github.com/uwarring82/mg-plus-uv-chain/issues)
+   with a reproducible example is equally useful if you are not ready for a PR.
+
+The [project conventions](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/CONVENTIONS.md)
+cover units and commit format. Shared functions in `src/` remain independent
+of particular builds. Put a study of a specific material or cavity in
+`notebooks/exploration/`, marked **pre-G1, exploratory, not promoted**; a student
+exercise does not adopt a procurement target or close a project gate.
+Notebook code is covered by the repository's MIT software declaration;
+consult the [licence map](../LICENSE.html) for document and figure scope.
+
+### Ideas for future student projects
+
+These are suggested starting points, not assigned work or accepted results.
+
+- **Explain numerical accuracy:** compare grid maxima with the continuous
+  optimizer and show how grid spacing affects the answer.
+- **Make sensitivity visible:** plot γ and passive loss assumptions separately,
+  then explain why a loss fitted at one operating point is correlated with γ.
+- **Improve the teaching:** add a units walkthrough, an annotated energy-flow
+  diagram or an explanation of an initially surprising exercise result.
+- **Bridge to measurements:** propose the circulating-power, throughput or
+  beam-profile measurements that would distinguish a model fit from validation;
+  arrange any experimental work with the supervisor.
+
+The [September review notebooks](../review/) are a next step after the four
+tutorials: they show corrections, provenance records and the limits of fitting
+published data. The earlier claim that the cascade comparison independently
+validated BBO conversion to 1.5% is superseded; the
+[dated impact report](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-09-10-rc07-recalculation.md)
+explains the distinction between calibration and validation.
+
+## Sources
+
+- [Tutorial sources and parameter files](https://github.com/uwarring82/mg-plus-uv-chain/tree/main/notebooks/tutorials)
+- [Theory references](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/notebooks/tutorials/REFERENCES.md)
+- [Render pipeline](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/scripts/render_tutorials.py)
+- [Current calculations](../calculations.html) and [project status](../status.html)

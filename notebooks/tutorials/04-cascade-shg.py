@@ -24,6 +24,17 @@
 # Tutorials 1–3 into a cascade, and explains a useful mathematical fact:
 # the cascade optimum **factorises exactly**.
 
+# %% [markdown]
+# ## Run in Google Colab
+#
+# [Open this notebook in Colab](https://colab.research.google.com/github/uwarring82/mg-plus-uv-chain/blob/main/docs/tutorials/04-cascade-shg.ipynb).
+# Save a copy to your Drive, then run all cells using a standard CPU runtime.
+# The setup cell below downloads the reviewed code and inputs when no local
+# project checkout is present. No Drive mount is needed. For an experiment,
+# edit `parameter_overrides` below; your changes then travel with the notebook.
+# [Student guide and exercises](https://uwarring82.github.io/mg-plus-uv-chain/tutorials/).
+#
+
 # %%
 # -----------------------------------------------------------------------------
 # Imports and path setup
@@ -31,12 +42,37 @@
 from __future__ import annotations
 
 import math
+import os
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
+# A local checkout uses its own code. Colab starts without a checkout, so
+# fetch a fixed reviewed revision into a temporary runtime directory.
+REFERENCE_REVISION = "3466c3262aa72af93f10a3699c48782d401548f8"
 REPO_ROOT = Path.cwd().resolve()
-while not (REPO_ROOT / "pyproject.toml").exists() and REPO_ROOT != REPO_ROOT.parent:
+while not (REPO_ROOT / "src" / "enhancement_cavity.py").is_file():
+    if REPO_ROOT == REPO_ROOT.parent:
+        break
     REPO_ROOT = REPO_ROOT.parent
+if not (REPO_ROOT / "src" / "enhancement_cavity.py").is_file():
+    REPO_ROOT = Path(tempfile.mkdtemp(prefix="mg-uv-tutorial-"))
+    subprocess.run(
+        ["git", "clone", "--quiet",
+         "https://github.com/uwarring82/mg-plus-uv-chain.git", str(REPO_ROOT)],
+        check=True,
+    )
+    subprocess.run(
+        ["git", "-C", str(REPO_ROOT), "checkout", "--quiet", REFERENCE_REVISION],
+        check=True,
+    )
+    subprocess.run(
+        [sys.executable, "-m", "pip", "install", "--quiet", "-e", str(REPO_ROOT)],
+        check=True,
+    )
+    os.chdir(REPO_ROOT)
+    print("Runtime code and inputs:", REFERENCE_REVISION)
 sys.path.insert(0, str(REPO_ROOT))
 
 import matplotlib.pyplot as plt  # noqa: E402
@@ -47,6 +83,17 @@ from src.enhancement_cavity import harmonic_output_W, optimal_input_coupler  # n
 from src.shg_cascade import Stage, cascade_output, optimise_cascade  # noqa: E402
 
 print("Imports OK")
+
+# %% [markdown]
+# ## Your experiment
+#
+# Leave the dictionary empty to reproduce the bundled example. Then try
+# `{"transport": {"efficiency": 0.50}}` and run this cell and all cells below it again.
+# Change this cell rather than runtime files so saving the notebook preserves
+# your experiment. Input names and units are listed in the paired YAML file.
+#
+# %%
+parameter_overrides = {}
 
 # %% [markdown]
 # ## 1. A two-stage example
@@ -65,6 +112,18 @@ print("Imports OK")
 YAML_PATH = REPO_ROOT / "notebooks" / "tutorials" / "04-params.yaml"
 with YAML_PATH.open() as f:
     params = yaml.safe_load(f)
+
+# Apply saved notebook experiments to the bundled YAML defaults.
+for key, value in parameter_overrides.items():
+    if key not in params:
+        raise KeyError(f"Unknown parameter section: {key}")
+    if isinstance(value, dict):
+        unknown = value.keys() - params[key].keys()
+        if unknown:
+            raise KeyError(f"Unknown parameters in {key}: {sorted(unknown)}")
+        params[key].update(value)
+    else:
+        params[key] = value
 
 s1 = params["stage_1"]
 s2 = params["stage_2"]
@@ -109,14 +168,13 @@ print(f"\nTotal harmonic output = {result['total_harmonic_W']:.4f} W")
 print(f"Overall efficiency    = {result['total_efficiency']*100:.2f} %")
 
 # %% [markdown]
-# **Take-away.** Stage 1 converts ~20 % of the input; stage 2 converts ~55 %
-# of what reaches it.  The overall efficiency is the product of the two
-# stage efficiencies **weighted by transport loss**:
+# **Take-away.** Read each stage efficiency from the powers printed above.
+# Their product, including the relay throughput, gives the overall efficiency:
 #
 # $$\eta_\mathrm{overall} = \eta_1 \times \eta_t \times \eta_2$$
 #
-# (in the limit where each stage is impedance-matched and the depleted
-# regime is not too deep).
+# This is power accounting at the evaluated operating points, including
+# depletion; it does not require impedance matching or a small-signal limit.
 
 # %% [markdown]
 # ## 2. Why the cascade factorises exactly
@@ -206,7 +264,7 @@ fig.tight_layout()
 # %% [markdown]
 # ## 5. Try this
 #
-# Open `04-params.yaml` and experiment:
+# Edit `parameter_overrides` (or the local `04-params.yaml`) and experiment:
 # - Make stage 1 much stronger than stage 2 (swap γ values).  Does the
 #   overall efficiency change?  (Hint: the bottleneck is usually the
 #   *downstream* stage because it sees less power.)

@@ -20,7 +20,7 @@ Ulrich Warring, AG Schätz, leads the project. The repository records the measur
 - **[Calculations](calculations.html)** — what has been computed against the Friedenauer 2006 baseline, what the recomputation tells us, and which open questions the dossier should resolve.
 - **[Status](status.html)** — kill-gate state, Phase 1 dossier population, what is unblocked, what is still gated. Dated project snapshot.
 
-**Source & governance:** [GitHub repository](https://github.com/uwarring82/mg-plus-uv-chain) · [Charter v1.0](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/CHARTER.md) · [Phase 1 dossier](KD-2026-XXX-uv-280nm.html) · [References](references.html) · [Tutorials](tutorials/) · [Numerical review](review/)
+**Source & governance:** [GitHub repository](https://github.com/uwarring82/mg-plus-uv-chain) · [Charter v1.0](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/CHARTER.md) · [Phase 1 dossier](KD-2026-XXX-uv-280nm.html) · [References](references.html) · [Student tutorials](tutorials/) · [Numerical review](review/)
 
 **Architectures:** [overview](architectures/) · [Next-gen 500 mW](architectures/next-gen.html) · [BBO coating-run explainer](architectures/bbo-coating-run.html) · [coating brief & open questions](architectures/bbo-coating-brief.html) · [IC-VECSEL alternative](architectures/ic-vecsel-alternative.html) · [pulsed-Raman alternative](architectures/pulsed-raman-alternative.html) · [shared requirements](architectures/requirements.html)
 

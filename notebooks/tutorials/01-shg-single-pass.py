@@ -28,6 +28,17 @@
 #
 # No cavity physics yet; that is Tutorial 2.
 
+# %% [markdown]
+# ## Run in Google Colab
+#
+# [Open this notebook in Colab](https://colab.research.google.com/github/uwarring82/mg-plus-uv-chain/blob/main/docs/tutorials/01-shg-single-pass.ipynb).
+# Save a copy to your Drive, then run all cells using a standard CPU runtime.
+# The setup cell below downloads the reviewed code and inputs when no local
+# project checkout is present. No Drive mount is needed. For an experiment,
+# edit `parameter_overrides` below; your changes then travel with the notebook.
+# [Student guide and exercises](https://uwarring82.github.io/mg-plus-uv-chain/tutorials/).
+#
+
 # %%
 # -----------------------------------------------------------------------------
 # Imports and path setup
@@ -35,12 +46,37 @@
 from __future__ import annotations
 
 import math
+import os
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
+# A local checkout uses its own code. Colab starts without a checkout, so
+# fetch a fixed reviewed revision into a temporary runtime directory.
+REFERENCE_REVISION = "3466c3262aa72af93f10a3699c48782d401548f8"
 REPO_ROOT = Path.cwd().resolve()
-while not (REPO_ROOT / "pyproject.toml").exists() and REPO_ROOT != REPO_ROOT.parent:
+while not (REPO_ROOT / "src" / "enhancement_cavity.py").is_file():
+    if REPO_ROOT == REPO_ROOT.parent:
+        break
     REPO_ROOT = REPO_ROOT.parent
+if not (REPO_ROOT / "src" / "enhancement_cavity.py").is_file():
+    REPO_ROOT = Path(tempfile.mkdtemp(prefix="mg-uv-tutorial-"))
+    subprocess.run(
+        ["git", "clone", "--quiet",
+         "https://github.com/uwarring82/mg-plus-uv-chain.git", str(REPO_ROOT)],
+        check=True,
+    )
+    subprocess.run(
+        ["git", "-C", str(REPO_ROOT), "checkout", "--quiet", REFERENCE_REVISION],
+        check=True,
+    )
+    subprocess.run(
+        [sys.executable, "-m", "pip", "install", "--quiet", "-e", str(REPO_ROOT)],
+        check=True,
+    )
+    os.chdir(REPO_ROOT)
+    print("Runtime code and inputs:", REFERENCE_REVISION)
 sys.path.insert(0, str(REPO_ROOT))
 
 import matplotlib.pyplot as plt  # noqa: E402
@@ -56,6 +92,17 @@ from src.shg_single_pass import (  # noqa: E402
 )
 
 print("Imports OK")
+
+# %% [markdown]
+# ## Your experiment
+#
+# Leave the dictionary empty to reproduce the bundled example. Then try
+# `{"crystal": {"d_eff_pm_per_V": 1.68}}` and run this cell and all cells below it again.
+# Change this cell rather than runtime files so saving the notebook preserves
+# your experiment. Input names and units are listed in the paired YAML file.
+#
+# %%
+parameter_overrides = {}
 
 # %% [markdown]
 # ## 1. The Boyd–Kleinman focusing factor
@@ -149,6 +196,18 @@ print(f"Classic BK optimum:  ξ_opt = {xi_opt:.3f},  h_m_max = {h_max:.4f}")
 YAML_PATH = REPO_ROOT / "notebooks" / "tutorials" / "01-params.yaml"
 with YAML_PATH.open() as f:
     params = yaml.safe_load(f)
+
+# Apply saved notebook experiments to the bundled YAML defaults.
+for key, value in parameter_overrides.items():
+    if key not in params:
+        raise KeyError(f"Unknown parameter section: {key}")
+    if isinstance(value, dict):
+        unknown = value.keys() - params[key].keys()
+        if unknown:
+            raise KeyError(f"Unknown parameters in {key}: {sorted(unknown)}")
+        params[key].update(value)
+    else:
+        params[key] = value
 
 c = params["crystal"]
 d_eff = c["d_eff_pm_per_V"] * 1e-12  # convert pm/V → m/V

@@ -32,6 +32,7 @@ This repository is governed by the [Charter](CHARTER.md). The Charter is the can
 | Known unsolved boundaries (14-GHz domain, UV degradation, coatings) | [CHARTER.md §8](CHARTER.md) |
 | Governance, vetoes, logbook discipline | [CHARTER.md §9](CHARTER.md) |
 | Why the Charter has the shape it does | [`logbook/2026-04-30-kickoff.md`](logbook/2026-04-30-kickoff.md) (nine-cycle deliberation history) |
+| How students can learn, run notebooks and contribute | [Student tutorials](https://uwarring82.github.io/mg-plus-uv-chain/tutorials/) |
 | How to cite this work | [`CITATION.cff`](CITATION.cff) |
 
 ---

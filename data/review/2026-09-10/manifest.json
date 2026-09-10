@@ -6,7 +6,7 @@
     "notebooks/diagnostic/2026-05-07-friedenauer-cascade-recompute.py": "5d2e711a8976e4a09c8933e1c621ddaa5bbf5c0bd56fc36c24a83697628a63f1",
     "notebooks/exploration/2026-05-20-bbo-ic-impedance-match.py": "3a951a11a399c8015abca95fa7600cae8a7994e1acba175755a3eed327144e33",
     "notebooks/exploration/2026-09-10-rc07-recalculation.py": "df583718f5f36f25cbdc959d96728a29bebb2aeacf025dc2134fa7d0f463ef62",
-    "notebooks/tutorials/04-cascade-shg.py": "0f5078bd0ec71f51ad27e9d3f6c06e1a45ff3ce22df1f91344f6e0f882f7f3b9",
+    "notebooks/tutorials/04-cascade-shg.py": "8013449b6132068952439c1aa224b37f1b423e81a15b52857eb8c500ceac6b9e",
     "notebooks/tutorials/04-params.yaml": "6ed37d5b73a2317458a25bd2cb7976161f29062bd4b8a1f203b65b3b685b1bf3",
     "scripts/render_tutorials.py": "777a8b9203e6b0b3e1b4cbec269775f7704309dae5ef92443a1493ba090d0d59",
     "scripts/review/render_rc07.py": "44a1d0e356edfc60f59a92e28b23d715f149525c6a052a3fb517afa5818cbbc6",
@@ -110,9 +110,9 @@
     },
     {
       "notebook": "docs/tutorials/04-cascade-shg.ipynb",
-      "notebook_sha256": "a3767f8343df9d0c8fff793bd516abef73587b1910331f1cd4428d5a76f44e0c",
+      "notebook_sha256": "45658ca3538a20483e38d7b99b13f7e1051185adcc61ed52c5b2936168cb19ea",
       "html": "docs/tutorials/04-cascade-shg.html",
-      "html_sha256": "1f795a1bfa9bea9b14c6a88d2afb7a76f2424c85475a12e411f1f24c315903d4",
+      "html_sha256": "ab524eabe4f44a10bbc4fb4723d695d98962cf5a549730e2e3d52a8dd42912d6",
       "printed_results": [
         "Imports OK\n",
         "Stage 1: L = 0.02,  \u03b3 = 0.001 W\u207b\u00b9\nStage 2: L = 0.02,  \u03b3 = 0.01 W\u207b\u00b9\nTransport efficiency: 0.95\nInput power: 1.0 W\n",
