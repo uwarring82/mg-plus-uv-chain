@@ -34,7 +34,8 @@
     }
   ],
   "source_sha256": {
-    "notebooks/exploration/2026-09-10-rc07-recalculation.py": "99a3f2056d50bd7379a43f671de3aefbff98243a104f775ea2850a207f136534",
+    "notebooks/exploration/2026-09-10-rc07-recalculation.py": "df583718f5f36f25cbdc959d96728a29bebb2aeacf025dc2134fa7d0f463ef62",
+    "scripts/review/cavity_fits.py": "886e04b95779119d649fc825547bd6d34f22bd88da5773d893a01b52a59ad71a",
     "data/literature/Friedenauer2006/extracted.yaml": "4cba420f3da8ef7b7c05c8d944cb34feb5ab4a18f42002699ca3bfaf6d6e7b15",
     "src/boyd_kleinman.py": "3f9f9ef4bee7212003c56a36d42afc41e120eb97cbf154259850b626819a7c23",
     "src/shg_single_pass.py": "086afb5471eb3858f4958a7439b4870605d4c91bc2bdad97cd2b9e69e62214cc",

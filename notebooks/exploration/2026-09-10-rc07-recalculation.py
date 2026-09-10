@@ -6,6 +6,8 @@
 # loss budget. It preserves the May procurement specification as a comparison.
 # A fit to one power measurement is calibration, not independent validation.
 # Inputs and limitations are recorded in the dated RC-07 logbook report.
+# Generic [calibration helpers](../../scripts/review/cavity_fits.py) are shared
+# with the tests; collecting tests does not execute this exploratory notebook.
 
 # %%
 from __future__ import annotations
@@ -20,8 +22,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import scipy
 import yaml
-from scipy.optimize import brentq
 
+from scripts.review.cavity_fits import fit_passive_loss, minimax_coupler
 from src.boyd_kleinman import h_m_factor, h_m_optimum
 from src.enhancement_cavity import (
     circulating_power,
@@ -35,70 +37,6 @@ SOURCE = Path("notebooks/exploration/2026-09-10-rc07-recalculation.py")
 EXTRACTION = Path("data/literature/Friedenauer2006/extracted.yaml")
 OUTPUT = Path("data/review/2026-09-10/rc07-results.json")
 BASE_REVISION = "4404074d5114ecf7515a2cbd71910c16c036359d"
-
-
-def fit_passive_loss(
-    pump_W: float,
-    transmission: float,
-    gamma_per_W: float,
-    measured_harmonic_W: float,
-    extraction_efficiency: float = 1.0,
-) -> float:
-    """Fit dimensionless fundamental loss to one extracted harmonic power.
-
-    Extraction is downstream of conversion, with no UV feedback. Reject an
-    unattainable measurement rather than returning a boundary as a fitted loss.
-    """
-    if not 0.0 < extraction_efficiency <= 1.0:
-        raise ValueError("extraction efficiency must be in (0,1]")
-    if not math.isfinite(measured_harmonic_W) or measured_harmonic_W <= 0.0:
-        raise ValueError("measured harmonic power must be positive and finite")
-
-    def residual(loss: float) -> float:
-        return (
-            extraction_efficiency
-            * harmonic_output_W(pump_W, transmission, loss, gamma_per_W)
-            - measured_harmonic_W
-        )
-
-    high = math.nextafter(1.0, 0.0)
-    low_residual, high_residual = residual(0.0), residual(high)
-    # The forward solver has a 1e-12 relative root tolerance. At a physical
-    # endpoint, an equivalent independently generated observation can differ
-    # by roundoff. Accept only a correspondingly small *relative output* error.
-    output_tolerance = 3e-12 * measured_harmonic_W
-    if abs(low_residual) <= output_tolerance:
-        return 0.0
-    if abs(high_residual) <= output_tolerance:
-        return high
-    if low_residual < 0.0 or high_residual > 0.0:
-        raise ValueError("measured output is outside the passive-loss model range")
-    return float(brentq(residual, 0.0, high, xtol=1e-15, rtol=1e-12))
-
-
-def minimax_coupler(powers_W: list[float], loss: float, gamma: float) -> dict:
-    """Equalise relative output penalties for the two endpoint pump scenarios."""
-    if len(powers_W) != 2 or not 0.0 < powers_W[0] < powers_W[1]:
-        raise ValueError("two positive increasing pump scenarios are required")
-    optima = [optimal_input_coupler(p, loss, gamma) for p in powers_W]
-    peaks = [
-        harmonic_output_W(p, t, loss, gamma)
-        for p, t in zip(powers_W, optima, strict=True)
-    ]
-
-    def penalty(p: float, t: float, peak: float) -> float:
-        return 1.0 - harmonic_output_W(p, t, loss, gamma) / peak
-
-    def difference(t: float) -> float:
-        return penalty(powers_W[0], t, peaks[0]) - penalty(powers_W[1], t, peaks[1])
-
-    centre = brentq(difference, *optima, xtol=1e-15)
-    return {
-        "transmission": float(centre),
-        "worst_relative_penalty": max(
-            penalty(p, centre, peak) for p, peak in zip(powers_W, peaks, strict=True)
-        ),
-    }
 
 
 def material_gamma(
@@ -335,6 +273,7 @@ def recompute() -> dict:
             str(p): hashlib.sha256(p.read_bytes()).hexdigest()
             for p in [
                 SOURCE,
+                Path("scripts/review/cavity_fits.py"),
                 EXTRACTION,
                 Path("src/boyd_kleinman.py"),
                 Path("src/shg_single_pass.py"),

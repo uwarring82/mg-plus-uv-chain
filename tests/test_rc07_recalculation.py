@@ -1,16 +1,13 @@
 """Independent inverse-calibration and minimax checks for the RC-07 analysis."""
 
 import math
-import runpy
 
 import numpy as np
 import pytest
 
+from scripts.review.cavity_fits import fit_passive_loss as fit_loss
+from scripts.review.cavity_fits import minimax_coupler as minimax
 from src.enhancement_cavity import harmonic_output_W, optimal_input_coupler
-
-analysis = runpy.run_path("notebooks/exploration/2026-09-10-rc07-recalculation.py")
-fit_loss = analysis["fit_passive_loss"]
-minimax = analysis["minimax_coupler"]
 
 
 @pytest.mark.parametrize("loss, extraction", [(0.007, 1.0), (0.02, 0.95), (0.0, 0.9)])

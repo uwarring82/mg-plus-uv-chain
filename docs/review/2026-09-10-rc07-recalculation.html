@@ -15,7 +15,9 @@ description: Tutorial notebook (2026-09-10-rc07-recalculation). Dated pre-G1 exp
 This recalculation separates corrected SHG normalization from refitting the
 loss budget. It preserves the May procurement specification as a comparison.
 A fit to one power measurement is calibration, not independent validation.
-Inputs and limitations are recorded in the dated RC-07 logbook report.</p>
+Inputs and limitations are recorded in the dated RC-07 logbook report.
+Generic <a href="https://github.com/uwarring82/mg-plus-uv-chain/blob/main/scripts/review/cavity_fits.py">calibration helpers</a> are shared
+with the tests; collecting tests does not execute this exploratory notebook.</p>
 </div>
 </div>
 </div>
@@ -39,8 +41,8 @@ Inputs and limitations are recorded in the dated RC-07 logbook report.</p>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">brentq</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">scripts.review.cavity_fits</span><span class="w"> </span><span class="kn">import</span> <span class="n">fit_passive_loss</span><span class="p">,</span> <span class="n">minimax_coupler</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">src.boyd_kleinman</span><span class="w"> </span><span class="kn">import</span> <span class="n">h_m_factor</span><span class="p">,</span> <span class="n">h_m_optimum</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">src.enhancement_cavity</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">circulating_power</span><span class="p">,</span>
@@ -54,70 +56,6 @@ Inputs and limitations are recorded in the dated RC-07 logbook report.</p>
 <span class="n">EXTRACTION</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"data/literature/Friedenauer2006/extracted.yaml"</span><span class="p">)</span>
 <span class="n">OUTPUT</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"data/review/2026-09-10/rc07-results.json"</span><span class="p">)</span>
 <span class="n">BASE_REVISION</span> <span class="o">=</span> <span class="s2">"4404074d5114ecf7515a2cbd71910c16c036359d"</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">fit_passive_loss</span><span class="p">(</span>
-    <span class="n">pump_W</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-    <span class="n">transmission</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-    <span class="n">gamma_per_W</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-    <span class="n">measured_harmonic_W</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-    <span class="n">extraction_efficiency</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""Fit dimensionless fundamental loss to one extracted harmonic power.</span>
-
-<span class="sd">    Extraction is downstream of conversion, with no UV feedback. Reject an</span>
-<span class="sd">    unattainable measurement rather than returning a boundary as a fitted loss.</span>
-<span class="sd">    """</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="mf">0.0</span> <span class="o">&lt;</span> <span class="n">extraction_efficiency</span> <span class="o">&lt;=</span> <span class="mf">1.0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"extraction efficiency must be in (0,1]"</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">math</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">measured_harmonic_W</span><span class="p">)</span> <span class="ow">or</span> <span class="n">measured_harmonic_W</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"measured harmonic power must be positive and finite"</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">residual</span><span class="p">(</span><span class="n">loss</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="n">extraction_efficiency</span>
-            <span class="o">*</span> <span class="n">harmonic_output_W</span><span class="p">(</span><span class="n">pump_W</span><span class="p">,</span> <span class="n">transmission</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">gamma_per_W</span><span class="p">)</span>
-            <span class="o">-</span> <span class="n">measured_harmonic_W</span>
-        <span class="p">)</span>
-
-    <span class="n">high</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">nextafter</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
-    <span class="n">low_residual</span><span class="p">,</span> <span class="n">high_residual</span> <span class="o">=</span> <span class="n">residual</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span> <span class="n">residual</span><span class="p">(</span><span class="n">high</span><span class="p">)</span>
-    <span class="c1"># The forward solver has a 1e-12 relative root tolerance. At a physical</span>
-    <span class="c1"># endpoint, an equivalent independently generated observation can differ</span>
-    <span class="c1"># by roundoff. Accept only a correspondingly small *relative output* error.</span>
-    <span class="n">output_tolerance</span> <span class="o">=</span> <span class="mf">3e-12</span> <span class="o">*</span> <span class="n">measured_harmonic_W</span>
-    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">low_residual</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">output_tolerance</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mf">0.0</span>
-    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">high_residual</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">output_tolerance</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">high</span>
-    <span class="k">if</span> <span class="n">low_residual</span> <span class="o">&lt;</span> <span class="mf">0.0</span> <span class="ow">or</span> <span class="n">high_residual</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"measured output is outside the passive-loss model range"</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">brentq</span><span class="p">(</span><span class="n">residual</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="mf">1e-15</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">))</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">minimax_coupler</span><span class="p">(</span><span class="n">powers_W</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">loss</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""Equalise relative output penalties for the two endpoint pump scenarios."""</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">powers_W</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span> <span class="ow">or</span> <span class="ow">not</span> <span class="mf">0.0</span> <span class="o">&lt;</span> <span class="n">powers_W</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">powers_W</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"two positive increasing pump scenarios are required"</span><span class="p">)</span>
-    <span class="n">optima</span> <span class="o">=</span> <span class="p">[</span><span class="n">optimal_input_coupler</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">powers_W</span><span class="p">]</span>
-    <span class="n">peaks</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">harmonic_output_W</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">powers_W</span><span class="p">,</span> <span class="n">optima</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="p">]</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">penalty</span><span class="p">(</span><span class="n">p</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">peak</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">harmonic_output_W</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span> <span class="o">/</span> <span class="n">peak</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">difference</span><span class="p">(</span><span class="n">t</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">penalty</span><span class="p">(</span><span class="n">powers_W</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t</span><span class="p">,</span> <span class="n">peaks</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">penalty</span><span class="p">(</span><span class="n">powers_W</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">t</span><span class="p">,</span> <span class="n">peaks</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-
-    <span class="n">centre</span> <span class="o">=</span> <span class="n">brentq</span><span class="p">(</span><span class="n">difference</span><span class="p">,</span> <span class="o">*</span><span class="n">optima</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="mf">1e-15</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="s2">"transmission"</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">centre</span><span class="p">),</span>
-        <span class="s2">"worst_relative_penalty"</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span>
-            <span class="n">penalty</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">centre</span><span class="p">,</span> <span class="n">peak</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">peak</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">powers_W</span><span class="p">,</span> <span class="n">peaks</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="p">),</span>
-    <span class="p">}</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">material_gamma</span><span class="p">(</span>
@@ -354,6 +292,7 @@ Inputs and limitations are recorded in the dated RC-07 logbook report.</p>
             <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">):</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">read_bytes</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span>
                 <span class="n">SOURCE</span><span class="p">,</span>
+                <span class="n">Path</span><span class="p">(</span><span class="s2">"scripts/review/cavity_fits.py"</span><span class="p">),</span>
                 <span class="n">EXTRACTION</span><span class="p">,</span>
                 <span class="n">Path</span><span class="p">(</span><span class="s2">"src/boyd_kleinman.py"</span><span class="p">),</span>
                 <span class="n">Path</span><span class="p">(</span><span class="s2">"src/shg_single_pass.py"</span><span class="p">),</span>

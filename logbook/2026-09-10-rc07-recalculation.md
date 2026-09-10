@@ -269,6 +269,30 @@ contains the current comparisons. Tutorial 4 removes the obsolete numerical
 parable and its claim that one BBO agreement validates the material constants.
 A successful historical replay is not acceptance of historical physics.
 
+### Follow-up — test isolation and discoverability
+
+The initial tests loaded the exploratory notebook with `runpy.run_path` at
+collection time, using a working-directory-relative path. The two generic
+functions now live in [cavity_fits.py](../scripts/review/cavity_fits.py), imported
+directly by both the notebook and tests. They contain no material presets,
+data loading or plotting imports. The notebook retains all architecture-specific
+scenarios and its pre-G1 marker; nothing is promoted into `/src/`.
+
+All 261 tests pass when launched from `tests/`. A separate full-suite
+`--collect-only` check also passes with matplotlib imports and execution of
+code under `notebooks/` explicitly blocked. The numerical function bodies are
+unchanged, and the regenerated results match the prior JSON exactly except
+for source hashes. The affected notebook/HTML pair and JSON reproduce
+byte-for-byte on repeat rendering. Both provenance records include the new
+helper; the original record remains available at `d11a76f`.
+
+The landing page now links directly to the numerical review index. These
+changes address test isolation and navigation, without changing the scientific
+dispositions above. For coverage runs outside the repository root, specify
+`--cov-config=../pyproject.toml` from `tests/` to retain branch coverage and the
+configured threshold; pytest's own root-relative import configuration already
+works from either directory.
+
 **Remaining work:** D1 steward acceptance; independent loss/mode-matching,
 whole-path extraction, angular/temperature-dependent index and beam-profile
 checks; then D4 disposition of any replacement procurement targets. D2 and

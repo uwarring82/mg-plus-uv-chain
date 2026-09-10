@@ -22,6 +22,7 @@ def manifest() -> dict:
         Path("scripts/render_tutorials.py"),
         Path("scripts/review/render_rc07.py"),
         Path("scripts/review/rc07_manifest.py"),
+        Path("scripts/review/cavity_fits.py"),
         Path("data/literature/Friedenauer2006/extracted.yaml"),
         Path("data/review/2026-09-09/environment.txt"),
         Path("tests/test_rc07_recalculation.py"),

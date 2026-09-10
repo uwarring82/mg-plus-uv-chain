@@ -5,15 +5,16 @@
     "notebooks/2026-05-01-friedenauer-bk-recalculation.py": "8bcd948972eada512ca5caaa5e3fcfdda6fdb3a4b52210d967751c27cc3c00e6",
     "notebooks/diagnostic/2026-05-07-friedenauer-cascade-recompute.py": "5d2e711a8976e4a09c8933e1c621ddaa5bbf5c0bd56fc36c24a83697628a63f1",
     "notebooks/exploration/2026-05-20-bbo-ic-impedance-match.py": "3a951a11a399c8015abca95fa7600cae8a7994e1acba175755a3eed327144e33",
-    "notebooks/exploration/2026-09-10-rc07-recalculation.py": "99a3f2056d50bd7379a43f671de3aefbff98243a104f775ea2850a207f136534",
+    "notebooks/exploration/2026-09-10-rc07-recalculation.py": "df583718f5f36f25cbdc959d96728a29bebb2aeacf025dc2134fa7d0f463ef62",
     "notebooks/tutorials/04-cascade-shg.py": "0f5078bd0ec71f51ad27e9d3f6c06e1a45ff3ce22df1f91344f6e0f882f7f3b9",
     "notebooks/tutorials/04-params.yaml": "6ed37d5b73a2317458a25bd2cb7976161f29062bd4b8a1f203b65b3b685b1bf3",
     "scripts/render_tutorials.py": "777a8b9203e6b0b3e1b4cbec269775f7704309dae5ef92443a1493ba090d0d59",
     "scripts/review/render_rc07.py": "44a1d0e356edfc60f59a92e28b23d715f149525c6a052a3fb517afa5818cbbc6",
-    "scripts/review/rc07_manifest.py": "b3acbb91536e4eed5522c818dd18b8a1e2bcd868109d2d917ecae6fdbf4bb74d",
+    "scripts/review/rc07_manifest.py": "e4667d80b99817962a7a528244d13159163c5d1a6b15c15812fc5baf570a2208",
+    "scripts/review/cavity_fits.py": "886e04b95779119d649fc825547bd6d34f22bd88da5773d893a01b52a59ad71a",
     "data/literature/Friedenauer2006/extracted.yaml": "4cba420f3da8ef7b7c05c8d944cb34feb5ab4a18f42002699ca3bfaf6d6e7b15",
     "data/review/2026-09-09/environment.txt": "7d9daf1ed6471db497fd9f033ca7de468525d4f4683be88b77210b04d8c98a8f",
-    "tests/test_rc07_recalculation.py": "36ea9ea2c99397591e9abcdd470fec2fe3145a6e4801044ad348cf1190bc762b",
+    "tests/test_rc07_recalculation.py": "8a288f89319b1c96a0e3e1e8717efd2f7a1f1d52d4ee24e4e5fa908921ccd87c",
     "src/__init__.py": "084f18e838bcb3af8de5ccd76196f566092fe7fcd3067021b43b0d202080f287",
     "src/abcd.py": "9b82bc5eea770e491a290740472763caf222244cc3d0b1cf6b8a19fa9293dde4",
     "src/boyd_kleinman.py": "3f9f9ef4bee7212003c56a36d42afc41e120eb97cbf154259850b626819a7c23",
@@ -39,7 +40,7 @@
     "src/shg_cascade.py": "8752b73795d371af11c4ea4abbaee51f16439ec77a99a0d6c5e208103f74c16d",
     "src/shg_single_pass.py": "086afb5471eb3858f4958a7439b4870605d4c91bc2bdad97cd2b9e69e62214cc"
   },
-  "results_json_sha256": "e1ed2a1bae2e8520641c2bcc326db4f3eac7223087b33c6b8457ed0f492adeff",
+  "results_json_sha256": "db16a6729dd5fc93b5c9a3a57079a7c6a2b00ea2198497e26f75975d5eb3e1da",
   "outputs": [
     {
       "notebook": "docs/review/2026-05-01-friedenauer-bk-recalculation.ipynb",
@@ -99,9 +100,9 @@
     },
     {
       "notebook": "docs/review/2026-09-10-rc07-recalculation.ipynb",
-      "notebook_sha256": "c8b250e0128a7e93bc4c5e6dbe8bef5f104278014157e1ab5c012a2aabb593b4",
+      "notebook_sha256": "8d2f2c34f2b12d7b309efc7d47a1abd5ba2ada2386cb51f495f43628c6cded15",
       "html": "docs/review/2026-09-10-rc07-recalculation.html",
-      "html_sha256": "88407bc598acc535e86840507430179a196549949fda62d5ae18c9ce08f72983",
+      "html_sha256": "b398991973b7e7b9ef080b70cf2a52e94a9b6ba3fadec1ff065b9c67fda09d0e",
       "printed_results": [
         "BBO: {\n  \"xi\": 1.4131714172673748,\n  \"B\": 18.016560142174747,\n  \"h_m\": 0.03924309675490129,\n  \"gamma_per_W\": 0.00010586566994623877,\n  \"xi_opt\": 1.421116571479191,\n  \"h_m_opt\": 0.03924335351390365,\n  \"waist_opt_m\": 1.9345693395474517e-05,\n  \"curved_green_radius_m\": 0.0002547018213673033,\n  \"frozen_loss_corrected_gamma_output_W\": 0.22887193576694512\n}\n\nCascade: old normalization / corrected normalization\nlegacy_normalization\n{'name': 'LBO', 'gamma_per_W': 0.0003560261361251765, 'fixed_T_L_equals_T_W': 0.6480039546781192, 'optimized_T_L_equals_T_W': 0.7017526398152866, 'fitted_loss': 0.015840593113948385, 'T_opt_with_fitted_loss': 0.03410443755027185}\n{'name': 'BBO', 'gamma_per_W': 0.0001491391914228046, 'fixed_T_L_equals_T_W': 0.25991719664950574, 'optimized_T_L_equals_T_W': 0.27093324851645767, 'fitted_loss': 0.015287567992627609, 'T_opt_with_fitted_loss': 0.021691503087156082}\nL_equals_T fixed UV W: 0.14332746682660594 optimized UV W: 0.16743526473971074\nfitted_loss fixed UV W: 0.27500000000006286 optimized UV W: 0.29853207806937027\ncorrected_normalization\n{'name': 'LBO', 'gamma_per_W': 0.00022182313777269566, 'fixed_T_L_equals_T_W': 0.5302962003126859, 'optimized_T_L_equals_T_W': 0.5567723953539749, 'fitted_loss': 0.013059287634102393, 'T_opt_with_fitted_loss': 0.02733583955380428}\n{'name': 'BBO', 'gamma_per_W': 0.00010586566994623877, 'fixed_T_L_equals_T_W': 0.21516745837553394, 'optimized_T_L_equals_T_W': 0.2211211413596152, 'fitted_loss': 0.013191248602479224, 'T_opt_with_fitted_loss': 0.018528349623832537}\nL_equals_T fixed UV W: 0.08204176145596218 optimized UV W: 0.09034065957556048\nfitted_loss fixed UV W: 0.275 optimized UV W: 0.27844596354393264\n\nCoating comparison: default 1500 ppm mirror budget\nfrozen_May minimax: {'transmission': 0.019964722562130437, 'worst_relative_penalty': 0.006805481226939691}\n  P=0.50 W: Topt=1.7565 %, Pc=28.466 W, generated UV=0.12051 W, May M1 worst-band penalty=0.970 %\n  P=1.50 W: Topt=2.2945 %, Pc=65.373 W, generated UV=0.63326 W, May M1 worst-band penalty=0.946 %\ngamma_only_fixed_loss minimax: {'transmission': 0.01849106818208036, 'worst_relative_penalty': 0.005349677421601529}\n  P=0.50 W: Topt=1.6539 %, Pc=30.232 W, generated UV=0.09655 W, May M1 worst-band penalty=1.952 %\n  P=1.50 W: Topt=2.0861 %, Pc=71.906 W, generated UV=0.54461 W, May M1 worst-band penalty=0.178 %\ngamma_and_refitted_loss minimax: {'transmission': 0.016841225038878613, 'worst_relative_penalty': 0.006795620557622839}\n  P=0.50 W: Topt=1.4815 %, Pc=33.749 W, generated UV=0.12029 W, May M1 worst-band penalty=4.317 %\n  P=1.50 W: Topt=1.9358 %, Pc=77.488 W, generated UV=0.63220 W, May M1 worst-band penalty=0.112 %\n"
       ],
