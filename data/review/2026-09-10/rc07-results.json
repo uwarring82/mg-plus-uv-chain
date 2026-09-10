@@ -1,0 +1,1304 @@
+{
+  "base_revision": "4404074d5114ecf7515a2cbd71910c16c036359d",
+  "environment": {
+    "python": "3.13.7",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1"
+  },
+  "inputs": [
+    {
+      "name": "LBO",
+      "pump_W": 1.8,
+      "wavelength_m": 1.118e-06,
+      "length_m": 0.018,
+      "waist_m": 2.73e-05,
+      "T": 0.025000000000000022,
+      "target_W": 0.95,
+      "n1": 1.605,
+      "n2": 1.62,
+      "rho_rad": 0.0,
+      "deff_m_per_V": 8.4e-13
+    },
+    {
+      "name": "BBO",
+      "pump_W": 0.95,
+      "wavelength_m": 5.59e-07,
+      "length_m": 0.01,
+      "waist_m": 1.94e-05,
+      "T": 0.016000000000000014,
+      "target_W": 0.275,
+      "n1": 1.67276,
+      "n2": 1.565,
+      "rho_rad": 0.0831,
+      "deff_m_per_V": 1.44e-12
+    }
+  ],
+  "source_sha256": {
+    "notebooks/exploration/2026-09-10-rc07-recalculation.py": "99a3f2056d50bd7379a43f671de3aefbff98243a104f775ea2850a207f136534",
+    "data/literature/Friedenauer2006/extracted.yaml": "4cba420f3da8ef7b7c05c8d944cb34feb5ab4a18f42002699ca3bfaf6d6e7b15",
+    "src/boyd_kleinman.py": "3f9f9ef4bee7212003c56a36d42afc41e120eb97cbf154259850b626819a7c23",
+    "src/shg_single_pass.py": "086afb5471eb3858f4958a7439b4870605d4c91bc2bdad97cd2b9e69e62214cc",
+    "src/enhancement_cavity.py": "0870faca9e5dc407fa93eb773c10a63b7634a82d7f40954a99a89a3f8ae6a392",
+    "src/shg_cascade.py": "8752b73795d371af11c4ea4abbaee51f16439ec77a99a0d6c5e208103f74c16d"
+  },
+  "bbo": {
+    "xi": 1.4131714172673748,
+    "B": 18.016560142174747,
+    "h_m": 0.03924309675490129,
+    "gamma_per_W": 0.00010586566994623877,
+    "xi_opt": 1.421116571479191,
+    "h_m_opt": 0.03924335351390365,
+    "waist_opt_m": 1.9345693395474517e-05,
+    "curved_green_radius_m": 0.0002547018213673033,
+    "frozen_loss_corrected_gamma_output_W": 0.22887193576694512
+  },
+  "cascade": {
+    "legacy_normalization": {
+      "per_stage": [
+        {
+          "name": "LBO",
+          "gamma_per_W": 0.0003560261361251765,
+          "fixed_T_L_equals_T_W": 0.6480039546781192,
+          "optimized_T_L_equals_T_W": 0.7017526398152866,
+          "fitted_loss": 0.015840593113948385,
+          "T_opt_with_fitted_loss": 0.03410443755027185
+        },
+        {
+          "name": "BBO",
+          "gamma_per_W": 0.0001491391914228046,
+          "fixed_T_L_equals_T_W": 0.25991719664950574,
+          "optimized_T_L_equals_T_W": 0.27093324851645767,
+          "fitted_loss": 0.015287567992627609,
+          "T_opt_with_fitted_loss": 0.021691503087156082
+        }
+      ],
+      "L_equals_T": {
+        "fixed_couplers": {
+          "per_stage": [
+            {
+              "input_W": 1.8,
+              "circulating_W": 42.87953458081007,
+              "harmonic_W": 0.6480039546781192,
+              "into_next_stage_W": 0.6480039546781192
+            },
+            {
+              "input_W": 0.6480039546781192,
+              "circulating_W": 31.04834348475598,
+              "harmonic_W": 0.14332746682660594,
+              "into_next_stage_W": null
+            }
+          ],
+          "total_harmonic_W": 0.14332746682660594,
+          "total_efficiency": 0.07962637045922552
+        },
+        "optimized_couplers": {
+          "per_stage": [
+            {
+              "input_W": 1.8,
+              "circulating_W": 44.63164704720384,
+              "harmonic_W": 0.7017526398152866,
+              "into_next_stage_W": 0.7017526398152866
+            },
+            {
+              "input_W": 0.7017526398152866,
+              "circulating_W": 33.56227120696318,
+              "harmonic_W": 0.16743526473971074,
+              "into_next_stage_W": null
+            }
+          ],
+          "total_harmonic_W": 0.16743526473971074,
+          "total_efficiency": 0.09301959152206152
+        },
+        "optimized_transmissions": [
+          0.04033012714265875,
+          0.020908973516360056
+        ]
+      },
+      "fitted_loss": {
+        "fixed_couplers": {
+          "per_stage": [
+            {
+              "input_W": 1.8,
+              "circulating_W": 51.974235677598216,
+              "harmonic_W": 0.9500000000001447,
+              "into_next_stage_W": 0.9500000000001447
+            },
+            {
+              "input_W": 0.9500000000001447,
+              "circulating_W": 43.03265540116034,
+              "harmonic_W": 0.27500000000006286,
+              "into_next_stage_W": null
+            }
+          ],
+          "total_harmonic_W": 0.27500000000006286,
+          "total_efficiency": 0.1527777777778127
+        },
+        "optimized_couplers": {
+          "per_stage": [
+            {
+              "input_W": 1.8,
+              "circulating_W": 52.779055433671985,
+              "harmonic_W": 0.979463744584503,
+              "into_next_stage_W": 0.979463744584503
+            },
+            {
+              "input_W": 0.979463744584503,
+              "circulating_W": 44.84006195669328,
+              "harmonic_W": 0.29853207806937027,
+              "into_next_stage_W": null
+            }
+          ],
+          "total_harmonic_W": 0.29853207806937027,
+          "total_efficiency": 0.1658511544829835
+        },
+        "optimized_transmissions": [
+          0.03410443755027185,
+          0.021843496682286162
+        ]
+      }
+    },
+    "corrected_normalization": {
+      "per_stage": [
+        {
+          "name": "LBO",
+          "gamma_per_W": 0.00022182313777269566,
+          "fixed_T_L_equals_T_W": 0.5302962003126859,
+          "optimized_T_L_equals_T_W": 0.5567723953539749,
+          "fitted_loss": 0.013059287634102393,
+          "T_opt_with_fitted_loss": 0.02733583955380428
+        },
+        {
+          "name": "BBO",
+          "gamma_per_W": 0.00010586566994623877,
+          "fixed_T_L_equals_T_W": 0.21516745837553394,
+          "optimized_T_L_equals_T_W": 0.2211211413596152,
+          "fitted_loss": 0.013191248602479224,
+          "T_opt_with_fitted_loss": 0.018528349623832537
+        }
+      ],
+      "L_equals_T": {
+        "fixed_couplers": {
+          "per_stage": [
+            {
+              "input_W": 1.8,
+              "circulating_W": 49.07130779935546,
+              "harmonic_W": 0.5302962003126859,
+              "into_next_stage_W": 0.5302962003126859
+            },
+            {
+              "input_W": 0.5302962003126859,
+              "circulating_W": 27.8654894254317,
+              "harmonic_W": 0.08204176145596218,
+              "into_next_stage_W": null
+            }
+          ],
+          "total_harmonic_W": 0.08204176145596218,
+          "total_efficiency": 0.04557875636442343
+        },
+        "optimized_couplers": {
+          "per_stage": [
+            {
+              "input_W": 1.8,
+              "circulating_W": 50.285876581193726,
+              "harmonic_W": 0.5567723953539749,
+              "into_next_stage_W": 0.5567723953539749
+            },
+            {
+              "input_W": 0.5567723953539749,
+              "circulating_W": 29.242324145741676,
+              "harmonic_W": 0.09034065957556048,
+              "into_next_stage_W": null
+            }
+          ],
+          "total_harmonic_W": 0.09034065957556048,
+          "total_efficiency": 0.05018925531975582
+        },
+        "optimized_transmissions": [
+          0.035795339017183035,
+          0.019039950196135948
+        ]
+      },
+      "fitted_loss": {
+        "fixed_couplers": {
+          "per_stage": [
+            {
+              "input_W": 1.8,
+              "circulating_W": 65.76016970241764,
+              "harmonic_W": 0.95,
+              "into_next_stage_W": 0.95
+            },
+            {
+              "input_W": 0.95,
+              "circulating_W": 51.05876357763735,
+              "harmonic_W": 0.275,
+              "into_next_stage_W": null
+            }
+          ],
+          "total_harmonic_W": 0.275,
+          "total_efficiency": 0.1527777777777778
+        },
+        "optimized_couplers": {
+          "per_stage": [
+            {
+              "input_W": 1.8,
+              "circulating_W": 65.84762090284872,
+              "harmonic_W": 0.9525161611327285,
+              "into_next_stage_W": 0.9525161611327285
+            },
+            {
+              "input_W": 0.9525161611327285,
+              "circulating_W": 51.378248408484765,
+              "harmonic_W": 0.27844596354393264,
+              "into_next_stage_W": null
+            }
+          ],
+          "total_harmonic_W": 0.27844596354393264,
+          "total_efficiency": 0.15469220196885147
+        },
+        "optimized_transmissions": [
+          0.02733583955380428,
+          0.01853928832995096
+        ]
+      }
+    }
+  },
+  "coating_grids": {
+    "frozen_May": {
+      "fitted_or_assumed_loss": 0.015288,
+      "nonmirror_proxy": 0.011888,
+      "rows": [
+        {
+          "pump_W": 0.5,
+          "loss": 0.015288,
+          "gamma_per_W": 0.00014914,
+          "T_opt": 0.019118763421903016,
+          "circulating_W": 26.152319005484706,
+          "generated_harmonic_W": 0.10173872872895819,
+          "I_waist_W_per_m2": 44237122361.98332,
+          "I_curved_green_W_per_m2": 256641111.12384045,
+          "I_curved_uv_if_same_radius_W_per_m2": 998394.8413848468,
+          "I_plane_green_range_W_per_m2": [
+            416227084.30390114,
+            739959260.9847133
+          ],
+          "historical_M1_generated_W": 0.10165745923173007,
+          "historical_M1_penalty": 0.0007988059045304086,
+          "historical_M1_band_worst_penalty": 0.001975128600864906,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.0002971722292247625,
+            "0.001": 0.0012175168942013537,
+            "0.005": 0.03713059873722857,
+            "0.01": 0.1937668712528915
+          },
+          "mirror_loss_sum": 0.0034
+        },
+        {
+          "pump_W": 1.5,
+          "loss": 0.015288,
+          "gamma_per_W": 0.00014914,
+          "T_opt": 0.02429859641487338,
+          "circulating_W": 61.73196074328955,
+          "generated_harmonic_W": 0.564877633416257,
+          "I_waist_W_per_m2": 104420732267.50307,
+          "I_curved_green_W_per_m2": 605795569.9335313,
+          "I_curved_uv_if_same_radius_W_per_m2": 5543325.754727529,
+          "I_plane_green_range_W_per_m2": [
+            982494669.9049366,
+            1746657190.9421096
+          ],
+          "historical_M1_generated_W": 0.5570341403654564,
+          "historical_M1_penalty": 0.01388529583542697,
+          "historical_M1_band_worst_penalty": 0.017601009006875556,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.0001608631448607456,
+            "0.001": 0.000654924336479179,
+            "0.005": 0.01895221839047556,
+            "0.01": 0.09232057917783831
+          },
+          "mirror_loss_sum": 0.0034
+        },
+        {
+          "pump_W": 0.5,
+          "loss": 0.013387999999999999,
+          "gamma_per_W": 0.00014914,
+          "T_opt": 0.017564766475404548,
+          "circulating_W": 28.466077286033734,
+          "generated_harmonic_W": 0.12050953900274922,
+          "I_waist_W_per_m2": 48150886497.05806,
+          "I_curved_green_W_per_m2": 279346764.7168375,
+          "I_curved_uv_if_same_radius_W_per_m2": 1182598.8350861405,
+          "I_plane_green_range_W_per_m2": [
+            453051691.05081934,
+            805425228.53479
+          ],
+          "historical_M1_generated_W": 0.11968923506657654,
+          "historical_M1_penalty": 0.006806962693251761,
+          "historical_M1_band_worst_penalty": 0.009700004407279805,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.00034150072329208747,
+            "0.001": 0.001401679663755373,
+            "0.005": 0.043449429037148546,
+            "0.01": 0.23272123937360412
+          },
+          "mirror_loss_sum": 0.0015
+        },
+        {
+          "pump_W": 1.5,
+          "loss": 0.013387999999999999,
+          "gamma_per_W": 0.00014914,
+          "T_opt": 0.022945088419515872,
+          "circulating_W": 65.37346784526575,
+          "generated_harmonic_W": 0.6332580715494871,
+          "I_waist_W_per_m2": 110580407637.72047,
+          "I_curved_green_W_per_m2": 641530849.4175622,
+          "I_curved_uv_if_same_radius_W_per_m2": 6214364.969948434,
+          "I_plane_green_range_W_per_m2": [
+            1040451055.463312,
+            1849690765.2681108
+          ],
+          "historical_M1_generated_W": 0.6289492938114198,
+          "historical_M1_penalty": 0.00680414183671485,
+          "historical_M1_band_worst_penalty": 0.009459379684043978,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.00017449175448447374,
+            "0.001": 0.0007109916667550342,
+            "0.005": 0.020725966267285068,
+            "0.01": 0.10217406996040657
+          },
+          "mirror_loss_sum": 0.0015
+        },
+        {
+          "pump_W": 0.5,
+          "loss": 0.012487999999999999,
+          "gamma_per_W": 0.00014914,
+          "T_opt": 0.016846336655519125,
+          "circulating_W": 29.680043217953436,
+          "generated_harmonic_W": 0.1309914414145825,
+          "I_waist_W_per_m2": 50204331909.00598,
+          "I_curved_green_W_per_m2": 291259802.54606485,
+          "I_curved_uv_if_same_radius_W_per_m2": 1285461.1120834649,
+          "I_plane_green_range_W_per_m2": [
+            472372558.9318373,
+            839773438.1010443
+          ],
+          "historical_M1_generated_W": 0.1294464074785812,
+          "historical_M1_penalty": 0.011794922777522032,
+          "historical_M1_band_worst_penalty": 0.015492184540441767,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.0003651445339426518,
+            "0.001": 0.0015001215615506602,
+            "0.005": 0.04689688952173998,
+            "0.01": 0.2547825245229416
+          },
+          "mirror_loss_sum": 0.0006
+        },
+        {
+          "pump_W": 1.5,
+          "loss": 0.012487999999999999,
+          "gamma_per_W": 0.00014914,
+          "T_opt": 0.02231994606015468,
+          "circulating_W": 67.20446348558983,
+          "generated_harmonic_W": 0.6691064614829533,
+          "I_waist_W_per_m2": 113677570002.8739,
+          "I_curved_green_W_per_m2": 659498998.0737914,
+          "I_curved_uv_if_same_radius_W_per_m2": 6566156.741171322,
+          "I_plane_green_range_W_per_m2": [
+            1069592256.1570407,
+            1901497344.2791839
+          ],
+          "historical_M1_generated_W": 0.6662178104098432,
+          "historical_M1_penalty": 0.00431717707030943,
+          "historical_M1_band_worst_penalty": 0.0064700001980496635,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.00018129579651893213,
+            "0.001": 0.0007390127358561926,
+            "0.005": 0.021621353525282605,
+            "0.01": 0.1072405411515257
+          },
+          "mirror_loss_sum": 0.0006
+        },
+        {
+          "pump_W": 0.5,
+          "loss": 0.012188,
+          "gamma_per_W": 0.00014914,
+          "T_opt": 0.016609610549302593,
+          "circulating_W": 30.10305380224558,
+          "generated_harmonic_W": 0.13474626776980927,
+          "I_waist_W_per_m2": 50919861991.58952,
+          "I_curved_green_W_per_m2": 295410941.35509795,
+          "I_curved_uv_if_same_radius_W_per_m2": 1322308.429817712,
+          "I_plane_green_range_W_per_m2": [
+            479104981.4788659,
+            851742189.2957617
+          ],
+          "historical_M1_generated_W": 0.13289082636033286,
+          "historical_M1_penalty": 0.013769890923035488,
+          "historical_M1_band_worst_penalty": 0.017732627220133468,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.0003734304006778322,
+            "0.001": 0.0015346546481628254,
+            "0.005": 0.04811793665270503,
+            "0.01": 0.2627427923456753
+          },
+          "mirror_loss_sum": 0.0003
+        },
+        {
+          "pump_W": 1.5,
+          "loss": 0.012188,
+          "gamma_per_W": 0.00014914,
+          "T_opt": 0.02211393785838299,
+          "circulating_W": 67.83052433293228,
+          "generated_harmonic_W": 0.6815887734004258,
+          "I_waist_W_per_m2": 114736563291.54277,
+          "I_curved_green_W_per_m2": 665642734.3695824,
+          "I_curved_uv_if_same_radius_W_per_m2": 6688649.679530733,
+          "I_plane_green_range_W_per_m2": [
+            1079556324.010126,
+            1919211242.6846688
+          ],
+          "historical_M1_generated_W": 0.6791258197323242,
+          "historical_M1_penalty": 0.0036135478813917876,
+          "historical_M1_band_worst_penalty": 0.005599302887085322,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.00018361285433976526,
+            "0.001": 0.0007485596025662566,
+            "0.005": 0.021927803115469713,
+            "0.01": 0.10898950321666334
+          },
+          "mirror_loss_sum": 0.0003
+        }
+      ],
+      "minimax_default": {
+        "transmission": 0.019964722562130437,
+        "worst_relative_penalty": 0.006805481226939691
+      }
+    },
+    "gamma_only_fixed_loss": {
+      "fitted_or_assumed_loss": 0.015288,
+      "nonmirror_proxy": 0.011888,
+      "rows": [
+        {
+          "pump_W": 0.5,
+          "loss": 0.015288,
+          "gamma_per_W": 0.00010586566994623877,
+          "T_opt": 0.018153670733915522,
+          "circulating_W": 27.542639024851347,
+          "generated_harmonic_W": 0.0801535216269878,
+          "I_waist_W_per_m2": 46588873914.346176,
+          "I_curved_green_W_per_m2": 270284768.2891244,
+          "I_curved_uv_if_same_radius_W_per_m2": 786572.2671295347,
+          "I_plane_green_range_W_per_m2": [
+            438354714.6600832,
+            779297270.5068147
+          ],
+          "historical_M1_generated_W": 0.07983318690424372,
+          "historical_M1_penalty": 0.003996514641425586,
+          "historical_M1_band_worst_penalty": 0.006349654096672763,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.0003420130125219023,
+            "0.001": 0.0014036485906943064,
+            "0.005": 0.04341676469065803,
+            "0.01": 0.23029664118670468
+          },
+          "mirror_loss_sum": 0.0034
+        },
+        {
+          "pump_W": 1.5,
+          "loss": 0.015288,
+          "gamma_per_W": 0.00010586566994623877,
+          "T_opt": 0.022274835132634584,
+          "circulating_W": 67.34056575810473,
+          "generated_harmonic_W": 0.4778020687165646,
+          "I_waist_W_per_m2": 113907789467.60754,
+          "I_curved_green_W_per_m2": 660834613.4139599,
+          "I_curved_uv_if_same_radius_W_per_m2": 4688825.254348262,
+          "I_plane_green_range_W_per_m2": [
+            1071758391.1007195,
+            1905348250.8457239
+          ],
+          "historical_M1_generated_W": 0.47561305045736807,
+          "historical_M1_penalty": 0.0045814331969648014,
+          "historical_M1_band_worst_penalty": 0.006918190695684889,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.00019976737959004343,
+            "0.001": 0.0008149526555704112,
+            "0.005": 0.023984313538772395,
+            "0.01": 0.11955549507019092
+          },
+          "mirror_loss_sum": 0.0034
+        },
+        {
+          "pump_W": 0.5,
+          "loss": 0.013387999999999999,
+          "gamma_per_W": 0.00010586566994623877,
+          "T_opt": 0.016538926559365265,
+          "circulating_W": 30.23170809818199,
+          "generated_harmonic_W": 0.09655051021226144,
+          "I_waist_W_per_m2": 51137483068.73148,
+          "I_curved_green_W_per_m2": 296673467.30750203,
+          "I_curved_uv_if_same_radius_W_per_m2": 947481.1857125108,
+          "I_plane_green_range_W_per_m2": [
+            481152578.1936946,
+            855382361.233235
+          ],
+          "historical_M1_generated_W": 0.09507785284432534,
+          "historical_M1_penalty": 0.015252714508691256,
+          "historical_M1_band_worst_penalty": 0.019520452862982873,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.0004009553774614316,
+            "0.001": 0.0016492047387312025,
+            "0.005": 0.052028391575848154,
+            "0.01": 0.28442947124347395
+          },
+          "mirror_loss_sum": 0.0015
+        },
+        {
+          "pump_W": 1.5,
+          "loss": 0.013387999999999999,
+          "gamma_per_W": 0.00010586566994623877,
+          "T_opt": 0.020860526076598277,
+          "circulating_W": 71.90614438448394,
+          "generated_harmonic_W": 0.5446118017830281,
+          "I_waist_W_per_m2": 121630548596.77065,
+          "I_curved_green_W_per_m2": 705638103.7412033,
+          "I_curved_uv_if_same_radius_W_per_m2": 5344450.635962354,
+          "I_plane_green_range_W_per_m2": [
+            1144421831.747015,
+            2034527700.8835828
+          ],
+          "historical_M1_generated_W": 0.5442206962401984,
+          "historical_M1_penalty": 0.000718136370804423,
+          "historical_M1_band_worst_penalty": 0.0017807440423838194,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.0002202246636947569,
+            "0.001": 0.0008993739112286292,
+            "0.005": 0.026725683285479418,
+            "0.01": 0.13535255168244453
+          },
+          "mirror_loss_sum": 0.0015
+        },
+        {
+          "pump_W": 0.5,
+          "loss": 0.012487999999999999,
+          "gamma_per_W": 0.00010586566994623877,
+          "T_opt": 0.015790871378462322,
+          "circulating_W": 31.663863761309976,
+          "generated_harmonic_W": 0.1059042010109863,
+          "I_waist_W_per_m2": 53560000371.99294,
+          "I_curved_green_W_per_m2": 310727671.08998054,
+          "I_curved_uv_if_same_radius_W_per_m2": 1039271.9595704676,
+          "I_plane_green_range_W_per_m2": [
+            503946043.50008166,
+            895904077.3334787
+          ],
+          "historical_M1_generated_W": 0.10343486646916741,
+          "historical_M1_penalty": 0.023316681663673733,
+          "historical_M1_band_worst_penalty": 0.028478146889155953,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.0004332158863420421,
+            "0.001": 0.0017839544861047996,
+            "0.005": 0.05686987684633227,
+            "0.01": 0.3161407847898623
+          },
+          "mirror_loss_sum": 0.0006
+        },
+        {
+          "pump_W": 1.5,
+          "loss": 0.012487999999999999,
+          "gamma_per_W": 0.00010586566994623877,
+          "T_opt": 0.020207705524352595,
+          "circulating_W": 74.22911018731585,
+          "generated_harmonic_W": 0.5802733252667309,
+          "I_waist_W_per_m2": 125559887422.93849,
+          "I_curved_green_W_per_m2": 728434113.7094374,
+          "I_curved_uv_if_same_radius_W_per_m2": 5694408.626659355,
+          "I_plane_green_range_W_per_m2": [
+            1181392980.7624283,
+            2100254188.0220952
+          ],
+          "historical_M1_generated_W": 0.5802421355760913,
+          "historical_M1_penalty": 5.374999897733712e-05,
+          "historical_M1_band_worst_penalty": 0.0005141105004105029,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.00023061380172806345,
+            "0.001": 0.0009423047070005186,
+            "0.005": 0.02813773691476873,
+            "0.01": 0.1436878048871716
+          },
+          "mirror_loss_sum": 0.0006
+        },
+        {
+          "pump_W": 0.5,
+          "loss": 0.012188,
+          "gamma_per_W": 0.00010586566994623877,
+          "T_opt": 0.015544187841870352,
+          "circulating_W": 32.16636372941807,
+          "generated_harmonic_W": 0.10928836546412916,
+          "I_waist_W_per_m2": 54409988190.336266,
+          "I_curved_green_W_per_m2": 315658864.7683656,
+          "I_curved_uv_if_same_radius_W_per_m2": 1072481.8529377915,
+          "I_plane_green_range_W_per_m2": [
+            511943578.882874,
+            910121918.0139984
+          ],
+          "historical_M1_generated_W": 0.1064024171142748,
+          "historical_M1_penalty": 0.026406729916750415,
+          "historical_M1_band_worst_penalty": 0.03186241884904928,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.0004446547094677511,
+            "0.001": 0.0018317917263631633,
+            "0.005": 0.05860856204012499,
+            "0.01": 0.3277676539427262
+          },
+          "mirror_loss_sum": 0.0003
+        },
+        {
+          "pump_W": 1.5,
+          "loss": 0.012188,
+          "gamma_per_W": 0.00010586566994623877,
+          "T_opt": 0.01999266910069882,
+          "circulating_W": 75.02750095271517,
+          "generated_harmonic_W": 0.5927897397362124,
+          "I_waist_W_per_m2": 126910379896.44495,
+          "I_curved_green_W_per_m2": 736268978.8737894,
+          "I_curved_uv_if_same_radius_W_per_m2": 5817236.224321366,
+          "I_plane_green_range_W_per_m2": [
+            1194099764.4456506,
+            2122844025.681157
+          ],
+          "historical_M1_generated_W": 0.5927893230938822,
+          "historical_M1_penalty": 7.028501038952584e-07,
+          "historical_M1_band_worst_penalty": 0.00026112116198040436,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.00023417737121134152,
+            "0.001": 0.0009570393423379286,
+            "0.005": 0.028625235698909735,
+            "0.01": 0.14659858154929162
+          },
+          "mirror_loss_sum": 0.0003
+        }
+      ],
+      "minimax_default": {
+        "transmission": 0.01849106818208036,
+        "worst_relative_penalty": 0.005349677421601529
+      }
+    },
+    "gamma_and_refitted_loss": {
+      "fitted_or_assumed_loss": 0.013191248602479224,
+      "nonmirror_proxy": 0.009791248602479223,
+      "rows": [
+        {
+          "pump_W": 0.5,
+          "loss": 0.013191248602479224,
+          "gamma_per_W": 0.00010586566994623877,
+          "T_opt": 0.016374401298041685,
+          "circulating_W": 30.53546758132756,
+          "generated_harmonic_W": 0.09849837245982009,
+          "I_waist_W_per_m2": 51651297748.86388,
+          "I_curved_green_W_per_m2": 299654356.73656315,
+          "I_curved_uv_if_same_radius_W_per_m2": 966596.1839436349,
+          "I_plane_green_range_W_per_m2": [
+            485987060.51906025,
+            863976996.4783295
+          ],
+          "historical_M1_generated_W": 0.09683747838954483,
+          "historical_M1_penalty": 0.016862147351244583,
+          "historical_M1_band_worst_penalty": 0.02132645136378275,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.00040775277831583967,
+            "0.001": 0.0016775766777972212,
+            "0.005": 0.05304092647616887,
+            "0.01": 0.2909825955691979
+          },
+          "mirror_loss_sum": 0.0034
+        },
+        {
+          "pump_W": 1.5,
+          "loss": 0.013191248602479224,
+          "gamma_per_W": 0.00010586566994623877,
+          "T_opt": 0.020716838933116825,
+          "circulating_W": 72.40486856332994,
+          "generated_harmonic_W": 0.5521732331412836,
+          "I_waist_W_per_m2": 122474149599.03218,
+          "I_curved_green_W_per_m2": 710532244.3861121,
+          "I_curved_uv_if_same_radius_W_per_m2": 5418653.391942134,
+          "I_plane_green_range_W_per_m2": [
+            1152359273.5772939,
+            2048638708.5818563
+          ],
+          "historical_M1_generated_W": 0.5518925687053235,
+          "historical_M1_penalty": 0.0005082905492600487,
+          "historical_M1_band_worst_penalty": 0.0014390071809712301,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.00022245724895186836,
+            "0.001": 0.0009085962860991836,
+            "0.005": 0.02702798343794155,
+            "0.01": 0.13712525268539855
+          },
+          "mirror_loss_sum": 0.0034
+        },
+        {
+          "pump_W": 0.5,
+          "loss": 0.011291248602479223,
+          "gamma_per_W": 0.00010586566994623877,
+          "T_opt": 0.014815347642191331,
+          "circulating_W": 33.74878619628837,
+          "generated_harmonic_W": 0.12029231546466834,
+          "I_waist_W_per_m2": 57086684520.0427,
+          "I_curved_green_W_per_m2": 331187684.988085,
+          "I_curved_uv_if_same_radius_W_per_m2": 1180467.1506965598,
+          "I_plane_green_range_W_per_m2": [
+            537128614.6490818,
+            954895314.9317013
+          ],
+          "historical_M1_generated_W": 0.1158592201836578,
+          "historical_M1_penalty": 0.03685268891771076,
+          "historical_M1_band_worst_penalty": 0.04317307473814047,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.00048102418833118055,
+            "0.001": 0.001984088008948559,
+            "0.005": 0.06421422975024305,
+            "0.01": 0.3661642403519194
+          },
+          "mirror_loss_sum": 0.0015
+        },
+        {
+          "pump_W": 1.5,
+          "loss": 0.011291248602479223,
+          "gamma_per_W": 0.00010586566994623877,
+          "T_opt": 0.01935780408212886,
+          "circulating_W": 77.4881279733997,
+          "generated_harmonic_W": 0.6322006176521713,
+          "I_waist_W_per_m2": 131072575171.68596,
+          "I_curved_green_W_per_m2": 760415902.6137983,
+          "I_curved_uv_if_same_radius_W_per_m2": 6203987.835013959,
+          "I_plane_green_range_W_per_m2": [
+            1233261859.7903934,
+            2192465528.516255
+          ],
+          "historical_M1_generated_W": 0.6319827953963454,
+          "historical_M1_penalty": 0.00034454609777956335,
+          "historical_M1_band_worst_penalty": 0.0011213837960649675,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.00024512853687741476,
+            "0.001": 0.0010023489698912647,
+            "0.005": 0.03013362949373144,
+            "0.01": 0.15571745247662983
+          },
+          "mirror_loss_sum": 0.0015
+        },
+        {
+          "pump_W": 0.5,
+          "loss": 0.010391248602479223,
+          "gamma_per_W": 0.00010586566994623877,
+          "T_opt": 0.014097672670532902,
+          "circulating_W": 35.466847023984755,
+          "generated_harmonic_W": 0.13283550215378884,
+          "I_waist_W_per_m2": 59992815599.43938,
+          "I_curved_green_W_per_m2": 348047568.03348047,
+          "I_curved_uv_if_same_radius_W_per_m2": 1303557.4727538326,
+          "I_plane_green_range_W_per_m2": [
+            564472401.9751252,
+            1003506492.4002227
+          ],
+          "historical_M1_generated_W": 0.1263057341101979,
+          "historical_M1_penalty": 0.04915679873014034,
+          "historical_M1_band_worst_penalty": 0.05631693356861467,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.0005210039428559243,
+            "0.001": 0.0021518461653554644,
+            "0.005": 0.07051503411192805,
+            "0.01": 0.4111095260925359
+          },
+          "mirror_loss_sum": 0.0006
+        },
+        {
+          "pump_W": 1.5,
+          "loss": 0.010391248602479223,
+          "gamma_per_W": 0.00010586566994623877,
+          "T_opt": 0.018732945128178292,
+          "circulating_W": 80.07283370214353,
+          "generated_harmonic_W": 0.6749569238881363,
+          "I_waist_W_per_m2": 135444651834.11044,
+          "I_curved_green_W_per_m2": 785780450.5918897,
+          "I_curved_uv_if_same_radius_W_per_m2": 6623569.208950548,
+          "I_plane_green_range_W_per_m2": [
+            1274398729.1071453,
+            2265597740.6349254
+          ],
+          "historical_M1_generated_W": 0.6739829753459595,
+          "historical_M1_penalty": 0.0014429788149535883,
+          "historical_M1_band_worst_penalty": 0.0027907642431972413,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.0002565664450899785,
+            "0.001": 0.0010497190516183252,
+            "0.005": 0.03172597153195367,
+            "0.01": 0.16553764198085819
+          },
+          "mirror_loss_sum": 0.0006
+        },
+        {
+          "pump_W": 0.5,
+          "loss": 0.010091248602479223,
+          "gamma_per_W": 0.00010586566994623877,
+          "T_opt": 0.01386173995325728,
+          "circulating_W": 36.070507864527535,
+          "generated_harmonic_W": 0.13738997430759606,
+          "I_waist_W_per_m2": 61013918869.96113,
+          "I_curved_green_W_per_m2": 353971485.8637256,
+          "I_curved_uv_if_same_radius_W_per_m2": 1348251.9716963754,
+          "I_plane_green_range_W_per_m2": [
+            574079962.6474643,
+            1020586600.262159
+          ],
+          "historical_M1_generated_W": 0.1300177065620316,
+          "historical_M1_penalty": 0.05365943026569775,
+          "historical_M1_band_worst_penalty": 0.061091945276253834,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.0005351475576680365,
+            "0.001": 0.002211279035354008,
+            "0.005": 0.0727796291562518,
+            "0.01": 0.4277657292829201
+          },
+          "mirror_loss_sum": 0.0003
+        },
+        {
+          "pump_W": 1.5,
+          "loss": 0.010091248602479223,
+          "gamma_per_W": 0.00010586566994623877,
+          "T_opt": 0.01852748182888736,
+          "circulating_W": 80.96081344747321,
+          "generated_harmonic_W": 0.6899669322837695,
+          "I_waist_W_per_m2": 136946685693.55035,
+          "I_curved_green_W_per_m2": 794494481.2080306,
+          "I_curved_uv_if_same_radius_W_per_m2": 6770867.245190684,
+          "I_plane_green_range_W_per_m2": [
+            1288531365.6906154,
+            2290722427.894428
+          ],
+          "historical_M1_generated_W": 0.6886040826019236,
+          "historical_M1_penalty": 0.0019752391282504833,
+          "historical_M1_band_worst_penalty": 0.0035111309908307797,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.00026047732583123206,
+            "0.001": 0.0010659269507907743,
+            "0.005": 0.0322744875034674,
+            "0.01": 0.16896896471541278
+          },
+          "mirror_loss_sum": 0.0003
+        }
+      ],
+      "minimax_default": {
+        "transmission": 0.016841225038878613,
+        "worst_relative_penalty": 0.006795620557622839
+      }
+    }
+  },
+  "joint_deff_extraction_sensitivity": [
+    {
+      "deff_m_per_V": 1.3e-12,
+      "extraction_efficiency": 1.0,
+      "gamma_per_W": 8.628133787092184e-05,
+      "fitted_loss": 0.011985236217238638,
+      "default_minimax": {
+        "transmission": 0.015125858882370334,
+        "worst_relative_penalty": 0.006887485051537134
+      },
+      "rows": [
+        {
+          "pump_W": 0.5,
+          "loss": 0.010085236217238638,
+          "gamma_per_W": 8.628133787092184e-05,
+          "T_opt": 0.013291335810206702,
+          "circulating_W": 37.6184912592487,
+          "generated_harmonic_W": 0.12183738835601149,
+          "I_waist_W_per_m2": 63632360883.92697,
+          "I_curved_green_W_per_m2": 369162344.40056044,
+          "I_curved_uv_if_same_radius_W_per_m2": 1195629.4475283807,
+          "I_plane_green_range_W_per_m2": [
+            598716883.5568689,
+            1064385570.7677672
+          ],
+          "historical_M1_generated_W": 0.11357440531964746,
+          "historical_M1_penalty": 0.06781976491665609,
+          "historical_M1_band_worst_penalty": 0.07613774722193578,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.0005972535874838591,
+            "0.001": 0.0024723380968794118,
+            "0.005": 0.08261259858350689,
+            "0.01": 0.4931998758318774
+          }
+        },
+        {
+          "pump_W": 1.5,
+          "loss": 0.010085236217238638,
+          "gamma_per_W": 8.628133787092184e-05,
+          "T_opt": 0.01740839473514183,
+          "circulating_W": 86.16532556973749,
+          "generated_harmonic_W": 0.6374309798983858,
+          "I_waist_W_per_m2": 145750212430.07974,
+          "I_curved_green_W_per_m2": 845568031.2681717,
+          "I_curved_uv_if_same_radius_W_per_m2": 6255315.060648029,
+          "I_plane_green_range_W_per_m2": [
+            1371363748.7546206,
+            2437979997.7859926
+          ],
+          "historical_M1_generated_W": 0.6330695890993909,
+          "historical_M1_penalty": 0.006842138108333118,
+          "historical_M1_band_worst_penalty": 0.009559110749551514,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.0003024362252038726,
+            "0.001": 0.0012397984266020456,
+            "0.005": 0.0381118791239492,
+            "0.01": 0.20410781094677755
+          }
+        }
+      ]
+    },
+    {
+      "deff_m_per_V": 1.3e-12,
+      "extraction_efficiency": 0.95,
+      "gamma_per_W": 8.628133787092184e-05,
+      "fitted_loss": 0.011439543119706562,
+      "default_minimax": {
+        "transmission": 0.014708164629721557,
+        "worst_relative_penalty": 0.007369762377385625
+      },
+      "rows": [
+        {
+          "pump_W": 0.5,
+          "loss": 0.009539543119706562,
+          "gamma_per_W": 8.628133787092184e-05,
+          "T_opt": 0.01285583595157854,
+          "circulating_W": 38.89284227670989,
+          "generated_harmonic_W": 0.13022231544673152,
+          "I_waist_W_per_m2": 65787948764.287636,
+          "I_curved_green_W_per_m2": 381667960.4805129,
+          "I_curved_uv_if_same_radius_W_per_m2": 1277913.431782453,
+          "I_plane_green_range_W_per_m2": [
+            618998809.9231824,
+            1100442328.7523246
+          ],
+          "historical_M1_generated_W": 0.12003062733863262,
+          "historical_M1_penalty": 0.07826376050169281,
+          "historical_M1_band_worst_penalty": 0.08708278163969185,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.0006302323476233829,
+            "0.001": 0.002611438233758867,
+            "0.005": 0.08808988589151312,
+            "0.01": 0.534995698311789
+          }
+        },
+        {
+          "pump_W": 1.5,
+          "loss": 0.009539543119706562,
+          "gamma_per_W": 8.628133787092184e-05,
+          "T_opt": 0.017029110867866945,
+          "circulating_W": 88.0844579402218,
+          "generated_harmonic_W": 0.666068504522849,
+          "I_waist_W_per_m2": 148996459674.3166,
+          "I_curved_green_W_per_m2": 864401093.9824773,
+          "I_curved_uv_if_same_radius_W_per_m2": 6536344.293195904,
+          "I_plane_green_range_W_per_m2": [
+            1401907689.075645,
+            2492280336.13448
+          ],
+          "historical_M1_generated_W": 0.6599936011693543,
+          "historical_M1_penalty": 0.009120538371419573,
+          "historical_M1_band_worst_penalty": 0.012207230348336262,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.0003118727490065698,
+            "0.001": 0.0012790279682914907,
+            "0.005": 0.03947725938417257,
+            "0.01": 0.21307584687896086
+          }
+        }
+      ]
+    },
+    {
+      "deff_m_per_V": 1.44e-12,
+      "extraction_efficiency": 1.0,
+      "gamma_per_W": 0.00010586566994623877,
+      "fitted_loss": 0.013191248602479224,
+      "default_minimax": {
+        "transmission": 0.016841225038878613,
+        "worst_relative_penalty": 0.006795620557622839
+      },
+      "rows": [
+        {
+          "pump_W": 0.5,
+          "loss": 0.011291248602479223,
+          "gamma_per_W": 0.00010586566994623877,
+          "T_opt": 0.014815347642191331,
+          "circulating_W": 33.74878619628837,
+          "generated_harmonic_W": 0.12029231546466834,
+          "I_waist_W_per_m2": 57086684520.0427,
+          "I_curved_green_W_per_m2": 331187684.988085,
+          "I_curved_uv_if_same_radius_W_per_m2": 1180467.1506965598,
+          "I_plane_green_range_W_per_m2": [
+            537128614.6490818,
+            954895314.9317013
+          ],
+          "historical_M1_generated_W": 0.1158592201836578,
+          "historical_M1_penalty": 0.03685268891771076,
+          "historical_M1_band_worst_penalty": 0.04317307473814047,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.00048102418833118055,
+            "0.001": 0.001984088008948559,
+            "0.005": 0.06421422975024305,
+            "0.01": 0.3661642403519194
+          }
+        },
+        {
+          "pump_W": 1.5,
+          "loss": 0.011291248602479223,
+          "gamma_per_W": 0.00010586566994623877,
+          "T_opt": 0.01935780408212886,
+          "circulating_W": 77.4881279733997,
+          "generated_harmonic_W": 0.6322006176521713,
+          "I_waist_W_per_m2": 131072575171.68596,
+          "I_curved_green_W_per_m2": 760415902.6137983,
+          "I_curved_uv_if_same_radius_W_per_m2": 6203987.835013959,
+          "I_plane_green_range_W_per_m2": [
+            1233261859.7903934,
+            2192465528.516255
+          ],
+          "historical_M1_generated_W": 0.6319827953963454,
+          "historical_M1_penalty": 0.00034454609777956335,
+          "historical_M1_band_worst_penalty": 0.0011213837960649675,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.00024512853687741476,
+            "0.001": 0.0010023489698912647,
+            "0.005": 0.03013362949373144,
+            "0.01": 0.15571745247662983
+          }
+        }
+      ]
+    },
+    {
+      "deff_m_per_V": 1.44e-12,
+      "extraction_efficiency": 0.95,
+      "gamma_per_W": 0.00010586566994623877,
+      "fitted_loss": 0.012610257180243943,
+      "default_minimax": {
+        "transmission": 0.01639544010590491,
+        "worst_relative_penalty": 0.007253658809429964
+      },
+      "rows": [
+        {
+          "pump_W": 0.5,
+          "loss": 0.010710257180243942,
+          "gamma_per_W": 0.00010586566994623877,
+          "T_opt": 0.014350394587561072,
+          "circulating_W": 34.84224750400946,
+          "generated_harmonic_W": 0.12820366269323988,
+          "I_waist_W_per_m2": 58936294172.540726,
+          "I_curved_green_W_per_m2": 341918172.2127786,
+          "I_curved_uv_if_same_radius_W_per_m2": 1258103.7435662514,
+          "I_plane_green_range_W_per_m2": [
+            554531591.8694358,
+            985833941.1012193
+          ],
+          "historical_M1_generated_W": 0.12248731588654203,
+          "historical_M1_penalty": 0.04458801477751595,
+          "historical_M1_band_worst_penalty": 0.05145418339674335,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.000506418602092551,
+            "0.001": 0.00209060359045532,
+            "0.005": 0.06819931177196592,
+            "0.01": 0.3943586645677468
+          }
+        },
+        {
+          "pump_W": 1.5,
+          "loss": 0.010710257180243942,
+          "gamma_per_W": 0.00010586566994623877,
+          "T_opt": 0.01895298805120246,
+          "circulating_W": 79.14319346098218,
+          "generated_harmonic_W": 0.6594185866192046,
+          "I_waist_W_per_m2": 133872148489.67458,
+          "I_curved_green_W_per_m2": 776657592.1414768,
+          "I_curved_uv_if_same_radius_W_per_m2": 6471086.511684608,
+          "I_plane_green_range_W_per_m2": [
+            1259603045.1393483,
+            2239294302.4699526
+          ],
+          "historical_M1_generated_W": 0.6587804039678528,
+          "historical_M1_penalty": 0.0009677959710292505,
+          "historical_M1_band_worst_penalty": 0.0021142846634791823,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.00025246140954049423,
+            "0.001": 0.0010327125526936598,
+            "0.005": 0.03115246455215226,
+            "0.01": 0.16197698364124535
+          }
+        }
+      ]
+    },
+    {
+      "deff_m_per_V": 1.6e-12,
+      "extraction_efficiency": 1.0,
+      "gamma_per_W": 0.00013069835795831948,
+      "fitted_loss": 0.014469249797271735,
+      "default_minimax": {
+        "transmission": 0.01872288099028608,
+        "worst_relative_penalty": 0.006780051089754324
+      },
+      "rows": [
+        {
+          "pump_W": 0.5,
+          "loss": 0.012569249797271734,
+          "gamma_per_W": 0.00013069835795831948,
+          "T_opt": 0.016475505678657628,
+          "circulating_W": 30.34808216221856,
+          "generated_harmonic_W": 0.12005639323123118,
+          "I_waist_W_per_m2": 51334331910.681885,
+          "I_curved_green_W_per_m2": 297815483.3977034,
+          "I_curved_uv_if_same_radius_W_per_m2": 1178151.9700001392,
+          "I_plane_green_range_W_per_m2": [
+            483004728.9476059,
+            858675073.6846329
+          ],
+          "historical_M1_generated_W": 0.11821542692478815,
+          "historical_M1_penalty": 0.015334179687518157,
+          "historical_M1_band_worst_penalty": 0.019542473045036868,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.00038862946440265667,
+            "0.001": 0.0015979235016221338,
+            "0.005": 0.05029696064293043,
+            "0.01": 0.27543904749824966
+          }
+        },
+        {
+          "pump_W": 1.5,
+          "loss": 0.012569249797271734,
+          "gamma_per_W": 0.00013069835795831948,
+          "T_opt": 0.021513211561598782,
+          "circulating_W": 69.72459670677479,
+          "generated_harmonic_W": 0.6315522651593376,
+          "I_waist_W_per_m2": 117940421096.5256,
+          "I_curved_green_W_per_m2": 684229875.2831651,
+          "I_curved_uv_if_same_radius_W_per_m2": 6197625.343636966,
+          "I_plane_green_range_W_per_m2": [
+            1109701422.0972095,
+            1972802528.1728172
+          ],
+          "historical_M1_generated_W": 0.630298735816759,
+          "historical_M1_penalty": 0.001984838645559095,
+          "historical_M1_band_worst_penalty": 0.003544493837432494,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.00019857607395490362,
+            "0.001": 0.0008101573130190332,
+            "0.005": 0.023878645009776656,
+            "0.01": 0.11968522020787142
+          }
+        }
+      ]
+    },
+    {
+      "deff_m_per_V": 1.6e-12,
+      "extraction_efficiency": 0.95,
+      "gamma_per_W": 0.00013069835795831948,
+      "fitted_loss": 0.013849201074636941,
+      "default_minimax": {
+        "transmission": 0.018246970849024224,
+        "worst_relative_penalty": 0.007218946102279911
+      },
+      "rows": [
+        {
+          "pump_W": 0.5,
+          "loss": 0.01194920107463694,
+          "gamma_per_W": 0.00013069835795831948,
+          "T_opt": 0.01597902578329938,
+          "circulating_W": 31.29101903838092,
+          "generated_harmonic_W": 0.12762230627943558,
+          "I_waist_W_per_m2": 52929326754.60653,
+          "I_curved_green_W_per_m2": 307068826.0005984,
+          "I_curved_uv_if_same_radius_W_per_m2": 1252398.7062436945,
+          "I_plane_green_range_W_per_m2": [
+            498012035.43409294,
+            885354729.6606097
+          ],
+          "historical_M1_generated_W": 0.12502144616664876,
+          "historical_M1_penalty": 0.02037935364600063,
+          "historical_M1_band_worst_penalty": 0.02515912053543745,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.0004082560080810316,
+            "0.001": 0.001679843733745634,
+            "0.005": 0.05322969171137981,
+            "0.01": 0.29483197354631563
+          }
+        },
+        {
+          "pump_W": 1.5,
+          "loss": 0.01194920107463694,
+          "gamma_per_W": 0.00013069835795831948,
+          "T_opt": 0.02108109402068358,
+          "circulating_W": 71.15380247952427,
+          "generated_harmonic_W": 0.6576270244949691,
+          "I_waist_W_per_m2": 120357948606.66006,
+          "I_curved_green_W_per_m2": 698255130.8433359,
+          "I_curved_uv_if_same_radius_W_per_m2": 6453505.336794735,
+          "I_plane_green_range_W_per_m2": [
+            1132447938.4400647,
+            2013240779.4490044
+          ],
+          "historical_M1_generated_W": 0.6569409284222678,
+          "historical_M1_penalty": 0.0010432905691918348,
+          "historical_M1_band_worst_penalty": 0.0022323006102688003,
+          "optimum_tolerance_penalties": {
+            "0.0005": 0.00020426249638549887,
+            "0.001": 0.0008336199480302176,
+            "0.005": 0.024641057761639606,
+            "0.01": 0.12411881950374803
+          }
+        }
+      ]
+    }
+  ],
+  "mirror_allocation_sensitivity": [
+    {
+      "assumed_old_mirror_loss": 0.0,
+      "new_total_loss": 0.014691248602479223,
+      "minimax_default": {
+        "transmission": 0.01954548725509509,
+        "worst_relative_penalty": 0.004602892480923604
+      }
+    },
+    {
+      "assumed_old_mirror_loss": 0.0015,
+      "new_total_loss": 0.013191248602479224,
+      "minimax_default": {
+        "transmission": 0.018333707492532256,
+        "worst_relative_penalty": 0.005472116525770954
+      }
+    },
+    {
+      "assumed_old_mirror_loss": 0.0034,
+      "new_total_loss": 0.011291248602479223,
+      "minimax_default": {
+        "transmission": 0.016841225038878613,
+        "worst_relative_penalty": 0.006795620557622839
+      }
+    }
+  ],
+  "multiplicative_loss_sensitivity": {
+    "old_mirror_loss": 0.0033967109800000506,
+    "new_mirror_loss": 0.0014993700809999844,
+    "nonmirror_loss": 0.009827920227024873,
+    "new_total_loss": 0.01131255461847791,
+    "minimax_default": {
+      "transmission": 0.016857672188135667,
+      "worst_relative_penalty": 0.006779309561582569
+    }
+  },
+  "harmonic_index_sensitivity": {
+    "n2": 1.67276,
+    "gamma_per_W": 9.904575280725487e-05,
+    "fitted_loss": 0.01279486222537606,
+    "minimax_default": {
+      "transmission": 0.016271145671493976,
+      "worst_relative_penalty": 0.006816578621098746
+    }
+  }
+}

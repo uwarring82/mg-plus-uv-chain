@@ -28,13 +28,19 @@
 # - **BBO stage:** 0.275 W near 280 nm (η = 28.9 % relative to 0.95 W input).
 # - **Overall:** 15.2 % conversion 1118 nm → 280 nm.
 #
-# It documents discrepancies attributable to the `open_extraction_items`
-# already on file (BBO d_eff, walk-off ρ, refractive indices).
+# It compares outputs under explicitly assumed losses. Attribution to
+# material constants requires independent loss and coupling measurements.
 #
 # **CHARTER §5.1 compliance.** This notebook lives under `/notebooks/diagnostic/`.
 # It imports from `data.literature.Friedenauer2006` (architecture-specific
 # parameters) and therefore must never be promoted to `/src/`.
 
+# **Revision 2026-09-10 (RC-07).** Re-executed with corrected SHG
+# normalization. This notebook intentionally retains L=T as a comparison
+# assumption. It is not a measured loss or a consequence of nonlinear
+# impedance matching. Fixed-coupler and fitted-loss comparisons are in the
+# [dated recalculation](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-09-10-rc07-recalculation.md).
+#
 # %%
 # -----------------------------------------------------------------------------
 # Imports and path setup
@@ -61,7 +67,7 @@ from src.enhancement_cavity import (  # noqa: E402
 from src.shg_cascade import Stage, cascade_output, optimise_cascade  # noqa: E402
 from src.shg_single_pass import gamma_shg_coefficient  # noqa: E402
 
-print(f"REPO_ROOT: {REPO_ROOT}")
+print("Repository inputs located")
 
 # %%
 # -----------------------------------------------------------------------------
@@ -125,7 +131,7 @@ D_EFF_BBO_CENTRAL_mV = 1.44e-12
 D_EFF_BBO_LOW_mV = 1.30e-12
 D_EFF_BBO_HIGH_mV = 1.60e-12
 
-print("Cited constants (not in extraction):")
+print("Working constants; approximate indices are not independently validated:")
 print(f"  n_LBO(1118) = {N_LBO_1118}")
 print(f"  n_BBO_o(559) = {N_BBO_O_559}")
 print(f"  ρ_BBO = {RHO_BBO_RAD*1e3:.1f} mrad")
@@ -208,15 +214,16 @@ print(f"BBO γ_SHG (high)    = {gamma_BBO_high:.4e} W⁻¹")
 # %% [markdown]
 # ## 4. Per-stage cavity simulation
 #
-# The paper states the input-coupler reflectivity was "chosen to impedance-match
-# the intracavity losses." We therefore set `loss_per_pass ≈ T_IC = 1 − R_IC` as
-# the working assumption, then verify self-consistency via
-# `optimal_input_coupler`.
+# **Historical comparison assumption:** set passive loss L equal to T_IC.
+# Nonlinear impedance matching instead obeys T=L+(1-L)η, so L=T is not
+# inferred from a statement that the coupler was impedance matched.
+# The rows below optimize T while holding this assumed L fixed. They must
+# not be confused with reproducing the published fixed-coupler setup.
 
 # %%
 # LBO stage
 T_LBO = 1.0 - R_LBO_IC
-L_loss_LBO = T_LBO  # impedance-match assumption
+L_loss_LBO = T_LBO  # historical comparison assumption, not measured loss
 
 T_opt_LBO = optimal_input_coupler(P_LBO_in, L_loss_LBO, gamma_LBO)
 P_circ_LBO = circulating_power(P_LBO_in, T_opt_LBO, L_loss_LBO, gamma_LBO)
@@ -233,7 +240,7 @@ print(f"  η (paper)         = {eta_LBO_paper:.3f}")
 
 # BBO stage — central assumption
 T_BBO = 1.0 - R_BBO_IC
-L_loss_BBO = T_BBO
+L_loss_BBO = T_BBO  # same deliberately retained assumption
 
 T_opt_BBO = optimal_input_coupler(P_BBO_in, L_loss_BBO, gamma_BBO_central)
 P_circ_BBO = circulating_power(P_BBO_in, T_opt_BBO, L_loss_BBO, gamma_BBO_central)
@@ -262,8 +269,9 @@ for label, gamma in [("low", gamma_BBO_low), ("high", gamma_BBO_high)]:
 # The cascade uses the architecture-neutral `src.shg_cascade` primitives.
 # Transport efficiency from LBO harmonic output to BBO input is inferred
 # from the fact that `P_BBO_in = P_559_output_stable = 0.950 W`, i.e.
-# essentially unity (any relay losses are absorbed into the reported
-# 0.950 W BBO input figure).
+# unity in this bookkeeping. Equality of rounded reported powers is not
+# an independent transport measurement; the fit/sensitivity report labels it
+# as an assumption. Complete harmonic extraction is also assumed here.
 
 # %%
 # Fixed operating points: use the paper's T_IC values
@@ -354,11 +362,11 @@ print(f"  UV output (high d_eff) = {cascade_output(P_LBO_in, [stage_LBO, Stage(L
 #
 # | Item | Status | Impact on this notebook |
 # |---|---|---|
-# | `d_eff(BBO)` at 559 nm Type-I | **Closed (2026-05-04)** — Eckardt-anchored central 1.44 pm/V (range 1.30–1.60). | Dominant uncertainty for BBO stage; bracket spans ±11 % in d_eff → ±23 % in UV power. |
-# | `walk-off ρ` for BBO Type-I at 559→280 | **Closed (2026-05-04)** — Eimerl-derived ρ = 83.1 mrad. | Drives h_m down to ~0.02 (severe walk-off limit); any ρ error propagates directly into h_m. |
-# | `n_LBO(1118)`, `n_LBO(559)` | **Open** — placeholder 1.605 / 1.620 used. | Affects LBO γ_SHG at the ~few-% level; h_m is insensitive to n (n cancels in ξ = Lλ/(2π n w0²) if w0 is paper-reported). |
-# | `n_BBO_o(559)`, `n_BBO_e(280)` | **Partially closed** — Eimerl Sellmeier gives n_o(559) = 1.67276; n_e(280) still approximate. | Affects BBO γ_SHG at the ~few-% level. |
-# | Cavity passive losses beyond IC | **Open** — assumed L_passive = T_IC. | If true passive loss is lower, the paper operated slightly over-coupled, which would raise circulating power and harmonic output. |
+# | `d_eff(BBO)` at 559 nm Type-I | **Closed (2026-05-04)** — Eckardt-anchored central 1.44 pm/V (range 1.30–1.60). | Material sensitivity: γ changes by −18.5 % / +23.5 %; the resulting nonlinear cavity powers are calculated above, not scaled directly by that factor. |
+# | `walk-off ρ` for BBO Type-I at 559→280 | **Closed (2026-05-04)** — Eimerl-derived ρ = 83.1 mrad. | Corrected h_m is ≈0.03924 at the stated waist; vary ρ separately from d_eff. |
+# | `n_LBO(1118)`, `n_LBO(559)` | **Open** — placeholder 1.605 / 1.620 used. | Affects LBO γ_SHG at the ~few-% level; n does not cancel from ξ at fixed physical waist; its provenance remains open. |
+# | `n_BBO_o(559)`, `n_BBO_e(280)` | **Partially closed** — Eimerl Sellmeier gives n_o(559) = 1.67276; n_e(280) still approximate. | The angular effective harmonic index must be distinguished from a principal index; the dated report isolates this sensitivity. |
+# | Cavity passive losses beyond IC | **Open** — assumed L_passive = T_IC. | Fit loss at the actual coupler before drawing a coupling conclusion. One fitted output cannot validate the material constants. |
 #
 # **Promotion guard.** None of the architecture-specific parameters used here
 # (crystal constants, Friedenauer-extracted geometries) may be promoted to `/src/`

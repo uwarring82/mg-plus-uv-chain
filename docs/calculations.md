@@ -10,7 +10,7 @@ description: Boyd–Kleinman recalculation against the Friedenauer 2006 baseline
 
 # What the recomputation tells us so far.
 
-**Review update — 2026-09-09:** RC-01/05 now correct the SHG normalization and solver edge cases; [derivations and reproducible checks](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-09-09-numerical-foundations.md) are filed. The four generic tutorials have been regenerated. The May tables below are historical: cascade fits, coating targets and Raman/noise budgets await their RC-02–04/07 recalculations.
+**Review update — 2026-09-10:** the corrected SHG/cavity utilities now feed a [conditional cascade and coating recalculation](review/2026-09-10-rc07-recalculation.html). [All four review notebooks](review/index.html) are executed and the [impact report](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-09-10-rc07-recalculation.md) distinguishes fixed losses from refitted losses. May tables below are historical; Raman/noise budgets, material/measurement validation and any revised procurement targets remain open.
 
 This page collects the substantive computational results to date. Each result is anchored to either the Friedenauer 2006 structured extraction or to a cited literature constant; results without a primary citation are flagged as such.
 
@@ -32,7 +32,7 @@ This page collects the substantive computational results to date. Each result is
 |---|---|---|---|
 | BK σ-optimum w₀ | 27.3 μm | 26.2 μm | −3.9 % |
 
-Match to within a few percent. Residual gap is consistent with the uncertainty in the literature value of n_LBO at 1118 nm (the notebook used an order-of-magnitude figure pending Sellmeier-derived citation in [KD-UV280-007 Section C](KD-2026-XXX-uv-280nm.html#kd-uv280-007--lbo-at-relevant-shgsfg-stages)).
+The difference remains a few percent and is not attributed solely to refractive-index uncertainty without a verified operating-temperature Sellmeier calculation (the notebook used an order-of-magnitude figure pending Sellmeier-derived citation in [KD-UV280-007 Section C](KD-2026-XXX-uv-280nm.html#kd-uv280-007--lbo-at-relevant-shgsfg-stages)).
 
 ### BBO 559 → 280 nm — Type-I, walk-off-limited
 
@@ -61,6 +61,24 @@ coating specification or a validation of the fitted cavity losses.
 3. **Cavity mirror radii of curvature** — missing from the YAML extraction at this commit, but recoverable from the paper itself (Friedenauer 2006 reports e.g. f = 25 mm for the LBO cavity's curved focusing mirrors). Re-reading §3 / Table 1 unblocks `src.abcd.cavity_eigenmode_q` against this geometry.
 4. **Friedenauer's BBO BK criterion** — single-pass vs. enhancement-cavity figure of merit. Resolution belongs in [KD-UV280-005](KD-2026-XXX-uv-280nm.html#kd-uv280-005--bbo-at-280-nm--phase-matching-walk-off-damage-threshold).
 5. **`d_eff` for both crystals** — needed for any conversion-efficiency recomputation.
+
+---
+
+## September 10 cascade and coating comparison
+
+At the reported couplers, fitting each stage’s passive loss to its published
+output reproduces 275 mW cascade UV by construction. With corrected γ,
+fitted LBO/BBO losses are **13,059 / 13,191 ppm**; optimizing the fitted
+cascade predicts **278.446 mW**, under unity transport and complete extraction.
+This is calibration and a conditional extrapolation, not independent validation.
+
+Under the May additive loss-transfer assumptions, the equal-penalty M1 centre
+moves from **1.9965% to 1.6841%**. At 1.5 W input, generated UV stays near
+**0.632 W**, but circulating power rises from **65.37 to 77.49 W**. Unmeasured
+mirror/non-mirror loss allocation and material/extraction assumptions materially
+shift that centre. The [full comparison](review/2026-09-10-rc07-recalculation.html)
+and [impact assessment](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-09-10-rc07-recalculation.md)
+qualify the result. The May coating specifications remain unchanged.
 
 ---
 
@@ -96,7 +114,7 @@ The single-intermediate-level Raman prefactor used in `constraints/raman-require
 
 <p class="classification classification--coastline">Coastline · historical May test snapshot; current check recorded below</p>
 
-**Current check (2026-09-09):** 252 tests pass, 96.18% coverage including branches,
+**Current check (2026-09-10):** 261 tests pass, 96.18% coverage including branches,
 in the recorded Python 3.13.7 environment. CI enforcement remains RC-06.
 The following table is the historical May snapshot across four test files.
 

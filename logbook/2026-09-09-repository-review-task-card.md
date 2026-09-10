@@ -2,7 +2,7 @@
 
 **ID:** REPO-REVIEW-2026-09
 **Date:** 2026-09-09
-**Status:** IMPLEMENTATION UNDERWAY — RC-01/05 generic corrections and independent checks filed; four tutorials regenerated. D1 acceptance, RC-02/D2, wider RC-07 recalculations and remaining public-record work are open.
+**Status:** IMPLEMENTATION UNDERWAY — RC-01/05 generic corrections and independent checks filed; four tutorials regenerated. RC-07’s conditional SHG/cascade recalculation and coating impact report are now filed (2026-09-10). D1/D2/D4 decisions, measurement-dependent conclusions, Raman/noise recalculations and remaining public-record work are open.
 **Steward:** Ulrich Warring
 **Prepared by:** assistant under steward direction; no Council-3 stance or sign-off inferred.
 **Review baseline:** scientific/code findings refer to `50da35f`. The initial card was filed at `60c1832`; the September receipt and coating-report state used by RC-08 is now committed in `ec4e7d401344fce6ff28c5ac88785e360205600f` ([inventory.md](../docs/components/inventory.md), especially §B.3 and §D). Checking out that revision reproduces the public code/document inputs; no working-tree inventory patch is required. Private supplier originals were consulted locally and remain outside the public reproducibility claim.
@@ -167,7 +167,9 @@ regression rather than freezing the earlier approximate 3.2% figure.
 
 **Evidence:** downstream dependence on corrected calculations confirmed. **Dependency:** stage each output by the inputs it actually uses; BK/SHG outputs depend on RC-01, affected solver sweeps also on RC-05. Raman/noise budgets wait only for their relevant RC-02–04 results and binding-value dispositions.
 
-**Progress 2026-09-09:** all four generic tutorials are regenerated with the corrected model and matching interpreter; the calculations page marks the ≈42 µm explanation superseded. [Before/after evidence and remaining work](2026-09-09-numerical-foundations.md#validation-outputs-and-remaining-work) are filed. Historical May recalculation, cascade fits, IC sweep, coating targets and their impact assessment remain open.
+**Progress 2026-09-10:** [RC-07 report](2026-09-10-rc07-recalculation.md) and [executed outputs](../docs/review/index.md) now cover the May BK and cascade notebooks, frozen-input IC replay, corrected/refitted loss comparisons, eight-row coating grids, correlated d_eff/extraction sensitivities, alternative mirror allocations, intensities and a dated specification impact assessment. The May package has review notices preserving its values/sign-offs. Material indices, independent loss/extraction/beam-profile evidence, D1 acceptance and D4 replacement-target disposition remain open; the Raman/noise branches still depend on RC-02–04.
+
+**Earlier progress 2026-09-09:** all four generic tutorials are regenerated with the corrected model and matching interpreter; the calculations page marks the ≈42 µm explanation superseded. [Before/after evidence and remaining work](2026-09-09-numerical-foundations.md#validation-outputs-and-remaining-work) are filed. Those SHG/cascade reruns and the conditional impact assessment are now filed above; hardware validation and any new target adoption remain open.
 
 Trace and rerun the [BK recalculation](../notebooks/2026-05-01-friedenauer-bk-recalculation.py), [cascade diagnostic](../notebooks/diagnostic/2026-05-07-friedenauer-cascade-recompute.py), [IC sweep](../notebooks/exploration/2026-05-20-bbo-ic-impedance-match.py), tutorial sources, [calculations page](../docs/calculations.md), and [coating work package](2026-05-20-bbo-coating-run-wp/).
 
@@ -263,7 +265,7 @@ of implementation or approval.
 |---|---|---|
 | D1 — Evidence for accepting numerical corrections | Cited conventions and independently implemented, converged nonzero-walk-off and absolute-prefactor benchmarks; external review only if explicitly scoped and assigned | Ulrich; independent calculations and converged tests filed in the numerical report; acceptance pending |
 | D2 — What do locked Γ_sc values mean? | Resolve prediction/limit/allowance semantics before changing those numbers or acceptance tests; record applicable §9 disposition | Ulrich; pending; does not gate unrelated work |
-| D3 — Reliance on derived May results during correction | Mark affected recommendations as awaiting revalidation; preserve historical values and receipt facts | Ulrich; proposed, not enacted by this card |
+| D3 — Reliance on derived May results during correction | Mark affected recommendations as awaiting revalidation; preserve historical values and receipt facts | Ulrich; dated notices and conditional impact report filed 2026-09-10; no replacement specification adopted |
 | D4 — Charter wording/history and frozen-spec amendments | Use dated corrections and the documented revision process; preserve original sign-offs and obtain applicable governance review | Ulrich; pending |
 | D5 — Toolchain and source of truth | Choose Python/dependency policy, formatter/naming exceptions, CI checks including tutorial drift, and generated-table strategy | Ulrich; pending |
 | D6 — Public language, licences and records | Plain public language; preserve and gloss licence categories, Charter references and gates. Decide page-by-page licence scope, release claims and public contact (including future Git identity); consider package rename separately | Ulrich; language direction accepted in this session; initial corrections underway; remaining scope/contact decisions pending |
@@ -310,4 +312,6 @@ print((0.039243 / 0.033050) / n_bbo_ordinary_559nm)  # conditional gamma factor
 card and the inventory baseline above in the subsequent deliberation record.
 RC-01/05 implementation, independent checks and tutorial outputs are recorded in
 [the numerical report](2026-09-09-numerical-foundations.md). D1 review, D2 and
-the wider RC-07 impact assessment remain open; no gate is changed.
+the measurement-dependent RC-07 conclusions remain open. The
+[conditional SHG/cascade impact assessment](2026-09-10-rc07-recalculation.md)
+is filed; no gate is changed.

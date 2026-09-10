@@ -1,5 +1,7 @@
 # Coating-run cover letter — BBO ring cavity, 559 → 280 nm CW SHG
 
+**Review note — 2026-09-10:** [RC-07 recalculation](../../2026-09-10-rc07-recalculation.md) revises the model-derived γ, fitted loss, coupling and intensity estimates. The May values and approvals below remain historical records; their numerical rationale is under review, and no revised procurement specification is adopted by this note.
+
 **From:** AG Schätz, Universität Freiburg.
 Steward: Ulrich Warring (u.j.warring@gmail.com).
 **Build:** Next-generation BBO ring cavity for ²⁵Mg⁺ ion-trap UV

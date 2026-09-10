@@ -62,6 +62,10 @@
 # parameter or success criterion. It only computes derived quantities from the
 # Friedenauer extraction and from cited literature constants.
 
+# **Revision 2026-09-10 (RC-07).** Re-executed with the corrected RC-01
+# walk-off normalization. The old ≈42 µm / cavity-criterion explanation is
+# superseded. See [the dated report](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-09-10-rc07-recalculation.md).
+#
 # %%
 # ---------------------------------------------------------------------------
 # Imports and path setup
@@ -85,7 +89,7 @@ import yaml  # noqa: E402
 from src import boyd_kleinman as bk  # noqa: E402
 from src import parameters as p  # noqa: E402
 
-print(f"REPO_ROOT: {REPO_ROOT}")
+print("Repository inputs located")
 print(f"src.parameters loaded; G3_INTEGRATOR_ACKNOWLEDGED = {p.G3_INTEGRATOR_ACKNOWLEDGED}")
 
 # %% [markdown]
@@ -188,9 +192,10 @@ discrepancy_LBO = (w0_LBO_recomputed - w0_LBO_paper_m) / w0_LBO_paper_m * 100
 print(f"Discrepancy            = {discrepancy_LBO:+.1f} %")
 
 # %% [markdown]
-# Within a few percent the two agree, with the residual gap explained by the
-# uncertainty in $n_\mathrm{LBO}(1118\,\mathrm{nm})$ (the chosen index value
-# 1.605 is a literature-typical figure, not a Sellmeier-evaluated point). A
+# The difference is a few percent; attributing it requires a verified
+# temperature-dependent Sellmeier model and geometry. The chosen
+# $n_\mathrm{LBO}(1118\,\mathrm{nm})=1.605$ is a working approximation,
+# not a verified Sellmeier evaluation. A
 # tighter recomputation would need the cited Sellmeier coefficients in
 # `KD-UV280-007 Section C`.
 
@@ -278,33 +283,13 @@ print(f"  w0    = {w0_BBO_walkoff * 1e6:.2f} μm")
 print(f"BBO paper-reported w0   = {w0_BBO_paper_m * 1e6:.2f} μm")
 
 # %% [markdown]
-# **Discrepancy between recomputation and paper.** Under the notebook's own
-# β-convention `β = (ρ/2) √(L k₁)` with `k₁ = 2π n / λ`, the literature-cited
-# walk-off (83.1 mrad → β ≈ 18.0) drives the optimum to a much looser focus
-# than the paper's reported $w_0 = 19.4\,\mu\mathrm{m}$. Conversely, the
-# paper's $w_0$ corresponds to $\xi \approx 1.42$; under this notebook's
-# implementation that ξ matches a much smaller walk-off, β ≈ 0.55, i.e.
-# ρ ≈ 2.5 mrad. (Earlier hand-estimates citing β ≈ 1.5–2 / ρ ≈ 7–9 mrad were
-# read off Boyd–Kleinman 1968 Figure 6, which uses a slightly different
-# convention; the values quoted here are what *this* notebook's implementation
-# reproduces.)
-#
-# This is a real open question the dossier should resolve:
-#
-# 1. *Is our walk-off estimate (ρ ≈ 85 mrad) correct?* Yes. The
-#    Eimerl-derived value is 83.1 mrad, so the original estimate was within
-#    about 2 mrad.
-# 2. *Did Friedenauer use a different optimization criterion?* For an enhancement
-#    cavity rather than single-pass SHG, the figure of merit is conversion
-#    efficiency *given the cavity buildup factor and round-trip losses*, not the
-#    plain BK $h_m$. The optimum waist for a build-up cavity is generally tighter
-#    than the single-pass BK optimum.
-# 3. *Did the paper use a different B-convention?* Boyd–Kleinman 1968 itself,
-#    and modern reviews, are inconsistent in factors of 2 in the definition of
-#    $\beta$.
-#
-# The notebook records the discrepancy rather than papering over it. Resolving
-# it is appropriate Phase 1 / Phase 3 work, not pre-G1 exploration.
+# **Correction 2026-09-10.** With the corrected walk-off kernel, the
+# Eimerl-derived 83.1 mrad gives an optimum waist near 19.346 µm, agreeing
+# with the reported 19.4 µm at the retained inputs. The former ≈42 µm
+# result arose from the missing divisor ξ in the implementation. It does
+# not establish a different cavity optimization criterion or a 2.5 mrad
+# effective walk-off. Material/geometry uncertainties remain distinct from
+# this corrected implementation error.
 
 # %%
 # 5.4 Plot h_m(ξ) for several β values to visualise the walk-off shift.
@@ -316,10 +301,7 @@ fig, ax = plt.subplots(figsize=(8, 5))
 for beta_val in betas_to_plot:
     h_curve = []
     for xi in xi_plot:
-        try:
-            h = bk.h_m_factor(xi=xi, beta=beta_val, kappa=0.0, mu=0.0)
-        except Exception:
-            h = np.nan
+        h = bk.h_m_factor(xi=xi, beta=beta_val, kappa=0.0, mu=0.0)
         h_curve.append(h)
     label = (f"$\\beta$ = {beta_val:.1f}"
              + (" (BBO, lit.)" if beta_val == beta_BBO else ""))
@@ -391,16 +373,9 @@ axs[1].grid(alpha=0.3)
 fig.tight_layout()
 
 # %% [markdown]
-# The right panel makes it explicit: with the Eimerl-derived
-# ρ = 83.1 mrad the BK σ-optimised $w_0$ in this notebook's convention is
-# ≈ 42 μm — a factor ≈ 2.17× larger than the paper's 19.4 μm. The paper's
-# value matches the notebook's convention only at much smaller walk-off
-# (ρ ≈ 2.5 mrad), far below published BBO Type-I walk-off angles at 280 nm.
-# Most likely explanation: the paper's "BK-derived" optimum is for *the
-# build-up cavity*, where the figure of merit is parametric conversion at the
-# intracavity intensity for the given round-trip loss budget, and this
-# naturally yields a tighter focus than single-pass BK. Resolving this is
-# appropriate Phase 3 simulation work post-G1.
+# The corrected right panel approaches the reported 19.4 µm waist at
+# the Eimerl-derived walk-off. The historical ≈42 µm interpretation is
+# retained in Git history, not used as a current physical discrepancy.
 
 # %% [markdown]
 # ## 7. Summary table
@@ -448,14 +423,10 @@ print(f"{'BBO 559→280, β≈18.0 (Eimerl)':<35} "
 #    (direct from §3) and `BBO_focusing_mirror_focal_length` = 25 mm
 #    (paper-stated equivalence) added to `data/literature/Friedenauer2006/extracted.yaml`.
 #    Both cavities can now be driven against `src.abcd.cavity_eigenmode_q`.
-# 4. **Friedenauer's BK criterion for BBO** — single-pass BK with literature ρ
-#    over-predicts the optimum waist by a factor ≈ 2.17 (recomputed 42 μm vs
-#    paper's 19.4 μm). The Eimerl-anchored ρ = 83.1 mrad (item 2) confirms
-#    that the discrepancy is *not* driven by the walk-off estimate. The most
-#    likely explanation remains
-#    that Friedenauer used a cavity-specific (build-up + round-trip-loss)
-#    figure of merit rather than single-pass BK. Resolving this is post-G1
-#    Phase 3 simulation work; not blocking pre-G1 progress.
+# 4. **BBO optimum-waist discrepancy — resolved as an implementation error.**
+#    RC-01 supplies the independent integral and normalization checks;
+#    the present rerun reproduces the corrected waist.
+#
 # 5. **`d_eff` for both crystals** — *Closed for BBO (2026-05-04).*
 #    BBO central anchor revised upward from the bare Eimerl-anchored value
 #    (1.15 pm/V) to the modern `[P:Eckardt1990]` anchor: `|d_22| = 2.2 pm/V`

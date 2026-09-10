@@ -4,6 +4,9 @@ title: "Coatings for a 559 → 280 nm CW BBO doubling cavity — spec and open q
 description: "A standing technical brief: how the mirror-coating parameters were fixed for a continuous-wave 559 → 280 nm BBO ring doubler on a Friedenauer-2006 geometry, the resulting four-mirror coating targets, and the open questions we would value expert input on — coating feasibility, the atmosphere around the SHG crystal, and BBO vs CLBO. Audience: anyone who has built, operated, or coated CW UV second-harmonic cavities."
 ---
 
+**Review update — 2026-09-10:** the values below describe the May procurement package. [RC-07’s recalculation](../review/2026-09-10-rc07-recalculation.html) revises its model-derived coupling and intensity estimates; the new results are conditional and do not replace the historical specification.
+
+
 # Coatings for a 559 → 280 nm CW BBO doubling cavity
 
 A short standing brief on the **mirror-coating specification** for a

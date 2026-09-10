@@ -1,0 +1,887 @@
+---
+layout: notebook
+title: "BC-B · BBO IC impedance-match sweep — 2026-05-20"
+description: Tutorial notebook (2026-05-20-bbo-ic-impedance-match). Dated pre-G1 exploratory recalculation; no design approval.
+---
+
+<main>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-0000">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="BC-B-%C2%B7-BBO-IC-impedance-match-sweep-%E2%80%94-2026-05-20">BC-B · BBO IC impedance-match sweep — 2026-05-20<a class="anchor-link" href="#BC-B-%C2%B7-BBO-IC-impedance-match-sweep-%E2%80%94-2026-05-20">¶</a></h1><p><strong><code>pre-G1, exploratory</code></strong> (CHARTER §5.1)
+<strong>Origin.</strong> This notebook was produced during BC-B of the BBO
+coating-run WP at
+<a href="https://github.com/uwarring82/mg-plus-uv-chain/tree/main/logbook/2026-05-20-bbo-coating-run-wp"><code>logbook/2026-05-20-bbo-coating-run-wp/</code></a>.
+It was promoted from that folder to <code>/notebooks/exploration/</code> at
+BC-F closure (2026-05-20) per the parent
+<a href="https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-20-bbo-coating-run-wp/workplan.md"><code>workplan.md</code></a> §6 Q8.</p>
+<p><strong>Author:</strong> assistant under steward direction · <strong>Date:</strong> 2026-05-20</p>
+<p><strong>Purpose.</strong> Generate the impedance-match table that BC-C consumes:
+per scenario × per <code>L_total_VENDOR_grid</code> point, report <code>T_IC_opt</code>,
+circulating power, peak intensity, UV output, plus two sensitivity
+columns (manufacturing tolerance and physics tolerance).</p>
+<p><strong>γ authority.</strong> This notebook <strong>does not derive γ</strong>. It consumes
+<code>γ_SHG_BBO_PHE = 1.4914e-4 W⁻¹</code> from
+<a href="https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-20-bbo-coating-run-wp/constants.md"><code>constants.md</code></a>
+§A3 (sole γ authority for this WP).</p>
+<p><strong>Acceptance gates (workplan §4 BC-B):</strong></p>
+<ol>
+<li>Forward cross-check: at <code>(P_in = 0.95 W, T_IC = 0.016)</code> with the
+BC-A pinned <code>(L_PHE, γ_PHE)</code>, reproduce <code>P_UV = 0.275 W</code> within 5 %.</li>
+<li>Optimum-finding: report <code>T_IC_opt(0.95 W, L_PHE, γ_PHE)</code> (expected
+≈ 0.022; surfaces that Friedenauer ran below the optimum).</li>
+<li>Grid: 2 scenarios × 4 <code>L_total</code> points; with both sensitivity
+columns.</li>
+</ol>
+<p><strong>Review note — 2026-09-10:</strong> this is a replay of the frozen May inputs,
+including the old γ. It does not supply corrected procurement targets.
+A forward check against the point used to fit L is calibration closure,
+not an independent validation or a ±1.5% uncertainty on γ. Corrected
+γ, refitted losses and the historical M1 band are compared separately in
+<a href="https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-09-10-rc07-recalculation.md">RC-07</a>.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-0001">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="c1"># Imports + path setup</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">REPO_ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="p">(</span><span class="n">REPO_ROOT</span> <span class="o">/</span> <span class="s2">"pyproject.toml"</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">and</span> <span class="n">REPO_ROOT</span> <span class="o">!=</span> <span class="n">REPO_ROOT</span><span class="o">.</span><span class="n">parent</span><span class="p">:</span>
+    <span class="n">REPO_ROOT</span> <span class="o">=</span> <span class="n">REPO_ROOT</span><span class="o">.</span><span class="n">parent</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">REPO_ROOT</span><span class="p">))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.enhancement_cavity</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>  <span class="c1"># noqa: E402</span>
+    <span class="n">circulating_power</span><span class="p">,</span>
+    <span class="n">harmonic_output_W</span><span class="p">,</span>
+    <span class="n">optimal_input_coupler</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Repository inputs located; replaying frozen May constants"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Repository inputs located; replaying frozen May constants
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-0002">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="1.-Constants-%E2%80%94-sourced-from-constants.md-%C2%A7F">1. Constants — sourced from <code>constants.md</code> §F<a class="anchor-link" href="#1.-Constants-%E2%80%94-sourced-from-constants.md-%C2%A7F">¶</a></h2><p>Every numeric below comes from BC-A's
+<a href="https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-05-20-bbo-coating-run-wp/constants.md"><code>constants.md</code></a>.
+If any of these change, this notebook does not "fix" — <code>constants.md</code>
+is updated first and the notebook is re-run.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-0003">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># γ — pinned in constants.md §A3 (sole γ authority)</span>
+<span class="n">GAMMA_BBO_PHE</span> <span class="o">=</span> <span class="mf">1.4914e-4</span>  <span class="c1"># W^-1 (Phase E central, d_eff = 1.44 pm/V)</span>
+<span class="n">GAMMA_BBO_LOW</span> <span class="o">=</span> <span class="mf">1.2155e-4</span>  <span class="c1"># W^-1 (d_eff = 1.30 pm/V)</span>
+<span class="n">GAMMA_BBO_HIGH</span> <span class="o">=</span> <span class="mf">1.8412e-4</span>  <span class="c1"># W^-1 (d_eff = 1.60 pm/V)</span>
+
+<span class="c1"># Loss decomposition (constants.md §B)</span>
+<span class="n">L_PASSIVE_PHE</span> <span class="o">=</span> <span class="mf">15_288e-6</span>  <span class="c1"># round-trip total at Friedenauer corner</span>
+<span class="n">L_MIRROR_T_AT_SPEC_LIMIT</span> <span class="o">=</span> <span class="mf">3_400e-6</span>  <span class="c1"># upper envelope from R-floors</span>
+<span class="n">L_NONMIRROR_PHE</span> <span class="o">=</span> <span class="n">L_PASSIVE_PHE</span> <span class="o">-</span> <span class="n">L_MIRROR_T_AT_SPEC_LIMIT</span>  <span class="c1"># = 11 888 ppm</span>
+
+<span class="c1"># Friedenauer corner (for the forward cross-check)</span>
+<span class="n">P_IN_FRIEDENAUER</span> <span class="o">=</span> <span class="mf">0.95</span>  <span class="c1"># W of 559 nm into BBO ring</span>
+<span class="n">T_IC_FRIEDENAUER</span> <span class="o">=</span> <span class="mf">0.016</span>  <span class="c1"># paper-stated R = 0.984</span>
+<span class="n">P_UV_FRIEDENAUER</span> <span class="o">=</span> <span class="mf">0.275</span>  <span class="c1"># W published</span>
+
+<span class="c1"># BBO beam geometry (constants.md §A1)</span>
+<span class="n">W0_BBO</span> <span class="o">=</span> <span class="mf">19.4e-6</span>  <span class="c1"># m</span>
+<span class="n">LAMBDA_559</span> <span class="o">=</span> <span class="mf">559e-9</span>  <span class="c1"># m</span>
+<span class="n">N_O_559</span> <span class="o">=</span> <span class="mf">1.67276</span>  <span class="c1"># BBO ordinary at 559</span>
+<span class="n">F_FOCUSING</span> <span class="o">=</span> <span class="mf">25e-3</span>  <span class="c1"># m</span>
+<span class="n">D_PRIME</span> <span class="o">=</span> <span class="mf">59.4e-3</span>  <span class="c1"># m (focusing-mirror separation)</span>
+
+<span class="c1"># Two-scenario input powers (workplan §1 + §6 Q1)</span>
+<span class="n">P_IN_LOW</span> <span class="o">=</span> <span class="mf">0.50</span>  <span class="c1"># W (low scenario)</span>
+<span class="n">P_IN_HIGH</span> <span class="o">=</span> <span class="mf">1.50</span>  <span class="c1"># W (high scenario)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Constants loaded from constants.md §F:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  γ_SHG_BBO (Phase E central)   = </span><span class="si">{</span><span class="n">GAMMA_BBO_PHE</span><span class="si">:</span><span class="s2">.4e</span><span class="si">}</span><span class="s2"> W⁻¹"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  L_passive_PHE                  = </span><span class="si">{</span><span class="n">L_PASSIVE_PHE</span><span class="o">*</span><span class="mf">1e6</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> ppm"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  L_nonmirror_PHE                = </span><span class="si">{</span><span class="n">L_NONMIRROR_PHE</span><span class="o">*</span><span class="mf">1e6</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> ppm"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  L_mirror_T_at_spec_limit       = </span><span class="si">{</span><span class="n">L_MIRROR_T_AT_SPEC_LIMIT</span><span class="o">*</span><span class="mf">1e6</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> ppm"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Two scenarios at 559 nm        = </span><span class="si">{</span><span class="n">P_IN_LOW</span><span class="si">}</span><span class="s2"> W, </span><span class="si">{</span><span class="n">P_IN_HIGH</span><span class="si">}</span><span class="s2"> W"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Constants loaded from constants.md §F:
+  γ_SHG_BBO (Phase E central)   = 1.4914e-04 W⁻¹
+  L_passive_PHE                  = 15288 ppm
+  L_nonmirror_PHE                = 11888 ppm
+  L_mirror_T_at_spec_limit       = 3400 ppm
+  Two scenarios at 559 nm        = 0.5 W, 1.5 W
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-0004">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="2.-Forward-cross-check-(acceptance-gate-1)">2. Forward cross-check (acceptance gate 1)<a class="anchor-link" href="#2.-Forward-cross-check-(acceptance-gate-1)">¶</a></h2><p>At Friedenauer's published operating point with the BC-A-pinned
+<code>(L_passive_PHE, γ_BBO_PHE)</code>, the forward solver must reproduce the
+published <code>P_UV = 0.275 W</code> within 5 %. This is the binding one-equation
+test on the model.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-0005">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">P_UV_cross_check</span> <span class="o">=</span> <span class="n">harmonic_output_W</span><span class="p">(</span>
+    <span class="n">P_IN_FRIEDENAUER</span><span class="p">,</span> <span class="n">T_IC_FRIEDENAUER</span><span class="p">,</span> <span class="n">L_PASSIVE_PHE</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span>
+<span class="p">)</span>
+<span class="n">residual_pct</span> <span class="o">=</span> <span class="p">(</span><span class="n">P_UV_cross_check</span> <span class="o">-</span> <span class="n">P_UV_FRIEDENAUER</span><span class="p">)</span> <span class="o">/</span> <span class="n">P_UV_FRIEDENAUER</span> <span class="o">*</span> <span class="mf">100.0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Acceptance gate 1 — Friedenauer forward cross-check"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Inputs: P_in = </span><span class="si">{</span><span class="n">P_IN_FRIEDENAUER</span><span class="si">}</span><span class="s2"> W, T_IC = </span><span class="si">{</span><span class="n">T_IC_FRIEDENAUER</span><span class="si">}</span><span class="s2">, "</span>
+      <span class="sa">f</span><span class="s2">"L = </span><span class="si">{</span><span class="n">L_PASSIVE_PHE</span><span class="o">*</span><span class="mf">1e6</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> ppm, γ = </span><span class="si">{</span><span class="n">GAMMA_BBO_PHE</span><span class="si">:</span><span class="s2">.4e</span><span class="si">}</span><span class="s2"> W⁻¹"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  P_UV computed = </span><span class="si">{</span><span class="n">P_UV_cross_check</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> W"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  P_UV published = </span><span class="si">{</span><span class="n">P_UV_FRIEDENAUER</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> W"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Residual = </span><span class="si">{</span><span class="n">residual_pct</span><span class="si">:</span><span class="s2">+.2f</span><span class="si">}</span><span class="s2"> %  (</span><span class="si">{</span><span class="s1">'PASS'</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">residual_pct</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">'FAIL'</span><span class="si">}</span><span class="s2"> 5 % gate)"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Acceptance gate 1 — Friedenauer forward cross-check
+  Inputs: P_in = 0.95 W, T_IC = 0.016, L = 15288 ppm, γ = 1.4914e-04 W⁻¹
+  P_UV computed = 0.2750 W
+  P_UV published = 0.2750 W
+  Residual = -0.00 %  (PASS 5 % gate)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-0006">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="3.-Optimum-finding-(acceptance-gate-2,-reported-as-a-finding)">3. Optimum-finding (acceptance gate 2, reported as a finding)<a class="anchor-link" href="#3.-Optimum-finding-(acceptance-gate-2,-reported-as-a-finding)">¶</a></h2><p><code>T_IC_opt(0.95 W, L_PHE, γ_PHE)</code> is expected to differ from
+Friedenauer's procured 0.016 — surfacing that Friedenauer ran below
+the impedance-matched optimum at their γ. <strong>Not a pass/fail criterion.</strong></p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-0007">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">T_opt_corner</span> <span class="o">=</span> <span class="n">optimal_input_coupler</span><span class="p">(</span><span class="n">P_IN_FRIEDENAUER</span><span class="p">,</span> <span class="n">L_PASSIVE_PHE</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span><span class="p">)</span>
+<span class="n">P_UV_at_opt</span> <span class="o">=</span> <span class="n">harmonic_output_W</span><span class="p">(</span><span class="n">P_IN_FRIEDENAUER</span><span class="p">,</span> <span class="n">T_opt_corner</span><span class="p">,</span> <span class="n">L_PASSIVE_PHE</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span><span class="p">)</span>
+<span class="n">P_circ_at_opt</span> <span class="o">=</span> <span class="n">circulating_power</span><span class="p">(</span><span class="n">P_IN_FRIEDENAUER</span><span class="p">,</span> <span class="n">T_opt_corner</span><span class="p">,</span> <span class="n">L_PASSIVE_PHE</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span><span class="p">)</span>
+
+<span class="n">gap_pp</span> <span class="o">=</span> <span class="p">(</span><span class="n">T_opt_corner</span> <span class="o">-</span> <span class="n">T_IC_FRIEDENAUER</span><span class="p">)</span> <span class="o">*</span> <span class="mf">100.0</span>
+<span class="n">forgone_pct</span> <span class="o">=</span> <span class="p">(</span><span class="n">P_UV_at_opt</span> <span class="o">-</span> <span class="n">P_UV_FRIEDENAUER</span><span class="p">)</span> <span class="o">/</span> <span class="n">P_UV_FRIEDENAUER</span> <span class="o">*</span> <span class="mf">100.0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Acceptance gate 2 — optimum-finding (Friedenauer corner)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  T_IC_opt        = </span><span class="si">{</span><span class="n">T_opt_corner</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">  (</span><span class="si">{</span><span class="n">T_opt_corner</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> %)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  T_IC published  = </span><span class="si">{</span><span class="n">T_IC_FRIEDENAUER</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">  (</span><span class="si">{</span><span class="n">T_IC_FRIEDENAUER</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> %)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Gap             = </span><span class="si">{</span><span class="n">gap_pp</span><span class="si">:</span><span class="s2">+.2f</span><span class="si">}</span><span class="s2"> pp  (Friedenauer ran below the optimum)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  P_UV at T_opt   = </span><span class="si">{</span><span class="n">P_UV_at_opt</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> W  (buildup forgone: </span><span class="si">{</span><span class="n">forgone_pct</span><span class="si">:</span><span class="s2">+.2f</span><span class="si">}</span><span class="s2"> %)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  P_circ at T_opt = </span><span class="si">{</span><span class="n">P_circ_at_opt</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> W"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Acceptance gate 2 — optimum-finding (Friedenauer corner)
+  T_IC_opt        = 0.02169  (2.17 %)
+  T_IC published  = 0.01600  (1.60 %)
+  Gap             = +0.57 pp  (Friedenauer ran below the optimum)
+  P_UV at T_opt   = 0.2848 W  (buildup forgone: +3.57 %)
+  P_circ at T_opt = 43.80 W
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-0008">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="4.-Helper-%E2%80%94-Gaussian-beam-geometry-on-the-curved-mirrors">4. Helper — Gaussian beam geometry on the curved mirrors<a class="anchor-link" href="#4.-Helper-%E2%80%94-Gaussian-beam-geometry-on-the-curved-mirrors">¶</a></h2><p>For peak-intensity reporting on the curved mirrors (BC-D will consume
+these values too).</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-0009">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">peak_intensity_W_per_cm2</span><span class="p">(</span><span class="n">power_W</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">w0_m</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Peak Gaussian-beam intensity = 2 P / (π w₀²), converted to W/cm²."""</span>
+    <span class="k">return</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">power_W</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">w0_m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-4</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">spot_radius_at_curved_mirror_proper</span><span class="p">(</span>
+    <span class="n">w0_m</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">half_crystal_m</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">air_distance_m</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">lam_m</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">n_crystal</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Proper Gaussian spot radius at the curved mirror via BBO + air propagation.</span>
+
+<span class="sd">    Friedenauer's BBO sits at the short-arm waist with half-length</span>
+<span class="sd">    `half_crystal_m` (= 5 mm) from waist to crystal exit face; the remaining</span>
+<span class="sd">    `air_distance_m` (= d′/2 − half_crystal_m ≈ 24.7 mm) is air. Use the</span>
+<span class="sd">    q-parameter:</span>
+<span class="sd">        q_at_waist_in_BBO = i · zR_BBO   (zR_BBO = π n w0² / λ)</span>
+<span class="sd">        q_at_BBO_exit = q_at_waist + half_crystal       (free space in BBO)</span>
+<span class="sd">        q_just_after_interface = q_at_BBO_exit / n_crystal (flat exit to air)</span>
+<span class="sd">        q_at_curved_mirror = q_just_after_interface + air_distance  (free space in air)</span>
+<span class="sd">        w² at mirror = -λ / (π · n_air · Im(1/q))   with n_air = 1</span>
+
+<span class="sd">    The v1 of this notebook used a single-medium call with n_BBO for the</span>
+<span class="sd">    full distance, which underestimates the spot. Corrected here per BC-C v2.</span>
+<span class="sd">    """</span>
+    <span class="n">z_R_in_crystal</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">n_crystal</span> <span class="o">*</span> <span class="n">w0_m</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">lam_m</span>
+    <span class="n">q_at_exit</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">half_crystal_m</span><span class="p">,</span> <span class="n">z_R_in_crystal</span><span class="p">)</span>  <span class="c1"># in BBO</span>
+    <span class="c1"># Standard q convention: q_after=q_before*n_after/n_before.</span>
+    <span class="c1"># The radius stays continuous while q and z_R scale by 1/n_crystal.</span>
+    <span class="n">q_just_after_interface</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">q_at_exit</span><span class="o">.</span><span class="n">real</span> <span class="o">/</span> <span class="n">n_crystal</span><span class="p">,</span>
+                                     <span class="n">q_at_exit</span><span class="o">.</span><span class="n">imag</span> <span class="o">/</span> <span class="n">n_crystal</span><span class="p">)</span>
+    <span class="n">q_at_mirror</span> <span class="o">=</span> <span class="n">q_just_after_interface</span> <span class="o">+</span> <span class="n">air_distance_m</span>  <span class="c1"># free space in air</span>
+    <span class="c1"># 1/q = 1/R - i λ / (π n w²) ; n_air = 1</span>
+    <span class="n">inv_q_im</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">q_at_mirror</span><span class="p">)</span><span class="o">.</span><span class="n">imag</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">lam_m</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">inv_q_im</span><span class="p">))</span>
+
+
+<span class="n">W_CURVED_BBO</span> <span class="o">=</span> <span class="n">spot_radius_at_curved_mirror_proper</span><span class="p">(</span>
+    <span class="n">w0_m</span><span class="o">=</span><span class="n">W0_BBO</span><span class="p">,</span>
+    <span class="n">half_crystal_m</span><span class="o">=</span><span class="mf">5e-3</span><span class="p">,</span>                   <span class="c1"># half of 10 mm BBO crystal</span>
+    <span class="n">air_distance_m</span><span class="o">=</span><span class="n">D_PRIME</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">-</span> <span class="mf">5e-3</span><span class="p">,</span>   <span class="c1"># remaining short-arm distance in air</span>
+    <span class="n">lam_m</span><span class="o">=</span><span class="n">LAMBDA_559</span><span class="p">,</span>
+    <span class="n">n_crystal</span><span class="o">=</span><span class="n">N_O_559</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Beam geometry helpers"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  w(curved mirror, BBO + air propagation) = </span><span class="si">{</span><span class="n">W_CURVED_BBO</span><span class="o">*</span><span class="mf">1e6</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> μm  "</span>
+      <span class="sa">f</span><span class="s2">"(waist </span><span class="si">{</span><span class="n">W0_BBO</span><span class="o">*</span><span class="mf">1e6</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> μm, half-crystal 5 mm + air "</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="p">(</span><span class="n">D_PRIME</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mf">5e-3</span><span class="p">)</span><span class="o">*</span><span class="mf">1e3</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> mm)"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Beam geometry helpers
+  w(curved mirror, BBO + air propagation) = 255 μm  (waist 19.4 μm, half-crystal 5 mm + air 24.7 mm)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-0010">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="5.-Main-impedance-match-grid-(acceptance-gate-3)">5. Main impedance-match grid (acceptance gate 3)<a class="anchor-link" href="#5.-Main-impedance-match-grid-(acceptance-gate-3)">¶</a></h2><p>2 scenarios × 4 L_total grid points. Per cell:
+<code>T_IC_opt</code>, <code>P_circ</code>, <code>P_UV</code>, peak intensity at the BBO waist + on the
+curved mirrors.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-0011">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">SCENARIOS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"Low"</span><span class="p">,</span>  <span class="n">P_IN_LOW</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"High"</span><span class="p">,</span> <span class="n">P_IN_HIGH</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">L_TOTAL_GRID</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"Friedenauer R-floor (path 2 baseline)"</span><span class="p">,</span> <span class="mf">3_400e-6</span><span class="p">,</span>   <span class="n">L_NONMIRROR_PHE</span> <span class="o">+</span> <span class="mf">3_400e-6</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Intermediate IBS (500 ppm/mirror)"</span><span class="p">,</span>      <span class="mf">1_500e-6</span><span class="p">,</span>   <span class="n">L_NONMIRROR_PHE</span> <span class="o">+</span> <span class="mf">1_500e-6</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Upper-class IBS (200 ppm/mirror)"</span><span class="p">,</span>         <span class="mf">600e-6</span><span class="p">,</span>   <span class="n">L_NONMIRROR_PHE</span> <span class="o">+</span>   <span class="mf">600e-6</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Cavity-finesse-grade (100 ppm/mirror)"</span><span class="p">,</span>    <span class="mf">300e-6</span><span class="p">,</span>   <span class="n">L_NONMIRROR_PHE</span> <span class="o">+</span>   <span class="mf">300e-6</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">grid_rows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="si">{</span><span class="s1">'Scenario'</span><span class="si">:</span><span class="s2">&lt;6</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'L_total class'</span><span class="si">:</span><span class="s2">&lt;42</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'L_tot ppm'</span><span class="si">:</span><span class="s2">&gt;10</span><span class="si">}</span><span class="s2"> "</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'T_IC_opt (ppm)'</span><span class="si">:</span><span class="s2">&gt;14</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'T_IC_opt (pp)'</span><span class="si">:</span><span class="s2">&gt;14</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'P_circ (W)'</span><span class="si">:</span><span class="s2">&gt;11</span><span class="si">}</span><span class="s2"> "</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'P_UV (W)'</span><span class="si">:</span><span class="s2">&gt;10</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'I_waist (MW/cm²)'</span><span class="si">:</span><span class="s2">&gt;18</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'I_curved (kW/cm²)'</span><span class="si">:</span><span class="s2">&gt;19</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">152</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">scen_name</span><span class="p">,</span> <span class="n">P_in</span> <span class="ow">in</span> <span class="n">SCENARIOS</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">L_name</span><span class="p">,</span> <span class="n">sum_mirror</span><span class="p">,</span> <span class="n">L_total</span> <span class="ow">in</span> <span class="n">L_TOTAL_GRID</span><span class="p">:</span>
+        <span class="n">T_opt</span> <span class="o">=</span> <span class="n">optimal_input_coupler</span><span class="p">(</span><span class="n">P_in</span><span class="p">,</span> <span class="n">L_total</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span><span class="p">)</span>
+        <span class="n">P_c</span> <span class="o">=</span> <span class="n">circulating_power</span><span class="p">(</span><span class="n">P_in</span><span class="p">,</span> <span class="n">T_opt</span><span class="p">,</span> <span class="n">L_total</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span><span class="p">)</span>
+        <span class="n">P_uv</span> <span class="o">=</span> <span class="n">harmonic_output_W</span><span class="p">(</span><span class="n">P_in</span><span class="p">,</span> <span class="n">T_opt</span><span class="p">,</span> <span class="n">L_total</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span><span class="p">)</span>
+        <span class="n">I_waist</span> <span class="o">=</span> <span class="n">peak_intensity_W_per_cm2</span><span class="p">(</span><span class="n">P_c</span><span class="p">,</span> <span class="n">W0_BBO</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e6</span>   <span class="c1"># MW/cm²</span>
+        <span class="n">I_curved</span> <span class="o">=</span> <span class="n">peak_intensity_W_per_cm2</span><span class="p">(</span><span class="n">P_c</span><span class="p">,</span> <span class="n">W_CURVED_BBO</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e3</span>  <span class="c1"># kW/cm²</span>
+        <span class="n">grid_rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s2">"scenario"</span><span class="p">:</span> <span class="n">scen_name</span><span class="p">,</span>
+            <span class="s2">"P_in_W"</span><span class="p">:</span> <span class="n">P_in</span><span class="p">,</span>
+            <span class="s2">"L_name"</span><span class="p">:</span> <span class="n">L_name</span><span class="p">,</span>
+            <span class="s2">"sum_mirror_ppm"</span><span class="p">:</span> <span class="n">sum_mirror</span> <span class="o">*</span> <span class="mf">1e6</span><span class="p">,</span>
+            <span class="s2">"L_total_ppm"</span><span class="p">:</span> <span class="n">L_total</span> <span class="o">*</span> <span class="mf">1e6</span><span class="p">,</span>
+            <span class="s2">"T_IC_opt"</span><span class="p">:</span> <span class="n">T_opt</span><span class="p">,</span>
+            <span class="s2">"P_circ_W"</span><span class="p">:</span> <span class="n">P_c</span><span class="p">,</span>
+            <span class="s2">"P_UV_W"</span><span class="p">:</span> <span class="n">P_uv</span><span class="p">,</span>
+            <span class="s2">"I_waist_MW_cm2"</span><span class="p">:</span> <span class="n">I_waist</span><span class="p">,</span>
+            <span class="s2">"I_curved_kW_cm2"</span><span class="p">:</span> <span class="n">I_curved</span><span class="p">,</span>
+        <span class="p">})</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">scen_name</span><span class="si">:</span><span class="s2">&lt;6</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">L_name</span><span class="si">:</span><span class="s2">&lt;42</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">L_total</span><span class="o">*</span><span class="mf">1e6</span><span class="si">:</span><span class="s2">&gt;10.0f</span><span class="si">}</span><span class="s2"> "</span>
+              <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">T_opt</span><span class="o">*</span><span class="mf">1e6</span><span class="si">:</span><span class="s2">&gt;14.0f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">T_opt</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">&gt;14.3f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">P_c</span><span class="si">:</span><span class="s2">&gt;11.2f</span><span class="si">}</span><span class="s2"> "</span>
+              <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">P_uv</span><span class="si">:</span><span class="s2">&gt;10.4f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">I_waist</span><span class="si">:</span><span class="s2">&gt;18.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">I_curved</span><span class="si">:</span><span class="s2">&gt;19.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+Scenario L_total class                               L_tot ppm T_IC_opt (ppm)  T_IC_opt (pp)  P_circ (W)   P_UV (W)   I_waist (MW/cm²)   I_curved (kW/cm²)
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+Low    Friedenauer R-floor (path 2 baseline)           15288          19119          1.912       26.15     0.1017               4.42                25.7
+Low    Intermediate IBS (500 ppm/mirror)               13388          17565          1.756       28.47     0.1205               4.82                27.9
+Low    Upper-class IBS (200 ppm/mirror)                12488          16846          1.685       29.68     0.1310               5.02                29.1
+Low    Cavity-finesse-grade (100 ppm/mirror)           12188          16610          1.661       30.10     0.1347               5.09                29.5
+High   Friedenauer R-floor (path 2 baseline)           15288          24299          2.430       61.73     0.5649              10.44                60.6
+High   Intermediate IBS (500 ppm/mirror)               13388          22945          2.295       65.37     0.6333              11.06                64.2
+High   Upper-class IBS (200 ppm/mirror)                12488          22320          2.232       67.20     0.6691              11.37                65.9
+High   Cavity-finesse-grade (100 ppm/mirror)           12188          22114          2.211       67.83     0.6816              11.47                66.6
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-0012">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="6.-Manufacturing-tolerance-sensitivity">6. Manufacturing tolerance sensitivity<a class="anchor-link" href="#6.-Manufacturing-tolerance-sensitivity">¶</a></h2><p>For each cell, UV-output drop when <code>T_IC</code> lands at <code>T_IC_opt ± Δ</code>.
+Four bands: <code>± 0.5 pp</code>, <code>± 1.0 pp</code> (the wide regime; reviewer-flagged
+realistic IBS batch-to-batch drift), <code>± 500 ppm</code>, <code>± 1 000 ppm</code> (the
+fine regime where IBS metrology is actually challenged).</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-0013">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">TOL_BANDS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"±  500 ppm"</span><span class="p">,</span> <span class="mf">500e-6</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"± 1000 ppm"</span><span class="p">,</span> <span class="mf">1000e-6</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"±   0.5 pp"</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"±   1.0 pp"</span><span class="p">,</span> <span class="mf">0.010</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="si">{</span><span class="s1">'Scenario'</span><span class="si">:</span><span class="s2">&lt;6</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'L_total ppm'</span><span class="si">:</span><span class="s2">&gt;11</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'T_IC_opt (ppm)'</span><span class="si">:</span><span class="s2">&gt;15</span><span class="si">}</span><span class="s2"> "</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'P_UV_opt (W)'</span><span class="si">:</span><span class="s2">&gt;13</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">TOL_BANDS</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">" </span><span class="si">{</span><span class="p">(</span><span class="s1">'ΔP_UV '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">label</span><span class="p">)</span><span class="si">:</span><span class="s2">&gt;16</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">150</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">grid_rows</span><span class="p">:</span>
+    <span class="n">T_opt</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"T_IC_opt"</span><span class="p">]</span>
+    <span class="n">P_uv_opt</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"P_UV_W"</span><span class="p">]</span>
+    <span class="n">L_total</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"L_total_ppm"</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1e-6</span>
+    <span class="n">P_in</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"P_in_W"</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'scenario'</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;6</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'L_total_ppm'</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;11.0f</span><span class="si">}</span><span class="s2"> "</span>
+          <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">T_opt</span><span class="o">*</span><span class="mf">1e6</span><span class="si">:</span><span class="s2">&gt;15.0f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">P_uv_opt</span><span class="si">:</span><span class="s2">&gt;13.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">delta</span> <span class="ow">in</span> <span class="n">TOL_BANDS</span><span class="p">:</span>
+        <span class="c1"># Worst-case across +Δ and −Δ</span>
+        <span class="n">P_uv_plus</span> <span class="o">=</span> <span class="n">harmonic_output_W</span><span class="p">(</span><span class="n">P_in</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mf">0.999</span><span class="p">,</span> <span class="n">T_opt</span> <span class="o">+</span> <span class="n">delta</span><span class="p">),</span> <span class="n">L_total</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span><span class="p">)</span>
+        <span class="n">P_uv_minus</span> <span class="o">=</span> <span class="n">harmonic_output_W</span><span class="p">(</span><span class="n">P_in</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">T_opt</span> <span class="o">-</span> <span class="n">delta</span><span class="p">),</span> <span class="n">L_total</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span><span class="p">)</span>
+        <span class="c1"># Symmetric near optimum; report max relative drop</span>
+        <span class="n">drop_plus_pct</span> <span class="o">=</span> <span class="p">(</span><span class="n">P_uv_plus</span> <span class="o">-</span> <span class="n">P_uv_opt</span><span class="p">)</span> <span class="o">/</span> <span class="n">P_uv_opt</span> <span class="o">*</span> <span class="mf">100.0</span>
+        <span class="n">drop_minus_pct</span> <span class="o">=</span> <span class="p">(</span><span class="n">P_uv_minus</span> <span class="o">-</span> <span class="n">P_uv_opt</span><span class="p">)</span> <span class="o">/</span> <span class="n">P_uv_opt</span> <span class="o">*</span> <span class="mf">100.0</span>
+        <span class="n">worst</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">drop_plus_pct</span><span class="p">,</span> <span class="n">drop_minus_pct</span><span class="p">)</span>  <span class="c1"># most-negative</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">" </span><span class="si">{</span><span class="n">worst</span><span class="si">:</span><span class="s2">&gt;+15.2f</span><span class="si">}</span><span class="s2">%"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+Scenario L_total ppm  T_IC_opt (ppm)  P_UV_opt (W) ΔP_UV ±  500 ppm ΔP_UV ± 1000 ppm ΔP_UV ±   0.5 pp ΔP_UV ±   1.0 pp
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Low          15288           19119        0.1017           -0.03%           -0.12%           -3.71%          -19.38%
+Low          13388           17565        0.1205           -0.03%           -0.14%           -4.34%          -23.27%
+Low          12488           16846        0.1310           -0.04%           -0.15%           -4.69%          -25.48%
+Low          12188           16610        0.1347           -0.04%           -0.15%           -4.81%          -26.27%
+High         15288           24299        0.5649           -0.02%           -0.07%           -1.90%           -9.23%
+High         13388           22945        0.6333           -0.02%           -0.07%           -2.07%          -10.22%
+High         12488           22320        0.6691           -0.02%           -0.07%           -2.16%          -10.72%
+High         12188           22114        0.6816           -0.02%           -0.07%           -2.19%          -10.90%
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-0014">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="7.-Physics-tolerance-sensitivity-(%CE%B3-%C2%B1-1.5-%25)">7. Physics tolerance sensitivity (γ ± 1.5 %)<a class="anchor-link" href="#7.-Physics-tolerance-sensitivity-(%CE%B3-%C2%B1-1.5-%25)">¶</a></h2><p>Historical sensitivity scenario only: a fitted residual does not establish
+a ±1.5% uncertainty on γ.
+The √(γ P_in) scaling applies in a nonlinear-loss-dominated but weak
+single-pass-conversion limit, not throughout the depleted regime. Reporting this column
+alongside the manufacturing column prevents BC-C from over-specifying
+the manufacturing tolerance against a comparable-size physics
+uncertainty.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-0015">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">GAMMA_BANDS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"γ × 0.985 (−1.5 %)"</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span> <span class="o">*</span> <span class="mf">0.985</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"γ × 1.000 (PINNED)"</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"γ × 1.015 (+1.5 %)"</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span> <span class="o">*</span> <span class="mf">1.015</span><span class="p">),</span>
+<span class="p">]</span>
+<span class="n">DEFF_BANDS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"d_eff = 1.30 (low)"</span><span class="p">,</span>     <span class="n">GAMMA_BBO_LOW</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"d_eff = 1.44 (central)"</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"d_eff = 1.60 (high)"</span><span class="p">,</span>    <span class="n">GAMMA_BBO_HIGH</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">=== γ ± 1.5 % bracket (Phase E validation residual) ==="</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="si">{</span><span class="s1">'Scenario'</span><span class="si">:</span><span class="s2">&lt;6</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'L_total ppm'</span><span class="si">:</span><span class="s2">&gt;11</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">GAMMA_BANDS</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">" </span><span class="si">{</span><span class="p">(</span><span class="s1">'T_IC_opt ('</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">')'</span><span class="p">)</span><span class="si">:</span><span class="s2">&gt;30</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">''</span><span class="si">:</span><span class="s2">&lt;6</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">''</span><span class="si">:</span><span class="s2">&gt;11</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">GAMMA_BANDS</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">" </span><span class="si">{</span><span class="p">(</span><span class="s1">'P_UV '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">label</span><span class="p">)</span><span class="si">:</span><span class="s2">&gt;30</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">110</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">grid_rows</span><span class="p">:</span>
+    <span class="n">L_total</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"L_total_ppm"</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1e-6</span>
+    <span class="n">P_in</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"P_in_W"</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'scenario'</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;6</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'L_total_ppm'</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;11.0f</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">gamma</span> <span class="ow">in</span> <span class="n">GAMMA_BANDS</span><span class="p">:</span>
+        <span class="n">T_opt</span> <span class="o">=</span> <span class="n">optimal_input_coupler</span><span class="p">(</span><span class="n">P_in</span><span class="p">,</span> <span class="n">L_total</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span>
+        <span class="n">P_uv</span> <span class="o">=</span> <span class="n">harmonic_output_W</span><span class="p">(</span><span class="n">P_in</span><span class="p">,</span> <span class="n">T_opt</span><span class="p">,</span> <span class="n">L_total</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">" </span><span class="si">{</span><span class="n">T_opt</span><span class="si">:</span><span class="s2">&gt;15.5f</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">P_uv</span><span class="si">:</span><span class="s2">&gt;7.4f</span><span class="si">}</span><span class="s2"> W"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">=== d_eff full bracket (1.30 → 1.60 pm/V, dominant uncertainty axis) ==="</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="si">{</span><span class="s1">'Scenario'</span><span class="si">:</span><span class="s2">&lt;6</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'L_total ppm'</span><span class="si">:</span><span class="s2">&gt;11</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">DEFF_BANDS</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">" </span><span class="si">{</span><span class="p">(</span><span class="s1">'T_opt / P_UV @ '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">label</span><span class="p">)</span><span class="si">:</span><span class="s2">&gt;32</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">115</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">grid_rows</span><span class="p">:</span>
+    <span class="n">L_total</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"L_total_ppm"</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1e-6</span>
+    <span class="n">P_in</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"P_in_W"</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'scenario'</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;6</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">'L_total_ppm'</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;11.0f</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">gamma</span> <span class="ow">in</span> <span class="n">DEFF_BANDS</span><span class="p">:</span>
+        <span class="n">T_opt</span> <span class="o">=</span> <span class="n">optimal_input_coupler</span><span class="p">(</span><span class="n">P_in</span><span class="p">,</span> <span class="n">L_total</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span>
+        <span class="n">P_uv</span> <span class="o">=</span> <span class="n">harmonic_output_W</span><span class="p">(</span><span class="n">P_in</span><span class="p">,</span> <span class="n">T_opt</span><span class="p">,</span> <span class="n">L_total</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">" </span><span class="si">{</span><span class="n">T_opt</span><span class="si">:</span><span class="s2">&gt;16.5f</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">P_uv</span><span class="si">:</span><span class="s2">&gt;8.4f</span><span class="si">}</span><span class="s2"> W"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+=== γ ± 1.5 % bracket (Phase E validation residual) ===
+
+Scenario L_total ppm  T_IC_opt (γ × 0.985 (−1.5 %))  T_IC_opt (γ × 1.000 (PINNED))  T_IC_opt (γ × 1.015 (+1.5 %))
+                          P_UV γ × 0.985 (−1.5 %)        P_UV γ × 1.000 (PINNED)        P_UV γ × 1.015 (+1.5 %)
+--------------------------------------------------------------------------------------------------------------
+Low          15288         0.01907/ 0.1007 W         0.01912/ 0.1017 W         0.01917/ 0.1027 W
+Low          13388         0.01751/ 0.1194 W         0.01756/ 0.1205 W         0.01762/ 0.1216 W
+Low          12488         0.01679/ 0.1298 W         0.01685/ 0.1310 W         0.01690/ 0.1321 W
+Low          12188         0.01656/ 0.1336 W         0.01661/ 0.1347 W         0.01666/ 0.1359 W
+High         15288         0.02420/ 0.5610 W         0.02430/ 0.5649 W         0.02440/ 0.5687 W
+High         13388         0.02284/ 0.6293 W         0.02295/ 0.6333 W         0.02305/ 0.6371 W
+High         12488         0.02222/ 0.6652 W         0.02232/ 0.6691 W         0.02242/ 0.6730 W
+High         12188         0.02201/ 0.6777 W         0.02211/ 0.6816 W         0.02222/ 0.6854 W
+
+=== d_eff full bracket (1.30 → 1.60 pm/V, dominant uncertainty axis) ===
+
+Scenario L_total ppm T_opt / P_UV @ d_eff = 1.30 (low) T_opt / P_UV @ d_eff = 1.44 (central) T_opt / P_UV @ d_eff = 1.60 (high)
+-------------------------------------------------------------------------------------------------------------------
+Low          15288          0.01851/  0.0885 W          0.01912/  0.1017 W          0.01984/  0.1165 W
+Low          13388          0.01692/  0.1059 W          0.01756/  0.1205 W          0.01833/  0.1366 W
+Low          12488          0.01619/  0.1157 W          0.01685/  0.1310 W          0.01763/  0.1476 W
+Low          12188          0.01594/  0.1192 W          0.01661/  0.1347 W          0.01740/  0.1516 W
+High         15288          0.02304/  0.5125 W          0.02430/  0.5649 W          0.02577/  0.6195 W
+High         13388          0.02165/  0.5802 W          0.02295/  0.6333 W          0.02445/  0.6878 W
+High         12488          0.02101/  0.6161 W          0.02232/  0.6691 W          0.02384/  0.7233 W
+High         12188          0.02080/  0.6286 W          0.02211/  0.6816 W          0.02364/  0.7356 W
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-0016">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="8.-T_IC_opt-separation-between-scenarios-%E2%80%94-%C2%A76-Q2-input">8. T_IC_opt separation between scenarios — §6 Q2 input<a class="anchor-link" href="#8.-T_IC_opt-separation-between-scenarios-%E2%80%94-%C2%A76-Q2-input">¶</a></h2><p>Reports the Δ<code>T_IC_opt</code> between the Low and High scenarios at each
+<code>L_total</code> grid point. The default §6 Q2 path holds the M1' coating
+spec at a single variant if Δ<code>T_IC_opt</code> ≲ 1 pp (a typical single
+coating-run tolerance); branches to two M1' variants otherwise.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-0017">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="si">{</span><span class="s1">'L_total class'</span><span class="si">:</span><span class="s2">&lt;42</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'L_tot ppm'</span><span class="si">:</span><span class="s2">&gt;10</span><span class="si">}</span><span class="s2"> "</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'T_opt Low'</span><span class="si">:</span><span class="s2">&gt;11</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'T_opt High'</span><span class="si">:</span><span class="s2">&gt;12</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'ΔT_opt (pp)'</span><span class="si">:</span><span class="s2">&gt;13</span><span class="si">}</span><span class="s2"> "</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'ΔT_opt (ppm)'</span><span class="si">:</span><span class="s2">&gt;14</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'§6 Q2 default'</span><span class="si">:</span><span class="s2">&gt;20</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">140</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">L_name</span><span class="p">,</span> <span class="n">sum_mirror</span><span class="p">,</span> <span class="n">L_total</span> <span class="ow">in</span> <span class="n">L_TOTAL_GRID</span><span class="p">:</span>
+    <span class="n">T_low</span> <span class="o">=</span> <span class="n">optimal_input_coupler</span><span class="p">(</span><span class="n">P_IN_LOW</span><span class="p">,</span> <span class="n">L_total</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span><span class="p">)</span>
+    <span class="n">T_high</span> <span class="o">=</span> <span class="n">optimal_input_coupler</span><span class="p">(</span><span class="n">P_IN_HIGH</span><span class="p">,</span> <span class="n">L_total</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span><span class="p">)</span>
+    <span class="n">delta_pp</span> <span class="o">=</span> <span class="p">(</span><span class="n">T_high</span> <span class="o">-</span> <span class="n">T_low</span><span class="p">)</span> <span class="o">*</span> <span class="mf">100.0</span>
+    <span class="n">delta_ppm</span> <span class="o">=</span> <span class="p">(</span><span class="n">T_high</span> <span class="o">-</span> <span class="n">T_low</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e6</span>
+    <span class="k">if</span> <span class="n">delta_pp</span> <span class="o">&lt;=</span> <span class="mf">1.0</span><span class="p">:</span>
+        <span class="n">recommend</span> <span class="o">=</span> <span class="s2">"one variant"</span>
+    <span class="k">elif</span> <span class="n">delta_pp</span> <span class="o">&lt;=</span> <span class="mf">2.0</span><span class="p">:</span>
+        <span class="n">recommend</span> <span class="o">=</span> <span class="s2">"borderline"</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">recommend</span> <span class="o">=</span> <span class="s2">"two variants"</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">L_name</span><span class="si">:</span><span class="s2">&lt;42</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">L_total</span><span class="o">*</span><span class="mf">1e6</span><span class="si">:</span><span class="s2">&gt;10.0f</span><span class="si">}</span><span class="s2"> "</span>
+          <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">T_low</span><span class="si">:</span><span class="s2">&gt;11.5f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">T_high</span><span class="si">:</span><span class="s2">&gt;12.5f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">delta_pp</span><span class="si">:</span><span class="s2">&gt;13.3f</span><span class="si">}</span><span class="s2"> "</span>
+          <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">delta_ppm</span><span class="si">:</span><span class="s2">&gt;14.0f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">recommend</span><span class="si">:</span><span class="s2">&gt;20</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+L_total class                               L_tot ppm   T_opt Low   T_opt High   ΔT_opt (pp)   ΔT_opt (ppm)        §6 Q2 default
+--------------------------------------------------------------------------------------------------------------------------------------------
+Friedenauer R-floor (path 2 baseline)           15288     0.01912      0.02430         0.518           5180          one variant
+Intermediate IBS (500 ppm/mirror)               13388     0.01756      0.02295         0.538           5380          one variant
+Upper-class IBS (200 ppm/mirror)                12488     0.01685      0.02232         0.547           5474          one variant
+Cavity-finesse-grade (100 ppm/mirror)           12188     0.01661      0.02211         0.550           5504          one variant
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-0018">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="9.-BC-C-consumption-table-%E2%80%94-distilled">9. BC-C consumption table — distilled<a class="anchor-link" href="#9.-BC-C-consumption-table-%E2%80%94-distilled">¶</a></h2><p>The single per-scenario row BC-C needs. Centre point of the M1'
+coating spec, conservative tolerance band (matched to the realistic
+IBS metrology regime), worst-case UV penalty across the band, and
+<code>Σ T_loss_VENDOR_max</code> budget that the M2'/M3'/M4' coating specs must
+collectively hit.</p>
+<p>Default operating point: <strong><code>L_total = 13 388 ppm</code> (intermediate IBS,
+500 ppm/mirror sum, 1500 ppm)</strong> — the row where Δ<code>T_IC_opt</code> between
+scenarios is well below a typical IBS run tolerance and the buildup
+headroom over Friedenauer-class is meaningful. The workplan §6 Q5
+steward call could move this to the IBS upper-class row instead;
+the BC-E sheets carry both options.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-0019">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">DEFAULT_L_TOTAL_PPM</span> <span class="o">=</span> <span class="mi">13_388</span>
+<span class="n">DEFAULT_L_TOTAL</span> <span class="o">=</span> <span class="n">DEFAULT_L_TOTAL_PPM</span> <span class="o">*</span> <span class="mf">1e-6</span>
+<span class="n">DEFAULT_SUM_MIRROR_PPM</span> <span class="o">=</span> <span class="mi">1_500</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"BC-C consumption — default operating point "</span>
+      <span class="sa">f</span><span class="s2">"(L_total = </span><span class="si">{</span><span class="n">DEFAULT_L_TOTAL_PPM</span><span class="si">}</span><span class="s2"> ppm, "</span>
+      <span class="sa">f</span><span class="s2">"Σ T_loss_VENDOR_max = </span><span class="si">{</span><span class="n">DEFAULT_SUM_MIRROR_PPM</span><span class="si">}</span><span class="s2"> ppm)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'Scenario'</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'P_in (W)'</span><span class="si">:</span><span class="s2">&gt;10</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'T_IC_opt (ppm)'</span><span class="si">:</span><span class="s2">&gt;15</span><span class="si">}</span><span class="s2"> "</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'T_IC_opt (%)'</span><span class="si">:</span><span class="s2">&gt;14</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'P_UV (W)'</span><span class="si">:</span><span class="s2">&gt;10</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'P_circ (W)'</span><span class="si">:</span><span class="s2">&gt;12</span><span class="si">}</span><span class="s2"> "</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'I_waist MW/cm²'</span><span class="si">:</span><span class="s2">&gt;16</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'I_curved kW/cm²'</span><span class="si">:</span><span class="s2">&gt;17</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">110</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">scen_name</span><span class="p">,</span> <span class="n">P_in</span> <span class="ow">in</span> <span class="n">SCENARIOS</span><span class="p">:</span>
+    <span class="n">T_opt</span> <span class="o">=</span> <span class="n">optimal_input_coupler</span><span class="p">(</span><span class="n">P_in</span><span class="p">,</span> <span class="n">DEFAULT_L_TOTAL</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span><span class="p">)</span>
+    <span class="n">P_c</span> <span class="o">=</span> <span class="n">circulating_power</span><span class="p">(</span><span class="n">P_in</span><span class="p">,</span> <span class="n">T_opt</span><span class="p">,</span> <span class="n">DEFAULT_L_TOTAL</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span><span class="p">)</span>
+    <span class="n">P_uv</span> <span class="o">=</span> <span class="n">harmonic_output_W</span><span class="p">(</span><span class="n">P_in</span><span class="p">,</span> <span class="n">T_opt</span><span class="p">,</span> <span class="n">DEFAULT_L_TOTAL</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span><span class="p">)</span>
+    <span class="n">I_waist</span> <span class="o">=</span> <span class="n">peak_intensity_W_per_cm2</span><span class="p">(</span><span class="n">P_c</span><span class="p">,</span> <span class="n">W0_BBO</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e6</span>
+    <span class="n">I_curved</span> <span class="o">=</span> <span class="n">peak_intensity_W_per_cm2</span><span class="p">(</span><span class="n">P_c</span><span class="p">,</span> <span class="n">W_CURVED_BBO</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e3</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">scen_name</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">P_in</span><span class="si">:</span><span class="s2">&gt;10.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">T_opt</span><span class="o">*</span><span class="mf">1e6</span><span class="si">:</span><span class="s2">&gt;15.0f</span><span class="si">}</span><span class="s2"> "</span>
+          <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">T_opt</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">&gt;14.3f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">P_uv</span><span class="si">:</span><span class="s2">&gt;10.4f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">P_c</span><span class="si">:</span><span class="s2">&gt;12.2f</span><span class="si">}</span><span class="s2"> "</span>
+          <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">I_waist</span><span class="si">:</span><span class="s2">&gt;16.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">I_curved</span><span class="si">:</span><span class="s2">&gt;17.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># Recommended tolerance for the BC-E spec sheets</span>
+<span class="c1"># At the default L_total, characterise UV penalty at multiple bands</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Recommended M1' coating-spec tolerance at the default L_total"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  (worst-case UV penalty across +Δ and −Δ from T_IC_opt)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'Scenario'</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'Band'</span><span class="si">:</span><span class="s2">&lt;12</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'UV penalty'</span><span class="si">:</span><span class="s2">&gt;12</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">45</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">scen_name</span><span class="p">,</span> <span class="n">P_in</span> <span class="ow">in</span> <span class="n">SCENARIOS</span><span class="p">:</span>
+    <span class="n">T_opt</span> <span class="o">=</span> <span class="n">optimal_input_coupler</span><span class="p">(</span><span class="n">P_in</span><span class="p">,</span> <span class="n">DEFAULT_L_TOTAL</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span><span class="p">)</span>
+    <span class="n">P_uv_opt</span> <span class="o">=</span> <span class="n">harmonic_output_W</span><span class="p">(</span><span class="n">P_in</span><span class="p">,</span> <span class="n">T_opt</span><span class="p">,</span> <span class="n">DEFAULT_L_TOTAL</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">delta</span> <span class="ow">in</span> <span class="n">TOL_BANDS</span><span class="p">:</span>
+        <span class="n">P_uv_plus</span> <span class="o">=</span> <span class="n">harmonic_output_W</span><span class="p">(</span><span class="n">P_in</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mf">0.999</span><span class="p">,</span> <span class="n">T_opt</span> <span class="o">+</span> <span class="n">delta</span><span class="p">),</span>
+                                       <span class="n">DEFAULT_L_TOTAL</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span><span class="p">)</span>
+        <span class="n">P_uv_minus</span> <span class="o">=</span> <span class="n">harmonic_output_W</span><span class="p">(</span><span class="n">P_in</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">T_opt</span> <span class="o">-</span> <span class="n">delta</span><span class="p">),</span>
+                                       <span class="n">DEFAULT_L_TOTAL</span><span class="p">,</span> <span class="n">GAMMA_BBO_PHE</span><span class="p">)</span>
+        <span class="n">worst</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">P_uv_plus</span> <span class="o">-</span> <span class="n">P_uv_opt</span><span class="p">)</span> <span class="o">/</span> <span class="n">P_uv_opt</span> <span class="o">*</span> <span class="mf">100.0</span><span class="p">,</span>
+            <span class="p">(</span><span class="n">P_uv_minus</span> <span class="o">-</span> <span class="n">P_uv_opt</span><span class="p">)</span> <span class="o">/</span> <span class="n">P_uv_opt</span> <span class="o">*</span> <span class="mf">100.0</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">scen_name</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">label</span><span class="si">:</span><span class="s2">&lt;12</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">worst</span><span class="si">:</span><span class="s2">&gt;+11.2f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>BC-C consumption — default operating point (L_total = 13388 ppm, Σ T_loss_VENDOR_max = 1500 ppm)
+
+Scenario   P_in (W)  T_IC_opt (ppm)   T_IC_opt (%)   P_UV (W)   P_circ (W)   I_waist MW/cm²   I_curved kW/cm²
+--------------------------------------------------------------------------------------------------------------
+Low            0.50           17565          1.756     0.1205        28.47             4.82              27.9
+High           1.50           22945          2.295     0.6333        65.37            11.06              64.2
+
+Recommended M1' coating-spec tolerance at the default L_total
+  (worst-case UV penalty across +Δ and −Δ from T_IC_opt)
+Scenario Band           UV penalty
+---------------------------------------------
+Low      ±  500 ppm         -0.03%
+Low      ± 1000 ppm         -0.14%
+Low      ±   0.5 pp         -4.34%
+Low      ±   1.0 pp        -23.27%
+High     ±  500 ppm         -0.02%
+High     ± 1000 ppm         -0.07%
+High     ±   0.5 pp         -2.07%
+High     ±   1.0 pp        -10.22%
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-0020">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="10.-Acceptance-summary">10. Acceptance summary<a class="anchor-link" href="#10.-Acceptance-summary">¶</a></h2><p>Per workplan §4 BC-B acceptance:</p>
+<ul>
+<li>Gate 1 (forward cross-check) status from §2 above.</li>
+<li>Gate 2 (optimum-finding) status from §3 above.</li>
+<li>Gate 3 (grid + sensitivity) populated by §5 / §6 / §7.</li>
+</ul>
+<p>The BC-C consumption table in §9 is the single row downstream
+consumers need.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-0021">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"BC-B ACCEPTANCE SUMMARY"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Gate 1 (forward cross-check, 5 %): residual = </span><span class="si">{</span><span class="n">residual_pct</span><span class="si">:</span><span class="s2">+.2f</span><span class="si">}</span><span class="s2"> %  "</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'PASS'</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">residual_pct</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">'FAIL'</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Gate 2 (T_IC_opt finding):  </span><span class="si">{</span><span class="n">T_opt_corner</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">  vs Friedenauer 0.016  "</span>
+      <span class="sa">f</span><span class="s2">"(reported as a finding)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Gate 3 (grid table):        2 scenarios × </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">L_TOTAL_GRID</span><span class="p">)</span><span class="si">}</span><span class="s2"> L_total "</span>
+      <span class="sa">f</span><span class="s2">"points × </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">TOL_BANDS</span><span class="p">)</span><span class="si">}</span><span class="s2"> tolerance bands + γ ± 1.5 % column populated"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>======================================================================
+BC-B ACCEPTANCE SUMMARY
+======================================================================
+Gate 1 (forward cross-check, 5 %): residual = -0.00 %  PASS
+Gate 2 (T_IC_opt finding):  0.02169  vs Friedenauer 0.016  (reported as a finding)
+Gate 3 (grid table):        2 scenarios × 4 L_total points × 4 tolerance bands + γ ± 1.5 % column populated
+======================================================================
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>

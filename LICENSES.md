@@ -29,6 +29,16 @@ MIT.** These terms identify licence categories here, not levels of scientific
 confidence. Model B means distributed copies pinned by checksum; it specifies
 asset provenance, not a separate licence.
 
+### Generated review outputs added 2026-09-10
+
+The [review index and four generated notebook/HTML pairs](docs/review/index.md)
+reproduce the source notebooks listed there, including their code and dated
+analysis. Code remains covered by the software declaration below. Explicit
+split assignment for the new mixed narrative/figure outputs and
+`data/review/2026-09-10/` is recorded as **pending D6**, alongside the wider
+RC-10 generated-asset review; a licence category is not inferred from their
+page layout. No existing grant is revoked or new restriction imposed here.
+
 ### Public pages awaiting explicit split assignment
 
 The following 12 pages are absent from the original map. `LICENSE-DOCS`

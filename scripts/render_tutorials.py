@@ -59,11 +59,25 @@ TUTORIALS_SRC = REPO_ROOT / "notebooks" / "tutorials"
 TUTORIALS_OUT = REPO_ROOT / "docs" / "tutorials"
 
 
-def render(stem_filter: str | None = None) -> int:
-    """Render all (or a filtered subset of) tutorial .py files."""
-    TUTORIALS_OUT.mkdir(parents=True, exist_ok=True)
+def render(
+    stem_filter: str | None = None,
+    *,
+    source_paths: list[Path] | None = None,
+    output_dir: Path = TUTORIALS_OUT,
+    description: str = "Architecture-neutral; uses /src/ primitives only.",
+    repo_links: bool = False,
+) -> int:
+    """Render selected sources with one interpreter and deterministic outputs.
 
-    sources = sorted(TUTORIALS_SRC.glob("*.py"))
+    Explicit source_paths/output_dir support dated review notebooks. With
+    repo_links, Markdown links to existing repository files target GitHub
+    rather than paths outside the configured Pages source.
+    """
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    sources = sorted(
+        source_paths if source_paths is not None else TUTORIALS_SRC.glob("*.py")
+    )
     if stem_filter:
         sources = [p for p in sources if p.stem.startswith(stem_filter)]
     if not sources:
@@ -75,11 +89,15 @@ def render(stem_filter: str | None = None) -> int:
 
     n_ok = 0
     for src in sources:
-        out_ipynb = TUTORIALS_OUT / f"{src.stem}.ipynb"
-        out_html = TUTORIALS_OUT / f"{src.stem}.html"
+        out_ipynb = output_dir / f"{src.stem}.ipynb"
+        out_html = output_dir / f"{src.stem}.html"
 
         print(f"[1/3] {src.name}: jupytext .py -> .ipynb")
         nb = jupytext.read(src)
+        if repo_links:
+            for cell in nb.cells:
+                if cell.cell_type == "markdown":
+                    cell.source = _repository_links(cell.source, src.parent)
 
         print(f"[2/3] {src.name}: execute (kernel cwd = repo root)")
         # Normalise cell IDs *before* execution so the IDs that leak into
@@ -136,7 +154,7 @@ def render(stem_filter: str | None = None) -> int:
             f"layout: notebook\n"
             f"title: {title}\n"
             f"description: Tutorial notebook ({src.stem}). "
-            f"Architecture-neutral; uses /src/ primitives only.\n"
+            f"{description}\n"
             "---\n\n"
         )
         out_html.write_text(front_matter + body, encoding="utf-8")
@@ -147,6 +165,26 @@ def render(stem_filter: str | None = None) -> int:
 
     print(f"Rendered {n_ok}/{len(sources)} tutorial(s).")
     return 0
+
+
+def _repository_links(markdown: str, source_dir: Path) -> str:
+    """Resolve existing repo-relative Markdown links for a Pages review output."""
+
+    def replace(match: re.Match) -> str:
+        target, _, anchor = match.group(1).partition("#")
+        if not target or ":" in target or target.startswith("/"):
+            return match.group(0)
+        path = (source_dir / target).resolve()
+        if path.exists() and path.is_relative_to(REPO_ROOT):
+            kind = "tree" if path.is_dir() else "blob"
+            url = (
+                f"https://github.com/uwarring82/mg-plus-uv-chain/{kind}/main/"
+                + path.relative_to(REPO_ROOT).as_posix()
+            )
+            return "](" + url + ("#" + anchor if anchor else "") + ")"
+        return match.group(0)
+
+    return re.sub(r"\]\(([^)]+)\)", replace, markdown)
 
 
 def _extract_title(nb, default: str) -> str:

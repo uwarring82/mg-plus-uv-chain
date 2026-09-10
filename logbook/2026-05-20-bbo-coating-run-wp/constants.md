@@ -1,5 +1,7 @@
 # BC-A · Frozen constants for the BBO coating-run WP
 
+**Review note — 2026-09-10:** [RC-07 recalculation](../2026-09-10-rc07-recalculation.md) revises the model-derived γ, fitted loss, coupling and intensity estimates. The May values and approvals below remain historical records; their numerical rationale is under review, and no revised procurement specification is adopted by this note.
+
 **Phase:** BC-A output ([`workplan.md`](workplan.md) §4 Phase BC-A)
 **Status:** **FROZEN at BC-F closure (2026-05-20).** Values pinned; γ / L authority for the closed WP. See [`closure.md`](closure.md).
 **Authoritative for:** `γ_SHG_BBO`, `L_passive_PHE`, the three-row `L_passive`

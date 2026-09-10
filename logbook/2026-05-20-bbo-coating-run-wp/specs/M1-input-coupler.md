@@ -1,5 +1,7 @@
 # Coating spec — M1' input coupler
 
+**Review note — 2026-09-10:** [RC-07 recalculation](../../2026-09-10-rc07-recalculation.md) revises the model-derived γ, fitted loss, coupling and intensity estimates. The May values and approvals below remain historical records; their numerical rationale is under review, and no revised procurement specification is adopted by this note.
+
 **Build:** Next-generation BBO ring cavity, 559 → 280 nm CW SHG
 (AG Schätz, Universität Freiburg).
 **Reference architecture:** Friedenauer et al., *Appl. Phys. B* 84, 371 (2006).

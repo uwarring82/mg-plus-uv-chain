@@ -1,5 +1,7 @@
 # BC-D · LIDT and substrate constraints — handoff to BC-E
 
+**Review note — 2026-09-10:** [RC-07 recalculation](../2026-09-10-rc07-recalculation.md) revises the model-derived γ, fitted loss, coupling and intensity estimates. The May values and approvals below remain historical records; their numerical rationale is under review, and no revised procurement specification is adopted by this note.
+
 **Phase:** BC-D output ([`workplan.md`](workplan.md) §4 Phase BC-D)
 **Status:** **FROZEN at BC-F closure (2026-05-20).** Values pinned; consumed by BC-E. See [`closure.md`](closure.md).
 **Authoritative for:** per-mirror LIDT margin at the 1.5 W scenario,

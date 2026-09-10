@@ -4,6 +4,9 @@ title: "BBO coating run — 559 → 280 nm CW SHG, rationale and calculations"
 description: "Public-facing explainer for the 2026-05-20 coating-run work program: how a re-anchored impedance-match calculation against the Friedenauer 2006 baseline showed that the published M1' input coupler sits ~ 0.6 percentage points below the impedance-matched optimum at the published operating point, forfeiting ~ 3.6 % UV buildup, and how that motivated a new four-mirror coating-spec package for the next-generation BBO ring at 559 → 280 nm. Intended audience: trapped-ion / atomic-physics builders running Friedenauer-class CW SHG cavities."
 ---
 
+**Numerical update — 2026-09-10:** [RC-07](../review/2026-09-10-rc07-recalculation.html) now recalculates the cascade and fitted loss. With the original material assumptions, γ becomes **1.05866×10⁻⁴ W⁻¹**, fitted BBO loss **13,191 ppm**, and the conditional equal-penalty M1 centre **1.684%**. The earlier ≈2% choice and the tables below are historical procurement records. The revised estimate depends on unmeasured loss allocation, UV extraction and material inputs; it is not a new supplier specification. [Evidence and impact assessment](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-09-10-rc07-recalculation.md).
+
+
 # BBO coating run for a 559 → 280 nm CW SHG ring cavity
 
 This page explains the May 2026 mirror-coating specification for the BBO ring. It records the assumptions and calculations used at that time; their revalidation is covered by the September repository review.
@@ -78,7 +81,7 @@ efficient conversion; too tight and the beam diverges out of the
 phase-matched volume before converting. Boyd & Kleinman (1968)
 worked out the optimum and packaged it into a focusing factor
 `h_m(ξ, β)` where `ξ = L / b` is the ratio of crystal length to
-confocal parameter `b = π · n · w₀² / λ`. For BBO Type-I at our
+confocal parameter `b = 2π · n · w₀² / λ`. For BBO Type-I at our
 wavelengths there is an additional walk-off effect (the
 extraordinary harmonic beam exits the crystal at a small angle to
 the ordinary fundamental), which makes `h_m` substantially smaller
@@ -217,15 +220,15 @@ The single-pass conversion coefficient `γ_SHG` follows the standard
 beam in a Type-I crystal:
 
 ```
-γ_SHG = (2 ω² d_eff² L) / (π ε₀ c³ n_ω² n_2ω) · h_m(ξ, β)
+γ_SHG = (2 ω² d_eff² L k₁) / (π ε₀ c³ n_ω² n_2ω) · h_m(ξ, β)
 ```
 
 where `ξ = L / b` is the focusing parameter (L = crystal length,
-b = confocal parameter = π n w₀² / λ), `β = (ρ/2) √(L k)` is the
+b = confocal parameter = 2π n w₀² / λ, k₁ = 2π n / λ), `β = (ρ/2) √(L k)` is the
 walk-off parameter (ρ = walk-off angle in radians), and `h_m(ξ, β)` is
 the Boyd–Kleinman focusing factor maximised over the phase mismatch.
 
-For Friedenauer's BBO geometry at 559 → 280 nm:
+Historical May inputs/results for Friedenauer's BBO geometry at 559 → 280 nm (the corrected formula above does not reproduce the old γ row):
 
 | Quantity | Value | Source |
 |---|---|---|
@@ -737,7 +740,7 @@ In the spirit of honest dossier accounting:
 | `z_R` | Rayleigh range (`π · n · w₀² / λ`); distance over which the spot stays within √2 of waist | 3.54 mm in BBO (air-equivalent 2.12 mm) |
 | `ξ` | Boyd-Kleinman focusing parameter `L / b` where `b = 2 z_R` | 1.413 at the Friedenauer geometry |
 | `β` | Boyd-Kleinman walk-off parameter `(ρ / 2) √(L · k)` | 18.0 (deeply walk-off-limited) |
-| `h_m(ξ, β)` | Boyd-Kleinman focusing factor (≤ 1; product of phase-mismatch and walk-off reductions) | 0.0330 |
+| `h_m(ξ, β)` | Boyd-Kleinman focusing factor (the lossless σ-optimized maximum is ≈1.068) | 0.0330 |
 | `γ_SHG` | Single-pass SHG conversion coefficient, `γ = η_nl / P_in_single_pass` in the small-signal limit | 1.49 × 10⁻⁴ W⁻¹ at our BBO geometry |
 | `η_nl` | Single-pass nonlinear conversion fraction inside the cavity (the cavity sees `η_nl(P_circ) = tanh²(√[γ · P_circ])`) | ~ 1 % at the impedance-matched point |
 | `T_IC` | Input-coupler transmission (front face of M1', at 559 nm) | 16 000 ppm in Friedenauer, 19 965 ppm in the new build |

@@ -1,5 +1,7 @@
 # BC-B · Impedance-match results — handoff to BC-C
 
+**Review note — 2026-09-10:** [RC-07 recalculation](../2026-09-10-rc07-recalculation.md) revises the model-derived γ, fitted loss, coupling and intensity estimates. The May values and approvals below remain historical records; their numerical rationale is under review, and no revised procurement specification is adopted by this note.
+
 **Phase:** BC-B output ([`workplan.md`](workplan.md) §4 Phase BC-B)
 **Status:** **FROZEN at BC-F closure (2026-05-20).** Values computed; consumed by BC-C / BC-D / BC-E. See [`closure.md`](closure.md).
 **Authoritative for:** per-scenario `T_IC_opt`, recommended coating-spec

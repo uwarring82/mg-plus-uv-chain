@@ -1,5 +1,7 @@
 # BBO coating-run WP — closure document
 
+**Review note — 2026-09-10:** [RC-07 recalculation](../2026-09-10-rc07-recalculation.md) revises the model-derived γ, fitted loss, coupling and intensity estimates. The May values and approvals below remain historical records; their numerical rationale is under review, and no revised procurement specification is adopted by this note.
+
 **Status:** **CLOSED 2026-05-20; reopened 2026-05-21 for the BC-G
 substrate-mechanics addendum, RE-CLOSED 2026-05-21.**
 **Steward:** Ulrich Warring.

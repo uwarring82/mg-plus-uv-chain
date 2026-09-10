@@ -44,6 +44,13 @@
 # 3. Grid: 2 scenarios × 4 `L_total` points; with both sensitivity
 #    columns.
 
+# **Review note — 2026-09-10:** this is a replay of the frozen May inputs,
+# including the old γ. It does not supply corrected procurement targets.
+# A forward check against the point used to fit L is calibration closure,
+# not an independent validation or a ±1.5% uncertainty on γ. Corrected
+# γ, refitted losses and the historical M1 band are compared separately in
+# [RC-07](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-09-10-rc07-recalculation.md).
+#
 # %%
 # -----------------------------------------------------------------------------
 # Imports + path setup
@@ -65,7 +72,7 @@ from src.enhancement_cavity import (  # noqa: E402
     optimal_input_coupler,
 )
 
-print(f"REPO_ROOT: {REPO_ROOT}")
+print("Repository inputs located; replaying frozen May constants")
 
 # %% [markdown]
 # ## 1. Constants — sourced from `constants.md` §F
@@ -179,7 +186,7 @@ def spot_radius_at_curved_mirror_proper(
     q-parameter:
         q_at_waist_in_BBO = i · zR_BBO   (zR_BBO = π n w0² / λ)
         q_at_BBO_exit = q_at_waist + half_crystal       (free space in BBO)
-        q_just_after_interface = q_at_BBO_exit          (w continuous across flat interface)
+        q_just_after_interface = q_at_BBO_exit / n_crystal (flat exit to air)
         q_at_curved_mirror = q_just_after_interface + air_distance  (free space in air)
         w² at mirror = -λ / (π · n_air · Im(1/q))   with n_air = 1
 
@@ -188,14 +195,8 @@ def spot_radius_at_curved_mirror_proper(
     """
     z_R_in_crystal = math.pi * n_crystal * w0_m**2 / lam_m
     q_at_exit = complex(half_crystal_m, z_R_in_crystal)  # in BBO
-    # Flat interface: w continuous, so q in air just after exit has the same
-    # imaginary part (zR_in_BBO) but the same z, since w stays continuous and
-    # the standard flat-interface ABCD acts as [[1,0],[0, n_BBO/n_air]] on
-    # (height, slope) which leaves w continuous. For Gaussian beams the
-    # transformation is q_after = q_before · (n_after / n_before) in the
-    # standard sign convention; with n_after = 1 this scales q by 1/n_BBO.
-    # Equivalently: zR shrinks from zR_in_BBO to zR_in_air = zR_in_BBO/n_BBO.
-    # Implement both pieces explicitly:
+    # Standard q convention: q_after=q_before*n_after/n_before.
+    # The radius stays continuous while q and z_R scale by 1/n_crystal.
     q_just_after_interface = complex(q_at_exit.real / n_crystal,
                                      q_at_exit.imag / n_crystal)
     q_at_mirror = q_just_after_interface + air_distance_m  # free space in air
@@ -307,9 +308,10 @@ for row in grid_rows:
 # %% [markdown]
 # ## 7. Physics tolerance sensitivity (γ ± 1.5 %)
 #
-# The Phase E validation residual gives γ a ±1.5 % uncertainty.
-# `T_IC_opt ∝ √(γ · P_in)` in the depleted regime, so a 1.5 % γ shift
-# produces a ~ 0.75 % shift in `T_IC_opt`. Reporting this column
+# Historical sensitivity scenario only: a fitted residual does not establish
+# a ±1.5% uncertainty on γ.
+# The √(γ P_in) scaling applies in a nonlinear-loss-dominated but weak
+# single-pass-conversion limit, not throughout the depleted regime. Reporting this column
 # alongside the manufacturing column prevents BC-C from over-specifying
 # the manufacturing tolerance against a comparable-size physics
 # uncertainty.

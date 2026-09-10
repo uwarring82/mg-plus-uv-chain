@@ -188,39 +188,21 @@ fig.tight_layout()
 # match each stage to its own input power.
 
 # %% [markdown]
-# ## 4. A real-world parable: Friedenauer 2006
+# ## 4. Applying the model to measured stages
 #
-# The diagnostic notebook `notebooks/diagnostic/2026-05-07-friedenauer-cascade-recompute.py`
-# applies these exact primitives to the Friedenauer 2006 LBO → BBO cascade
-# (1118 nm → 559 nm → 280 nm).  The results are:
+# **Updated 2026-09-10 (RC-07).** The former Friedenauer comparison used
+# the incorrect SHG normalization and assumed passive loss L=T_IC. Its
+# agreement at one BBO output did not validate the material constants.
+# Nonlinear impedance matching gives T=L+(1-L)η; coupler transmission
+# therefore cannot be substituted for passive loss.
 #
-# | Stage | Paper | Recomputed | Discrepancy |
-# |---|---|---|---|
-# | LBO 559 nm output | 0.950 W | **0.702 W** | **−26 %** |
-# | BBO 280 nm output | 0.275 W | **0.271 W** | **−1.5 %** |
-# | Overall 1118→280 η | 15.2 % | **8.0 %** | **−48 %** |
+# The [dated recalculation](../review/2026-09-10-rc07-recalculation.html)
+# compares fixed-coupler outputs, independently optimized stages, and
+# losses fitted to the reported operating points. It separates holding
+# losses fixed from refitting them after the γ correction. Fitting the
+# same output you later reproduce is calibration, not a validation test.
+# UV extraction and inter-stage transport also need explicit assumptions.
 #
-# **What happened?**
-# - The **BBO stage** agrees to within 1.5 %.  This validates our BBO
-#   material constants (d_eff, walk-off, refractive indices) and the
-#   depleted-regime solver.
-# - The **LBO stage** is 26 % low.  The most plausible explanation is that
-#   the paper's reported input-coupler transmission T_IC = 0.025 is the
-#   *impedance-matched operating value*, not the pure passive loss.  Using
-#   the intensity-form match $T = L + (1-L)\eta_\mathrm{nl}$ with
-#   $\eta_\mathrm{nl} \approx 0.015$–0.020 implies a true passive loss
-#   $L_\mathrm{passive} \approx 0.005$–0.010 — consistent with the paper's
-#   >99.98 % HR mirrors and a few-tenths-of-a-percent crystal+coating budget.
-# - The **overall** discrepancy compounds because the LBO under-performance
-#   feeds a lower input into the BBO stage.
-#
-# **The lesson.** The numerics are right; the inputs need care.  When you
-# apply these tools to a real architecture, the dominant uncertainty is
-# usually not the solver — it is the **loss budget** and the **material
-# constants** you feed into it.  Document every assumption, bracket every
-# open parameter, and treat the first recomputation as a gap-finding exercise
-# rather than a final answer.
-
 # %% [markdown]
 # ## 5. Try this
 #

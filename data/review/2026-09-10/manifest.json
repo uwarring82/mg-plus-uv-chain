@@ -1,0 +1,126 @@
+{
+  "baseline_revision": "4404074d5114ecf7515a2cbd71910c16c036359d",
+  "provenance": "Inputs and outputs are filed together; hashes specify the changed tree.",
+  "input_sha256": {
+    "notebooks/2026-05-01-friedenauer-bk-recalculation.py": "8bcd948972eada512ca5caaa5e3fcfdda6fdb3a4b52210d967751c27cc3c00e6",
+    "notebooks/diagnostic/2026-05-07-friedenauer-cascade-recompute.py": "5d2e711a8976e4a09c8933e1c621ddaa5bbf5c0bd56fc36c24a83697628a63f1",
+    "notebooks/exploration/2026-05-20-bbo-ic-impedance-match.py": "3a951a11a399c8015abca95fa7600cae8a7994e1acba175755a3eed327144e33",
+    "notebooks/exploration/2026-09-10-rc07-recalculation.py": "99a3f2056d50bd7379a43f671de3aefbff98243a104f775ea2850a207f136534",
+    "notebooks/tutorials/04-cascade-shg.py": "0f5078bd0ec71f51ad27e9d3f6c06e1a45ff3ce22df1f91344f6e0f882f7f3b9",
+    "notebooks/tutorials/04-params.yaml": "6ed37d5b73a2317458a25bd2cb7976161f29062bd4b8a1f203b65b3b685b1bf3",
+    "scripts/render_tutorials.py": "777a8b9203e6b0b3e1b4cbec269775f7704309dae5ef92443a1493ba090d0d59",
+    "scripts/review/render_rc07.py": "44a1d0e356edfc60f59a92e28b23d715f149525c6a052a3fb517afa5818cbbc6",
+    "scripts/review/rc07_manifest.py": "b3acbb91536e4eed5522c818dd18b8a1e2bcd868109d2d917ecae6fdbf4bb74d",
+    "data/literature/Friedenauer2006/extracted.yaml": "4cba420f3da8ef7b7c05c8d944cb34feb5ab4a18f42002699ca3bfaf6d6e7b15",
+    "data/review/2026-09-09/environment.txt": "7d9daf1ed6471db497fd9f033ca7de468525d4f4683be88b77210b04d8c98a8f",
+    "tests/test_rc07_recalculation.py": "36ea9ea2c99397591e9abcdd470fec2fe3145a6e4801044ad348cf1190bc762b",
+    "src/__init__.py": "084f18e838bcb3af8de5ccd76196f566092fe7fcd3067021b43b0d202080f287",
+    "src/abcd.py": "9b82bc5eea770e491a290740472763caf222244cc3d0b1cf6b8a19fa9293dde4",
+    "src/boyd_kleinman.py": "3f9f9ef4bee7212003c56a36d42afc41e120eb97cbf154259850b626819a7c23",
+    "src/enhancement_cavity.py": "0870faca9e5dc407fa93eb773c10a63b7634a82d7f40954a99a89a3f8ae6a392",
+    "src/parameters.py": "80a42f1ffe683fdee811c205733be0d2994eb50aefcc4a83e30dfb10ec38c523",
+    "src/shg_cascade.py": "8752b73795d371af11c4ea4abbaee51f16439ec77a99a0d6c5e208103f74c16d",
+    "src/shg_single_pass.py": "086afb5471eb3858f4958a7439b4870605d4c91bc2bdad97cd2b9e69e62214cc"
+  },
+  "baseline_input_sha256": {
+    "notebooks/2026-05-01-friedenauer-bk-recalculation.py": "a0b0956ef1d74c6a125d310d0ab8d9b7c7cc137e9193a30a8f1fd64b931c42ac",
+    "notebooks/diagnostic/2026-05-07-friedenauer-cascade-recompute.py": "e1318a9996644b8a881391f102b2f19f212ba5acb90415abf28e943b5cf15fe0",
+    "notebooks/exploration/2026-05-20-bbo-ic-impedance-match.py": "baed4db42a1f171f812b8afbe6d3c5860bd05fd97bdf0b74ea1154a20ed5033a",
+    "notebooks/tutorials/04-cascade-shg.py": "d622cab1f764f0c30b58ea17bd9c882f365b9d336be152f3ac21320ec1bc44cd",
+    "notebooks/tutorials/04-params.yaml": "6ed37d5b73a2317458a25bd2cb7976161f29062bd4b8a1f203b65b3b685b1bf3",
+    "scripts/render_tutorials.py": "fcf62db8651fcce1fcf66f9f1e27842fbcadafe4748aee24d7fc97a0f59a3621",
+    "data/literature/Friedenauer2006/extracted.yaml": "4cba420f3da8ef7b7c05c8d944cb34feb5ab4a18f42002699ca3bfaf6d6e7b15",
+    "data/review/2026-09-09/environment.txt": "7d9daf1ed6471db497fd9f033ca7de468525d4f4683be88b77210b04d8c98a8f",
+    "src/__init__.py": "084f18e838bcb3af8de5ccd76196f566092fe7fcd3067021b43b0d202080f287",
+    "src/abcd.py": "9b82bc5eea770e491a290740472763caf222244cc3d0b1cf6b8a19fa9293dde4",
+    "src/boyd_kleinman.py": "3f9f9ef4bee7212003c56a36d42afc41e120eb97cbf154259850b626819a7c23",
+    "src/enhancement_cavity.py": "0870faca9e5dc407fa93eb773c10a63b7634a82d7f40954a99a89a3f8ae6a392",
+    "src/parameters.py": "80a42f1ffe683fdee811c205733be0d2994eb50aefcc4a83e30dfb10ec38c523",
+    "src/shg_cascade.py": "8752b73795d371af11c4ea4abbaee51f16439ec77a99a0d6c5e208103f74c16d",
+    "src/shg_single_pass.py": "086afb5471eb3858f4958a7439b4870605d4c91bc2bdad97cd2b9e69e62214cc"
+  },
+  "results_json_sha256": "e1ed2a1bae2e8520641c2bcc326db4f3eac7223087b33c6b8457ed0f492adeff",
+  "outputs": [
+    {
+      "notebook": "docs/review/2026-05-01-friedenauer-bk-recalculation.ipynb",
+      "notebook_sha256": "36e466c84659121cf6ca261fa3832bb23709da117140a2d160baa2a393de4dc5",
+      "html": "docs/review/2026-05-01-friedenauer-bk-recalculation.html",
+      "html_sha256": "b714f0cbc9bc5354f7c8c5aa98d575a95c8b80533c72412bbb67775652f51ac5",
+      "printed_results": [
+        "Repository inputs located\nsrc.parameters loaded; G3_INTEGRATOR_ACKNOWLEDGED = True\n",
+        "LBO crystal length:   L = 18.0 mm\nLBO BK-optimum waist: w0 = 27.3 \u03bcm  (paper)\nBBO crystal length:   L = 10.0 mm\nBBO BK-optimum waist: w0 = 19.4 \u03bcm  (paper)\n",
+        "LBO \u03c3-optimum BK \u03be_opt = 2.838\nLBO \u03c3-optimum h_m_max  = 1.0677\nLBO recomputed w0      = 26.52 \u03bcm\nLBO paper-reported w0  = 27.30 \u03bcm\nDiscrepancy            = -2.9 %\n",
+        "BBO walk-off parameter \u03b2 = 18.02  (using \u03c1 \u2248 83 mrad)\n",
+        "BBO \u03c3-optimum (\u03b2=0):  \u03be_opt = 2.84,  w0 = 13.69 \u03bcm\nBBO Friedenauer w0=19.4 \u03bcm  \u2192  \u03be = 1.41\nComputing \u03b2-dependent BK optimum (slow)...\n",
+        "BBO with \u03b2 = 18.0:\n  \u03be_opt = 1.421\n  h_max = 0.0392\n  w0    = 19.35 \u03bcm\nBBO paper-reported w0   = 19.40 \u03bcm\n",
+        "Computing h_m curves at multiple \u03b2 values (this takes a couple minutes)...\n",
+        "Computing BBO sensitivity to \u03c1 (slow)...\n",
+        "Stage                                 Paper (\u03bcm)   Recomp. (\u03bcm)    \u0394 (%)\n-----------------------------------------------------------------------\nLBO 1118\u2192559, \u03b2=0                          27.30          26.52     -2.9\nBBO 559\u2192280, \u03b2=0 (no walk-off)             19.40          13.69    -29.4\nBBO 559\u2192280, \u03b2\u224818.0 (Eimerl)               19.40          19.35     -0.3\n"
+      ],
+      "figures": 3
+    },
+    {
+      "notebook": "docs/review/2026-05-07-friedenauer-cascade-recompute.ipynb",
+      "notebook_sha256": "9abdf7e3658e97754b587bc7974f8451c66859edd08ee8b362020bc22214c31c",
+      "html": "docs/review/2026-05-07-friedenauer-cascade-recompute.html",
+      "html_sha256": "0a531d078acede8737b8ec510940c48e79bd9ef9beb64093ea60707acf729770",
+      "printed_results": [
+        "Repository inputs located\n",
+        "Loaded Friedenauer2006/extracted.yaml\n  LBO: P_in = 1.80 W,  L = 18.0 mm,  w0 = 27.3 \u03bcm\n  BBO: P_in = 0.950 W,  L = 10.0 mm,  w0 = 19.4 \u03bcm\n",
+        "Working constants; approximate indices are not independently validated:\n  n_LBO(1118) = 1.605\n  n_BBO_o(559) = 1.67276\n  \u03c1_BBO = 83.1 mrad\n  d_eff(BBO) central = 1.44 pm/V\n",
+        "LBO: \u03be = 2.678,  h_m = 1.0667\nBBO: \u03be = 1.413,  \u03b2 = 18.02,  h_m = 0.0392\n",
+        "LBO \u03b3_SHG = 2.2182e-04 W\u207b\u00b9\nBBO \u03b3_SHG (central) = 1.0587e-04 W\u207b\u00b9\nBBO \u03b3_SHG (low)     = 8.6281e-05 W\u207b\u00b9\nBBO \u03b3_SHG (high)    = 1.3070e-04 W\u207b\u00b9\n",
+        "LBO stage\n  T_IC (paper)      = 0.0250\n  T_IC (optimised)  = 0.0358\n  P_circ            = 50.29 W\n  P_harmonic        = 0.557 W\n  \u03b7 (recomputed)    = 0.309\n  \u03b7 (paper)         = 0.527\n\nBBO stage (central d_eff assumption)\n  T_IC (paper)      = 0.0160\n  T_IC (optimised)  = 0.0208\n  P_circ            = 45.78 W\n  P_harmonic        = 0.221 W\n  \u03b7 (recomputed)    = 0.233\n  \u03b7 (paper)         = 0.289\n\nBBO stage (low d_eff)\n  P_harmonic        = 0.194 W\n  \u03b7 (recomputed)    = 0.204\n\nBBO stage (high d_eff)\n  P_harmonic        = 0.251 W\n  \u03b7 (recomputed)    = 0.264\n",
+        "Cascade (central d_eff assumption, transport = 1.0)\n  LBO harmonic      = 0.530 W\n  BBO input         = 0.530 W\n  UV output         = 0.082 W\n  Overall \u03b7         = 0.046\n  Paper overall \u03b7   = 0.152\n\nCascade (BBO low d_eff)\n  UV output         = 0.071 W\n  Overall \u03b7         = 0.039\n\nCascade (BBO high d_eff)\n  UV output         = 0.095 W\n  Overall \u03b7         = 0.053\n",
+        "Optimised cascade\n  LBO T_IC (paper)      = 0.0250\n  LBO T_IC (optimised)  = 0.0358\n  BBO T_IC (paper)      = 0.0160\n  BBO T_IC (optimised)  = 0.0190\n  UV output             = 0.090 W\n  Overall \u03b7             = 0.050\n",
+        "Quantity                              Paper      Recomp.    Discrepancy\n----------------------------------------------------------------------\nLBO 559 nm output (W)                 0.950        0.557         -41.4 %\nBBO 280 nm output (W)                 0.275        0.221         -19.6 %\nOverall 1118\u2192280 \u03b7 (%)                 15.2          4.6         -70.0 %\n\nBBO d_eff sensitivity bracket:\n  UV output (low d_eff)  = 0.071 W\n  UV output (high d_eff) = 0.095 W\n"
+      ],
+      "figures": 0
+    },
+    {
+      "notebook": "docs/review/2026-05-20-bbo-ic-impedance-match.ipynb",
+      "notebook_sha256": "a01a686565d3c09ad94e2ed5760c5b1c03000814d3f8910126805dcdfdef7b66",
+      "html": "docs/review/2026-05-20-bbo-ic-impedance-match.html",
+      "html_sha256": "267fbe7d52dd1b57f5c65b1691013e4bbc77501fdd6aabda3e439d49ccd0da8b",
+      "printed_results": [
+        "Repository inputs located; replaying frozen May constants\n",
+        "Constants loaded from constants.md \u00a7F:\n  \u03b3_SHG_BBO (Phase E central)   = 1.4914e-04 W\u207b\u00b9\n  L_passive_PHE                  = 15288 ppm\n  L_nonmirror_PHE                = 11888 ppm\n  L_mirror_T_at_spec_limit       = 3400 ppm\n  Two scenarios at 559 nm        = 0.5 W, 1.5 W\n",
+        "Acceptance gate 1 \u2014 Friedenauer forward cross-check\n  Inputs: P_in = 0.95 W, T_IC = 0.016, L = 15288 ppm, \u03b3 = 1.4914e-04 W\u207b\u00b9\n  P_UV computed = 0.2750 W\n  P_UV published = 0.2750 W\n  Residual = -0.00 %  (PASS 5 % gate)\n",
+        "Acceptance gate 2 \u2014 optimum-finding (Friedenauer corner)\n  T_IC_opt        = 0.02169  (2.17 %)\n  T_IC published  = 0.01600  (1.60 %)\n  Gap             = +0.57 pp  (Friedenauer ran below the optimum)\n  P_UV at T_opt   = 0.2848 W  (buildup forgone: +3.57 %)\n  P_circ at T_opt = 43.80 W\n",
+        "Beam geometry helpers\n  w(curved mirror, BBO + air propagation) = 255 \u03bcm  (waist 19.4 \u03bcm, half-crystal 5 mm + air 24.7 mm)\n",
+        "\nScenario L_total class                               L_tot ppm T_IC_opt (ppm)  T_IC_opt (pp)  P_circ (W)   P_UV (W)   I_waist (MW/cm\u00b2)   I_curved (kW/cm\u00b2)\n--------------------------------------------------------------------------------------------------------------------------------------------------------\nLow    Friedenauer R-floor (path 2 baseline)           15288          19119          1.912       26.15     0.1017               4.42                25.7\nLow    Intermediate IBS (500 ppm/mirror)               13388          17565          1.756       28.47     0.1205               4.82                27.9\nLow    Upper-class IBS (200 ppm/mirror)                12488          16846          1.685       29.68     0.1310               5.02                29.1\nLow    Cavity-finesse-grade (100 ppm/mirror)           12188          16610          1.661       30.10     0.1347               5.09                29.5\nHigh   Friedenauer R-floor (path 2 baseline)           15288          24299          2.430       61.73     0.5649              10.44                60.6\nHigh   Intermediate IBS (500 ppm/mirror)               13388          22945          2.295       65.37     0.6333              11.06                64.2\nHigh   Upper-class IBS (200 ppm/mirror)                12488          22320          2.232       67.20     0.6691              11.37                65.9\nHigh   Cavity-finesse-grade (100 ppm/mirror)           12188          22114          2.211       67.83     0.6816              11.47                66.6\n",
+        "\nScenario L_total ppm  T_IC_opt (ppm)  P_UV_opt (W) \u0394P_UV \u00b1  500 ppm \u0394P_UV \u00b1 1000 ppm \u0394P_UV \u00b1   0.5 pp \u0394P_UV \u00b1   1.0 pp\n------------------------------------------------------------------------------------------------------------------------------------------------------\nLow          15288           19119        0.1017           -0.03%           -0.12%           -3.71%          -19.38%\nLow          13388           17565        0.1205           -0.03%           -0.14%           -4.34%          -23.27%\nLow          12488           16846        0.1310           -0.04%           -0.15%           -4.69%          -25.48%\nLow          12188           16610        0.1347           -0.04%           -0.15%           -4.81%          -26.27%\nHigh         15288           24299        0.5649           -0.02%           -0.07%           -1.90%           -9.23%\nHigh         13388           22945        0.6333           -0.02%           -0.07%           -2.07%          -10.22%\nHigh         12488           22320        0.6691           -0.02%           -0.07%           -2.16%          -10.72%\nHigh         12188           22114        0.6816           -0.02%           -0.07%           -2.19%          -10.90%\n",
+        "\n=== \u03b3 \u00b1 1.5 % bracket (Phase E validation residual) ===\n\nScenario L_total ppm  T_IC_opt (\u03b3 \u00d7 0.985 (\u22121.5 %))  T_IC_opt (\u03b3 \u00d7 1.000 (PINNED))  T_IC_opt (\u03b3 \u00d7 1.015 (+1.5 %))\n                          P_UV \u03b3 \u00d7 0.985 (\u22121.5 %)        P_UV \u03b3 \u00d7 1.000 (PINNED)        P_UV \u03b3 \u00d7 1.015 (+1.5 %)\n--------------------------------------------------------------------------------------------------------------\nLow          15288         0.01907/ 0.1007 W         0.01912/ 0.1017 W         0.01917/ 0.1027 W\nLow          13388         0.01751/ 0.1194 W         0.01756/ 0.1205 W         0.01762/ 0.1216 W\nLow          12488         0.01679/ 0.1298 W         0.01685/ 0.1310 W         0.01690/ 0.1321 W\nLow          12188         0.01656/ 0.1336 W         0.01661/ 0.1347 W         0.01666/ 0.1359 W\nHigh         15288         0.02420/ 0.5610 W         0.02430/ 0.5649 W         0.02440/ 0.5687 W\nHigh         13388         0.02284/ 0.6293 W         0.02295/ 0.6333 W         0.02305/ 0.6371 W\nHigh         12488         0.02222/ 0.6652 W         0.02232/ 0.6691 W         0.02242/ 0.6730 W\nHigh         12188         0.02201/ 0.6777 W         0.02211/ 0.6816 W         0.02222/ 0.6854 W\n\n=== d_eff full bracket (1.30 \u2192 1.60 pm/V, dominant uncertainty axis) ===\n\nScenario L_total ppm T_opt / P_UV @ d_eff = 1.30 (low) T_opt / P_UV @ d_eff = 1.44 (central) T_opt / P_UV @ d_eff = 1.60 (high)\n-------------------------------------------------------------------------------------------------------------------\nLow          15288          0.01851/  0.0885 W          0.01912/  0.1017 W          0.01984/  0.1165 W\nLow          13388          0.01692/  0.1059 W          0.01756/  0.1205 W          0.01833/  0.1366 W\nLow          12488          0.01619/  0.1157 W          0.01685/  0.1310 W          0.01763/  0.1476 W\nLow          12188          0.01594/  0.1192 W          0.01661/  0.1347 W          0.01740/  0.1516 W\nHigh         15288          0.02304/  0.5125 W          0.02430/  0.5649 W          0.02577/  0.6195 W\nHigh         13388          0.02165/  0.5802 W          0.02295/  0.6333 W          0.02445/  0.6878 W\nHigh         12488          0.02101/  0.6161 W          0.02232/  0.6691 W          0.02384/  0.7233 W\nHigh         12188          0.02080/  0.6286 W          0.02211/  0.6816 W          0.02364/  0.7356 W\n",
+        "\nL_total class                               L_tot ppm   T_opt Low   T_opt High   \u0394T_opt (pp)   \u0394T_opt (ppm)        \u00a76 Q2 default\n--------------------------------------------------------------------------------------------------------------------------------------------\nFriedenauer R-floor (path 2 baseline)           15288     0.01912      0.02430         0.518           5180          one variant\nIntermediate IBS (500 ppm/mirror)               13388     0.01756      0.02295         0.538           5380          one variant\nUpper-class IBS (200 ppm/mirror)                12488     0.01685      0.02232         0.547           5474          one variant\nCavity-finesse-grade (100 ppm/mirror)           12188     0.01661      0.02211         0.550           5504          one variant\n",
+        "BC-C consumption \u2014 default operating point (L_total = 13388 ppm, \u03a3 T_loss_VENDOR_max = 1500 ppm)\n\nScenario   P_in (W)  T_IC_opt (ppm)   T_IC_opt (%)   P_UV (W)   P_circ (W)   I_waist MW/cm\u00b2   I_curved kW/cm\u00b2\n--------------------------------------------------------------------------------------------------------------\nLow            0.50           17565          1.756     0.1205        28.47             4.82              27.9\nHigh           1.50           22945          2.295     0.6333        65.37            11.06              64.2\n\nRecommended M1' coating-spec tolerance at the default L_total\n  (worst-case UV penalty across +\u0394 and \u2212\u0394 from T_IC_opt)\nScenario Band           UV penalty\n---------------------------------------------\nLow      \u00b1  500 ppm         -0.03%\nLow      \u00b1 1000 ppm         -0.14%\nLow      \u00b1   0.5 pp         -4.34%\nLow      \u00b1   1.0 pp        -23.27%\nHigh     \u00b1  500 ppm         -0.02%\nHigh     \u00b1 1000 ppm         -0.07%\nHigh     \u00b1   0.5 pp         -2.07%\nHigh     \u00b1   1.0 pp        -10.22%\n",
+        "======================================================================\nBC-B ACCEPTANCE SUMMARY\n======================================================================\nGate 1 (forward cross-check, 5 %): residual = -0.00 %  PASS\nGate 2 (T_IC_opt finding):  0.02169  vs Friedenauer 0.016  (reported as a finding)\nGate 3 (grid table):        2 scenarios \u00d7 4 L_total points \u00d7 4 tolerance bands + \u03b3 \u00b1 1.5 % column populated\n======================================================================\n"
+      ],
+      "figures": 0
+    },
+    {
+      "notebook": "docs/review/2026-09-10-rc07-recalculation.ipynb",
+      "notebook_sha256": "c8b250e0128a7e93bc4c5e6dbe8bef5f104278014157e1ab5c012a2aabb593b4",
+      "html": "docs/review/2026-09-10-rc07-recalculation.html",
+      "html_sha256": "88407bc598acc535e86840507430179a196549949fda62d5ae18c9ce08f72983",
+      "printed_results": [
+        "BBO: {\n  \"xi\": 1.4131714172673748,\n  \"B\": 18.016560142174747,\n  \"h_m\": 0.03924309675490129,\n  \"gamma_per_W\": 0.00010586566994623877,\n  \"xi_opt\": 1.421116571479191,\n  \"h_m_opt\": 0.03924335351390365,\n  \"waist_opt_m\": 1.9345693395474517e-05,\n  \"curved_green_radius_m\": 0.0002547018213673033,\n  \"frozen_loss_corrected_gamma_output_W\": 0.22887193576694512\n}\n\nCascade: old normalization / corrected normalization\nlegacy_normalization\n{'name': 'LBO', 'gamma_per_W': 0.0003560261361251765, 'fixed_T_L_equals_T_W': 0.6480039546781192, 'optimized_T_L_equals_T_W': 0.7017526398152866, 'fitted_loss': 0.015840593113948385, 'T_opt_with_fitted_loss': 0.03410443755027185}\n{'name': 'BBO', 'gamma_per_W': 0.0001491391914228046, 'fixed_T_L_equals_T_W': 0.25991719664950574, 'optimized_T_L_equals_T_W': 0.27093324851645767, 'fitted_loss': 0.015287567992627609, 'T_opt_with_fitted_loss': 0.021691503087156082}\nL_equals_T fixed UV W: 0.14332746682660594 optimized UV W: 0.16743526473971074\nfitted_loss fixed UV W: 0.27500000000006286 optimized UV W: 0.29853207806937027\ncorrected_normalization\n{'name': 'LBO', 'gamma_per_W': 0.00022182313777269566, 'fixed_T_L_equals_T_W': 0.5302962003126859, 'optimized_T_L_equals_T_W': 0.5567723953539749, 'fitted_loss': 0.013059287634102393, 'T_opt_with_fitted_loss': 0.02733583955380428}\n{'name': 'BBO', 'gamma_per_W': 0.00010586566994623877, 'fixed_T_L_equals_T_W': 0.21516745837553394, 'optimized_T_L_equals_T_W': 0.2211211413596152, 'fitted_loss': 0.013191248602479224, 'T_opt_with_fitted_loss': 0.018528349623832537}\nL_equals_T fixed UV W: 0.08204176145596218 optimized UV W: 0.09034065957556048\nfitted_loss fixed UV W: 0.275 optimized UV W: 0.27844596354393264\n\nCoating comparison: default 1500 ppm mirror budget\nfrozen_May minimax: {'transmission': 0.019964722562130437, 'worst_relative_penalty': 0.006805481226939691}\n  P=0.50 W: Topt=1.7565 %, Pc=28.466 W, generated UV=0.12051 W, May M1 worst-band penalty=0.970 %\n  P=1.50 W: Topt=2.2945 %, Pc=65.373 W, generated UV=0.63326 W, May M1 worst-band penalty=0.946 %\ngamma_only_fixed_loss minimax: {'transmission': 0.01849106818208036, 'worst_relative_penalty': 0.005349677421601529}\n  P=0.50 W: Topt=1.6539 %, Pc=30.232 W, generated UV=0.09655 W, May M1 worst-band penalty=1.952 %\n  P=1.50 W: Topt=2.0861 %, Pc=71.906 W, generated UV=0.54461 W, May M1 worst-band penalty=0.178 %\ngamma_and_refitted_loss minimax: {'transmission': 0.016841225038878613, 'worst_relative_penalty': 0.006795620557622839}\n  P=0.50 W: Topt=1.4815 %, Pc=33.749 W, generated UV=0.12029 W, May M1 worst-band penalty=4.317 %\n  P=1.50 W: Topt=1.9358 %, Pc=77.488 W, generated UV=0.63220 W, May M1 worst-band penalty=0.112 %\n"
+      ],
+      "figures": 1
+    },
+    {
+      "notebook": "docs/tutorials/04-cascade-shg.ipynb",
+      "notebook_sha256": "a3767f8343df9d0c8fff793bd516abef73587b1910331f1cd4428d5a76f44e0c",
+      "html": "docs/tutorials/04-cascade-shg.html",
+      "html_sha256": "1f795a1bfa9bea9b14c6a88d2afb7a76f2424c85475a12e411f1f24c315903d4",
+      "printed_results": [
+        "Imports OK\n",
+        "Stage 1: L = 0.02,  \u03b3 = 0.001 W\u207b\u00b9\nStage 2: L = 0.02,  \u03b3 = 0.01 W\u207b\u00b9\nTransport efficiency: 0.95\nInput power: 1.0 W\n",
+        "Optimised cascade:\n  Stage 1:  T_IC = 4.263 %\n  Stage 2:  T_IC = 8.025 %\n",
+        "\nStage 1:\n  Input power      = 1.0000 W\n  Circulating power = 23.46 W\n  Harmonic power   = 0.5417 W\n  Into next stage  = 0.5146 W\n\nStage 2:\n  Input power      = 0.5146 W\n  Circulating power = 6.41 W\n  Harmonic power   = 0.3943 W\n\nTotal harmonic output = 0.3943 W\nOverall efficiency    = 39.43 %\n",
+        "Tutorial 04 complete.\n"
+      ],
+      "figures": 1
+    }
+  ],
+  "comparison": "Numerical before/after cases are in rc07-results.json. Historical review notebooks had no committed rendered baseline; the May IC sweep replays frozen inputs rather than new targets."
+}

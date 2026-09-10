@@ -370,62 +370,17 @@ match each stage to its own input power.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="4.-A-real-world-parable:-Friedenauer-2006">4. A real-world parable: Friedenauer 2006<a class="anchor-link" href="#4.-A-real-world-parable:-Friedenauer-2006">¶</a></h2><p>The diagnostic notebook <code>notebooks/diagnostic/2026-05-07-friedenauer-cascade-recompute.py</code>
-applies these exact primitives to the Friedenauer 2006 LBO → BBO cascade
-(1118 nm → 559 nm → 280 nm).  The results are:</p>
-<table>
-<thead>
-<tr>
-<th>Stage</th>
-<th>Paper</th>
-<th>Recomputed</th>
-<th>Discrepancy</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>LBO 559 nm output</td>
-<td>0.950 W</td>
-<td><strong>0.702 W</strong></td>
-<td><strong>−26 %</strong></td>
-</tr>
-<tr>
-<td>BBO 280 nm output</td>
-<td>0.275 W</td>
-<td><strong>0.271 W</strong></td>
-<td><strong>−1.5 %</strong></td>
-</tr>
-<tr>
-<td>Overall 1118→280 η</td>
-<td>15.2 %</td>
-<td><strong>8.0 %</strong></td>
-<td><strong>−48 %</strong></td>
-</tr>
-</tbody>
-</table>
-<p><strong>What happened?</strong></p>
-<ul>
-<li>The <strong>BBO stage</strong> agrees to within 1.5 %.  This validates our BBO
-material constants (d_eff, walk-off, refractive indices) and the
-depleted-regime solver.</li>
-<li>The <strong>LBO stage</strong> is 26 % low.  The most plausible explanation is that
-the paper's reported input-coupler transmission T_IC = 0.025 is the
-<em>impedance-matched operating value</em>, not the pure passive loss.  Using
-the intensity-form match $T = L + (1-L)\eta_\mathrm{nl}$ with
-$\eta_\mathrm{nl} \approx 0.015$–0.020 implies a true passive loss
-$L_\mathrm{passive} \approx 0.005$–0.010 — consistent with the paper's<blockquote>
-<p>99.98 % HR mirrors and a few-tenths-of-a-percent crystal+coating budget.</p>
-</blockquote>
-</li>
-<li>The <strong>overall</strong> discrepancy compounds because the LBO under-performance
-feeds a lower input into the BBO stage.</li>
-</ul>
-<p><strong>The lesson.</strong> The numerics are right; the inputs need care.  When you
-apply these tools to a real architecture, the dominant uncertainty is
-usually not the solver — it is the <strong>loss budget</strong> and the <strong>material
-constants</strong> you feed into it.  Document every assumption, bracket every
-open parameter, and treat the first recomputation as a gap-finding exercise
-rather than a final answer.</p>
+<h2 id="4.-Applying-the-model-to-measured-stages">4. Applying the model to measured stages<a class="anchor-link" href="#4.-Applying-the-model-to-measured-stages">¶</a></h2><p><strong>Updated 2026-09-10 (RC-07).</strong> The former Friedenauer comparison used
+the incorrect SHG normalization and assumed passive loss L=T_IC. Its
+agreement at one BBO output did not validate the material constants.
+Nonlinear impedance matching gives T=L+(1-L)η; coupler transmission
+therefore cannot be substituted for passive loss.</p>
+<p>The <a href="../review/2026-09-10-rc07-recalculation.html">dated recalculation</a>
+compares fixed-coupler outputs, independently optimized stages, and
+losses fitted to the reported operating points. It separates holding
+losses fixed from refitting them after the γ correction. Fitting the
+same output you later reproduce is calibration, not a validation test.
+UV extraction and inter-stage transport also need explicit assumptions.</p>
 </div>
 </div>
 </div>
