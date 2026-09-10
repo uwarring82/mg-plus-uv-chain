@@ -43,10 +43,13 @@ licensing is retained; the licence map records the tutorial narrative/output
 assignment question under D6. This publication does not adopt new optical
 specifications or clear D1/D2.
 
-When the shared model or default inputs change, maintainers should update
-the four `REFERENCE_REVISION` pins to the reviewed code revision and rerun
-the opt-in check. The pinned model revision is intentionally separate from
-the commit publishing the tutorial notebooks.
+**Pin maintenance owner: Ulrich Warring.** Dependency-aware CI enforcement
+is assigned to [RC-06](2026-09-09-repository-review-task-card.md#rc-06--next--make-scientific-checks-and-toolchain-enforcement-reproducible).
+Changes to the runtime code, defaults or installation inputs require a
+reviewed update of the four pins or a dated decision to retain the earlier
+teaching baseline. A pin update requires the opt-in runtime check, regenerated
+tutorials and refreshed manifests. Unrelated documentation changes do not
+require a bump; the model revision is separate from the publication commit.
 
 ## Validation
 
