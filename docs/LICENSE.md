@@ -22,7 +22,8 @@ assets are stored and checked. It is not another licence.
 
 ## Architecture and component pages
 
-The 12 pages under `architectures/` and `components/` are not assigned a
+The 12 pre-existing pages under `architectures/` and `components/` listed
+in the repository map are not assigned a
 split category in the original map. They were included in LICENSE-DOCS's
 blanket **CC-BY-4.0** declaration: [attribution is required](https://creativecommons.org/licenses/by/4.0/).
 A page-by-page D6 assignment remains pending. This review does not add
@@ -32,6 +33,27 @@ The [repository licence map](https://github.com/uwarring82/mg-plus-uv-chain/blob
 lists every page and its disposition. Other unmapped pages and generated
 assets remain in RC-10's scope audit; their licence must not be inferred from
 visual styling. Third-party sources retain their own terms.
+
+## SHG design archive — adopted 2026-09-14
+
+Ulrich Warring authorized publication and explicitly adopted the following
+scope for the [SHG design catalogue](components/shg-designs.html), attributed
+to **AG Schaetz**:
+
+| Material | SPDX licence |
+|---|---|
+| Original DWGs, compressed DXF and DWG JSON exports in `data/designs/shg/`, and PDF/SVG/PNG drawings under `assets/shg/SHG-*/` | [CERN-OHL-S-2.0](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/LICENSES/CERN-OHL-S-2.0.txt) |
+| Catalogue and inspection metadata, `_data/shg.yml` and `assets/shg/catalogue.json` | [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) |
+| `components/shg-designs.html`, archive README/notice and SHG logbook entries | [CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| Conversion tools, tests, JSON Schema and `assets/shg/catalogue.css` | [MIT](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/LICENSES/MIT.txt) |
+
+These assignments are settled and are separate from the outstanding RC-10
+assignments above. The
+[archive notice](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/designs/shg/LICENSE.md)
+provides the source location and modification notices; the
+[decision record](https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-09-14-shg-design-publication.md)
+records adoption. Conversion fidelity remains unverified; open licensing
+does not establish manufacturing accuracy or installed-hardware association.
 
 ## Declaration history
 

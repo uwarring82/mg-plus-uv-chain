@@ -8,7 +8,7 @@ Steward in the same session; see the
 | Scope | SPDX licence |
 |---|---|
 | `raw/*.dwg`, `processed/**/*.dxf.gz`, `processed/**/*.dwg.json.gz`, generated drawing PDF/SVG/PNG files under `docs/assets/shg/SHG-*/` | CERN-OHL-S-2.0 |
-| `catalogue.yaml`, inspection/pilot JSON records, `docs/_data/shg.yml`, `docs/assets/shg/catalogue.json` | CC-BY-4.0 |
+| `catalogue.yaml`, inspection/block-audit/pilot JSON records, `docs/_data/shg.yml`, `docs/assets/shg/catalogue.json` | CC-BY-4.0 |
 | This notice, this folder's README, catalogue narrative and SHG logbook entries | CC-BY-SA-4.0 |
 | `catalogue.schema.json`, `scripts/shg_designs.py`, requirements and SHG tests | MIT |
 

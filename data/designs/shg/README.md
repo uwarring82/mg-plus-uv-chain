@@ -1,7 +1,8 @@
 # AG Schaetz SHG design archive
 
 **Author attribution:** AG Schaetz. **Publication authorized:** Ulrich Warring,
-2026-09-14. [Decision and work record](../../../logbook/2026-09-14-shg-design-publication.md).
+2026-09-14. [Decision and work record](../../../logbook/2026-09-14-shg-design-publication.md)
+and [publication follow-ups](../../../logbook/2026-09-14-shg-publication-follow-ups.md).
 
 The archive preserves 28 drawings supplied as `SHG.zip`. Originals retain
 their exact bytes under stable IDs. The ZIP checksum, original filenames,
@@ -47,6 +48,31 @@ the DXF date fields, so those are labelled converter metadata. Native solids
 and STEP availability are unresolved inside the proxy payloads. No STEP or
 interactive 3D export is asserted.
 
+The [block audit](block-audit.json) identifies the identical deficit in eight
+drawings as omitted sheet-border (`D3`) and historical title-block (`FC`)
+definitions. Both source names are `*I`; preserved handles distinguish them.
+Their recorded insertion backlinks are absent from the parsed source graph.
+The full deficit is accounted for, but opaque proxy references and visual
+effect still need an independent CAD check. Reproduce with
+`python -m scripts.shg_block_audit --check` in the full SHG environment.
+
+## Native source and reference-rendering follow-up
+
+No `.iam`, `.ipt`, `.idw` or `.ipj` files were found in the supplied archive,
+repository or the Desktop filename search on 2026-09-14. Their location
+remains an open request to the Steward; this is not a claim about other
+laboratory storage. The preferred handover is an Inventor
+[Pack and Go package](https://help.autodesk.com/cloudhelp/2025/ENU/Inventor-Help/files/GUID-730304AA-13BD-467B-9351-C7C1362876BD.htm)
+with assemblies, parts, drawings, the project file and resolvable references.
+Include referencing drawings and required libraries when collecting the
+package, and record the authoring version and any missing references/fonts.
+
+Receiving native files alone does not verify these previews. Render the
+corresponding sheets with Inventor, or use an independent AutoCAD rendering
+of the original DWGs, then compare dimensions, symbols, layouts and views
+per file. Native assembly relationships and STEP exports require separate
+checks. Hardware confirmation still requires bench evidence.
+
 ## Records and evidence
 
 [`catalogue.schema.json`](catalogue.schema.json) validates the YAML record.
@@ -65,8 +91,15 @@ units are retained; normalized numerical catalogue fields use SI.
 
 ## Reproduction
 
-Install the pinned Python tools from
+For the complete SHG test and rendering environment, run
+`python -m pip install -e '.[test,shg]'` from the repository root. The `shg`
+extra pins the same drawing dependencies as
 [`scripts/requirements-shg.txt`](../../../scripts/requirements-shg.txt).
+The standard `test` extra does not install ezdxf: the two viewport tests
+skip without it. Run pytest with `-rs` to see these skip reasons. The
+original **14 passed** result used the full drawing environment; the
+standard environment instead reports **12 passed, 2 skipped** for that
+original test file. There is currently no CI enforcing these checks.
 ODA File Converter 27.1.0 and GNU LibreDWG 0.14 are external local tools;
 neither tool nor the local Guth thesis PDF is redistributed here.
 

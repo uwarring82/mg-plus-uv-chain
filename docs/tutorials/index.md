@@ -89,8 +89,10 @@ versions on every computer.
 From a terminal on macOS or Linux:
 
 ```sh
-git clone https://github.com/uwarring82/mg-plus-uv-chain.git
+git clone --filter=blob:none --sparse --no-checkout https://github.com/uwarring82/mg-plus-uv-chain.git
 cd mg-plus-uv-chain
+git sparse-checkout set src notebooks/tutorials
+git checkout main
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e '.[notebooks,test]' jupyterlab
@@ -98,6 +100,25 @@ git switch -c student/shg-exercises
 python -m jupytext --to ipynb notebooks/tutorials/01-shg-single-pass.py
 python -m jupyterlab notebooks/tutorials/01-shg-single-pass.ipynb
 ```
+
+This downloads the code and tutorial inputs while leaving the CAD archive
+and rendered site assets out of the working tree. Git fetches omitted file
+contents later if requested. See Git's documentation for
+[partial clones](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---filterltfilter-specgt)
+and [sparse checkout](https://git-scm.com/docs/git-sparse-checkout).
+
+A full checkout includes the SHG drawings and exports. After their September
+2026 publication, the local repository's Git objects occupy about **160 MiB**,
+plus the working tree; network transfer size depends on Git's packing.
+A shallow clone alone still downloads the current CAD files. The partial,
+sparse setup above avoids fetching those blobs for tutorial work. To later
+work on the entire repository, run `git sparse-checkout disable`; this
+downloads and checks out the omitted files. Run the full test suite only
+after that step, since archive tests require the complete archive.
+
+Colab avoids a clone on your computer. Its current notebook bootstrap still
+clones the repository in the remote runtime before checking out the reviewed
+code revision; the pin alone does not reduce that clone's download size.
 
 On Windows, create the environment with `py -3 -m venv .venv` and activate
 it with `.venv\Scripts\Activate.ps1` in PowerShell; use the remaining `python`

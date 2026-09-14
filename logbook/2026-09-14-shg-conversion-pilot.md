@@ -53,6 +53,10 @@ SHG-010, SHG-012, SHG-016, SHG-022 and SHG-023: 2 BLOCK, 2 ENDBLK, 14 LINE,
 these are harmless unused blocks is made. Each affected web record exposes
 the discrepancy and links both source and export inspection data.
 
+The subsequent [block audit](2026-09-14-shg-publication-follow-ups.md)
+accounts for this full deficit as two repeated template blocks (`D3`, `FC`).
+It identifies the omitted content without establishing rendering fidelity.
+
 The largest direct DXF is 71,336,142 bytes. Lossless gzip keeps exports compact
 and deterministic without requiring Git LFS. The compressed files have both
 compressed and uncompressed checksums. Each source DWG is separately read
@@ -119,10 +123,18 @@ to `provisionally_associated`; `confirmed` requires cited bench evidence.
 
 Local validation completed:
 
-- `python -m pytest tests/test_shg_designs.py -q`: **14 passed**. This includes
+- `python -m pytest tests/test_shg_designs.py -q`: **14 passed**, using Python
+  3.13.7 in the temporary drawing environment with
+  `scripts/requirements-shg.txt` installed. This includes
   schema and all artifact checksums, generated YAML/JSON/schema freshness,
   source preservation, filename recovery, confirmation requiring bench
   evidence, deterministic compression and restricted proxy/viewport tests.
+  This was not a run in the repository's standard `.venv`. Without ezdxf,
+  that environment reports **12 passed, 2 skipped**: the two viewport tests
+  use `pytest.importorskip`; the pure proxy-decoder tests still run. The
+  Steward subsequently reported **273 passed, 2 skipped** for the full
+  standard suite. No CI result is implied. The follow-up adds a `shg` extra
+  so `python -m pip install -e '.[test,shg]'` selects the full environment.
 - Black formatting and Ruff checks pass on the new script and tests.
   `git diff --check` passes. No simulation code or numerical baseline is changed.
 - All 41 final PDF/PNG sheet previews were visually reviewed. All 41 PDFs

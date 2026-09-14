@@ -1,0 +1,3176 @@
+{
+  "schema_version": "1.0.0",
+  "licence": "CC-BY-4.0",
+  "method": "Preserved-handle block matching, decoded content and backlink audit",
+  "tool": {
+    "path": "scripts/shg_block_audit.py",
+    "sha256": "2ab9b555bad0ec96c38faa29b5d77238423929d522435f592b669415263804ac",
+    "bytes": 6709
+  },
+  "ezdxf_version": "1.4.4",
+  "scope": "Every catalogue drawing with an entity_count_deltas entry",
+  "interpretation": "D3 is a repeated sheet border; FC is a repeated historical title block. This identifies the omitted content; it does not certify fidelity.",
+  "results": [
+    {
+      "design_id": "SHG-003",
+      "source_json_sha256": "6e9cde2b37801db522ecf1bfd367360debffc4f216b6154a66d7a0919e336f55",
+      "dxf_sha256": "3084ceb2525df6265f59ac260ad461fcc184e0ddfd0976316f85450d3385bc71",
+      "inspection_sha256": "4c6855c29db38f8fc9ecc419b62cf57a675049a953db690d07a6f757575c2aad",
+      "matches_full_reported_deficit": true,
+      "block_name_mapping": [
+        {
+          "source_handle": "70",
+          "source_name": "*Model_Space",
+          "dxf_name": "*Model_Space"
+        },
+        {
+          "source_handle": "A7",
+          "source_name": "Filled-1",
+          "dxf_name": "Filled-1"
+        },
+        {
+          "source_handle": "D3",
+          "source_name": "*I",
+          "dxf_name": null
+        },
+        {
+          "source_handle": "FC",
+          "source_name": "*I",
+          "dxf_name": null
+        },
+        {
+          "source_handle": "184",
+          "source_name": "*Paper_Space",
+          "dxf_name": "*Paper_Space"
+        },
+        {
+          "source_handle": "190",
+          "source_name": "*I",
+          "dxf_name": "*I3"
+        },
+        {
+          "source_handle": "1B9",
+          "source_name": "*I",
+          "dxf_name": "*I4"
+        },
+        {
+          "source_handle": "1D8",
+          "source_name": "*I",
+          "dxf_name": "*I5"
+        },
+        {
+          "source_handle": "1DC",
+          "source_name": "bbo_cavity_deckel_Blatt_ANSICHT1",
+          "dxf_name": "bbo_cavity_deckel_Blatt_ANSICHT1"
+        },
+        {
+          "source_handle": "209",
+          "source_name": "*I",
+          "dxf_name": "*I7"
+        },
+        {
+          "source_handle": "20D",
+          "source_name": "bbo_cavity_deckel_Blatt_ANSICHT2",
+          "dxf_name": "bbo_cavity_deckel_Blatt_ANSICHT2"
+        },
+        {
+          "source_handle": "222",
+          "source_name": "*I",
+          "dxf_name": "*I9"
+        },
+        {
+          "source_handle": "226",
+          "source_name": "bbo_cavity_deckel_Blatt_ANSICHT3",
+          "dxf_name": "bbo_cavity_deckel_Blatt_ANSICHT3"
+        },
+        {
+          "source_handle": "240",
+          "source_name": "*I",
+          "dxf_name": "*I11"
+        },
+        {
+          "source_handle": "244",
+          "source_name": "bbo_cavity_deckel_Blatt_ANSICHT4",
+          "dxf_name": "bbo_cavity_deckel_Blatt_ANSICHT4"
+        },
+        {
+          "source_handle": "264",
+          "source_name": "*I",
+          "dxf_name": "*I13"
+        },
+        {
+          "source_handle": "268",
+          "source_name": "bbo_cavity_deckel_Blatt_ANSICHT5",
+          "dxf_name": "bbo_cavity_deckel_Blatt_ANSICHT5"
+        },
+        {
+          "source_handle": "27E",
+          "source_name": "*I",
+          "dxf_name": "*I15"
+        },
+        {
+          "source_handle": "282",
+          "source_name": "bbo_cavity_deckel_Blatt_ANSICHT6",
+          "dxf_name": "bbo_cavity_deckel_Blatt_ANSICHT6"
+        },
+        {
+          "source_handle": "2BB",
+          "source_name": "*I",
+          "dxf_name": "*I17"
+        },
+        {
+          "source_handle": "2CF",
+          "source_name": "*I",
+          "dxf_name": "*I18"
+        },
+        {
+          "source_handle": "2E1",
+          "source_name": "*I",
+          "dxf_name": "*I19"
+        },
+        {
+          "source_handle": "2F3",
+          "source_name": "*I",
+          "dxf_name": "*I20"
+        },
+        {
+          "source_handle": "302",
+          "source_name": "*I",
+          "dxf_name": "*I21"
+        }
+      ],
+      "omitted_blocks": [
+        {
+          "source_handle": "D3",
+          "source_name": "*I",
+          "member_handles": [
+            "D7",
+            "D8",
+            "D9",
+            "DA",
+            "DB",
+            "DC",
+            "DD",
+            "DE",
+            "DF",
+            "E0",
+            "E1",
+            "E2",
+            "E3",
+            "E4",
+            "E5",
+            "E6",
+            "E7",
+            "E8",
+            "E9",
+            "EA",
+            "EB",
+            "EC",
+            "ED",
+            "EE",
+            "EF",
+            "F0",
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F5",
+            "F6",
+            "F7",
+            "F8",
+            "F9",
+            "FA",
+            "FB"
+          ],
+          "boundary_handles": [
+            "D4",
+            "D5"
+          ],
+          "entity_counts_including_boundaries": {
+            "BLOCK": 1,
+            "ENDBLK": 1,
+            "LWPOLYLINE": 17,
+            "MTEXT": 20
+          },
+          "content_sha256": "cb055627ce51c5c7c9b8422121f86956c47f787a0b0be40a27f971733051ef34",
+          "mtext_labels": [
+            {
+              "handle": "E4",
+              "text": "D"
+            },
+            {
+              "handle": "E5",
+              "text": "D"
+            },
+            {
+              "handle": "E6",
+              "text": "C"
+            },
+            {
+              "handle": "E7",
+              "text": "C"
+            },
+            {
+              "handle": "E8",
+              "text": "B"
+            },
+            {
+              "handle": "E9",
+              "text": "B"
+            },
+            {
+              "handle": "EA",
+              "text": "A"
+            },
+            {
+              "handle": "EB",
+              "text": "A"
+            },
+            {
+              "handle": "EC",
+              "text": "6"
+            },
+            {
+              "handle": "ED",
+              "text": "6"
+            },
+            {
+              "handle": "EE",
+              "text": "5"
+            },
+            {
+              "handle": "EF",
+              "text": "5"
+            },
+            {
+              "handle": "F4",
+              "text": "4"
+            },
+            {
+              "handle": "F5",
+              "text": "4"
+            },
+            {
+              "handle": "F6",
+              "text": "3"
+            },
+            {
+              "handle": "F7",
+              "text": "3"
+            },
+            {
+              "handle": "F8",
+              "text": "2"
+            },
+            {
+              "handle": "F9",
+              "text": "2"
+            },
+            {
+              "handle": "FA",
+              "text": "1"
+            },
+            {
+              "handle": "FB",
+              "text": "1"
+            }
+          ],
+          "insert_backlinks": [
+            {
+              "handle": "D6",
+              "present_in_source_graph": false
+            }
+          ],
+          "explicit_source_insert_handles": []
+        },
+        {
+          "source_handle": "FC",
+          "source_name": "*I",
+          "member_handles": [
+            "100",
+            "101",
+            "102",
+            "103",
+            "104",
+            "105",
+            "106",
+            "107",
+            "108",
+            "109",
+            "10A",
+            "10B",
+            "10C",
+            "10D",
+            "10E",
+            "10F",
+            "110",
+            "111",
+            "112",
+            "113",
+            "114",
+            "115",
+            "116",
+            "14F"
+          ],
+          "boundary_handles": [
+            "FD",
+            "FE"
+          ],
+          "entity_counts_including_boundaries": {
+            "BLOCK": 1,
+            "ENDBLK": 1,
+            "LINE": 14,
+            "MTEXT": 10
+          },
+          "content_sha256": "9c13f174c740e6bc05f6b95d6649a1dccaf08afdb78ab59df03489a607331544",
+          "mtext_labels": [
+            {
+              "handle": "10E",
+              "text": "Blatt"
+            },
+            {
+              "handle": "10F",
+              "text": "Ausgabe"
+            },
+            {
+              "handle": "110",
+              "text": "1 / 1 "
+            },
+            {
+              "handle": "111",
+              "text": "Datum"
+            },
+            {
+              "handle": "112",
+              "text": "Genehmigt von"
+            },
+            {
+              "handle": "113",
+              "text": "Kontrolliert von"
+            },
+            {
+              "handle": "114",
+              "text": "Konstruiert von"
+            },
+            {
+              "handle": "115",
+              "text": "2/11/2020"
+            },
+            {
+              "handle": "116",
+              "text": "ISO"
+            },
+            {
+              "handle": "14F",
+              "text": "Datum"
+            }
+          ],
+          "insert_backlinks": [
+            {
+              "handle": "FF",
+              "present_in_source_graph": false
+            }
+          ],
+          "explicit_source_insert_handles": []
+        }
+      ],
+      "accounted_entity_deficit": {
+        "BLOCK": 2,
+        "ENDBLK": 2,
+        "LINE": 14,
+        "LWPOLYLINE": 17,
+        "MTEXT": 30
+      },
+      "reference_limit": "Backlinks and explicit INSERTs checked in decoded graph only; opaque Inventor proxy references and rendered visibility unverified"
+    },
+    {
+      "design_id": "SHG-004",
+      "source_json_sha256": "a923a9142b83d2006433d843a69a0b732e3b9585f581ec44d9287c767c2ee275",
+      "dxf_sha256": "496b4aafd5770f848849a2f34a90664afdb73e276afeacf68fffa0e2d9a2e7a5",
+      "inspection_sha256": "5286b33327d703570f0b5e354dc4aebd06fb77f007af252fa46e4d2519a9d9b0",
+      "matches_full_reported_deficit": true,
+      "block_name_mapping": [
+        {
+          "source_handle": "70",
+          "source_name": "*Model_Space",
+          "dxf_name": "*Model_Space"
+        },
+        {
+          "source_handle": "A7",
+          "source_name": "Filled-1",
+          "dxf_name": "Filled-1"
+        },
+        {
+          "source_handle": "D3",
+          "source_name": "*I",
+          "dxf_name": null
+        },
+        {
+          "source_handle": "FC",
+          "source_name": "*I",
+          "dxf_name": null
+        },
+        {
+          "source_handle": "184",
+          "source_name": "*Paper_Space",
+          "dxf_name": "*Paper_Space"
+        },
+        {
+          "source_handle": "190",
+          "source_name": "*I",
+          "dxf_name": "*I3"
+        },
+        {
+          "source_handle": "1B9",
+          "source_name": "*I",
+          "dxf_name": "*I4"
+        },
+        {
+          "source_handle": "1D8",
+          "source_name": "*I",
+          "dxf_name": "*I5"
+        },
+        {
+          "source_handle": "1DC",
+          "source_name": "spiegel_piezo_cavity_bbo_Blatt_ANSICHT1",
+          "dxf_name": "spiegel_piezo_cavity_bbo_Blatt_ANSICHT1"
+        },
+        {
+          "source_handle": "1F7",
+          "source_name": "*I",
+          "dxf_name": "*I7"
+        },
+        {
+          "source_handle": "1FB",
+          "source_name": "spiegel_piezo_cavity_bbo_Blatt_ANSICHT2",
+          "dxf_name": "spiegel_piezo_cavity_bbo_Blatt_ANSICHT2"
+        },
+        {
+          "source_handle": "211",
+          "source_name": "*I",
+          "dxf_name": "*I9"
+        },
+        {
+          "source_handle": "215",
+          "source_name": "spiegel_piezo_cavity_bbo_Blatt_ANSICHT3",
+          "dxf_name": "spiegel_piezo_cavity_bbo_Blatt_ANSICHT3"
+        },
+        {
+          "source_handle": "22E",
+          "source_name": "*I",
+          "dxf_name": "*I11"
+        },
+        {
+          "source_handle": "232",
+          "source_name": "spiegel_piezo_cavity_bbo_Blatt_ANSICHT4",
+          "dxf_name": "spiegel_piezo_cavity_bbo_Blatt_ANSICHT4"
+        },
+        {
+          "source_handle": "24B",
+          "source_name": "*I",
+          "dxf_name": "*I13"
+        },
+        {
+          "source_handle": "24F",
+          "source_name": "spiegel_piezo_cavity_bbo_Blatt_ANSICHT5",
+          "dxf_name": "spiegel_piezo_cavity_bbo_Blatt_ANSICHT5"
+        },
+        {
+          "source_handle": "268",
+          "source_name": "*I",
+          "dxf_name": "*I15"
+        },
+        {
+          "source_handle": "26C",
+          "source_name": "spiegel_piezo_cavity_bbo_Blatt_ANSICHT6",
+          "dxf_name": "spiegel_piezo_cavity_bbo_Blatt_ANSICHT6"
+        },
+        {
+          "source_handle": "292",
+          "source_name": "*I",
+          "dxf_name": "*I17"
+        },
+        {
+          "source_handle": "2A4",
+          "source_name": "*I",
+          "dxf_name": "*I18"
+        },
+        {
+          "source_handle": "2B6",
+          "source_name": "*I",
+          "dxf_name": "*I19"
+        },
+        {
+          "source_handle": "2CA",
+          "source_name": "*I",
+          "dxf_name": "*I20"
+        },
+        {
+          "source_handle": "2DD",
+          "source_name": "*I",
+          "dxf_name": "*I21"
+        },
+        {
+          "source_handle": "2EF",
+          "source_name": "*I",
+          "dxf_name": "*I22"
+        },
+        {
+          "source_handle": "303",
+          "source_name": "*I",
+          "dxf_name": "*I23"
+        },
+        {
+          "source_handle": "311",
+          "source_name": "*I",
+          "dxf_name": "*I24"
+        },
+        {
+          "source_handle": "31F",
+          "source_name": "*I",
+          "dxf_name": "*I25"
+        }
+      ],
+      "omitted_blocks": [
+        {
+          "source_handle": "D3",
+          "source_name": "*I",
+          "member_handles": [
+            "D7",
+            "D8",
+            "D9",
+            "DA",
+            "DB",
+            "DC",
+            "DD",
+            "DE",
+            "DF",
+            "E0",
+            "E1",
+            "E2",
+            "E3",
+            "E4",
+            "E5",
+            "E6",
+            "E7",
+            "E8",
+            "E9",
+            "EA",
+            "EB",
+            "EC",
+            "ED",
+            "EE",
+            "EF",
+            "F0",
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F5",
+            "F6",
+            "F7",
+            "F8",
+            "F9",
+            "FA",
+            "FB"
+          ],
+          "boundary_handles": [
+            "D4",
+            "D5"
+          ],
+          "entity_counts_including_boundaries": {
+            "BLOCK": 1,
+            "ENDBLK": 1,
+            "LWPOLYLINE": 17,
+            "MTEXT": 20
+          },
+          "content_sha256": "cb055627ce51c5c7c9b8422121f86956c47f787a0b0be40a27f971733051ef34",
+          "mtext_labels": [
+            {
+              "handle": "E4",
+              "text": "D"
+            },
+            {
+              "handle": "E5",
+              "text": "D"
+            },
+            {
+              "handle": "E6",
+              "text": "C"
+            },
+            {
+              "handle": "E7",
+              "text": "C"
+            },
+            {
+              "handle": "E8",
+              "text": "B"
+            },
+            {
+              "handle": "E9",
+              "text": "B"
+            },
+            {
+              "handle": "EA",
+              "text": "A"
+            },
+            {
+              "handle": "EB",
+              "text": "A"
+            },
+            {
+              "handle": "EC",
+              "text": "6"
+            },
+            {
+              "handle": "ED",
+              "text": "6"
+            },
+            {
+              "handle": "EE",
+              "text": "5"
+            },
+            {
+              "handle": "EF",
+              "text": "5"
+            },
+            {
+              "handle": "F4",
+              "text": "4"
+            },
+            {
+              "handle": "F5",
+              "text": "4"
+            },
+            {
+              "handle": "F6",
+              "text": "3"
+            },
+            {
+              "handle": "F7",
+              "text": "3"
+            },
+            {
+              "handle": "F8",
+              "text": "2"
+            },
+            {
+              "handle": "F9",
+              "text": "2"
+            },
+            {
+              "handle": "FA",
+              "text": "1"
+            },
+            {
+              "handle": "FB",
+              "text": "1"
+            }
+          ],
+          "insert_backlinks": [
+            {
+              "handle": "D6",
+              "present_in_source_graph": false
+            }
+          ],
+          "explicit_source_insert_handles": []
+        },
+        {
+          "source_handle": "FC",
+          "source_name": "*I",
+          "member_handles": [
+            "100",
+            "101",
+            "102",
+            "103",
+            "104",
+            "105",
+            "106",
+            "107",
+            "108",
+            "109",
+            "10A",
+            "10B",
+            "10C",
+            "10D",
+            "10E",
+            "10F",
+            "110",
+            "111",
+            "112",
+            "113",
+            "114",
+            "115",
+            "116",
+            "14F"
+          ],
+          "boundary_handles": [
+            "FD",
+            "FE"
+          ],
+          "entity_counts_including_boundaries": {
+            "BLOCK": 1,
+            "ENDBLK": 1,
+            "LINE": 14,
+            "MTEXT": 10
+          },
+          "content_sha256": "9c13f174c740e6bc05f6b95d6649a1dccaf08afdb78ab59df03489a607331544",
+          "mtext_labels": [
+            {
+              "handle": "10E",
+              "text": "Blatt"
+            },
+            {
+              "handle": "10F",
+              "text": "Ausgabe"
+            },
+            {
+              "handle": "110",
+              "text": "1 / 1 "
+            },
+            {
+              "handle": "111",
+              "text": "Datum"
+            },
+            {
+              "handle": "112",
+              "text": "Genehmigt von"
+            },
+            {
+              "handle": "113",
+              "text": "Kontrolliert von"
+            },
+            {
+              "handle": "114",
+              "text": "Konstruiert von"
+            },
+            {
+              "handle": "115",
+              "text": "2/11/2020"
+            },
+            {
+              "handle": "116",
+              "text": "ISO"
+            },
+            {
+              "handle": "14F",
+              "text": "Datum"
+            }
+          ],
+          "insert_backlinks": [
+            {
+              "handle": "FF",
+              "present_in_source_graph": false
+            }
+          ],
+          "explicit_source_insert_handles": []
+        }
+      ],
+      "accounted_entity_deficit": {
+        "BLOCK": 2,
+        "ENDBLK": 2,
+        "LINE": 14,
+        "LWPOLYLINE": 17,
+        "MTEXT": 30
+      },
+      "reference_limit": "Backlinks and explicit INSERTs checked in decoded graph only; opaque Inventor proxy references and rendered visibility unverified"
+    },
+    {
+      "design_id": "SHG-005",
+      "source_json_sha256": "a8653c765b9950a6429051e6d4408caeafde723091ed055ba8eff4fc54a770b9",
+      "dxf_sha256": "8c920ebd8c55cf2937c4297a7831c2b426074873f3ec5a0ce70e79915a4ec480",
+      "inspection_sha256": "5d97c7e2ea195634ccf38d9e7e67500a4a958f03faa73f2210c269cc40a8dd82",
+      "matches_full_reported_deficit": true,
+      "block_name_mapping": [
+        {
+          "source_handle": "70",
+          "source_name": "*Model_Space",
+          "dxf_name": "*Model_Space"
+        },
+        {
+          "source_handle": "A7",
+          "source_name": "Filled-1",
+          "dxf_name": "Filled-1"
+        },
+        {
+          "source_handle": "D3",
+          "source_name": "*I",
+          "dxf_name": null
+        },
+        {
+          "source_handle": "FC",
+          "source_name": "*I",
+          "dxf_name": null
+        },
+        {
+          "source_handle": "184",
+          "source_name": "*Paper_Space",
+          "dxf_name": "*Paper_Space"
+        },
+        {
+          "source_handle": "190",
+          "source_name": "*I",
+          "dxf_name": "*I3"
+        },
+        {
+          "source_handle": "1B9",
+          "source_name": "*I",
+          "dxf_name": "*I4"
+        },
+        {
+          "source_handle": "1D8",
+          "source_name": "*I",
+          "dxf_name": "*I5"
+        },
+        {
+          "source_handle": "1DC",
+          "source_name": "befestigung durchführungen_Blatt_ANSICHT1",
+          "dxf_name": "befestigung durchführungen_Blatt_ANSICHT1"
+        },
+        {
+          "source_handle": "1E9",
+          "source_name": "*I",
+          "dxf_name": "*I7"
+        },
+        {
+          "source_handle": "1ED",
+          "source_name": "befestigung durchführungen_Blatt_ANSICHT2",
+          "dxf_name": "befestigung durchführungen_Blatt_ANSICHT2"
+        },
+        {
+          "source_handle": "1F7",
+          "source_name": "*I",
+          "dxf_name": "*I9"
+        },
+        {
+          "source_handle": "1FB",
+          "source_name": "befestigung durchführungen_Blatt_ANSICHT3",
+          "dxf_name": "befestigung durchführungen_Blatt_ANSICHT3"
+        },
+        {
+          "source_handle": "205",
+          "source_name": "*I",
+          "dxf_name": "*I11"
+        },
+        {
+          "source_handle": "209",
+          "source_name": "befestigung durchführungen_Blatt_ANSICHT4",
+          "dxf_name": "befestigung durchführungen_Blatt_ANSICHT4"
+        },
+        {
+          "source_handle": "215",
+          "source_name": "*I",
+          "dxf_name": "*I13"
+        },
+        {
+          "source_handle": "219",
+          "source_name": "befestigung durchführungen_Blatt_ANSICHT5",
+          "dxf_name": "befestigung durchführungen_Blatt_ANSICHT5"
+        },
+        {
+          "source_handle": "223",
+          "source_name": "*I",
+          "dxf_name": "*I15"
+        },
+        {
+          "source_handle": "227",
+          "source_name": "befestigung durchführungen_Blatt_ANSICHT6",
+          "dxf_name": "befestigung durchführungen_Blatt_ANSICHT6"
+        },
+        {
+          "source_handle": "237",
+          "source_name": "*I",
+          "dxf_name": "*I17"
+        },
+        {
+          "source_handle": "249",
+          "source_name": "*I",
+          "dxf_name": "*I18"
+        },
+        {
+          "source_handle": "25B",
+          "source_name": "*I",
+          "dxf_name": "*I19"
+        },
+        {
+          "source_handle": "26D",
+          "source_name": "*I",
+          "dxf_name": "*I20"
+        },
+        {
+          "source_handle": "27F",
+          "source_name": "*I",
+          "dxf_name": "*I21"
+        },
+        {
+          "source_handle": "291",
+          "source_name": "*I",
+          "dxf_name": "*I22"
+        },
+        {
+          "source_handle": "2A3",
+          "source_name": "*I",
+          "dxf_name": "*I23"
+        },
+        {
+          "source_handle": "2B5",
+          "source_name": "*I",
+          "dxf_name": "*I24"
+        },
+        {
+          "source_handle": "2C1",
+          "source_name": "*I",
+          "dxf_name": "*I25"
+        },
+        {
+          "source_handle": "2D2",
+          "source_name": "*I",
+          "dxf_name": "*I26"
+        }
+      ],
+      "omitted_blocks": [
+        {
+          "source_handle": "D3",
+          "source_name": "*I",
+          "member_handles": [
+            "D7",
+            "D8",
+            "D9",
+            "DA",
+            "DB",
+            "DC",
+            "DD",
+            "DE",
+            "DF",
+            "E0",
+            "E1",
+            "E2",
+            "E3",
+            "E4",
+            "E5",
+            "E6",
+            "E7",
+            "E8",
+            "E9",
+            "EA",
+            "EB",
+            "EC",
+            "ED",
+            "EE",
+            "EF",
+            "F0",
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F5",
+            "F6",
+            "F7",
+            "F8",
+            "F9",
+            "FA",
+            "FB"
+          ],
+          "boundary_handles": [
+            "D4",
+            "D5"
+          ],
+          "entity_counts_including_boundaries": {
+            "BLOCK": 1,
+            "ENDBLK": 1,
+            "LWPOLYLINE": 17,
+            "MTEXT": 20
+          },
+          "content_sha256": "cb055627ce51c5c7c9b8422121f86956c47f787a0b0be40a27f971733051ef34",
+          "mtext_labels": [
+            {
+              "handle": "E4",
+              "text": "D"
+            },
+            {
+              "handle": "E5",
+              "text": "D"
+            },
+            {
+              "handle": "E6",
+              "text": "C"
+            },
+            {
+              "handle": "E7",
+              "text": "C"
+            },
+            {
+              "handle": "E8",
+              "text": "B"
+            },
+            {
+              "handle": "E9",
+              "text": "B"
+            },
+            {
+              "handle": "EA",
+              "text": "A"
+            },
+            {
+              "handle": "EB",
+              "text": "A"
+            },
+            {
+              "handle": "EC",
+              "text": "6"
+            },
+            {
+              "handle": "ED",
+              "text": "6"
+            },
+            {
+              "handle": "EE",
+              "text": "5"
+            },
+            {
+              "handle": "EF",
+              "text": "5"
+            },
+            {
+              "handle": "F4",
+              "text": "4"
+            },
+            {
+              "handle": "F5",
+              "text": "4"
+            },
+            {
+              "handle": "F6",
+              "text": "3"
+            },
+            {
+              "handle": "F7",
+              "text": "3"
+            },
+            {
+              "handle": "F8",
+              "text": "2"
+            },
+            {
+              "handle": "F9",
+              "text": "2"
+            },
+            {
+              "handle": "FA",
+              "text": "1"
+            },
+            {
+              "handle": "FB",
+              "text": "1"
+            }
+          ],
+          "insert_backlinks": [
+            {
+              "handle": "D6",
+              "present_in_source_graph": false
+            }
+          ],
+          "explicit_source_insert_handles": []
+        },
+        {
+          "source_handle": "FC",
+          "source_name": "*I",
+          "member_handles": [
+            "100",
+            "101",
+            "102",
+            "103",
+            "104",
+            "105",
+            "106",
+            "107",
+            "108",
+            "109",
+            "10A",
+            "10B",
+            "10C",
+            "10D",
+            "10E",
+            "10F",
+            "110",
+            "111",
+            "112",
+            "113",
+            "114",
+            "115",
+            "116",
+            "14F"
+          ],
+          "boundary_handles": [
+            "FD",
+            "FE"
+          ],
+          "entity_counts_including_boundaries": {
+            "BLOCK": 1,
+            "ENDBLK": 1,
+            "LINE": 14,
+            "MTEXT": 10
+          },
+          "content_sha256": "9c13f174c740e6bc05f6b95d6649a1dccaf08afdb78ab59df03489a607331544",
+          "mtext_labels": [
+            {
+              "handle": "10E",
+              "text": "Blatt"
+            },
+            {
+              "handle": "10F",
+              "text": "Ausgabe"
+            },
+            {
+              "handle": "110",
+              "text": "1 / 1 "
+            },
+            {
+              "handle": "111",
+              "text": "Datum"
+            },
+            {
+              "handle": "112",
+              "text": "Genehmigt von"
+            },
+            {
+              "handle": "113",
+              "text": "Kontrolliert von"
+            },
+            {
+              "handle": "114",
+              "text": "Konstruiert von"
+            },
+            {
+              "handle": "115",
+              "text": "2/11/2020"
+            },
+            {
+              "handle": "116",
+              "text": "ISO"
+            },
+            {
+              "handle": "14F",
+              "text": "Datum"
+            }
+          ],
+          "insert_backlinks": [
+            {
+              "handle": "FF",
+              "present_in_source_graph": false
+            }
+          ],
+          "explicit_source_insert_handles": []
+        }
+      ],
+      "accounted_entity_deficit": {
+        "BLOCK": 2,
+        "ENDBLK": 2,
+        "LINE": 14,
+        "LWPOLYLINE": 17,
+        "MTEXT": 30
+      },
+      "reference_limit": "Backlinks and explicit INSERTs checked in decoded graph only; opaque Inventor proxy references and rendered visibility unverified"
+    },
+    {
+      "design_id": "SHG-010",
+      "source_json_sha256": "b189a6e2ebc9da56ee6b712903b41925e8df6e0c1f47dfa861a7818e7ed63a86",
+      "dxf_sha256": "42a1bc918a1f8b16bf60760e3e5204697b3736e95e3e44b45de67a975893fe87",
+      "inspection_sha256": "544b1fae3ba8e34c8df3c8ee058597e6106e62037c29dad96b205200182823d7",
+      "matches_full_reported_deficit": true,
+      "block_name_mapping": [
+        {
+          "source_handle": "70",
+          "source_name": "*Model_Space",
+          "dxf_name": "*Model_Space"
+        },
+        {
+          "source_handle": "A7",
+          "source_name": "Filled-1",
+          "dxf_name": "Filled-1"
+        },
+        {
+          "source_handle": "D3",
+          "source_name": "*I",
+          "dxf_name": null
+        },
+        {
+          "source_handle": "FC",
+          "source_name": "*I",
+          "dxf_name": null
+        },
+        {
+          "source_handle": "184",
+          "source_name": "*Paper_Space",
+          "dxf_name": "*Paper_Space"
+        },
+        {
+          "source_handle": "190",
+          "source_name": "*I",
+          "dxf_name": "*I3"
+        },
+        {
+          "source_handle": "1B9",
+          "source_name": "*I",
+          "dxf_name": "*I4"
+        },
+        {
+          "source_handle": "1D8",
+          "source_name": "*I",
+          "dxf_name": "*I5"
+        },
+        {
+          "source_handle": "1DC",
+          "source_name": "diff_pd_adapter_post_Blatt_ANSICHT1",
+          "dxf_name": "diff_pd_adapter_post_Blatt_ANSICHT1"
+        },
+        {
+          "source_handle": "1F4",
+          "source_name": "*I",
+          "dxf_name": "*I7"
+        },
+        {
+          "source_handle": "1F8",
+          "source_name": "diff_pd_adapter_post_Blatt_ANSICHT2",
+          "dxf_name": "diff_pd_adapter_post_Blatt_ANSICHT2"
+        },
+        {
+          "source_handle": "20B",
+          "source_name": "*I",
+          "dxf_name": "*I9"
+        },
+        {
+          "source_handle": "20F",
+          "source_name": "diff_pd_adapter_post_Blatt_ANSICHT3",
+          "dxf_name": "diff_pd_adapter_post_Blatt_ANSICHT3"
+        },
+        {
+          "source_handle": "222",
+          "source_name": "*I",
+          "dxf_name": "*I11"
+        },
+        {
+          "source_handle": "226",
+          "source_name": "diff_pd_adapter_post_Blatt_ANSICHT4",
+          "dxf_name": "diff_pd_adapter_post_Blatt_ANSICHT4"
+        },
+        {
+          "source_handle": "242",
+          "source_name": "*I",
+          "dxf_name": "*I13"
+        },
+        {
+          "source_handle": "246",
+          "source_name": "diff_pd_adapter_post_Blatt_ANSICHT5",
+          "dxf_name": "diff_pd_adapter_post_Blatt_ANSICHT5"
+        },
+        {
+          "source_handle": "262",
+          "source_name": "*I",
+          "dxf_name": "*I15"
+        },
+        {
+          "source_handle": "266",
+          "source_name": "diff_pd_adapter_post_Blatt_ANSICHT6",
+          "dxf_name": "diff_pd_adapter_post_Blatt_ANSICHT6"
+        },
+        {
+          "source_handle": "276",
+          "source_name": "*I",
+          "dxf_name": "*I17"
+        },
+        {
+          "source_handle": "27E",
+          "source_name": "*I",
+          "dxf_name": "*I18"
+        },
+        {
+          "source_handle": "290",
+          "source_name": "*I",
+          "dxf_name": "*I19"
+        },
+        {
+          "source_handle": "2A2",
+          "source_name": "*I",
+          "dxf_name": "*I20"
+        },
+        {
+          "source_handle": "2B4",
+          "source_name": "*I",
+          "dxf_name": "*I21"
+        },
+        {
+          "source_handle": "2C6",
+          "source_name": "*I",
+          "dxf_name": "*I22"
+        },
+        {
+          "source_handle": "2D8",
+          "source_name": "*I",
+          "dxf_name": "*I23"
+        },
+        {
+          "source_handle": "2E9",
+          "source_name": "*I",
+          "dxf_name": "*I24"
+        },
+        {
+          "source_handle": "2FA",
+          "source_name": "*I",
+          "dxf_name": "*I25"
+        },
+        {
+          "source_handle": "30D",
+          "source_name": "*I",
+          "dxf_name": "*I26"
+        },
+        {
+          "source_handle": "321",
+          "source_name": "*I",
+          "dxf_name": "*I27"
+        },
+        {
+          "source_handle": "335",
+          "source_name": "*I",
+          "dxf_name": "*I28"
+        },
+        {
+          "source_handle": "349",
+          "source_name": "*I",
+          "dxf_name": "*I29"
+        }
+      ],
+      "omitted_blocks": [
+        {
+          "source_handle": "D3",
+          "source_name": "*I",
+          "member_handles": [
+            "D7",
+            "D8",
+            "D9",
+            "DA",
+            "DB",
+            "DC",
+            "DD",
+            "DE",
+            "DF",
+            "E0",
+            "E1",
+            "E2",
+            "E3",
+            "E4",
+            "E5",
+            "E6",
+            "E7",
+            "E8",
+            "E9",
+            "EA",
+            "EB",
+            "EC",
+            "ED",
+            "EE",
+            "EF",
+            "F0",
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F5",
+            "F6",
+            "F7",
+            "F8",
+            "F9",
+            "FA",
+            "FB"
+          ],
+          "boundary_handles": [
+            "D4",
+            "D5"
+          ],
+          "entity_counts_including_boundaries": {
+            "BLOCK": 1,
+            "ENDBLK": 1,
+            "LWPOLYLINE": 17,
+            "MTEXT": 20
+          },
+          "content_sha256": "cb055627ce51c5c7c9b8422121f86956c47f787a0b0be40a27f971733051ef34",
+          "mtext_labels": [
+            {
+              "handle": "E4",
+              "text": "D"
+            },
+            {
+              "handle": "E5",
+              "text": "D"
+            },
+            {
+              "handle": "E6",
+              "text": "C"
+            },
+            {
+              "handle": "E7",
+              "text": "C"
+            },
+            {
+              "handle": "E8",
+              "text": "B"
+            },
+            {
+              "handle": "E9",
+              "text": "B"
+            },
+            {
+              "handle": "EA",
+              "text": "A"
+            },
+            {
+              "handle": "EB",
+              "text": "A"
+            },
+            {
+              "handle": "EC",
+              "text": "6"
+            },
+            {
+              "handle": "ED",
+              "text": "6"
+            },
+            {
+              "handle": "EE",
+              "text": "5"
+            },
+            {
+              "handle": "EF",
+              "text": "5"
+            },
+            {
+              "handle": "F4",
+              "text": "4"
+            },
+            {
+              "handle": "F5",
+              "text": "4"
+            },
+            {
+              "handle": "F6",
+              "text": "3"
+            },
+            {
+              "handle": "F7",
+              "text": "3"
+            },
+            {
+              "handle": "F8",
+              "text": "2"
+            },
+            {
+              "handle": "F9",
+              "text": "2"
+            },
+            {
+              "handle": "FA",
+              "text": "1"
+            },
+            {
+              "handle": "FB",
+              "text": "1"
+            }
+          ],
+          "insert_backlinks": [
+            {
+              "handle": "D6",
+              "present_in_source_graph": false
+            }
+          ],
+          "explicit_source_insert_handles": []
+        },
+        {
+          "source_handle": "FC",
+          "source_name": "*I",
+          "member_handles": [
+            "100",
+            "101",
+            "102",
+            "103",
+            "104",
+            "105",
+            "106",
+            "107",
+            "108",
+            "109",
+            "10A",
+            "10B",
+            "10C",
+            "10D",
+            "10E",
+            "10F",
+            "110",
+            "111",
+            "112",
+            "113",
+            "114",
+            "115",
+            "116",
+            "14F"
+          ],
+          "boundary_handles": [
+            "FD",
+            "FE"
+          ],
+          "entity_counts_including_boundaries": {
+            "BLOCK": 1,
+            "ENDBLK": 1,
+            "LINE": 14,
+            "MTEXT": 10
+          },
+          "content_sha256": "9c13f174c740e6bc05f6b95d6649a1dccaf08afdb78ab59df03489a607331544",
+          "mtext_labels": [
+            {
+              "handle": "10E",
+              "text": "Blatt"
+            },
+            {
+              "handle": "10F",
+              "text": "Ausgabe"
+            },
+            {
+              "handle": "110",
+              "text": "1 / 1 "
+            },
+            {
+              "handle": "111",
+              "text": "Datum"
+            },
+            {
+              "handle": "112",
+              "text": "Genehmigt von"
+            },
+            {
+              "handle": "113",
+              "text": "Kontrolliert von"
+            },
+            {
+              "handle": "114",
+              "text": "Konstruiert von"
+            },
+            {
+              "handle": "115",
+              "text": "2/11/2020"
+            },
+            {
+              "handle": "116",
+              "text": "ISO"
+            },
+            {
+              "handle": "14F",
+              "text": "Datum"
+            }
+          ],
+          "insert_backlinks": [
+            {
+              "handle": "FF",
+              "present_in_source_graph": false
+            }
+          ],
+          "explicit_source_insert_handles": []
+        }
+      ],
+      "accounted_entity_deficit": {
+        "BLOCK": 2,
+        "ENDBLK": 2,
+        "LINE": 14,
+        "LWPOLYLINE": 17,
+        "MTEXT": 30
+      },
+      "reference_limit": "Backlinks and explicit INSERTs checked in decoded graph only; opaque Inventor proxy references and rendered visibility unverified"
+    },
+    {
+      "design_id": "SHG-012",
+      "source_json_sha256": "594f477823670fa2bae3435b238b792e52b9baf8ce0a72a907260a0f8dccd003",
+      "dxf_sha256": "3497dc74f005eb7de87063e3c234338e233c8b25d6cec67f176b317987cd7b8c",
+      "inspection_sha256": "8640738f80431fc2185bb17db179b2a463d6d916750374069bf30359ac62bf31",
+      "matches_full_reported_deficit": true,
+      "block_name_mapping": [
+        {
+          "source_handle": "70",
+          "source_name": "*Model_Space",
+          "dxf_name": "*Model_Space"
+        },
+        {
+          "source_handle": "A7",
+          "source_name": "Filled-1",
+          "dxf_name": "Filled-1"
+        },
+        {
+          "source_handle": "D3",
+          "source_name": "*I",
+          "dxf_name": null
+        },
+        {
+          "source_handle": "FC",
+          "source_name": "*I",
+          "dxf_name": null
+        },
+        {
+          "source_handle": "184",
+          "source_name": "*Paper_Space",
+          "dxf_name": "*Paper_Space"
+        },
+        {
+          "source_handle": "190",
+          "source_name": "*I",
+          "dxf_name": "*I3"
+        },
+        {
+          "source_handle": "1B9",
+          "source_name": "*I",
+          "dxf_name": "*I4"
+        },
+        {
+          "source_handle": "1D8",
+          "source_name": "*I",
+          "dxf_name": "*I5"
+        },
+        {
+          "source_handle": "1DC",
+          "source_name": "fehlerast_bbo_Blatt_ANSICHT1",
+          "dxf_name": "fehlerast_bbo_Blatt_ANSICHT1"
+        },
+        {
+          "source_handle": "20F",
+          "source_name": "*I",
+          "dxf_name": "*I7"
+        },
+        {
+          "source_handle": "213",
+          "source_name": "fehlerast_bbo_Blatt_ANSICHT2",
+          "dxf_name": "fehlerast_bbo_Blatt_ANSICHT2"
+        },
+        {
+          "source_handle": "221",
+          "source_name": "*I",
+          "dxf_name": "*I9"
+        },
+        {
+          "source_handle": "225",
+          "source_name": "fehlerast_bbo_Blatt_ANSICHT3",
+          "dxf_name": "fehlerast_bbo_Blatt_ANSICHT3"
+        },
+        {
+          "source_handle": "231",
+          "source_name": "*I",
+          "dxf_name": "*I11"
+        },
+        {
+          "source_handle": "243",
+          "source_name": "*I",
+          "dxf_name": "*I12"
+        },
+        {
+          "source_handle": "255",
+          "source_name": "*I",
+          "dxf_name": "*I13"
+        },
+        {
+          "source_handle": "267",
+          "source_name": "*I",
+          "dxf_name": "*I14"
+        },
+        {
+          "source_handle": "27A",
+          "source_name": "*I",
+          "dxf_name": "*I15"
+        },
+        {
+          "source_handle": "28C",
+          "source_name": "*I",
+          "dxf_name": "*I16"
+        }
+      ],
+      "omitted_blocks": [
+        {
+          "source_handle": "D3",
+          "source_name": "*I",
+          "member_handles": [
+            "D7",
+            "D8",
+            "D9",
+            "DA",
+            "DB",
+            "DC",
+            "DD",
+            "DE",
+            "DF",
+            "E0",
+            "E1",
+            "E2",
+            "E3",
+            "E4",
+            "E5",
+            "E6",
+            "E7",
+            "E8",
+            "E9",
+            "EA",
+            "EB",
+            "EC",
+            "ED",
+            "EE",
+            "EF",
+            "F0",
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F5",
+            "F6",
+            "F7",
+            "F8",
+            "F9",
+            "FA",
+            "FB"
+          ],
+          "boundary_handles": [
+            "D4",
+            "D5"
+          ],
+          "entity_counts_including_boundaries": {
+            "BLOCK": 1,
+            "ENDBLK": 1,
+            "LWPOLYLINE": 17,
+            "MTEXT": 20
+          },
+          "content_sha256": "cb055627ce51c5c7c9b8422121f86956c47f787a0b0be40a27f971733051ef34",
+          "mtext_labels": [
+            {
+              "handle": "E4",
+              "text": "D"
+            },
+            {
+              "handle": "E5",
+              "text": "D"
+            },
+            {
+              "handle": "E6",
+              "text": "C"
+            },
+            {
+              "handle": "E7",
+              "text": "C"
+            },
+            {
+              "handle": "E8",
+              "text": "B"
+            },
+            {
+              "handle": "E9",
+              "text": "B"
+            },
+            {
+              "handle": "EA",
+              "text": "A"
+            },
+            {
+              "handle": "EB",
+              "text": "A"
+            },
+            {
+              "handle": "EC",
+              "text": "6"
+            },
+            {
+              "handle": "ED",
+              "text": "6"
+            },
+            {
+              "handle": "EE",
+              "text": "5"
+            },
+            {
+              "handle": "EF",
+              "text": "5"
+            },
+            {
+              "handle": "F4",
+              "text": "4"
+            },
+            {
+              "handle": "F5",
+              "text": "4"
+            },
+            {
+              "handle": "F6",
+              "text": "3"
+            },
+            {
+              "handle": "F7",
+              "text": "3"
+            },
+            {
+              "handle": "F8",
+              "text": "2"
+            },
+            {
+              "handle": "F9",
+              "text": "2"
+            },
+            {
+              "handle": "FA",
+              "text": "1"
+            },
+            {
+              "handle": "FB",
+              "text": "1"
+            }
+          ],
+          "insert_backlinks": [
+            {
+              "handle": "D6",
+              "present_in_source_graph": false
+            }
+          ],
+          "explicit_source_insert_handles": []
+        },
+        {
+          "source_handle": "FC",
+          "source_name": "*I",
+          "member_handles": [
+            "100",
+            "101",
+            "102",
+            "103",
+            "104",
+            "105",
+            "106",
+            "107",
+            "108",
+            "109",
+            "10A",
+            "10B",
+            "10C",
+            "10D",
+            "10E",
+            "10F",
+            "110",
+            "111",
+            "112",
+            "113",
+            "114",
+            "115",
+            "116",
+            "14F"
+          ],
+          "boundary_handles": [
+            "FD",
+            "FE"
+          ],
+          "entity_counts_including_boundaries": {
+            "BLOCK": 1,
+            "ENDBLK": 1,
+            "LINE": 14,
+            "MTEXT": 10
+          },
+          "content_sha256": "9c13f174c740e6bc05f6b95d6649a1dccaf08afdb78ab59df03489a607331544",
+          "mtext_labels": [
+            {
+              "handle": "10E",
+              "text": "Blatt"
+            },
+            {
+              "handle": "10F",
+              "text": "Ausgabe"
+            },
+            {
+              "handle": "110",
+              "text": "1 / 1 "
+            },
+            {
+              "handle": "111",
+              "text": "Datum"
+            },
+            {
+              "handle": "112",
+              "text": "Genehmigt von"
+            },
+            {
+              "handle": "113",
+              "text": "Kontrolliert von"
+            },
+            {
+              "handle": "114",
+              "text": "Konstruiert von"
+            },
+            {
+              "handle": "115",
+              "text": "2/11/2020"
+            },
+            {
+              "handle": "116",
+              "text": "ISO"
+            },
+            {
+              "handle": "14F",
+              "text": "Datum"
+            }
+          ],
+          "insert_backlinks": [
+            {
+              "handle": "FF",
+              "present_in_source_graph": false
+            }
+          ],
+          "explicit_source_insert_handles": []
+        }
+      ],
+      "accounted_entity_deficit": {
+        "BLOCK": 2,
+        "ENDBLK": 2,
+        "LINE": 14,
+        "LWPOLYLINE": 17,
+        "MTEXT": 30
+      },
+      "reference_limit": "Backlinks and explicit INSERTs checked in decoded graph only; opaque Inventor proxy references and rendered visibility unverified"
+    },
+    {
+      "design_id": "SHG-016",
+      "source_json_sha256": "2277bd68358eeca91808c1cf41e757584bbf01ca74c9c8329121d1e2dfb9061e",
+      "dxf_sha256": "7f4929525db0e963888526ab55bd176006384e62fb30fed8fb81b7987767e91c",
+      "inspection_sha256": "64ad54eddf17a5fe30f0e02b944aaf5165251237e592708e0d2148825945d0f1",
+      "matches_full_reported_deficit": true,
+      "block_name_mapping": [
+        {
+          "source_handle": "70",
+          "source_name": "*Model_Space",
+          "dxf_name": "*Model_Space"
+        },
+        {
+          "source_handle": "A7",
+          "source_name": "Filled-1",
+          "dxf_name": "Filled-1"
+        },
+        {
+          "source_handle": "D3",
+          "source_name": "*I",
+          "dxf_name": null
+        },
+        {
+          "source_handle": "FC",
+          "source_name": "*I",
+          "dxf_name": null
+        },
+        {
+          "source_handle": "184",
+          "source_name": "*Paper_Space",
+          "dxf_name": "*Paper_Space"
+        },
+        {
+          "source_handle": "190",
+          "source_name": "*I",
+          "dxf_name": "*I3"
+        },
+        {
+          "source_handle": "1B9",
+          "source_name": "*I",
+          "dxf_name": "*I4"
+        },
+        {
+          "source_handle": "1D8",
+          "source_name": "*I",
+          "dxf_name": "*I5"
+        },
+        {
+          "source_handle": "1DC",
+          "source_name": "flir_adapter_Blatt_ANSICHT1",
+          "dxf_name": "flir_adapter_Blatt_ANSICHT1"
+        },
+        {
+          "source_handle": "1F8",
+          "source_name": "*I",
+          "dxf_name": "*I7"
+        },
+        {
+          "source_handle": "1FC",
+          "source_name": "flir_adapter_Blatt_ANSICHT2",
+          "dxf_name": "flir_adapter_Blatt_ANSICHT2"
+        },
+        {
+          "source_handle": "215",
+          "source_name": "*I",
+          "dxf_name": "*I9"
+        },
+        {
+          "source_handle": "219",
+          "source_name": "flir_adapter_Blatt_ANSICHT3",
+          "dxf_name": "flir_adapter_Blatt_ANSICHT3"
+        },
+        {
+          "source_handle": "232",
+          "source_name": "*I",
+          "dxf_name": "*I11"
+        },
+        {
+          "source_handle": "236",
+          "source_name": "flir_adapter_Blatt_ANSICHT4",
+          "dxf_name": "flir_adapter_Blatt_ANSICHT4"
+        },
+        {
+          "source_handle": "25B",
+          "source_name": "*I",
+          "dxf_name": "*I13"
+        },
+        {
+          "source_handle": "25F",
+          "source_name": "flir_adapter_Blatt_ANSICHT5",
+          "dxf_name": "flir_adapter_Blatt_ANSICHT5"
+        },
+        {
+          "source_handle": "284",
+          "source_name": "*I",
+          "dxf_name": "*I15"
+        },
+        {
+          "source_handle": "288",
+          "source_name": "flir_adapter_Blatt_ANSICHT6",
+          "dxf_name": "flir_adapter_Blatt_ANSICHT6"
+        },
+        {
+          "source_handle": "2A9",
+          "source_name": "*I",
+          "dxf_name": "*I17"
+        },
+        {
+          "source_handle": "2BB",
+          "source_name": "*I",
+          "dxf_name": "*I18"
+        },
+        {
+          "source_handle": "2CD",
+          "source_name": "*I",
+          "dxf_name": "*I19"
+        },
+        {
+          "source_handle": "2E1",
+          "source_name": "*I",
+          "dxf_name": "*I20"
+        },
+        {
+          "source_handle": "2F4",
+          "source_name": "*I",
+          "dxf_name": "*I21"
+        },
+        {
+          "source_handle": "307",
+          "source_name": "*I",
+          "dxf_name": "*I22"
+        },
+        {
+          "source_handle": "319",
+          "source_name": "*I",
+          "dxf_name": "*I23"
+        },
+        {
+          "source_handle": "32C",
+          "source_name": "*I",
+          "dxf_name": "*I24"
+        },
+        {
+          "source_handle": "340",
+          "source_name": "*I",
+          "dxf_name": "*I25"
+        },
+        {
+          "source_handle": "353",
+          "source_name": "*I",
+          "dxf_name": "*I26"
+        },
+        {
+          "source_handle": "366",
+          "source_name": "*I",
+          "dxf_name": "*I27"
+        },
+        {
+          "source_handle": "37C",
+          "source_name": "*I",
+          "dxf_name": "*I28"
+        },
+        {
+          "source_handle": "390",
+          "source_name": "*I",
+          "dxf_name": "*I29"
+        },
+        {
+          "source_handle": "3A4",
+          "source_name": "*I",
+          "dxf_name": "*I30"
+        },
+        {
+          "source_handle": "3BA",
+          "source_name": "*I",
+          "dxf_name": "*I31"
+        },
+        {
+          "source_handle": "3D0",
+          "source_name": "*I",
+          "dxf_name": "*I32"
+        },
+        {
+          "source_handle": "3D8",
+          "source_name": "*I",
+          "dxf_name": "*I33"
+        }
+      ],
+      "omitted_blocks": [
+        {
+          "source_handle": "D3",
+          "source_name": "*I",
+          "member_handles": [
+            "D7",
+            "D8",
+            "D9",
+            "DA",
+            "DB",
+            "DC",
+            "DD",
+            "DE",
+            "DF",
+            "E0",
+            "E1",
+            "E2",
+            "E3",
+            "E4",
+            "E5",
+            "E6",
+            "E7",
+            "E8",
+            "E9",
+            "EA",
+            "EB",
+            "EC",
+            "ED",
+            "EE",
+            "EF",
+            "F0",
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F5",
+            "F6",
+            "F7",
+            "F8",
+            "F9",
+            "FA",
+            "FB"
+          ],
+          "boundary_handles": [
+            "D4",
+            "D5"
+          ],
+          "entity_counts_including_boundaries": {
+            "BLOCK": 1,
+            "ENDBLK": 1,
+            "LWPOLYLINE": 17,
+            "MTEXT": 20
+          },
+          "content_sha256": "cb055627ce51c5c7c9b8422121f86956c47f787a0b0be40a27f971733051ef34",
+          "mtext_labels": [
+            {
+              "handle": "E4",
+              "text": "D"
+            },
+            {
+              "handle": "E5",
+              "text": "D"
+            },
+            {
+              "handle": "E6",
+              "text": "C"
+            },
+            {
+              "handle": "E7",
+              "text": "C"
+            },
+            {
+              "handle": "E8",
+              "text": "B"
+            },
+            {
+              "handle": "E9",
+              "text": "B"
+            },
+            {
+              "handle": "EA",
+              "text": "A"
+            },
+            {
+              "handle": "EB",
+              "text": "A"
+            },
+            {
+              "handle": "EC",
+              "text": "6"
+            },
+            {
+              "handle": "ED",
+              "text": "6"
+            },
+            {
+              "handle": "EE",
+              "text": "5"
+            },
+            {
+              "handle": "EF",
+              "text": "5"
+            },
+            {
+              "handle": "F4",
+              "text": "4"
+            },
+            {
+              "handle": "F5",
+              "text": "4"
+            },
+            {
+              "handle": "F6",
+              "text": "3"
+            },
+            {
+              "handle": "F7",
+              "text": "3"
+            },
+            {
+              "handle": "F8",
+              "text": "2"
+            },
+            {
+              "handle": "F9",
+              "text": "2"
+            },
+            {
+              "handle": "FA",
+              "text": "1"
+            },
+            {
+              "handle": "FB",
+              "text": "1"
+            }
+          ],
+          "insert_backlinks": [
+            {
+              "handle": "D6",
+              "present_in_source_graph": false
+            }
+          ],
+          "explicit_source_insert_handles": []
+        },
+        {
+          "source_handle": "FC",
+          "source_name": "*I",
+          "member_handles": [
+            "100",
+            "101",
+            "102",
+            "103",
+            "104",
+            "105",
+            "106",
+            "107",
+            "108",
+            "109",
+            "10A",
+            "10B",
+            "10C",
+            "10D",
+            "10E",
+            "10F",
+            "110",
+            "111",
+            "112",
+            "113",
+            "114",
+            "115",
+            "116",
+            "14F"
+          ],
+          "boundary_handles": [
+            "FD",
+            "FE"
+          ],
+          "entity_counts_including_boundaries": {
+            "BLOCK": 1,
+            "ENDBLK": 1,
+            "LINE": 14,
+            "MTEXT": 10
+          },
+          "content_sha256": "9c13f174c740e6bc05f6b95d6649a1dccaf08afdb78ab59df03489a607331544",
+          "mtext_labels": [
+            {
+              "handle": "10E",
+              "text": "Blatt"
+            },
+            {
+              "handle": "10F",
+              "text": "Ausgabe"
+            },
+            {
+              "handle": "110",
+              "text": "1 / 1 "
+            },
+            {
+              "handle": "111",
+              "text": "Datum"
+            },
+            {
+              "handle": "112",
+              "text": "Genehmigt von"
+            },
+            {
+              "handle": "113",
+              "text": "Kontrolliert von"
+            },
+            {
+              "handle": "114",
+              "text": "Konstruiert von"
+            },
+            {
+              "handle": "115",
+              "text": "2/11/2020"
+            },
+            {
+              "handle": "116",
+              "text": "ISO"
+            },
+            {
+              "handle": "14F",
+              "text": "Datum"
+            }
+          ],
+          "insert_backlinks": [
+            {
+              "handle": "FF",
+              "present_in_source_graph": false
+            }
+          ],
+          "explicit_source_insert_handles": []
+        }
+      ],
+      "accounted_entity_deficit": {
+        "BLOCK": 2,
+        "ENDBLK": 2,
+        "LINE": 14,
+        "LWPOLYLINE": 17,
+        "MTEXT": 30
+      },
+      "reference_limit": "Backlinks and explicit INSERTs checked in decoded graph only; opaque Inventor proxy references and rendered visibility unverified"
+    },
+    {
+      "design_id": "SHG-022",
+      "source_json_sha256": "15860207ea386e264891bb71c2b7aed51133d934350f8618b24f5994ced976a8",
+      "dxf_sha256": "a2b0cc695a98ff535d7671c37a1b8cdcac23d2f21e4ac0a94d53ef5335ec0109",
+      "inspection_sha256": "0a2053b2de75132566b554f00c3b837ba5e7b4b9944a4f9485d6d0f57fcde5d7",
+      "matches_full_reported_deficit": true,
+      "block_name_mapping": [
+        {
+          "source_handle": "70",
+          "source_name": "*Model_Space",
+          "dxf_name": "*Model_Space"
+        },
+        {
+          "source_handle": "A7",
+          "source_name": "Filled-1",
+          "dxf_name": "Filled-1"
+        },
+        {
+          "source_handle": "D3",
+          "source_name": "*I",
+          "dxf_name": null
+        },
+        {
+          "source_handle": "FC",
+          "source_name": "*I",
+          "dxf_name": null
+        },
+        {
+          "source_handle": "184",
+          "source_name": "*Paper_Space",
+          "dxf_name": "*Paper_Space"
+        },
+        {
+          "source_handle": "192",
+          "source_name": "*I",
+          "dxf_name": "*I3"
+        },
+        {
+          "source_handle": "199",
+          "source_name": "lenstube_mount_Blatt_ANSICHT2",
+          "dxf_name": "lenstube_mount_Blatt_ANSICHT2"
+        },
+        {
+          "source_handle": "1C5",
+          "source_name": "*I",
+          "dxf_name": "*I5"
+        },
+        {
+          "source_handle": "1EE",
+          "source_name": "*I",
+          "dxf_name": "*I6"
+        },
+        {
+          "source_handle": "20D",
+          "source_name": "*I",
+          "dxf_name": "*I7"
+        },
+        {
+          "source_handle": "211",
+          "source_name": "lenstube_mount_Blatt_ANSICHT1",
+          "dxf_name": "lenstube_mount_Blatt_ANSICHT1"
+        },
+        {
+          "source_handle": "23C",
+          "source_name": "*I",
+          "dxf_name": "*I9"
+        },
+        {
+          "source_handle": "240",
+          "source_name": "lenstube_mount_Blatt_ANSICHT3",
+          "dxf_name": "lenstube_mount_Blatt_ANSICHT3"
+        },
+        {
+          "source_handle": "266",
+          "source_name": "*I",
+          "dxf_name": "*I11"
+        },
+        {
+          "source_handle": "26A",
+          "source_name": "lenstube_mount_Blatt_ANSICHT4",
+          "dxf_name": "lenstube_mount_Blatt_ANSICHT4"
+        },
+        {
+          "source_handle": "28F",
+          "source_name": "*I",
+          "dxf_name": "*I13"
+        },
+        {
+          "source_handle": "293",
+          "source_name": "lenstube_mount_Blatt_ANSICHT5",
+          "dxf_name": "lenstube_mount_Blatt_ANSICHT5"
+        },
+        {
+          "source_handle": "2BE",
+          "source_name": "*I",
+          "dxf_name": "*I15"
+        },
+        {
+          "source_handle": "2C2",
+          "source_name": "lenstube_mount_Blatt_ANSICHT6",
+          "dxf_name": "lenstube_mount_Blatt_ANSICHT6"
+        },
+        {
+          "source_handle": "2EA",
+          "source_name": "*I",
+          "dxf_name": "*I17"
+        },
+        {
+          "source_handle": "2FC",
+          "source_name": "*I",
+          "dxf_name": "*I18"
+        },
+        {
+          "source_handle": "30E",
+          "source_name": "*I",
+          "dxf_name": "*I19"
+        },
+        {
+          "source_handle": "324",
+          "source_name": "*I",
+          "dxf_name": "*I20"
+        },
+        {
+          "source_handle": "332",
+          "source_name": "*I",
+          "dxf_name": "*I21"
+        },
+        {
+          "source_handle": "345",
+          "source_name": "*I",
+          "dxf_name": "*I22"
+        },
+        {
+          "source_handle": "35B",
+          "source_name": "*I",
+          "dxf_name": "*I23"
+        },
+        {
+          "source_handle": "372",
+          "source_name": "*I",
+          "dxf_name": "*I24"
+        },
+        {
+          "source_handle": "38B",
+          "source_name": "*I",
+          "dxf_name": "*I25"
+        },
+        {
+          "source_handle": "397",
+          "source_name": "*I",
+          "dxf_name": "*I26"
+        },
+        {
+          "source_handle": "3AA",
+          "source_name": "*I",
+          "dxf_name": "*I27"
+        },
+        {
+          "source_handle": "3BD",
+          "source_name": "*I",
+          "dxf_name": "*I28"
+        },
+        {
+          "source_handle": "3D2",
+          "source_name": "*I",
+          "dxf_name": "*I29"
+        },
+        {
+          "source_handle": "3E4",
+          "source_name": "*I",
+          "dxf_name": "*I30"
+        },
+        {
+          "source_handle": "3F9",
+          "source_name": "*I",
+          "dxf_name": "*I31"
+        },
+        {
+          "source_handle": "406",
+          "source_name": "*I",
+          "dxf_name": "*I32"
+        },
+        {
+          "source_handle": "413",
+          "source_name": "*I",
+          "dxf_name": "*I33"
+        },
+        {
+          "source_handle": "420",
+          "source_name": "*I",
+          "dxf_name": "*I34"
+        },
+        {
+          "source_handle": "42D",
+          "source_name": "*I",
+          "dxf_name": "*I35"
+        },
+        {
+          "source_handle": "465",
+          "source_name": "*I",
+          "dxf_name": "*I36"
+        },
+        {
+          "source_handle": "4A8",
+          "source_name": "*I",
+          "dxf_name": "*I37"
+        }
+      ],
+      "omitted_blocks": [
+        {
+          "source_handle": "D3",
+          "source_name": "*I",
+          "member_handles": [
+            "D7",
+            "D8",
+            "D9",
+            "DA",
+            "DB",
+            "DC",
+            "DD",
+            "DE",
+            "DF",
+            "E0",
+            "E1",
+            "E2",
+            "E3",
+            "E4",
+            "E5",
+            "E6",
+            "E7",
+            "E8",
+            "E9",
+            "EA",
+            "EB",
+            "EC",
+            "ED",
+            "EE",
+            "EF",
+            "F0",
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F5",
+            "F6",
+            "F7",
+            "F8",
+            "F9",
+            "FA",
+            "FB"
+          ],
+          "boundary_handles": [
+            "D4",
+            "D5"
+          ],
+          "entity_counts_including_boundaries": {
+            "BLOCK": 1,
+            "ENDBLK": 1,
+            "LWPOLYLINE": 17,
+            "MTEXT": 20
+          },
+          "content_sha256": "cb055627ce51c5c7c9b8422121f86956c47f787a0b0be40a27f971733051ef34",
+          "mtext_labels": [
+            {
+              "handle": "E4",
+              "text": "D"
+            },
+            {
+              "handle": "E5",
+              "text": "D"
+            },
+            {
+              "handle": "E6",
+              "text": "C"
+            },
+            {
+              "handle": "E7",
+              "text": "C"
+            },
+            {
+              "handle": "E8",
+              "text": "B"
+            },
+            {
+              "handle": "E9",
+              "text": "B"
+            },
+            {
+              "handle": "EA",
+              "text": "A"
+            },
+            {
+              "handle": "EB",
+              "text": "A"
+            },
+            {
+              "handle": "EC",
+              "text": "6"
+            },
+            {
+              "handle": "ED",
+              "text": "6"
+            },
+            {
+              "handle": "EE",
+              "text": "5"
+            },
+            {
+              "handle": "EF",
+              "text": "5"
+            },
+            {
+              "handle": "F4",
+              "text": "4"
+            },
+            {
+              "handle": "F5",
+              "text": "4"
+            },
+            {
+              "handle": "F6",
+              "text": "3"
+            },
+            {
+              "handle": "F7",
+              "text": "3"
+            },
+            {
+              "handle": "F8",
+              "text": "2"
+            },
+            {
+              "handle": "F9",
+              "text": "2"
+            },
+            {
+              "handle": "FA",
+              "text": "1"
+            },
+            {
+              "handle": "FB",
+              "text": "1"
+            }
+          ],
+          "insert_backlinks": [
+            {
+              "handle": "D6",
+              "present_in_source_graph": false
+            }
+          ],
+          "explicit_source_insert_handles": []
+        },
+        {
+          "source_handle": "FC",
+          "source_name": "*I",
+          "member_handles": [
+            "100",
+            "101",
+            "102",
+            "103",
+            "104",
+            "105",
+            "106",
+            "107",
+            "108",
+            "109",
+            "10A",
+            "10B",
+            "10C",
+            "10D",
+            "10E",
+            "10F",
+            "110",
+            "111",
+            "112",
+            "113",
+            "114",
+            "115",
+            "116",
+            "14F"
+          ],
+          "boundary_handles": [
+            "FD",
+            "FE"
+          ],
+          "entity_counts_including_boundaries": {
+            "BLOCK": 1,
+            "ENDBLK": 1,
+            "LINE": 14,
+            "MTEXT": 10
+          },
+          "content_sha256": "9c13f174c740e6bc05f6b95d6649a1dccaf08afdb78ab59df03489a607331544",
+          "mtext_labels": [
+            {
+              "handle": "10E",
+              "text": "Blatt"
+            },
+            {
+              "handle": "10F",
+              "text": "Ausgabe"
+            },
+            {
+              "handle": "110",
+              "text": "1 / 1 "
+            },
+            {
+              "handle": "111",
+              "text": "Datum"
+            },
+            {
+              "handle": "112",
+              "text": "Genehmigt von"
+            },
+            {
+              "handle": "113",
+              "text": "Kontrolliert von"
+            },
+            {
+              "handle": "114",
+              "text": "Konstruiert von"
+            },
+            {
+              "handle": "115",
+              "text": "2/11/2020"
+            },
+            {
+              "handle": "116",
+              "text": "ISO"
+            },
+            {
+              "handle": "14F",
+              "text": "Datum"
+            }
+          ],
+          "insert_backlinks": [
+            {
+              "handle": "FF",
+              "present_in_source_graph": false
+            }
+          ],
+          "explicit_source_insert_handles": []
+        }
+      ],
+      "accounted_entity_deficit": {
+        "BLOCK": 2,
+        "ENDBLK": 2,
+        "LINE": 14,
+        "LWPOLYLINE": 17,
+        "MTEXT": 30
+      },
+      "reference_limit": "Backlinks and explicit INSERTs checked in decoded graph only; opaque Inventor proxy references and rendered visibility unverified"
+    },
+    {
+      "design_id": "SHG-023",
+      "source_json_sha256": "c3d0848b3c4f1635754c33a6a33ad9c47754973b4b823be138a2c9052c4af1ab",
+      "dxf_sha256": "ca60e36eeb108bc5ae634d121ae06db3305db670a6c3525de51ee80093cd67f2",
+      "inspection_sha256": "39d3f582b21d244848db65c8a019b0186459584ef8f3d119eb3765b8fbebf5a6",
+      "matches_full_reported_deficit": true,
+      "block_name_mapping": [
+        {
+          "source_handle": "70",
+          "source_name": "*Model_Space",
+          "dxf_name": "*Model_Space"
+        },
+        {
+          "source_handle": "A7",
+          "source_name": "Filled-1",
+          "dxf_name": "Filled-1"
+        },
+        {
+          "source_handle": "D3",
+          "source_name": "*I",
+          "dxf_name": null
+        },
+        {
+          "source_handle": "FC",
+          "source_name": "*I",
+          "dxf_name": null
+        },
+        {
+          "source_handle": "184",
+          "source_name": "*Paper_Space",
+          "dxf_name": "*Paper_Space"
+        },
+        {
+          "source_handle": "190",
+          "source_name": "*I",
+          "dxf_name": "*I3"
+        },
+        {
+          "source_handle": "1B9",
+          "source_name": "*I",
+          "dxf_name": "*I4"
+        },
+        {
+          "source_handle": "1D8",
+          "source_name": "*I",
+          "dxf_name": "*I5"
+        },
+        {
+          "source_handle": "1DC",
+          "source_name": "made_piezo_Blatt_ANSICHT1",
+          "dxf_name": "made_piezo_Blatt_ANSICHT1"
+        },
+        {
+          "source_handle": "1F3",
+          "source_name": "*I",
+          "dxf_name": "*I7"
+        },
+        {
+          "source_handle": "1F7",
+          "source_name": "made_piezo_Blatt_ANSICHT2",
+          "dxf_name": "made_piezo_Blatt_ANSICHT2"
+        },
+        {
+          "source_handle": "20C",
+          "source_name": "*I",
+          "dxf_name": "*I9"
+        },
+        {
+          "source_handle": "210",
+          "source_name": "made_piezo_Blatt_ANSICHT3",
+          "dxf_name": "made_piezo_Blatt_ANSICHT3"
+        },
+        {
+          "source_handle": "21F",
+          "source_name": "*I",
+          "dxf_name": "*I11"
+        },
+        {
+          "source_handle": "223",
+          "source_name": "made_piezo_Blatt_ANSICHT4",
+          "dxf_name": "made_piezo_Blatt_ANSICHT4"
+        },
+        {
+          "source_handle": "230",
+          "source_name": "*I",
+          "dxf_name": "*I13"
+        },
+        {
+          "source_handle": "242",
+          "source_name": "*I",
+          "dxf_name": "*I14"
+        },
+        {
+          "source_handle": "24F",
+          "source_name": "*I",
+          "dxf_name": "*I15"
+        },
+        {
+          "source_handle": "25C",
+          "source_name": "*I",
+          "dxf_name": "*I16"
+        },
+        {
+          "source_handle": "268",
+          "source_name": "*I",
+          "dxf_name": "*I17"
+        },
+        {
+          "source_handle": "271",
+          "source_name": "*I",
+          "dxf_name": "*I18"
+        }
+      ],
+      "omitted_blocks": [
+        {
+          "source_handle": "D3",
+          "source_name": "*I",
+          "member_handles": [
+            "D7",
+            "D8",
+            "D9",
+            "DA",
+            "DB",
+            "DC",
+            "DD",
+            "DE",
+            "DF",
+            "E0",
+            "E1",
+            "E2",
+            "E3",
+            "E4",
+            "E5",
+            "E6",
+            "E7",
+            "E8",
+            "E9",
+            "EA",
+            "EB",
+            "EC",
+            "ED",
+            "EE",
+            "EF",
+            "F0",
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F5",
+            "F6",
+            "F7",
+            "F8",
+            "F9",
+            "FA",
+            "FB"
+          ],
+          "boundary_handles": [
+            "D4",
+            "D5"
+          ],
+          "entity_counts_including_boundaries": {
+            "BLOCK": 1,
+            "ENDBLK": 1,
+            "LWPOLYLINE": 17,
+            "MTEXT": 20
+          },
+          "content_sha256": "cb055627ce51c5c7c9b8422121f86956c47f787a0b0be40a27f971733051ef34",
+          "mtext_labels": [
+            {
+              "handle": "E4",
+              "text": "D"
+            },
+            {
+              "handle": "E5",
+              "text": "D"
+            },
+            {
+              "handle": "E6",
+              "text": "C"
+            },
+            {
+              "handle": "E7",
+              "text": "C"
+            },
+            {
+              "handle": "E8",
+              "text": "B"
+            },
+            {
+              "handle": "E9",
+              "text": "B"
+            },
+            {
+              "handle": "EA",
+              "text": "A"
+            },
+            {
+              "handle": "EB",
+              "text": "A"
+            },
+            {
+              "handle": "EC",
+              "text": "6"
+            },
+            {
+              "handle": "ED",
+              "text": "6"
+            },
+            {
+              "handle": "EE",
+              "text": "5"
+            },
+            {
+              "handle": "EF",
+              "text": "5"
+            },
+            {
+              "handle": "F4",
+              "text": "4"
+            },
+            {
+              "handle": "F5",
+              "text": "4"
+            },
+            {
+              "handle": "F6",
+              "text": "3"
+            },
+            {
+              "handle": "F7",
+              "text": "3"
+            },
+            {
+              "handle": "F8",
+              "text": "2"
+            },
+            {
+              "handle": "F9",
+              "text": "2"
+            },
+            {
+              "handle": "FA",
+              "text": "1"
+            },
+            {
+              "handle": "FB",
+              "text": "1"
+            }
+          ],
+          "insert_backlinks": [
+            {
+              "handle": "D6",
+              "present_in_source_graph": false
+            }
+          ],
+          "explicit_source_insert_handles": []
+        },
+        {
+          "source_handle": "FC",
+          "source_name": "*I",
+          "member_handles": [
+            "100",
+            "101",
+            "102",
+            "103",
+            "104",
+            "105",
+            "106",
+            "107",
+            "108",
+            "109",
+            "10A",
+            "10B",
+            "10C",
+            "10D",
+            "10E",
+            "10F",
+            "110",
+            "111",
+            "112",
+            "113",
+            "114",
+            "115",
+            "116",
+            "14F"
+          ],
+          "boundary_handles": [
+            "FD",
+            "FE"
+          ],
+          "entity_counts_including_boundaries": {
+            "BLOCK": 1,
+            "ENDBLK": 1,
+            "LINE": 14,
+            "MTEXT": 10
+          },
+          "content_sha256": "9c13f174c740e6bc05f6b95d6649a1dccaf08afdb78ab59df03489a607331544",
+          "mtext_labels": [
+            {
+              "handle": "10E",
+              "text": "Blatt"
+            },
+            {
+              "handle": "10F",
+              "text": "Ausgabe"
+            },
+            {
+              "handle": "110",
+              "text": "1 / 1 "
+            },
+            {
+              "handle": "111",
+              "text": "Datum"
+            },
+            {
+              "handle": "112",
+              "text": "Genehmigt von"
+            },
+            {
+              "handle": "113",
+              "text": "Kontrolliert von"
+            },
+            {
+              "handle": "114",
+              "text": "Konstruiert von"
+            },
+            {
+              "handle": "115",
+              "text": "2/11/2020"
+            },
+            {
+              "handle": "116",
+              "text": "ISO"
+            },
+            {
+              "handle": "14F",
+              "text": "Datum"
+            }
+          ],
+          "insert_backlinks": [
+            {
+              "handle": "FF",
+              "present_in_source_graph": false
+            }
+          ],
+          "explicit_source_insert_handles": []
+        }
+      ],
+      "accounted_entity_deficit": {
+        "BLOCK": 2,
+        "ENDBLK": 2,
+        "LINE": 14,
+        "LWPOLYLINE": 17,
+        "MTEXT": 30
+      },
+      "reference_limit": "Backlinks and explicit INSERTs checked in decoded graph only; opaque Inventor proxy references and rendered visibility unverified"
+    }
+  ]
+}

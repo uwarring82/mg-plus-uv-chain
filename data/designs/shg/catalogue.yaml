@@ -421,9 +421,15 @@ designs:
     format: LibreDWG JSON object graph (gzip compressed)
     interpretation: Unknown proxy payloads remain opaque
   conversion_observations:
-  - 'Source-reader/ODA count discrepancy: 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT
-    entities fewer in DXF. Effect on drawing content unresolved; preserved source object graph
-    is also available.'
+  - 'The entity deficit is accounted for by source template blocks D3 (sheet border) and FC (historical
+    title block): 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT. Their insertion backlinks
+    are absent from the parsed source graph; opaque proxy references and visual effect remain
+    unverified.'
+  block_audit_result:
+    path: data/designs/shg/block-audit.json
+    design_id: SHG-003
+    status: template_block_omissions_identified
+    fidelity: unverified
 - id: SHG-004
   original_filename: bbo_piezo_mount.dwg
   title_de: BBO-Piezohalter
@@ -517,9 +523,15 @@ designs:
     format: LibreDWG JSON object graph (gzip compressed)
     interpretation: Unknown proxy payloads remain opaque
   conversion_observations:
-  - 'Source-reader/ODA count discrepancy: 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT
-    entities fewer in DXF. Effect on drawing content unresolved; preserved source object graph
-    is also available.'
+  - 'The entity deficit is accounted for by source template blocks D3 (sheet border) and FC (historical
+    title block): 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT. Their insertion backlinks
+    are absent from the parsed source graph; opaque proxy references and visual effect remain
+    unverified.'
+  block_audit_result:
+    path: data/designs/shg/block-audit.json
+    design_id: SHG-004
+    status: template_block_omissions_identified
+    fidelity: unverified
 - id: SHG-005
   original_filename: befestigung durchführungen.dwg
   title_de: Befestigung der Durchführungen
@@ -613,9 +625,15 @@ designs:
     format: LibreDWG JSON object graph (gzip compressed)
     interpretation: Unknown proxy payloads remain opaque
   conversion_observations:
-  - 'Source-reader/ODA count discrepancy: 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT
-    entities fewer in DXF. Effect on drawing content unresolved; preserved source object graph
-    is also available.'
+  - 'The entity deficit is accounted for by source template blocks D3 (sheet border) and FC (historical
+    title block): 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT. Their insertion backlinks
+    are absent from the parsed source graph; opaque proxy references and visual effect remain
+    unverified.'
+  block_audit_result:
+    path: data/designs/shg/block-audit.json
+    design_id: SHG-005
+    status: template_block_omissions_identified
+    fidelity: unverified
 - id: SHG-006
   original_filename: crystal_lid.dwg
   title_de: Kristalldeckel
@@ -1081,9 +1099,15 @@ designs:
     format: LibreDWG JSON object graph (gzip compressed)
     interpretation: Unknown proxy payloads remain opaque
   conversion_observations:
-  - 'Source-reader/ODA count discrepancy: 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT
-    entities fewer in DXF. Effect on drawing content unresolved; preserved source object graph
-    is also available.'
+  - 'The entity deficit is accounted for by source template blocks D3 (sheet border) and FC (historical
+    title block): 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT. Their insertion backlinks
+    are absent from the parsed source graph; opaque proxy references and visual effect remain
+    unverified.'
+  block_audit_result:
+    path: data/designs/shg/block-audit.json
+    design_id: SHG-010
+    status: template_block_omissions_identified
+    fidelity: unverified
 - id: SHG-011
   original_filename: durchfuehrungen.dwg
   title_de: Durchführungen
@@ -1270,9 +1294,15 @@ designs:
     format: LibreDWG JSON object graph (gzip compressed)
     interpretation: Unknown proxy payloads remain opaque
   conversion_observations:
-  - 'Source-reader/ODA count discrepancy: 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT
-    entities fewer in DXF. Effect on drawing content unresolved; preserved source object graph
-    is also available.'
+  - 'The entity deficit is accounted for by source template blocks D3 (sheet border) and FC (historical
+    title block): 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT. Their insertion backlinks
+    are absent from the parsed source graph; opaque proxy references and visual effect remain
+    unverified.'
+  block_audit_result:
+    path: data/designs/shg/block-audit.json
+    design_id: SHG-012
+    status: template_block_omissions_identified
+    fidelity: unverified
 - id: SHG-013
   original_filename: final_assembly_modematching_lbo.dwg
   title_de: Gesamtaufbau LBO-Modenanpassung
@@ -1685,9 +1715,15 @@ designs:
     format: LibreDWG JSON object graph (gzip compressed)
     interpretation: Unknown proxy payloads remain opaque
   conversion_observations:
-  - 'Source-reader/ODA count discrepancy: 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT
-    entities fewer in DXF. Effect on drawing content unresolved; preserved source object graph
-    is also available.'
+  - 'The entity deficit is accounted for by source template blocks D3 (sheet border) and FC (historical
+    title block): 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT. Their insertion backlinks
+    are absent from the parsed source graph; opaque proxy references and visual effect remain
+    unverified.'
+  block_audit_result:
+    path: data/designs/shg/block-audit.json
+    design_id: SHG-016
+    status: template_block_omissions_identified
+    fidelity: unverified
 - id: SHG-017
   original_filename: isolator_lid_bbo.dwg
   title_de: BBO-Isolatordeckel
@@ -2331,9 +2367,15 @@ designs:
     format: LibreDWG JSON object graph (gzip compressed)
     interpretation: Unknown proxy payloads remain opaque
   conversion_observations:
-  - 'Source-reader/ODA count discrepancy: 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT
-    entities fewer in DXF. Effect on drawing content unresolved; preserved source object graph
-    is also available.'
+  - 'The entity deficit is accounted for by source template blocks D3 (sheet border) and FC (historical
+    title block): 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT. Their insertion backlinks
+    are absent from the parsed source graph; opaque proxy references and visual effect remain
+    unverified.'
+  block_audit_result:
+    path: data/designs/shg/block-audit.json
+    design_id: SHG-022
+    status: template_block_omissions_identified
+    fidelity: unverified
 - id: SHG-023
   original_filename: made_piezo.dwg
   title_de: Trägerschraube für Piezo
@@ -2427,9 +2469,15 @@ designs:
     format: LibreDWG JSON object graph (gzip compressed)
     interpretation: Unknown proxy payloads remain opaque
   conversion_observations:
-  - 'Source-reader/ODA count discrepancy: 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT
-    entities fewer in DXF. Effect on drawing content unresolved; preserved source object graph
-    is also available.'
+  - 'The entity deficit is accounted for by source template blocks D3 (sheet border) and FC (historical
+    title block): 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT. Their insertion backlinks
+    are absent from the parsed source graph; opaque proxy references and visual effect remain
+    unverified.'
+  block_audit_result:
+    path: data/designs/shg/block-audit.json
+    design_id: SHG-023
+    status: template_block_omissions_identified
+    fidelity: unverified
 - id: SHG-024
   original_filename: ofen.dwg
   title_de: Ofen
@@ -2958,3 +3006,7 @@ processing:
     status: unverified
     engine: null
     reason: No independent authoring-engine reference available
+block_audit:
+  path: data/designs/shg/block-audit.json
+  sha256: 8f9e41721e3e054b8a1bb07fc5352c7aa4c53f234c8b74eb8fcc5374d01e9155
+  bytes: 77018
