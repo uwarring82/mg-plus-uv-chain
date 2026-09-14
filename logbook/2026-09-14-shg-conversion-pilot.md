@@ -137,3 +137,19 @@ Local validation completed:
 The local Jekyll gem installation timed out at the package index; template
 checking uses Liquid 4.0.4, and the existing GitHub Pages builder remains
 the deployment build. No release tag or Zenodo deposit is created.
+
+**Deployment verified:** commit `bd44419301b5e82e8bc47cadabc3e96e25af84dc`
+was pushed to `main`; GitHub Pages reported `built`, with no error, at
+13:44:05 UTC on 2026-09-14. The
+[live page](https://uwarring82.github.io/mg-plus-uv-chain/components/shg-designs.html)
+returns all 28 design cards and nine specific conversion notes. Public
+downloads of SHG-001 DWG, DXF gzip, DWG JSON gzip, PDF, SVG and PNG, plus
+the public catalogue JSON and schema, match local SHA-256 records.
+
+The live filter script passes ID search, empty-result, stage and reset checks
+in a Node DOM fixture. No connected browser was available for a live visual
+or mobile interaction check; this fixture is not represented as that check.
+The sheet artwork itself was reviewed locally as described above. The
+temporary ODA disk image was unmounted after conversion. The original ZIP,
+local thesis PDF, existing Python environment and frozen gate records are
+unchanged.

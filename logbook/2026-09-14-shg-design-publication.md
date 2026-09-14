@@ -109,3 +109,10 @@ An independent CAD rendering, complete native assembly relationships,
 engineering-font fidelity, fabrication validation and bench association
 remain open. They are acceptance conditions for stronger future claims,
 not claims made by this publication. Gate state is unchanged.
+
+Published in commit `bd44419301b5e82e8bc47cadabc3e96e25af84dc` to the existing
+`main:/docs` GitHub Pages source. The build completed successfully on
+2026-09-14 at 13:44:05 UTC. The
+[public catalogue](https://uwarring82.github.io/mg-plus-uv-chain/components/shg-designs.html)
+and representative downloads were checked after deployment; details are
+in the conversion work record.
