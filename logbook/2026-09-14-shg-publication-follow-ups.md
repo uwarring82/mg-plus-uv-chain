@@ -125,3 +125,14 @@ and archive licence maps include the new audit and this work record.
 The native-source location and optional attribution spelling change remain
 open to Steward input. They do not prevent publishing the completed audit,
 test instructions, size guidance and corrected site licence map.
+
+**Publication verified:** follow-up commit
+`b9b6c522106fae688da4b66f75f97bb882e5aa2f` was pushed to `main`. Public HTTP
+checks confirm eight per-drawing audit links in the
+[catalogue](https://uwarring82.github.io/mg-plus-uv-chain/components/shg-designs.html),
+the SHG scope in the [site licence page](https://uwarring82.github.io/mg-plus-uv-chain/LICENSE.html),
+and the partial-clone commands, size note and Colab qualification in the
+[tutorial guide](https://uwarring82.github.io/mg-plus-uv-chain/tutorials/).
+Public catalogue JSON and block-audit JSON match their local bytes. Tutorial
+commands were checked as rendered text, accounting for syntax-highlighting
+markup. No live browser interaction or new CAD reference rendering is claimed.
