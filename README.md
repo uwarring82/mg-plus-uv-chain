@@ -33,6 +33,7 @@ This repository is governed by the [Charter](CHARTER.md). The Charter is the can
 | Governance, vetoes, logbook discipline | [CHARTER.md §9](CHARTER.md) |
 | Why the Charter has the shape it does | [`logbook/2026-04-30-kickoff.md`](logbook/2026-04-30-kickoff.md) (nine-cycle deliberation history) |
 | How students can learn, run notebooks and contribute | [Student tutorials](https://uwarring82.github.io/mg-plus-uv-chain/tutorials/) |
+| Where the SHG mechanical drawings and machine-readable design records live | [SHG design archive](https://uwarring82.github.io/mg-plus-uv-chain/components/shg-designs.html) · [source records](data/designs/shg/) |
 | How to cite this work | [`CITATION.cff`](CITATION.cff) |
 
 ---

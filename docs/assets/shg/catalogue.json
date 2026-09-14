@@ -1,0 +1,3609 @@
+{
+  "schema_version": "1.0.0",
+  "collection_id": "ag-schaetz-shg-2020-2021",
+  "author": "AG Schaetz",
+  "publication": {
+    "authorized_by": "Ulrich Warring",
+    "authorized_on": "2026-09-14",
+    "status": "authorized",
+    "licence_mapping": "adopted explicitly by Steward on 2026-09-14",
+    "decision_record": "logbook/2026-09-14-shg-design-publication.md"
+  },
+  "licences": {
+    "hardware": "CERN-OHL-S-2.0",
+    "metadata": "CC-BY-4.0",
+    "narrative": "CC-BY-SA-4.0",
+    "tooling": "MIT"
+  },
+  "source_location": "https://github.com/uwarring82/mg-plus-uv-chain/tree/main/data/designs/shg",
+  "evidence_tags": {
+    "D": "Directly extracted drawing value; not a hardware measurement",
+    "D*": "Ambiguous or inferred drawing interpretation",
+    "OPEN": "Not determined"
+  },
+  "designs": [
+    {
+      "id": "SHG-001",
+      "original_filename": "baseplate.dwg",
+      "title_de": "Grundplatte",
+      "title_en": "Baseplate",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "shared",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [
+        {
+          "quantity": "overall_length",
+          "value_si": 0.615,
+          "unit_si": "m",
+          "source_text": "615,00",
+          "source_handle": "407",
+          "source_layout": "Blatt",
+          "evidence_tag": "D",
+          "basis": "Transcribed dimension label; geometric measurement not independently checked"
+        },
+        {
+          "quantity": "overall_width",
+          "value_si": 0.44,
+          "unit_si": "m",
+          "source_text": "440,00",
+          "source_handle": "3E1",
+          "source_layout": "Blatt",
+          "evidence_tag": "D",
+          "basis": "Transcribed dimension label; geometric measurement not independently checked"
+        },
+        {
+          "quantity": "thickness",
+          "value_si": 0.02,
+          "unit_si": "m",
+          "source_text": "20,00",
+          "source_handle": "3F3",
+          "source_layout": "Blatt",
+          "evidence_tag": "D",
+          "basis": "Transcribed dimension label; geometric measurement not independently checked"
+        }
+      ],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-001.dwg",
+        "sha256": "ae2d6676d5622bacbe4d32cdda36a766c859c7616f40cbed55f1613050c77144",
+        "bytes": 386770,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/baseplate.dwg",
+        "archive_name_bytes_hex": "5348472f62617365706c6174652e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2021-02-10T13:13:14",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "baseplate.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-001/SHG-001.dxf.gz",
+        "sha256": "379d2ec1e09c21118cbdf2f6c90ddc6e94cc9cee8c8bbd8da6fe2181acbc98fa",
+        "bytes": 363433,
+        "uncompressed_sha256": "0fcd0fcca958c9806ac6104a8ce596a3ac41cee5ad12f5ba55faedecbde6a7c0",
+        "uncompressed_bytes": 1225127,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-001/sheet-01.svg",
+            "sha256": "9278282b8a8cf475382c259042bb4a2f5cfbfe118975f628d218103117bdfe3b",
+            "bytes": 289529
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-001/sheet-01.pdf",
+            "sha256": "636a317e40dbef87b9385034a1d75c926460956c85bf133abde05fd501bff720",
+            "bytes": 188713
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-001/sheet-01.png",
+            "sha256": "055a330b382953dfae7398f5a93db33374fe1738b2ada16a2f06fd33ec8ab526",
+            "bytes": 156318
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-001/inspection.json",
+        "sha256": "91e9fa20d76922b2db0455f3545e1f0c8e7f7bd8d9ea3d91b46ead49dcb3f9c6",
+        "bytes": 26311
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-001/source-inspection.json",
+        "sha256": "9457002fa3690b08265d644e3d66e379c89a26bd652a8307233e77705a6f8163",
+        "bytes": 3179
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-001/SHG-001.dwg.json.gz",
+        "sha256": "e02656d4cbb7e85e14069c471f66668c416cc1cc9c05f13143368e5bd2f0393e",
+        "bytes": 410512,
+        "uncompressed_bytes": 3075303,
+        "uncompressed_sha256": "64490bb9b087b4f54fbac6b852df919fa6dfeefcf16bc37796c56756f995d4e7",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": []
+    },
+    {
+      "id": "SHG-002",
+      "original_filename": "bbo_cavity.dwg",
+      "title_de": "BBO-Resonator",
+      "title_en": "BBO cavity",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "BBO",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-002.dwg",
+        "sha256": "26d5ccd2622d36ad873598e5440e437e6d6abc8337af15ac5a6b2e89f1bf48a2",
+        "bytes": 700880,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/bbo_cavity.dwg",
+        "archive_name_bytes_hex": "5348472f62626f5f6361766974792e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2021-02-04T14:49:30",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "bbo_cavity.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-002/SHG-002.dxf.gz",
+        "sha256": "741cf2ea49619f1322b454ea43db7d989b0ba441f532342bc765be4907ea0b33",
+        "bytes": 684265,
+        "uncompressed_sha256": "f831309cbe6bc007b2dc2388fbc0a172c01ea2c65b6804f9e38da2753f288853",
+        "uncompressed_bytes": 2161053,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt_1",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-002/sheet-01.svg",
+            "sha256": "eedfdb6a9c654bfbfba36b47fc8836bd21f76e56b4731c4ccad57a9a5f32aede",
+            "bytes": 313743
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-002/sheet-01.pdf",
+            "sha256": "d300a48dad7b75a40c37ed35d76a804a98dc09d0ecf178680c641c813d1d69ce",
+            "bytes": 144479
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-002/sheet-01.png",
+            "sha256": "81c40a955f0b35327d4d40f34f50dc6b4f9d555b2671580a1e11e41c9eff2eb8",
+            "bytes": 167134
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        },
+        {
+          "id": "sheet-02",
+          "name": "Blatt_2",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-002/sheet-02.svg",
+            "sha256": "6549b1132b32f80a0fc1a73cbe1d000bf7298e2ca36e0c4261ac03651d1a5457",
+            "bytes": 113957
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-002/sheet-02.pdf",
+            "sha256": "83f240df65d3f9598eaf15342aa01120a3efe44e0b486ec637cb1a528d8b46e4",
+            "bytes": 91327
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-002/sheet-02.png",
+            "sha256": "5b54b0719365898bb595c6908f10304f3cb8ca7a6250ff516873bf80f7bcbb38",
+            "bytes": 135932
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        },
+        {
+          "id": "sheet-03",
+          "name": "Blatt_3",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-002/sheet-03.svg",
+            "sha256": "2193966a304e639a801baba3a81ab9c349367ce024cbf7fac851ce5f506826a9",
+            "bytes": 93964
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-002/sheet-03.pdf",
+            "sha256": "f45fd27eec3ecd108cdd9ffd3b848d96bfc61face7b63cf497b87fbaee1460ad",
+            "bytes": 89514
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-002/sheet-03.png",
+            "sha256": "b2d74a61410b03157bc25330f0f21c5e1671da3501fa34e957da86d2d5da5989",
+            "bytes": 67546
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        },
+        {
+          "id": "sheet-04",
+          "name": "Blatt_4",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-002/sheet-04.svg",
+            "sha256": "bc725f6d04c27a7444a9dfee182c5750d099f13cec31b52660a99175df0a174e",
+            "bytes": 79309
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-002/sheet-04.pdf",
+            "sha256": "d05fe927a157eedc3dd371c0cc8d558d4a3e30bf633ec2c21f94d5010d81ddd8",
+            "bytes": 75162
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-002/sheet-04.png",
+            "sha256": "16787ef11203cc4dda6e2056578f9038ce177283562c4c305568122b0f01e678",
+            "bytes": 55509
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        },
+        {
+          "id": "sheet-05",
+          "name": "Blatt_5",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-002/sheet-05.svg",
+            "sha256": "bb34c09f90528e3897dd2997b93669ff5f005878195e08bb92f322034a4bcecd",
+            "bytes": 110411
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-002/sheet-05.pdf",
+            "sha256": "8cddca1070069095c8061e77bb0c64171b22c545a99e2a6dd263b271d1216bbd",
+            "bytes": 95215
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-002/sheet-05.png",
+            "sha256": "44fa492d999129d9adde113556029d9c974dc9a672b8d318cd27ae321a5fa3a2",
+            "bytes": 136062
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        },
+        {
+          "id": "sheet-06",
+          "name": "Blatt_6",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-002/sheet-06.svg",
+            "sha256": "4550cfd973f35b4818a2875e81bc1310b80ae911f7f3ff66399c76258237fb1b",
+            "bytes": 62852
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-002/sheet-06.pdf",
+            "sha256": "bf5d1d9ce58b99d53f11ecda40af77586f5b8fd069d658fbc7e87267d754bf4f",
+            "bytes": 56928
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-002/sheet-06.png",
+            "sha256": "cb1b13343b94c102f758274936ebf32e27b6bb802557675fb278cc9583cc006b",
+            "bytes": 43517
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-002/inspection.json",
+        "sha256": "61322826a9f18701a6e540f287b3dee0b10f431616038d4e18d9b1404fc0c377",
+        "bytes": 88483
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-002/source-inspection.json",
+        "sha256": "35a77308533c0cd8d9d03d0cce9fa2d0a4b577b9e098ec729e925f365c483b2c",
+        "bytes": 3221
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-002/SHG-002.dwg.json.gz",
+        "sha256": "c6559a98d98a37f37c3a7152ba50402ffa7a0857f03656cc8eeaf1a9f2ec7b50",
+        "bytes": 777716,
+        "uncompressed_bytes": 5393181,
+        "uncompressed_sha256": "42bb6ccedfe23ea031ffc3be34b64faa54ff5610fa04494344c722f80f0cc61f",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": []
+    },
+    {
+      "id": "SHG-003",
+      "original_filename": "bbo_cavity_deckel.dwg",
+      "title_de": "BBO-Resonatordeckel",
+      "title_en": "BBO cavity lid",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "BBO",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-003.dwg",
+        "sha256": "3371f05e0a410e00a909dbb9872998341535883117602b8bad4345d296bd781b",
+        "bytes": 228180,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/bbo_cavity_deckel.dwg",
+        "archive_name_bytes_hex": "5348472f62626f5f6361766974795f6465636b656c2e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2021-02-05T15:20:04",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "bbo_cavity_deckel.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-003/SHG-003.dxf.gz",
+        "sha256": "3084ceb2525df6265f59ac260ad461fcc184e0ddfd0976316f85450d3385bc71",
+        "bytes": 216177,
+        "uncompressed_sha256": "f5935eda6587aad38dbcd9fc865634b29ec47031e35c6ff853b690a9b630cc60",
+        "uncompressed_bytes": 588941,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-003/sheet-01.svg",
+            "sha256": "7d2ec8afbfae50dadc71465e91257f7a677034590220b1a57bf1ba31770a5282",
+            "bytes": 79018
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-003/sheet-01.pdf",
+            "sha256": "6ff7de4207c64a66ce5d6ea3c5d64f707e51eeeb580915a7c61eb9b227e66720",
+            "bytes": 66681
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-003/sheet-01.png",
+            "sha256": "a0062d8c59340e7b12552cd4786b85f8d3036aae96b4ef77055ffb314961128c",
+            "bytes": 72807
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-003/inspection.json",
+        "sha256": "4c6855c29db38f8fc9ecc419b62cf57a675049a953db690d07a6f757575c2aad",
+        "bytes": 16797
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-003/source-inspection.json",
+        "sha256": "e15199b814c5246f572b8b584c9fd7baa709bc1583607d2e402d4ea1ef2d0153",
+        "bytes": 3194
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-003/SHG-003.dwg.json.gz",
+        "sha256": "6e9cde2b37801db522ecf1bfd367360debffc4f216b6154a66d7a0919e336f55",
+        "bytes": 240555,
+        "uncompressed_bytes": 1170925,
+        "uncompressed_sha256": "fd265fd06efc4be69ee0a7e92a7f4377cb82856d409935348fce12b2bb3298f9",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": [
+        "Source-reader/ODA count discrepancy: 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT entities fewer in DXF. Effect on drawing content unresolved; preserved source object graph is also available."
+      ]
+    },
+    {
+      "id": "SHG-004",
+      "original_filename": "bbo_piezo_mount.dwg",
+      "title_de": "BBO-Piezohalter",
+      "title_en": "BBO piezo mount",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "BBO",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-004.dwg",
+        "sha256": "236e75bb4be487c819e33a711f543cb8618a024c953fe6126852a50d2d7ccdd6",
+        "bytes": 232012,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/bbo_piezo_mount.dwg",
+        "archive_name_bytes_hex": "5348472f62626f5f7069657a6f5f6d6f756e742e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2021-02-05T15:33:56",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "bbo_piezo_mount.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-004/SHG-004.dxf.gz",
+        "sha256": "496b4aafd5770f848849a2f34a90664afdb73e276afeacf68fffa0e2d9a2e7a5",
+        "bytes": 225574,
+        "uncompressed_sha256": "27f57735979d784e3794fe961b4b7c9e74e0133401f867097a3fd48e1bd1f63a",
+        "uncompressed_bytes": 615777,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-004/sheet-01.svg",
+            "sha256": "c7b718c550805c6939f72cf5e9a34452e4aca95eb30e126efcd79571057019f3",
+            "bytes": 82189
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-004/sheet-01.pdf",
+            "sha256": "859bef0b2f409bbca8d76c9977d0d9778d4681493b2e22c6f552da56dd86e867",
+            "bytes": 69747
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-004/sheet-01.png",
+            "sha256": "9914167c6ec0603dc20f8dd4e4db4519965527c3a8f2df786ff7505df7ef52d1",
+            "bytes": 73805
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-004/inspection.json",
+        "sha256": "5286b33327d703570f0b5e354dc4aebd06fb77f007af252fa46e4d2519a9d9b0",
+        "bytes": 19316
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-004/source-inspection.json",
+        "sha256": "ce32d4f5f7281cdcad5e51d5508f3b287f24573b8b251db93b3e9e9bbb047e01",
+        "bytes": 3194
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-004/SHG-004.dwg.json.gz",
+        "sha256": "a923a9142b83d2006433d843a69a0b732e3b9585f581ec44d9287c767c2ee275",
+        "bytes": 248485,
+        "uncompressed_bytes": 1227184,
+        "uncompressed_sha256": "2844a53865c4697363baa42e231452b687e24d3f81bc50029c6c19a5007e1e37",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": [
+        "Source-reader/ODA count discrepancy: 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT entities fewer in DXF. Effect on drawing content unresolved; preserved source object graph is also available."
+      ]
+    },
+    {
+      "id": "SHG-005",
+      "original_filename": "befestigung durchführungen.dwg",
+      "title_de": "Befestigung der Durchführungen",
+      "title_en": "Feedthrough fastening",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "shared",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-005.dwg",
+        "sha256": "4cd5cfbd6ccb5dca2fe5a375839800fda9e51efaefe2e3182bf8fa414475c933",
+        "bytes": 218548,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/befestigung durchführungen.dwg",
+        "archive_name_bytes_hex": "5348472f6265666573746967756e672064757263686675cc886872756e67656e2e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2021-03-24T16:00:04",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "befestigung durchführungen.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-005/SHG-005.dxf.gz",
+        "sha256": "8c920ebd8c55cf2937c4297a7831c2b426074873f3ec5a0ce70e79915a4ec480",
+        "bytes": 209347,
+        "uncompressed_sha256": "6485ec0bfc3c01223644ae9f72725f44c0a12e4450deac69bdc964fb756e4e09",
+        "uncompressed_bytes": 567316,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-005/sheet-01.svg",
+            "sha256": "c5a4d74cb66a9783f58b83d501aa2483b45336f2220278fb36dd986ae169cdbc",
+            "bytes": 100472
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-005/sheet-01.pdf",
+            "sha256": "269b880a482aa393f6436c968037eeb1d50c1c792eadb6428d5c0cf24fb9981e",
+            "bytes": 91919
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-005/sheet-01.png",
+            "sha256": "5f39feb1f52063a484f0fbbaf72bac49e8327f61fbb568803a5c31a620655c5a",
+            "bytes": 86766
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-005/inspection.json",
+        "sha256": "5d97c7e2ea195634ccf38d9e7e67500a4a958f03faa73f2210c269cc40a8dd82",
+        "bytes": 21134
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-005/source-inspection.json",
+        "sha256": "881fd57f464a93e9fe88aea05e2329640103c4038b9e1eb3f5b7cfa7a58ce693",
+        "bytes": 3192
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-005/SHG-005.dwg.json.gz",
+        "sha256": "a8653c765b9950a6429051e6d4408caeafde723091ed055ba8eff4fc54a770b9",
+        "bytes": 230612,
+        "uncompressed_bytes": 1116740,
+        "uncompressed_sha256": "63a65313746e10927573f4c2ac1d75d3e3541e7c27e54652dddad071fe339bd3",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": [
+        "Source-reader/ODA count discrepancy: 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT entities fewer in DXF. Effect on drawing content unresolved; preserved source object graph is also available."
+      ]
+    },
+    {
+      "id": "SHG-006",
+      "original_filename": "crystal_lid.dwg",
+      "title_de": "Kristalldeckel",
+      "title_en": "Crystal lid",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "unassigned",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-006.dwg",
+        "sha256": "7e33613fbd85a6d8a5a75d1dd5b76745be8c9bb2b709df062979bca77d538997",
+        "bytes": 231953,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/crystal_lid.dwg",
+        "archive_name_bytes_hex": "5348472f6372797374616c5f6c69642e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2020-11-12T14:57:32",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "crystal_lid.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-006/SHG-006.dxf.gz",
+        "sha256": "5b25ec782f74183d8d45878863e6ff68422a748ecad76dbd97e3f70cba2a5965",
+        "bytes": 227064,
+        "uncompressed_sha256": "fbae12cd1d03c9e3a7ee6b3733d6c68e3cd61f00783892eab6417305122d8d82",
+        "uncompressed_bytes": 638256,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-006/sheet-01.svg",
+            "sha256": "bfee8576affcc96f36aab16286d7eb59d16f0a947b1b9b96284890e94e3c146e",
+            "bytes": 111022
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-006/sheet-01.pdf",
+            "sha256": "ba8ac2bafb3c5ae4b6342e377f29a9c6b7166ced3264809ca8d2a40b5976dd5f",
+            "bytes": 90987
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-006/sheet-01.png",
+            "sha256": "0c74096e7acac8049d76a3ab92661cb4ca2fd5a242fb1962dad19dd3b9081208",
+            "bytes": 88028
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-006/inspection.json",
+        "sha256": "ac176c470c382d9a89892b6540f8fed4cdd3dac6f0e11d2cceb4ea591c3f37d7",
+        "bytes": 22260
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-006/source-inspection.json",
+        "sha256": "2343441a9289a9590d1514b3e70bca3cff5be6d76c4e37042ecb2c7a1f17fe50",
+        "bytes": 3194
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-006/SHG-006.dwg.json.gz",
+        "sha256": "fbc536887d00bf79cd07c8ccbd89aebdddc6a0e56b75a3ede0b7ff9c62c54197",
+        "bytes": 248485,
+        "uncompressed_bytes": 1251955,
+        "uncompressed_sha256": "dd5238216743e612621706aa657a9ec317b3e99b494798176bd7802e2687970e",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": []
+    },
+    {
+      "id": "SHG-007",
+      "original_filename": "crystal_lid_bbo2.dwg",
+      "title_de": "BBO-Kristalldeckel 2",
+      "title_en": "BBO crystal lid 2",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "BBO",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-007.dwg",
+        "sha256": "ea31934b865db3bf0e1ed46a7372e565616e10fbb9499a3d1fe21a08a42021cc",
+        "bytes": 229395,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/crystal_lid_bbo2.dwg",
+        "archive_name_bytes_hex": "5348472f6372797374616c5f6c69645f62626f322e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2021-02-05T10:18:52",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "crystal_lid_bbo2.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-007/SHG-007.dxf.gz",
+        "sha256": "24d4a688225e6db94e3dd123dc997536a63db76d1499ff1bcf06036ae2c96d69",
+        "bytes": 218495,
+        "uncompressed_sha256": "88e5a5e02426d74118caa86fc3d9849119e669b2179eb03f1072c97af50d0945",
+        "uncompressed_bytes": 608169,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-007/sheet-01.svg",
+            "sha256": "cc66475fe6d929c1eac7d29e14f4fa0c1a1699465435f1317906031361f8ee47",
+            "bytes": 97388
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-007/sheet-01.pdf",
+            "sha256": "a80e744b50a26d2974c542cd76ece4fffe727ffc2fd378e6f0f73fd2027f59c3",
+            "bytes": 83416
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-007/sheet-01.png",
+            "sha256": "4e52a0812d43296cc43f920c14ab1e752da05c530c79becc836e7d899feddc76",
+            "bytes": 87821
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-007/inspection.json",
+        "sha256": "4513e72aa2887a00af11efdec6b88c1b84e097c3b7a9a3abdd2f01395d0eb81e",
+        "bytes": 20448
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-007/source-inspection.json",
+        "sha256": "3bb095ff31931f74ac3bf461fa383f2bc1e10ae9de83bfcc89f9e1d34263acd3",
+        "bytes": 3178
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-007/SHG-007.dwg.json.gz",
+        "sha256": "b0eb46345575bd0f1195c68ad4659999e1c3fa0180613cf7daaa56a113c47746",
+        "bytes": 240003,
+        "uncompressed_bytes": 1155717,
+        "uncompressed_sha256": "4ccce128c67a0c1a2cb879b836ceaf6554566ea6bd700f0fd4912238dd9bb233",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": []
+    },
+    {
+      "id": "SHG-008",
+      "original_filename": "crystal_mount.dwg",
+      "title_de": "Kristallhalter",
+      "title_en": "Crystal mount",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "unassigned",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-008.dwg",
+        "sha256": "f9b2606ffcf39044e00c2e03c9d3c683087b9398134cb69aeca64bfae8c32aeb",
+        "bytes": 256015,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/crystal_mount.dwg",
+        "archive_name_bytes_hex": "5348472f6372797374616c5f6d6f756e742e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2020-11-12T14:57:30",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "crystal_mount.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-008/SHG-008.dxf.gz",
+        "sha256": "12d3bcfe62d994f3554d47312205bc191f9ae047e57140128f666260391b12da",
+        "bytes": 254144,
+        "uncompressed_sha256": "a4f0906d87e1c8572802869dc6e8a272322af7e6e5637d0892454d77f7936b89",
+        "uncompressed_bytes": 722099,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-008/sheet-01.svg",
+            "sha256": "bc55f162efbf8a702d32dd003b43edb6982033916994eb46d337b37d267464e1",
+            "bytes": 137062
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-008/sheet-01.pdf",
+            "sha256": "61c8ed1b3dc931827c8610e6adb5524e023729d26eb1f0bcebeb087b25396289",
+            "bytes": 113468
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-008/sheet-01.png",
+            "sha256": "43919de01c1141790273c5813cdef81bf20c3e33d8afa51e386a7f0f44be30cf",
+            "bytes": 102694
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-008/inspection.json",
+        "sha256": "7ba56f0d9cdfa510effbdab569459316aef6db420b49daa2f4381905556387b3",
+        "bytes": 26264
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-008/source-inspection.json",
+        "sha256": "164df61eb201cde5ef5aeeaa5550c61975e0da2da467bb56e7726719e120883f",
+        "bytes": 3195
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-008/SHG-008.dwg.json.gz",
+        "sha256": "b8b48257f054bc3a5b5722654e6769bfe82d59750b89dc956d3ed591ca0409e6",
+        "bytes": 283162,
+        "uncompressed_bytes": 1463168,
+        "uncompressed_sha256": "dc53f7f422fd4982ebcdc05f6ae45042c330c7c3cb042c69ac66651b6c60a0ae",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": []
+    },
+    {
+      "id": "SHG-009",
+      "original_filename": "crystal_mount_bbo2.dwg",
+      "title_de": "BBO-Kristallhalter 2",
+      "title_en": "BBO crystal mount 2",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "BBO",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-009.dwg",
+        "sha256": "2562eaa1c88c64aa4e47ccea4f2c0aa018d7fea618396d9ec07afcbb56fab84e",
+        "bytes": 288700,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/crystal_mount_bbo2.dwg",
+        "archive_name_bytes_hex": "5348472f6372797374616c5f6d6f756e745f62626f322e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2021-06-14T13:30:26",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "crystal_mount_bbo2.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-009/SHG-009.dxf.gz",
+        "sha256": "a8aeb307e109538002df466b944457ac0fa713f2e4fa9ba028fd4668b04825bb",
+        "bytes": 283447,
+        "uncompressed_sha256": "7b05ab5567afb51b4d93bf49dad7dec87db64f5a4a5f67ad6b9145b0bc4fd838",
+        "uncompressed_bytes": 836124,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-009/sheet-01.svg",
+            "sha256": "0657f6e3369f506e653bd836f365058153207f281bf88cf56da930d18a22213a",
+            "bytes": 165200
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-009/sheet-01.pdf",
+            "sha256": "9f8f6ef1d60aa9fb823bc944264427ed595dd318c726b79338e26c48377875f2",
+            "bytes": 128307
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-009/sheet-01.png",
+            "sha256": "1a2161809038f3e2b347abe558d854c1a817af601ff34cc3d9ca17fcaa109c97",
+            "bytes": 121845
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-009/inspection.json",
+        "sha256": "c6e99b1109b712f9f964670eb9b980116700234d2d2f4053965278a739568f8d",
+        "bytes": 31021
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-009/source-inspection.json",
+        "sha256": "9491f31f685ae9c024c05c38346440be32567c2b7327349daa63d31340825e69",
+        "bytes": 3195
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-009/SHG-009.dwg.json.gz",
+        "sha256": "5cea7a69cb3597bf1e08ff65152bfd8d08c2e2e25869b861782f0ec513cb42b5",
+        "bytes": 318952,
+        "uncompressed_bytes": 1807164,
+        "uncompressed_sha256": "59af9eacf2228564cfa8920b60ec16074ac69882a592924f9914f5efbd8922d6",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": []
+    },
+    {
+      "id": "SHG-010",
+      "original_filename": "diff_pd_adapter_post.dwg",
+      "title_de": "Adapterpfosten für Differenz-Photodiode",
+      "title_en": "Differential photodiode adapter post",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "diagnostics",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-010.dwg",
+        "sha256": "daefbbed2b51420ee4851536b679cf3c19e30507bdaf23ecdd133484f074ee3f",
+        "bytes": 232438,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/diff_pd_adapter_post.dwg",
+        "archive_name_bytes_hex": "5348472f646966665f70645f616461707465725f706f73742e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2021-03-05T12:54:04",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "diff_pd_adapter_post.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-010/SHG-010.dxf.gz",
+        "sha256": "42a1bc918a1f8b16bf60760e3e5204697b3736e95e3e44b45de67a975893fe87",
+        "bytes": 222846,
+        "uncompressed_sha256": "82d4fcff7946dc99f2bef24f74fcccd30aab36c141aa8e26063f8d1e8cd080f0",
+        "uncompressed_bytes": 617228,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-010/sheet-01.svg",
+            "sha256": "7fa835820afe39b9f1ba39a8d67f5727b002b1b35879254735d4901872fe09db",
+            "bytes": 142239
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-010/sheet-01.pdf",
+            "sha256": "b83115efb923c2763c589628346e0f1fca9d438f5c94d97c80b367974ee826f8",
+            "bytes": 126597
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-010/sheet-01.png",
+            "sha256": "2c81468a448f2636d744f0f9b51e7670b1855eccb4c4ded60780405045caca20",
+            "bytes": 101184
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-010/inspection.json",
+        "sha256": "544b1fae3ba8e34c8df3c8ee058597e6106e62037c29dad96b205200182823d7",
+        "bytes": 24491
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-010/source-inspection.json",
+        "sha256": "642a406eeb9048b9241e15b69ff48f32bfd2039691055e4dfc54d3282ff9e53a",
+        "bytes": 3193
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-010/SHG-010.dwg.json.gz",
+        "sha256": "b189a6e2ebc9da56ee6b712903b41925e8df6e0c1f47dfa861a7818e7ed63a86",
+        "bytes": 246518,
+        "uncompressed_bytes": 1266208,
+        "uncompressed_sha256": "fc501300abfbaabce3342cd164bcac41484c6a92912449ad935e25ab8a141c32",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": [
+        "Source-reader/ODA count discrepancy: 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT entities fewer in DXF. Effect on drawing content unresolved; preserved source object graph is also available."
+      ]
+    },
+    {
+      "id": "SHG-011",
+      "original_filename": "durchfuehrungen.dwg",
+      "title_de": "Durchführungen",
+      "title_en": "Feedthroughs",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "shared",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "assembly",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Populated connector panel with several identifiable connector types",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-011.dwg",
+        "sha256": "23d0688bd8d8af17a43879d3853b7213a19d12281dbe550c1412be7245c0f0f6",
+        "bytes": 1006888,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/durchfuehrungen.dwg",
+        "archive_name_bytes_hex": "5348472f64757263686675656872756e67656e2e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2021-04-12T16:46:44",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "durchfuehrungen.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-011/SHG-011.dxf.gz",
+        "sha256": "f0792300d1157488637ea049154d3f3c946a8691e68c33d8c99983c678529a8c",
+        "bytes": 939578,
+        "uncompressed_sha256": "ad3b35356799ee7d9c26d75f7c89f928971ce53a6958f7cb773c9be39970e852",
+        "uncompressed_bytes": 3131530,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-011/sheet-01.svg",
+            "sha256": "38bdfeabf784d73047ccc2d3a718184648d5d116d553c09e2c1774a96f105c6b",
+            "bytes": 509257
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-011/sheet-01.pdf",
+            "sha256": "e20446b2b50fee06e1071a23d35c0c9321969f36f3069779bb003f3f1f1646cc",
+            "bytes": 387683
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-011/sheet-01.png",
+            "sha256": "79ec63e047d424870b7773b3c8a27a1a348fa0bbaab113050076f2e7842dfa0c",
+            "bytes": 140631
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-011/inspection.json",
+        "sha256": "4af41887ac45ad989bd082cdfdfacb5f9838bc05250462fd7d3f942e81f10541",
+        "bytes": 19590
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-011/source-inspection.json",
+        "sha256": "a4c2deb205868f8824fa7dde9586f73a7d951d9136e9fe83d0c1fc1bcad24c9e",
+        "bytes": 3212
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-011/SHG-011.dwg.json.gz",
+        "sha256": "cfe9e93676974eb00dda37f98fc9049dc4801a56324ef87082ee8eacc5c09c16",
+        "bytes": 1063357,
+        "uncompressed_bytes": 5948025,
+        "uncompressed_sha256": "7fef5a6a905a652bcb459525679f2404355acd53bedc873d66e87f9af95e1ad7",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": []
+    },
+    {
+      "id": "SHG-012",
+      "original_filename": "fehlerast_bbo.dwg",
+      "title_de": "Montageplatte Fehlerast BBO",
+      "title_en": "BBO error-signal branch mounting plate",
+      "title_basis": "Curated filename and visible drawing content; not an authorship assertion",
+      "stage": "BBO",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-012.dwg",
+        "sha256": "9ffb8ca31da96162bf7a68b3934693e661fdd49ed8d0f337b49c199f713a56fd",
+        "bytes": 202577,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/fehlerast_bbo.dwg",
+        "archive_name_bytes_hex": "5348472f6665686c65726173745f62626f2e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2021-02-10T13:42:38",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "fehlerast_bbo.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-012/SHG-012.dxf.gz",
+        "sha256": "3497dc74f005eb7de87063e3c234338e233c8b25d6cec67f176b317987cd7b8c",
+        "bytes": 197079,
+        "uncompressed_sha256": "d03dea5a756b9c6602426a65865a22f86bf17cf90bf4162efeed236b0e1cf44f",
+        "uncompressed_bytes": 531525,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-012/sheet-01.svg",
+            "sha256": "902d9eabd0b5165df383180f45a7f7ab83aa5efde48160761ac366bbc632f406",
+            "bytes": 73228
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-012/sheet-01.pdf",
+            "sha256": "8f11d272ffb395f39b5207147360e463219ef10822cfc688aea8ce608acc62a3",
+            "bytes": 63938
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-012/sheet-01.png",
+            "sha256": "40a0d273e0e8f7af410804f2a14939c12f66cc2224b34331fd9e118375c7c0c6",
+            "bytes": 58832
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-012/inspection.json",
+        "sha256": "8640738f80431fc2185bb17db179b2a463d6d916750374069bf30359ac62bf31",
+        "bytes": 15939
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-012/source-inspection.json",
+        "sha256": "86c0720ce139dfb17d33fb62a7c6f6e27716024edb43edb0b6ff46966698ffd9",
+        "bytes": 3176
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-012/SHG-012.dwg.json.gz",
+        "sha256": "594f477823670fa2bae3435b238b792e52b9baf8ce0a72a907260a0f8dccd003",
+        "bytes": 218554,
+        "uncompressed_bytes": 1035197,
+        "uncompressed_sha256": "972df3d6a4caeaf2d7aaf012cc0d9a6e42bc36956ca6ad3c7c0de7c9a894056b",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": [
+        "Source-reader/ODA count discrepancy: 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT entities fewer in DXF. Effect on drawing content unresolved; preserved source object graph is also available."
+      ]
+    },
+    {
+      "id": "SHG-013",
+      "original_filename": "final_assembly_modematching_lbo.dwg",
+      "title_de": "Gesamtaufbau LBO-Modenanpassung",
+      "title_en": "LBO mode-matching assembly",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "LBO",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "assembly",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Optical mounts and components arranged on a shared baseplate",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-013.dwg",
+        "sha256": "155f294a5b77cdacd675a6ec0eb93e4dcf5663403cb07b246e15eed7f9ae6a90",
+        "bytes": 10316467,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/final_assembly_modematching_lbo.dwg",
+        "archive_name_bytes_hex": "5348472f66696e616c5f617373656d626c795f6d6f64656d61746368696e675f6c626f2e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2021-04-12T17:30:00",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "final_assembly_modematching_lbo.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-013/SHG-013.dxf.gz",
+        "sha256": "75670838ae23011da3cfc5da0fd58f32654d5ea962864b1db6b185e22da0bc95",
+        "bytes": 10584720,
+        "uncompressed_sha256": "fa23cff4a9b420776b0856fac9786081fd3a0934ae730fbba20e69481f52697e",
+        "uncompressed_bytes": 32420163,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-013/sheet-01.svg",
+            "sha256": "7dd852cdc1bdf09f4787e4b990ae0ce77d89bfb157645fd767abfad678111365",
+            "bytes": 1139738
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-013/sheet-01.pdf",
+            "sha256": "d077e17edb920789b079e12191e07c69c06f2c9ebda17c32dba044d34b6b71f6",
+            "bytes": 777369
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-013/sheet-01.png",
+            "sha256": "50da16316f3455e47c486d081898b563c1401a0f55579346f8e67120d005750b",
+            "bytes": 240173
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-013/inspection.json",
+        "sha256": "cacf3f0c31630ad2522bc8b8cc91ee6b9126ee397d8d7da5616cf5c6f55d03e5",
+        "bytes": 21959
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-013/source-inspection.json",
+        "sha256": "e83f26bc5fbcdc3de9f272ea3dcc3b5159f09ea0d2104acd360cd0911a900c1c",
+        "bytes": 3218
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-013/SHG-013.dwg.json.gz",
+        "sha256": "5002b750a6e2be3a14f2dd5e70e039f784e4f15f28bdcd85eb0e5614791f3e05",
+        "bytes": 11298557,
+        "uncompressed_bytes": 70982464,
+        "uncompressed_sha256": "367985003e5ff401c831b6ecd160669201b743ac1ace3a83557c82017fc0f99d",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": []
+    },
+    {
+      "id": "SHG-014",
+      "original_filename": "final_assembly_posts_und_optomech.dwg",
+      "title_de": "Gesamtaufbau Pfosten und Optomechanik",
+      "title_en": "Posts and optomechanics assembly",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "shared",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "assembly",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Multiple posts and optomechanical mounts, explicitly enumerated on sheet",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-014.dwg",
+        "sha256": "f2643dded150c83b654ade19d52bd21b510ecad97bb8a03e471cf49f3449484f",
+        "bytes": 3894963,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/final_assembly_posts_und_optomech.dwg",
+        "archive_name_bytes_hex": "5348472f66696e616c5f617373656d626c795f706f7374735f756e645f6f70746f6d6563682e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2021-05-31T11:03:28",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "final_assembly_posts_und_optomech.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-014/SHG-014.dxf.gz",
+        "sha256": "e2e9461c96c9b40b0804eb89a87d85f2cc88aced9d059c89b58282ae97495b5d",
+        "bytes": 3892243,
+        "uncompressed_sha256": "1f8c2cb1994ba4ff94a47eb28e695201be5d9195822f3907af55298088456ef8",
+        "uncompressed_bytes": 11929885,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-014/sheet-01.svg",
+            "sha256": "5f7e0db0be0b47510c6edd9768adcfbc69ba78c725cab4bd449d197b2d3d4f6c",
+            "bytes": 1480536
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-014/sheet-01.pdf",
+            "sha256": "50023c05b66bdf96963b41f2081ca35769b0e3f5b3c17aee9fb7f4dfaf2da10e",
+            "bytes": 842698
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-014/sheet-01.png",
+            "sha256": "758c9254445bcd9ec8a6650818faa9719712ac26ee832bd6fcbdb9b5a3c27bb9",
+            "bytes": 292973
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-014/inspection.json",
+        "sha256": "186e4e13f4f310e8fde72ec2f03850b35ee62668ef798605d7b6f07c1dcda548",
+        "bytes": 53006
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-014/source-inspection.json",
+        "sha256": "de7dbb62d6cbc42c9bfc49bfb1f891b5c5cc3b05b76e99065f369a8e3f9d6b16",
+        "bytes": 3203
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-014/SHG-014.dwg.json.gz",
+        "sha256": "491f63fa181117317187a9af2e06507ffa724061c458b067d53f391fb293c942",
+        "bytes": 4168375,
+        "uncompressed_bytes": 25382327,
+        "uncompressed_sha256": "0cc2792bd256f7d42fec483ac96497ea640a00c613a98aab38b5ae950d9de36f",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": []
+    },
+    {
+      "id": "SHG-015",
+      "original_filename": "final_assembly_strahlanalyse_lbo_modenanpassung_bbo.dwg",
+      "title_de": "Gesamtaufbau Strahlanalyse und BBO-Modenanpassung",
+      "title_en": "Beam-analysis and BBO mode-matching assembly",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "interstage",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "assembly",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Multiple optical components, crystal stages and mechanical supports",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-015.dwg",
+        "sha256": "6de60215f3aeabcb01ae236dcdae40e12e72a7ced39f8e42c76b9dbcf71488b3",
+        "bytes": 22997689,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/final_assembly_strahlanalyse_lbo_modenanpassung_bbo.dwg",
+        "archive_name_bytes_hex": "5348472f66696e616c5f617373656d626c795f73747261686c616e616c7973655f6c626f5f6d6f64656e616e70617373756e675f62626f2e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2021-05-31T10:54:50",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "final_assembly_strahlanalyse_lbo_modenanpassung_bbo.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-015/SHG-015.dxf.gz",
+        "sha256": "476a46452b97f59231f10c55ce6315adeeac2ceab2a65b315dba49de7780d17e",
+        "bytes": 23352308,
+        "uncompressed_sha256": "5d450db16edbbb22905a11689090429530d5d2a008c0c2723803c5e7245288b5",
+        "uncompressed_bytes": 71336142,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Kollimation",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-015/sheet-01.svg",
+            "sha256": "b1eab6cfd9f98aed16c398acf454f0b9ceef390122c49dba55bbb421b88d4376",
+            "bytes": 1141255
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-015/sheet-01.pdf",
+            "sha256": "d269cc37b2bf5869fe45bebf8d1d047a08a36b5f072aa3ef69e1c5c70e428821",
+            "bytes": 755042
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-015/sheet-01.png",
+            "sha256": "356059e3c73d4ef3450dc10e7e91c6f005416db3c3d5175805074fe21ce176b9",
+            "bytes": 239580
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        },
+        {
+          "id": "sheet-02",
+          "name": "Modematching für BBO",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-015/sheet-02.svg",
+            "sha256": "747053834a63939d42360c0b3beed876f653b15b29141e52e352e1acfa5ebe69",
+            "bytes": 1496932
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-015/sheet-02.pdf",
+            "sha256": "9431e408c6a9ec7653067fa412bf5db45e327879e1592c7c0322b90c64ced1c7",
+            "bytes": 882481
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-015/sheet-02.png",
+            "sha256": "b859266bec69f83b65c43abf4b8d25a1a64abb373976f53dab28bb499d4d41c2",
+            "bytes": 183814
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        },
+        {
+          "id": "sheet-03",
+          "name": "Strahlanalyse vor BBO",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-015/sheet-03.svg",
+            "sha256": "6831c1215643a2efe034ada432c44694cb3679622df14afaea8a2c9715926adc",
+            "bytes": 276121
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-015/sheet-03.pdf",
+            "sha256": "3ac2a3a7de10b7a93007203c32a5eea4a6284941c4bb71b3d7407afa6fbb7af1",
+            "bytes": 199898
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-015/sheet-03.png",
+            "sha256": "c15dd337bd5521e9f207d6bb02c29b0febdd9dbdc304bb5be7969b9572be18fb",
+            "bytes": 215100
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-015/inspection.json",
+        "sha256": "fa2592ec78bfa1fd15468a99402f0ff8cb3a89b7cb3de12b58112d93b756b695",
+        "bytes": 56240
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-015/source-inspection.json",
+        "sha256": "15a6c7bee79555a698ee0f70ae640e1f8aed687f26e56b309fec168c021b848d",
+        "bytes": 3223
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-015/SHG-015.dwg.json.gz",
+        "sha256": "b551d8c02b8c9445679b7a2d2a9d5c3dc54356e9728e4605b1593d95a67c9b7e",
+        "bytes": 25085883,
+        "uncompressed_bytes": 155155795,
+        "uncompressed_sha256": "0e12603e52f4a98d6f8b188da7c46571a37d1837a4bbaf03bb58dd959d11a40a",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": []
+    },
+    {
+      "id": "SHG-016",
+      "original_filename": "flir_adapter.dwg",
+      "title_de": "FLIR-Adapter",
+      "title_en": "FLIR camera adapter",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "diagnostics",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-016.dwg",
+        "sha256": "e4dd82ac101b35553a77910898ec412214e2f8cbc5f3b8808af145efad44352a",
+        "bytes": 248281,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/flir_adapter.dwg",
+        "archive_name_bytes_hex": "5348472f666c69725f616461707465722e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2021-03-05T10:34:42",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "flir_adapter.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-016/SHG-016.dxf.gz",
+        "sha256": "7f4929525db0e963888526ab55bd176006384e62fb30fed8fb81b7987767e91c",
+        "bytes": 237459,
+        "uncompressed_sha256": "17b031d2d340acce3d8c50a214a19d208adc5f1e470e00f6d799a42224c0b89d",
+        "uncompressed_bytes": 672652,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-016/sheet-01.svg",
+            "sha256": "84c46e6b4a2a2056989d14e2b8471c75fbe536294e2d7d282e8b12dfc1970e75",
+            "bytes": 147636
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-016/sheet-01.pdf",
+            "sha256": "3a038b1e866157a7938932559269579c7007a0ed5ca7930805b8022760492a96",
+            "bytes": 128738
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-016/sheet-01.png",
+            "sha256": "93bf183891861d1d54c1bfa60428cd1772862f34e2faf053bf58ff6a3144c229",
+            "bytes": 86482
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-016/inspection.json",
+        "sha256": "64ad54eddf17a5fe30f0e02b944aaf5165251237e592708e0d2148825945d0f1",
+        "bytes": 27821
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-016/source-inspection.json",
+        "sha256": "61d09265be3e1f1b6ee313914c246ae3bc1415e83d91308a5af30dc7f34901e9",
+        "bytes": 3195
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-016/SHG-016.dwg.json.gz",
+        "sha256": "2277bd68358eeca91808c1cf41e757584bbf01ca74c9c8329121d1e2dfb9061e",
+        "bytes": 265423,
+        "uncompressed_bytes": 1434500,
+        "uncompressed_sha256": "c92bba5a4f26efaec1789ed3ed62ff9d71604eccba2841675a1d9703029b511a",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": [
+        "Source-reader/ODA count discrepancy: 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT entities fewer in DXF. Effect on drawing content unresolved; preserved source object graph is also available."
+      ]
+    },
+    {
+      "id": "SHG-017",
+      "original_filename": "isolator_lid_bbo.dwg",
+      "title_de": "BBO-Isolatordeckel",
+      "title_en": "BBO isolator lid",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "BBO",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-017.dwg",
+        "sha256": "ff1a33b09245bbbcf2b67874c10dd3f806e0b670bcaec0823436199e98734827",
+        "bytes": 246267,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/isolator_lid_bbo.dwg",
+        "archive_name_bytes_hex": "5348472f69736f6c61746f725f6c69645f62626f2e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2021-02-05T10:18:50",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "isolator_lid_bbo.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-017/SHG-017.dxf.gz",
+        "sha256": "d3c68535b0fd319ba972780810de160ca1825c02d44ce060a9da7095e4fba794",
+        "bytes": 238673,
+        "uncompressed_sha256": "71a9ea26e0c39205a8667fb9e845ac295d04b554177d5a4024350e9974c38a3f",
+        "uncompressed_bytes": 674742,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-017/sheet-01.svg",
+            "sha256": "d653f924d6c779d2971f3c38c5aae407fce9babfe3a51699f89e6afe2d09cff7",
+            "bytes": 110027
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-017/sheet-01.pdf",
+            "sha256": "23604547cc3a3e97f2cf70e547a9f8dfb2c6a88ce24989fa1598b0923f9c735e",
+            "bytes": 84361
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-017/sheet-01.png",
+            "sha256": "44c1aa644e5f85421008783437f7b4c4ce310ecda190d05a4f7c7e12cce19b1d",
+            "bytes": 106712
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-017/inspection.json",
+        "sha256": "71b6936c7ba8c56d08abb63b0600bf480d9826913ea8d4e3b7c7c6665b032f00",
+        "bytes": 17612
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-017/source-inspection.json",
+        "sha256": "d682a2a56fb600c49b93592781b151d3a1dd4fcd5a719a915ce378a46b281e4d",
+        "bytes": 3211
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-017/SHG-017.dwg.json.gz",
+        "sha256": "120ceb642db4ad50fcae355f447eb2d6c6a7ed87c579d4484e80715d6ec27eff",
+        "bytes": 268077,
+        "uncompressed_bytes": 1297750,
+        "uncompressed_sha256": "d5a5bf9ba2b97b662c9f1b7dfa01c565502f6b5b3aa69dec4802a0671fc3753e",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": []
+    },
+    {
+      "id": "SHG-018",
+      "original_filename": "isolator_mount_bbo.dwg",
+      "title_de": "BBO-Isolatorhalter",
+      "title_en": "BBO isolator mount",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "BBO",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-018.dwg",
+        "sha256": "78f939286853d99d8a51a57502a4891691cffe7d4d73933383475bda8194947b",
+        "bytes": 269531,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/isolator_mount_bbo.dwg",
+        "archive_name_bytes_hex": "5348472f69736f6c61746f725f6d6f756e745f62626f2e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2021-02-04T14:39:58",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "isolator_mount_bbo.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-018/SHG-018.dxf.gz",
+        "sha256": "6b08c0fe44a353b58f81380d32d1c59e554ec63fb318556475d779a020596a4f",
+        "bytes": 265206,
+        "uncompressed_sha256": "7e55605fd828d04e1179d68a49e893759a24dbd96fad931aeedf8c1a0aef30e9",
+        "uncompressed_bytes": 795634,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-018/sheet-01.svg",
+            "sha256": "f519dba7de630be5580cb064796e22134fcfcfe2bca64ccb028837faee6874d0",
+            "bytes": 167797
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-018/sheet-01.pdf",
+            "sha256": "f4f703c75423b81ff5f839fe7d9d0afaaf83302811e71fa730ed7a824301d6ce",
+            "bytes": 123014
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-018/sheet-01.png",
+            "sha256": "9ae7d51554925dfd71728deec2f899181060922f65991bccf0bc3695aec8af4a",
+            "bytes": 127838
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-018/inspection.json",
+        "sha256": "4633c6f616f5145233c286ec88a339ab5110a06315be30492416648740c148a8",
+        "bytes": 25539
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-018/source-inspection.json",
+        "sha256": "35cb42a4eeda1530cbb831c6b163bd3c9fdf2bcabda7348a1a494a0a9150ed5b",
+        "bytes": 3213
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-018/SHG-018.dwg.json.gz",
+        "sha256": "7d921ef5fe53a266a5a8832d21fb2718bb1fed03aea265aa96add402e5317ac8",
+        "bytes": 297460,
+        "uncompressed_bytes": 1669895,
+        "uncompressed_sha256": "3e5a8cc3eff188de652f71a84a2b8b2aa2259e4a29509e8beee4938a00435c38",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": []
+    },
+    {
+      "id": "SHG-019",
+      "original_filename": "justagehilfe.dwg",
+      "title_de": "Justagehilfe",
+      "title_en": "Alignment aid",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "shared",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-019.dwg",
+        "sha256": "f27682ee96c1f53f2582a0960a6cb4ad49142c5d6e36d82e46565b3a92c391d1",
+        "bytes": 200688,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/justagehilfe.dwg",
+        "archive_name_bytes_hex": "5348472f6a75737461676568696c66652e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2020-11-12T12:49:00",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "justagehilfe.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-019/SHG-019.dxf.gz",
+        "sha256": "a516dfd1ee50596efa2402e62790837f050ccc30323bd8c3138c7215c6cef4ec",
+        "bytes": 195084,
+        "uncompressed_sha256": "70b08677a128068dc752a5150fbea65095ad54b9b96ad96665063aba9f412d90",
+        "uncompressed_bytes": 523782,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-019/sheet-01.svg",
+            "sha256": "ec3626ce5655d875d0f4e867b037370ef6fc57d975ebb4828fceeaa2eae4147a",
+            "bytes": 59768
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-019/sheet-01.pdf",
+            "sha256": "bb99b21e7d252b25a28eaa85a970c18e73b8313cb84c084c63f414ce76875d82",
+            "bytes": 50747
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-019/sheet-01.png",
+            "sha256": "244e3846bd69a58e7fa9f5de7e47bce791f20739700e3bb8804159c610517bbe",
+            "bytes": 51668
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-019/inspection.json",
+        "sha256": "9612a3ad3b2b6e796130018dd2a1112f7a141ea2f6500d72af29f2747c7328b0",
+        "bytes": 13500
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-019/source-inspection.json",
+        "sha256": "278cb99e3689cc5e862e7643a1823c0f6d29298acfef853b841c6677f270c602",
+        "bytes": 3175
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-019/SHG-019.dwg.json.gz",
+        "sha256": "f2781b72983516be66a65b15b5807972877f5a6a1110a874673f630e179b273b",
+        "bytes": 210743,
+        "uncompressed_bytes": 921146,
+        "uncompressed_sha256": "8d69cd6b6d070dea9b1dbe302238ae73a8f1d690423c51077bf8ec95e8072617",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": []
+    },
+    {
+      "id": "SHG-020",
+      "original_filename": "lbo_cavity.dwg",
+      "title_de": "LBO-Resonator",
+      "title_en": "LBO cavity",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "LBO",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-020.dwg",
+        "sha256": "89c3c29fb0a07097efdb52d48c3ffd03b7eb9e7e4b251bfa0d0f817b37b55b58",
+        "bytes": 467233,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/lbo_cavity.dwg",
+        "archive_name_bytes_hex": "5348472f6c626f5f6361766974792e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2020-11-12T12:51:08",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "lbo_cavity.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-020/SHG-020.dxf.gz",
+        "sha256": "d0a05649fd2eb384de6a3cbe80274896ca69801c0ea450ca4df9151130a05916",
+        "bytes": 462433,
+        "uncompressed_sha256": "d8676b370ca0477499f1bca0a44d3f9fefa324a0faefb0244a5d10f355a365e5",
+        "uncompressed_bytes": 1422253,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-020/sheet-01.svg",
+            "sha256": "4240706552b38f22864e04287c53d1d9e2a479fb5b066aca1ec0df7046839314",
+            "bytes": 140883
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-020/sheet-01.pdf",
+            "sha256": "f3b9e3bb32c3101fe14bc297a1e3289a209faa06ea78f74015468f8cfb58e968",
+            "bytes": 106257
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-020/sheet-01.png",
+            "sha256": "7a853bc1e3bfca5a86e1817a3afe51129a80ef685d30353a8d1e3dd333f1f252",
+            "bytes": 125919
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        },
+        {
+          "id": "sheet-02",
+          "name": "Seite A_2~2",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-020/sheet-02.svg",
+            "sha256": "015a2578c4a084a1a6f381190d69ef14f33946e0372ba4ea1cb197754c7cb5a6",
+            "bytes": 92390
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-020/sheet-02.pdf",
+            "sha256": "cca6fa48e21181c6dc4c04e6279996065b1d00d977deeb62224b9941935f2730",
+            "bytes": 72133
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-020/sheet-02.png",
+            "sha256": "52a7133bfc711f8ec17a2f7643334bdfe0b367c24c37ebc5632001a4b7e6e043",
+            "bytes": 107598
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        },
+        {
+          "id": "sheet-03",
+          "name": "Seite A_3~2",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-020/sheet-03.svg",
+            "sha256": "70479dd4e5857124bfa70dc88f7205bd72538ea57ef015836665d5b5e5e828f9",
+            "bytes": 83801
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-020/sheet-03.pdf",
+            "sha256": "6d88c99b5f2242d23f43f00ffd00bc0918d04f318f5bb14eaaed5328321548d9",
+            "bytes": 78621
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-020/sheet-03.png",
+            "sha256": "767f915768575da130683ead057845712163bc444a8dd269258de1362abee695",
+            "bytes": 60434
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        },
+        {
+          "id": "sheet-04",
+          "name": "Seite A_4~2",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-020/sheet-04.svg",
+            "sha256": "311a12671e28a3d6007c8801a4e12de048049a05fb9cd88658df44af9d8c1515",
+            "bytes": 88483
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-020/sheet-04.pdf",
+            "sha256": "4880a50d12a643472ee106fa7594820832ed90ef24d0ee92366eec09806ce8a3",
+            "bytes": 81995
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-020/sheet-04.png",
+            "sha256": "5058dad0c494b8008ec80c3d9a1dfc313102b8c71336b24547f707ecd9a9fc00",
+            "bytes": 72831
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        },
+        {
+          "id": "sheet-05",
+          "name": "Seite A_5",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-020/sheet-05.svg",
+            "sha256": "fea3422d00707ff50c51b95b217e102f89c562921ae1dfb62c5cf0050661b052",
+            "bytes": 113533
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-020/sheet-05.pdf",
+            "sha256": "4f12ef613a81f7c715495f8d7a72792b7412d62b179c869c4d66f4de327c3e77",
+            "bytes": 96760
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-020/sheet-05.png",
+            "sha256": "7f070f3e43ab3a4e026608af8f2fecc4220811ed2e0ae46fd76934b94dc35403",
+            "bytes": 114462
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-020/inspection.json",
+        "sha256": "cc879b81a00ec2972938fa2a4eae0df0091a75eb69d2aaf7e670ef80061bd709",
+        "bytes": 77369
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-020/source-inspection.json",
+        "sha256": "e86d32c4060df3e78c1aef76e4cbbaff1cc40fd7b7bbca2aaae7ca863bfe9415",
+        "bytes": 3219
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-020/SHG-020.dwg.json.gz",
+        "sha256": "528337fba499ad77b6df033c03edad40a7fae861bcf983674584a650df84b9dd",
+        "bytes": 528672,
+        "uncompressed_bytes": 3437620,
+        "uncompressed_sha256": "7352e9ecbaeedad73edd29ce2ef8835fe23c253966b694f60a5ec410e98c2db2",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": []
+    },
+    {
+      "id": "SHG-021",
+      "original_filename": "lbo_cavity_deckel.dwg",
+      "title_de": "LBO-Resonatordeckel",
+      "title_en": "LBO cavity lid",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "LBO",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-021.dwg",
+        "sha256": "fa2322aba938ccef11db818c4929fcd7b437128361fdfa9a5989e1ad1348b902",
+        "bytes": 222680,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/lbo_cavity_deckel.dwg",
+        "archive_name_bytes_hex": "5348472f6c626f5f6361766974795f6465636b656c2e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2020-11-10T14:21:44",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "lbo_cavity_deckel.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-021/SHG-021.dxf.gz",
+        "sha256": "64962df3670626aae81bdb593a28539cab36e01a191617c0c542517ec78caa7b",
+        "bytes": 215655,
+        "uncompressed_sha256": "6eb7056904e8bbe00bd0ad2dc686d31b62fd96c2848f37c95c4db9e6d4e700c5",
+        "uncompressed_bytes": 597797,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-021/sheet-01.svg",
+            "sha256": "c855ab16c5ee12150997f825209fc4894027cde92b500ece0c33da9ee0ef9acb",
+            "bytes": 70977
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-021/sheet-01.pdf",
+            "sha256": "e2d7eaf2982920e91e3b585864e825616b0cf4ead831c43462ec9bce6cc6d5f9",
+            "bytes": 55133
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-021/sheet-01.png",
+            "sha256": "da5bc2a798ff18c3883efae09b627498f8b4d471586d586f76853bf592f413f1",
+            "bytes": 61562
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-021/inspection.json",
+        "sha256": "0481e26bd2fa3d474272f9ccb4e618629316ff3d6d7f9ac47434bba65952567b",
+        "bytes": 14130
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-021/source-inspection.json",
+        "sha256": "0aedbdc40e81a0acd915ff28b87d287a9eff0eaa1e9b36344b47188ae91c7843",
+        "bytes": 3193
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-021/SHG-021.dwg.json.gz",
+        "sha256": "db08772e1c7fa1f9edbeeb06ae4106d22dd272dc50729dc1a31e0d9febc4b4b3",
+        "bytes": 240769,
+        "uncompressed_bytes": 1129948,
+        "uncompressed_sha256": "2ce70753a2e5453e20081d12b3e1d97e9ae3d0c5242f8d3fc8fa5bdf5328fd50",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": []
+    },
+    {
+      "id": "SHG-022",
+      "original_filename": "lenstube_mount.dwg",
+      "title_de": "Linsenrohrhalter",
+      "title_en": "Lens-tube mount",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "shared",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": "Aluminium, anodized",
+        "source_text": "Material: Aluminium, eloxiert",
+        "source_handle": "432",
+        "source_layout": "Blatt",
+        "source_region": "title block",
+        "evidence_tag": "D",
+        "grade": null
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-022.dwg",
+        "sha256": "f6d68384153580e62f2ed550d52c0fed4e7be1dc4f3ae66a56f5345a8107db59",
+        "bytes": 288932,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/lenstube_mount.dwg",
+        "archive_name_bytes_hex": "5348472f6c656e73747562655f6d6f756e742e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2021-05-19T09:29:38",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "lenstube_mount.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-022/SHG-022.dxf.gz",
+        "sha256": "a2b0cc695a98ff535d7671c37a1b8cdcac23d2f21e4ac0a94d53ef5335ec0109",
+        "bytes": 280093,
+        "uncompressed_sha256": "f2ae24e6aef1c1a6ce15a8fc0bf213de3430b8a12d5756142dd201ac781f3251",
+        "uncompressed_bytes": 1066655,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-022/sheet-01.svg",
+            "sha256": "8c5a945e4aa83bf374278bf49486e442ecd2830381a6911ff23ffe1c809b3cc0",
+            "bytes": 172637
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-022/sheet-01.pdf",
+            "sha256": "1f5e7ed897aa6b822f365d278c7f379c08177c77813b50d483ff7bd729863f3b",
+            "bytes": 129902
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-022/sheet-01.png",
+            "sha256": "35288e3d5af428722e83e57b1999dbda0dd510fb2246f44262ec5be4788a7c1e",
+            "bytes": 97426
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-022/inspection.json",
+        "sha256": "0a2053b2de75132566b554f00c3b837ba5e7b4b9944a4f9485d6d0f57fcde5d7",
+        "bytes": 28284
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-022/source-inspection.json",
+        "sha256": "ab4b370ab8b4420c8e4895f6002912440d021a7dfc63986ab561694795cb6750",
+        "bytes": 3500
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-022/SHG-022.dwg.json.gz",
+        "sha256": "15860207ea386e264891bb71c2b7aed51133d934350f8618b24f5994ced976a8",
+        "bytes": 312533,
+        "uncompressed_bytes": 1888742,
+        "uncompressed_sha256": "b54d3c3be09c3af191a521a0aaee3b9bc25127a87ce750e21391bd38e2972c30",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": [
+        "Source-reader/ODA count discrepancy: 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT entities fewer in DXF. Effect on drawing content unresolved; preserved source object graph is also available."
+      ]
+    },
+    {
+      "id": "SHG-023",
+      "original_filename": "made_piezo.dwg",
+      "title_de": "Trägerschraube für Piezo",
+      "title_en": "Piezo carrier screw",
+      "title_basis": "Curated filename and visible drawing content; not an authorship assertion",
+      "stage": "shared",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-023.dwg",
+        "sha256": "ea0251590b909e3623d3fd495e783507a5885c7bec87650e2bafabaebddd77bf",
+        "bytes": 205552,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/made_piezo.dwg",
+        "archive_name_bytes_hex": "5348472f6d6164655f7069657a6f2e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2020-12-04T14:24:52",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "made_piezo.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-023/SHG-023.dxf.gz",
+        "sha256": "ca60e36eeb108bc5ae634d121ae06db3305db670a6c3525de51ee80093cd67f2",
+        "bytes": 199638,
+        "uncompressed_sha256": "50fafc3ad51f4868cdb0f25df1d2fe987c39a80ca69c211c2bbfde5532f7dc24",
+        "uncompressed_bytes": 525305,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-023/sheet-01.svg",
+            "sha256": "b8c2e1216535ccb754d46908473c276caf3cbec9b08922e6db139afdde17d3fc",
+            "bytes": 148836
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-023/sheet-01.pdf",
+            "sha256": "331c602759e6a25c4f9b112971a867485ec04949ca13dc514f725e4363b71f7d",
+            "bytes": 139916
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-023/sheet-01.png",
+            "sha256": "e583614289cfc314ebe74b7e2f65b2db6a88353803025cbf6c0828a240fea0eb",
+            "bytes": 81442
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-023/inspection.json",
+        "sha256": "39d3f582b21d244848db65c8a019b0186459584ef8f3d119eb3765b8fbebf5a6",
+        "bytes": 18124
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-023/source-inspection.json",
+        "sha256": "8308b9027ed12fff79d2ef62ce3526811935bc5d3cadebd31dd8082cf5ceddac",
+        "bytes": 3191
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-023/SHG-023.dwg.json.gz",
+        "sha256": "c3d0848b3c4f1635754c33a6a33ad9c47754973b4b823be138a2c9052c4af1ab",
+        "bytes": 219671,
+        "uncompressed_bytes": 998315,
+        "uncompressed_sha256": "370a868be4f655588eef3f790b751a90314994adca2419e72d4d6e7968746c9b",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": [
+        "Source-reader/ODA count discrepancy: 2 BLOCK, 2 ENDBLK, 14 LINE, 17 LWPOLYLINE and 30 MTEXT entities fewer in DXF. Effect on drawing content unresolved; preserved source object graph is also available."
+      ]
+    },
+    {
+      "id": "SHG-024",
+      "original_filename": "ofen.dwg",
+      "title_de": "Ofen",
+      "title_en": "Crystal oven",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "unassigned",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "assembly",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Section view depicts stacked oven components and fasteners",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-024.dwg",
+        "sha256": "398930e1f73c1bc4e139d5c70274759d39d9d2b35490cac72806c643d461e6b3",
+        "bytes": 525405,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/ofen.dwg",
+        "archive_name_bytes_hex": "5348472f6f66656e2e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2020-10-07T11:58:32",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "ofen.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-024/SHG-024.dxf.gz",
+        "sha256": "818a5a88a2dbb0e5789455b3f36cd699bf911a7f4302dc52efd2c7465a93dabb",
+        "bytes": 526940,
+        "uncompressed_sha256": "c2e13f8a4ff83a25ffbade60cd1b0736ba7a27b1d915e3b73764cf771de9403d",
+        "uncompressed_bytes": 1406312,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Sheet",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-024/sheet-01.svg",
+            "sha256": "d824e75daa6f0115dd278330552ef784742f9a3b65b9ca5d4661aeed9c090b40",
+            "bytes": 300621
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-024/sheet-01.pdf",
+            "sha256": "59cdc9d23654a557b92b757de56721b8fda7642dec563420640ab8171f29ee23",
+            "bytes": 166266
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-024/sheet-01.png",
+            "sha256": "4b065fc7b1ca149ac698c17ef20f2423afea2ca731adcb7daecde30546c8891e",
+            "bytes": 132576
+          },
+          "paper_size_native": [
+            863.6,
+            558.8000000000001
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-024/inspection.json",
+        "sha256": "13b8b6ef3e300c9a17287a578fd705c8bc4d7106d045392b05b13764feffdad7",
+        "bytes": 20515
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-024/source-inspection.json",
+        "sha256": "ab21de0363a901a4391e7283fdaa9e1bef7f49b6efef30e96ad12fea6ad86a35",
+        "bytes": 3322
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-024/SHG-024.dwg.json.gz",
+        "sha256": "b66740b827355a5acc143f22b9cd26b952af2b86eb8677a27dc333b57c952872",
+        "bytes": 561059,
+        "uncompressed_bytes": 2694904,
+        "uncompressed_sha256": "5261ba268302f8b8c9d2b2373b666e2fc6db6ec0709da783c07f7d1ff3b65cbc",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": []
+    },
+    {
+      "id": "SHG-025",
+      "original_filename": "PEEK_lid.dwg",
+      "title_de": "PEEK-Deckel (Dateiname)",
+      "title_en": "PEEK lid (filename designation)",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "unassigned",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-025.dwg",
+        "sha256": "d822c31d69dd3227693f1ec6ee1a7c60d5fc5c1440aecccc7ca37cef3d918ed0",
+        "bytes": 242417,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/PEEK_lid.dwg",
+        "archive_name_bytes_hex": "5348472f5045454b5f6c69642e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2020-11-12T12:49:28",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "PEEK_lid.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-025/SHG-025.dxf.gz",
+        "sha256": "2c0b4f5b72cc06dbf0b6457b53d7d9ebe5a09256c14d442f1040d054ed7aa54e",
+        "bytes": 231865,
+        "uncompressed_sha256": "56d2b343132039ad0a863d0949985cc73c833d0965d26114d6773c653b7ad131",
+        "uncompressed_bytes": 665791,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-025/sheet-01.svg",
+            "sha256": "9ae6d9f2d56976f3e2127202ff78fece57271f81a77798d3cc97a725b1fc3953",
+            "bytes": 80023
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-025/sheet-01.pdf",
+            "sha256": "4240ab5bb0c4b97cc49f7c43f28ed96b16706e7f848b6da575088e991cdcc8e5",
+            "bytes": 58772
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-025/sheet-01.png",
+            "sha256": "37a11d93e3d0718ab1340f6f5ecc81469bd7f3671f37a2e60da402156f72be14",
+            "bytes": 62110
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-025/inspection.json",
+        "sha256": "0809c51c49b3761dc3434b2a41c050c0a7a111af6b55547834022bc86a47e6a3",
+        "bytes": 15315
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-025/source-inspection.json",
+        "sha256": "03e9db29b4b43131da81f082e1cf8bbb9b34da581572f57ba3d2c380c81e59f1",
+        "bytes": 3211
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-025/SHG-025.dwg.json.gz",
+        "sha256": "64311afc195877d3b522d3d4fa3b9776e17a02f76191faf9d5d47d8f668a85ae",
+        "bytes": 260035,
+        "uncompressed_bytes": 1273183,
+        "uncompressed_sha256": "31eac140af9897f98c21d482056a9a8f0730c1ce40f3eaf0b722a6d359ba637f",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": []
+    },
+    {
+      "id": "SHG-026",
+      "original_filename": "PEEK_mount.dwg",
+      "title_de": "PEEK-Halter (Dateiname)",
+      "title_en": "PEEK mount (filename designation)",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "unassigned",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-026.dwg",
+        "sha256": "8d1eb3e7347b74d043bbeee6d09f1c028bc663c165a852d734cbcbb7bceb49fd",
+        "bytes": 299330,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/PEEK_mount.dwg",
+        "archive_name_bytes_hex": "5348472f5045454b5f6d6f756e742e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2021-01-11T09:50:10",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "PEEK_mount.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-026/SHG-026.dxf.gz",
+        "sha256": "25ccc46504ad09b36052ac4cf9737f0f5dd754db1bc0b17e687411bcfee3d515",
+        "bytes": 283341,
+        "uncompressed_sha256": "91318d48318f604a88ccbfa12854d6370564863718aac7b7d13b37b898f26f38",
+        "uncompressed_bytes": 849343,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-026/sheet-01.svg",
+            "sha256": "c29f67bf7506330cd5b8b06f539c266aba480cc5329349431357b169a0eed85c",
+            "bytes": 187477
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-026/sheet-01.pdf",
+            "sha256": "31e226ede2b26e0deaac91b53299e4490330cf03e9e62ac294e11caa63b37647",
+            "bytes": 144825
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-026/sheet-01.png",
+            "sha256": "a3c10830e31be91279867c28fe13b405bfbad9b9113395fd2794fa20caa6381a",
+            "bytes": 110467
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-026/inspection.json",
+        "sha256": "21fcf6ccb39f8799ba0b4946471de93b5c3fde2f5fc711bab34fa5c80bf72c00",
+        "bytes": 32332
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-026/source-inspection.json",
+        "sha256": "206f114ae652b8a5f019500b47b4af3f5243780c8dfa5f6a038ce479fc3a1e67",
+        "bytes": 3213
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-026/SHG-026.dwg.json.gz",
+        "sha256": "e13f2fb67df2ccac2569c81b466e7bfe77458ef3688e8b02880696db15ae0744",
+        "bytes": 317929,
+        "uncompressed_bytes": 1831723,
+        "uncompressed_sha256": "cb28cffac8f1808761a112f859906d0e87f033666522af2f0f4cd81669ef8a3e",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": []
+    },
+    {
+      "id": "SHG-027",
+      "original_filename": "s_einkopplung_lbo.dwg",
+      "title_de": "LBO-Einkopplung",
+      "title_en": "LBO input-coupling assembly",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "LBO",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "assembly",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Fiber coupler, waveplate and optics mounted on a shared plate",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-027.dwg",
+        "sha256": "3427b8e272ccdfdff63e3747f975e3811935d917cbd690412f37995df60f47cd",
+        "bytes": 1663892,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/s_einkopplung_lbo.dwg",
+        "archive_name_bytes_hex": "5348472f735f65696e6b6f70706c756e675f6c626f2e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2021-04-12T17:29:44",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "s_einkopplung_lbo.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-027/SHG-027.dxf.gz",
+        "sha256": "7069d2a21915c41ff7ffc27fcf339462e1e68924bd49153ba41f2618ced01032",
+        "bytes": 1709179,
+        "uncompressed_sha256": "e2e7e819b7cdf3a141dd8933757b2b4fbf42f6ec0dbe8129a0df327d3bb7c71d",
+        "uncompressed_bytes": 5020249,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-027/sheet-01.svg",
+            "sha256": "1adb753c489e05dadf68a52c3558d9d63fd2000c11bed10dc9e89c1b709f5e17",
+            "bytes": 804876
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-027/sheet-01.pdf",
+            "sha256": "dc0d50158a28333cd415140d26e7f251b7442fa14bd97427cc93f0f4551f396d",
+            "bytes": 579394
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-027/sheet-01.png",
+            "sha256": "93e1b412069d4769a56131910cfaeafa0cd2c0180aa406d0e9810503c79db998",
+            "bytes": 221884
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-027/inspection.json",
+        "sha256": "ed6d586640b8805f8f29e0c47cb66927bd3c6727c6f2def039c68723f83e4ce8",
+        "bytes": 19868
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-027/source-inspection.json",
+        "sha256": "1f8d3db0a03943f275790975830d8a790b7b1fb03e1dda04f585dc7a4a02563d",
+        "bytes": 3199
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-027/SHG-027.dwg.json.gz",
+        "sha256": "b3029e05761e464b430509b0695d1a0d66d1fb615e17e60df19fddb4efd67d45",
+        "bytes": 1816518,
+        "uncompressed_bytes": 10482724,
+        "uncompressed_sha256": "7d11e08bd6245a3b436d0aa2045dd9bcb598887146ff8cb9bc01627dbe41be16",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": []
+    },
+    {
+      "id": "SHG-028",
+      "original_filename": "wand_durchfuehrungen.dwg",
+      "title_de": "Wanddurchführungen",
+      "title_en": "Wall feedthroughs",
+      "title_basis": "Curated filename translation; not an authorship or revision assertion",
+      "stage": "shared",
+      "stage_basis": "Filename/context; provisional",
+      "kind": "part",
+      "classification": {
+        "status": "manual_drawing_review",
+        "reviewed_on": "2026-09-14",
+        "basis": "Orthographic/detail views describe one manufactured component",
+        "evidence_tag": "D*",
+        "limitation": "Based on cached drawing content; native assembly dependency graph unverified"
+      },
+      "hardware_association": {
+        "status": "design_only",
+        "evidence": [],
+        "bench_evidence": []
+      },
+      "thesis_correspondence": {
+        "status": "not_established",
+        "reference": "Guth2021",
+        "geometry_extraction": "data/literature/Guth2021/geometry.yaml"
+      },
+      "materials": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "tolerances": {
+        "value": null,
+        "evidence_tag": "OPEN"
+      },
+      "dimensions": [],
+      "source": {
+        "path": "data/designs/shg/raw/SHG-028.dwg",
+        "sha256": "ef0b5091e5210073b6c8ef908593580c1d745d72e97ef39221be11c2c606fe3b",
+        "bytes": 407568,
+        "dwg_header": "AC1032",
+        "archive_entry": "SHG/wand_durchfuehrungen.dwg",
+        "archive_name_bytes_hex": "5348472f77616e645f64757263686675656872756e67656e2e647767",
+        "zip_utf8_flag": false,
+        "zip_modified_local": "2021-05-19T09:32:00",
+        "timestamp_timezone": "unspecified",
+        "original_filename": "wand_durchfuehrungen.dwg"
+      },
+      "dxf": {
+        "path": "data/designs/shg/processed/SHG-028/SHG-028.dxf.gz",
+        "sha256": "164bc5303afa2e3c59f75211c4e049a9398097efbaa7cc98b15b4795da5663ba",
+        "bytes": 391056,
+        "uncompressed_sha256": "f878ccb4bfbf68cdfbad9718182562039217e7b61f87f94d0b81677569c4a526",
+        "uncompressed_bytes": 1199352,
+        "content_type": "application/gzip",
+        "format": "ASCII DXF AC1032 (gzip compressed)"
+      },
+      "units": {
+        "insunits_code": 4,
+        "native": "mm",
+        "metres_per_unit": 0.001,
+        "evidence": "DXF $INSUNITS and independent source-reader INSUNITS",
+        "source_reader_code": 4
+      },
+      "previews": [
+        {
+          "id": "sheet-01",
+          "name": "Blatt_1",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-028/sheet-01.svg",
+            "sha256": "e31dd12bd901d4b1e9b1f41d4b2b520ccd24212c5d69cd2e4f50dec4c707fd31",
+            "bytes": 170487
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-028/sheet-01.pdf",
+            "sha256": "004edf91d86617855f273cc90ca57a5a156af09caa45b4c740c47059a724c279",
+            "bytes": 137431
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-028/sheet-01.png",
+            "sha256": "ca2b4169e9ae90fd46497a382b1ae0428fe07fcc47bf12fa3accf11c92e21e81",
+            "bytes": 109718
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        },
+        {
+          "id": "sheet-02",
+          "name": "Blatt_2",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-028/sheet-02.svg",
+            "sha256": "268625ee49c9cb7cf496348140c5c4e1f25c9f2305152ced48703aced2a364df",
+            "bytes": 169420
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-028/sheet-02.pdf",
+            "sha256": "7d5a2a9c959a7f83f7d8b4e841e7dd6e61a6c6a58641426e310ae2488b21e7b9",
+            "bytes": 152126
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-028/sheet-02.png",
+            "sha256": "8a3acfc73dfd0d4bc33a5716d370c6de2dfb19080cfa581d3c808d72041b0f8f",
+            "bytes": 129345
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        },
+        {
+          "id": "sheet-03",
+          "name": "Blatt_3",
+          "qualifies": true,
+          "reason": "renderable_paper_content_or_reconstructed_cached_view",
+          "fidelity": "unverified",
+          "svg": {
+            "path": "docs/assets/shg/SHG-028/sheet-03.svg",
+            "sha256": "4d74e58ba1af44c2680fe8182ebe89c73abe5f01b108db8d0c6267dd3312751c",
+            "bytes": 80460
+          },
+          "pdf": {
+            "path": "docs/assets/shg/SHG-028/sheet-03.pdf",
+            "sha256": "90397a6c975b5bfa15bbad6373b901c8907a9033976c614b41b4b092df1e41a9",
+            "bytes": 69625
+          },
+          "png": {
+            "path": "docs/assets/shg/SHG-028/sheet-03.png",
+            "sha256": "c379c7f20a779f56bb00a9e0b93458287c5001684ebaed8feadc6f2f808bb7db",
+            "bytes": 97282
+          },
+          "paper_size_native": [
+            420.0,
+            297.0
+          ]
+        }
+      ],
+      "inspection": {
+        "path": "data/designs/shg/processed/SHG-028/inspection.json",
+        "sha256": "6d7bb94fac87ab3d06565e3ba77a13bfab1705e2c06cf865e83f2b301f183c19",
+        "bytes": 68080
+      },
+      "source_inspection": {
+        "path": "data/designs/shg/processed/SHG-028/source-inspection.json",
+        "sha256": "49066cd61f4b7d1760348de21605fb25f5724e651f96f9eb343e96be5af57820",
+        "bytes": 3464
+      },
+      "source_json": {
+        "path": "data/designs/shg/processed/SHG-028/SHG-028.dwg.json.gz",
+        "sha256": "39f652bd4f404792c8fa4265008fd2a03944a7dd34b6582425ed30749fef601e",
+        "bytes": 437196,
+        "uncompressed_bytes": 2842298,
+        "uncompressed_sha256": "f3aa7543cf539c272f76edb2062441c18d3cee38d6ffadd020f46783773c4ef9",
+        "licence": "CERN-OHL-S-2.0",
+        "format": "LibreDWG JSON object graph (gzip compressed)",
+        "interpretation": "Unknown proxy payloads remain opaque"
+      },
+      "conversion_observations": [
+        "Sheet 3 has an oversized view clipped at the left sheet edge; reference placement unresolved."
+      ]
+    }
+  ],
+  "archive": {
+    "filename": "SHG.zip",
+    "sha256": "8d42b7610a5248e121dddcde280443dc51b97b46409c18977e52c8f9f38e8d49",
+    "bytes": 44450168,
+    "excluded": [
+      ".DS_Store",
+      "__MACOSX"
+    ]
+  },
+  "processing": {
+    "date": "2026-09-14",
+    "python": "3.13.7",
+    "oda_file_converter": "27.1.0",
+    "output": "ACAD2018 ASCII DXF; audit=0",
+    "ezdxf": "1.4.4",
+    "pymupdf": "1.28.2",
+    "script": {
+      "path": "scripts/shg_designs.py",
+      "sha256": "cd5794c8fe0b590c7d9cbde8741cb5de9f7a585d3952f26bb939b3154a835ba6",
+      "bytes": 32391
+    },
+    "reference_rendering": {
+      "status": "unverified",
+      "engine": null,
+      "reason": "No independent authoring-engine reference available"
+    }
+  }
+}

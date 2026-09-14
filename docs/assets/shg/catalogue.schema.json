@@ -1,0 +1,228 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uwarring82.github.io/mg-plus-uv-chain/assets/shg/catalogue.schema.json",
+  "title": "AG Schaetz SHG catalogue 1.0.0",
+  "description": "SPDX-License-Identifier: MIT",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "collection_id",
+    "author",
+    "publication",
+    "licences",
+    "archive",
+    "processing",
+    "designs"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "author": {
+      "const": "AG Schaetz"
+    },
+    "publication": {
+      "type": "object",
+      "required": [
+        "authorized_by",
+        "authorized_on",
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "const": "authorized"
+        }
+      }
+    },
+    "designs": {
+      "type": "array",
+      "minItems": 28,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "original_filename",
+          "title_de",
+          "title_en",
+          "stage",
+          "kind",
+          "classification",
+          "source",
+          "dxf",
+          "inspection",
+          "previews",
+          "hardware_association",
+          "units",
+          "source_inspection",
+          "source_json",
+          "materials",
+          "tolerances",
+          "dimensions",
+          "thesis_correspondence"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^SHG-[0-9]{3}$"
+          },
+          "kind": {
+            "enum": [
+              "part",
+              "assembly",
+              "unclassified"
+            ]
+          },
+          "stage": {
+            "enum": [
+              "LBO",
+              "BBO",
+              "interstage",
+              "shared",
+              "diagnostics",
+              "unassigned"
+            ]
+          },
+          "hardware_association": {
+            "type": "object",
+            "required": [
+              "status",
+              "evidence",
+              "bench_evidence"
+            ],
+            "properties": {
+              "status": {
+                "enum": [
+                  "design_only",
+                  "provisionally_associated",
+                  "confirmed"
+                ]
+              },
+              "evidence": {
+                "type": "array"
+              },
+              "bench_evidence": {
+                "type": "array"
+              }
+            }
+          },
+          "source": {
+            "$ref": "#/$defs/file"
+          },
+          "dxf": {
+            "allOf": [
+              {
+                "$ref": "#/$defs/file"
+              },
+              {
+                "required": [
+                  "uncompressed_bytes",
+                  "uncompressed_sha256"
+                ]
+              }
+            ]
+          },
+          "inspection": {
+            "$ref": "#/$defs/file"
+          },
+          "previews": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "qualifies",
+                "reason",
+                "fidelity",
+                "svg",
+                "pdf",
+                "png"
+              ],
+              "properties": {
+                "qualifies": {
+                  "type": "boolean"
+                },
+                "fidelity": {
+                  "enum": [
+                    "unverified",
+                    "verified"
+                  ]
+                },
+                "svg": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/file"
+                    }
+                  ]
+                },
+                "pdf": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/file"
+                    }
+                  ]
+                },
+                "png": {
+                  "anyOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "$ref": "#/$defs/file"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "source_inspection": {
+            "$ref": "#/$defs/file"
+          },
+          "source_json": {
+            "allOf": [
+              {
+                "$ref": "#/$defs/file"
+              },
+              {
+                "required": [
+                  "uncompressed_bytes",
+                  "uncompressed_sha256"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "file": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    }
+  }
+}

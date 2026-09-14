@@ -30,6 +30,15 @@ The 2026-05-08 pass extracts the body of the thesis:
 ## Extraction Passes
 
 - **2026-05-08 (assistant under steward direction, DRAFT).** Initial VECSEL+SHG-focused extraction. Status `DRAFT` (not yet steward-signed-off).
+- **2026-09-14 (assistant under steward direction).** Added
+  [geometry.yaml](geometry.yaml) from §2.2.2, printed pp. 25–30 (PDF pages
+  30–35). All six pages visually checked. Table 3 prints LBO mirror radii
+  **50 cm**, preserved with an unresolved unit discrepancy; BBO entries print
+  **50 mm**. The 24.6 mm BBO mirror-to-crystal distance lacks a clear face/centre
+  reference, so no derived mirror spacing is asserted. Figures 12 and 14 are
+  attributed to reference [44]; a match cannot independently confirm the
+  current hardware. No exact fold angle was extracted. The thesis PDF stays
+  local and is identified by checksum in the extraction.
 
 ## Review Notes
 

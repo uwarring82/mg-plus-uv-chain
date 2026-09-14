@@ -1,0 +1,2674 @@
+{
+  "entity_counts": {
+    "ACAD_PROXY_ENTITY": 69,
+    "ACAD_PROXY_OBJECT": 52,
+    "ACDBDETAILVIEWSTYLE": 2,
+    "ACDBDICTIONARYWDFLT": 1,
+    "ACDBPLACEHOLDER": 1,
+    "ACDBSECTIONVIEWSTYLE": 2,
+    "APPID": 3,
+    "ARC": 91,
+    "BLOCK": 82,
+    "BLOCK_RECORD": 82,
+    "CELLSTYLEMAP": 1,
+    "CIRCLE": 63,
+    "DICTIONARY": 30,
+    "DICTIONARYVAR": 5,
+    "DIMSTYLE": 26,
+    "ELLIPSE": 77,
+    "ENDBLK": 82,
+    "HATCH": 99,
+    "INSERT": 8,
+    "LAYER": 28,
+    "LAYOUT": 4,
+    "LINE": 894,
+    "LTYPE": 18,
+    "LWPOLYLINE": 51,
+    "MATERIAL": 3,
+    "MLEADERSTYLE": 1,
+    "MLINESTYLE": 1,
+    "MTEXT": 167,
+    "SCALE": 17,
+    "SEQEND": 8,
+    "SOLID": 1,
+    "SORTENTSTABLE": 6,
+    "STYLE": 3,
+    "TABLE": 9,
+    "TABLESTYLE": 1,
+    "VIEWPORT": 9,
+    "VISUALSTYLE": 24,
+    "VPORT": 1,
+    "XRECORD": 2
+  },
+  "model_entity_counts": {
+    "ACAD_PROXY_ENTITY": 6
+  },
+  "layouts_before_reconstruction": [
+    {
+      "name": "Blatt_1",
+      "entity_counts": {
+        "ACAD_PROXY_ENTITY": 28,
+        "VIEWPORT": 5
+      }
+    },
+    {
+      "name": "Blatt_2",
+      "entity_counts": {
+        "ACAD_PROXY_ENTITY": 26,
+        "VIEWPORT": 2
+      }
+    },
+    {
+      "name": "Blatt_3",
+      "entity_counts": {
+        "ACAD_PROXY_ENTITY": 9,
+        "VIEWPORT": 2
+      }
+    },
+    {
+      "name": "Model",
+      "entity_counts": {
+        "ACAD_PROXY_ENTITY": 6
+      }
+    }
+  ],
+  "external_references": [],
+  "dimension_entities": [],
+  "dimension_comparison_status": "unavailable_annotations_are_exploded_text_and_lines",
+  "annotations": [
+    {
+      "handle": "1A1",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "D",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;D",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1A2",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "D",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;D",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1A3",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "C",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;C",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1A4",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "C",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;C",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1A5",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "B",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;B",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1A6",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "B",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;B",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1A7",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "A",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;A",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1A8",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "A",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;A",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1A9",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "6",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;6",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1AA",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "6",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;6",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1AB",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "5",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;5",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1AC",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "5",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;5",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1B1",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "4",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;4",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1B2",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "4",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;4",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1B3",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "3",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;3",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1B4",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "3",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;3",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1B5",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "2",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;2",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1B6",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "2",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;2",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1B7",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "1",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;1",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1B8",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "1",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;1",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1CB",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Datum",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Datum",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1CC",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Blatt",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Blatt",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1CD",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Ausgabe",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Ausgabe",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1CE",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "1 / 3 ",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;1 / 3 ",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1CF",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Datum",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Datum",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1D0",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Genehmigt von",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Genehmigt von",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1D1",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Kontrolliert von",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Kontrolliert von",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1D2",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Konstruiert von",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Konstruiert von",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1D3",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "3/15/2021",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;3/15/2021",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1D4",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Standard",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Standard",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1D5",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "wand_durchfuehrungen",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;wand_durchfuehrungen",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "31E",
+      "owner_handle": "319",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "4,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;4,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "332",
+      "owner_handle": "32E",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "125,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;125,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "344",
+      "owner_handle": "340",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "147,50",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;147,50",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "356",
+      "owner_handle": "352",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "10,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;10,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "36A",
+      "owner_handle": "366",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "12,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;12,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "380",
+      "owner_handle": "37C",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "37,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;37,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "394",
+      "owner_handle": "390",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "70,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;70,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "3A8",
+      "owner_handle": "3A4",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "90,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;90,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "3BC",
+      "owner_handle": "3B8",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "115,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;115,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "3D0",
+      "owner_handle": "3CC",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "10,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;10,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "3E6",
+      "owner_handle": "3E2",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "31,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;31,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "3F9",
+      "owner_handle": "3F5",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "61,60",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;61,60",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "40C",
+      "owner_handle": "408",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "92,20",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;92,20",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "41F",
+      "owner_handle": "41B",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "127,50",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;127,50",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "432",
+      "owner_handle": "42E",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "137,50",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;137,50",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "4EC",
+      "owner_handle": "4E8",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "110,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;110,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "4FF",
+      "owner_handle": "4FB",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "35,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;35,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "511",
+      "owner_handle": "50D",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "57,73",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;57,73",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "523",
+      "owner_handle": "51F",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "80,47",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;80,47",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "535",
+      "owner_handle": "531",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "103,20",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;103,20",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "547",
+      "owner_handle": "543",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "Anzahl: 3 Stück",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Anzahl: 3 Stück",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "548",
+      "owner_handle": "543",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "Einheiten: mm",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Einheiten: mm",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "549",
+      "owner_handle": "543",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "Material: Aluminium, schwarz eloxiert",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Material: Aluminium, schwarz eloxiert",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "55D",
+      "owner_handle": "54C",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "D",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;D",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "55E",
+      "owner_handle": "54C",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "D",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;D",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "55F",
+      "owner_handle": "54C",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "C",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;C",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "560",
+      "owner_handle": "54C",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "C",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;C",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "561",
+      "owner_handle": "54C",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "B",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;B",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "562",
+      "owner_handle": "54C",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "B",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;B",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "563",
+      "owner_handle": "54C",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "A",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;A",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "564",
+      "owner_handle": "54C",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "A",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;A",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "565",
+      "owner_handle": "54C",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "6",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;6",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "566",
+      "owner_handle": "54C",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "6",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;6",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "567",
+      "owner_handle": "54C",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "5",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;5",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "568",
+      "owner_handle": "54C",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "5",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;5",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "56D",
+      "owner_handle": "54C",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "4",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;4",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "56E",
+      "owner_handle": "54C",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "4",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;4",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "56F",
+      "owner_handle": "54C",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "3",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;3",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "570",
+      "owner_handle": "54C",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "3",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;3",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "571",
+      "owner_handle": "54C",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "2",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;2",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "572",
+      "owner_handle": "54C",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "2",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;2",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "573",
+      "owner_handle": "54C",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "1",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;1",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "574",
+      "owner_handle": "54C",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "1",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;1",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "587",
+      "owner_handle": "575",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Datum",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Datum",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "588",
+      "owner_handle": "575",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Blatt",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Blatt",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "589",
+      "owner_handle": "575",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Ausgabe",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Ausgabe",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "58A",
+      "owner_handle": "575",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "2 / 3 ",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;2 / 3 ",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "58B",
+      "owner_handle": "575",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Datum",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Datum",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "58C",
+      "owner_handle": "575",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Genehmigt von",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Genehmigt von",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "58D",
+      "owner_handle": "575",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Kontrolliert von",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Kontrolliert von",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "58E",
+      "owner_handle": "575",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Konstruiert von",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Konstruiert von",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "58F",
+      "owner_handle": "575",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "3/15/2021",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;3/15/2021",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "590",
+      "owner_handle": "575",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Standard",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Standard",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "591",
+      "owner_handle": "575",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "wand_durchfuehrungen",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;wand_durchfuehrungen",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "5EF",
+      "owner_handle": "5EB",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "4,30 DURCH",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;4,30 DURCH",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "5F0",
+      "owner_handle": "5EB",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "n",
+      "raw_text": "\\fAIGDT|b0|i0;\\W1.;n",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "5FC",
+      "owner_handle": "5F8",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "10,00 X 90,00°",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;10,00 X 90,00°",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "5FD",
+      "owner_handle": "5F8",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "n",
+      "raw_text": "\\fAIGDT|b0|i0;\\W1.;n",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "5FE",
+      "owner_handle": "5F8",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": " ",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.; ",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "5FF",
+      "owner_handle": "5F8",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "w",
+      "raw_text": "\\fAIGDT|b0|i0;\\W1.;w",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "600",
+      "owner_handle": "5F8",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "4,30 DURCH",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;4,30 DURCH",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "601",
+      "owner_handle": "5F8",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "n",
+      "raw_text": "\\fAIGDT|b0|i0;\\W1.;n",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "60D",
+      "owner_handle": "609",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "3,20",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;3,20",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "60E",
+      "owner_handle": "609",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "R",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;R",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "61A",
+      "owner_handle": "616",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "5,94",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;5,94",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "631",
+      "owner_handle": "62D",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "3,30",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;3,30",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "64E",
+      "owner_handle": "643",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "D-Cut für SMA Durchführung",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;D-Cut für SMA Durchführung",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "65A",
+      "owner_handle": "64F",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "6-poligen Mini-Din Stecker",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;6-poligen Mini-Din Stecker",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "65B",
+      "owner_handle": "64F",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "Durchführung für ",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Durchführung für ",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "660",
+      "owner_handle": "65C",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "12,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;12,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "661",
+      "owner_handle": "65C",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "n",
+      "raw_text": "\\fAIGDT|b0|i0;\\W1.;n",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "673",
+      "owner_handle": "66F",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "2,60",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;2,60",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "674",
+      "owner_handle": "66F",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "n",
+      "raw_text": "\\fAIGDT|b0|i0;\\W1.;n",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "686",
+      "owner_handle": "682",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "9,50",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;9,50",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "699",
+      "owner_handle": "695",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "9,50",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;9,50",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "6AC",
+      "owner_handle": "6A8",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "12,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;12,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "6BF",
+      "owner_handle": "6BB",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "12,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;12,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "6D2",
+      "owner_handle": "6CE",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "9,50",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;9,50",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "6E6",
+      "owner_handle": "6E2",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "9,50",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;9,50",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "6F9",
+      "owner_handle": "6F5",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "24,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;24,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "6FA",
+      "owner_handle": "6F5",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "n",
+      "raw_text": "\\fAIGDT|b0|i0;\\W1.;n",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "70C",
+      "owner_handle": "708",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "M3x0.5 - 6H",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;M3x0.5 - 6H",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "71A",
+      "owner_handle": "716",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "12,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;12,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "72F",
+      "owner_handle": "72B",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "12,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;12,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "743",
+      "owner_handle": "73F",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "6,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;6,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "744",
+      "owner_handle": "73F",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "R",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;R",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "759",
+      "owner_handle": "74D",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "Durchführung für USB",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Durchführung für USB",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "765",
+      "owner_handle": "75A",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "Faser/O2 Durchführung",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Faser/O2 Durchführung",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "771",
+      "owner_handle": "766",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "D-Sub Durchführung",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;D-Sub Durchführung",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7C2",
+      "owner_handle": "7B1",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "D",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;D",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7C3",
+      "owner_handle": "7B1",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "D",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;D",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7C4",
+      "owner_handle": "7B1",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "C",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;C",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7C5",
+      "owner_handle": "7B1",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "C",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;C",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7C6",
+      "owner_handle": "7B1",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "B",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;B",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7C7",
+      "owner_handle": "7B1",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "B",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;B",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7C8",
+      "owner_handle": "7B1",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "A",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;A",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7C9",
+      "owner_handle": "7B1",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "A",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;A",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7CA",
+      "owner_handle": "7B1",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "6",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;6",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7CB",
+      "owner_handle": "7B1",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "6",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;6",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7CC",
+      "owner_handle": "7B1",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "5",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;5",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7CD",
+      "owner_handle": "7B1",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "5",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;5",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7D2",
+      "owner_handle": "7B1",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "4",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;4",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7D3",
+      "owner_handle": "7B1",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "4",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;4",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7D4",
+      "owner_handle": "7B1",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "3",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;3",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7D5",
+      "owner_handle": "7B1",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "3",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;3",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7D6",
+      "owner_handle": "7B1",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "2",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;2",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7D7",
+      "owner_handle": "7B1",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "2",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;2",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7D8",
+      "owner_handle": "7B1",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "1",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;1",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7D9",
+      "owner_handle": "7B1",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "1",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;1",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7EC",
+      "owner_handle": "7DA",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Datum",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Datum",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7ED",
+      "owner_handle": "7DA",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Blatt",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Blatt",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7EE",
+      "owner_handle": "7DA",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Ausgabe",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Ausgabe",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7EF",
+      "owner_handle": "7DA",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "3 / 3 ",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;3 / 3 ",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7F0",
+      "owner_handle": "7DA",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Datum",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Datum",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7F1",
+      "owner_handle": "7DA",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Genehmigt von",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Genehmigt von",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7F2",
+      "owner_handle": "7DA",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Kontrolliert von",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Kontrolliert von",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7F3",
+      "owner_handle": "7DA",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Konstruiert von",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Konstruiert von",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7F4",
+      "owner_handle": "7DA",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "3/15/2021",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;3/15/2021",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7F5",
+      "owner_handle": "7DA",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Standard",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Standard",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7F6",
+      "owner_handle": "7DA",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "wand_durchfuehrungen",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;wand_durchfuehrungen",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "962",
+      "owner_handle": "95E",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "28,80",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;28,80",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "9D0",
+      "owner_handle": "9CC",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "14,34",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;14,34",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "9E9",
+      "owner_handle": "9E5",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "59,66",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;59,66",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "9FD",
+      "owner_handle": "9F9",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "20,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;20,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "A0F",
+      "owner_handle": "A0B",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "103,20",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;103,20",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "A2A",
+      "owner_handle": "A1F",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "Vertiefung 3mm",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Vertiefung 3mm",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "A37",
+      "owner_handle": "A33",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "4,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;4,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "A38",
+      "owner_handle": "A33",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "R",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;R",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "A49",
+      "owner_handle": "A45",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "33,32",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;33,32",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "A5C",
+      "owner_handle": "A58",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "3,10",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;3,10",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "A5D",
+      "owner_handle": "A58",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "n",
+      "raw_text": "\\fAIGDT|b0|i0;\\W1.;n",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "A6F",
+      "owner_handle": "A6B",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "3,40",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;3,40",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "A70",
+      "owner_handle": "A6B",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "R",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;R",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "A7C",
+      "owner_handle": "A78",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "11,40",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;11,40",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "A8E",
+      "owner_handle": "A8A",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "5,70",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;5,70",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "AA0",
+      "owner_handle": "A9C",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "10°",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;10°",
+      "evidence_tag": "D"
+    }
+  ],
+  "dxf_header_dates": {
+    "TDCREATE": 2461298.6506712963,
+    "TDUPDATE": 2461298.630682443,
+    "status": "converter_output_not_original_dwg_dates"
+  },
+  "design_id": "SHG-028",
+  "source_sha256": "ef0b5091e5210073b6c8ef908593580c1d745d72e97ef39221be11c2c606fe3b",
+  "dxf_sha256": "f878ccb4bfbf68cdfbad9718182562039217e7b61f87f94d0b81677569c4a526",
+  "fidelity": "unverified",
+  "source_entity_counts": {
+    "ARC": 91,
+    "BLOCK": 82,
+    "CIRCLE": 63,
+    "ELLIPSE": 77,
+    "ENDBLK": 82,
+    "HATCH": 99,
+    "INSERT": 8,
+    "LINE": 894,
+    "LWPOLYLINE": 51,
+    "MTEXT": 167,
+    "SOLID": 1,
+    "UNKNOWN_ENT": 69,
+    "VIEWPORT": 9
+  },
+  "source_count_status": "independent_reader_counts_not_visual_validation",
+  "unsupported_native_solids": 0,
+  "warnings": [
+    "Inventor semantics beyond the observed proxy variant are opaque.",
+    "Restricted proxy-origin decoding and viewport clipping are used; fidelity is unverified.",
+    "AIGDT unavailable: engineering symbols may appear as letters.",
+    "No independent CAD rendering; not certified machining drawings.",
+    "ODA may reset DXF header dates; they are not original DWG dates."
+  ],
+  "entity_count_deltas": {},
+  "proxy_count_comparison": {
+    "source_unknown_entities": 69,
+    "dxf_proxy_entities": 69,
+    "note": "Reader type names differ; equal counts do not prove fidelity"
+  },
+  "preview_placements": [
+    {
+      "proxy_handle": "193",
+      "exposed_handle": "DEE",
+      "viewport_handle": null,
+      "block": "*I1",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "1BC",
+      "exposed_handle": "DF0",
+      "viewport_handle": null,
+      "block": "*I2",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "31C",
+      "exposed_handle": "DF2",
+      "viewport_handle": null,
+      "block": "*I11",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "331",
+      "exposed_handle": "DF4",
+      "viewport_handle": null,
+      "block": "*I12",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "343",
+      "exposed_handle": "DF6",
+      "viewport_handle": null,
+      "block": "*I13",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "355",
+      "exposed_handle": "DF8",
+      "viewport_handle": null,
+      "block": "*I14",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "369",
+      "exposed_handle": "DFA",
+      "viewport_handle": null,
+      "block": "*I15",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "37F",
+      "exposed_handle": "DFC",
+      "viewport_handle": null,
+      "block": "*I16",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "393",
+      "exposed_handle": "DFE",
+      "viewport_handle": null,
+      "block": "*I17",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "3A7",
+      "exposed_handle": "E00",
+      "viewport_handle": null,
+      "block": "*I18",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "3BB",
+      "exposed_handle": "E02",
+      "viewport_handle": null,
+      "block": "*I19",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "3CF",
+      "exposed_handle": "E04",
+      "viewport_handle": null,
+      "block": "*I20",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "3E5",
+      "exposed_handle": "E06",
+      "viewport_handle": null,
+      "block": "*I21",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "3F8",
+      "exposed_handle": "E08",
+      "viewport_handle": null,
+      "block": "*I22",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "40B",
+      "exposed_handle": "E0A",
+      "viewport_handle": null,
+      "block": "*I23",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "41E",
+      "exposed_handle": "E0C",
+      "viewport_handle": null,
+      "block": "*I24",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "431",
+      "exposed_handle": "E0E",
+      "viewport_handle": null,
+      "block": "*I25",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "4EB",
+      "exposed_handle": "E10",
+      "viewport_handle": null,
+      "block": "*I27",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "4FE",
+      "exposed_handle": "E12",
+      "viewport_handle": null,
+      "block": "*I28",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "510",
+      "exposed_handle": "E14",
+      "viewport_handle": null,
+      "block": "*I29",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "522",
+      "exposed_handle": "E16",
+      "viewport_handle": null,
+      "block": "*I30",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "534",
+      "exposed_handle": "E18",
+      "viewport_handle": null,
+      "block": "*I31",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "546",
+      "exposed_handle": "E1A",
+      "viewport_handle": null,
+      "block": "*I32",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "9CF",
+      "exposed_handle": "E1C",
+      "viewport_handle": null,
+      "block": "*I67",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "9E8",
+      "exposed_handle": "E1E",
+      "viewport_handle": null,
+      "block": "*I68",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "9FC",
+      "exposed_handle": "E20",
+      "viewport_handle": null,
+      "block": "*I69",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "A0E",
+      "exposed_handle": "E22",
+      "viewport_handle": null,
+      "block": "*I70",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "A22",
+      "exposed_handle": "E24",
+      "viewport_handle": null,
+      "block": "*I71",
+      "owner_layout": "Blatt_1",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "54F",
+      "exposed_handle": "E26",
+      "viewport_handle": null,
+      "block": "*I33",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "578",
+      "exposed_handle": "E28",
+      "viewport_handle": null,
+      "block": "*I34",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "5EE",
+      "exposed_handle": "E2A",
+      "viewport_handle": null,
+      "block": "*I37",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "5FB",
+      "exposed_handle": "E2C",
+      "viewport_handle": null,
+      "block": "*I38",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "60C",
+      "exposed_handle": "E2E",
+      "viewport_handle": null,
+      "block": "*I39",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "619",
+      "exposed_handle": "E30",
+      "viewport_handle": null,
+      "block": "*I40",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "630",
+      "exposed_handle": "E32",
+      "viewport_handle": null,
+      "block": "*I41",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "646",
+      "exposed_handle": "E34",
+      "viewport_handle": null,
+      "block": "*I42",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "652",
+      "exposed_handle": "E36",
+      "viewport_handle": null,
+      "block": "*I43",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "65F",
+      "exposed_handle": "E38",
+      "viewport_handle": null,
+      "block": "*I44",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "672",
+      "exposed_handle": "E3A",
+      "viewport_handle": null,
+      "block": "*I45",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "685",
+      "exposed_handle": "E3C",
+      "viewport_handle": null,
+      "block": "*I46",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "698",
+      "exposed_handle": "E3E",
+      "viewport_handle": null,
+      "block": "*I47",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "6AB",
+      "exposed_handle": "E40",
+      "viewport_handle": null,
+      "block": "*I48",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "6BE",
+      "exposed_handle": "E42",
+      "viewport_handle": null,
+      "block": "*I49",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "6D1",
+      "exposed_handle": "E44",
+      "viewport_handle": null,
+      "block": "*I50",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "6E5",
+      "exposed_handle": "E46",
+      "viewport_handle": null,
+      "block": "*I51",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "6F8",
+      "exposed_handle": "E48",
+      "viewport_handle": null,
+      "block": "*I52",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "70B",
+      "exposed_handle": "E4A",
+      "viewport_handle": null,
+      "block": "*I53",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "719",
+      "exposed_handle": "E4C",
+      "viewport_handle": null,
+      "block": "*I54",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "72E",
+      "exposed_handle": "E4E",
+      "viewport_handle": null,
+      "block": "*I55",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "742",
+      "exposed_handle": "E50",
+      "viewport_handle": null,
+      "block": "*I56",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "750",
+      "exposed_handle": "E52",
+      "viewport_handle": null,
+      "block": "*I57",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "75D",
+      "exposed_handle": "E54",
+      "viewport_handle": null,
+      "block": "*I58",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "769",
+      "exposed_handle": "E56",
+      "viewport_handle": null,
+      "block": "*I59",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "A36",
+      "exposed_handle": "E58",
+      "viewport_handle": null,
+      "block": "*I72",
+      "owner_layout": "Blatt_2",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "7B4",
+      "exposed_handle": "E5A",
+      "viewport_handle": null,
+      "block": "*I61",
+      "owner_layout": "Blatt_3",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "7DD",
+      "exposed_handle": "E5C",
+      "viewport_handle": null,
+      "block": "*I62",
+      "owner_layout": "Blatt_3",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "961",
+      "exposed_handle": "E5E",
+      "viewport_handle": null,
+      "block": "*I66",
+      "owner_layout": "Blatt_3",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "A48",
+      "exposed_handle": "E60",
+      "viewport_handle": null,
+      "block": "*I74",
+      "owner_layout": "Blatt_3",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "A5B",
+      "exposed_handle": "E62",
+      "viewport_handle": null,
+      "block": "*I75",
+      "owner_layout": "Blatt_3",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "A6E",
+      "exposed_handle": "E64",
+      "viewport_handle": null,
+      "block": "*I76",
+      "owner_layout": "Blatt_3",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "A7B",
+      "exposed_handle": "E66",
+      "viewport_handle": null,
+      "block": "*I77",
+      "owner_layout": "Blatt_3",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "A8D",
+      "exposed_handle": "E68",
+      "viewport_handle": null,
+      "block": "*I78",
+      "owner_layout": "Blatt_3",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "A9F",
+      "exposed_handle": "E6A",
+      "viewport_handle": null,
+      "block": "*I79",
+      "owner_layout": "Blatt_3",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "1DB",
+      "exposed_handle": "E6C",
+      "viewport_handle": "1D6",
+      "block": "*I3",
+      "owner_layout": "Model",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        -10086.750001907349,
+        -10075.500001907349,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "233",
+      "exposed_handle": "E6E",
+      "viewport_handle": "22E",
+      "block": "*I5",
+      "owner_layout": "Model",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        -10086.750001907349,
+        -10015.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "253",
+      "exposed_handle": "E70",
+      "viewport_handle": "24E",
+      "block": "*I7",
+      "owner_layout": "Model",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        -10066.563339233398,
+        -10094.95584487915,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "2E3",
+      "exposed_handle": "E72",
+      "viewport_handle": "2DE",
+      "block": "*I9",
+      "owner_layout": "Model",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        -10015.0,
+        -10075.500001907349,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "597",
+      "exposed_handle": "E74",
+      "viewport_handle": "592",
+      "block": "*I35",
+      "owner_layout": "Model",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        -10080.249996185303,
+        -10069.000000953674,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "7FC",
+      "exposed_handle": "E76",
+      "viewport_handle": "7F7",
+      "block": "*I63",
+      "owner_layout": "Model",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        -10076.999998092651,
+        -10065.749998092651,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    }
+  ],
+  "layouts": [
+    {
+      "id": "sheet-01",
+      "name": "Blatt_1",
+      "qualifies": true,
+      "reason": "renderable_paper_content_or_reconstructed_cached_view",
+      "fidelity": "unverified",
+      "svg": {
+        "path": "docs/assets/shg/SHG-028/sheet-01.svg",
+        "sha256": "e31dd12bd901d4b1e9b1f41d4b2b520ccd24212c5d69cd2e4f50dec4c707fd31",
+        "bytes": 170487
+      },
+      "pdf": {
+        "path": "docs/assets/shg/SHG-028/sheet-01.pdf",
+        "sha256": "004edf91d86617855f273cc90ca57a5a156af09caa45b4c740c47059a724c279",
+        "bytes": 137431
+      },
+      "png": {
+        "path": "docs/assets/shg/SHG-028/sheet-01.png",
+        "sha256": "ca2b4169e9ae90fd46497a382b1ae0428fe07fcc47bf12fa3accf11c92e21e81",
+        "bytes": 109718
+      },
+      "paper_size_native": [
+        420.0,
+        297.0
+      ]
+    },
+    {
+      "id": "sheet-02",
+      "name": "Blatt_2",
+      "qualifies": true,
+      "reason": "renderable_paper_content_or_reconstructed_cached_view",
+      "fidelity": "unverified",
+      "svg": {
+        "path": "docs/assets/shg/SHG-028/sheet-02.svg",
+        "sha256": "268625ee49c9cb7cf496348140c5c4e1f25c9f2305152ced48703aced2a364df",
+        "bytes": 169420
+      },
+      "pdf": {
+        "path": "docs/assets/shg/SHG-028/sheet-02.pdf",
+        "sha256": "7d5a2a9c959a7f83f7d8b4e841e7dd6e61a6c6a58641426e310ae2488b21e7b9",
+        "bytes": 152126
+      },
+      "png": {
+        "path": "docs/assets/shg/SHG-028/sheet-02.png",
+        "sha256": "8a3acfc73dfd0d4bc33a5716d370c6de2dfb19080cfa581d3c808d72041b0f8f",
+        "bytes": 129345
+      },
+      "paper_size_native": [
+        420.0,
+        297.0
+      ]
+    },
+    {
+      "id": "sheet-03",
+      "name": "Blatt_3",
+      "qualifies": true,
+      "reason": "renderable_paper_content_or_reconstructed_cached_view",
+      "fidelity": "unverified",
+      "svg": {
+        "path": "docs/assets/shg/SHG-028/sheet-03.svg",
+        "sha256": "4d74e58ba1af44c2680fe8182ebe89c73abe5f01b108db8d0c6267dd3312751c",
+        "bytes": 80460
+      },
+      "pdf": {
+        "path": "docs/assets/shg/SHG-028/sheet-03.pdf",
+        "sha256": "90397a6c975b5bfa15bbad6373b901c8907a9033976c614b41b4b092df1e41a9",
+        "bytes": 69625
+      },
+      "png": {
+        "path": "docs/assets/shg/SHG-028/sheet-03.png",
+        "sha256": "c379c7f20a779f56bb00a9e0b93458287c5001684ebaed8feadc6f2f808bb7db",
+        "bytes": 97282
+      },
+      "paper_size_native": [
+        420.0,
+        297.0
+      ]
+    }
+  ],
+  "model_space": {
+    "status": "cached_views_represented_on_sheets",
+    "native_3d_model_verified": false
+  }
+}

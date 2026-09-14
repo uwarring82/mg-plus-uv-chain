@@ -1,0 +1,141 @@
+{
+  "design_id": "SHG-009",
+  "source_sha256": "2562eaa1c88c64aa4e47ccea4f2c0aa018d7fea618396d9ec07afcbb56fab84e",
+  "reader": "dwgread 0.14",
+  "exit_code": 0,
+  "stderr": "SUCCESS",
+  "source_entity_counts": {
+    "ARC": 26,
+    "BLOCK": 44,
+    "CIRCLE": 12,
+    "ELLIPSE": 16,
+    "ENDBLK": 44,
+    "HATCH": 49,
+    "INSERT": 6,
+    "LINE": 625,
+    "LWPOLYLINE": 17,
+    "MTEXT": 66,
+    "SOLID": 1,
+    "UNKNOWN_ENT": 35,
+    "VIEWPORT": 7
+  },
+  "source_object_counts": {
+    "APPID": 3,
+    "APPID_CONTROL": 1,
+    "BLOCK_CONTROL": 1,
+    "BLOCK_HEADER": 44,
+    "DETAILVIEWSTYLE": 2,
+    "DICTIONARY": 26,
+    "DICTIONARYVAR": 5,
+    "DICTIONARYWDFLT": 1,
+    "DIMSTYLE": 25,
+    "DIMSTYLE_CONTROL": 1,
+    "LAYER": 27,
+    "LAYER_CONTROL": 1,
+    "LAYOUT": 2,
+    "LTYPE": 18,
+    "LTYPE_CONTROL": 1,
+    "MATERIAL": 3,
+    "MLEADERSTYLE": 1,
+    "MLINESTYLE": 1,
+    "PLACEHOLDER": 1,
+    "SCALE": 17,
+    "SECTIONVIEWSTYLE": 2,
+    "STYLE": 3,
+    "STYLE_CONTROL": 1,
+    "TABLESTYLE": 1,
+    "UCS_CONTROL": 1,
+    "UNKNOWN_OBJ": 40,
+    "VIEW_CONTROL": 1,
+    "VISUALSTYLE": 24,
+    "VPORT": 1,
+    "VPORT_CONTROL": 1,
+    "XRECORD": 19
+  },
+  "header_units": 4,
+  "original_header_dates": {
+    "TDUCREATE": [
+      2458892,
+      3416000
+    ],
+    "TDUUPDATE": [
+      2459380,
+      41427000
+    ]
+  },
+  "date_encoding": "[Julian day, milliseconds within day], source TDU fields; retained verbatim",
+  "summary_dates": {
+    "TDCREATE": [
+      0,
+      0
+    ],
+    "TDUPDATE": [
+      0,
+      0
+    ]
+  },
+  "source_application": "AppInfoDataList",
+  "source_classes": [
+    {
+      "dxfname": "ACDBDICTIONARYWDFLT",
+      "appname": "ObjectDBX Classes"
+    },
+    {
+      "dxfname": "MATERIAL",
+      "appname": "ObjectDBX Classes"
+    },
+    {
+      "dxfname": "VISUALSTYLE",
+      "appname": "ObjectDBX Classes"
+    },
+    {
+      "dxfname": "SCALE",
+      "appname": "ObjectDBX Classes"
+    },
+    {
+      "dxfname": "TABLESTYLE",
+      "appname": "ObjectDBX Classes"
+    },
+    {
+      "dxfname": "MLEADERSTYLE",
+      "appname": "ACDB_MLEADERSTYLE_CLASS"
+    },
+    {
+      "dxfname": "ACDBSECTIONVIEWSTYLE",
+      "appname": "ObjectDBX Classes"
+    },
+    {
+      "dxfname": "ACDBDETAILVIEWSTYLE",
+      "appname": "ObjectDBX Classes"
+    },
+    {
+      "dxfname": "ACIDINTERNALVERSION",
+      "appname": "\"Inventor Drawing Application\""
+    },
+    {
+      "dxfname": "ACIDVERSION",
+      "appname": "AcIdViewObj|Product: Inventor Drawing Enabler|Company: Autodesk|Website: www.autodesk.com"
+    },
+    {
+      "dxfname": "ACIDOBJECTTONOTIFY",
+      "appname": "AcIdViewObj|Product: Inventor Drawing Enabler|Company: Autodesk|Website: www.autodesk.com"
+    },
+    {
+      "dxfname": "ACIDMAPPINGS",
+      "appname": "\"Inventor Drawing Application\""
+    },
+    {
+      "dxfname": "ACIDBLOCKREFERENCE",
+      "appname": "AcIdViewObj|Product: Inventor Drawing Enabler|Company: Autodesk|Website: www.autodesk.com"
+    },
+    {
+      "dxfname": "ACIDSTREAM",
+      "appname": "\"Inventor Drawing Application\""
+    },
+    {
+      "dxfname": "DICTIONARYVAR",
+      "appname": "ObjectDBX Classes"
+    }
+  ],
+  "reference_rendering_status": "not_a_rendering_reference"
+}

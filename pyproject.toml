@@ -41,6 +41,7 @@ test = [
     "pytest>=7.4",
     "pytest-cov>=4.1",
     "hypothesis>=6.92",
+    "jsonschema>=4.26",
 ]
 dev = [
     "black>=24.1",

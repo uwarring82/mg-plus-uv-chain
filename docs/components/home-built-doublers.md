@@ -8,6 +8,11 @@ description: Photographic survey of three home-built BBO ring-cavity doublers cu
 
 This lab record describes three home-built 559 → 280 nm doublers from photographs. Coatings, focal lengths and exact path lengths need bench confirmation before reuse.
 
+The [AG Schaetz SHG design archive](shg-designs.html) adds original CAD,
+compressed DXF exports and drawing previews for LBO/BBO cavities and related
+mechanics. Its correspondence to these three photographed doublers is not
+confirmed; design dimensions and photo estimates remain separate evidence.
+
 **Status:** DRAFT (2026-05-13). Three photographs archived under
 [`docs/assets/components/home-built-doublers/`](https://github.com/uwarring82/mg-plus-uv-chain/tree/main/docs/assets/components/home-built-doublers);
 geometric extraction is observational only.

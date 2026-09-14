@@ -118,6 +118,35 @@ parameters:
 
 Vendor / batch sensitivity, where the paper reports it, must be captured (CHARTER §5 Phase 1 evidence-table requirement).
 
+## Design data (`designs/`)
+
+The [AG Schaetz SHG archive](designs/shg/README.md) separates unmodified
+CAD in `designs/shg/raw/` from exports and inspection records in
+`designs/shg/processed/`. Its canonical `catalogue.yaml` is validated by
+`catalogue.schema.json`; this design schema is separate from the baseline
+measurement schema above.
+
+Each drawing also has a compressed ASCII DXF and a compressed GNU LibreDWG
+JSON object graph. The latter exposes source objects and opaque payloads to
+programmatic readers; it carries the hardware licence. Compact inspection
+JSON and the generated catalogue carry the metadata licence.
+
+Required design records include stable IDs independent of filenames, original
+names and archive-name encoding, author attribution, publication/licence
+disposition, checksums, part/assembly classification, source and converter
+date metadata, native units, hardware-association evidence, export inventories,
+layout decisions, conversion losses and preview references. Original CAD units
+and raw annotations are preserved; normalized extracted quantities use SI.
+Hardware confirmation requires bench evidence. Drawing tags `D`, `D*`, `OPEN`
+identify direct, ambiguous/inferred and unresolved evidence.
+
+`scripts/shg_designs.py site` generates `docs/_data/shg.yml` and the public
+JSON catalogue from canonical YAML. Its `check` command verifies schema,
+file hashes and generated-data freshness. The new `tests/test_shg_designs.py`
+covers these contracts. Licence scope for CAD, metadata, derivatives and
+narrative is explicit in [LICENSES.md](../LICENSES.md); it is not inferred
+from the existing measurement-data or site-asset categories.
+
 ---
 
 ## Charter compliance

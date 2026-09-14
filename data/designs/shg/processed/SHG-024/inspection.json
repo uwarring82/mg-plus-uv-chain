@@ -1,0 +1,814 @@
+{
+  "entity_counts": {
+    "ACAD_PROXY_ENTITY": 14,
+    "ACAD_PROXY_OBJECT": 41,
+    "ACDBDETAILVIEWSTYLE": 2,
+    "ACDBDICTIONARYWDFLT": 1,
+    "ACDBPLACEHOLDER": 1,
+    "ACDBSECTIONVIEWSTYLE": 2,
+    "APPID": 3,
+    "ARC": 45,
+    "BLOCK": 19,
+    "BLOCK_RECORD": 19,
+    "CELLSTYLEMAP": 1,
+    "CIRCLE": 76,
+    "DICTIONARY": 25,
+    "DICTIONARYVAR": 5,
+    "DIMSTYLE": 21,
+    "ELLIPSE": 5,
+    "ENDBLK": 19,
+    "HATCH": 20,
+    "INSERT": 2,
+    "LAYER": 52,
+    "LAYOUT": 2,
+    "LINE": 691,
+    "LTYPE": 32,
+    "LWPOLYLINE": 21,
+    "MATERIAL": 3,
+    "MLEADERSTYLE": 1,
+    "MLINESTYLE": 1,
+    "MTEXT": 53,
+    "SCALE": 17,
+    "SEQEND": 2,
+    "SOLID": 1,
+    "SORTENTSTABLE": 1,
+    "SPLINE": 228,
+    "STYLE": 5,
+    "TABLE": 9,
+    "TABLESTYLE": 1,
+    "VIEWPORT": 3,
+    "VISUALSTYLE": 24,
+    "VPORT": 1,
+    "XRECORD": 2
+  },
+  "model_entity_counts": {
+    "ACAD_PROXY_ENTITY": 2
+  },
+  "layouts_before_reconstruction": [
+    {
+      "name": "Model",
+      "entity_counts": {
+        "ACAD_PROXY_ENTITY": 2
+      }
+    },
+    {
+      "name": "Sheet",
+      "entity_counts": {
+        "ACAD_PROXY_ENTITY": 12,
+        "VIEWPORT": 3
+      }
+    }
+  ],
+  "external_references": [],
+  "dimension_entities": [],
+  "dimension_comparison_status": "unavailable_annotations_are_exploded_text_and_lines",
+  "annotations": [
+    {
+      "handle": "248",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "D",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;D",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "249",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "D",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;D",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "24A",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "C",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;C",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "24B",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "C",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;C",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "24C",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "B",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;B",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "24D",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "B",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;B",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "24E",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "A",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;A",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "24F",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "A",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;A",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "250",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "8",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;8",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "251",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "8",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;8",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "252",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "7",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;7",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "253",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "7",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;7",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "254",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "6",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;6",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "255",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "6",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;6",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "256",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "5",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;5",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "257",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "5",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;5",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "25C",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "4",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;4",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "25D",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "4",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;4",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "25E",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "3",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;3",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "25F",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "3",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;3",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "260",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "2",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;2",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "261",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "2",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;2",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "262",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "1",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;1",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "263",
+      "owner_handle": "233",
+      "entity_type": "MTEXT",
+      "layer": "Border (ANSI)",
+      "text": "1",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;1",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "27C",
+      "owner_handle": "264",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ANSI)",
+      "text": "3 : 1",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;3 : 1",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "27D",
+      "owner_handle": "264",
+      "entity_type": "MTEXT",
+      "layer": "Title (ANSI)",
+      "text": "REV",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;REV",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "27E",
+      "owner_handle": "264",
+      "entity_type": "MTEXT",
+      "layer": "Title (ANSI)",
+      "text": "SCALE",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;SCALE",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "27F",
+      "owner_handle": "264",
+      "entity_type": "MTEXT",
+      "layer": "Title (ANSI)",
+      "text": "D",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;D",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "280",
+      "owner_handle": "264",
+      "entity_type": "MTEXT",
+      "layer": "Title (ANSI)",
+      "text": "SIZE",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;SIZE",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "281",
+      "owner_handle": "264",
+      "entity_type": "MTEXT",
+      "layer": "Title (ANSI)",
+      "text": "TITLE",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;TITLE",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "282",
+      "owner_handle": "264",
+      "entity_type": "MTEXT",
+      "layer": "Title (ANSI)",
+      "text": "ofen",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;ofen",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "283",
+      "owner_handle": "264",
+      "entity_type": "MTEXT",
+      "layer": "Title (ANSI)",
+      "text": "DWG NO",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;DWG NO",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "284",
+      "owner_handle": "264",
+      "entity_type": "MTEXT",
+      "layer": "Title (ANSI)",
+      "text": "10/1/2020",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;10/1/2020",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "285",
+      "owner_handle": "264",
+      "entity_type": "MTEXT",
+      "layer": "Title (ANSI)",
+      "text": "Standard",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Standard",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "286",
+      "owner_handle": "264",
+      "entity_type": "MTEXT",
+      "layer": "Title (ANSI)",
+      "text": "APPROVED",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;APPROVED",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "287",
+      "owner_handle": "264",
+      "entity_type": "MTEXT",
+      "layer": "Title (ANSI)",
+      "text": "MFG",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;MFG",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "288",
+      "owner_handle": "264",
+      "entity_type": "MTEXT",
+      "layer": "Title (ANSI)",
+      "text": "QA",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;QA",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "289",
+      "owner_handle": "264",
+      "entity_type": "MTEXT",
+      "layer": "Title (ANSI)",
+      "text": "CHECKED",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;CHECKED",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "28A",
+      "owner_handle": "264",
+      "entity_type": "MTEXT",
+      "layer": "Title (ANSI)",
+      "text": "DRAWN",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;DRAWN",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "28B",
+      "owner_handle": "264",
+      "entity_type": "MTEXT",
+      "layer": "Title (ANSI)",
+      "text": " 1 ",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.; 1 ",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "28C",
+      "owner_handle": "264",
+      "entity_type": "MTEXT",
+      "layer": "Title (ANSI)",
+      "text": "OF",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;OF",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "28D",
+      "owner_handle": "264",
+      "entity_type": "MTEXT",
+      "layer": "Title (ANSI)",
+      "text": " 1  ",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.; 1  ",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "28E",
+      "owner_handle": "264",
+      "entity_type": "MTEXT",
+      "layer": "Title (ANSI)",
+      "text": "SHEET",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;SHEET",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "33E",
+      "owner_handle": "33A",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ANSI)",
+      "text": "29.69260",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;29.69260",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "351",
+      "owner_handle": "34D",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ANSI)",
+      "text": "14.208170",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;14.208170",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "39A",
+      "owner_handle": "396",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ANSI)",
+      "text": "14.22400",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;14.22400",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "3AE",
+      "owner_handle": "3AA",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ANSI)",
+      "text": "19.380200",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;19.380200",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "77B",
+      "owner_handle": "777",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ANSI)",
+      "text": "5.99",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;5.99",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "78F",
+      "owner_handle": "78B",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ANSI)",
+      "text": "21.11",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;21.11",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7A3",
+      "owner_handle": "79F",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ANSI)",
+      "text": "22.38",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;22.38",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7B6",
+      "owner_handle": "7B2",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ANSI)",
+      "text": "25.48",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;25.48",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7C9",
+      "owner_handle": "7C5",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ANSI)",
+      "text": "76.28",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;76.28",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "7DC",
+      "owner_handle": "7D8",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ANSI)",
+      "text": "97.03",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;97.03",
+      "evidence_tag": "D"
+    }
+  ],
+  "dxf_header_dates": {
+    "TDCREATE": 2461298.6506134258,
+    "TDUPDATE": 2461298.630679225,
+    "status": "converter_output_not_original_dwg_dates"
+  },
+  "design_id": "SHG-024",
+  "source_sha256": "398930e1f73c1bc4e139d5c70274759d39d9d2b35490cac72806c643d461e6b3",
+  "dxf_sha256": "c2e13f8a4ff83a25ffbade60cd1b0736ba7a27b1d915e3b73764cf771de9403d",
+  "fidelity": "unverified",
+  "source_entity_counts": {
+    "ARC": 45,
+    "BLOCK": 19,
+    "CIRCLE": 76,
+    "ELLIPSE": 5,
+    "ENDBLK": 19,
+    "HATCH": 20,
+    "INSERT": 2,
+    "LINE": 691,
+    "LWPOLYLINE": 21,
+    "MTEXT": 53,
+    "SOLID": 1,
+    "SPLINE": 228,
+    "UNKNOWN_ENT": 14,
+    "VIEWPORT": 3
+  },
+  "source_count_status": "independent_reader_counts_not_visual_validation",
+  "unsupported_native_solids": 0,
+  "warnings": [
+    "Inventor semantics beyond the observed proxy variant are opaque.",
+    "Restricted proxy-origin decoding and viewport clipping are used; fidelity is unverified.",
+    "AIGDT unavailable: engineering symbols may appear as letters.",
+    "No independent CAD rendering; not certified machining drawings.",
+    "ODA may reset DXF header dates; they are not original DWG dates."
+  ],
+  "entity_count_deltas": {},
+  "proxy_count_comparison": {
+    "source_unknown_entities": 14,
+    "dxf_proxy_entities": 14,
+    "note": "Reader type names differ; equal counts do not prove fidelity"
+  },
+  "preview_placements": [
+    {
+      "proxy_handle": "294",
+      "exposed_handle": "820",
+      "viewport_handle": "28F",
+      "block": "*I3",
+      "owner_layout": "Model",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        -10060.88782787323,
+        -10028.890035152435,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "4A3",
+      "exposed_handle": "822",
+      "viewport_handle": "49E",
+      "block": "*I9",
+      "owner_layout": "Model",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        -10065.237498283386,
+        -10023.66516828537,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "236",
+      "exposed_handle": "824",
+      "viewport_handle": null,
+      "block": "*I1",
+      "owner_layout": "Sheet",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "267",
+      "exposed_handle": "826",
+      "viewport_handle": null,
+      "block": "*I2",
+      "owner_layout": "Sheet",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "33D",
+      "exposed_handle": "828",
+      "viewport_handle": null,
+      "block": "*I5",
+      "owner_layout": "Sheet",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "350",
+      "exposed_handle": "82A",
+      "viewport_handle": null,
+      "block": "*I6",
+      "owner_layout": "Sheet",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "399",
+      "exposed_handle": "82C",
+      "viewport_handle": null,
+      "block": "*I7",
+      "owner_layout": "Sheet",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "3AD",
+      "exposed_handle": "82E",
+      "viewport_handle": null,
+      "block": "*I8",
+      "owner_layout": "Sheet",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "77A",
+      "exposed_handle": "830",
+      "viewport_handle": null,
+      "block": "*I11",
+      "owner_layout": "Sheet",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "78E",
+      "exposed_handle": "832",
+      "viewport_handle": null,
+      "block": "*I12",
+      "owner_layout": "Sheet",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "7A2",
+      "exposed_handle": "834",
+      "viewport_handle": null,
+      "block": "*I13",
+      "owner_layout": "Sheet",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "7B5",
+      "exposed_handle": "836",
+      "viewport_handle": null,
+      "block": "*I14",
+      "owner_layout": "Sheet",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "7C8",
+      "exposed_handle": "838",
+      "viewport_handle": null,
+      "block": "*I15",
+      "owner_layout": "Sheet",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "7DB",
+      "exposed_handle": "83A",
+      "viewport_handle": null,
+      "block": "*I16",
+      "owner_layout": "Sheet",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    }
+  ],
+  "layouts": [
+    {
+      "id": "sheet-01",
+      "name": "Sheet",
+      "qualifies": true,
+      "reason": "renderable_paper_content_or_reconstructed_cached_view",
+      "fidelity": "unverified",
+      "svg": {
+        "path": "docs/assets/shg/SHG-024/sheet-01.svg",
+        "sha256": "d824e75daa6f0115dd278330552ef784742f9a3b65b9ca5d4661aeed9c090b40",
+        "bytes": 300621
+      },
+      "pdf": {
+        "path": "docs/assets/shg/SHG-024/sheet-01.pdf",
+        "sha256": "59cdc9d23654a557b92b757de56721b8fda7642dec563420640ab8171f29ee23",
+        "bytes": 166266
+      },
+      "png": {
+        "path": "docs/assets/shg/SHG-024/sheet-01.png",
+        "sha256": "4b065fc7b1ca149ac698c17ef20f2423afea2ca731adcb7daecde30546c8891e",
+        "bytes": 132576
+      },
+      "paper_size_native": [
+        863.6,
+        558.8000000000001
+      ]
+    }
+  ],
+  "model_space": {
+    "status": "cached_views_represented_on_sheets",
+    "native_3d_model_verified": false
+  }
+}

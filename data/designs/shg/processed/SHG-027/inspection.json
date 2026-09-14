@@ -1,0 +1,752 @@
+{
+  "entity_counts": {
+    "ACAD_PROXY_ENTITY": 15,
+    "ACAD_PROXY_OBJECT": 40,
+    "ACDBDETAILVIEWSTYLE": 2,
+    "ACDBDICTIONARYWDFLT": 1,
+    "ACDBPLACEHOLDER": 1,
+    "ACDBSECTIONVIEWSTYLE": 2,
+    "APPID": 3,
+    "ARC": 7,
+    "BLOCK": 20,
+    "BLOCK_RECORD": 20,
+    "CELLSTYLEMAP": 1,
+    "DICTIONARY": 24,
+    "DICTIONARYVAR": 5,
+    "DIMSTYLE": 26,
+    "ELLIPSE": 1103,
+    "ENDBLK": 20,
+    "HATCH": 10,
+    "INSERT": 2,
+    "LAYER": 28,
+    "LAYOUT": 2,
+    "LINE": 3085,
+    "LTYPE": 18,
+    "LWPOLYLINE": 17,
+    "MATERIAL": 3,
+    "MLEADERSTYLE": 1,
+    "MLINESTYLE": 1,
+    "MTEXT": 48,
+    "SCALE": 17,
+    "SEQEND": 2,
+    "SOLID": 1,
+    "SPLINE": 1271,
+    "STYLE": 3,
+    "TABLE": 9,
+    "TABLESTYLE": 1,
+    "VIEWPORT": 3,
+    "VISUALSTYLE": 24,
+    "VPORT": 1,
+    "XRECORD": 2
+  },
+  "model_entity_counts": {
+    "ACAD_PROXY_ENTITY": 2
+  },
+  "layouts_before_reconstruction": [
+    {
+      "name": "Blatt",
+      "entity_counts": {
+        "ACAD_PROXY_ENTITY": 13,
+        "VIEWPORT": 3
+      }
+    },
+    {
+      "name": "Model",
+      "entity_counts": {
+        "ACAD_PROXY_ENTITY": 2
+      }
+    }
+  ],
+  "external_references": [],
+  "dimension_entities": [],
+  "dimension_comparison_status": "unavailable_annotations_are_exploded_text_and_lines",
+  "annotations": [
+    {
+      "handle": "1A1",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "D",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;D",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1A2",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "D",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;D",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1A3",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "C",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;C",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1A4",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "C",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;C",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1A5",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "B",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;B",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1A6",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "B",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;B",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1A7",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "A",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;A",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1A8",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "A",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;A",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1A9",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "6",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;6",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1AA",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "6",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;6",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1AB",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "5",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;5",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1AC",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "5",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;5",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1B1",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "4",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;4",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1B2",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "4",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;4",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1B3",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "3",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;3",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1B4",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "3",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;3",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1B5",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "2",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;2",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1B6",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "2",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;2",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1B7",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "1",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;1",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1B8",
+      "owner_handle": "190",
+      "entity_type": "MTEXT",
+      "layer": "Rahmen (ISO)",
+      "text": "1",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;1",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1CB",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Datum",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Datum",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1CC",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Blatt",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Blatt",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1CD",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Ausgabe",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Ausgabe",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1CE",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "1 / 1 ",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;1 / 1 ",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1CF",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Datum",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Datum",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1D0",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Genehmigt von",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Genehmigt von",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1D1",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Kontrolliert von",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Kontrolliert von",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1D2",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Konstruiert von",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Konstruiert von",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1D3",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "4/12/2021",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;4/12/2021",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1D4",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "P. Kiefer",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;P. Kiefer",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1D5",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "s_einkopplung_lbo",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;s_einkopplung_lbo",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "17FE",
+      "owner_handle": "1B9",
+      "entity_type": "MTEXT",
+      "layer": "Titel (ISO)",
+      "text": "Einlopplung LBO",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Einlopplung LBO",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1738",
+      "owner_handle": "172D",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "160mm von Mitte M1/M2 entfernt",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;160mm von Mitte M1/M2 entfernt",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1739",
+      "owner_handle": "172D",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "Position für lambda/2",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Position für lambda/2",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1745",
+      "owner_handle": "173A",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "Position für PBS",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Position für PBS",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1751",
+      "owner_handle": "1746",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "bis Mitte M1/M2",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;bis Mitte M1/M2",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1752",
+      "owner_handle": "1746",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "Abstand Vorderkante Faserkoppler",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Abstand Vorderkante Faserkoppler",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1753",
+      "owner_handle": "1746",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "Diese Position entspricht 250mm",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Diese Position entspricht 250mm",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1754",
+      "owner_handle": "1746",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "Bohrung für Faserauskoppler. ",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Bohrung für Faserauskoppler. ",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1759",
+      "owner_handle": "1755",
+      "entity_type": "MTEXT",
+      "layer": "Bemaßung (ISO)",
+      "text": "15,00",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;15,00",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1772",
+      "owner_handle": "1767",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "bis Fläche Halterung = 14.7 mm",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;bis Fläche Halterung = 14.7 mm",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "1773",
+      "owner_handle": "1767",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "Abstand Ende Faserkoppeler ",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Abstand Ende Faserkoppeler ",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "178E",
+      "owner_handle": "1783",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "124 mm von Mitte M1/M2 entfernt",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;124 mm von Mitte M1/M2 entfernt",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "178F",
+      "owner_handle": "1783",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "Zusätzliche Position für Modematching Kamera",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Zusätzliche Position für Modematching Kamera",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "17CD",
+      "owner_handle": "17C1",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "des Faserkopplers im Halter minimieren.",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;des Faserkopplers im Halter minimieren.",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "17CE",
+      "owner_handle": "17C1",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "Reflex am PBS durch Orientierung ",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;Reflex am PBS durch Orientierung ",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "17CF",
+      "owner_handle": "17C1",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "PBS garantiert saubere Polarisation.",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;PBS garantiert saubere Polarisation.",
+      "evidence_tag": "D"
+    },
+    {
+      "handle": "180A",
+      "owner_handle": "17FF",
+      "entity_type": "MTEXT",
+      "layer": "Symbol (ISO)",
+      "text": "M4 Senkkopf Innensechskant, 16mm lang",
+      "raw_text": "\\fTahoma|b0|i0;\\W1.;M4 Senkkopf Innensechskant, 16mm lang",
+      "evidence_tag": "D"
+    }
+  ],
+  "dxf_header_dates": {
+    "TDCREATE": 2461298.6506481483,
+    "TDUPDATE": 2461298.630680868,
+    "status": "converter_output_not_original_dwg_dates"
+  },
+  "design_id": "SHG-027",
+  "source_sha256": "3427b8e272ccdfdff63e3747f975e3811935d917cbd690412f37995df60f47cd",
+  "dxf_sha256": "e2e7e819b7cdf3a141dd8933757b2b4fbf42f6ec0dbe8129a0df327d3bb7c71d",
+  "fidelity": "unverified",
+  "source_entity_counts": {
+    "ARC": 7,
+    "BLOCK": 20,
+    "ELLIPSE": 1103,
+    "ENDBLK": 20,
+    "HATCH": 10,
+    "INSERT": 2,
+    "LINE": 3085,
+    "LWPOLYLINE": 17,
+    "MTEXT": 48,
+    "SOLID": 1,
+    "SPLINE": 1271,
+    "UNKNOWN_ENT": 15,
+    "VIEWPORT": 3
+  },
+  "source_count_status": "independent_reader_counts_not_visual_validation",
+  "unsupported_native_solids": 0,
+  "warnings": [
+    "Inventor semantics beyond the observed proxy variant are opaque.",
+    "Restricted proxy-origin decoding and viewport clipping are used; fidelity is unverified.",
+    "AIGDT unavailable: engineering symbols may appear as letters.",
+    "No independent CAD rendering; not certified machining drawings.",
+    "ODA may reset DXF header dates; they are not original DWG dates."
+  ],
+  "entity_count_deltas": {},
+  "proxy_count_comparison": {
+    "source_unknown_entities": 15,
+    "dxf_proxy_entities": 15,
+    "note": "Reader type names differ; equal counts do not prove fidelity"
+  },
+  "preview_placements": [
+    {
+      "proxy_handle": "193",
+      "exposed_handle": "189F",
+      "viewport_handle": null,
+      "block": "*I1",
+      "owner_layout": "Blatt",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "1BC",
+      "exposed_handle": "18A1",
+      "viewport_handle": null,
+      "block": "*I2",
+      "owner_layout": "Blatt",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "1730",
+      "exposed_handle": "18A3",
+      "viewport_handle": null,
+      "block": "*I7",
+      "owner_layout": "Blatt",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "173D",
+      "exposed_handle": "18A5",
+      "viewport_handle": null,
+      "block": "*I8",
+      "owner_layout": "Blatt",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "1749",
+      "exposed_handle": "18A7",
+      "viewport_handle": null,
+      "block": "*I9",
+      "owner_layout": "Blatt",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "1758",
+      "exposed_handle": "18A9",
+      "viewport_handle": null,
+      "block": "*I10",
+      "owner_layout": "Blatt",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "176A",
+      "exposed_handle": "18AB",
+      "viewport_handle": null,
+      "block": "*I11",
+      "owner_layout": "Blatt",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "177B",
+      "exposed_handle": "18AD",
+      "viewport_handle": null,
+      "block": "*I13",
+      "owner_layout": "Blatt",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "1786",
+      "exposed_handle": "18AF",
+      "viewport_handle": null,
+      "block": "*I14",
+      "owner_layout": "Blatt",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "17C4",
+      "exposed_handle": "18B1",
+      "viewport_handle": null,
+      "block": "*I16",
+      "owner_layout": "Blatt",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "1802",
+      "exposed_handle": "18B3",
+      "viewport_handle": null,
+      "block": "*I17",
+      "owner_layout": "Blatt",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "1DB",
+      "exposed_handle": "18B5",
+      "viewport_handle": "1D6",
+      "block": "*I3",
+      "owner_layout": "Model",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        -10123.009881973267,
+        -10073.458108901978,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    },
+    {
+      "proxy_handle": "16B3",
+      "exposed_handle": "18B7",
+      "viewport_handle": "16AE",
+      "block": "*I5",
+      "owner_layout": "Model",
+      "method": "decoded_cached_block_origin_unit_transform",
+      "insert_native": [
+        -10122.474241256714,
+        -10077.610626220703,
+        0.0
+      ],
+      "transform_validation": "restricted_signature_unverified"
+    }
+  ],
+  "layouts": [
+    {
+      "id": "sheet-01",
+      "name": "Blatt",
+      "qualifies": true,
+      "reason": "renderable_paper_content_or_reconstructed_cached_view",
+      "fidelity": "unverified",
+      "svg": {
+        "path": "docs/assets/shg/SHG-027/sheet-01.svg",
+        "sha256": "1adb753c489e05dadf68a52c3558d9d63fd2000c11bed10dc9e89c1b709f5e17",
+        "bytes": 804876
+      },
+      "pdf": {
+        "path": "docs/assets/shg/SHG-027/sheet-01.pdf",
+        "sha256": "dc0d50158a28333cd415140d26e7f251b7442fa14bd97427cc93f0f4551f396d",
+        "bytes": 579394
+      },
+      "png": {
+        "path": "docs/assets/shg/SHG-027/sheet-01.png",
+        "sha256": "93e1b412069d4769a56131910cfaeafa0cd2c0180aa406d0e9810503c79db998",
+        "bytes": 221884
+      },
+      "paper_size_native": [
+        420.0,
+        297.0
+      ]
+    }
+  ],
+  "model_space": {
+    "status": "cached_views_represented_on_sheets",
+    "native_3d_model_verified": false
+  }
+}

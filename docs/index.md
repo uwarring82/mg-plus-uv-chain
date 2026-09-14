@@ -24,7 +24,7 @@ Ulrich Warring, AG Schätz, leads the project. The repository records the measur
 
 **Architectures:** [overview](architectures/) · [Next-gen 500 mW](architectures/next-gen.html) · [BBO coating-run explainer](architectures/bbo-coating-run.html) · [coating brief & open questions](architectures/bbo-coating-brief.html) · [IC-VECSEL alternative](architectures/ic-vecsel-alternative.html) · [pulsed-Raman alternative](architectures/pulsed-raman-alternative.html) · [shared requirements](architectures/requirements.html)
 
-**Components:** [Friedenauer baseline](components/friedenauer-baseline.html) · [inventory](components/inventory.html) · [seed lasers (VECSEL)](components/seed-lasers.html) · [home-built doublers survey](components/home-built-doublers.html) · [hardware status (seed fleet)](hardware-status.html)
+**Components:** [Friedenauer baseline](components/friedenauer-baseline.html) · [inventory](components/inventory.html) · [seed lasers (VECSEL)](components/seed-lasers.html) · [SHG design archive](components/shg-designs.html) · [home-built doublers survey](components/home-built-doublers.html) · [hardware status (seed fleet)](hardware-status.html)
 
 ---
 

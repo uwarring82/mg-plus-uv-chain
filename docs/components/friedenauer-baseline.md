@@ -39,6 +39,9 @@ trail (Qty checked / Initials / Date).
 photographic archive of three currently-fielded 559&nbsp;→&nbsp;280&nbsp;nm
 BBO ring cavities (Raman, BD, RD) of the Bermuda apparatus and their
 topological mapping back to the BBO-stage role table below.
+[AG Schaetz SHG mechanical designs](shg-designs.html) — original 2020–2021
+drawings, open exports and unverified previews; no dimensional correspondence
+to this literature baseline or installed hardware is asserted.
 
 ---
 

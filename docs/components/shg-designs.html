@@ -1,0 +1,112 @@
+---
+layout: default
+title: SHG mechanical designs — AG Schaetz
+description: Original LBO and BBO drawings, open CAD exports, and a machine-readable catalogue with provenance and conversion limitations.
+---
+<link rel="stylesheet" href="{{ '/assets/shg/catalogue.css' | relative_url }}">
+<div class="shg-catalogue">
+  <p class="shg-kicker">AG Schaetz · Mechanical design archive · 2020–2021</p>
+  <h1>Inside our SHGs</h1>
+  <p class="shg-lead">Explore the cavities, crystal mounts and optical assemblies behind the laboratory's frequency-doubling chain. Each design has an unchanged original, an open drawing export and a record of what the conversion preserves.</p>
+  <p><strong>{{ site.data.shg.designs.size }} drawings</strong> · Author: <strong>AG Schaetz</strong> · Publication authorized by Ulrich Warring, 14 September 2026.</p>
+  <p class="shg-downloads">
+    <a href="{{ '/assets/shg/catalogue.json' | relative_url }}">Download JSON catalogue</a>
+    <a href="{{ '/assets/shg/catalogue.schema.json' | relative_url }}">JSON Schema</a>
+    <a href="https://github.com/uwarring82/mg-plus-uv-chain/tree/main/data/designs/shg">Source archive &amp; YAML records</a>
+  </p>
+
+  <aside class="shg-notice">
+    <strong>Readable previews; conversion fidelity unverified.</strong>
+    <p>These views are reconstructed from cached drawing blocks. An independent CAD rendering has not yet been checked. Some engineering symbols may appear as letters because the original AIGDT font is unavailable; view placement and clipping may differ. Use the original CAD for manufacturing decisions.</p>
+    <p>This archive documents existing designs. It is not a build commitment for the next-generation source, and correspondence to installed hardware requires a bench check.</p>
+  </aside>
+
+  <details class="shg-background">
+    <summary>How to read and reuse this archive</summary>
+    <p><strong>DWG</strong> is the byte-identical source. <strong>DXF.gz</strong> is an ASCII DXF export compressed for download; decompress it before opening it in CAD software. <strong>SVG, PDF and PNG</strong> are preview derivatives. Source files, exports and previews have individual SHA-256 checksums in the catalogue.</p>
+    <p><strong>DWG JSON.gz</strong> preserves the source reader's object graph for programmatic use: handles, coordinates, classes and opaque proxy payloads. It is a drawing export under CERN-OHL-S-2.0. The separate JSON catalogue contains CC-BY-4.0 metadata.</p>
+    <p>The source uses Inventor proxy objects with cached linework. The exports preserve accessible drawing entities and annotations; editable native models and STEP exports are not established. Inspection records expose annotation text with entity handles, entity counts, layout decisions and conversion limitations.</p>
+    <p><strong>Design only</strong> means no installed-hardware association has been established. <strong>Provisionally associated</strong> requires cited evidence. <strong>Confirmed</strong> requires a bench check. A match to a thesis drawing is not hardware confirmation.</p>
+    <p>Guth2021 §2.2.2 is a starting reference. The <a href="https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/literature/Guth2021/geometry.yaml">geometry extraction</a> preserves printed values, including the unresolved LBO curvature entry of 50 cm in Table 3. No drawing-to-thesis dimensional match is asserted yet.</p>
+    <p>Drawings, exports and preview images: <a href="https://ohwr.org/licences/">CERN-OHL-S-2.0</a>. Catalogue metadata: CC-BY-4.0. Page narrative: CC-BY-SA-4.0. Tooling: MIT. See the <a href="https://github.com/uwarring82/mg-plus-uv-chain/blob/main/data/designs/shg/LICENSE.md">scoped licence notice</a> and <a href="https://github.com/uwarring82/mg-plus-uv-chain/blob/main/logbook/2026-09-14-shg-design-publication.md">decision and validation record</a>.</p>
+  </details>
+
+  <form class="shg-filters" role="search" onsubmit="return false" hidden>
+    <label for="shg-search">Find a design
+      <input id="shg-search" type="search" placeholder="Cavity, crystal, SHG-002…" autocomplete="off">
+    </label>
+    <label for="shg-stage">Stage or role
+      <select id="shg-stage">
+        <option value="">All designs</option><option>LBO</option><option>BBO</option>
+        <option value="interstage">Between stages</option><option value="shared">Shared mechanics</option>
+        <option value="diagnostics">Diagnostics</option><option value="unassigned">Stage unassigned</option>
+      </select>
+    </label>
+    <p id="shg-result-count" aria-live="polite">{{ site.data.shg.designs.size }} designs</p>
+  </form>
+
+  <div class="shg-grid">
+  {% for design in site.data.shg.designs %}
+    {% assign first = design.previews | where: "qualifies", true | first %}
+    <article class="shg-design" id="{{ design.id }}" data-stage="{{ design.stage | escape }}" data-search="{{ design.id | escape }} {{ design.title_en | escape }} {{ design.title_de | escape }} {{ design.original_filename | escape }}">
+      <div class="shg-design-heading">
+        <p class="shg-kicker">{{ design.id }} · {{ design.stage | escape }} · {{ design.kind | escape }}</p>
+        <h2><a href="#{{ design.id }}">{{ design.title_en | escape }}</a></h2>
+        <p lang="de">{{ design.title_de | escape }}</p>
+      </div>
+      {% if first %}
+      <a href="{{ first.svg.path | remove_first: 'docs' | relative_url }}" class="shg-preview" aria-label="Open {{ design.title_en | escape }} preview">
+        <img src="{{ first.png.path | remove_first: 'docs' | relative_url }}" alt="Unverified reconstructed drawing of {{ design.title_en | escape }}, sheet {{ first.name | escape }}" loading="lazy" width="1548" height="1095">
+      </a>
+      {% endif %}
+      <p class="shg-status">{{ design.hardware_association.status | replace: '_', ' ' | capitalize }} · Preview unverified</p>
+      <p class="shg-downloads">
+        <a href="https://raw.githubusercontent.com/uwarring82/mg-plus-uv-chain/main/{{ design.source.path }}">Original DWG</a>
+        <a href="https://raw.githubusercontent.com/uwarring82/mg-plus-uv-chain/main/{{ design.dxf.path }}">DXF.gz</a>
+        <a href="https://raw.githubusercontent.com/uwarring82/mg-plus-uv-chain/main/{{ design.source_json.path }}">DWG JSON.gz</a>
+        {% if first %}<a href="{{ first.pdf.path | remove_first: 'docs' | relative_url }}">PDF preview</a>{% endif %}
+      </p>
+      <details>
+        <summary>All sheets &amp; provenance</summary>
+        <p class="shg-filename">Original name: <span>{{ design.original_filename | escape }}</span></p>
+        <p>{{ design.previews.size }} recorded layouts · Native unit: {{ design.units.native | escape }} · {{ design.classification.basis | escape }}</p>
+        {% for observation in design.conversion_observations %}<p><strong>Conversion note:</strong> {{ observation | escape }}</p>{% endfor %}
+        <p><a href="https://github.com/uwarring82/mg-plus-uv-chain/blob/main/{{ design.inspection.path }}">Conversion and annotation record</a> · <a href="https://github.com/uwarring82/mg-plus-uv-chain/blob/main/{{ design.source_inspection.path }}">Independent source-reader record</a></p>
+        {% for sheet in design.previews %}
+          {% if sheet.qualifies %}
+          <figure>
+            <a href="{{ sheet.svg.path | remove_first: 'docs' | relative_url }}"><img src="{{ sheet.png.path | remove_first: 'docs' | relative_url }}" alt="{{ design.title_en | escape }}: sheet {{ sheet.name | escape }}, unverified preview" loading="lazy" width="1548" height="1095"></a>
+            <figcaption>{{ sheet.name | escape }} · <a href="{{ sheet.svg.path | remove_first: 'docs' | relative_url }}">SVG</a> · <a href="{{ sheet.pdf.path | remove_first: 'docs' | relative_url }}">PDF</a> · Unverified</figcaption>
+          </figure>
+          {% else %}<p>{{ sheet.name | escape }}: {{ sheet.reason | replace: '_', ' ' | escape }}</p>{% endif %}
+        {% endfor %}
+      </details>
+    </article>
+  {% endfor %}
+  </div>
+  <p id="shg-empty" hidden>No designs match. Try a different name or stage.</p>
+  <p>Related records: <a href="home-built-doublers.html">BBO photographic survey</a> · <a href="inventory.html">Hardware inventory</a> · <a href="friedenauer-baseline.html">Friedenauer reference chain</a>.</p>
+</div>
+<script>
+(() => {
+  const form = document.querySelector('.shg-filters');
+  const input = document.querySelector('#shg-search');
+  const select = document.querySelector('#shg-stage');
+  const cards = Array.from(document.querySelectorAll('.shg-design'));
+  const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const filter = () => {
+    const query = normalize(input.value.trim());
+    let count = 0;
+    cards.forEach(card => {
+      const show = (!select.value || card.dataset.stage === select.value) && normalize(card.dataset.search).includes(query);
+      card.hidden = !show;
+      if (show) count += 1;
+    });
+    document.querySelector('#shg-result-count').textContent = `${count} of ${cards.length} designs`;
+    document.querySelector('#shg-empty').hidden = count !== 0;
+  };
+  form.hidden = false;
+  input.addEventListener('input', filter);
+  select.addEventListener('change', filter);
+})();
+</script>

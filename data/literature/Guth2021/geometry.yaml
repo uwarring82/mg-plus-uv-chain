@@ -1,0 +1,144 @@
+citation_key: Guth2021
+section: 2.2.2 Geometry of Cavities
+extracted_on: '2026-09-14'
+extracted_by: assistant under Ulrich Warring direction
+status: DRAFT; printed values visually checked, hardware association unconfirmed
+source:
+  path: data/literature/Guth2021/Guth2021.pdf
+  sha256: ec2ce3be941b289309998a1260d9466ca7300d2f3869087c7cf50d2e718aee1f
+  committed: false
+  printed_pages:
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  pdf_pages_one_based:
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+method: pdftotext -layout plus visual review of all six relevant rendered pages
+evidence_tags:
+  T: Directly transcribed thesis table value; not a hardware measurement
+  OPEN: Not determined from the inspected section
+association_limit: Thesis correspondence may support provisional association only; confirmed hardware
+  requires bench evidence. Figures 12 and 14 are attributed to reference [44].
+parameters:
+- symbol: LBO_crystal_length
+  value: 0.018
+  units: m
+  source_value_text: 18 mm
+  location: Table 3; Eq. 21
+  printed_page: 30
+  pdf_page_one_based: 35
+  evidence_tag: T
+  notes: Direct printed design parameter.
+- symbol: LBO_M1_M2_spacing
+  value: 0.136
+  units: m
+  source_value_text: 13.6 cm
+  location: Table 3; Fig. 13 caption
+  printed_page: 30
+  pdf_page_one_based: 35
+  evidence_tag: T
+  notes: Planar mirror separation l3.
+- symbol: LBO_M3_M4_spacing
+  value: 0.064
+  units: m
+  source_value_text: 6.4 cm
+  location: Table 3; Fig. 13 caption
+  printed_page: 30
+  pdf_page_one_based: 35
+  evidence_tag: T
+  notes: Curved mirror separation l2.
+- symbol: LBO_cavity_length
+  value: 0.4
+  units: m
+  source_value_text: 400 mm
+  location: Table 3
+  printed_page: 30
+  pdf_page_one_based: 35
+  evidence_tag: T
+  notes: Reported cavity length, not a bench measurement here.
+- symbol: LBO_M3_curvature_printed
+  value: 0.5
+  units: m
+  source_value_text: 50 cm
+  location: Table 3
+  printed_page: 30
+  pdf_page_one_based: 35
+  evidence_tag: T
+  notes: 'Potential unit error: preserve as printed; do not substitute 50 mm without evidence.'
+- symbol: LBO_M4_curvature_printed
+  value: 0.5
+  units: m
+  source_value_text: 50 cm
+  location: Table 3
+  printed_page: 30
+  pdf_page_one_based: 35
+  evidence_tag: T
+  notes: 'Potential unit error: preserve as printed; do not substitute 50 mm without evidence.'
+- symbol: BBO_crystal_length
+  value: 0.01
+  units: m
+  source_value_text: 10 mm
+  location: Table 3; paragraph above Summary
+  printed_page: 30
+  pdf_page_one_based: 35
+  evidence_tag: T
+  notes: The paragraph attributes the detailed calculation to reference [44].
+- symbol: BBO_cavity_length
+  value: 0.47
+  units: m
+  source_value_text: 470 mm
+  location: Table 3; paragraph above Summary
+  printed_page: 30
+  pdf_page_one_based: 35
+  evidence_tag: T
+  notes: The paragraph attributes the detailed calculation to reference [44].
+- symbol: BBO_M3_curvature
+  value: 0.05
+  units: m
+  source_value_text: 50 mm
+  location: Table 3
+  printed_page: 30
+  pdf_page_one_based: 35
+  evidence_tag: T
+  notes: Direct printed value.
+- symbol: BBO_M4_curvature
+  value: 0.05
+  units: m
+  source_value_text: 50 mm
+  location: Table 3
+  printed_page: 30
+  pdf_page_one_based: 35
+  evidence_tag: T
+  notes: Direct printed value.
+- symbol: BBO_curved_mirror_to_crystal
+  value: 0.0246
+  units: m
+  source_value_text: 24.6 mm
+  location: Table 3
+  printed_page: 30
+  pdf_page_one_based: 35
+  evidence_tag: T
+  notes: Label does not resolve crystal face versus center; no derived mirror separation asserted.
+open_items:
+- symbol: LBO_fold_angle
+  value: null
+  evidence_tag: OPEN
+  notes: Text says incidence angles below 15 degrees on p25; no exact fold angle extracted.
+- symbol: BBO_fold_angle
+  value: null
+  evidence_tag: OPEN
+  notes: No exact numerical fold angle in the inspected section; do not import the Friedenauer value
+    as a Guth-stated value.
+- symbol: crystal_absolute_position
+  value: null
+  evidence_tag: OPEN
+  notes: Figure 12 and Eq.25 place LBO centrally between curved mirrors; no absolute CAD coordinate
+    is established.

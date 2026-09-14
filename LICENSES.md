@@ -29,7 +29,30 @@ MIT.** These terms identify licence categories here, not levels of scientific
 confidence. Model B means distributed copies pinned by checksum; it specifies
 asset provenance, not a separate licence.
 
-### Generated review outputs added 2026-09-10
+### SHG archive: explicit adoption on 2026-09-14
+
+Ulrich Warring authorized publication with author attribution **AG Schaetz**
+and expressly adopted the following mapping in the implementation session.
+This is a new scoped assignment, not a relicensing of existing documents or
+an extension of the site's MIT “Design assets” category. The
+[decision record](logbook/2026-09-14-shg-design-publication.md) and
+[archive notice](data/designs/shg/LICENSE.md) retain the authorization,
+source location, modification notice and conversion limitations.
+
+| Artifact scope | SPDX licence |
+|---|---|
+| `data/designs/shg/raw/*.dwg`, `data/designs/shg/processed/**/*.dxf.gz` and `**/*.dwg.json.gz`, drawing PDF/SVG/PNG derivatives under `docs/assets/shg/SHG-*/` | CERN-OHL-S-2.0 |
+| `data/designs/shg/catalogue.yaml`, inspection and pilot JSON records, `docs/_data/shg.yml`, `docs/assets/shg/catalogue.json`, `data/literature/Guth2021/geometry.yaml` | CC-BY-4.0 |
+| `data/designs/shg/README.md`, `data/designs/shg/LICENSE.md`, `docs/components/shg-designs.html`, `logbook/2026-09-14-shg-design-publication.md`, `logbook/2026-09-14-shg-conversion-pilot.md` | CC-BY-SA-4.0 |
+| SHG scripts, requirements, schema (canonical and generated copies), catalogue CSS and tests | MIT |
+
+The complete hardware licence text is in
+[`LICENSES/CERN-OHL-S-2.0.txt`](LICENSES/CERN-OHL-S-2.0.txt).
+Existing notices and third-party component terms remain in scope where
+applicable. Publication and open licensing do not certify manufacturing
+completeness, conversion fidelity or correspondence to installed hardware.
+
+### Generated review outputs added 2026-09-10 (existing record)
 
 The [review index and four generated notebook/HTML pairs](docs/review/index.md)
 reproduce the source notebooks listed there, including their code and dated
@@ -74,7 +97,7 @@ ShareAlike restriction is inferred from their subject or decorative labels.
 | Authored works | **Sail** | `docs/KD-2026-XXX-uv-280nm.md` (Kompass dossier), `docs/calculations.md` (interpretive analysis), `logbook/2026-04-30-kickoff.md`, `logbook/2026-04-30-architecture-neutral-infrastructure.md`, `logbook/2026-05-01-gate-g3-closure.md`, `data/literature/<key>/notes.md` | CC-BY-NC-SA-4.0 | `CC-BY-NC-SA-4.0` |
 | Design assets | **Handbook** | `docs/assets/tokens.css`, `docs/assets/site.css`, `docs/assets/emblem-32.svg`, `docs/assets/wordmark-full.svg`, `docs/_layouts/default.html` | MIT | `MIT` |
 | Code and tooling | **Infrastructure** | `src/`, `tests/`, `notebooks/`, `pyproject.toml`, `.gitignore`, `.github/`, build scripts | MIT | `MIT` |
-| FAIR-published data | **Data** | `data/literature/<key>/extracted.yaml`, `data/baseline/**/metadata.yaml`, raw and processed measurement files under `data/baseline/` | CC-BY-4.0 | `CC-BY-4.0` |
+| FAIR-published data | **Data** | `data/literature/<key>/extracted.yaml`, `data/baseline/**/metadata.yaml`, raw and processed measurement files under `data/baseline/`; SHG catalogue/inspection/pilot metadata, generated site YAML/JSON and Guth2021 geometry as scoped above | CC-BY-4.0 | `CC-BY-4.0` |
 | Fonts | **External** | IBM Plex Mono, Crimson Pro (loaded from Google Fonts; not redistributed in this repo) | SIL OFL 1.1 | `OFL-1.1` |
 
 Per-folder declaration files exist where useful: [`constraints/LICENSE.md`](constraints/LICENSE.md), [`logbook/LICENSE.md`](logbook/LICENSE.md), [`data/literature/LICENSE.md`](data/literature/LICENSE.md), [`docs/LICENSE.md`](docs/LICENSE.md). The matrix above governs in case of conflict.
