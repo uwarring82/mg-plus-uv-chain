@@ -311,11 +311,13 @@ the dark hyperfine ground state during Doppler cooling and detection.
   Castech 2009) is in each cavity — or whether any fielded crystal is from a
   lot not in the current on-shelf inventory.
 - **HC servo electronics and bandwidth.** The Friedenauer-stated ≈ 18 kHz
-  loaded-piezo resonance ([components §B.2](friedenauer-baseline.html#b2-piezo-and-mount))
-  is the seed-laser linewidth's binding term per the
-  [VECSEL seed-laser page](seed-lasers.html#single-frequency-narrow-linewidth-coastline);
-  none of the three doublers' actual servo bandwidth is visible in a
-  top-view photo. Treat as `OPEN` until characterised.
+  value is a loaded LBO piezo resonance
+  ([components §B.2](friedenauer-baseline.html#b2-piezo-and-mount)); it does
+  not establish the closed-loop bandwidth of any of these three doublers.
+  The [planned cavity-lock electronics](shg-designs.html#cavity-lock-electronics)
+  section documents the proposed PTB digital PID and its public sources.
+  Hardware assignment and actual loop bandwidth remain `OPEN` until checked
+  and measured on each assembled system.
 - **UV output power, beam shape, and stability** at each doubler's output —
   these are operational measurements, not geometric features.
 - **Polarisation-control chain upstream of each IC.** Only the HBD-R
@@ -357,9 +359,9 @@ Listed in priority order for closing the `O*` / `OPEN` items above:
   BBO stage, including the candidate mirrors / output couplers / sub-assemblies
   cross-walked in §C above.
 - [Seed lasers (VECSEL)](seed-lasers.html) — the upstream source class
-  feeding any 559&nbsp;nm&nbsp;→&nbsp;280&nbsp;nm doubler; the HC servo
-  bandwidth that bounds the seed-laser linewidth criterion is the same
-  ~18&nbsp;kHz number that bounds each fielded doubler.
+  feeding the doubling chain. Seed frequency noise must be assessed with
+  the measured cavity/servo response; the literature's 18&nbsp;kHz piezo
+  resonance supplies no measured bandwidth for these fielded doublers.
 - [Architectures → Next-generation 500 mW](../architectures/next-gen.html) —
   the doubling-chain workplan that takes the fielded doublers as one of
   several candidate physical seats for the next-gen build.

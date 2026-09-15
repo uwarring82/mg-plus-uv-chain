@@ -20,7 +20,7 @@ When the structured pass is run, extract:
 4. Fundamental input power, intracavity power, and 313 nm UV output power.
 5. **130 h uninterrupted operation at 313 nm** — full operating envelope (intracavity intensity at BBO, gas environment of the cavity enclosure, any active stabilisation against environmental drift).
 6. **Robustness to vibration**: 1 g acceleration with <10 % in-lock output-power variation; 30 min at 3 g_rms; relevant for transportable-setup readiness (orthogonal to Task E but directly relevant to the next-gen 500 mW workplan).
-7. **Stabilisation electronics**: STEMlab 125-14 (Red Pitaya) digital PI controller acting on a fast-piezo-mounted mirror. Open-source FPGA-based digital lock — useful reference for the project's signal-and-control layer.
+7. **Stabilisation electronics**: STEMlab 125-14 (Red Pitaya) digital PI controller acting on a fast-piezo-mounted mirror. The PID runs in the FPGA with D set to zero for cavity locking. The modified application source is publicly available, but §IV.C.1 explicitly states that the board hardware is not open source; source availability alone does not establish licence coverage for every modified file.
 8. Authors' own comparison vs commercial monolithic UV-SHG modules (the paper notes that at the time of writing "no single-crystal monolithic ring cavities or modules are available for UV generation below 350 nm").
 
 ## Mapping to Task E quantities
@@ -32,8 +32,31 @@ When the structured pass is run, extract:
 
 ## Status
 
-`SCAFFOLD` — bibliographic record confirmed against the publisher PDF, abstract and §I (Introduction) read, but no full numerical extraction yet. The 130 h figure, the 313 nm wavelength, and the architecture-family attribution are confirmed; details of intracavity power, beam waist, crystal vendor, and the cavity gas environment require a §II / §III read.
+`SCAFFOLD` — bibliographic record confirmed against the publisher PDF, abstract and §I (Introduction) read, with a targeted controller and lock-performance review of §§IV–V on 2026-09-15. No full structured numerical extraction yet. The 130 h figure, the 313 nm wavelength, and the architecture-family attribution are confirmed; details of intracavity power, beam waist, crystal vendor, and the cavity gas environment still require a full extraction pass.
+
+## Controller reference check (2026-09-15)
+
+For the [public SHG catalogue's planned electronics section](../../../docs/components/shg-designs.html#cavity-lock-electronics), the publisher text distinguishes:
+
+- **§IV.B–C, pp. 013106-5–6:** Hänsch–Couillaud sensing, FPGA PI control, two fast input and two output channels at 125 MS/s and nominal 14-bit resolution, remote/local interfaces, controller additions and eightfold output amplification. The piezo connection includes a 21.2 kHz low-pass filter.
+- **§IV.D.2, p. 013106-7:** the 155 ns controller group delay suggests a few-MHz maximum closed-loop bandwidth. This is a delay-based estimate, not the measured bandwidth of the complete piezo/cavity system.
+- **§V.A–C, pp. 013106-7–8:** 130 h uninterrupted lock; a broad resonance near 17 kHz sets the lock-bandwidth upper limit, probably from the mirror/piezo/holder; a separate vertical acceleration test retains lock up to about 1 g with output fluctuations at the 10% level.
+
+The public code in ref. 67 was checked at
+[`Julia-F/RedPitaya`, commit `7938c27`](https://github.com/Julia-F/RedPitaya/tree/7938c27fc030ca5d8d13b1731f559e33585458f1)
+(26 May 2016). `COPYING` lists BSD-covered directories using names such as
+`Applications` and `FPGA`, while the modified files are under `apps-free/pid2`
+and `fpga/rtl`. The inspected `pid.c` and `red_pitaya_pid2.v` headers carry
+author/copyright notices without resolving that path-scope discrepancy.
+This check does not establish comprehensive code licence coverage or match
+the snapshot to laboratory firmware. No source code is imported.
+
+The laboratory's planned use is a Steward-provided intention. The published
+performance applies to Hannig's 313 nm cavity and establishes no hardware
+association or performance for the archived SHG designs. See the
+[work record](../../../logbook/2026-09-15-shg-cavity-lock-electronics.md).
 
 ## Extraction passes
 
 - **2026-05-13 (assistant under steward direction, SCAFFOLD).** Created bibliographic scaffold from the publisher PDF (now in hand under `downloads/literature/task-e/`). Confirmed authorship, journal, volume, year, DOI, abstract, and §I reference to the Friedenauer-class architecture lineage. Filed by the third scout pass in [`logbook/2026-05-04-bbo-cw-uv-lidt-task.md`](../../../logbook/2026-05-04-bbo-cw-uv-lidt-task.md).
+- **2026-09-15 (assistant under steward direction, targeted review).** Checked §§IV–V for the public controller planning reference and corrected the blanket “open-source” description. `extracted.yaml` remains a scaffold; no project parameters or gate states changed.

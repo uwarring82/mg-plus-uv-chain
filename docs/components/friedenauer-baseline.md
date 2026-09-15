@@ -81,7 +81,7 @@ Boyd–Kleinman optimum (§3; cross-referenced under
 | Item | Function | Paper-stated specification | Source |
 |---|---|---|---|
 | B2.1 | Stacked piezo on M2 | Thorlabs AE020304D04 stacked piezo glued to a lead disk; lead disk lowers loaded mount resonance and damps vibration | P (§3) |
-| B2.2 | M2 mount loaded resonance | ≈ 18 kHz; bounds the achievable Hänsch–Couillaud servo bandwidth | P (§3) |
+| B2.2 | M2 mount loaded resonance | ≈ 18 kHz; a mechanical resonance, not a measured closed-loop servo bandwidth | P (§3) |
 
 ### B.3 LBO crystal
 
@@ -109,7 +109,7 @@ Boyd–Kleinman optimum (§3; cross-referenced under
 | Item | Function | Paper-stated specification | Source |
 |---|---|---|---|
 | B5.1 | Polarization analyser path | Hänsch–Couillaud polarization scheme for cavity-length lock (Hänsch & Couillaud, Opt. Commun. 35, 441 (1980), reference [6]) | P (§3) |
-| B5.2 | Piezo servo loop | Drives M2 piezo (B2.1) within the ~18 kHz mount-resonance ceiling | P (§3) |
+| B5.2 | Piezo servo loop | Drives M2 piezo (B2.1); §3 gives the loaded resonance but no measured closed-loop bandwidth | P (§3) |
 | B5.3 | Quarter-wave plate / PBS / balanced photodetectors | Standard HC polarization optics — paper does not enumerate the individual elements | OPEN |
 
 ### B.6 Stage output

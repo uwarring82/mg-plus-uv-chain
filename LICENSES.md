@@ -43,7 +43,7 @@ source location, modification notice and conversion limitations.
 |---|---|
 | `data/designs/shg/raw/*.dwg`, `data/designs/shg/processed/**/*.dxf.gz` and `**/*.dwg.json.gz`, drawing PDF/SVG/PNG derivatives under `docs/assets/shg/SHG-*/` | CERN-OHL-S-2.0 |
 | `data/designs/shg/catalogue.yaml`, inspection, block-audit and pilot JSON records, `docs/_data/shg.yml`, `docs/assets/shg/catalogue.json`, `data/literature/Guth2021/geometry.yaml` | CC-BY-4.0 |
-| `data/designs/shg/README.md`, `data/designs/shg/LICENSE.md`, `docs/components/shg-designs.html`, `logbook/2026-09-14-shg-design-publication.md`, `logbook/2026-09-14-shg-conversion-pilot.md`, `logbook/2026-09-14-shg-publication-follow-ups.md` | CC-BY-SA-4.0 |
+| `data/designs/shg/README.md`, `data/designs/shg/LICENSE.md`, `docs/components/shg-designs.html`, `logbook/2026-09-14-shg-design-publication.md`, `logbook/2026-09-14-shg-conversion-pilot.md`, `logbook/2026-09-14-shg-publication-follow-ups.md`, `logbook/2026-09-15-shg-cavity-lock-electronics.md` | CC-BY-SA-4.0 |
 | SHG scripts, requirements, schema (canonical and generated copies), catalogue CSS and tests | MIT |
 
 The complete hardware licence text is in
