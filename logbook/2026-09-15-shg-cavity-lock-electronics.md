@@ -5,7 +5,7 @@
 **SHG design author attribution:** AG Schaetz\
 **Licence:** CC-BY-SA-4.0\
 **Starting revision:** `12dffc02c4ea57602e1b44cebf443146256635d0`\
-**Status:** Implemented and locally validated; publication checks below.
+**Status:** Published; local checks and live GitHub Pages verification passed.
 
 ## Charter §9 triggers
 
@@ -117,4 +117,20 @@ Hänsch–Couillaud implementation.
   or parameter data changed.
 
 The existing GitHub Pages source was confirmed as `main:/docs` (legacy
-build). Live publication verification follows the documentation commit.
+build). Documentation commit
+`7a4db92e5cc3cfc24a481171163f55ee5d7e2af0` was pushed to `main`; GitHub Pages
+reports that exact commit **built**, with no error, at
+2026-09-15 16:07:51 UTC. The first HTTP check during the build still served
+the preceding page; checks after completion passed.
+
+The live
+[catalogue section](https://uwarring82.github.io/mg-plus-uv-chain/components/shg-designs.html#cavity-lock-electronics)
+matches the local rendered section byte for byte, retains all 28 cards and
+contains no private repository identifier. Public HTTP checks also confirm
+the corrected
+[photo survey](https://uwarring82.github.io/mg-plus-uv-chain/components/home-built-doublers.html),
+[Friedenauer baseline](https://uwarring82.github.io/mg-plus-uv-chain/components/friedenauer-baseline.html#b2-piezo-and-mount)
+and [seed-laser page](https://uwarring82.github.io/mg-plus-uv-chain/components/seed-lasers.html).
+The survey/seed pointers resolve to the new section after Jekyll's relative-link
+rewriting, and the baseline anchor exists. These are rendered-content and
+HTTP checks; no interactive browser test or laboratory validation is claimed.
