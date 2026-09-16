@@ -206,7 +206,7 @@ parameters:
     value: 1.8e4
     units: "Hz"
     location_in_paper: "Section 3"
-    notes: "Approximate loaded mirror-mount resonance frequency reported as ~18 kHz; bounds the achievable Hänsch-Couillaud servo bandwidth."
+    notes: "Paper-stated (§3, printed p. 372): M2 'is mounted on a small stacked piezo with high resonance frequency (Thorlabs model AE020304D04, ν_res ≈ 18 kHz loaded)'. This is the loaded piezo resonance, not a measured servo or closed-loop lock bandwidth. The paper reports no lock-bandwidth measurement; it states only that the small mirror (3 × 3 × 2 mm³) allows 'a high servo bandwidth', and that the lead disk 'absorb[s] vibrations and reduce[s] the resonance frequency of the mirror mount'. The previous note, asserting that this value bounds the achievable Hänsch-Couillaud servo bandwidth, was an extraction-added inference and is withdrawn (RC-04, 2026-09-16)."
 
   - symbol: "cavity_locking_scheme"
     value_text: "Hänsch-Couillaud polarization locking (Opt. Commun. 35, 441 (1980))"

@@ -133,6 +133,18 @@ example. `phase-noise-budget.md`, `friedenauer-baseline.md` and
 cross-reference table, harmonic-phase and path-length checks, and unavailable
 measurement evidence still require the acceptance work below.
 
+**Progress 2026-09-16: third bullet addressed in the public artefacts; package remains open.**
+The [resonance-versus-bandwidth correction](2026-09-16-rc04-resonance-bandwidth-correction.md)
+withdraws the "≈ 18 kHz loaded piezo resonance = lock bandwidth" equation from
+`hardware-status.md`, `requirements.md`, `vecsel-systems.md` §3, the unreferenced
+`docs/assets/vecsel-linewidth-conversion.svg`, and both the `Friedenauer2006`
+extraction note and its extraction log, after checking §3 (printed p. 372)
+against the publisher PDF. `friedenauer-baseline.md` §B2.2 was corrected earlier
+in `7a4db92` (2026-09-15). Unknown bandwidths are now marked unknown in those
+artefacts. Still open: `phase-noise-budget.md` and `bc-g-results.md` wording, the
+four-document cross-reference table, the harmonic-phase and path-length checks,
+and the unavailable measurement evidence.
+
 **Evidence:** confirmed conflicts with recorded definitions. **Dependency:** definitions, dimensional checks and measurement provenance can proceed now; scenario-dependent numerical limits depend only on the relevant RC-02/03 inputs.
 
 Reconcile [phase-noise-budget.md](../constraints/phase-noise-budget.md), [vecsel-systems.md](../docs/tutorials/vecsel-systems.md), the [baseline](../docs/components/friedenauer-baseline.md), and [piezo mechanics](2026-05-20-bbo-coating-run-wp/bc-g-results.md).

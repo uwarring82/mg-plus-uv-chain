@@ -191,7 +191,7 @@ Because each element also subtracts from the round-trip gain margin, the output 
 
 ## 3. Parameter sensitivities → linewidth limitations
 
-<p class="classification classification--coastline">Coastline · the seed frequency-noise requirement is a Level-1 derived optical constraint; for the short-term budget what binds is the residual frequency-noise spectral density shaped by the doubling-cavity/servo transfer function (~18 kHz lock bandwidth), not the integrated linewidth — with the atomic linewidth and the iodine reference binding at other levels (resolution and long-term locking).</p>
+<p class="classification classification--coastline">Coastline · the seed frequency-noise requirement is a Level-1 derived optical constraint; for the short-term budget what binds is the residual frequency-noise spectral density shaped by the doubling-cavity/servo transfer function, not the integrated linewidth — with the atomic linewidth and the iodine reference binding at other levels (resolution and long-term locking).</p>
 
 This is the section the rest of the tutorial builds toward. The headline:
 

@@ -49,7 +49,7 @@ For *how* the lasers work, see the [VECSEL systems tutorial](tutorials/vecsel-sy
 <p class="classification classification--sail">Sail · current work fronts; none of these alters Charter Level 0/1 constraints or the kill-gate state (see <a href="status.html">Status</a>).</p>
 
 **Measurement gaps (also tracked in the tutorial §3.5 / §5):**
-- **Seed frequency-noise PSD** above the ~18 kHz doubling-cavity lock bandwidth — unmeasured.
+- **Seed frequency-noise PSD** across the doubling-cavity servo band — unmeasured. The closed-loop bandwidth of each doubling cavity is itself unmeasured; Friedenauer 2006's ≈ 18 kHz is a loaded piezo resonance, not a loop bandwidth (see [planned cavity-lock electronics](components/shg-designs.html#cavity-lock-electronics)).
 - **Downstream UV relative-intensity noise** at the experiment — unmeasured.
 - A true **sub-100 kHz intrinsic linewidth** — not yet independently proven (needs delayed self-heterodyne or a beat note).
 - **1141 nm "Heidi"** full characterisation — linewidth, output power, and the ≈570 nm → 285 nm second stage still to be recorded.

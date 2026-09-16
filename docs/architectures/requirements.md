@@ -80,7 +80,7 @@ Status legend: ⏳ open · ✅ closed · ⛔ blocked.
 - **Duration.** Reported across short (≤ 1 s), medium (1–100 s), and long (> 100 s) timescales.
 - **Environment.** Same as `REQ-NG-001`.
 - **Beam quality.** N/A.
-- **Linewidth / phase noise.** Linewidth at rack output **TBD**, target informed by [Span25] (101(8) kHz wavemeter-locked at the IR seed) and the SHG-cavity locking bandwidth (~ 18 kHz loaded piezo per [Frie06]). RIN spectrum at rack output **TBD**, target ≤ −130 dB/Hz at 2–10 MHz per [Frie06] envelope.
+- **Linewidth / phase noise.** Linewidth at rack output **TBD**, target informed by [Span25] (101(8) kHz wavemeter-locked at the IR seed) and by the SHG-cavity servo response, whose closed-loop bandwidth is unmeasured ([Frie06] reports ≈ 18 kHz as a loaded piezo resonance, not a loop bandwidth). RIN spectrum at rack output **TBD**, target ≤ −130 dB/Hz at 2–10 MHz per [Frie06] envelope.
 - **Degradation allowance.** N/A.
 - **Evidence artefact.** Phase 2 baseline-measurement campaign on the in-house chain.
 
