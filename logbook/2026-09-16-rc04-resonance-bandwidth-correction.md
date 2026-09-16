@@ -4,7 +4,7 @@
 **Steward:** Ulrich Warring\
 **Licence:** CC-BY-NC-SA-4.0 — logbook entries are Sail per [`logbook/LICENSE.md`](LICENSE.md). This entry is not added to the explicit `LICENSES.md` rows used for the SHG catalogue records; the folder declaration governs it.\
 **Starting revision:** `f75120e`\
-**Status:** Corrections applied to six artefacts; the RC-04 package remains open.
+**Status:** Corrections published and live-verified; the RC-04 package remains open.
 
 ## Charter §9 triggers
 
@@ -58,4 +58,20 @@ The numerical value ≈ 18 kHz is retained everywhere it appears. Only its inter
 - `git diff --check` passes.
 - The rewritten SVG parses as XML. Publication review with macOS Quick Look found the revised footnote clipped at the left edge; that sentence was wrapped onto two lines without changing its wording. The diagram geometry and colours are unchanged.
 - Publication review also confirmed that the parsed extraction differs from the previous revision only in the intended note, with the value and units preserved at 1.8e4 Hz. Every relative link in this entry and the task card's link to it resolves.
-- Implementation checks above were supplied with the handoff; publication review did not repeat the full suite for the footnote wrap and logbook updates. Live publication verification follows the documentation commit.
+- Implementation checks above were supplied with the handoff; publication review did not repeat the full suite for the footnote wrap and logbook updates.
+
+## Publication verification
+
+Correction commit `4589d20fe748e8714dd719302eef391b639b4540` was pushed to
+`main`. GitHub Pages reports that exact commit **built**, with no error,
+at 2026-09-16 05:55:25 UTC.
+
+Public HTTP checks confirm the corrected wording on
+[hardware status](https://uwarring82.github.io/mg-plus-uv-chain/hardware-status.html),
+[requirements](https://uwarring82.github.io/mg-plus-uv-chain/architectures/requirements.html)
+and the [VECSEL tutorial](https://uwarring82.github.io/mg-plus-uv-chain/tutorials/vecsel-systems.html).
+The hardware-status pointer resolves to the existing planned-electronics
+section. The published SVG, raw extraction, review task card and correction
+entry match the committed local bytes. The public extraction still gives
+`LBO_M2_piezo_resonance_loaded` as 1.8e4 Hz. These are content and publication
+checks, not laboratory validation or closure of RC-04.
